@@ -4,4 +4,7 @@ site_url: 'https://www.3rdeyesys.com'
 theme:
   name: material
   language: kr
+ palette:
+   scheme: default
+   primary: deep purple
 
