@@ -1,9 +1,12 @@
 site_name: 써드아이시스템 기술문서
 site_url: 'https://www.3rdeyesys.com'
 
+
 theme:
   name: material
   language: kr
-palette:
-   scheme: default
-   primary: deep purple
+
+  palette:
+    scheme: default
+    primary: deep purple
+  favicon: assets/favicon.png
