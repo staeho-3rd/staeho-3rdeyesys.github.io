@@ -7,5 +7,9 @@
      <loc>https://www.3rdeyesys.com/CLOUDWATCH%20LOG/</loc>
      <lastmod>2020-11-05</lastmod>
      <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://www.3rdeyesys.com/test/</loc>
+     <lastmod>2020-11-05</lastmod>
+     <changefreq>daily</changefreq>
     </url>
 </urlset>
