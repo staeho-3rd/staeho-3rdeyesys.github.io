@@ -222,26 +222,6 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    사전 작업
-  </a>
-  
-    <nav class="md-nav" aria-label="사전 작업">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#iam" class="md-nav__link">
-    IAM 계정생성 및 권한 부여
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
     서버 작업
   </a>
   
@@ -249,21 +229,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     설치 작업
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     설정 관련
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     실행 및 자동실행 등록
   </a>
   
@@ -282,7 +262,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     오류 대처 법
   </a>
   
@@ -327,26 +307,6 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    사전 작업
-  </a>
-  
-    <nav class="md-nav" aria-label="사전 작업">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#iam" class="md-nav__link">
-    IAM 계정생성 및 권한 부여
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
     서버 작업
   </a>
   
@@ -354,21 +314,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     설치 작업
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     설정 관련
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     실행 및 자동실행 등록
   </a>
   
@@ -387,7 +347,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     오류 대처 법
   </a>
   
@@ -414,23 +374,8 @@
                 
                 
                 <h1 id="cloudwatch-log-2">CLOUDWATCH LOG 수집 매뉴얼2</h1>
-<h2 id="_1">사전 작업</h2>
-<h3 id="iam">IAM 계정생성 및 권한 부여</h3>
-<p>cloudwatch log수집을 위해서는 서버 작업과 별도로 IAM 계정생성과 권한할당 작업을 선 진행하여야하며 작업이 완료된 후 계정의 액세스키, 비밀키를 발급 받는다.</p>
-<ol>
-<li>계정생성</li>
-</ol>
-<p>계정생성- 계정이름 입력- 액서스 유형 Programmatic access 선택</p>
-<ol>
-<li>권한설정</li>
-</ol>
-<p>기존 정책 직접 연결 선택 - CloudWatchAgentServerPolicy정책 추가</p>
-<ol>
-<li>키확인</li>
-</ol>
-<p>액세스 키 확인 및 비밀키 확인</p>
-<h2 id="_2">서버 작업</h2>
-<h3 id="_3">설치 작업</h3>
+<h2 id="_1">서버 작업</h2>
+<h3 id="_2">설치 작업</h3>
 <ol>
 <li>awslogs 설치는 다음 명령어를 통해 설치</li>
 </ol>
@@ -439,7 +384,7 @@
 <li>aws configure를 통한 IAM 키 입력</li>
 </ol>
 <p>aws configure 명령어 입력 - 액세스키 요구 및입력 - 비밀키 요구및 입력(위 IAM계정의 키 입력) </p>
-<h3 id="_4">설정 관련</h3>
+<h3 id="_3">설정 관련</h3>
 <ul>
 <li>/etc/awslogs/awscli.conf</li>
 </ul>
@@ -468,7 +413,7 @@
 <li>/var/log/awslogs.log </li>
 </ul>
 <p>awslogs서비스 실행 후 발생되는 로그.</p>
-<h3 id="_5">실행 및 자동실행 등록</h3>
+<h3 id="_4">실행 및 자동실행 등록</h3>
 <ul>
 <li>실행 명령어 service awslogs start</li>
 <li>리붓시 자동실행 등록 chkconfig awslogs on (amazon linux2 인 경우 systemctl enable awslogsd.service)</li>
@@ -497,7 +442,7 @@
 </li>
 </ol>
 <p>대시보드로 그래프 등록</p>
-<h2 id="_6">오류 대처 법</h2>
+<h2 id="_5">오류 대처 법</h2>
 <p>로그 수집이 되지 않고 awslogs.log파일에 아래와 같이 로그 가 찍히는 경우 처리 방안</p>
 <blockquote>
 <p>reason: timestamp is more than 2 hours in future.</p>
