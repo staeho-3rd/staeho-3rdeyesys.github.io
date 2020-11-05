@@ -1,1 +1,1 @@
-# Welcome to 3rd-tech docs
+# Welcome 3rd-tech
