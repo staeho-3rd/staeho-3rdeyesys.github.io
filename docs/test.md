@@ -1,4 +1,4 @@
-# CLOUDWATCH LOG 수집 매뉴얼
+# CLOUDWATCH LOG 수집 매뉴얼2
 
 ## 사전 작업
 
