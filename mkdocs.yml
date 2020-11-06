@@ -10,3 +10,11 @@ theme:
     scheme: default
     primary: deep purple
   favicon: assets/favicon.png
+
+
+plugins:
+    - search
+    - awesome-pages
+    
+markdown_extensions:
+    - smarty

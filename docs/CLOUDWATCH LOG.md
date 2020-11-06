@@ -6,31 +6,27 @@
 
 cloudwatch log수집을 위해서는 서버 작업과 별도로 IAM 계정생성과 권한할당 작업을 선 진행하여야하며 작업이 완료된 후 계정의 액세스키, 비밀키를 발급 받는다.
 
-1. 계정생성
-
+ 1. 계정생성
    계정생성- 계정이름 입력- 액서스 유형 Programmatic access 선택
-
-2. 권한설정
-
+   
+ 2. 권한설정
+ 
    기존 정책 직접 연결 선택 - CloudWatchAgentServerPolicy정책 추가
-
-3. 키확인
-
+ 3. 키확인
+ 
    액세스 키 확인 및 비밀키 확인
 
-   
+
 
 ## 서버 작업
 
 ### 설치 작업
 
 1. awslogs 설치는 다음 명령어를 통해 설치
-
    yum install -y awslogs
-
 2. aws configure를 통한 IAM 키 입력
 
-   aws configure 명령어 입력 - 액세스키 요구 및입력 - 비밀키 요구및 입력(위 IAM계정의 키 입력) 
+   aws configure 명령어 입력 - 액세스키 요구 및입력 - 비밀키 요구및 입력(위 IAM계정의 키 입력)
 
 ### 설정 관련
 
@@ -56,7 +52,7 @@ cloudwatch log수집을 위해서는 서버 작업과 별도로 IAM 계정생성
   [^B]: 로캘 전체 이름 형태의 월. January, February, ..., December
   [^b]: 로캘 약어 형태의 월. Jan, Feb, ..., Dec
 
-  
+
 
   file = /var/log/messages (로그 파일 위치)
 
@@ -72,7 +68,7 @@ cloudwatch log수집을 위해서는 서버 작업과 별도로 IAM 계정생성
 
   multi_line_start_pattern ={datetime_format} (로그 줄 단위 기준점. datetime_fomat 멀티라인 처리)
 
-- /var/log/awslogs.log 
+- /var/log/awslogs.log
 
   awslogs서비스 실행 후 발생되는 로그.
 
@@ -103,7 +99,7 @@ cloudwatch log수집을 위해서는 서버 작업과 별도로 IAM 계정생성
 
    대시보드로 그래프 등록
 
-   
+
 
 ## 오류 대처 법
 
@@ -111,11 +107,11 @@ cloudwatch log수집을 위해서는 서버 작업과 별도로 IAM 계정생성
 
 > reason: timestamp is more than 2 hours in future.
 
-1.  /var/lib/awslogs/agent-state를 삭제 
+1.  /var/lib/awslogs/agent-state를 삭제
 
    해당 방법으로 처리시 수집되는 로그가 처음부터 다시 로그가 수집됩
 
-2.  sqlite3 명령어를 통해 agent-state 오류 처리 
+2.  sqlite3 명령어를 통해 agent-state 오류 처리
 
    1. sudo sqlite3 /var/lib/awslogs/agent-state
    2. select * from stream_state; 통해 문제가 되는 소스ID확인
@@ -139,7 +135,7 @@ https://stackoverflow.com/questions/40604940/cloudwatch-logs-acting-weird
 
    IAM 계정생성 - 사용자 이름을 정해준 뒤 액세스 유형 Programmatic access 선택
 
-2. 권한 부여 
+2. 권한 부여
 
    기존 정책 직접 연결 선택-  정책 중 CloudWatchAgentServerPolicy 선택
 
