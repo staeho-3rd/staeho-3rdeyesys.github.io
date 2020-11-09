@@ -8,7 +8,7 @@ theme:
 
   palette:
     scheme: default
-    primary: deep purple
+    primary: green
   favicon: assets/favicon.png
 
 
