@@ -20,4 +20,4 @@ markdown_extensions:
     - smarty
     
     
-edit_uri: docs/
+edit_uri: docs/docs
