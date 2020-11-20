@@ -16,7 +16,7 @@
 
 따라서 서버타입 기준으로  {==**Auto Scaling 설정이 가능한 서버타입은 Compact, Standard 2가지 뿐**==}입니다.
 
-<img src="/img/ncp_server_autoscaling_limit.png" alt="Auto Scaling 서비스 제한사항" style="width:600px;align:center">
+<img src="../../img/ncp_server_autoscaling_limit.png" alt="Auto Scaling 서비스 제한사항" style="width:600px;align:center">
 
 ## OS 서버 이미지 제한 사항
 centos-7.8-64, ubuntu-18.04 이 2가지 OS 이미지는 개인 회원은 KR-1 1세대 서버에서 생성이 불가능한 이미지입니다. 2세대 서버를 선택하시거나 KR-2에서 생성해야 합니다.

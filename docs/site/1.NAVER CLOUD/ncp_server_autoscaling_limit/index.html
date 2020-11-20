@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.3rdeyesys.com/AWS/CLOUDWATCH%20LOG/">
+        <link rel="canonical" href="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_server_autoscaling_limit/">
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
@@ -18,7 +18,7 @@
     
     
       
-        <title>CLOUDWATCH LOG 수집 매뉴얼 - 써드아이시스템(3rdeyesys) 기술문서</title>
+        <title>Auto Scaling 서비스 제한사항 - 써드아이시스템(3rdeyesys) 기술문서</title>
       
     
     
@@ -53,9 +53,9 @@
     
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="CLOUDWATCH LOG 수집 매뉴얼 - 써드아이시스템(3rdeyesys) 기술문서" />
-  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.CLOUDWATCH LOG 수집 매뉴얼" />
-  <meta property="og:url" content="https://docs.3rdeyesys.com/AWS/CLOUDWATCH%20LOG/" />
+  <meta property="og:title" content="Auto Scaling 서비스 제한사항 - 써드아이시스템(3rdeyesys) 기술문서" />
+  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.Auto Scaling 서비스 제한사항" />
+  <meta property="og:url" content="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_server_autoscaling_limit/" />
   <meta property="og:image" content="https://docs.3rdeyesys.comassets/images/favicon.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="48" />
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cloudwatch-log" class="md-skip">
+        <a href="#auto-scaling" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              CLOUDWATCH LOG 수집 매뉴얼
+              Auto Scaling 서비스 제한사항
             
           </span>
         </div>
@@ -209,7 +209,7 @@
 
   <li class="md-nav__item">
     <a href="../.." class="md-nav__link">
-      Welcome 3rd-tech
+      Welcome 3RDEYESYS
     </a>
   </li>
 
@@ -218,12 +218,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       AWS
@@ -241,117 +239,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        CLOUDWATCH LOG 수집 매뉴얼
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../AWS/CLOUDWATCH%20LOG/" class="md-nav__link">
       CLOUDWATCH LOG 수집 매뉴얼
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      목차
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    사전 작업
-  </a>
-  
-    <nav class="md-nav" aria-label="사전 작업">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#iam" class="md-nav__link">
-    IAM 계정생성 및 권한 부여
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    서버 작업
-  </a>
-  
-    <nav class="md-nav" aria-label="서버 작업">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    설치 작업
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    설정 관련
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    실행 및 자동실행 등록
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cloudwatch" class="md-nav__link">
-    cloudwatch 설정
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    오류 대처 법
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
-    참고 URL
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -364,10 +256,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       NAVER CLOUD
@@ -387,7 +281,19 @@
 
 
   <li class="md-nav__item">
-    <a href="../../NAVER%20CLOUD/ncp_lamp_config/" class="md-nav__link">
+    <a href="../ncp_analytics_cloud_log_analytics_info/" class="md-nav__link">
+      [NCP] Cloud Log Analytics에서 수집하는 로그 유형
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ncp_lamp_config/" class="md-nav__link">
       NCP LAMP 환경 설정 파일 위치
     </a>
   </li>
@@ -399,7 +305,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../NAVER%20CLOUD/ncp_lamp_config_CentOS/" class="md-nav__link">
+    <a href="../ncp_lamp_config_CentOS/" class="md-nav__link">
       LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치
     </a>
   </li>
@@ -411,7 +317,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../NAVER%20CLOUD/ncp_lamp_config_Ubuntu/" class="md-nav__link">
+    <a href="../ncp_lamp_config_Ubuntu/" class="md-nav__link">
       LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
     </a>
   </li>
@@ -423,8 +329,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../NAVER%20CLOUD/ncp_lamp_config_basic/" class="md-nav__link">
-      NCP(Naver Cloud Platform) LAMP 기본 환경 설정 정보
+    <a href="../ncp_lamp_config_basic/" class="md-nav__link">
+      NCP LAMP 기본 환경 설정 정보
     </a>
   </li>
 
@@ -433,11 +339,77 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../NAVER%20CLOUD/ncp_server_autoscaling_limit/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Auto Scaling 서비스 제한사항
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Auto Scaling 서비스 제한사항
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    개요
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    스펙 및 서비스 환경 제한 사항
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#os" class="md-nav__link">
+    OS 서버 이미지 제한 사항
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    설정 제한 사항
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    참고 URL
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -447,7 +419,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../NAVER%20CLOUD/ncp_server_micro_limit/" class="md-nav__link">
+    <a href="../ncp_server_micro_limit/" class="md-nav__link">
       Micro 타입 서버에서 사용할 수 없는 서비스
     </a>
   </li>
@@ -459,7 +431,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../NAVER%20CLOUD/ncp_server_spec_change/" class="md-nav__link">
+    <a href="../ncp_server_spec_change/" class="md-nav__link">
       서버 스펙 변경
     </a>
   </li>
@@ -471,8 +443,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../NAVER%20CLOUD/ncp_server_stop_price/" class="md-nav__link">
+    <a href="../ncp_server_stop_price/" class="md-nav__link">
       서버 정지시 요금할인
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ncp_server_storage_add_guide/" class="md-nav__link">
+      스토리지 추가 생성 가이드
     </a>
   </li>
 
@@ -507,68 +491,28 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    사전 작업
+    개요
   </a>
-  
-    <nav class="md-nav" aria-label="사전 작업">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#iam" class="md-nav__link">
-    IAM 계정생성 및 권한 부여
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    서버 작업
+    스펙 및 서비스 환경 제한 사항
   </a>
   
-    <nav class="md-nav" aria-label="서버 작업">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#os" class="md-nav__link">
+    OS 서버 이미지 제한 사항
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    설치 작업
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    설정 관련
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    실행 및 자동실행 등록
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cloudwatch" class="md-nav__link">
-    cloudwatch 설정
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    오류 대처 법
+    설정 제한 사항
   </a>
   
 </li>
@@ -592,129 +536,48 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="/docs/docs/AWS/CLOUDWATCH LOG.md" title="이 페이지를 편집" class="md-content__button md-icon">
+                  <a href="/docs/docs/NAVER CLOUD/ncp_server_autoscaling_limit.md" title="이 페이지를 편집" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="cloudwatch-log">CLOUDWATCH LOG 수집 매뉴얼</h1>
-<h2 id="_1">사전 작업</h2>
-<h3 id="iam">IAM 계정생성 및 권한 부여</h3>
-<p>cloudwatch log수집을 위해서는 서버 작업과 별도로 IAM 계정생성과 권한할당 작업을 선 진행하여야하며 작업이 완료된 후 계정의 액세스키, 비밀키를 발급 받는다.</p>
-<ol>
-<li>
-<p>계정생성
-   계정생성- 계정이름 입력- 액서스 유형 Programmatic access 선택</p>
-</li>
-<li>
-<p>권한설정</p>
-</li>
-</ol>
-<p>기존 정책 직접 연결 선택 - CloudWatchAgentServerPolicy정책 추가
- 3. 키확인</p>
-<p>액세스 키 확인 및 비밀키 확인</p>
-<h2 id="_2">서버 작업</h2>
-<h3 id="_3">설치 작업</h3>
-<ol>
-<li>awslogs 설치는 다음 명령어를 통해 설치
-   yum install -y awslogs</li>
-<li>aws configure를 통한 IAM 키 입력</li>
-</ol>
-<p>aws configure 명령어 입력 - 액세스키 요구 및입력 - 비밀키 요구및 입력(위 IAM계정의 키 입력)</p>
-<h3 id="_4">설정 관련</h3>
+                <h1 id="auto-scaling">Auto Scaling 서비스 제한사항</h1>
+<h2 id="_1">개요</h2>
+<p>모든 클라우드 서비스의 핵심 중의 하나가 Auto Scaling이라고 할 수 있습니다.
+네이버 클라우드도 예외가 아닌데, Auto Scaling을 설정할 때 몇가지 제한사항이 있어서 정리해보았습니다.</p>
+<h2 id="_2">스펙 및 서비스 환경 제한 사항</h2>
+<p>서버 스펙이나 서비스 환경과 관련한 제한 사항은 다음과 같습니다.</p>
 <ul>
-<li>/etc/awslogs/awscli.conf</li>
+<li>총 디스크 사이즈 150GB 이하 서버만 가능</li>
+<li>Windows OS는 Windows 2012. 2016만 지원</li>
+<li>Micro 서버는 불가</li>
+<li>High Memory 서버는 불가(추후 개선 예정)</li>
+<li>Local Disk 기반 서버는 불가</li>
+<li>Global Internet Service 영역 내의 서비스 불가</li>
 </ul>
-<p>region = ap-northeast-2 추가 설정없이 리전만 로그 수집을 위한 리전으로 변경</p>
+<p>따라서 서버타입 기준으로  <mark class="critic"><strong>Auto Scaling 설정이 가능한 서버타입은 Compact, Standard 2가지 뿐</strong></mark>입니다.</p>
+<p><img src="../img/ncp_server_autoscaling_limit.png" alt="Auto Scaling 서비스 제한사항" style="width:600px;align:center"></p>
+<h2 id="os">OS 서버 이미지 제한 사항</h2>
+<p>centos-7.8-64, ubuntu-18.04 이 2가지 OS 이미지는 개인 회원은 KR-1 1세대 서버에서 생성이 불가능한 이미지입니다. 2세대 서버를 선택하시거나 KR-2에서 생성해야 합니다.</p>
+<h2 id="_3">설정 제한 사항</h2>
+<p>다음으로 Auto Scaling 설정을 할 때 생성 가능한 최대 서버 수 등의 설정 제한 사항은 다음과 같습니다.</p>
 <ul>
-<li>/etc/awslogs/awslog.conf</li>
+<li>고객별 생성 가능한 Auto Scaling Group 최대 수: 100</li>
+<li>고객별 생성 가능한 Launch Configuration 최대 수: 100</li>
+<li>Auto Scaling Group당 생성 가능한 스케줄(Scheduled Action) 최대 수: 100</li>
+<li>Auto Scaling Group당 생성 가능한 Scaling Policy 최대 수: 10</li>
+<li>Auto Scaling Group당 생성 가능한 최대 서버 수: 30대</li>
+<li>Auto Scaling Group당 연결 가능한 Load Balancer 최대 수 : 10</li>
 </ul>
-<p>해당 컨피그 파일의 제일 하단에 로그 수집 대상 로그를 아래의 형식으로 작성</p>
-<p>[/var/log/messages] &ndash; 수집로그 경로와 파일 지정</p>
-<p>datetime_format = %b %d %H:%M:%S (로그의 데이터 포맷 지정)</p>
-<p>[^%Y]: year  1970, 1988, 2001, 2019</p>
-<p>[^%p]: AM or PM
-  [^%M]: minute 00, 01 &hellip; ,59
-  [^%S]: Second 00, 01, &hellip; ,59
-  [^%f]: Microsecond 000000, 000001, &hellip; ,999999
-  [^B]: 로캘 전체 이름 형태의 월. January, February, &hellip;, December
-  [^b]: 로캘 약어 형태의 월. Jan, Feb, &hellip;, Dec</p>
-<p>file = /var/log/messages (로그 파일 위치)</p>
-<p>buffer_duration = 5000 (로그 이벤트를 일괄 처리하는 기간을 지정합니다. 최소값은 5000ms이고, 기본값은 5000ms입니다.)</p>
-<p>log_stream_name = {instance_id} (대상로그 스트림 이름 지정{instance_id}, {hostname}, {ip_address})</p>
-<p>initial_position = start_of_file</p>
-<p>log_group_name = /var/log/messages(cloudwatch 로그 그룹네임 지정 )</p>
-<p>time_zone=LOCAL</p>
-<p>multi_line_start_pattern ={datetime_format} (로그 줄 단위 기준점. datetime_fomat 멀티라인 처리)</p>
-<ul>
-<li>/var/log/awslogs.log</li>
-</ul>
-<p>awslogs서비스 실행 후 발생되는 로그.</p>
-<h3 id="_5">실행 및 자동실행 등록</h3>
-<ul>
-<li>실행 명령어 service awslogs start</li>
-<li>리붓시 자동실행 등록 chkconfig awslogs on (amazon linux2 인 경우 systemctl enable awslogsd.service)</li>
-</ul>
-<h2 id="cloudwatch">cloudwatch 설정</h2>
-<p>정상적으로 서버의 로그가 수집된다면 cloudwatch - log항목에서 서버에서 지정한 로그 그룹네임이 보이며 이를 클릭시 서버 인스턴스 ID별로 로그 수집되는 내역 확인 가능</p>
-<p>수집된 데이터는 대시보드를 통해 데이터를 보여주는기능은 바로 가능하나 이를 가지고 그래프를 통한 시각화를 할수 없어 지표를 통한 그래프를 생성하여야함.</p>
-<ol>
-<li>
-<p>cloudwatch -로그- 로그그룹중 필터기능을 쓸 지표선택 -지표 필터 클릭</p>
-</li>
-<li>
-<p>지표 필터 추가 버튼 클릭</p>
-</li>
-<li>
-<p>필터링 하고자하는 값을 넣고 [정규식지원]패턴 테스트 후 지표할당 클릭</p>
-</li>
-<li>
-<p>이후 지표 네임스페이스는 로그 그룹 네임 중 추출하고자하는 지표영역 지표이름은 해당 지표를 선택</p>
-</li>
-<li>
-<p>cloudwatch - 지표 선택 - 모든 지표에서 로그 그룹 필터를 적용한 로그 그룹의 incomingLogEvents선택</p>
-</li>
-<li>
-<p>그래프로 표시된 지표 탭 선택 - 필터가 적용된 그래프가 나오며 그래프의 작업 대시보드 추가를 선택하여</p>
-</li>
-</ol>
-<p>대시보드로 그래프 등록</p>
-<h2 id="_6">오류 대처 법</h2>
-<p>로그 수집이 되지 않고 awslogs.log파일에 아래와 같이 로그 가 찍히는 경우 처리 방안</p>
-<blockquote>
-<p>reason: timestamp is more than 2 hours in future.</p>
-</blockquote>
-<ol>
-<li>/var/lib/awslogs/agent-state를 삭제</li>
-</ol>
-<p>해당 방법으로 처리시 수집되는 로그가 처음부터 다시 로그가 수집됩</p>
-<ol>
-<li>
-<p>sqlite3 명령어를 통해 agent-state 오류 처리</p>
-</li>
-<li>
-<p>sudo sqlite3 /var/lib/awslogs/agent-state</p>
-</li>
-<li>select * from stream_state; 통해 문제가 되는 소스ID확인</li>
-<li>select * from push_state where k=&rdquo;확인된 소스ID&rdquo;;</li>
-<li>update push_state set v=&rsquo;&hellip; insert new value here &hellip;&rsquo; where k=&lsquo;7675f84405fcb8fe5b6bb14eaa0c4bfd&rsquo;;</li>
-<li>service awslogs restart</li>
-</ol>
+<div class="admonition important">
+<p class="admonition-title">계정당 생성 가능한 최대 서버 대수</p>
+<p>네이버 클라우드 플랫폼에서 한 <strong>계정당 생성할 수 있는 최대 서버 수 기본 50대</strong>입니다. 서버 수 한도를 조정하려면 고객지원으로 문의해야 합니다.</p>
+</div>
 <h2 id="url">참고 URL</h2>
-<p><a href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/AgentReference.html">https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/AgentReference.html</a></p>
-<p><a href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html">https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html</a></p>
-<p>https://stackoverflow.com/questions/40604940/cloudwatch-logs-acting-weird</p>
-<ol>
-<li>계정 생성</li>
-</ol>
-<p>IAM 계정생성 - 사용자 이름을 정해준 뒤 액세스 유형 Programmatic access 선택</p>
-<ol>
-<li>권한 부여</li>
-</ol>
-<p>기존 정책 직접 연결 선택-  정책 중 CloudWatchAgentServerPolicy 선택</p>
-<ol>
-<li>계정생성 후 액세스키, 비밀키 확인</li>
-</ol>
+<p><a href="https://docs.ncloud.com/ko/compute/autoscaling/autoscaling_overview.html" target="_blank">https://docs.ncloud.com/ko/compute/autoscaling/autoscaling_overview.html</a></p>
+<div class="admonition info">
+<p class="admonition-title">문서 최종 수정일 : 2020-11-19</p>
+</div>
                 
               
               
@@ -733,7 +596,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../.." class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ncp_lamp_config_basic/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -742,19 +605,19 @@
                 <span class="md-footer-nav__direction">
                   이전
                 </span>
-                Welcome 3rd-tech
+                NCP LAMP 기본 환경 설정 정보
               </div>
             </div>
           </a>
         
         
-          <a href="../../NAVER%20CLOUD/ncp_lamp_config/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../ncp_server_micro_limit/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   다음
                 </span>
-                NCP LAMP 환경 설정 파일 위치
+                Micro 타입 서버에서 사용할 수 없는 서비스
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

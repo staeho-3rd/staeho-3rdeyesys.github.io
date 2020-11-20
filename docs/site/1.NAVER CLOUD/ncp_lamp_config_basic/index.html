@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_lamp_config_Ubuntu/">
+        <link rel="canonical" href="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_lamp_config_basic/">
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
@@ -18,7 +18,7 @@
     
     
       
-        <title>LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치 - 써드아이시스템(3rdeyesys) 기술문서</title>
+        <title>NCP LAMP 기본 환경 설정 정보 - 써드아이시스템(3rdeyesys) 기술문서</title>
       
     
     
@@ -53,9 +53,9 @@
     
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치 - 써드아이시스템(3rdeyesys) 기술문서" />
-  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치" />
-  <meta property="og:url" content="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_lamp_config_Ubuntu/" />
+  <meta property="og:title" content="NCP LAMP 기본 환경 설정 정보 - 써드아이시스템(3rdeyesys) 기술문서" />
+  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.NCP LAMP 기본 환경 설정 정보" />
+  <meta property="og:url" content="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_lamp_config_basic/" />
   <meta property="og:image" content="https://docs.3rdeyesys.comassets/images/favicon.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="48" />
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lampubuntu" class="md-skip">
+        <a href="#ncp-lamp" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
+              NCP LAMP 기본 환경 설정 정보
             
           </span>
         </div>
@@ -209,7 +209,7 @@
 
   <li class="md-nav__item">
     <a href="../.." class="md-nav__link">
-      Welcome 3rd-tech
+      Welcome 3RDEYESYS
     </a>
   </li>
 
@@ -281,6 +281,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../ncp_analytics_cloud_log_analytics_info/" class="md-nav__link">
+      [NCP] Cloud Log Analytics에서 수집하는 로그 유형
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../ncp_lamp_config/" class="md-nav__link">
       NCP LAMP 환경 설정 파일 위치
     </a>
@@ -303,6 +315,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../ncp_lamp_config_Ubuntu/" class="md-nav__link">
+      LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -314,12 +338,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
+        NCP LAMP 기본 환경 설정 정보
         <span class="md-nav__icon md-icon"></span>
       </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
-      LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
+      NCP LAMP 기본 환경 설정 정보
     </a>
     
       
@@ -336,70 +360,43 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#apache" class="md-nav__link">
-    Apache 시작, 중지, 재시작
+  <a href="#lamp" class="md-nav__link">
+    LAMP 기본설정
   </a>
   
-    <nav class="md-nav" aria-label="Apache 시작, 중지, 재시작">
+    <nav class="md-nav" aria-label="LAMP 기본설정">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ubuntu" class="md-nav__link">
-    Ubuntu
+  <a href="#lamp_1" class="md-nav__link">
+    LAMP 홈디렉토리
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lamp_2" class="md-nav__link">
+    LAMP 서비스 전체 재시작
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lamp_3" class="md-nav__link">
+    LAMP 서비스 설치 상태 확인
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lamp_4" class="md-nav__link">
+    LAMP 웹사이트 기본 디렉토리
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mysql" class="md-nav__link">
-    mysql 시작, 중지, 재시작
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ubuntu_1" class="md-nav__link">
-    Ubuntu
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apache_1" class="md-nav__link">
-    Apache 환경 설정 파일
-  </a>
-  
-    <nav class="md-nav" aria-label="Apache 환경 설정 파일">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ubuntu_2" class="md-nav__link">
-    Ubuntu
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#php" class="md-nav__link">
-    PHP 환경 설정 파일
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mysql_1" class="md-nav__link">
-    mysql 환경 설정 파일
-  </a>
   
 </li>
       
@@ -414,18 +411,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_lamp_config_basic/" class="md-nav__link">
-      NCP(Naver Cloud Platform) LAMP 기본 환경 설정 정보
-    </a>
   </li>
 
         
@@ -477,6 +462,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ncp_server_storage_add_guide/" class="md-nav__link">
+      스토리지 추가 생성 가이드
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -506,70 +503,43 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#apache" class="md-nav__link">
-    Apache 시작, 중지, 재시작
+  <a href="#lamp" class="md-nav__link">
+    LAMP 기본설정
   </a>
   
-    <nav class="md-nav" aria-label="Apache 시작, 중지, 재시작">
+    <nav class="md-nav" aria-label="LAMP 기본설정">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ubuntu" class="md-nav__link">
-    Ubuntu
+  <a href="#lamp_1" class="md-nav__link">
+    LAMP 홈디렉토리
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lamp_2" class="md-nav__link">
+    LAMP 서비스 전체 재시작
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lamp_3" class="md-nav__link">
+    LAMP 서비스 설치 상태 확인
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lamp_4" class="md-nav__link">
+    LAMP 웹사이트 기본 디렉토리
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mysql" class="md-nav__link">
-    mysql 시작, 중지, 재시작
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ubuntu_1" class="md-nav__link">
-    Ubuntu
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apache_1" class="md-nav__link">
-    Apache 환경 설정 파일
-  </a>
-  
-    <nav class="md-nav" aria-label="Apache 환경 설정 파일">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ubuntu_2" class="md-nav__link">
-    Ubuntu
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#php" class="md-nav__link">
-    PHP 환경 설정 파일
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mysql_1" class="md-nav__link">
-    mysql 환경 설정 파일
-  </a>
   
 </li>
       
@@ -592,44 +562,32 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="/docs/docs/NAVER CLOUD/ncp_lamp_config_Ubuntu.md" title="이 페이지를 편집" class="md-content__button md-icon">
+                  <a href="/docs/docs/NAVER CLOUD/ncp_lamp_config_basic.md" title="이 페이지를 편집" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="lampubuntu">LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치</h1>
-<h2 id="apache">Apache 시작, 중지, 재시작</h2>
-<p>Apache 시작, 중지, 재시작 명령어는 OS별로 조금씩 다른데 Ubuntu의 경우에는 systemctl [stop|start|restart] {서비스명} 의 순서로 되어 있습니다.</p>
-<h3 id="ubuntu">Ubuntu</h3>
-<pre><code>- 중지 : systemctl stop apache2
-- 시작 : systemctl start apache2
-- 재시작 : systemctl restart apache2
+                <h1 id="ncp-lamp">NCP LAMP 기본 환경 설정 정보</h1>
+<h2 id="lamp">LAMP 기본설정</h2>
+<p>NCP(네이버 클라우드 플랫폼, 이하 네이버 클라우드)에서 제공하는 Application중에서 가장 대표적인 LAMP(Linux + Apache, Mysql, PHP)의 기본설정입니다.</p>
+<h3 id="lamp_1">LAMP 홈디렉토리</h3>
+<p>네이버 클라우드에서 Linux 서버를 세팅하게 되면 기본적으로 root 계정으로 접속이 됩니다.
+그래서 LAMP 서비스의 홈디렉토리도 /root/lamp로 설정됩니다. </p>
+<pre><code>- LAMP 서비스 홈디렉토리 : /root/lamp
 </code></pre>
-<h2 id="mysql">mysql 시작, 중지, 재시작</h2>
-<p>mysql 시작, 중지, 재시작 명령어도 Apache와 마찬가지로 systemctl [stop|start|restart] {서비스명} 의 순서로 되어 있습니다.</p>
-<h2 id="ubuntu_1">Ubuntu</h2>
-<pre><code>- 중지 : systemctl stop mysql
-- 시작 : systemctl start mysql
-- 재시작 : systemctl restart mysql
+<h3 id="lamp_2">LAMP 서비스 전체 재시작</h3>
+<p>네이버 클라우드에서는 LAMP 전체 서비스를 빠르게 재시작할 수 있는 기능을 제공하고 있습니다.</p>
+<pre><code>-  LAMP 서비스 전체 재시작 명령 : /root/lamp/lamp_restart.sh
 </code></pre>
-<h2 id="apache_1">Apache 환경 설정 파일</h2>
-<p>Apache의 기본 환경설정 파일은 CentOS의 경우 httpd.conf라는 파일로 간단하게 구성되어 있는데 Ubuntu의 경우에는 포트, 가상호스트, 로그 등 각각의 항목별로 파일이 나뉘어져 있습니다.</p>
-<h3 id="ubuntu_2">Ubuntu</h3>
-<pre><code>- 기본 설정 : /etc/apache2/apache2.conf
-- 포트 설정 : /etc/apache2/ports.conf
-- 가상호스트 설정: /etc/apache2/sites-enabled/000-default.conf -&gt; /etc/apache2/sites-available/000-default.conf
-- 로그 : /var/log/apache2
-- 기타 옵션 설정 :
- /etc/apache2/mods-enabled/*.load -&gt; /etc/apache2/mods-available/*.load
- /etc/apache2/mods-enabled/*.conf -&gt; /etc/apache2/mods-available/*.conf
+<p>위 명령을 실행하면 Apache 와 mysql이 순서대로 재시작됩니다.</p>
+<h3 id="lamp_3">LAMP 서비스 설치 상태 확인</h3>
+<p>네이버 클라우드에서는 LAMP 서비스들의 설치 정보를 확인할 수 있는 기능도 제공하고 있습니다.</p>
+<pre><code>- LAMP 설치 상태와 정보 확인 명령 : /root/lamp/lamp_info.sh
 </code></pre>
-<h2 id="php">PHP 환경 설정 파일</h2>
-<p>PHP의 환경 설정파일인 php.ini는  PHP버전에 해당 하는 디렉토리에 위치하고 있습니다.</p>
-<pre><code>- php.ini : /etc/php/7.2/apache2/php.ini
-</code></pre>
-<h2 id="mysql_1">mysql 환경 설정 파일</h2>
-<p>mysql 환경  설정파일인 my.cnf는 OS버전과 관계없이 /etc/mysql/my.cnf 에 위치하고 있으며, 실제로는 /etc/alternatives/my.cnf로 링크되어 있습니다.</p>
-<pre><code>- my.cnf : /etc/mysql/my.cnf -&gt; /etc/alternatives/my.cnf
+<p>위 명령을 실행하면 LAMP의 기본 웹사이트 경로, 웹사이트 기본 디렉토리, mysql 초기 비번 안내, Apache 버전, mysql 버전, PHP와 Zend 버전 정보 등을 확인할 수 있습니다.</p>
+<h3 id="lamp_4">LAMP 웹사이트 기본 디렉토리</h3>
+<p>네이버 클라우드에서 제공하는 LAMP의 웹사이트 기본 디렉토리 위치는 다음과 같습니다.</p>
+<pre><code>- 웹사이트 기본 디렉토리 : /ncp/data/www
 </code></pre>
 <h2 id="url">참고 URL</h2>
 <p><a href="https://docs.ncloud.com/ko/lamp/lamp-1-1.html" target="_blank">https://docs.ncloud.com/ko/lamp/lamp-1-1.html</a></p>
@@ -654,7 +612,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../ncp_lamp_config_CentOS/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ncp_lamp_config_Ubuntu/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -663,19 +621,19 @@
                 <span class="md-footer-nav__direction">
                   이전
                 </span>
-                LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치
+                LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
               </div>
             </div>
           </a>
         
         
-          <a href="../ncp_lamp_config_basic/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../ncp_server_autoscaling_limit/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   다음
                 </span>
-                NCP(Naver Cloud Platform) LAMP 기본 환경 설정 정보
+                Auto Scaling 서비스 제한사항
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_server_stop_price/">
+        <link rel="canonical" href="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_lamp_config_CentOS/">
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
@@ -18,7 +18,7 @@
     
     
       
-        <title>서버 정지시 요금할인 - 써드아이시스템(3rdeyesys) 기술문서</title>
+        <title>LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치 - 써드아이시스템(3rdeyesys) 기술문서</title>
       
     
     
@@ -53,9 +53,9 @@
     
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="서버 정지시 요금할인 - 써드아이시스템(3rdeyesys) 기술문서" />
-  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.서버 정지시 요금할인" />
-  <meta property="og:url" content="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_server_stop_price/" />
+  <meta property="og:title" content="LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치 - 써드아이시스템(3rdeyesys) 기술문서" />
+  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치" />
+  <meta property="og:url" content="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_lamp_config_CentOS/" />
   <meta property="og:image" content="https://docs.3rdeyesys.comassets/images/favicon.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="48" />
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#lampcentos" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              서버 정지시 요금할인
+              LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치
             
           </span>
         </div>
@@ -209,7 +209,7 @@
 
   <li class="md-nav__item">
     <a href="../.." class="md-nav__link">
-      Welcome 3rd-tech
+      Welcome 3RDEYESYS
     </a>
   </li>
 
@@ -281,8 +281,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_lamp_config/" class="md-nav__link">
-      NCP LAMP 환경 설정 파일 위치
+    <a href="../ncp_analytics_cloud_log_analytics_info/" class="md-nav__link">
+      [NCP] Cloud Log Analytics에서 수집하는 로그 유형
     </a>
   </li>
 
@@ -293,9 +293,134 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_lamp_config_CentOS/" class="md-nav__link">
+    <a href="../ncp_lamp_config/" class="md-nav__link">
+      NCP LAMP 환경 설정 파일 위치
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#apache" class="md-nav__link">
+    Apache 시작, 중지, 재시작
+  </a>
+  
+    <nav class="md-nav" aria-label="Apache 시작, 중지, 재시작">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centos-6x" class="md-nav__link">
+    CentOS 6.x 이하
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos-7x" class="md-nav__link">
+    CentOS 7.x
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    mysql 시작, 중지, 재시작
+  </a>
+  
+    <nav class="md-nav" aria-label="mysql 시작, 중지, 재시작">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centos-6x_1" class="md-nav__link">
+    CentOS 6.x 이하
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos-7x_1" class="md-nav__link">
+    CentOS 7.x
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache_1" class="md-nav__link">
+    Apache 환경 설정 파일
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php" class="md-nav__link">
+    PHP 환경 설정 파일
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_1" class="md-nav__link">
+    mysql 환경 설정 파일
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    참고 URL
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -318,7 +443,7 @@
 
   <li class="md-nav__item">
     <a href="../ncp_lamp_config_basic/" class="md-nav__link">
-      NCP(Naver Cloud Platform) LAMP 기본 환경 설정 정보
+      NCP LAMP 기본 환경 설정 정보
     </a>
   </li>
 
@@ -363,77 +488,23 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        서버 정지시 요금할인
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../ncp_server_stop_price/" class="md-nav__link">
       서버 정지시 요금할인
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      목차
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    개요
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    추가 요금이 청구되는 서비스
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    요금 할인 횟수와 서버 정지 기한
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    요금 할인이 적용되지 않는 서버 타입
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
-    참고 URL
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ncp_server_storage_add_guide/" class="md-nav__link">
+      스토리지 추가 생성 가이드
+    </a>
   </li>
 
         
@@ -466,29 +537,76 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    개요
+  <a href="#apache" class="md-nav__link">
+    Apache 시작, 중지, 재시작
+  </a>
+  
+    <nav class="md-nav" aria-label="Apache 시작, 중지, 재시작">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centos-6x" class="md-nav__link">
+    CentOS 6.x 이하
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos-7x" class="md-nav__link">
+    CentOS 7.x
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    mysql 시작, 중지, 재시작
+  </a>
+  
+    <nav class="md-nav" aria-label="mysql 시작, 중지, 재시작">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centos-6x_1" class="md-nav__link">
+    CentOS 6.x 이하
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos-7x_1" class="md-nav__link">
+    CentOS 7.x
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache_1" class="md-nav__link">
+    Apache 환경 설정 파일
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    추가 요금이 청구되는 서비스
+  <a href="#php" class="md-nav__link">
+    PHP 환경 설정 파일
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    요금 할인 횟수와 서버 정지 기한
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    요금 할인이 적용되지 않는 서버 타입
+  <a href="#mysql_1" class="md-nav__link">
+    mysql 환경 설정 파일
   </a>
   
 </li>
@@ -512,35 +630,52 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="/docs/docs/NAVER CLOUD/ncp_server_stop_price.md" title="이 페이지를 편집" class="md-content__button md-icon">
+                  <a href="/docs/docs/NAVER CLOUD/ncp_lamp_config_CentOS.md" title="이 페이지를 편집" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="_1">서버 정지시 요금할인</h1>
-<h2 id="_2">개요</h2>
-<p>네이버 클라우드에서는 서버를 정지할 경우 일부 타입을 제외한 대부분의 서버에 대해 운영체제 설치를 위해 제공된 기본 디스크 요금만 청구가 되어 요금 할인이 됩니다.</p>
-<h2 id="_3">추가 요금이 청구되는 서비스</h2>
-<p>공인 IP, 로드밸런서, 추가 디스크, Security Monitoring, 추가 Network Interface 등 서버에 연결된 다른 유료 서비스의 경우 서버가 정지되어도 정상 청구됩니다.</p>
-<h2 id="_4">요금 할인 횟수와 서버 정지 기한</h2>
-<ul>
-<li>요금이 할인되는 서버의 경우 <mark class="critic"><strong>1회 최대 90일, 12개월 누적 최대 180일</strong></mark>까지만 서버를 정지할 수 있습니다. </li>
-<li>서버 정기 가능 기한을 넘긴 서버는 고객에게 통보 후 서버를 반납하게 됩니다.</li>
-<li>서버를 반납하게 될 때 서버에 저장된 데이터는 네이버 클라우드에서 30일간 직접 백업하여 보관 후 삭제하게 됩니다.</li>
-</ul>
-<p><img src="/img/ncp_server_stop_price_discount.png" alt="서버 정기 기한과 요금할인" style="width:600px;align:center"></p>
-<h2 id="_5">요금 할인이 적용되지 않는 서버 타입</h2>
-<p>일부 서버들은 서버를 정지해도 요금 할인이 되지 않고, 서버가 가동 중일 때와 동일한 요금이 청구됩니다.
-할인이 적용되지 않는 서버 타입은 다음과 같습니다.</p>
-<ul>
-<li>Micro 서버</li>
-<li>High Memory 서버</li>
-<li>GPU 서버</li>
-<li>Virtual Dedicated Server</li>
-<li>Baremetal 서버</li>
-</ul>
+                <h1 id="lampcentos">LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치</h1>
+<h2 id="apache">Apache 시작, 중지, 재시작</h2>
+<p>Apache 시작, 중지, 재시작 명령어는 CentOS 6에서 사용하던 것이 CentOS 7이 되면서 변경되었습니다.
+CentOS 6.x 이하에서는 service {서비스명} [stop|start|restart] 순서였다면 <strong>CentOS 7.X 에서는 systemctl [stop|start|restart] {서비스명} 의 순서</strong>로 바뀌었습니다.
+내용을 정리하면 다음과 같습니다.</p>
+<h3 id="centos-6x">CentOS 6.x 이하</h3>
+<pre><code>- 중지 : service httpd stop
+- 시작 : service httpd start
+- 재시작 : service httpd restart
+</code></pre>
+<h3 id="centos-7x">CentOS 7.x</h3>
+<pre><code>- 중지 : systemctl stop httpd
+- 시작 : systemctl start httpd
+- 재시작 : systemctl restart httpd
+</code></pre>
+<h2 id="mysql">mysql 시작, 중지, 재시작</h2>
+<p>mysql도 Apache와 마찬가지 방식으로 CentOS 6 이하와 CentOS 7에서 사용하는 명령어가 변경되었습니다.</p>
+<h3 id="centos-6x_1">CentOS 6.x 이하</h3>
+<pre><code>- 중지 : service mysqld stop
+- 시작 : service mysqld start
+- 재시작 : service mysqld restart
+</code></pre>
+<h3 id="centos-7x_1">CentOS 7.x</h3>
+<pre><code>- 중지 : systemctl stop mysqld
+- 시작 : systemctl start mysqld
+- 재시작 : systemctl restart mysqld
+</code></pre>
+<h2 id="apache_1">Apache 환경 설정 파일</h2>
+<p>Apache의 환경 설정 파일은 CentOS의 버전과 관계없이 모두 동일합니다.</p>
+<pre><code>- httpd.conf : /etc/httpd/conf/httpd.conf
+</code></pre>
+<h2 id="php">PHP 환경 설정 파일</h2>
+<p>PHP의 환경 설정파일인 php.ini는  PHP버전에 해당 하는 디렉토리에 위치하고 있습니다.</p>
+<pre><code>- php.ini : /etc/php/7.2/apache2/php.ini
+</code></pre>
+<h2 id="mysql_1">mysql 환경 설정 파일</h2>
+<p>mysql 환경  설정파일인 my.cnf는 OS버전과 관계없이 /etc/mysql/my.cnf 에 위치하고 있으며, 실제로는 /etc/alternatives/my.cnf로 링크되어 있습니다.</p>
+<pre><code>- my.cnf : /etc/mysql/my.cnf -&gt; /etc/alternatives/my.cnf
+</code></pre>
 <h2 id="url">참고 URL</h2>
-<p><a href="https://docs.ncloud.com/ko/compute/compute-1-1-v2.html" target="_blank">https://docs.ncloud.com/ko/compute/compute-1-1-v2.html</a></p>
+<p><a href="https://docs.ncloud.com/ko/lamp/lamp-1-1.html" target="_blank">https://docs.ncloud.com/ko/lamp/lamp-1-1.html</a></p>
 <div class="admonition info">
 <p class="admonition-title">문서 최종 수정일 : 2020-11-13</p>
 </div>
@@ -562,7 +697,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../ncp_server_spec_change/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ncp_lamp_config/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -571,11 +706,25 @@
                 <span class="md-footer-nav__direction">
                   이전
                 </span>
-                서버 스펙 변경
+                NCP LAMP 환경 설정 파일 위치
               </div>
             </div>
           </a>
         
+        
+          <a href="../ncp_lamp_config_Ubuntu/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  다음
+                </span>
+                LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
         
       </nav>
     </div>
