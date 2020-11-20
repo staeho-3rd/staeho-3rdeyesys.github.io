@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_server_micro_limit/">
+        <link rel="canonical" href="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_server_autoscaling_limit/">
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
@@ -18,7 +18,7 @@
     
     
       
-        <title>Micro 타입 서버에서 사용할 수 없는 서비스 - 써드아이시스템(3rdeyesys) 기술문서</title>
+        <title>Auto Scaling 서비스 제한사항 - 써드아이시스템(3rdeyesys) 기술문서</title>
       
     
     
@@ -53,9 +53,9 @@
     
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Micro 타입 서버에서 사용할 수 없는 서비스 - 써드아이시스템(3rdeyesys) 기술문서" />
-  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.Micro 타입 서버에서 사용할 수 없는 서비스" />
-  <meta property="og:url" content="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_server_micro_limit/" />
+  <meta property="og:title" content="Auto Scaling 서비스 제한사항 - 써드아이시스템(3rdeyesys) 기술문서" />
+  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.Auto Scaling 서비스 제한사항" />
+  <meta property="og:url" content="https://docs.3rdeyesys.com/NAVER%20CLOUD/ncp_server_autoscaling_limit/" />
   <meta property="og:image" content="https://docs.3rdeyesys.comassets/images/favicon.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="48" />
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#micro" class="md-skip">
+        <a href="#auto-scaling" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Micro 타입 서버에서 사용할 수 없는 서비스
+              Auto Scaling 서비스 제한사항
             
           </span>
         </div>
@@ -327,18 +327,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../ncp_server_autoscaling_limit/" class="md-nav__link">
-      Auto Scaling 서비스 제한사항
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -350,12 +338,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Micro 타입 서버에서 사용할 수 없는 서비스
+        Auto Scaling 서비스 제한사항
         <span class="md-nav__icon md-icon"></span>
       </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
-      Micro 타입 서버에서 사용할 수 없는 서비스
+      Auto Scaling 서비스 제한사항
     </a>
     
       
@@ -380,35 +368,15 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    제한되는 서비스
-  </a>
-  
-    <nav class="md-nav" aria-label="제한되는 서비스">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mssql" class="md-nav__link">
-    MSSQL
+    스펙 및 서비스 환경 제한 사항
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#lamp" class="md-nav__link">
-    LAMP
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    설정 제한 사항
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#private-subnet" class="md-nav__link">
-    Private Subnet
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -423,6 +391,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ncp_server_micro_limit/" class="md-nav__link">
+      Micro 타입 서버에서 사용할 수 없는 서비스
+    </a>
   </li>
 
         
@@ -487,35 +467,15 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    제한되는 서비스
-  </a>
-  
-    <nav class="md-nav" aria-label="제한되는 서비스">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mssql" class="md-nav__link">
-    MSSQL
+    스펙 및 서비스 환경 제한 사항
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#lamp" class="md-nav__link">
-    LAMP
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    설정 제한 사항
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#private-subnet" class="md-nav__link">
-    Private Subnet
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -538,50 +498,45 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="/docs/docs/NAVER CLOUD/ncp_server_micro_limit.md" title="이 페이지를 편집" class="md-content__button md-icon">
+                  <a href="/docs/docs/NAVER CLOUD/ncp_server_autoscaling_limit.md" title="이 페이지를 편집" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="micro">Micro 타입 서버에서 사용할 수 없는 서비스</h1>
+                <h1 id="auto-scaling">Auto Scaling 서비스 제한사항</h1>
 <h2 id="_1">개요</h2>
-<p>네이버 클라우드에서 제공하는 서버 타입 중에서 Micro 타입의 서버는 신규 가입 후 최초 결제수단 등록월부터 1년간 무료로 제공되는 체험용 서버입니다.
-계정당 1대만 이용 가능하며 1년이 지나면 유료로 전환됩니다.</p>
-<h2 id="_2">제한되는 서비스</h2>
-<p>Micro 타입의 서버에서 사용할 수 없는 서비스는 다음과 같습니다.</p>
+<p>모든 클라우드 서비스의 핵심 중의 하나가 Auto Scaling이라고 할 수 있습니다.
+네이버 클라우드도 예외가 아닌데, Auto Scaling을 설정할 때 몇가지 제한사항이 있어서 정리해보았습니다.</p>
+<h2 id="_2">스펙 및 서비스 환경 제한 사항</h2>
+<p>서버 스펙이나 서비스 환경과 관련한 제한 사항은 다음과 같습니다.</p>
 <ul>
-<li>mssql</li>
-<li>LAMP, WordPress, LEMP 등</li>
-<li>Network Interface</li>
-<li>Private Subnet</li>
+<li>총 디스크 사이즈 150GB 이하 서버만 가능</li>
+<li>Windows OS는 Windows 2012. 2016만 지원</li>
+<li>Micro 서버는 불가</li>
+<li>High Memory 서버는 불가(추후 개선 예정)</li>
+<li>Local disk 기반 서버는 불가</li>
+<li>Global Internet Service 영역 내의 서비스 불가</li>
 </ul>
-<h3 id="mssql">MSSQL</h3>
-<p>mssql 중에서 mssql 2017 Express은 무료로 제공되는 서비스이지만, mssql이 1년 무료제공 서버인 Micro서버에서는 설치가 되지 않기 때문에, compact 이상의 유료 서버를 이용해야 합니다.
-즉, mssql 2017 Express는 무료이나 서버와 그에 따른 하드 디스크 비용은 유료입니다.</p>
-<h3 id="lamp">LAMP</h3>
-<p>LAMP (Linux + Apache, Mysql, PHP)의 경우 Micro 타입의 서버에 설치를 할 수 없고, Standard 이상의 서버에서만 설치할 수 있는데, 대신 네이버 클라우드에서는 LAMP 등 많이 사용되는 오픈 소스 소프트웨어가 설치된 서버를 쉽게 이용할 수 있도록 해주는 서비스인 Application Server Launcher를 제공하고 있습니다.</p>
-<p>Application Server Launcher에서는 원하는 소프트웨어의 이미지를 선택하기만 하면 쉽게 Micro 타입의 서버를 세팅하고 이용할 수 있습니다.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>다만, Application Server Launcher에서 생성한 서버도 Micro 타입의 서버이기 때문에 계정당 1개만 제공되는 Micro 타입 서버 기준에 따라 Micro 타입의 서버는 더 이상 추가할 수 없습니다.</p>
+<p>그러므로 서버 타입 기준으로 현재 Auto Scaling 설정이 가능한 타입은 Compact, Standard 2가지 뿐입니다.</p>
+<p><img src="/img/ncp_server_autoscaling_limit.png" alt="Auto Scaling 서비스 제한사항" style="width:600px;align:center"></p>
+<h2 id="_3">설정 제한 사항</h2>
+<p>다음으로 Auto Scaling 설정을 할 때 생성 가능한 최대 서버 수 등의 설정 제한 사항은 다음과 같습니다.</p>
+<ul>
+<li>고객별 생성 가능한 Auto Scaling Group 최대 수: 100</li>
+<li>고객별 생성 가능한 Launch Configuration 최대 수: 100</li>
+<li>Auto Scaling Group당 생성 가능한 스케줄(Scheduled Action) 최대 수: 100</li>
+<li>Auto Scaling Group당 생성 가능한 Scaling Policy 최대 수: 10</li>
+<li>Auto Scaling Group당 생성 가능한 최대 서버 수: 30대</li>
+<li>Auto Scaling Group당 연결 가능한 Load Balancer 최대 수 : 10</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">계정당 생성 가능한 최대 서버 대수</p>
+<p>네이버 클라우드 플랫폼에서 한 계정당 생성할 수 있는 최대 서버 수 기본 50대입니다. 서버 수 한도를 조정하려면 고객지원으로 문의해야 합니다.</p>
 </div>
-<p>Application Server Launcher에서 OS버전(CentOS, Ubuntu)별로 제공되는 애플리케이션은 다음과 같은데 <mark class="critic"><strong>현재(2020년 11월 12일 기준)는 Ubuntu만 제공</strong></mark> 되고 있습니다.</p>
-<ul>
-<li>Drupal (CMS)</li>
-<li>Joomla! (CMS)</li>
-<li>Magento (E-Commerce)</li>
-<li>Shadowsocks (VPN)</li>
-<li>LAMP (Web Stack)</li>
-<li>WordPress (CMS)</li>
-<li>Jenkins (Dev Tools)</li>
-</ul>
-<h3 id="private-subnet">Private Subnet</h3>
-<p>Private Subnet을 구성해서 서버환경을 만들려고 해도 Micro 서버 타입은 Network Interface를 추가할 수 없고, 그에 따라 Private Subnet도 적용할 수 없습니다.</p>
 <h2 id="url">참고 URL</h2>
-<p><a href="https://docs.ncloud.com/ko/compute/compute-1-1-v2.html" target="_blank">https://docs.ncloud.com/ko/compute/compute-1-1-v2.html</a>
-<a href="https://docs.ncloud.com/ko/asl/asl_console.html" target="_blank">https://docs.ncloud.com/ko/asl/asl_console.html</a></p>
+<p><a href="https://docs.ncloud.com/ko/compute/autoscaling/autoscaling_overview.html" target="_blank">https://docs.ncloud.com/ko/compute/autoscaling/autoscaling_overview.html</a></p>
 <div class="admonition info">
-<p class="admonition-title">문서 최종 수정일 : 2020-11-13</p>
+<p class="admonition-title">문서 최종 수정일 : 2020-11-19</p>
 </div>
                 
               
@@ -601,7 +556,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../ncp_server_autoscaling_limit/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ncp_lamp_config_basic/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -610,19 +565,19 @@
                 <span class="md-footer-nav__direction">
                   이전
                 </span>
-                Auto Scaling 서비스 제한사항
+                NCP(Naver Cloud Platform) LAMP 기본 환경 설정 정보
               </div>
             </div>
           </a>
         
         
-          <a href="../ncp_server_spec_change/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../ncp_server_micro_limit/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   다음
                 </span>
-                서버 스펙 변경
+                Micro 타입 서버에서 사용할 수 없는 서비스
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

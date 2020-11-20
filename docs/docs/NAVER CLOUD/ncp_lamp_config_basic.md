@@ -1,4 +1,4 @@
-# NCP(Naver Cloud Platform) LAMP 기본 환경 설정 정보
+# NCP LAMP 기본 환경 설정 정보
 
 ## LAMP 기본설정
 
