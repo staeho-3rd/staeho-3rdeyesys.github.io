@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_storage_add_guide/">
+        <link rel="canonical" href="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_networking_vpc/">
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
@@ -18,7 +18,7 @@
     
     
       
-        <title>스토리지 추가 생성 가이드 - 써드아이시스템(3rdeyesys) 기술문서</title>
+        <title>VPC 구성요소 - 써드아이시스템(3rdeyesys) 기술문서</title>
       
     
     
@@ -53,9 +53,9 @@
     
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="스토리지 추가 생성 가이드 - 써드아이시스템(3rdeyesys) 기술문서" />
-  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.스토리지 추가 생성 가이드" />
-  <meta property="og:url" content="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_storage_add_guide/" />
+  <meta property="og:title" content="VPC 구성요소 - 써드아이시스템(3rdeyesys) 기술문서" />
+  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.VPC 구성요소" />
+  <meta property="og:url" content="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_networking_vpc/" />
   <meta property="og:image" content="https://docs.3rdeyesys.comassets/images/favicon.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="48" />
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#vpc" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              스토리지 추가 생성 가이드
+              VPC 구성요소
             
           </span>
         </div>
@@ -300,11 +300,112 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        VPC 구성요소
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       VPC 구성요소
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    개요
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpc_1" class="md-nav__link">
+    VPC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subnet-internet-gateway" class="md-nav__link">
+    Subnet (Internet Gateway)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nat-gateway" class="md-nav__link">
+    NAT Gateway
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-table" class="md-nav__link">
+    Route Table
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acg" class="md-nav__link">
+    ACG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nacl" class="md-nav__link">
+    NACL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-private-gateway" class="md-nav__link">
+    Virtual Private Gateway
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpc-peering" class="md-nav__link">
+    VPC Peering
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    참고 URL
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -372,77 +473,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        스토리지 추가 생성 가이드
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../ncp_server_storage_add_guide/" class="md-nav__link">
       스토리지 추가 생성 가이드
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      목차
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    개요
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    스토리지 추가 제약 사항
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    추가 가능한 최대 사이즈와 개수
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#os" class="md-nav__link">
-    리눅스 OS 서버 이미지별 포맷 명령어
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
-    참고 URL
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -561,29 +596,64 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     개요
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    스토리지 추가 제약 사항
+  <a href="#vpc_1" class="md-nav__link">
+    VPC
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    추가 가능한 최대 사이즈와 개수
+  <a href="#subnet-internet-gateway" class="md-nav__link">
+    Subnet (Internet Gateway)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#os" class="md-nav__link">
-    리눅스 OS 서버 이미지별 포맷 명령어
+  <a href="#nat-gateway" class="md-nav__link">
+    NAT Gateway
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-table" class="md-nav__link">
+    Route Table
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acg" class="md-nav__link">
+    ACG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nacl" class="md-nav__link">
+    NACL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-private-gateway" class="md-nav__link">
+    Virtual Private Gateway
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpc-peering" class="md-nav__link">
+    VPC Peering
   </a>
   
 </li>
@@ -607,34 +677,44 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="/docs/docs/1.NAVER CLOUD/ncp_server_storage_add_guide.md" title="이 페이지를 편집" class="md-content__button md-icon">
+                  <a href="/docs/docs/1.NAVER CLOUD/ncp_networking_vpc.md" title="이 페이지를 편집" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="_1">스토리지 추가 생성 가이드</h1>
-<h2 id="_2">개요</h2>
-<p>네이버 클라우드에서 서버 생성 후에 스토리지를 추가 생성하는 경우가 있는데 이때 사용되는 스토리지는 Block Storage라고 해서 AWS의 EBS(Elastic Block Store)와 유사합니다.</p>
-<h2 id="_3">스토리지 추가 제약 사항</h2>
-<ul>
-<li>부팅 스토리지가 SSD인 경우, 추가 스토리지로 HDD, SSD 모두 추가할 수 있습니다.</li>
-<li>부팅 스토리지가 HDD인 경우, HDD, SSD 모두 추가할 수 있으나 SSD 스토리지는 최신 서버에만 추가가 가능합니다. 서버 상세정보의 &lsquo;SSD 스토리지 추가 여부&rsquo;가 적용 가능인지 확인해야 합니다.</li>
-<li><mark class="critic"><strong>Micro 타입의 서버, Bare Metal 서버는 스토리지를 추가할 수 없습니다.</strong></mark></li>
-</ul>
-<h2 id="_4">추가 가능한 최대 사이즈와 개수</h2>
-<p>스토리지는 <strong>최대 2,000GB</strong>를 지원하며, 서버 1대당 <strong>최대 16개</strong>의 스토리지를 이용할 수 있습니다. (단, Local Disk 서버 타입 및 2017년 1월 23일 이전에 생성된 서버에 대해서는 1,000GB까지 지원됩니다.)</p>
-<h2 id="os">리눅스 OS 서버 이미지별 포맷 명령어</h2>
-<p>리눅스는 OS 즉, 네이버 클라우드에서 제공하는 서버 이미지별로 추가된 스토리지를 포맷하는 명령어가 다릅니다.</p>
-<ul>
-<li>CentOS 5.x: mkfs.ext3 /dev/xvdb1</li>
-<li>CentOS 6.x: mkfs.ext4 /dev/xvdb1</li>
-<li>CentOS 7.x: mkfs.xfs /dev/xvdb1</li>
-<li>Ubuntu Server / Desktop: mkfs.ext4 /dev/xvdb1</li>
-</ul>
+                <h1 id="vpc">VPC 구성요소</h1>
+<h2 id="_1">개요</h2>
+<p>이 문서는 VPC를 구성하는 요소들에 대한 설명으로 네이버 클라우드 파트너 테크데이에서 발표된 내용을 정리한 것입니다.</p>
+<h2 id="vpc_1">VPC</h2>
+<p>VPC(Virtual Private Cloud)는 퍼블릭 클라우드 상에 논리적으로 완전하게 분리된 고객전용 네트워크를 제공하는 서비스.
+최대 /16의 IP 네트워크 공간을 제공 (IP 대역: RFC 1918).</p>
+<div class="admonition tip">
+<p class="admonition-title">RFC 1978 IP대역</p>
+<p>10.0.0.0/8 (10.0.0.0 - 10.255.255.255)<br />
+172.16.0.0/12 (172.16.0.0 - 172.31.255.255)<br />
+192.168.0.0/16 (192.168.0.0 - 192.168.255.255)</p>
+</div>
+<h2 id="subnet-internet-gateway">Subnet (Internet Gateway)</h2>
+<p>할당된 VPC를 용도에 맞게 네트워크 공간을 세분화 하여 사용.<br />
+/16 ~ /28의 네트워크 주소 할당이 가능.<br />
+Public Subet 생성 시 Internet Gateway가 연결됨.</p>
+<h2 id="nat-gateway">NAT Gateway</h2>
+<p>Network Address Translation의 약자로, 폐쇄된 네트워크에서 외부와의 인터넷 동신 시 사용하는 게이트웨이.</p>
+<h2 id="route-table">Route Table</h2>
+<p>네트워크 경로를 설정할 수 있는 기능을 제공. VPC 내부 통신을 위한 Local은 기본적으로 설정.</p>
+<h2 id="acg">ACG</h2>
+<p>서버에서 인바운드/아웃바운드의 네트워크 접근제어를 지원하며 Stateful 기반으로 동작.</p>
+<h2 id="nacl">NACL</h2>
+<p>Network Access Control List의 약자로, Subnet에서 인바운드/아웃바운드의 네트워크 접근제어를 지원하며 Stateless 기반으로 동작.</p>
+<h2 id="virtual-private-gateway">Virtual Private Gateway</h2>
+<p>Cloud Connect와 IPSec VPN에 연결되는 네이버 클라우드의 VPC측 연결 접점으로서 Cloud Connect와 IPSec VPN 연결을 지원.</p>
+<h2 id="vpc-peering">VPC Peering</h2>
+<p>VPC간 사설연결을 보장하는 기능으로, 단방향 통신을 제공하기 때문에 양방향 통신을 원하면 두개의 정책을 모두 적용해야 함.</p>
+<p><img src="../../img/ncp_vpc_element.png" alt="VPC 구성요소" style="width:800px;align:center"></p>
 <h2 id="url">참고 URL</h2>
-<p><a href="https://docs.ncloud.com/ko/compute/compute-4-1-v2.html" target="_blank">https://docs.ncloud.com/ko/compute/compute-4-1-v2.html</a></p>
+<p><a href="https://docs.ncloud.com/ko/networking/vpc/vpc_overview.html" target="_blank">https://docs.ncloud.com/ko/networking/vpc/vpc_overview.html</a></p>
 <div class="admonition info">
-<p class="admonition-title">문서 최종 수정일 : 2020-11-19</p>
+<p class="admonition-title">문서 최종 수정일 : 2020-11-30</p>
 </div>
                 
               
@@ -654,7 +734,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../ncp_server_stop_price/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ncp_lamp_config_basic/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -663,19 +743,19 @@
                 <span class="md-footer-nav__direction">
                   이전
                 </span>
-                서버 정지시 요금할인
+                NCP LAMP 기본 환경 설정 정보
               </div>
             </div>
           </a>
         
         
-          <a href="../ncp_storage_backup_guide/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../ncp_server_acg_guide/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   다음
                 </span>
-                백업 서비스 가이드와 신청 절차
+                ACG(Access Control Group) 가이드
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
