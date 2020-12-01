@@ -69,15 +69,15 @@ pip install mkdocs-awesome-pages-plugin
 이제 기본으로 필요한 것들은 다 설치했으니 블로그를 만들어봅시다.
 mkdocs new {폴더명}
 ```bash
-	mkdocs new blog-mkdocs
+mkdocs new blog-mkdocs
 ```
 
 ## 블로그 실행
 이제 웹브라우져에서 블로그를 확인해봅시다.
 위에서 만들어진 폴더로 이동합니다.
 ```bash
-	cd blog-mkdocs
-	mkdocs serve
+cd blog-mkdocs
+mkdocs serve
 ```
 
 그러면 http://127.0.0.1:8000 주소로 접속하면 기본 블로그를 확인해볼 수 있고 

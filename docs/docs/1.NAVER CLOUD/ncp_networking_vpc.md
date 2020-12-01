@@ -34,7 +34,9 @@ Network Access Control List의 약자로, Subnet에서 인바운드/아웃바운
 Cloud Connect와 IPSec VPN에 연결되는 네이버 클라우드의 VPC측 연결 접점으로서 Cloud Connect와 IPSec VPN 연결을 지원.
 
 ## VPC Peering
-VPC간 사설연결을 보장하는 기능으로, 단방향 통신을 제공하기 때문에 양방향 통신을 원하면 두개의 정책을 모두 적용해야 함.
+VPC간 사설연결을 보장하는 기능으로, 일반적인 VPC <-> VPC 간의 통신은 인터넷을 통하게 되고, 이는 과다한 요금 발생 및 성능 저하를 일으킬 수 있음.  
+VPC Peering을 이용하면 보다 안전한 사설 IP기반의 통신이 가능함.  
+VPC Peering은 단방향 통신을 제공하기 때문에 양방향 통신을 원하면 Src -> Dest 별로 각각 1개씩, 두개의 정책을 모두 적용해야 함.
 
 
 <img src="../../img/ncp_vpc_element.png" alt="VPC 구성요소" style="width:800px;align:center">
