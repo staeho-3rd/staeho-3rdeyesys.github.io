@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_spec_change/">
+        <link rel="canonical" href="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_networking_vpc_acg_nacl/">
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
@@ -18,7 +18,7 @@
     
     
       
-        <title>서버 스펙 변경 - 써드아이시스템(3rdeyesys) 기술문서</title>
+        <title>ACG와 NACL 비교 - 써드아이시스템(3rdeyesys) 기술문서</title>
       
     
     
@@ -53,9 +53,9 @@
     
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="서버 스펙 변경 - 써드아이시스템(3rdeyesys) 기술문서" />
-  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.서버 스펙 변경" />
-  <meta property="og:url" content="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_spec_change/" />
+  <meta property="og:title" content="ACG와 NACL 비교 - 써드아이시스템(3rdeyesys) 기술문서" />
+  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.ACG와 NACL 비교" />
+  <meta property="og:url" content="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_networking_vpc_acg_nacl/" />
   <meta property="og:image" content="https://docs.3rdeyesys.comassets/images/favicon.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="48" />
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#acg-nacl" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              서버 스펙 변경
+              ACG와 NACL 비교
             
           </span>
         </div>
@@ -312,11 +312,63 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc_acg_nacl/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        ACG와 NACL 비교
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       ACG와 NACL 비교
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    개요
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acg-vs-nacl" class="md-nav__link">
+    ACG vs NACL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    참고 URL
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -384,56 +436,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        서버 스펙 변경
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../ncp_server_spec_change/" class="md-nav__link">
       서버 스펙 변경
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      목차
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    개요
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
-    참고 URL
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -576,8 +583,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     개요
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acg-vs-nacl" class="md-nav__link">
+    ACG vs NACL
   </a>
   
 </li>
@@ -601,27 +615,55 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="/docs/docs/1.NAVER CLOUD/ncp_server_spec_change.md" title="이 페이지를 편집" class="md-content__button md-icon">
+                  <a href="/docs/docs/1.NAVER CLOUD/ncp_networking_vpc_acg_nacl.md" title="이 페이지를 편집" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="_1">서버 스펙 변경</h1>
-<h2 id="_2">개요</h2>
-<p>네이버 클라우드에서는 기본적으로 서버 타입 간의 스펙 변경을 지원하지 않고, 동일한 타입 내에서의 스펙 변경만 지원합니다.</p>
-<div class="admonition question">
-<p class="admonition-title">다른 타입의 스펙으로 변경하려면</p>
-<p>[내 서버 이미지] 기능을 이용해서 서버 이미지를 생성한 다음, 다른 타입으로 서버를 새로 만들어야 합니다.</p>
-</div>
-<p><img src="../../img/ncp_server_spec_change.png" alt="서버 스펙 변경 제한" style="width:600px;align:center"></p>
-<div class="admonition success">
-<p class="admonition-title">타입 간 스펙 변경이 가능한 경우</p>
-<p>타입간 스펙 변경은 대부분은 불가능하나 <strong>Classic 1세대의 Compact 타입과 Standard 타입</strong> 간에는 스펙 변경을 할 수 있습니다.</p>
-</div>
+                <h1 id="acg-nacl">ACG와 NACL 비교</h1>
+<h2 id="_1">개요</h2>
+<p>네이버 클라우드에서는 VPC의 보안을 강화하기 위해 ACG와 NACL의 두 가지 보안 정책을 제공하고 있습니다.</p>
+<ol>
+<li>ACG : Access Control Group은 서버의 NIC별 Inbound 및 Outbound 트래픽을 제어</li>
+<li>NACL : Network Access Control List는 Subnet의 Inbound 및 Outbound 트래픽을 제어</li>
+</ol>
+<h2 id="acg-vs-nacl">ACG vs NACL</h2>
+<table>
+<thead>
+<tr>
+<th align="center">구분</th>
+<th align="center">ACG</th>
+<th align="center">NACL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">적용 대상</td>
+<td align="center">서버의 접근 제어</td>
+<td align="center">Subnet의 접근 제어</td>
+</tr>
+<tr>
+<td align="center">지원 규칙</td>
+<td align="center">허용 (Allow)</td>
+<td align="center"><mark class="critic"><strong>허용 및 거부 (Allow / Deny)</strong></mark></td>
+</tr>
+<tr>
+<td align="center">상태 저장 여부</td>
+<td align="center">상태 저장(Stateful)<br>(규칙에 관계없이 반환 트래픽이<br>자동으로 허용됨)</td>
+<td align="center">상태 비저장(Stateless)<br>(반환 트래픽이 규칙에 의해<br>명시적으로 허용되어야 함)</td>
+</tr>
+<tr>
+<td align="center">적용 방법</td>
+<td align="center">서버의 NIC에 ACG 정책 적용</td>
+<td align="center">Subnet 단위로 적용<br>(Subnet 별 1개만 허용)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="../../img/ncp_vpc_acg_nacl.png" alt="VPC ACG와 NACL 비교" style="width:800px;align:center"></p>
 <h2 id="url">참고 URL</h2>
-<p><a href="https://docs.ncloud.com/ko/compute/compute-1-1-v2.html" target="_blank">https://docs.ncloud.com/ko/compute/compute-1-1-v2.html</a></p>
+<p><a href="https://docs.ncloud.com/ko/networking/vpc/vpc_detailedsubnet.html" target="_blank">https://docs.ncloud.com/ko/networking/vpc/vpc_detailedsubnet.html</a></p>
 <div class="admonition info">
-<p class="admonition-title">문서 최종 수정일 : 2020-11-13</p>
+<p class="admonition-title">문서 최종 수정일 : 2020-12-01</p>
 </div>
                 
               
@@ -641,7 +683,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../ncp_server_micro_limit/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ncp_networking_vpc/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -650,19 +692,19 @@
                 <span class="md-footer-nav__direction">
                   이전
                 </span>
-                Micro 타입 서버에서 사용할 수 없는 서비스
+                VPC 구성요소
               </div>
             </div>
           </a>
         
         
-          <a href="../ncp_server_stop_price/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../ncp_networking_vpc_load_balancer/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   다음
                 </span>
-                서버 정지시 요금할인
+                Load Balancer 상품군의 변화
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
