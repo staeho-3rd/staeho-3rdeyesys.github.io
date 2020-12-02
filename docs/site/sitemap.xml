@@ -1,79 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://docs.3rdeyesys.com/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_analytics_cloud_log_analytics_info/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_lamp_config/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_lamp_config_CentOS/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_lamp_config_Ubuntu/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_lamp_config_basic/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_networking_vpc/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_networking_vpc_acg_nacl/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_networking_vpc_load_balancer/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_networking_vpc_subnet_natgw/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_security_ncp_onpremise_compare/</loc>
+     <lastmod>2020-12-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_security_service_summary/</loc>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_acg_guide/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_autoscaling_limit/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_micro_limit/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_spec_change/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_stop_price/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_storage_add_guide/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_storage_backup_guide/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/2.AWS/CLOUDWATCH%20LOG/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.3rdeyesys.com/3.ETC/etc_mkdocs_install/</loc>
-     <lastmod>2020-12-01</lastmod>
+     <lastmod>2020-12-02</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
