@@ -10,22 +10,22 @@
       
       
       
-        <link rel="canonical" href="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_autoscaling_limit/">
+        <link rel="canonical" href="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_lamp_config.html">
       
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
     
     
       
-        <title>Auto Scaling 서비스 제한사항 - 써드아이시스템(3rdeyesys) 기술문서</title>
+        <title>NCP LAMP 환경 설정 파일 위치 - 써드아이시스템(3rdeyesys) 기술문서</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6910b76c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6910b76c.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
         
           
           
@@ -53,9 +53,9 @@
     
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Auto Scaling 서비스 제한사항 - 써드아이시스템(3rdeyesys) 기술문서" />
-  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.Auto Scaling 서비스 제한사항" />
-  <meta property="og:url" content="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_autoscaling_limit/" />
+  <meta property="og:title" content="NCP LAMP 환경 설정 파일 위치 - 써드아이시스템(3rdeyesys) 기술문서" />
+  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.NCP LAMP 환경 설정 파일 위치" />
+  <meta property="og:url" content="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_lamp_config.html" />
   <meta property="og:image" content="https://docs.3rdeyesys.comassets/images/favicon.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="48" />
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#auto-scaling" class="md-skip">
+        <a href="#ncp-lamp" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Auto Scaling 서비스 제한사항
+              NCP LAMP 환경 설정 파일 위치
             
           </span>
         </div>
@@ -208,7 +208,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." class="md-nav__link">
+    <a href="../index.html" class="md-nav__link">
       Welcome 3RDEYESYS
     </a>
   </li>
@@ -242,7 +242,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_analytics_cloud_log_analytics_info/" class="md-nav__link">
+    <a href="ncp_analytics_cloud_log_analytics_info.html" class="md-nav__link">
       [NCP] Cloud Log Analytics에서 수집하는 로그 유형
     </a>
   </li>
@@ -254,8 +254,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_lamp_config/" class="md-nav__link">
-      NCP LAMP 환경 설정 파일 위치
+    <a href="ncp_http_to_https_centos.html" class="md-nav__link">
+      [CentOS] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache
     </a>
   </li>
 
@@ -266,116 +266,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_lamp_config_CentOS/" class="md-nav__link">
-      LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_lamp_config_Ubuntu/" class="md-nav__link">
-      LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_lamp_config_basic/" class="md-nav__link">
-      NCP LAMP 기본 환경 설정 정보
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc/" class="md-nav__link">
-      VPC 구성요소
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc_acg_nacl/" class="md-nav__link">
-      ACG와 NACL 비교
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc_load_balancer/" class="md-nav__link">
-      Load Balancer 상품군의 변화
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc_subnet_natgw/" class="md-nav__link">
-      Subnet 과 NAT GW
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_security_ncp_onpremise_compare/" class="md-nav__link">
-      [Security] NCP : On-Premise 비교
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_security_service_summary/" class="md-nav__link">
-      Security 서비스 요약
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_server_acg_guide/" class="md-nav__link">
-      ACG(Access Control Group) 가이드
+    <a href="ncp_http_to_https_ubuntu.html" class="md-nav__link">
+      [Ubuntu] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache
     </a>
   </li>
 
@@ -395,12 +287,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Auto Scaling 서비스 제한사항
+        NCP LAMP 환경 설정 파일 위치
         <span class="md-nav__icon md-icon"></span>
       </label>
     
-    <a href="./" class="md-nav__link md-nav__link--active">
-      Auto Scaling 서비스 제한사항
+    <a href="ncp_lamp_config.html" class="md-nav__link md-nav__link--active">
+      NCP LAMP 환경 설정 파일 위치
     </a>
     
       
@@ -417,29 +309,124 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#lamp" class="md-nav__link">
+    LAMP 기본설정
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    개요
+    아파치 시작, 중지, 재시작
+  </a>
+  
+    <nav class="md-nav" aria-label="아파치 시작, 중지, 재시작">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centos-6x" class="md-nav__link">
+    CentOS 6.x 이하
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos-7x" class="md-nav__link">
+    CentOS 7.x
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu" class="md-nav__link">
+    Ubuntu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    mysql 시작, 중지, 재시작
+  </a>
+  
+    <nav class="md-nav" aria-label="mysql 시작, 중지, 재시작">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centos-6x_1" class="md-nav__link">
+    CentOS 6.x 이하
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos-7x_1" class="md-nav__link">
+    CentOS 7.x
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ubuntu_1" class="md-nav__link">
+    Ubuntu
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    스펙 및 서비스 환경 제한 사항
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#os" class="md-nav__link">
-    OS 서버 이미지 제한 사항
+    웹 기본 디렉토리
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    설정 제한 사항
+    아파치 환경 설정 파일
+  </a>
+  
+    <nav class="md-nav" aria-label="아파치 환경 설정 파일">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centos" class="md-nav__link">
+    CentOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu_2" class="md-nav__link">
+    Ubuntu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php" class="md-nav__link">
+    PHP 환경 설정 파일
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_1" class="md-nav__link">
+    mysql 환경 설정 파일
   </a>
   
 </li>
@@ -464,7 +451,139 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_server_micro_limit/" class="md-nav__link">
+    <a href="ncp_lamp_config_CentOS.html" class="md-nav__link">
+      LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_lamp_config_Ubuntu.html" class="md-nav__link">
+      LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_lamp_config_basic.html" class="md-nav__link">
+      NCP LAMP 기본 환경 설정 정보
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_networking_vpc.html" class="md-nav__link">
+      VPC 구성요소
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_networking_vpc_acg_nacl.html" class="md-nav__link">
+      ACG와 NACL 비교
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_networking_vpc_load_balancer.html" class="md-nav__link">
+      Load Balancer 상품군의 변화
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_networking_vpc_subnet_natgw.html" class="md-nav__link">
+      Subnet 과 NAT GW
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_security_ncp_onpremise_compare.html" class="md-nav__link">
+      [Security] NCP : On-Premise 비교
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_security_service_summary.html" class="md-nav__link">
+      Security 서비스 요약
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_server_acg_guide.html" class="md-nav__link">
+      ACG(Access Control Group) 가이드
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_server_autoscaling_limit.html" class="md-nav__link">
+      Auto Scaling 서비스 제한사항
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_server_micro_limit.html" class="md-nav__link">
       Micro 타입 서버에서 사용할 수 없는 서비스
     </a>
   </li>
@@ -476,7 +595,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_server_spec_change/" class="md-nav__link">
+    <a href="ncp_server_spec_change.html" class="md-nav__link">
       서버 스펙 변경
     </a>
   </li>
@@ -488,7 +607,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_server_stop_price/" class="md-nav__link">
+    <a href="ncp_server_stop_price.html" class="md-nav__link">
       서버 정지시 요금할인
     </a>
   </li>
@@ -500,7 +619,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_server_storage_add_guide/" class="md-nav__link">
+    <a href="ncp_server_storage_add_guide.html" class="md-nav__link">
       스토리지 추가 생성 가이드
     </a>
   </li>
@@ -512,7 +631,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_storage_backup_guide/" class="md-nav__link">
+    <a href="ncp_storage_backup_guide.html" class="md-nav__link">
       백업 서비스 가이드와 신청 절차
     </a>
   </li>
@@ -549,7 +668,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../2.AWS/CLOUDWATCH%20LOG/" class="md-nav__link">
+    <a href="../2.AWS/CLOUDWATCH%20LOG.html" class="md-nav__link">
       CLOUDWATCH LOG 수집 매뉴얼
     </a>
   </li>
@@ -586,7 +705,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3.ETC/etc_mkdocs_install/" class="md-nav__link">
+    <a href="../3.ETC/etc_mkdocs_install.html" class="md-nav__link">
       mkdocs  설치 (윈도 10)
     </a>
   </li>
@@ -621,29 +740,124 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#lamp" class="md-nav__link">
+    LAMP 기본설정
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    개요
+    아파치 시작, 중지, 재시작
+  </a>
+  
+    <nav class="md-nav" aria-label="아파치 시작, 중지, 재시작">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centos-6x" class="md-nav__link">
+    CentOS 6.x 이하
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos-7x" class="md-nav__link">
+    CentOS 7.x
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu" class="md-nav__link">
+    Ubuntu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    mysql 시작, 중지, 재시작
+  </a>
+  
+    <nav class="md-nav" aria-label="mysql 시작, 중지, 재시작">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centos-6x_1" class="md-nav__link">
+    CentOS 6.x 이하
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos-7x_1" class="md-nav__link">
+    CentOS 7.x
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ubuntu_1" class="md-nav__link">
+    Ubuntu
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    스펙 및 서비스 환경 제한 사항
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#os" class="md-nav__link">
-    OS 서버 이미지 제한 사항
+    웹 기본 디렉토리
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    설정 제한 사항
+    아파치 환경 설정 파일
+  </a>
+  
+    <nav class="md-nav" aria-label="아파치 환경 설정 파일">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centos" class="md-nav__link">
+    CentOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu_2" class="md-nav__link">
+    Ubuntu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php" class="md-nav__link">
+    PHP 환경 설정 파일
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_1" class="md-nav__link">
+    mysql 환경 설정 파일
   </a>
   
 </li>
@@ -667,48 +881,75 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="/docs/docs/1.NAVER CLOUD/ncp_server_autoscaling_limit.md" title="이 페이지를 편집" class="md-content__button md-icon">
+                  <a href="/docs/docs/1.NAVER CLOUD/ncp_lamp_config.md" title="이 페이지를 편집" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="auto-scaling">Auto Scaling 서비스 제한사항</h1>
-<h2 id="_1">개요</h2>
-<p>모든 클라우드 서비스의 핵심 중의 하나가 Auto Scaling이라고 할 수 있습니다.
-네이버 클라우드도 예외가 아닌데, Auto Scaling을 설정할 때 몇가지 제한사항이 있어서 정리해보았습니다.</p>
-<h2 id="_2">스펙 및 서비스 환경 제한 사항</h2>
-<p>서버 스펙이나 서비스 환경과 관련한 제한 사항은 다음과 같습니다.</p>
+                <h1 id="ncp-lamp">NCP LAMP 환경 설정 파일 위치</h1>
+<h2 id="lamp">LAMP 기본설정</h2>
 <ul>
-<li>총 디스크 사이즈 150GB 이하 서버만 가능</li>
-<li>Windows OS는 Windows 2012. 2016만 지원</li>
-<li>Micro 서버는 불가</li>
-<li>High Memory 서버는 불가(추후 개선 예정)</li>
-<li>Local Disk 기반 서버는 불가</li>
-<li>Global Internet Service 영역 내의 서비스 불가</li>
+<li>홈디렉토리 : /root/lamp</li>
+<li>LAMP 서비스 전체 재시작 : $LAMP_HOME/lamp_restart.sh</li>
+<li>LAMP 서비스 설치 상태 확인하기 : $LAMP_HOME/lamp_info.sh</li>
 </ul>
-<p>따라서 서버타입 기준으로  <mark class="critic"><strong>Auto Scaling 설정이 가능한 서버타입은 Compact, Standard 2가지 뿐</strong></mark>입니다.</p>
-<p><img src="../../img/ncp_server_autoscaling_limit.png" alt="Auto Scaling 서비스 제한사항" style="width:600px;align:center"></p>
-<h2 id="os">OS 서버 이미지 제한 사항</h2>
-<p>centos-7.8-64, ubuntu-18.04 이 2가지 OS 이미지는 개인 회원은 KR-1 1세대 서버에서 생성이 불가능한 이미지입니다. 2세대 서버를 선택하시거나 KR-2에서 생성해야 합니다.</p>
-<h2 id="_3">설정 제한 사항</h2>
-<p>다음으로 Auto Scaling 설정을 할 때 생성 가능한 최대 서버 수 등의 설정 제한 사항은 다음과 같습니다.</p>
+<h2 id="_1">아파치 시작, 중지, 재시작</h2>
+<h3 id="centos-6x">CentOS 6.x 이하</h3>
+<pre><code>- 중지 : service httpd stop
+- 시작 : service httpd start
+- 재시작 : service httpd restart
+</code></pre>
+<h3 id="centos-7x">CentOS 7.x</h3>
+<pre><code>- 중지 : systemctl stop httpd
+- 시작 : systemctl start httpd
+- 재시작 : systemctl restart httpd
+</code></pre>
+<h3 id="ubuntu">Ubuntu</h3>
+<pre><code>- 중지 : systemctl stop apache2
+- 시작 : systemctl start apache2
+- 재시작 : systemctl restart apache2
+</code></pre>
+<h2 id="mysql">mysql 시작, 중지, 재시작</h2>
+<h3 id="centos-6x_1">CentOS 6.x 이하</h3>
+<pre><code>- 중지 : service mysqld stop
+- 시작 : service mysqld start
+- 재시작 : service mysqld restart
+</code></pre>
+<h3 id="centos-7x_1">CentOS 7.x</h3>
+<pre><code>- 중지 : systemctl stop mysqld
+- 시작 : systemctl start mysqld
+- 재시작 : systemctl restart mysqld
+</code></pre>
+<h2 id="ubuntu_1">Ubuntu</h2>
+<pre><code>- 중지 : systemctl stop mysql
+- 시작 : systemctl start mysql
+- 재시작 : systemctl restart mysql
+</code></pre>
+<h2 id="_2">웹 기본 디렉토리</h2>
 <ul>
-<li>고객별 생성 가능한 Auto Scaling Group 최대 수: 100</li>
-<li>고객별 생성 가능한 Launch Configuration 최대 수: 100</li>
-<li>Auto Scaling Group당 생성 가능한 스케줄(Scheduled Action) 최대 수: 100</li>
-<li>Auto Scaling Group당 생성 가능한 Scaling Policy 최대 수: 10</li>
-<li>Auto Scaling Group당 생성 가능한 최대 서버 수: 30대</li>
-<li>Auto Scaling Group당 연결 가능한 Load Balancer 최대 수 : 10</li>
+<li>/ncp/data/www</li>
 </ul>
-<div class="admonition important">
-<p class="admonition-title">계정당 생성 가능한 최대 서버 대수</p>
-<p>네이버 클라우드 플랫폼에서 한 <strong>계정당 생성할 수 있는 최대 서버 수 기본 50대</strong>입니다. 서버 수 한도를 조정하려면 고객지원으로 문의해야 합니다.</p>
-</div>
+<h2 id="_3">아파치 환경 설정 파일</h2>
+<h3 id="centos">CentOS</h3>
+<pre><code>- /etc/httpd/conf/httpd.conf
+</code></pre>
+<h3 id="ubuntu_2">Ubuntu</h3>
+<pre><code>- 기본 설정 : /etc/apache2/apache2.conf
+- 포트 설정 : /etc/apache2/ports.conf
+- 가상호스트 설정: /etc/apache2/sites-enabled/000-default.conf -&gt; /etc/apache2/sites-available/000-default.conf
+- 로그 : /var/log/apache2
+- 기타 옵션 설정 :
+ /etc/apache2/mods-enabled/*.load -&gt; /etc/apache2/mods-available/*.load
+ /etc/apache2/mods-enabled/*.conf -&gt; /etc/apache2/mods-available/*.conf
+</code></pre>
+<h2 id="php">PHP 환경 설정 파일</h2>
+<pre><code>- php.ini : /etc/php/7.2/apache2/php.ini
+</code></pre>
+<h2 id="mysql_1">mysql 환경 설정 파일</h2>
+<pre><code>- my.cnf : etc/mysql/my.cnf -&gt; /etc/alternatives/my.cnf
+</code></pre>
 <h2 id="url">참고 URL</h2>
-<p><a href="https://docs.ncloud.com/ko/compute/autoscaling/autoscaling_overview.html" target="_blank">https://docs.ncloud.com/ko/compute/autoscaling/autoscaling_overview.html</a></p>
-<div class="admonition info">
-<p class="admonition-title">문서 최종 수정일 : 2020-11-19</p>
-</div>
+<p><a href="https://docs.ncloud.com/ko/lamp/lamp-1-1.html" target="_blank">https://docs.ncloud.com/ko/lamp/lamp-1-1.html</a></p>
                 
               
               
@@ -727,7 +968,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../ncp_server_acg_guide/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="ncp_http_to_https_ubuntu.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -736,19 +977,19 @@
                 <span class="md-footer-nav__direction">
                   이전
                 </span>
-                ACG(Access Control Group) 가이드
+                [Ubuntu] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache
               </div>
             </div>
           </a>
         
         
-          <a href="../ncp_server_micro_limit/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="ncp_lamp_config_CentOS.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   다음
                 </span>
-                Micro 타입 서버에서 사용할 수 없는 서비스
+                LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
@@ -775,20 +1016,20 @@
       
     </div>
     
-      <script src="../../assets/javascripts/vendor.fd16492e.min.js"></script>
-      <script src="../../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "search.config.lang": "en", "search.config.pipeline": " ", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\uac80\uc0c9", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "search.config.lang": "en", "search.config.pipeline": " ", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\uac80\uc0c9", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
-          base: "../..",
+          base: "..",
           features: ['navigation.sections'],
           search: Object.assign({
-            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
       
-        <script src="../../javascripts/extra.js"></script>
+        <script src="../javascripts/extra.js"></script>
       
     
   </body>

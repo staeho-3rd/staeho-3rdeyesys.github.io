@@ -10,22 +10,22 @@
       
       
       
-        <link rel="canonical" href="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_spec_change/">
+        <link rel="canonical" href="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_http_to_https_ubuntu.html">
       
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
     
     
       
-        <title>서버 스펙 변경 - 써드아이시스템(3rdeyesys) 기술문서</title>
+        <title>[Ubuntu] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache - 써드아이시스템(3rdeyesys) 기술문서</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6910b76c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6910b76c.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
         
           
           
@@ -53,9 +53,9 @@
     
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="서버 스펙 변경 - 써드아이시스템(3rdeyesys) 기술문서" />
-  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.서버 스펙 변경" />
-  <meta property="og:url" content="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_spec_change/" />
+  <meta property="og:title" content="[Ubuntu] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache - 써드아이시스템(3rdeyesys) 기술문서" />
+  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.[Ubuntu] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache" />
+  <meta property="og:url" content="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_http_to_https_ubuntu.html" />
   <meta property="og:image" content="https://docs.3rdeyesys.comassets/images/favicon.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="48" />
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#ubuntu-http-https-apache" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              서버 스펙 변경
+              [Ubuntu] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache
             
           </span>
         </div>
@@ -208,7 +208,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." class="md-nav__link">
+    <a href="../index.html" class="md-nav__link">
       Welcome 3RDEYESYS
     </a>
   </li>
@@ -242,7 +242,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_analytics_cloud_log_analytics_info/" class="md-nav__link">
+    <a href="ncp_analytics_cloud_log_analytics_info.html" class="md-nav__link">
       [NCP] Cloud Log Analytics에서 수집하는 로그 유형
     </a>
   </li>
@@ -254,152 +254,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_lamp_config/" class="md-nav__link">
-      NCP LAMP 환경 설정 파일 위치
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_lamp_config_CentOS/" class="md-nav__link">
-      LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_lamp_config_Ubuntu/" class="md-nav__link">
-      LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_lamp_config_basic/" class="md-nav__link">
-      NCP LAMP 기본 환경 설정 정보
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc/" class="md-nav__link">
-      VPC 구성요소
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc_acg_nacl/" class="md-nav__link">
-      ACG와 NACL 비교
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc_load_balancer/" class="md-nav__link">
-      Load Balancer 상품군의 변화
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc_subnet_natgw/" class="md-nav__link">
-      Subnet 과 NAT GW
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_security_ncp_onpremise_compare/" class="md-nav__link">
-      [Security] NCP : On-Premise 비교
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_security_service_summary/" class="md-nav__link">
-      Security 서비스 요약
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_server_acg_guide/" class="md-nav__link">
-      ACG(Access Control Group) 가이드
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_server_autoscaling_limit/" class="md-nav__link">
-      Auto Scaling 서비스 제한사항
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_server_micro_limit/" class="md-nav__link">
-      Micro 타입 서버에서 사용할 수 없는 서비스
+    <a href="ncp_http_to_https_centos.html" class="md-nav__link">
+      [CentOS] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache
     </a>
   </li>
 
@@ -419,12 +275,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        서버 스펙 변경
+        [Ubuntu] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache
         <span class="md-nav__icon md-icon"></span>
       </label>
     
-    <a href="./" class="md-nav__link md-nav__link--active">
-      서버 스펙 변경
+    <a href="ncp_http_to_https_ubuntu.html" class="md-nav__link md-nav__link--active">
+      [Ubuntu] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache
     </a>
     
       
@@ -441,15 +297,43 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     개요
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
-    참고 URL
+  <a href="#rewrite" class="md-nav__link">
+    Rewrite 모듈 설치
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-conf" class="md-nav__link">
+    Apache conf 파일 수정
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache" class="md-nav__link">
+    Apache 재시작
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-sslengine" class="md-nav__link">
+    Apache 재시작 오류 - SSLEngine
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssl" class="md-nav__link">
+    SSL 엔진 모듈 활성화
   </a>
   
 </li>
@@ -467,7 +351,175 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_server_stop_price/" class="md-nav__link">
+    <a href="ncp_lamp_config.html" class="md-nav__link">
+      NCP LAMP 환경 설정 파일 위치
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_lamp_config_CentOS.html" class="md-nav__link">
+      LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_lamp_config_Ubuntu.html" class="md-nav__link">
+      LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_lamp_config_basic.html" class="md-nav__link">
+      NCP LAMP 기본 환경 설정 정보
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_networking_vpc.html" class="md-nav__link">
+      VPC 구성요소
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_networking_vpc_acg_nacl.html" class="md-nav__link">
+      ACG와 NACL 비교
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_networking_vpc_load_balancer.html" class="md-nav__link">
+      Load Balancer 상품군의 변화
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_networking_vpc_subnet_natgw.html" class="md-nav__link">
+      Subnet 과 NAT GW
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_security_ncp_onpremise_compare.html" class="md-nav__link">
+      [Security] NCP : On-Premise 비교
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_security_service_summary.html" class="md-nav__link">
+      Security 서비스 요약
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_server_acg_guide.html" class="md-nav__link">
+      ACG(Access Control Group) 가이드
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_server_autoscaling_limit.html" class="md-nav__link">
+      Auto Scaling 서비스 제한사항
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_server_micro_limit.html" class="md-nav__link">
+      Micro 타입 서버에서 사용할 수 없는 서비스
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_server_spec_change.html" class="md-nav__link">
+      서버 스펙 변경
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_server_stop_price.html" class="md-nav__link">
       서버 정지시 요금할인
     </a>
   </li>
@@ -479,7 +531,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_server_storage_add_guide/" class="md-nav__link">
+    <a href="ncp_server_storage_add_guide.html" class="md-nav__link">
       스토리지 추가 생성 가이드
     </a>
   </li>
@@ -491,7 +543,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_storage_backup_guide/" class="md-nav__link">
+    <a href="ncp_storage_backup_guide.html" class="md-nav__link">
       백업 서비스 가이드와 신청 절차
     </a>
   </li>
@@ -528,7 +580,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../2.AWS/CLOUDWATCH%20LOG/" class="md-nav__link">
+    <a href="../2.AWS/CLOUDWATCH%20LOG.html" class="md-nav__link">
       CLOUDWATCH LOG 수집 매뉴얼
     </a>
   </li>
@@ -565,7 +617,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3.ETC/etc_mkdocs_install/" class="md-nav__link">
+    <a href="../3.ETC/etc_mkdocs_install.html" class="md-nav__link">
       mkdocs  설치 (윈도 10)
     </a>
   </li>
@@ -600,15 +652,43 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     개요
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
-    참고 URL
+  <a href="#rewrite" class="md-nav__link">
+    Rewrite 모듈 설치
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-conf" class="md-nav__link">
+    Apache conf 파일 수정
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache" class="md-nav__link">
+    Apache 재시작
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-sslengine" class="md-nav__link">
+    Apache 재시작 오류 - SSLEngine
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssl" class="md-nav__link">
+    SSL 엔진 모듈 활성화
   </a>
   
 </li>
@@ -625,27 +705,77 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="/docs/docs/1.NAVER CLOUD/ncp_server_spec_change.md" title="이 페이지를 편집" class="md-content__button md-icon">
+                  <a href="/docs/docs/1.NAVER CLOUD/ncp_http_to_https_ubuntu.md" title="이 페이지를 편집" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="_1">서버 스펙 변경</h1>
-<h2 id="_2">개요</h2>
-<p>네이버 클라우드에서는 기본적으로 서버 타입 간의 스펙 변경을 지원하지 않고, 동일한 타입 내에서의 스펙 변경만 지원합니다.</p>
-<div class="admonition question">
-<p class="admonition-title">다른 타입의 스펙으로 변경하려면</p>
-<p>[내 서버 이미지] 기능을 이용해서 서버 이미지를 생성한 다음, 다른 타입으로 서버를 새로 만들어야 합니다.</p>
-</div>
-<p><img src="../../img/ncp_server_spec_change.png" alt="서버 스펙 변경 제한" style="width:600px;align:center"></p>
-<div class="admonition success">
-<p class="admonition-title">타입 간 스펙 변경이 가능한 경우</p>
-<p>타입간 스펙 변경은 대부분은 불가능하나 <strong>Classic 1세대의 Compact 타입과 Standard 타입</strong> 간에는 스펙 변경을 할 수 있습니다.</p>
-</div>
-<h2 id="url">참고 URL</h2>
-<p><a href="https://docs.ncloud.com/ko/compute/compute-1-1-v2.html" target="_blank">https://docs.ncloud.com/ko/compute/compute-1-1-v2.html</a></p>
+                <h1 id="ubuntu-http-https-apache">[Ubuntu] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache</h1>
+<h2 id="_1">개요</h2>
+<p>웹사이트 SSL 인증서를 설치하고 https 접속을 유도할 때 http로 접속하면 https로 강제로 리다이렉트 시키는 방법을 사용하는 경우가 많습니다.<br />
+웹페이지 소스에서 http 접속 여부를 판단해서 redirect 시키는 방법 등 여러가지 있을 수 있는데 여기서는 Apache 설정으로 쉽게 할 수 있는 방법을 소개합니다.  </p>
+<p>SSL 인증서가 설치되어 있다는 가정하에 우선 Linux Ubuntu에서 설정하는 방법을 확인해보겠습니다.</p>
+<h2 id="rewrite">Rewrite 모듈 설치</h2>
+<p>혹시 Apache에 이미 mod_rewrite 가 로드 되어 있다면 설치하지 않아도 됩니다.</p>
+<div class="highlight"><pre><span></span><code>root@test-lamp:~# a2enmod rewrite
+</code></pre></div>
+<h2 id="apache-conf">Apache conf 파일 수정</h2>
+<p><strong>/etc/apache2/sites-enabled/000-default.conf</strong> 의 Vritual host에 다음 코드를 추가하고 Apache를 재시작하면 됩니다.
+<div class="highlight"><pre><span></span><code>RewriteEngine On
+RewriteCond %<span class="o">{</span>HTTPS<span class="o">}</span> !on
+RewriteRule ^<span class="o">(</span>.*<span class="o">)</span>$ https://%<span class="o">{</span>HTTP_HOST<span class="o">}</span><span class="nv">$1</span> <span class="o">[</span>R,L<span class="o">]</span>
+</code></pre></div></p>
+<p>000-default.conf 파일에 실제로 적용하면 다음과 비슷한 모습이 되겠습니다.
+<div class="highlight"><pre><span></span><code>&lt;VirtualHost *:80&gt;
+    DocumentRoot <span class="s2">&quot;/ncp/data/www/&quot;</span>
+    ServerName www.test.com
+
+    RewriteEngine On
+    RewriteCond %<span class="o">{</span>HTTPS<span class="o">}</span> !on
+    RewriteRule ^<span class="o">(</span>.*<span class="o">)</span>$ https://%<span class="o">{</span>HTTP_HOST<span class="o">}</span><span class="nv">$1</span> <span class="o">[</span>R,L<span class="o">]</span>
+&lt;/VirtualHost&gt;
+</code></pre></div></p>
+<h2 id="apache">Apache 재시작</h2>
+<p><div class="highlight"><pre><span></span><code>root@test-lamp:~# systemctl restart apache2
+</code></pre></div>
+이렇게 재시작하고 http로 접속을 해보면 https로 전환되는 것을 확인할 수 있습니다.</p>
+<h2 id="apache-sslengine">Apache 재시작 오류 - SSLEngine</h2>
+<p>위 내용처럼 아파치 재시작 명령어를 입력하면 끝입니다만, 재시작이 되지 않고 오류 메시지가 뜨는 경우가 있습니다.
+<div class="highlight"><pre><span></span><code>root@test-lamp:~# systemctl restart apache2
+Job <span class="k">for</span> apache2.service failed because the control process exited with error code. 
+See <span class="s2">&quot;systemctl status apache2.service&quot;</span> and <span class="s2">&quot;journalctl -xe&quot;</span> <span class="k">for</span> details.
+</code></pre></div></p>
+<p>오류 메시지에 나온 것 처럼 상세 내용을 확인해봅니다.
+<div class="highlight"><pre><span></span><code>root@test-lamp:~# systemctl status apache2.service
+</code></pre></div>
+상세 오류 메시지 중에서 핵심 내용만 살펴보면 다음과 같습니다.
+<div class="highlight"><pre><span></span><code>Dec <span class="m">04</span> <span class="m">16</span>:09:44 test-lamp apachectl<span class="o">[</span><span class="m">11924</span><span class="o">]</span>: AH00526: Syntax error on line <span class="m">36</span> of /etc/apache2/sites-enabled/000-default.conf:
+Dec <span class="m">04</span> <span class="m">16</span>:09:44 test-lamp apachectl<span class="o">[</span><span class="m">11924</span><span class="o">]</span>: Invalid <span class="nb">command</span> <span class="s1">&#39;SSLEngine&#39;</span>, perhaps misspelled or defined by a module not included in the server configuration
+</code></pre></div></p>
+<p>위 오류 메시지에 나온 /etc/apache2/sites-enabled/000-default.conf 파일을 찾아가서 SSLEngine을 확인해보면 다음과 같습니다.
+<div class="highlight"><pre><span></span><code>&lt;VirtualHost *:443&gt;
+    ServerName www.test.com
+    ServerAdmin web@test.com
+
+    <mark class="critic">SSLEngine on</mark>
+    SSLCertificateFile /etc/******/server.crt
+    SSLCertificateKeyFile /etc/******/server.key
+
+    <span class="c1">###중략###</span>
+&lt;/VirtualHost&gt;
+</code></pre></div></p>
+<p>확인해보면 SSLEngine on 명령어가 제대로 동작하지 못해서 생긴 문제라는 것을 알 수 있습니다.   <br />
+즉, SSL 모듈이 제대로 활성화 되지 않았기에 활성화 해주면 문제가 해결됩니다.<br />
+(나중에 살펴보면 socache_shmcb 모듈이 활성화되지 않았기 때문임을 알 수 있습니다)</p>
+<h2 id="ssl">SSL 엔진 모듈 활성화</h2>
+<div class="highlight"><pre><span></span><code>root@test-lamp:~# a2enmod ssl
+</code></pre></div>
+<p>그리고 나서 다시 Apache를 재시작 하면 됩니다.
+<div class="highlight"><pre><span></span><code>root@test-lamp:~# systemctl restart apache2
+</code></pre></div></p>
+<p>이제 http로 접속하셔서 https로 전환되는지 확인해보시기 바랍니다.</p>
 <div class="admonition info">
-<p class="admonition-title">문서 최종 수정일 : 2020-11-13</p>
+<p class="admonition-title">문서 최종 수정일 : 2020-12-07</p>
 </div>
                 
               
@@ -665,7 +795,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../ncp_server_micro_limit/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="ncp_http_to_https_centos.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -674,19 +804,19 @@
                 <span class="md-footer-nav__direction">
                   이전
                 </span>
-                Micro 타입 서버에서 사용할 수 없는 서비스
+                [CentOS] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache
               </div>
             </div>
           </a>
         
         
-          <a href="../ncp_server_stop_price/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="ncp_lamp_config.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   다음
                 </span>
-                서버 정지시 요금할인
+                NCP LAMP 환경 설정 파일 위치
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
@@ -713,20 +843,20 @@
       
     </div>
     
-      <script src="../../assets/javascripts/vendor.fd16492e.min.js"></script>
-      <script src="../../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "search.config.lang": "en", "search.config.pipeline": " ", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\uac80\uc0c9", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "search.config.lang": "en", "search.config.pipeline": " ", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\uac80\uc0c9", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
-          base: "../..",
+          base: "..",
           features: ['navigation.sections'],
           search: Object.assign({
-            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
       
-        <script src="../../javascripts/extra.js"></script>
+        <script src="../javascripts/extra.js"></script>
       
     
   </body>

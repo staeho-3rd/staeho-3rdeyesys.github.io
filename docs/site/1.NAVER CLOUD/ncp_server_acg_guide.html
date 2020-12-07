@@ -10,22 +10,22 @@
       
       
       
-        <link rel="canonical" href="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_lamp_config_Ubuntu/">
+        <link rel="canonical" href="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_acg_guide.html">
       
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
     
     
       
-        <title>LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치 - 써드아이시스템(3rdeyesys) 기술문서</title>
+        <title>ACG(Access Control Group) 가이드 - 써드아이시스템(3rdeyesys) 기술문서</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6910b76c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6910b76c.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
         
           
           
@@ -53,9 +53,9 @@
     
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치 - 써드아이시스템(3rdeyesys) 기술문서" />
-  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치" />
-  <meta property="og:url" content="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_lamp_config_Ubuntu/" />
+  <meta property="og:title" content="ACG(Access Control Group) 가이드 - 써드아이시스템(3rdeyesys) 기술문서" />
+  <meta property="og:description" content="클라우드 서버를 비롯한 각종 IT 관련 기술 자료들을 공유하는 써드아이시스템(3rdeyesys)의 기술문서 사이트입니다. 네이버 클라우드(NAVER CLOUD), AWS 등의 클라우드를 이용할 때 중요한 기술문서들을 공유합니다. 써드아이시스템은 네이버클라우드 프리미엄 파트너사입니다.ACG(Access Control Group) 가이드" />
+  <meta property="og:url" content="https://docs.3rdeyesys.com/1.NAVER%20CLOUD/ncp_server_acg_guide.html" />
   <meta property="og:image" content="https://docs.3rdeyesys.comassets/images/favicon.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="48" />
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lampubuntu" class="md-skip">
+        <a href="#acgaccess-control-group" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
+              ACG(Access Control Group) 가이드
             
           </span>
         </div>
@@ -208,7 +208,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." class="md-nav__link">
+    <a href="../index.html" class="md-nav__link">
       Welcome 3RDEYESYS
     </a>
   </li>
@@ -242,7 +242,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_analytics_cloud_log_analytics_info/" class="md-nav__link">
+    <a href="ncp_analytics_cloud_log_analytics_info.html" class="md-nav__link">
       [NCP] Cloud Log Analytics에서 수집하는 로그 유형
     </a>
   </li>
@@ -254,7 +254,31 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_lamp_config/" class="md-nav__link">
+    <a href="ncp_http_to_https_centos.html" class="md-nav__link">
+      [CentOS] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_http_to_https_ubuntu.html" class="md-nav__link">
+      [Ubuntu] http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_lamp_config.html" class="md-nav__link">
       NCP LAMP 환경 설정 파일 위치
     </a>
   </li>
@@ -266,8 +290,104 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_lamp_config_CentOS/" class="md-nav__link">
+    <a href="ncp_lamp_config_CentOS.html" class="md-nav__link">
       LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_lamp_config_Ubuntu.html" class="md-nav__link">
+      LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_lamp_config_basic.html" class="md-nav__link">
+      NCP LAMP 기본 환경 설정 정보
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_networking_vpc.html" class="md-nav__link">
+      VPC 구성요소
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_networking_vpc_acg_nacl.html" class="md-nav__link">
+      ACG와 NACL 비교
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_networking_vpc_load_balancer.html" class="md-nav__link">
+      Load Balancer 상품군의 변화
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_networking_vpc_subnet_natgw.html" class="md-nav__link">
+      Subnet 과 NAT GW
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_security_ncp_onpremise_compare.html" class="md-nav__link">
+      [Security] NCP : On-Premise 비교
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ncp_security_service_summary.html" class="md-nav__link">
+      Security 서비스 요약
     </a>
   </li>
 
@@ -287,12 +407,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
+        ACG(Access Control Group) 가이드
         <span class="md-nav__icon md-icon"></span>
       </label>
     
-    <a href="./" class="md-nav__link md-nav__link--active">
-      LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
+    <a href="ncp_server_acg_guide.html" class="md-nav__link md-nav__link--active">
+      ACG(Access Control Group) 가이드
     </a>
     
       
@@ -309,16 +429,30 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#apache" class="md-nav__link">
-    Apache 시작, 중지, 재시작
+  <a href="#_1" class="md-nav__link">
+    개요
   </a>
   
-    <nav class="md-nav" aria-label="Apache 시작, 중지, 재시작">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    제한 사항
+  </a>
+  
+    <nav class="md-nav" aria-label="제한 사항">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ubuntu" class="md-nav__link">
-    Ubuntu
+  <a href="#vpc" class="md-nav__link">
+    VPC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classic" class="md-nav__link">
+    Classic
   </a>
   
 </li>
@@ -329,30 +463,39 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mysql" class="md-nav__link">
-    mysql 시작, 중지, 재시작
+  <a href="#_3" class="md-nav__link">
+    기본 규칙
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ubuntu_1" class="md-nav__link">
-    Ubuntu
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apache_1" class="md-nav__link">
-    Apache 환경 설정 파일
-  </a>
-  
-    <nav class="md-nav" aria-label="Apache 환경 설정 파일">
+    <nav class="md-nav" aria-label="기본 규칙">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ubuntu_2" class="md-nav__link">
-    Ubuntu
+  <a href="#default-acg" class="md-nav__link">
+    Default ACG
+  </a>
+  
+    <nav class="md-nav" aria-label="Default ACG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vpc_1" class="md-nav__link">
+    VPC 화면
+  </a>
+  
+    <nav class="md-nav" aria-label="VPC 화면">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inbound" class="md-nav__link">
+    Inbound
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outbound" class="md-nav__link">
+    Outbound
   </a>
   
 </li>
@@ -361,18 +504,28 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#php" class="md-nav__link">
-    PHP 환경 설정 파일
+        
+          <li class="md-nav__item">
+  <a href="#classic_1" class="md-nav__link">
+    Classic 화면
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#mysql_1" class="md-nav__link">
-    mysql 환경 설정 파일
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-acg" class="md-nav__link">
+    Custom ACG
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -396,103 +549,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_lamp_config_basic/" class="md-nav__link">
-      NCP LAMP 기본 환경 설정 정보
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc/" class="md-nav__link">
-      VPC 구성요소
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc_acg_nacl/" class="md-nav__link">
-      ACG와 NACL 비교
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc_load_balancer/" class="md-nav__link">
-      Load Balancer 상품군의 변화
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_networking_vpc_subnet_natgw/" class="md-nav__link">
-      Subnet 과 NAT GW
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_security_ncp_onpremise_compare/" class="md-nav__link">
-      [Security] NCP : On-Premise 비교
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_security_service_summary/" class="md-nav__link">
-      Security 서비스 요약
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_server_acg_guide/" class="md-nav__link">
-      ACG(Access Control Group) 가이드
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ncp_server_autoscaling_limit/" class="md-nav__link">
+    <a href="ncp_server_autoscaling_limit.html" class="md-nav__link">
       Auto Scaling 서비스 제한사항
     </a>
   </li>
@@ -504,7 +561,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_server_micro_limit/" class="md-nav__link">
+    <a href="ncp_server_micro_limit.html" class="md-nav__link">
       Micro 타입 서버에서 사용할 수 없는 서비스
     </a>
   </li>
@@ -516,7 +573,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_server_spec_change/" class="md-nav__link">
+    <a href="ncp_server_spec_change.html" class="md-nav__link">
       서버 스펙 변경
     </a>
   </li>
@@ -528,7 +585,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_server_stop_price/" class="md-nav__link">
+    <a href="ncp_server_stop_price.html" class="md-nav__link">
       서버 정지시 요금할인
     </a>
   </li>
@@ -540,7 +597,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_server_storage_add_guide/" class="md-nav__link">
+    <a href="ncp_server_storage_add_guide.html" class="md-nav__link">
       스토리지 추가 생성 가이드
     </a>
   </li>
@@ -552,7 +609,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ncp_storage_backup_guide/" class="md-nav__link">
+    <a href="ncp_storage_backup_guide.html" class="md-nav__link">
       백업 서비스 가이드와 신청 절차
     </a>
   </li>
@@ -589,7 +646,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../2.AWS/CLOUDWATCH%20LOG/" class="md-nav__link">
+    <a href="../2.AWS/CLOUDWATCH%20LOG.html" class="md-nav__link">
       CLOUDWATCH LOG 수집 매뉴얼
     </a>
   </li>
@@ -626,7 +683,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3.ETC/etc_mkdocs_install/" class="md-nav__link">
+    <a href="../3.ETC/etc_mkdocs_install.html" class="md-nav__link">
       mkdocs  설치 (윈도 10)
     </a>
   </li>
@@ -661,16 +718,30 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#apache" class="md-nav__link">
-    Apache 시작, 중지, 재시작
+  <a href="#_1" class="md-nav__link">
+    개요
   </a>
   
-    <nav class="md-nav" aria-label="Apache 시작, 중지, 재시작">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    제한 사항
+  </a>
+  
+    <nav class="md-nav" aria-label="제한 사항">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ubuntu" class="md-nav__link">
-    Ubuntu
+  <a href="#vpc" class="md-nav__link">
+    VPC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classic" class="md-nav__link">
+    Classic
   </a>
   
 </li>
@@ -681,30 +752,39 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mysql" class="md-nav__link">
-    mysql 시작, 중지, 재시작
+  <a href="#_3" class="md-nav__link">
+    기본 규칙
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ubuntu_1" class="md-nav__link">
-    Ubuntu
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apache_1" class="md-nav__link">
-    Apache 환경 설정 파일
-  </a>
-  
-    <nav class="md-nav" aria-label="Apache 환경 설정 파일">
+    <nav class="md-nav" aria-label="기본 규칙">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ubuntu_2" class="md-nav__link">
-    Ubuntu
+  <a href="#default-acg" class="md-nav__link">
+    Default ACG
+  </a>
+  
+    <nav class="md-nav" aria-label="Default ACG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vpc_1" class="md-nav__link">
+    VPC 화면
+  </a>
+  
+    <nav class="md-nav" aria-label="VPC 화면">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inbound" class="md-nav__link">
+    Inbound
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outbound" class="md-nav__link">
+    Outbound
   </a>
   
 </li>
@@ -713,18 +793,28 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#php" class="md-nav__link">
-    PHP 환경 설정 파일
+        
+          <li class="md-nav__item">
+  <a href="#classic_1" class="md-nav__link">
+    Classic 화면
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#mysql_1" class="md-nav__link">
-    mysql 환경 설정 파일
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-acg" class="md-nav__link">
+    Custom ACG
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -747,49 +837,57 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="/docs/docs/1.NAVER CLOUD/ncp_lamp_config_Ubuntu.md" title="이 페이지를 편집" class="md-content__button md-icon">
+                  <a href="/docs/docs/1.NAVER CLOUD/ncp_server_acg_guide.md" title="이 페이지를 편집" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="lampubuntu">LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치</h1>
-<h2 id="apache">Apache 시작, 중지, 재시작</h2>
-<p>Apache 시작, 중지, 재시작 명령어는 OS별로 조금씩 다른데 Ubuntu의 경우에는 systemctl [stop|start|restart] {서비스명} 의 순서로 되어 있습니다.</p>
-<h3 id="ubuntu">Ubuntu</h3>
-<pre><code>- 중지 : systemctl stop apache2
-- 시작 : systemctl start apache2
-- 재시작 : systemctl restart apache2
-</code></pre>
-<h2 id="mysql">mysql 시작, 중지, 재시작</h2>
-<p>mysql 시작, 중지, 재시작 명령어도 Apache와 마찬가지로 systemctl [stop|start|restart] {서비스명} 의 순서로 되어 있습니다.</p>
-<h2 id="ubuntu_1">Ubuntu</h2>
-<pre><code>- 중지 : systemctl stop mysql
-- 시작 : systemctl start mysql
-- 재시작 : systemctl restart mysql
-</code></pre>
-<h2 id="apache_1">Apache 환경 설정 파일</h2>
-<p>Apache의 기본 환경설정 파일은 CentOS의 경우 httpd.conf라는 파일로 간단하게 구성되어 있는데 Ubuntu의 경우에는 포트, 가상호스트, 로그 등 각각의 항목별로 파일이 나뉘어져 있습니다.</p>
-<h3 id="ubuntu_2">Ubuntu</h3>
-<pre><code>- 기본 설정 : /etc/apache2/apache2.conf
-- 포트 설정 : /etc/apache2/ports.conf
-- 가상호스트 설정: /etc/apache2/sites-enabled/000-default.conf -&gt; /etc/apache2/sites-available/000-default.conf
-- 로그 : /var/log/apache2
-- 기타 옵션 설정 :
- /etc/apache2/mods-enabled/*.load -&gt; /etc/apache2/mods-available/*.load
- /etc/apache2/mods-enabled/*.conf -&gt; /etc/apache2/mods-available/*.conf
-</code></pre>
-<h2 id="php">PHP 환경 설정 파일</h2>
-<p>PHP의 환경 설정파일인 php.ini는  PHP버전에 해당 하는 디렉토리에 위치하고 있습니다.</p>
-<pre><code>- php.ini : /etc/php/7.2/apache2/php.ini
-</code></pre>
-<h2 id="mysql_1">mysql 환경 설정 파일</h2>
-<p>mysql 환경  설정파일인 my.cnf는 OS버전과 관계없이 /etc/mysql/my.cnf 에 위치하고 있으며, 실제로는 /etc/alternatives/my.cnf로 링크되어 있습니다.</p>
-<pre><code>- my.cnf : /etc/mysql/my.cnf -&gt; /etc/alternatives/my.cnf
-</code></pre>
+                <h1 id="acgaccess-control-group">ACG(Access Control Group) 가이드</h1>
+<h2 id="_1">개요</h2>
+<p>ACG(Access Control Group)는 서버 간 네트워크 접근 제어 및 관리를 할 수 있는 IP/Port 기반 필터링 방화벽 서비스로 AWS에서는 비슷하게 Security Group이라는 것이 있습니다.</p>
+<h2 id="_2">제한 사항</h2>
+<h3 id="vpc">VPC</h3>
+<ul>
+<li>VPC당 최대 <strong>500개</strong>까지 ACG 생성 가능</li>
+<li><mark class="critic"><strong>NIC당 3개의 ACG</strong></mark>를 허용</li>
+<li>Inbound / Outbound 각각 <strong>50개의 규칙</strong> 생성 가능</li>
+</ul>
+<h3 id="classic">Classic</h3>
+<ul>
+<li>계정당 최대 <strong>100개</strong>까지 ACG를 생성 가능</li>
+<li>각 ACG에는 최대 <strong>100개</strong>까지의 규칙을 설정할 수 있음</li>
+<li>서버는 <strong>최대 5개</strong>의 ACG에 중복 포함될 수 있음</li>
+<li>서버가 생성될 시 선택한 ACG는 변경이 불가하며, 반납 전까지 해당 ACG 규칙을 적용 받게 됨</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Classic 환경에서는 서버 자체에 할당되는 개념이었으나 VPC에는 NIC 즉, 네트워크 카드에 할당되는 개념이어서 VPC 환경에서는 <strong>NIC 당 최대 3개</strong>까지 ACG를 적용할 수 있다.</p>
+</div>
+<h2 id="_3">기본 규칙</h2>
+<h3 id="default-acg">Default ACG</h3>
+<p>기본적으로 추가되는 ACG</p>
+<ul>
+<li>모든 들어오는 연결(inbound traffic)을 차단함</li>
+<li>모든 나가는 연결(outbound traffic)을 허용함</li>
+<li>Default ACG 내 속한 서버들끼리의 네트워크 양방향 통신(TCP, UDP, ICMP)이 허용됨</li>
+<li>원격 접속 기본 포트 (<strong>Linux - 22, Windows - 3389</strong>)에 대한 TCP 허용됨</li>
+</ul>
+<h4 id="vpc_1">VPC 화면</h4>
+<h5 id="inbound">Inbound</h5>
+<p><img src="../../img/ncp_server_acg_vpc_inbound.png" alt="VPC Default ACG Inbound " style="width:600px;align:center"></p>
+<h5 id="outbound">Outbound</h5>
+<p><img src="../../img/ncp_server_acg_vpc_outbound.png" alt="VPC Default ACG Outbound " style="width:600px;align:center"></p>
+<h4 id="classic_1">Classic 화면</h4>
+<p><img src="../../img/ncp_server_acg_classic.png" alt="Classic Default ACG " style="width:600px;align:center"></p>
+<h3 id="custom-acg">Custom ACG</h3>
+<p>Default ACG 이외에 사용자가 추가하는 ACG</p>
+<ul>
+<li>모든 inbound traffic을 차단함(규칙으로 명시되어 있지 않음)</li>
+<li>모든 outbound traffic을 허용함(규칙으로 명시되어 있지 않음)</li>
+</ul>
 <h2 id="url">참고 URL</h2>
-<p><a href="https://docs.ncloud.com/ko/lamp/lamp-1-1.html" target="_blank">https://docs.ncloud.com/ko/lamp/lamp-1-1.html</a></p>
+<p><a href="https://docs.ncloud.com/ko/compute/compute-2-3.html" target="_blank">https://docs.ncloud.com/ko/compute/compute-2-3.html</a></p>
 <div class="admonition info">
-<p class="admonition-title">문서 최종 수정일 : 2020-11-13</p>
+<p class="admonition-title">문서 최종 수정일 : 2020-11-26</p>
 </div>
                 
               
@@ -809,7 +907,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../ncp_lamp_config_CentOS/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="ncp_security_service_summary.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -818,19 +916,19 @@
                 <span class="md-footer-nav__direction">
                   이전
                 </span>
-                LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치
+                Security 서비스 요약
               </div>
             </div>
           </a>
         
         
-          <a href="../ncp_lamp_config_basic/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="ncp_server_autoscaling_limit.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   다음
                 </span>
-                NCP LAMP 기본 환경 설정 정보
+                Auto Scaling 서비스 제한사항
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
@@ -857,20 +955,20 @@
       
     </div>
     
-      <script src="../../assets/javascripts/vendor.fd16492e.min.js"></script>
-      <script src="../../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "search.config.lang": "en", "search.config.pipeline": " ", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\uac80\uc0c9", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "search.config.lang": "en", "search.config.pipeline": " ", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\uac80\uc0c9", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
-          base: "../..",
+          base: "..",
           features: ['navigation.sections'],
           search: Object.assign({
-            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
       
-        <script src="../../javascripts/extra.js"></script>
+        <script src="../javascripts/extra.js"></script>
       
     
   </body>

@@ -4,6 +4,8 @@
 
 NCP(네이버 클라우드 플랫폼, 이하 네이버 클라우드)에서 제공하는 Application중에서 가장 대표적인 LAMP(Linux + Apache, Mysql, PHP)의 기본설정입니다.
 
+!!! attention "2020-12-03 현재 LAMP를 포함한 Application 이미지들은 Classic 환경에서만 이용 가능합니다.  VPC 환경에서는 아직 지원하지 않고 향후 업데이트 예정입니다"
+
 ### LAMP 홈디렉토리
 네이버 클라우드에서 Linux 서버를 세팅하게 되면 기본적으로 root 계정으로 접속이 됩니다.
 그래서 LAMP 서비스의 홈디렉토리도 /root/lamp로 설정됩니다. 
@@ -36,4 +38,4 @@ NCP(네이버 클라우드 플랫폼, 이하 네이버 클라우드)에서 제�
 ## 참고 URL
 <a href="https://docs.ncloud.com/ko/lamp/lamp-1-1.html" target="_blank">https://docs.ncloud.com/ko/lamp/lamp-1-1.html</a>
 
-!!! info "문서 최종 수정일 : 2020-11-13"
+!!! info "문서 최종 수정일 : 2020-12-03"

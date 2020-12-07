@@ -30,3 +30,5 @@ extra_javascript:
   - javascripts/extra.js
     
 edit_uri: docs/docs
+
+use_directory_urls: false
