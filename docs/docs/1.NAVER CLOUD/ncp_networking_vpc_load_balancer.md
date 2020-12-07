@@ -33,8 +33,8 @@ TCP 세련 유지에 최적화 되어 있으며, Network Load Balancer와 다르
 
 
 
-<img src="../../img/ncp_vpc_load_balancer_01.png" alt="Load Balancer 상품군의 변화" style="width:800px;align:center">
-<img src="../../img/ncp_vpc_load_balancer_02.png" alt="Load Balancer 상품군의 변화" style="width:800px;align:center">
+<img src="../img/ncp_vpc_load_balancer_01.png" alt="Load Balancer 상품군의 변화" style="width:800px;align:center">
+<img src="../img/ncp_vpc_load_balancer_02.png" alt="Load Balancer 상품군의 변화" style="width:800px;align:center">
 
 ## 참고 URL
 <a href="https://docs.ncloud.com/ko/networking/loadbalancer/loadbalancer_overview.html" target="_blank">https://docs.ncloud.com/ko/networking/loadbalancer/loadbalancer_overview.html</a>

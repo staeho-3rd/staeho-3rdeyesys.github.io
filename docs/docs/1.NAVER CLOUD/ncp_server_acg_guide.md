@@ -31,13 +31,13 @@ ACG(Access Control Group)는 서버 간 네트워크 접근 제어 및 관리를
 #### VPC 화면
 
 ##### Inbound
-<img src="../../img/ncp_server_acg_vpc_inbound.png" alt="VPC Default ACG Inbound " style="width:600px;align:center">
+<img src="../img/ncp_server_acg_vpc_inbound.png" alt="VPC Default ACG Inbound " style="width:600px;align:center">
 
 ##### Outbound
-<img src="../../img/ncp_server_acg_vpc_outbound.png" alt="VPC Default ACG Outbound " style="width:600px;align:center">
+<img src="../img/ncp_server_acg_vpc_outbound.png" alt="VPC Default ACG Outbound " style="width:600px;align:center">
 
 #### Classic 화면
-<img src="../../img/ncp_server_acg_classic.png" alt="Classic Default ACG " style="width:600px;align:center">
+<img src="../img/ncp_server_acg_classic.png" alt="Classic Default ACG " style="width:600px;align:center">
 
 ### Custom ACG
 Default ACG 이외에 사용자가 추가하는 ACG

@@ -23,7 +23,7 @@ IDC에 있는 서버들을 네이버 클라우드로 마이그레이션 할 때 
 | Key Management | - | <h3>→</h3> | Key Management Service | Key에 대한 접근 제어 기능을 이용하여 데이터 암호화 키를 안전하게 보호하고 관리 |
 
 
-<img src="../../img/ncp_security_ncp_onpremise_compare.png" alt="Security 서비스 NCP : On-Premise 비교" style="width:800px;align:center">
+<img src="../img/ncp_security_ncp_onpremise_compare.png" alt="Security 서비스 NCP : On-Premise 비교" style="width:800px;align:center">
 
 ## 참고 URL
 <a href="https://docs.ncloud.com/ko/security/security-1-1.html" target="_blank">https://docs.ncloud.com/ko/security/security-1-1.html</a>

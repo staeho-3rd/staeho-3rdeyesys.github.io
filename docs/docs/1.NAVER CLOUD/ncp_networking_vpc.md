@@ -39,7 +39,7 @@ VPC Peering을 이용하면 보다 안전한 사설 IP기반의 통신이 가능
 VPC Peering은 단방향 통신을 제공하기 때문에 양방향 통신을 원하면 Src -> Dest 별로 각각 1개씩, 두개의 정책을 모두 적용해야 함.
 
 
-<img src="../../img/ncp_vpc_element.png" alt="VPC 구성요소" style="width:800px;align:center">
+<img src="../img/ncp_vpc_element.png" alt="VPC 구성요소" style="width:800px;align:center">
 
 
 ## 참고 URL

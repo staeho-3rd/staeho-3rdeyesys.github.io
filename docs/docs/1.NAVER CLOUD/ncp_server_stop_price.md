@@ -12,7 +12,7 @@
 - 서버 정기 가능 기한을 넘긴 서버는 고객에게 통보 후 서버를 반납하게 됩니다.
 - 서버를 반납하게 될 때 서버에 저장된 데이터는 네이버 클라우드에서 30일간 직접 백업하여 보관 후 삭제하게 됩니다.
 
-<img src="../../img/ncp_server_stop_price_discount.png" alt="서버 정기 기한과 요금할인" style="width:600px;align:center">
+<img src="../img/ncp_server_stop_price_discount.png" alt="서버 정기 기한과 요금할인" style="width:600px;align:center">
 
 ## 요금 할인이 적용되지 않는 서버 타입
 일부 서버들은 서버를 정지해도 요금 할인이 되지 않고, 서버가 가동 중일 때와 동일한 요금이 청구됩니다.

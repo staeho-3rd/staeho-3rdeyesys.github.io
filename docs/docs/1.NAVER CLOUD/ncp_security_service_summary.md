@@ -27,7 +27,7 @@
 | Compliance | Compliance Guide | 고객이 보안 인증이나 규제에 대응하는데 필요한 사항을 알기 쉽게 정리한 가이드 |
 
 
-<img src="../../img/ncp_security_service_summary.png" alt="Security 서비스 요약" style="width:800px;align:center">
+<img src="../img/ncp_security_service_summary.png" alt="Security 서비스 요약" style="width:800px;align:center">
 
 ## 참고 URL
 <a href="https://docs.ncloud.com/ko/security/security-1-1.html" target="_blank">https://docs.ncloud.com/ko/security/security-1-1.html</a>

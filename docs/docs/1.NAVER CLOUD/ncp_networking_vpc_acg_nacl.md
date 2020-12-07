@@ -15,7 +15,7 @@
 | 적용 방법 | 서버의 NIC에 ACG 정책 적용 | Subnet 단위로 적용<br>(Subnet 별 1개만 허용) |
 
 
-<img src="../../img/ncp_vpc_acg_nacl.png" alt="VPC ACG와 NACL 비교" style="width:800px;align:center">
+<img src="../img/ncp_vpc_acg_nacl.png" alt="VPC ACG와 NACL 비교" style="width:800px;align:center">
 
 ## 참고 URL
 <a href="https://docs.ncloud.com/ko/networking/vpc/vpc_detailedsubnet.html" target="_blank">https://docs.ncloud.com/ko/networking/vpc/vpc_detailedsubnet.html</a>
