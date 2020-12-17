@@ -9,4 +9,7 @@
 		{% endif %}
 		<a href="{% include relative-src.html src=link.link %}" class="{{ class }}" target="{{ link.target }}">{{ link.name }}</a>
 	{% endfor %}
+	{% if page.url != "/" %}
+		<span style="width:100px">{% include search.html %}</span>
+	{% endif %}
 </nav>
