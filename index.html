@@ -1,0 +1,34 @@
+---
+---
+
+<section class="categories">
+	{% assign categories = site.categories | sort %}
+	{% for category in categories %}		
+		{% assign name = category[0] %}
+		{% assign posts = category[1] %}
+		{% assign size = posts | size %}		
+		<section class="category">
+				<h3>
+					<a href="{{ site.baseurl }}/category/{{ name | slugify }}/">{{ name | replace: "-", " " }}</a>
+				</h3>
+			<ul>
+				{% assign tutorials = posts | sample: 10 %}
+				{% for tutorial in tutorials limit: 4 %}
+					<li>
+					<a href="{{ site.baseurl }}{{ tutorial.url }}">{% include document-icon.html icon=tutorial.type %}
+					{% assign tsize = tutorial.title | size %}
+					{% if tsize > 21 %}
+					{{ tutorial.title | truncate: 21 }}
+					{% else %}
+					{{ tutorial.title }}
+					{% endif %}
+					</a>
+					</li>
+				{% endfor %}
+				{% if size > 4 %}
+					<li><a href="{{ site.baseurl }}/category/{{ name | slugify }}/">{{ size | minus: 4 }} more...</a></li>
+				{% endif %}
+			</ul>
+		</section>		
+	{% endfor %}
+</section>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html lang="kr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="/css/screen.css">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="/touch-icon.png" sizes="192x192">
+		<link rel="icon" type="image/png" href="/images/favicon.png">
+		
+		<!--link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400italic,400,300italic,300,700,700italic|Open+Sans:400italic,600italic,700italic,700,600,400|Inconsolata:400,700"-->
+
+		
+
+		<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Search | 3rdeyesys</title>
+<meta name="generator" content="Jekyll v3.7.2" />
+<meta property="og:title" content="Search" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="써드아이시스템 기술문서" />
+<meta property="og:description" content="써드아이시스템 기술문서" />
+<link rel="canonical" href="https://docs.3rdeyesys.com/search/" />
+<meta property="og:url" content="https://docs.3rdeyesys.com/search/" />
+<meta property="og:site_name" content="3rdeyesys" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"url":"https://docs.3rdeyesys.com/search/","description":"써드아이시스템 기술문서","@type":"WebPage","headline":"Search","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+		<link type="application/atom+xml" rel="alternate" href="https://docs.3rdeyesys.com/feed.xml" title="3rdeyesys" />
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	</head>
+
+	<body class="">
+		<header>
+			<div class="wrapper">
+				<section class="top-bar">
+					<div class="logo"><a href="/"><img src="/images/title_logo_white.png" style="width:160px;height:33px;margin-top:5px"></a></div>
+					<a class="nav-toggle" id="open-nav" href="#">&#9776;</a>
+<nav>
+	<a class="editor-link btn" href="cloudcannon:collections/_data/navigation.yml" class="btn" style="padding: 5px;"><strong>&#9998;</strong> Edit navigation</a>
+	
+	
+
+		
+		<a href="/" class="" target="_self">Docs</a>
+	
+	
+
+		
+		<a href="/faq/" class="" target="_self">FAQ</a>
+	
+	
+
+		
+		<a href="https://3rdeyesys.com" class="" target="_blank">Company</a>
+	
+</nav>
+
+				</section>
+				<section class="hero_search">
+					<h1>써드아이시스템(3rdeyesys) 기술문서</h1>
+					<p>써드아이시스템이 네이버 클라우드 프리미엄 파트너사로 활동하면서 보유하게 된 네이버 클라우드와 관련된 여러 기술 노하우들을 많은 분들께 공유하려고 합니다.</p>
+					<form action="/search/" method="get">
+	<input type="search" name="q"  placeholder="What would you like to know?" autofocus>
+	<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+	<input type="submit" value="Search" style="display: none;">
+</form>
+				</section>
+			</div>
+
+		</header>
+		<section class="content">
+			<div class="wrapper">
+				<p><span id="search-process">Loading</span> results <span id="search-query-container" style="display: none;">for "<strong id="search-query"></strong>"</span></p>
+<ul id="search-results"></ul>
+
+<script>
+	window.data = {
+		
+			
+				
+					
+					
+					"1-compute-ncp-http-to-https-ubuntu": {
+						"id": "1-compute-ncp-http-to-https-ubuntu",
+						"title": "http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/Ubuntu",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_http_to_https_ubuntu/",
+						"content": "개요\n웹사이트 SSL 인증서를 설치하고 https 접속을 유도할 때 http로 접속하면 https로 강제로 리다이렉트 시키는 방법을 사용하는 경우가 많습니다.\n웹페이지 소스에서 http 접속 여부를 판단해서 redirect 시키는 방법 등 여러가지 있을 수 있는데 여기서는 Apache 설정으로 쉽게 할 수 있는 방법을 소개합니다.\n\nSSL 인증서가 설치되어 있다는 가정하에 우선 Linux Ubuntu에서 설정하는 방법을 확인해보겠습니다.\n\nRewrite 모듈 설치\n혹시 Apache에 이미 mod_rewrite 가 로드 되어 있다면 설치하지 않아도 됩니다.\n\nroot@test-lamp:~# a2enmod rewrite\n\n\nApache conf 파일 수정\n\n/etc/apache2/sites-enabled/000-default.conf 의 Vritual host에 다음 코드를 추가하고 Apache를 재시작하면 됩니다.\nRewriteEngine On\nRewriteCond %{HTTPS} !on\nRewriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R,L]\n\n\n000-default.conf 파일에 실제로 적용하면 다음과 비슷한 모습이 되겠습니다.\n&lt;VirtualHost *:80&gt;\n\tDocumentRoot \"/ncp/data/www/\"\n\tServerName www.test.com\n\n\tRewriteEngine On\n\tRewriteCond %{HTTPS} !on\n\tRewriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R,L]\n&lt;/VirtualHost&gt;\n\n\nApache 재시작\nroot@test-lamp:~# systemctl restart apache2\n\n이렇게 재시작하고 http로 접속을 해보면 https로 전환되는 것을 확인할 수 있습니다.\n\nApache 재시작 오류 - SSLEngine\n위 내용처럼 아파치 재시작 명령어를 입력하면 끝입니다만, 재시작이 되지 않고 오류 메시지가 뜨는 경우가 있습니다.\nroot@test-lamp:~# systemctl restart apache2\nJob for apache2.service failed because the control process exited with error code. \nSee \"systemctl status apache2.service\" and \"journalctl -xe\" for details.\n\n\n오류 메시지에 나온 것 처럼 상세 내용을 확인해봅니다.\nroot@test-lamp:~# systemctl status apache2.service\n\n상세 오류 메시지 중에서 핵심 내용만 살펴보면 다음과 같습니다.\nDec 04 16:09:44 test-lamp apachectl[11924]: AH00526: Syntax error on line 36 of /etc/apache2/sites-enabled/000-default.conf:\nDec 04 16:09:44 test-lamp apachectl[11924]: Invalid command 'SSLEngine', perhaps misspelled or defined by a module not included in the server configuration\n\n\n위 오류 메시지에 나온 /etc/apache2/sites-enabled/000-default.conf 파일을 찾아가서 SSLEngine을 확인해보면 다음과 같습니다.\n&lt;VirtualHost *:443&gt;\n    ServerName www.test.com\n    ServerAdmin web@test.com\n\n    {==SSLEngine on==}\n    SSLCertificateFile /etc/******/server.crt\n    SSLCertificateKeyFile /etc/******/server.key\n\n    ###중략###\n&lt;/VirtualHost&gt;\n\n\n확인해보면 SSLEngine on 명령어가 제대로 동작하지 못해서 생긴 문제라는 것을 알 수 있습니다.   \n즉, SSL 모듈이 제대로 활성화 되지 않았기에 활성화 해주면 문제가 해결됩니다.\n(나중에 살펴보면 socache_shmcb 모듈이 활성화되지 않았기 때문임을 알 수 있습니다)\n\nSSL 엔진 모듈 활성화\nroot@test-lamp:~# a2enmod ssl\n\n\n그리고 나서 다시 Apache를 재시작 하면 됩니다.\nroot@test-lamp:~# systemctl restart apache2\n\n\n이제 http로 접속하셔서 https로 전환되는지 확인해보시기 바랍니다.\n\n\n  문서 최종 수정일 : 2020-12-07"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"1-compute-ncp-http-to-https-centos": {
+						"id": "1-compute-ncp-http-to-https-centos",
+						"title": "http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/CentOS",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_http_to_https_centos/",
+						"content": "개요\n웹사이트 SSL 인증서를 설치하고 https 접속을 유도할 때 http로 접속하면 https로 강제로 리다이렉트 시키는 방법을 사용하는 경우가 많습니다.\n웹페이지 소스에서 http 접속 여부를 판단해서 redirect 시키는 방법 등 여러가지 있을 수 있는데 여기서는 Apache 설정으로 쉽게 할 수 있는 방법을 소개합니다.\n\nSSL 인증서가 설치되어 있다는 가정하에 우선 Linux CentOS에서 설정하는 방법을 확인해보겠습니다.\n\nApache conf 파일 수정\n\n/etc/httpd/conf/httpd.conf 의 Vritual host에 다음 코드를 추가하고 Apache를 재시작하면 됩니다.\nRewriteEngine On\nRewriteCond %{HTTPS} !on\nRewriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R,L]\n\n\nhttpd.conf 파일에 실제로 적용하면 다음과 비슷한 모습이 되겠습니다.\n&lt;VirtualHost *:80&gt;\n\tDocumentRoot \"/ncp/data/www/\"\n\tServerName www.test.com\n\n\tRewriteEngine On\n\tRewriteCond %{HTTPS} !on\n\tRewriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R,L]\n&lt;/VirtualHost&gt;\n\n\nApache 재시작\nroot@test-lamp-2:~# systemctl restart  httpd.service\n\n이렇게 재시작하고 http로 접속을 해보면 https로 전환되는 것을 확인할 수 있습니다.\n\nApache 재시작 오류\n위 내용처럼 아파치 재시작 명령어를 입력하면 끝입니다만, 재시작이 되지 않고 오류 메시지가 뜨는 경우가 있습니다.\nroot@test-lamp-2:~# systemctl restart  httpd.service\nJob for httpd.service failed because the control process exited with error code.  \nSee \"systemctl status httpd.service\" and \"journalctl -xe\" for details.\n\n\n오류 메시지에 나온 것 처럼 상세 내용을 확인해봅니다.\nroot@test-lamp-2:~# systemctl status httpd.service\n\n상세 오류 메시지 중에서 핵심 내용만 살펴보면 다음과 같습니다.\nDec 04 17:24:48 test-lamp-2 httpd[3217]: httpd: Syntax error on line 552 of /etc/httpd/conf/httpd.conf: Could not open configuration ...irectory\n\n\n위 오류 메시지에 나온 /etc/httpd/conf/httpd.conf 파일을 찾아가서 해당 라인을 확인해보면 다음과 같습니다.\n#&lt;IfModule ssl_module&gt;\n# Secure (SSL/TLS) connections\nInclude conf/extra/httpd-ssl.conf\n#&lt;/IfModule&gt;\n\n\n위에 나온 Include conf/extra/httpd-ssl.conf 라인을 주석처리 하면 해결이 됩니다.\n\n#&lt;IfModule ssl_module&gt;\n# Secure (SSL/TLS) connections\n#Include conf/extra/httpd-ssl.conf\n#&lt;/IfModule&gt;\n\n\n그리고 나서 다시 Apache를 재시작 하면 됩니다.\nroot@test-lamp-2:~# systemctl restart  httpd.service\n\n\n이제 http로 접속하셔서 https로 전환되는지 확인해보시기 바랍니다.\n\nSSL 모듈 설치\n혹시 Apache에 mod_ssl 가 설치되어 있지 않다면 설치하셔야 합니다.\n\n[root@test-lamp-2 ~]# yum install mod_ssl\n\n\n설치 도중에 아래와 같은 확인 화면이 나타납니다.\n========================================================================\n Package   Arch       Version                 Repository   Size\n========================================================================\nInstalling:\n mod_ssl    x86_64   1:2.4.6-97.el7.centos   updates    114 k\n\nTransaction Summary\n========================================================================\nInstall  1 Package\n\nTotal download size: 114 k\nInstalled size: 224 k\nIs this ok [y/d/N]:\n\n\n별 문제 없으면 y 를 입력하면 됩니다.\nIs this ok [y/d/N]: y\n\nDownloading packages:\nmod_ssl-2.4.6-97.el7.centos.x86_64.rpm                    | 114 kB  00:00:00\nRunning transaction check\nRunning transaction test\nTransaction test succeeded\nRunning transaction\n  Installing : 1:mod_ssl-2.4.6-97.el7.centos.x86_64        1/1\n  Verifying  : 1:mod_ssl-2.4.6-97.el7.centos.x86_64        1/1\n\nInstalled:\n  mod_ssl.x86_64 1:2.4.6-97.el7.centos\n\nComplete!\n\n\n\n  문서 최종 수정일 : 2020-12-07"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"3-security-ncp-security-service-summary": {
+						"id": "3-security-ncp-security-service-summary",
+						"title": "Security 서비스 요약",
+						"categories": "3.security",
+						"url": " /3.security/ncp_security_service_summary/",
+						"content": "개요\n네이버 클라우드에서 제공하는 Security 서비스 상품들을 간단한 설명과 함께 요약 정리한 내용입니다.\n이 내용도 파트너 테크데이에서 공개된 자료입니다.\n\n서비스 요약\n\n\n  \n    \n      구분\n      상품\n      설명\n    \n  \n  \n    \n      침입탐지/대응\n      Basic Security\n      모든 고객에게 기본으로 제공되는 무료 보안 서비스\n    \n    \n       \n      Security Monitoring\n      IDS, Anti-DDos, Anti-Virus, IPS, WAF와 같은 다양한 보안 상품들을 이용하여 높은 수준의 보안 서비스를 제공\n    \n    \n       \n      Site Safer\n      고객이 개발한 웹사이트가 해킹 또는 다른 보안 문제로 인해 악성코드를 배포하는지 검사\n    \n    \n       \n      File Safer\n      고객의 서비스에서 제공하는 파일과 아웃링크 URL의 악성코드 감염 여부를 해시 기반으로 검사\n    \n    \n       \n      App Safer\n      고객의 앱이 모바일에서 실행될 때, 루팅/탈옥, 악성 앱 설치, 앱 변조 등 보안 위협 여부를 실시간으로 탐지\n    \n    \n      접근제어\n      ACG\n      인스턴스 그룹 단위로 IP, Port 기반의 네트워크 패킷 필터링 기능을 제공\n    \n    \n       \n      Secure Zone\n      개인정보와 같이 중요한 정보를 보다 더 안전하게 보호할 수 있도록 대외 인터넷 망과 분리된 별도의 존을 제공\n    \n    \n      인증/권한 관리\n      Sub Account\n      사용자 업무 역할별로 권한 관리를 할 수 있는 기능 제공\n    \n    \n      암호화\n      KMS\n      고객 데이터의 암/복호화에 이용되는 키를 안전하게 보호할 수 있는 서비스\n    \n    \n       \n      SSL VPN\n      고객 사이트로 안전하게 접근 가능한 SSL방식의 가상 사설망을 제공\n    \n    \n       \n      Certificate Manager\n      SSL 인증서의 손쉬운 등록 및 관리 서비스를 제공\n    \n    \n      로깅 및 모니터링\n      Resource Manager\n      네이버 클라우드 서비스 내에 생성한 모든 리소스를 한 눈에 볼 수 있는 통합관리 서비스\n    \n    \n       \n      Cloud Activity Tracer\n      네이버 클라우드 서비스에서 발생한 계정 활동 로그를 자동으로 수집해주는 서비스\n    \n    \n       \n      Cloud Advisor\n      네이버 클라우드 모범 사례에 따른 서비스 이용 권장 지침 안내\n    \n    \n      취약점 관리\n      System Security Checker\n      고객 서버의 운영체제 및 WAS 시스템에 대해서 보안상 취약점이 없는지 점검하고 결과 리포트를 제공해주는 서비스\n    \n    \n       \n      Web Security Checker\n      고객의 웹서비스에 대해 총 20가지의 주요 웹 취약점을 자동으로 진단하고 결과 리포트를 제공해주는 서비스\n    \n    \n       \n      App Security Checker\n      고객의 Andorid 모바일 앱에 대해 취약점을 자동으로 점검하고 결과 리포트를 제공해주는 서비스\n    \n    \n      Compliance\n      Compliance Guide\n      고객이 보안 인증이나 규제에 대응하는데 필요한 사항을 알기 쉽게 정리한 가이드\n    \n  \n\n\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/security/security-1-1.html\n\n\n  문서 최종 수정일 : 2020-12-02"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"3-security-ncp-security-ncp-onpremise-compare": {
+						"id": "3-security-ncp-security-ncp-onpremise-compare",
+						"title": "(Security) NCP vs On-Premise 비교",
+						"categories": "3.security",
+						"url": " /3.security/ncp_security_ncp_onpremise_compare/",
+						"content": "개요\n기존의 IDC 등의 On-Premise 환경에서 사용하고 있는 보안 서비스를 네이버 클라우드 환경에서 어떻게 구현할 수 있는지에 대한 비교 가이드입니다.\nIDC에 있는 서버들을 네이버 클라우드로 마이그레이션 할 때 참고하시면 되겠습니다.\n\nOn-Premise → Naver Cloud\n\n\n  \n    \n      구분\n      On-Premise\n       \n      Naver Cloud\n      설명\n    \n  \n  \n    \n      Network\n      DDos\n      →\n      Security Monitoring\n      Security Monitoring DDos 서비스를 통해 고객별 특화된 탐지 정책을 적용\n    \n    \n       \n      방화벽\n      →\n      ACG(Access Control Group)\n      ACG Rule 변경 기능으로 서버 접속을 허용할 트래픽 규칙을 안전하고 편리하게 관리\n    \n    \n       \n      IDS/IPS\n      →\n      Security Monitoring\n      Security Monitoring IDS/IPS 서비스를 통해 고객별 특화된 탐지/차단 정책을 적용\n    \n    \n       \n      전송구간 암호화\n      →\n      IPSec/SSL VPN, Cloud Connect\n      고객의 네트워크와 네이버 클라우드에 있는 네트워크에 대한 안전한 연결을 제공\n    \n    \n      DB\n      DB 접근 통제\n      →\n      Naver Cloud MarketPlace\n      MarketPlace에서 제공하는 3rd-Party 솔루션을 VM에 설치하여 사용\n    \n    \n       \n      DB 암호화\n      →\n      Naver Cloud MarketPlace\n      MarketPlace에서 제공하는 3rd-Party 솔루션을 VM에 설치하여 사용\n    \n    \n      Server\n      서버접근통제\n      →\n      SSL VPN, Naver Cloud MarketPlace\n      SSL VPN을 이용해 서버 접근을 관리  MarketPlace에서 제공하는 3rd-Party 솔루션을 VM에 설치하여 사용\n    \n    \n       \n      서버보안(SecureOS)\n      →\n      Naver Cloud MarketPlace\n      MarketPlace에서 제공하는 3rd-Party 솔루션을 VM에 설치하여 사용\n    \n    \n       \n      Anti Virus\n      →\n      Security Monitoring\n      Security Monitoring DDos 악성코드 의심 이벤트 발생 시 탐지 보고서 및 분석 정보 전달\n    \n    \n      Application\n      웹 방화벽\n      →\n      Security Monitoring\n      Security Monitoring WAF서비스를 통해 고객별 특화된 탐지/차단 정책을 적용\n    \n    \n       \n      Anti-Webshell\n      →\n      Naver Cloud MarketPlace\n      MarketPlace에서 제공하는 3rd-Party 솔루션을 VM에 설치하여 사용\n    \n    \n      User Access\n      사용자 접근통제\n      →\n      Sub Account\n      Sub Account 서비스를 이요하여 콘솔 접근에 대한 사용자 접속을 관리\n    \n    \n      Audit\n      -\n      →\n      Cloud Activity Tracer / Resource Manager\n      리소스(서버, 네트워크, DB등) 생성, 변경, 삭제에 대해 추적 기능을 제공\n    \n    \n      Key Management\n      -\n      →\n      Key Management Service\n      Key에 대한 접근 제어 기능을 이용하여 데이터 암호화 키를 안전하게 보호하고 관리\n    \n  \n\n\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/security/security-1-1.html\n\n\n  info “문서 최종 수정일 : 2020-12-02”"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"2-networking-ncp-networking-vpc-subnet-natgw": {
+						"id": "2-networking-ncp-networking-vpc-subnet-natgw",
+						"title": "Subnet 과 NAT GW",
+						"categories": "2.networking",
+						"url": " /2.networking/ncp_networking_vpc_subnet_natgw/",
+						"content": "개요\n네이버 클라우드에서는 VPC의 보안을 강화하기 위해 두 가지 서브넷을 제공하고 있습니다.\n\n\n  Public Subnet : 인터넷과 자유로운 통신이 필요할 때 사용할 수 있는 서브넷으로 Interget GW를 통해 외부와 통신\n  Private Subnet : 보안상 외부에서 서버에 접근하는 것을 막아야 할 때 사용할 수 있는 서브넷으로 NAT GW를 통해 외부와 통신\n\n\nPublic vs Private Subnet\n\n\n  \n    \n      구분\n      Public Subnet\n      Private Subnet\n    \n  \n  \n    \n      용도\n      인터넷 연결이 필요할 때\n      외부 접속을 최소화 해야 할 때\n    \n    \n      지원 리소스\n      서버\n      서버, 로드밸런서\n    \n    \n      인터넷 연결 시필요한 리소스\n      Internet Gateway (Default)\n      NAT Gateway\n    \n  \n\n\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/networking/networking-10-1.html\n\n\n  문서 최종 수정일 : 2020-12-01"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"2-networking-ncp-networking-vpc-load-balancer": {
+						"id": "2-networking-ncp-networking-vpc-load-balancer",
+						"title": "Load Balancer 상품군의 변화",
+						"categories": "2.networking",
+						"url": " /2.networking/ncp_networking_vpc_load_balancer/",
+						"content": "개요\nLoad Balancer는 수신 트래픽을 다수의 서버로 분산시키는 서비스로서, 수신 트래픽을 등록된 멤버 서버로 분산시켜 가용성을 높이고 시스템 가동률을 조절하는 역할을 수행합니다.\nVPC 플랫폼에서는 Network Load Balancer / Application Load Balancer / Network Proxy Load Balancer 가 제공되어 서비스에 적합한 로드밸런서를 선택할 수 있습니다.\n\n종류\n\n\n  \n    Application Load Balancer\nHTTP 및 HTTPS 트래픽을 사용하는 웹 애플리케이션을 위한 유연한 기능을 제공\n  \n  \n    Network Load Balancer\nDSR(Direct Server Return) 구조의 고성능, 대규모 네트워크 연결에 적합한 로드밸런서로 고정 IP를 제공\n  \n  \n    Network Proxy Load Balancer\nTCP 세련 유지에 최적화 되어 있으며, Network Load Balancer와 다르게 DSR를 지원하지 않으며, Load Balander가 세션을 관리.\n  \n\n\n\n  KR존/서브넷 별 LB 생성지역 지정 가능\n\tVPC 환경에서는 내가 원하는 KR존의 특정 서브넷에 LB생성 가능, KR-1/2 존에 각각 생성하여 고가용성을 확보 할 수 있다.\n\n\nLB 선택 기준 및 기능 비교\n\n\n  \n    \n      기능\n      Network LB\n      Network Proxy LB\n      Application\n    \n  \n  \n    \n      프로토콜\n      TCP\n      TCP, TLS\n      HTTP/HTTPS\n    \n    \n      상태확인\n      O\n      O\n      O\n    \n    \n      로깅\n      X\n      O\n      O\n    \n    \n      DSR\n      O\n      X\n      X\n    \n    \n      동일 인스턴스의여러 포트로로드밸런싱\n      X\n      X\n      O\n    \n    \n      HTTP 2.0\n      N/A\n      N/A\n      O\n    \n    \n      경로기반 라우팅\n      N/A\n      N/A\n      O (출시 예정)\n    \n    \n      SSL Offload\n      X\n      O\n      O\n    \n    \n      고정 세션\n      X\n      O\n      O\n    \n  \n\n\n\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/networking/loadbalancer/loadbalancer_overview.html\n\n\n  문서 최종 수정일 : 2020-12-01"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"2-networking-ncp-networking-vpc-acg-nacl": {
+						"id": "2-networking-ncp-networking-vpc-acg-nacl",
+						"title": "ACG와 NACL 비교",
+						"categories": "2.networking",
+						"url": " /2.networking/ncp_networking_vpc_acg_nacl/",
+						"content": "개요\n네이버 클라우드에서는 VPC의 보안을 강화하기 위해 ACG와 NACL의 두 가지 보안 정책을 제공하고 있습니다.\n\n\n  ACG : Access Control Group은 서버의 NIC별 Inbound 및 Outbound 트래픽을 제어\n  NACL : Network Access Control List는 Subnet의 Inbound 및 Outbound 트래픽을 제어\n\n\nACG vs NACL\n\n\n  \n    \n      구분\n      ACG\n      NACL\n    \n  \n  \n    \n      적용 대상\n      서버의 접근 제어\n      Subnet의 접근 제어\n    \n    \n      지원 규칙\n      허용 (Allow)\n      허용 및 거부 (Allow / Deny)\n    \n    \n      상태 저장 여부\n      상태 저장(Stateful)(규칙에 관계없이 반환 트래픽이자동으로 허용됨)\n      상태 비저장(Stateless)(반환 트래픽이 규칙에 의해명시적으로 허용되어야 함)\n    \n    \n      적용 방법\n      서버의 NIC에 ACG 정책 적용\n      Subnet 단위로 적용(Subnet 별 1개만 허용)\n    \n  \n\n\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/networking/vpc/vpc_detailedsubnet.html\n\n\n  문서 최종 수정일 : 2020-12-01"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"2-networking-ncp-networking-vpc": {
+						"id": "2-networking-ncp-networking-vpc",
+						"title": "VPC 구성요소",
+						"categories": "2.networking",
+						"url": " /2.networking/ncp_networking_vpc/",
+						"content": "개요\n이 문서는 VPC를 구성하는 요소들에 대한 설명으로 네이버 클라우드 파트너 테크데이에서 발표된 내용을 정리한 것입니다.\n\nVPC\nVPC(Virtual Private Cloud)는 퍼블릭 클라우드 상에 논리적으로 완전하게 분리된 고객전용 네트워크를 제공하는 서비스.\n최대 /16의 IP 네트워크 공간을 제공 (IP 대역: RFC 1918).\n\n@ RFC 1978 IP대역\n\n10.0.0.0/8 (10.0.0.0 - 10.255.255.255)  \n172.16.0.0/12 (172.16.0.0 - 172.31.255.255)  \n192.168.0.0/16 (192.168.0.0 - 192.168.255.255)\n\n\nSubnet (Internet Gateway)\n할당된 VPC를 용도에 맞게 네트워크 공간을 세분화 하여 사용.\n/16 ~ /28의 네트워크 주소 할당이 가능.\nPublic Subet 생성 시 Internet Gateway가 연결됨.\n\nNAT Gateway\nNetwork Address Translation의 약자로, 폐쇄된 네트워크에서 외부와의 인터넷 동신 시 사용하는 게이트웨이.\n\nRoute Table\n네트워크 경로를 설정할 수 있는 기능을 제공. VPC 내부 통신을 위한 Local은 기본적으로 설정.\n\nACG\n서버에서 인바운드/아웃바운드의 네트워크 접근제어를 지원하며 Stateful 기반으로 동작.\n\nNACL\nNetwork Access Control List의 약자로, Subnet에서 인바운드/아웃바운드의 네트워크 접근제어를 지원하며 Stateless 기반으로 동작.\n\nVirtual Private Gateway\nCloud Connect와 IPSec VPN에 연결되는 네이버 클라우드의 VPC측 연결 접점으로서 Cloud Connect와 IPSec VPN 연결을 지원.\n\nVPC Peering\nVPC간 사설연결을 보장하는 기능으로, 일반적인 VPC &lt;-&gt; VPC 간의 통신은 인터넷을 통하게 되고, 이는 과다한 요금 발생 및 성능 저하를 일으킬 수 있음.\nVPC Peering을 이용하면 보다 안전한 사설 IP기반의 통신이 가능함.\nVPC Peering은 단방향 통신을 제공하기 때문에 양방향 통신을 원하면 Src -&gt; Dest 별로 각각 1개씩, 두개의 정책을 모두 적용해야 함.\n\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/networking/vpc/vpc_overview.html\n\n\n  문서 최종 수정일 : 2020-11-30"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"99-etc-etc-mkdocs-install": {
+						"id": "99-etc-etc-mkdocs-install",
+						"title": "mkdocs  설치 (윈도 10)",
+						"categories": "99.ETC",
+						"url": " /99.etc/etc_mkdocs_install/",
+						"content": "설치 전체과정 요약\n\n\n  \n    Python 다운로드\n  \n  \n    Python 설치\n\n    2-1. Add Python 3.9 to PATH 옵션 선택\n\n    2-2. Disable path length limit 선택\n  \n  \n    mkdocs 설치\n\n    3-1. pip install mkdocs-material\n\n    3-2. python.exe -m pip install –upgrade pip\n\n    3-3. pip install mkdocs-awesome-pages-plugin\n\n    3-4. mkdocs new {폴더명}\n\n    3-5. cd blog-mkdocs 이동 후 mkdocs serve\n  \n\n\nPython 다운로드\nmkdocs를 사용하려면 먼저 Python을 설치해야 합니다.\n\nhttps://www.python.org/downloads/\n\n2020-11-27일 현재 최신버전은 3.9.0입니다.\n\nPython 설치하기\n\nPATH 추가\nPython 설치 시작화면에 PATH에 python을 추가하는 옵션이 있습니다. \n“Add Python 3.9 to PATH” 옵션을 선택하고 설치를 시작하면 됩니다.\n\nPATH 문자 길이 제한 해제\n윈도에는 기본설정에 파일경로가 최대 260자로 제한되어 있는데, 이 제한을 풀것인지 확인하는 과정입니다.\n“Disable path length limit” 옵션이 나오는데, 특별한 문제가 없다면 해제하고 가면 됩니다.\n\nmkdocs 설치\nmkdocs 설치하는 방법이 여러가지 있지만 가장 많이 사용되는 테마인 material 테마를 적용한 상태로 설치합니다.\npip install mkdocs-material\n\n\npip 업그레이드\nmkdocs를 설치하고 나면 pip 업그레이드에 대한 안내가 나옵니다.\nWARNING: You are using pip version 20.2.3; however, version 20.2.4 is available.\nYou should consider upgrading via the 'c:\\users\\{***}\\appdata\\local\\programs\\python\\python39\\python.exe -m pip install --upgrade pip' command.\n\n안내에 나온대로 pip를 업그레이드 해줍니다.\npython.exe -m pip install --upgrade pip\n\n\nawesome-pages-plugin 설치\n문서 구조나 네비게이션을 좀 더 쉽게 표현하고 구성하게 해주는 플러그인입니다.\n기본적으로 설치해두는 것이 여러모로 편리합니다.\npip install mkdocs-awesome-pages-plugin\n\n\n블로그 문서 생성\n이제 기본으로 필요한 것들은 다 설치했으니 블로그를 만들어봅시다.\nmkdocs new {폴더명}\nmkdocs new blog-mkdocs\n\n\n블로그 실행\n이제 웹브라우져에서 블로그를 확인해봅시다.\n위에서 만들어진 폴더로 이동합니다.\ncd blog-mkdocs\nmkdocs serve\n\n\n그러면 http://127.0.0.1:8000 주소로 접속하면 기본 블로그를 확인해볼 수 있고 \nmkdocs serve 명령으로 문서 변경을 실시간으로 감지해서 문서를 수정하면 브라우져에 바로바로 반영됩니다.\n\n블로그 배포문서 생성\n이제 만들어진 블로그 문서를 github 등이나 기타 서버로 배포하려면 다음과 같은 명령어를 입력하면 됩니다.\nmkdocs build\n\n그러면 아까 만들어진 blog-mkdocs 폴더 밑에 site 라는 폴더가 생성되고 그곳에 필요한 html 문서들이 만들어집니다.\n\n설치과정 스크린샷 모음\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  “문서 최종 수정일 : 2020-11-30”"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"1-compute-ncp-server-autoscaling-limit": {
+						"id": "1-compute-ncp-server-autoscaling-limit",
+						"title": "Auto Scaling 서비스 제한사항",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_server_autoscaling_limit/",
+						"content": "개요\n모든 클라우드 서비스의 핵심 중의 하나가 Auto Scaling이라고 할 수 있습니다.\n네이버 클라우드도 예외가 아닌데, Auto Scaling을 설정할 때 몇가지 제한사항이 있어서 정리해보았습니다.\n\n스펙 및 서비스 환경 제한 사항\n서버 스펙이나 서비스 환경과 관련한 제한 사항은 다음과 같습니다.\n\n\n  총 디스크 사이즈 150GB 이하 서버만 가능\n  Windows OS는 Windows 2012. 2016만 지원\n  Micro 서버는 불가\n  High Memory 서버는 불가(추후 개선 예정)\n  Local Disk 기반 서버는 불가\n  Global Internet Service 영역 내의 서비스 불가\n\n\n따라서 서버타입 기준으로  Auto Scaling 설정이 가능한 서버타입은 Compact, Standard 2가지 뿐입니다.\n\n\n\nOS 서버 이미지 제한 사항\ncentos-7.8-64, ubuntu-18.04 이 2가지 OS 이미지는 개인 회원은 KR-1 1세대 서버에서 생성이 불가능한 이미지입니다. 2세대 서버를 선택하시거나 KR-2에서 생성해야 합니다.\n\n설정 제한 사항\n다음으로 Auto Scaling 설정을 할 때 생성 가능한 최대 서버 수 등의 설정 제한 사항은 다음과 같습니다.\n\n\n  고객별 생성 가능한 Auto Scaling Group 최대 수: 100\n  고객별 생성 가능한 Launch Configuration 최대 수: 100\n  Auto Scaling Group당 생성 가능한 스케줄(Scheduled Action) 최대 수: 100\n  Auto Scaling Group당 생성 가능한 Scaling Policy 최대 수: 10\n  Auto Scaling Group당 생성 가능한 최대 서버 수: 30대\n  Auto Scaling Group당 연결 가능한 Load Balancer 최대 수 : 10\n\n\n\n  계정당 생성 가능한 최대 서버 대수 : 네이버 클라우드 플랫폼에서 한 계정당 생성할 수 있는 최대 서버 수 기본 50대입니다. 서버 수 한도를 조정하려면 고객지원으로 문의해야 합니다.\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/compute/autoscaling/autoscaling_overview.html\n\n\n  문서 최종 수정일 : 2020-11-19"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"3-security-ncp-security-acg-guide": {
+						"id": "3-security-ncp-security-acg-guide",
+						"title": "ACG(Access Control Group) 가이드",
+						"categories": "3.security",
+						"url": " /3.security/ncp_security_acg_guide/",
+						"content": "개요\nACG(Access Control Group)는 서버 간 네트워크 접근 제어 및 관리를 할 수 있는 IP/Port 기반 필터링 방화벽 서비스로 AWS에서는 비슷하게 Security Group이라는 것이 있습니다.\n\n제한 사항\n\nVPC\n\n  VPC당 최대 500개까지 ACG 생성 가능\n  NIC당 3개의 ACG를 허용\n  Inbound / Outbound 각각 50개의 규칙 생성 가능\n\n\nClassic\n\n  계정당 최대 100개까지 ACG를 생성 가능\n  각 ACG에는 최대 100개까지의 규칙을 설정할 수 있음\n  서버는 최대 5개의 ACG에 중복 포함될 수 있음\n  서버가 생성될 시 선택한 ACG는 변경이 불가하며, 반납 전까지 해당 ACG 규칙을 적용 받게 됨\n\n\n\n  Classic 환경에서는 서버 자체에 할당되는 개념이었으나 VPC에는 NIC 즉, 네트워크 카드에 할당되는 개념이어서 VPC 환경에서는 NIC 당 최대 3개까지 ACG를 적용할 수 있다.\n\n\n기본 규칙\n\nDefault ACG\n기본적으로 추가되는 ACG\n\n\n  모든 들어오는 연결(inbound traffic)을 차단함\n  모든 나가는 연결(outbound traffic)을 허용함\n  Default ACG 내 속한 서버들끼리의 네트워크 양방향 통신(TCP, UDP, ICMP)이 허용됨\n  원격 접속 기본 포트 (Linux - 22, Windows - 3389)에 대한 TCP 허용됨\n\n\nVPC 화면\n\nInbound\n\n\nOutbound\n\n\nClassic 화면\n\n\nCustom ACG\nDefault ACG 이외에 사용자가 추가하는 ACG\n\n\n  모든 inbound traffic을 차단함(규칙으로 명시되어 있지 않음)\n  모든 outbound traffic을 허용함(규칙으로 명시되어 있지 않음)\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/compute/compute-2-3.html\n\n\n  문서 최종 수정일 : 2020-11-26"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"4-storage-ncp-storage-backup-guide": {
+						"id": "4-storage-ncp-storage-backup-guide",
+						"title": "백업 서비스 가이드와 신청 절차",
+						"categories": "4.storage",
+						"url": " /4.storage/ncp_storage_backup_guide/",
+						"content": "개요\n백업 솔루션을 사용해 서버의 데이터 즉, 소스 등의 파일과 데이터베이스 데이터를 정기적으로 백업하고 보관하는 서비스입니다.\n\n이용 방법\n네이버 클라우드의 백업 서비스는 이용자가 직접 모든 과정을 마칠 수 없고, 고객센터에 백업신청서를 제출해야 백업이 진행됩니다.\n\n지원 OS와 DB\n\n  Centos : 6.3, 6.6, 7.2, 7.3\n  ubuntu : 16.04, 18.04\n  Windows : 2012 R2, 2016\n  mssql : 2008std, 2012std, 2014std, 2016std, 2016exp\n  mysql : 5.7.17, 5.6.34\n  모두 64bit만 지원\n\n\n백업 방식\n\n파일백업\n\n  일회성\n  1일 1회 전체 백업\n  1주 ~ 4주에 1회 전체 백업\n  1주 1회 전체 백업 및 1일 1회 증분 백업\n\n\nDB 백업\n\n  mssql 1일 1회 전체 백업\n  mssql 1주 1회 전체 백업\n  mssql 1주 1회 전체 백업 및 1일 1회 증분 백업\n  mysql 1일 1회 전체 백업\n  mysql 1주 1회 전체 백업\n\n\n\n  증분 백업(변경된 데이터만 백업)의 경우 DBMS는 정합성을 보장하나 파일에 대해서는 정합성을 보장하지 않음\n\n\n백업 신청 절차\n\n  네이버 클라우드 플랫폼 포털(https://www.ncloud.com)에 접속하여 로그인\n  고객지원 &gt; 자료를 클릭하여 네이버 클라우드 플랫폼 백업 서비스 신청서와 백업 Agent를 다운로드\n  다운로드한 신청서 양식의 내용에 예를 참고하여 알맞게 기입.\n  다운로드한 백업 Agent는 OS에 맞는 버전을 VM에 복사하여 설치\n  백업 Agent가 설치 완료되었다면 네이버 클라우드 플랫폼 포털 내 백업 상품 소개 페이지의 “이용 문의하기”를 클릭\n  문의하기 페이지에서 제목을 “백업서비스 신청“으로 기입하고 작성한 백업 서비스 신청서를 첨부하면 백업 신청이 완료\n\n\n백업 Agent 설치 방법\n\nWindows\n\n  원격 데스크톱을 이용하여 VM 서버에 원격 접속\n  다운로드한 백업 Agent 설치 파일(NCP_Backup_Windows.zip)을 VM 내 {==C:\\Temp==} 하위에 복사하여 압축을 풀면 NCP 이름으로 총 5개의 파일이 생성\n  NCP_Backup_Install.bat을 실행하면 자동으로 설치 및 구성이 진행되며 설치 완료\n  이후 백업 Agent 관련 파일들은 자동으로 삭제됨\n\n\n\n  백업 Agent설치 후 파일이 자동 삭제되기에 반드시 설치위치는 C:\\Temp에서 수행을 권고\n\n\nLinux\n\n  Winscp 등을 이용하여 VM 서버의 {==/tmp==} 하위로 백업 Agent 프로그램(NCP_Backup_Linux.tar.gz)을 복사\n  원격 접속 프로그램(ex.putty)을 이용하여 VM 서버에 원격 접속\n  백업 Agent 프로그램을 저장한 /tmp 폴더로 이동 후 tar xvfz NCP_Backup_Linux.tar.gz을 실행하여 압축 해제\n  NCP_Backup_Install.sh 파일을 실행하면 자동으로 백업 Agent 설치 및 구성이 완료\n  이후 관련 파일은 자동으로 삭제됨\n\n\n\n  백업 Agent설치 후 파일이 자동 삭제되기에 반드시 설치위치는/tmp에서 수행을 권고\n\n\n백업 Agent 정보\n\n백업 S/W\n\n  Quest Netvault(구 Dell Netvault)\n\n\n백업 S/W 통신 정보\n\n  TCP/UDP 20031~21631\n\n\n백업 프로그램 설치 위치\n\n  Linux: /usr/Netvault\n  Windows: C:\\Program Files (x86)\\Quest Software\\NetVault Backup\n\n\nSecure Zone에서 백업하기\n\n  Secure Zone에서 사용 가능한 Agent가 별도로 존재하지 않기 때문에, 프록시 구성을 하던가 해서 Agent를 설치, 실행해야 함.\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/storage/storage-5-1.html\n\n\n  문서 최종 수정일 : 2020-11-25"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"1-compute-ncp-server-storage-add-guide": {
+						"id": "1-compute-ncp-server-storage-add-guide",
+						"title": "스토리지 추가 생성 가이드",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_server_storage_add_guide/",
+						"content": "개요\n네이버 클라우드에서 서버 생성 후에 스토리지를 추가 생성하는 경우가 있는데 이때 사용되는 스토리지는 Block Storage라고 해서 AWS의 EBS(Elastic Block Store)와 유사합니다.\n\n스토리지 추가 제약 사항\n\n\n  부팅 스토리지가 SSD인 경우, 추가 스토리지로 HDD, SSD 모두 추가할 수 있습니다.\n  부팅 스토리지가 HDD인 경우, HDD, SSD 모두 추가할 수 있으나 SSD 스토리지는 최신 서버에만 추가가 가능합니다. 서버 상세정보의 ‘SSD 스토리지 추가 여부’가 적용 가능인지 확인해야 합니다.\n  Micro 타입의 서버, Bare Metal 서버는 스토리지를 추가할 수 없습니다.\n\n\n추가 가능한 최대 사이즈와 개수\n스토리지는 최대 2,000GB를 지원하며, 서버 1대당 최대 16개의 스토리지를 이용할 수 있습니다. (단, Local Disk 서버 타입 및 2017년 1월 23일 이전에 생성된 서버에 대해서는 1,000GB까지 지원됩니다.)\n\n리눅스 OS 서버 이미지별 포맷 명령어\n리눅스는 OS 즉, 네이버 클라우드에서 제공하는 서버 이미지별로 추가된 스토리지를 포맷하는 명령어가 다릅니다.\n\n\n  CentOS 5.x: mkfs.ext3 /dev/xvdb1\n  CentOS 6.x: mkfs.ext4 /dev/xvdb1\n  CentOS 7.x: mkfs.xfs /dev/xvdb1\n  Ubuntu Server / Desktop: mkfs.ext4 /dev/xvdb1\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/compute/compute-4-1-v2.html\n\n\n  문서 최종 수정일 : 2020-11-19"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"7-analytics-ncp-analytics-cloud-log-analytics-info": {
+						"id": "7-analytics-ncp-analytics-cloud-log-analytics-info",
+						"title": "Cloud Log Analytics에서 수집하는 로그 유형",
+						"categories": "7.analytics",
+						"url": " /7.analytics/ncp_analytics_cloud_log_analytics_info/",
+						"content": "개요\nCloud Log Analytics는 네이버 클라우드 플랫폼의 여러 서비스에서 발생하는 다양한 로그들을 한 곳에 모아 저장하고 손쉽게 분석하게 해주는 서비스입니다.\n\n로그 템플릿 종류\nCloud Log Analytics에서 수집하는 각 종 서비스의 로그 템플릿 종류는 다음과 같습니다.\n\n\n  Server syslog\n  Apache 로그(Access log, Apache Error Log)\n  MySQL 설치형 상품의 로그(Error Log, Slow Log)\n  Microsoft SQL Server 설치형 상품의 Error Log\n  Tomcat 로그(Catalina Log)\n  Windows 서버의 Event Log\n  Windows 서버의 각종 text 형식의 로그\n  Cloud DB for MySQL 로그\n  Cloud DB for MSSQL 로그\n  Bare Metal Server 로그\n  그외 템플릿으로 제공되지 않는 로그도 Custom Log 기능으로 직접 대상 로그를 지정해서 수집할 수 있습니다.\n\n\n로그 보관 기간\n로그 데이터의 보관 기간은 30일로, 30일이 지난 데이터는 자동 삭제되며, 사전에 별도로 통지하지 않습니다.\n\n참고 URL\nhttps://docs.ncloud.com/ko/cla/cla-1-1.html\n\n!!! info “문서 최종 수정일 : 2020-11-19”"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"1-compute-ncp-server-stop-price": {
+						"id": "1-compute-ncp-server-stop-price",
+						"title": "서버 정지 시 요금할인",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_server_stop_price/",
+						"content": "개요\n네이버 클라우드에서는 서버를 정지할 경우 일부 타입을 제외한 대부분의 서버에 대해 운영체제 설치를 위해 제공된 기본 디스크 요금만 청구가 되어 요금 할인이 됩니다.\n\n추가 요금이 청구되는 서비스\n공인 IP, 로드밸런서, 추가 디스크, Security Monitoring, 추가 Network Interface 등 서버에 연결된 다른 유료 서비스의 경우 서버가 정지되어도 정상 청구됩니다.\n\n요금 할인 횟수와 서버 정지 기한\n\n  요금이 할인되는 서버의 경우 1회 최대 90일, 12개월 누적 최대 180일까지만 서버를 정지할 수 있습니다.\n  서버 정기 가능 기한을 넘긴 서버는 고객에게 통보 후 서버를 반납하게 됩니다.\n  서버를 반납하게 될 때 서버에 저장된 데이터는 네이버 클라우드에서 30일간 직접 백업하여 보관 후 삭제하게 됩니다.\n\n\n\n\n요금 할인이 적용되지 않는 서버 타입\n일부 서버들은 서버를 정지해도 요금 할인이 되지 않고, 서버가 가동 중일 때와 동일한 요금이 청구됩니다.\n할인이 적용되지 않는 서버 타입은 다음과 같습니다.\n\n\n  Micro 서버\n  High Memory 서버\n  GPU 서버\n  Virtual Dedicated Server\n  Baremetal 서버\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/compute/compute-1-1-v2.html\n\n\n  문서 최종 수정일 : 2020-11-13"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"1-compute-ncp-server-spec-change": {
+						"id": "1-compute-ncp-server-spec-change",
+						"title": "서버 스펙 변경",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_server_spec_change/",
+						"content": "개요\n네이버 클라우드에서는 기본적으로 서버 타입 간의 스펙 변경을 지원하지 않고, 동일한 타입 내에서의 스펙 변경만 지원합니다.\n\n\n  다른 타입의 스펙으로 변경하려면 [내 서버 이미지] 기능을 이용해서 서버 이미지를 생성한 다음, 다른 타입으로 서버를 새로 만들어야 합니다.\n\n\n\n\n\n  타입 간 스펙 변경이 가능한 경우 타입간 스펙 변경은 대부분은 불가능하나 Classic 1세대의 Compact 타입과 Standard 타입 간에는 스펙 변경을 할 수 있습니다.\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/compute/compute-1-1-v2.html\n\n\n  문서 최종 수정일 : 2020-11-13"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"1-compute-ncp-server-micro-limit": {
+						"id": "1-compute-ncp-server-micro-limit",
+						"title": "Micro 타입 서버에서 사용할 수 없는 서비스",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_server_micro_limit/",
+						"content": "개요\n네이버 클라우드에서 제공하는 서버 타입 중에서 Micro 타입의 서버는 신규 가입 후 최초 결제수단 등록월부터 1년간 무료로 제공되는 체험용 서버입니다.\n계정당 1대만 이용 가능하며 1년이 지나면 유료로 전환됩니다.\n\n제한되는 서비스\nMicro 타입의 서버에서 사용할 수 없는 서비스는 다음과 같습니다.\n\n\n  mssql\n  LAMP, WordPress, LEMP 등\n  Network Interface\n  Private Subnet\n\n\nMSSQL\nmssql 중에서 mssql 2017 Express은 무료로 제공되는 서비스이지만, mssql이 1년 무료제공 서버인 Micro서버에서는 설치가 되지 않기 때문에, compact 이상의 유료 서버를 이용해야 합니다.\n즉, mssql 2017 Express는 무료이나 서버와 그에 따른 하드 디스크 비용은 유료입니다.\n\nLAMP\nLAMP (Linux + Apache, Mysql, PHP)의 경우 Micro 타입의 서버에 설치를 할 수 없고, Standard 이상의 서버에서만 설치할 수 있는데, 대신 네이버 클라우드에서는 LAMP 등 많이 사용되는 오픈 소스 소프트웨어가 설치된 서버를 쉽게 이용할 수 있도록 해주는 서비스인 Application Server Launcher를 제공하고 있습니다.\n\nApplication Server Launcher에서는 원하는 소프트웨어의 이미지를 선택하기만 하면 쉽게 Micro 타입의 서버를 세팅하고 이용할 수 있습니다.\n\n\n  다만, Application Server Launcher에서 생성한 서버도 Micro 타입의 서버이기 때문에 계정당 1개만 제공되는 Micro 타입 서버 기준에 따라 Micro 타입의 서버는 더 이상 추가할 수 없습니다.\n\n\nApplication Server Launcher에서 OS버전(CentOS, Ubuntu)별로 제공되는 애플리케이션은 다음과 같은데 현재(2020년 11월 12일 기준)는 Ubuntu만 제공 되고 있습니다.\n\n\n  Drupal (CMS)\n  Joomla! (CMS)\n  Magento (E-Commerce)\n  Shadowsocks (VPN)\n  LAMP (Web Stack)\n  WordPress (CMS)\n  Jenkins (Dev Tools)\n\n\nPrivate Subnet\nPrivate Subnet을 구성해서 서버환경을 만들려고 해도 Micro 서버 타입은 Network Interface를 추가할 수 없고, 그에 따라 Private Subnet도 적용할 수 없습니다.\n\n참고 URL\nhttps://docs.ncloud.com/ko/compute/compute-1-1-v2.html\nhttps://docs.ncloud.com/ko/asl/asl_console.html\n\n\n  문서 최종 수정일 : 2020-11-13"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"1-compute-ncp-lamp-config-basic": {
+						"id": "1-compute-ncp-lamp-config-basic",
+						"title": "네이버 클라우드 LAMP 기본 환경 설정 정보",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_lamp_config_basic/",
+						"content": "LAMP 기본설정\n\nNCP(네이버 클라우드 플랫폼, 이하 네이버 클라우드)에서 제공하는 Application중에서 가장 대표적인 LAMP(Linux + Apache, Mysql, PHP)의 기본설정입니다.\n\n\n  “2020-12-03 현재 LAMP를 포함한 Application 이미지들은 Classic 환경에서만 이용 가능합니다.  VPC 환경에서는 아직 지원하지 않고 향후 업데이트 예정입니다”\n\n\nLAMP 홈디렉토리\n네이버 클라우드에서 Linux 서버를 세팅하게 되면 기본적으로 root 계정으로 접속이 됩니다.\n그래서 LAMP 서비스의 홈디렉토리도 /root/lamp로 설정됩니다.\n\nLAMP 서비스 홈디렉토리 : /root/lamp\n\n\nLAMP 서비스 전체 재시작\n네이버 클라우드에서는 LAMP 전체 서비스를 빠르게 재시작할 수 있는 기능을 제공하고 있습니다.\n\nLAMP 서비스 전체 재시작 명령 : /root/lamp/lamp_restart.sh\n\n\n위 명령을 실행하면 Apache 와 mysql이 순서대로 재시작됩니다.\n\nLAMP 서비스 설치 상태 확인\n네이버 클라우드에서는 LAMP 서비스들의 설치 정보를 확인할 수 있는 기능도 제공하고 있습니다.\n\nLAMP 설치 상태와 정보 확인 명령 : /root/lamp/lamp_info.sh\n\n\n위 명령을 실행하면 LAMP의 기본 웹사이트 경로, 웹사이트 기본 디렉토리, mysql 초기 비번 안내, Apache 버전, mysql 버전, PHP와 Zend 버전 정보 등을 확인할 수 있습니다.\n\nLAMP 웹사이트 기본 디렉토리\n네이버 클라우드에서 제공하는 LAMP의 웹사이트 기본 디렉토리 위치는 다음과 같습니다.\n\n웹사이트 기본 디렉토리 : /ncp/data/www\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/lamp/lamp-1-1.html\n\n\n  문서 최종 수정일 : 2020-12-03"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"1-compute-ncp-lamp-config-ubuntu": {
+						"id": "1-compute-ncp-lamp-config-ubuntu",
+						"title": "LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_lamp_config_Ubuntu/",
+						"content": "Apache 시작, 중지, 재시작\nApache 시작, 중지, 재시작 명령어는 OS별로 조금씩 다른데 Ubuntu의 경우에는 systemctl [stop|start|restart] {서비스명} 의 순서로 되어 있습니다.\n\nUbuntu\n- 중지 : systemctl stop apache2\n- 시작 : systemctl start apache2\n- 재시작 : systemctl restart apache2\n\n\nmysql 시작, 중지, 재시작\nmysql 시작, 중지, 재시작 명령어도 Apache와 마찬가지로 systemctl [stop|start|restart] {서비스명} 의 순서로 되어 있습니다.\n\nUbuntu\n- 중지 : systemctl stop mysql\n- 시작 : systemctl start mysql\n- 재시작 : systemctl restart mysql\n\n\nApache 환경 설정 파일\nApache의 기본 환경설정 파일은 CentOS의 경우 httpd.conf라는 파일로 간단하게 구성되어 있는데 Ubuntu의 경우에는 포트, 가상호스트, 로그 등 각각의 항목별로 파일이 나뉘어져 있습니다.\n\nUbuntu\n- 기본 설정 : /etc/apache2/apache2.conf\n- 포트 설정 : /etc/apache2/ports.conf\n- 가상호스트 설정: /etc/apache2/sites-enabled/000-default.conf -&gt; /etc/apache2/sites-available/000-default.conf\n- 로그 : /var/log/apache2\n- 기타 옵션 설정 :\n  /etc/apache2/mods-enabled/*.load -&gt; /etc/apache2/mods-available/*.load\n  /etc/apache2/mods-enabled/*.conf -&gt; /etc/apache2/mods-available/*.conf\n\n\nPHP 환경 설정 파일\nPHP의 환경 설정파일인 php.ini는  PHP버전에 해당 하는 디렉토리에 위치하고 있습니다.\nphp.ini : /etc/php/7.2/apache2/php.ini\n\n\nmysql 환경 설정 파일\n\nmysql 환경  설정파일인 my.cnf는 OS버전과 관계없이 /etc/mysql/my.cnf 에 위치하고 있으며, 실제로는 /etc/alternatives/my.cnf로 링크되어 있습니다.\nmy.cnf : /etc/mysql/my.cnf -&gt; /etc/alternatives/my.cnf\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/lamp/lamp-1-1.html\n\n\n  문서 최종 수정일 : 2020-11-13"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"1-compute-ncp-lamp-config-centos": {
+						"id": "1-compute-ncp-lamp-config-centos",
+						"title": "LAMP(CentOS) 기본 명령어와 환경 설정 파일 위치",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_lamp_config_CentOS/",
+						"content": "Apache 시작, 중지, 재시작\n\nApache 시작, 중지, 재시작 명령어는 CentOS 6에서 사용하던 것이 CentOS 7이 되면서 변경되었습니다.\nCentOS 6.x 이하에서는 service {서비스명} [stop|start|restart] 순서였다면 CentOS 7.X 에서는 systemctl [stop|start|restart] {서비스명} 의 순서로 바뀌었습니다.\n내용을 정리하면 다음과 같습니다.\n\nCentOS 6.x 이하\n- 중지 : service httpd stop\n- 시작 : service httpd start\n- 재시작 : service httpd restart\n\n\nCentOS 7.x\n- 중지 : systemctl stop httpd\n- 시작 : systemctl start httpd\n- 재시작 : systemctl restart httpd\n\n\nmysql 시작, 중지, 재시작\nmysql도 Apache와 마찬가지 방식으로 CentOS 6 이하와 CentOS 7에서 사용하는 명령어가 변경되었습니다.\n\nCentOS 6.x 이하\n- 중지 : service mysqld stop\n- 시작 : service mysqld start\n- 재시작 : service mysqld restart\n\n\nCentOS 7.x\n- 중지 : systemctl stop mysqld\n- 시작 : systemctl start mysqld\n- 재시작 : systemctl restart mysqld\n\n\nApache 환경 설정 파일\n\nApache의 환경 설정 파일은 CentOS의 버전과 관계없이 모두 동일합니다.\nhttpd.conf : /etc/httpd/conf/httpd.conf\n\n\nPHP 환경 설정 파일\nPHP의 환경 설정파일인 php.ini는  PHP버전에 해당 하는 디렉토리에 위치하고 있습니다.\nphp.ini : /etc/php/7.2/apache2/php.ini\n\n\nmysql 환경 설정 파일\n\nmysql 환경  설정파일인 my.cnf는 OS버전과 관계없이 /etc/mysql/my.cnf 에 위치하고 있으며, 실제로는 /etc/alternatives/my.cnf로 링크되어 있습니다.\nmy.cnf : /etc/mysql/my.cnf -&gt; /etc/alternatives/my.cnf\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/lamp/lamp-1-1.html\n\n\n  문서 최종 수정일 : 2020-11-13"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"91-aws-aws-cloudwatch-log": {
+						"id": "91-aws-aws-cloudwatch-log",
+						"title": "AWS CLOUDWATCH LOG 수집 매뉴얼",
+						"categories": "91.AWS",
+						"url": " /91.aws/aws_CLOUDWATCH-LOG/",
+						"content": "사전 작업\n\nIAM 계정생성 및 권한 부여\n\ncloudwatch log수집을 위해서는 서버 작업과 별도로 IAM 계정생성과 권한할당 작업을 선 진행하여야하며 작업이 완료된 후 계정의 액세스키, 비밀키를 발급 받는다.\n\n\n  \n    계정생성\n   계정생성- 계정이름 입력- 액서스 유형 Programmatic access 선택\n  \n  \n    권한설정\n  \n\n\n기존 정책 직접 연결 선택 - CloudWatchAgentServerPolicy정책 추가\n\n  키확인\n\n\n액세스 키 확인 및 비밀키 확인\n\n서버 작업\n\n설치 작업\n\n\n  awslogs 설치는 다음 명령어를 통해 설치\nyum install -y awslogs\n  \n    aws configure를 통한 IAM 키 입력\n\n    aws configure 명령어 입력 - 액세스키 요구 및입력 - 비밀키 요구및 입력(위 IAM계정의 키 입력)\n  \n\n\n설정 관련\n\n\n  \n    /etc/awslogs/awscli.conf\n\n    region = ap-northeast-2 추가 설정없이 리전만 로그 수집을 위한 리전으로 변경\n  \n  \n    /etc/awslogs/awslog.conf\n\n    해당 컨피그 파일의 제일 하단에 로그 수집 대상 로그를 아래의 형식으로 작성\n\n    [/var/log/messages] – 수집로그 경로와 파일 지정\n\n    datetime_format = %b %d %H:%M:%S (로그의 데이터 포맷 지정)\n\n    file = /var/log/messages (로그 파일 위치)\n\n    buffer_duration = 5000 (로그 이벤트를 일괄 처리하는 기간을 지정합니다. 최소값은 5000ms이고, 기본값은 5000ms입니다.)\n\n    log_stream_name = {instance_id} (대상로그 스트림 이름 지정{instance_id}, {hostname}, {ip_address})\n\n    initial_position = start_of_file\n\n    log_group_name = /var/log/messages(cloudwatch 로그 그룹네임 지정 )\n\n    time_zone=LOCAL\n\n    multi_line_start_pattern ={datetime_format} (로그 줄 단위 기준점. datetime_fomat 멀티라인 처리)\n  \n  \n    /var/log/awslogs.log\n\n    awslogs서비스 실행 후 발생되는 로그.\n  \n\n\n실행 및 자동실행 등록\n\n\n  실행 명령어 service awslogs start\n  리붓시 자동실행 등록 chkconfig awslogs on (amazon linux2 인 경우 systemctl enable awslogsd.service)\n\n\ncloudwatch 설정\n\n정상적으로 서버의 로그가 수집된다면 cloudwatch - log항목에서 서버에서 지정한 로그 그룹네임이 보이며 이를 클릭시 서버 인스턴스 ID별로 로그 수집되는 내역 확인 가능\n\n수집된 데이터는 대시보드를 통해 데이터를 보여주는기능은 바로 가능하나 이를 가지고 그래프를 통한 시각화를 할수 없어 지표를 통한 그래프를 생성하여야함.\n\n\n  \n    cloudwatch -로그- 로그그룹중 필터기능을 쓸 지표선택 -지표 필터 클릭\n  \n  \n    지표 필터 추가 버튼 클릭\n  \n  \n    필터링 하고자하는 값을 넣고 [정규식지원]패턴 테스트 후 지표할당 클릭\n  \n  \n    이후 지표 네임스페이스는 로그 그룹 네임 중 추출하고자하는 지표영역 지표이름은 해당 지표를 선택\n  \n  \n    cloudwatch - 지표 선택 - 모든 지표에서 로그 그룹 필터를 적용한 로그 그룹의 incomingLogEvents선택\n  \n  \n    그래프로 표시된 지표 탭 선택 - 필터가 적용된 그래프가 나오며 그래프의 작업 대시보드 추가를 선택하여\n\n    대시보드로 그래프 등록\n  \n\n\n오류 대처 법\n\n로그 수집이 되지 않고 awslogs.log파일에 아래와 같이 로그 가 찍히는 경우 처리 방안\n\n\n  reason: timestamp is more than 2 hours in future.\n\n\n\n  /var/lib/awslogs/agent-state를 삭제\n\n\n해당 방법으로 처리시 수집되는 로그가 처음부터 다시 로그가 수집됩\n\n\n  \n    sqlite3 명령어를 통해 agent-state 오류 처리\n  \n  sudo sqlite3 /var/lib/awslogs/agent-state\n  select * from stream_state; 통해 문제가 되는 소스ID확인\n  select * from push_state where k=”확인된 소스ID”;\n  update push_state set v=’… insert new value here …’ where k=’7675f84405fcb8fe5b6bb14eaa0c4bfd’;\n  service awslogs restart\n\n\n참고 URL\n\nhttps://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/AgentReference.html\n\nhttps://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html\n\nhttps://stackoverflow.com/questions/40604940/cloudwatch-logs-acting-weird"
+					}
+					
+				
+			
+		
+	};
+</script>
+<script src="/js/lunr.min.js" charset="utf-8"></script>
+<script src="/js/search.js" charset="utf-8"></script>
+			</div>
+		</section>
+
+		<footer>
+	<div class="wrapper">
+		<p class="edit-footer"><a class="editor-link btn" href="cloudcannon:collections/_data/footer.yml" class="btn" style="padding: 5px;"><strong>&#9998;</strong> Edit footer</a></p>
+		<ul class="footer-links">
+			
+				<li><a target="_blank" href="https://www.facebook.com/3rdeyesys" class="Facebook-icon">
+					
+						
+		<svg class="facebook" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19,4V7H17A1,1 0 0,0 16,8V10H19V13H16V20H13V13H11V10H13V7.5C13,5.56 14.57,4 16.5,4M20,2H4A2,2 0 0,0 2,4V20A2,2 0 0,0 4,22H20A2,2 0 0,0 22,20V4C22,2.89 21.1,2 20,2Z" /></svg>
+	
+
+					
+					</a></li>
+			
+				<li><a target="_blank" href="mailto:biz@3rdeyesys.com" class="Email-icon">
+					
+						
+			<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+		
+
+					
+					</a></li>
+			
+		</ul>
+		<p class="copyright">&copy; 3rdeyesys 2020. All rights reserved.</p>
+	</div>
+</footer>
+
+		<script>
+			$(function() {
+				$('a[href*=\\#]').not(".no-smooth").on('click', function(event){
+					var el = $(this.hash);
+					if (el.length > 0) {
+						// event.preventDefault();
+						$('html,body').animate({scrollTop:$(this.hash).offset().top - 50}, 500);
+					}
+				});
+
+				$('svg').click(function() {
+					$(this).parent('form').submit();
+				});
+			});
+
+			document.getElementById("open-nav").addEventListener("click", function (event) {
+				event.preventDefault();
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>

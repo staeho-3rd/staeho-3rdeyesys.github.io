@@ -1,0 +1,8 @@
+- name:
+  link: https://www.facebook.com/3rdeyesys
+  social_icon: Facebook
+  target: _blank
+- name:
+  link: mailto:biz@3rdeyesys.com
+  social_icon: Email
+  target: _blank
