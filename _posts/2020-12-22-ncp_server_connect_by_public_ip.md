@@ -20,7 +20,7 @@ order_number: 10
 1. 포트 포워딩 설정 해제 (설정되어 있을 경우)
 2. 관리자(root) 비밀번호 확인
 3. 터미널 프로그램(Putty) 실행
-4. 공인IP와 ACG에서 설정한 포트로 접속
+4. 공인IP로 접속
 5. 위 2번 관리자 비밀번호 확인에서 기록한 비번 입력
 
 
@@ -61,7 +61,7 @@ order_number: 10
 
 ## 터미널 프로그램(Putty) 실행
 
-Putty를 실행해서 서버 생성 시에 ACG에서 설정한 포트와 공인IP를 입력합니다
+Putty를 실행해서 공인IP를 입력합니다
 <img src="../../images/ncp_server_connect_16.jpg" alt="터미널 프로그램(Putty) 실행" style="width:800px;align:center">
 
 
