@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2020-12-22T01:41:51+00:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">서버 접속 가이드(Linux) - 공인IP 있을 때</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_connect_by_public_ip/" rel="alternate" type="text/html" title="서버 접속 가이드(Linux) - 공인IP 있을 때" /><published>2020-12-22T00:00:00+00:00</published><updated>2020-12-22T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_connect_by_public_ip</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_connect_by_public_ip/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2020-12-22T02:09:37+00:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">서버 접속 가이드(Linux) - 공인IP 있을 때</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_connect_by_public_ip/" rel="alternate" type="text/html" title="서버 접속 가이드(Linux) - 공인IP 있을 때" /><published>2020-12-22T00:00:00+00:00</published><updated>2020-12-22T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_connect_by_public_ip</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_connect_by_public_ip/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드에서 리눅스 서버에 접속하는 방법 중에서 공인아이피가 있을 때 접속하는 방법에 대한 내용을 정리하였습니다.
 여기서는 서버에 접속하는 방법을 정리하기 때문에 이미 서버는 생성되어 있다는 전제하게 정리하게 됩니다.&lt;/p&gt;
 
@@ -15,9 +15,9 @@
 
 &lt;h2 id=&quot;포트-포워딩-설정-해제-설정되어-있을-경우&quot;&gt;포트 포워딩 설정 해제 (설정되어 있을 경우)&lt;/h2&gt;
 
-&lt;p&gt;네이버 클라우드에서는 포트 포워딩과 공인 IP가 동시에 설정되어 있을 경우 포트 포워딩이 우선 적용됩니다.&lt;br /&gt;
-즉, &lt;strong&gt;포트 포워딩이 설정된 상태에서는 Putty로 접속할 때 공인IP로는 접속 되지 않는다&lt;/strong&gt;는 뜻입니다.&lt;br /&gt;
-그러므로, 서버 접속을 공인 IP로 하는 경우에는 포트 포워딩을 해제하시고,&lt;br /&gt;
+&lt;p&gt;네이버 클라우드에서는 Server, Bare Metal Server에서 공인 IP와 포트 포워딩을 동시에 사용하면 22(Linux), 3389(Windows) 포트가 포트 포워딩에 먼저 할당되므로 공인 IP에서 해당 포트 사용이 불가해집니다.&lt;br /&gt;
+즉, &lt;strong&gt;포트 포워딩이 설정된 상태에서는 Putty로 접속할 때 공인IP로는 22, 3389 포트가 접속 되지 않는다&lt;/strong&gt;는 뜻입니다.&lt;br /&gt;
+그러므로, 공인 IP로 22, 3389 포트에 접속하는 경우에는 포트 포워딩을 해제하시고,&lt;br /&gt;
 포트 포워딩을 설정하지 않았다면 다음 순서인 관리자(root) 비밀번호 확인으로 바로 이동하시면 되겠습니다.
 &lt;img src=&quot;../../images/ncp_server_connect_14.jpg&quot; alt=&quot;포트 포워딩 설정&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
 
@@ -66,7 +66,8 @@
   &lt;p&gt;문서 최종 수정일 : 2020-12-22&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서 리눅스 서버에 접속하는 방법 중에서 공인아이피가 있을 때 접속하는 방법에 대한 내용을 정리하였습니다. 여기서는 서버에 접속하는 방법을 정리하기 때문에 이미 서버는 생성되어 있다는 전제하게 정리하게 됩니다.</summary></entry><entry><title type="html">서버 접속 가이드(Linux) - 공인IP 없을 때</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_connect_no_public_ip/" rel="alternate" type="text/html" title="서버 접속 가이드(Linux) - 공인IP 없을 때" /><published>2020-12-21T00:00:00+00:00</published><updated>2020-12-21T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_connect_no_public_ip</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_connect_no_public_ip/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드에서 리눅스 서버에 접속하는 방법 중에서 공인아이피가 없을 때 접속하는 방법에 대한 내용을 정리하였습니다.
-여기서는 서버에 접속하는 방법을 정리하기 때문에 이미 서버는 생성되어 있다는 전제하게 정리하게 됩니다.&lt;/p&gt;
+여기서는 서버에 접속하는 방법을 정리하기 때문에 이미 서버는 생성되어 있다는 전제하게 정리하게 됩니다.&lt;br /&gt;
+또한, Classic 과 VPC 환경 중에서 VPC는 포트 포워딩이 없고 공인 IP로만 접속하기 때문에 아래에서 설명하는 내용은 Classic 환경 기준입니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;요약&quot;&gt;요약&lt;/h2&gt;
 &lt;p&gt;우선은 전체 과정을 텍스트로 간단하게 요약해서 살펴보고 스크린샷을 포함한 상세 과정은 아래쪽에서 살펴보겠습니다.&lt;/p&gt;
@@ -140,7 +141,7 @@
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2020-12-21&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서 리눅스 서버에 접속하는 방법 중에서 공인아이피가 없을 때 접속하는 방법에 대한 내용을 정리하였습니다. 여기서는 서버에 접속하는 방법을 정리하기 때문에 이미 서버는 생성되어 있다는 전제하게 정리하게 됩니다.</summary></entry><entry><title type="html">http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/CentOS</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_centos/" rel="alternate" type="text/html" title="http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/CentOS" /><published>2020-12-09T00:00:00+00:00</published><updated>2020-12-09T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_centos</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_centos/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서 리눅스 서버에 접속하는 방법 중에서 공인아이피가 없을 때 접속하는 방법에 대한 내용을 정리하였습니다. 여기서는 서버에 접속하는 방법을 정리하기 때문에 이미 서버는 생성되어 있다는 전제하게 정리하게 됩니다. 또한, Classic 과 VPC 환경 중에서 VPC는 포트 포워딩이 없고 공인 IP로만 접속하기 때문에 아래에서 설명하는 내용은 Classic 환경 기준입니다.</summary></entry><entry><title type="html">http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/CentOS</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_centos/" rel="alternate" type="text/html" title="http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/CentOS" /><published>2020-12-09T00:00:00+00:00</published><updated>2020-12-09T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_centos</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_centos/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;웹사이트 SSL 인증서를 설치하고 https 접속을 유도할 때 http로 접속하면 https로 강제로 리다이렉트 시키는 방법을 사용하는 경우가 많습니다.&lt;br /&gt;
 웹페이지 소스에서 http 접속 여부를 판단해서 redirect 시키는 방법 등 여러가지 있을 수 있는데 여기서는 Apache 설정으로 쉽게 할 수 있는 방법을 소개합니다.&lt;/p&gt;
 
