@@ -70,6 +70,12 @@ defaults:
     values:
       body_class: "show_hero_search"
 
+  -
+    scope:
+      path:            "docs_old/**/*.*"
+    values:
+      sitemap:         false
+
 # -----------
 # CloudCannon
 

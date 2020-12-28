@@ -29,6 +29,6 @@ faq:
 
 	{% for item in page.faq %}
 		<h2 id="{{ item.question | slugify}}">{{ item.question }}<a class="header-link" href="#{{ item.question | slugify }}">#</a></h2>
-		<p>{{ item.answer }} {% if item.link %}<br /><span style="font-size:15px">- 참고문서: <a href="{{ item.link }}" style="text-decoration:none">{{ site.url }}{{ item.link }}</span></a>{% endif %}</p>
+		<p>{{ item.answer }} {% if item.link %}<br /><span style="font-size:15px">- 참고문서: <a href="{{ item.link }}" style="text-decoration:none">{{ site.url }}{{ item.link }}</a></span>{% endif %}</p>
 	{% endfor %}
 </section>

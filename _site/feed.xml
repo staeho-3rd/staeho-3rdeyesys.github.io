@@ -1,4 +1,112 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2020-12-22T02:19:37+00:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">서버 접속 가이드(Linux) - 공인IP 있을 때</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_connect_by_public_ip/" rel="alternate" type="text/html" title="서버 접속 가이드(Linux) - 공인IP 있을 때" /><published>2020-12-22T00:00:00+00:00</published><updated>2020-12-22T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_connect_by_public_ip</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_connect_by_public_ip/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2020-12-28T08:08:18+00:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">스토리지 비교</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_compare/" rel="alternate" type="text/html" title="스토리지 비교" /><published>2020-12-24T00:00:00+00:00</published><updated>2020-12-24T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_compare</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_compare/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드에서 제공하는 스토리지들의 주요 기능과 용도를 QnA 형식으로 비교 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;비교-대상-스토리지&quot;&gt;비교 대상 스토리지&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Block Storage&lt;/li&gt;
+  &lt;li&gt;Object Storage&lt;/li&gt;
+  &lt;li&gt;NAS&lt;/li&gt;
+  &lt;li&gt;Archive Storage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;가격-비교&quot;&gt;가격 비교&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;스토리지&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;구분&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;과금 단위&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;시간 당 요금&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;500G 기준 요금&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;기타 사항&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Block Storage&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;HDD&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;10G&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.8원&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;40원&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;SDD&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;10G&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1.6원&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;80원&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;NAS&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;500G&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;50원&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;50원&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Object Storage&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1PB 이하&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1G&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.039원&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;19.5원&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;트래픽, API요청수 요금 별도&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1PB 초과&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1G&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.036원&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;18원&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;트래픽, API요청수 요금 별도&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Archive Storage&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1G&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.0076원&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.8원&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;트래픽, API요청수 요금 별도&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;qna&quot;&gt;QnA&lt;/h2&gt;
+&lt;h3 id=&quot;서버에-디스크를-추가하고-싶을-때는-어떤-스토리지를-사용하면-되나요&quot;&gt;서버에 디스크를 추가하고 싶을 때는 어떤 스토리지를 사용하면 되나요?&lt;/h3&gt;
+&lt;p&gt;Block Storage를 사용하면 됩니다.&lt;br /&gt;
+Console - Server - 서버 상세 정보 - 스토리지 생성 메뉴에서 스토리지를 추가하고 서버에 마운트해서 사용하시면 됩니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;여러-서버에서-공용으로-사용할-스토리지가-필요합니다&quot;&gt;여러 서버에서 공용으로 사용할 스토리지가 필요합니다.&lt;/h3&gt;
+&lt;p&gt;NAS 서비스를 이용하시면 됩니다.&lt;br /&gt;
+서버 간 데이터 공유, 대용량 스토리지, 유연한 용량 확대/축소, 스냅샷 백업 등 NAS 서비스의 주요 기능을 활용해 안전하고 편리하게 데이터를 관리할 수 있습니다.&lt;br /&gt;
+특히, 프로토콜에 따른 인증 설정으로 높은 보안성을 제공하고, 이중화된 Controller 및 Disk Array Raid 구성으로 강력한 서비스 안정성을 확보하고 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;유저가-업로드-하는-이미지를-저장하고-싶습니다&quot;&gt;유저가 업로드 하는 이미지를 저장하고 싶습니다.&lt;/h3&gt;
+&lt;p&gt;Block Storage, Object Storage, NAS 모두 가능합니다만 용도에 따라 선택하시면 되겠습니다.&lt;br /&gt;
+매우 빠른 응답 속도가 필요하면 Block Storage.&lt;br /&gt;
+저렴한 비용과 여러 서버에서 동시에 이미지를 저장해야 한다면 Object Storage.&lt;/p&gt;
+
+&lt;h3 id=&quot;백업-자료를-오랜기간-보관해-두고-싶습니다&quot;&gt;백업 자료를 오랜기간 보관해 두고 싶습니다.&lt;/h3&gt;
+&lt;p&gt;Archive Storage를 이용하시면 됩니다.&lt;br /&gt;
+Archive Storage는 높은 내구성과 저렴한 비용이 특징인 데이터 아카이빙 및 장기 백업에 최적화된 스토리지 서비스입니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;aws-s3와-비슷한-스토리지는-어떤-건가요&quot;&gt;AWS S3와 비슷한 스토리지는 어떤 건가요?&lt;/h3&gt;
+&lt;p&gt;Object Storage입니다.&lt;br /&gt;
+네이버 클라우드의 Object Storage는 AWS의 S3에서 사용하는 API와 호환이 되므로 쉽게 사용하실 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;cdn를-서비스를-이용하려면-어떤-스토리지를-사용해야-하나요&quot;&gt;CDN를 서비스를 이용하려면 어떤 스토리지를 사용해야 하나요?&lt;/h3&gt;
+&lt;p&gt;Object Storage를 사용하시면 됩니다.&lt;br /&gt;
+물론 CDN의 원본 서버로 설정할 수 있는 것은 자체 웹 서버 및 네이버 클라우드 Object Storage, Server 등이 있는데, 그 중에서도 Object Storage를 사용하시는 것이 가장 쉽고 안정적입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/storage/storage-5-1.html&quot; target=&quot;_blank&quot;&gt;https://docs.ncloud.com/ko/storage/storage-5-1.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2020-12-28&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서 제공하는 스토리지들의 주요 기능과 용도를 QnA 형식으로 비교 정리해보겠습니다.</summary></entry><entry><title type="html">서버 접속 가이드(Linux) - 공인IP 있을 때</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_connect_by_public_ip/" rel="alternate" type="text/html" title="서버 접속 가이드(Linux) - 공인IP 있을 때" /><published>2020-12-22T00:00:00+00:00</published><updated>2020-12-22T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_connect_by_public_ip</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_connect_by_public_ip/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드에서 리눅스 서버에 접속하는 방법 중에서 공인아이피가 있을 때 접속하는 방법에 대한 내용을 정리하였습니다.
 여기서는 서버에 접속하는 방법을 정리하기 때문에 이미 서버는 생성되어 있다는 전제하게 정리하게 됩니다.&lt;/p&gt;
 
@@ -764,111 +872,4 @@ TCP 세련 유지에 최적화 되어 있으며, Network Load Balancer와 다르
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2020-12-01&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Load Balancer는 수신 트래픽을 다수의 서버로 분산시키는 서비스로서, 수신 트래픽을 등록된 멤버 서버로 분산시켜 가용성을 높이고 시스템 가동률을 조절하는 역할을 수행합니다. VPC 플랫폼에서는 Network Load Balancer / Application Load Balancer / Network Proxy Load Balancer 가 제공되어 서비스에 적합한 로드밸런서를 선택할 수 있습니다.</summary></entry><entry><title type="html">mkdocs 설치 (윈도 10)</title><link href="https://docs.3rdeyesys.com/99.etc/etc_mkdocs_install/" rel="alternate" type="text/html" title="mkdocs  설치 (윈도 10)" /><published>2020-11-30T00:00:00+00:00</published><updated>2020-11-30T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/99.etc/etc_mkdocs_install</id><content type="html" xml:base="https://docs.3rdeyesys.com/99.etc/etc_mkdocs_install/">&lt;h2 id=&quot;설치-전체과정-요약&quot;&gt;설치 전체과정 요약&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Python 다운로드&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Python 설치&lt;/p&gt;
-
-    &lt;p&gt;2-1. Add Python 3.9 to PATH 옵션 선택&lt;/p&gt;
-
-    &lt;p&gt;2-2. Disable path length limit 선택&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;mkdocs 설치&lt;/p&gt;
-
-    &lt;p&gt;3-1. pip install mkdocs-material&lt;/p&gt;
-
-    &lt;p&gt;3-2. python.exe -m pip install –upgrade pip&lt;/p&gt;
-
-    &lt;p&gt;3-3. pip install mkdocs-awesome-pages-plugin&lt;/p&gt;
-
-    &lt;p&gt;3-4. mkdocs new {폴더명}&lt;/p&gt;
-
-    &lt;p&gt;3-5. cd blog-mkdocs 이동 후 mkdocs serve&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;python-다운로드&quot;&gt;Python 다운로드&lt;/h2&gt;
-&lt;p&gt;mkdocs를 사용하려면 먼저 Python을 설치해야 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot; target=&quot;_blank&quot;&gt;https://www.python.org/downloads/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;2020-11-27일 현재 최신버전은 3.9.0입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;python-설치하기&quot;&gt;Python 설치하기&lt;/h2&gt;
-
-&lt;h3 id=&quot;path-추가&quot;&gt;PATH 추가&lt;/h3&gt;
-&lt;p&gt;Python 설치 시작화면에 PATH에 python을 추가하는 옵션이 있습니다. &lt;br /&gt;
-“&lt;strong&gt;Add Python 3.9 to PATH&lt;/strong&gt;” 옵션을 선택하고 설치를 시작하면 됩니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;path-문자-길이-제한-해제&quot;&gt;PATH 문자 길이 제한 해제&lt;/h3&gt;
-&lt;p&gt;윈도에는 기본설정에 파일경로가 최대 260자로 제한되어 있는데, 이 제한을 풀것인지 확인하는 과정입니다.&lt;br /&gt;
-“&lt;strong&gt;Disable path length limit&lt;/strong&gt;” 옵션이 나오는데, 특별한 문제가 없다면 해제하고 가면 됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;mkdocs-설치&quot;&gt;mkdocs 설치&lt;/h2&gt;
-&lt;p&gt;mkdocs 설치하는 방법이 여러가지 있지만 가장 많이 사용되는 테마인 material 테마를 적용한 상태로 설치합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mkdocs-material
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;pip-업그레이드&quot;&gt;pip 업그레이드&lt;/h3&gt;
-&lt;p&gt;mkdocs를 설치하고 나면 pip 업그레이드에 대한 안내가 나옵니다.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;WARNING: You are using pip version 20.2.3; however, version 20.2.4 is available.
-You should consider upgrading via the 'c:\users\{***}\appdata\local\programs\python\python39\python.exe -m pip install --upgrade pip' command.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;안내에 나온대로 pip를 업그레이드 해줍니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python.exe &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--upgrade&lt;/span&gt; pip
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;awesome-pages-plugin-설치&quot;&gt;awesome-pages-plugin 설치&lt;/h3&gt;
-&lt;p&gt;문서 구조나 네비게이션을 좀 더 쉽게 표현하고 구성하게 해주는 플러그인입니다.
-기본적으로 설치해두는 것이 여러모로 편리합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mkdocs-awesome-pages-plugin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;블로그-문서-생성&quot;&gt;블로그 문서 생성&lt;/h2&gt;
-&lt;p&gt;이제 기본으로 필요한 것들은 다 설치했으니 블로그를 만들어봅시다.
-mkdocs new {폴더명}&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdocs new blog-mkdocs
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;블로그-실행&quot;&gt;블로그 실행&lt;/h2&gt;
-&lt;p&gt;이제 웹브라우져에서 블로그를 확인해봅시다.
-위에서 만들어진 폴더로 이동합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;blog-mkdocs
-mkdocs serve
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;그러면 http://127.0.0.1:8000 주소로 접속하면 기본 블로그를 확인해볼 수 있고 
-mkdocs serve 명령으로 문서 변경을 실시간으로 감지해서 문서를 수정하면 브라우져에 바로바로 반영됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;블로그-배포문서-생성&quot;&gt;블로그 배포문서 생성&lt;/h2&gt;
-&lt;p&gt;이제 만들어진 블로그 문서를 github 등이나 기타 서버로 배포하려면 다음과 같은 명령어를 입력하면 됩니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdocs build
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;그러면 아까 만들어진 blog-mkdocs 폴더 밑에 site 라는 폴더가 생성되고 그곳에 필요한 html 문서들이 만들어집니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;설치과정-스크린샷-모음&quot;&gt;설치과정 스크린샷 모음&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/python_install_01.png&quot; alt=&quot;python 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/python_install_02.png&quot; alt=&quot;python 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/python_install_03.png&quot; alt=&quot;python 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/mkdocs_install_01.png&quot; alt=&quot;mkdocs 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/mkdocs_install_02.png&quot; alt=&quot;mkdocs 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/mkdocs_install_03.png&quot; alt=&quot;mkdocs 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/mkdocs_install_04.png&quot; alt=&quot;mkdocs 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/mkdocs_install_05.png&quot; alt=&quot;mkdocs 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/mkdocs_install_06.png&quot; alt=&quot;mkdocs 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/mkdocs_install_07.png&quot; alt=&quot;mkdocs 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/mkdocs_install_08.png&quot; alt=&quot;mkdocs 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/mkdocs_install_09.png&quot; alt=&quot;mkdocs 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/mkdocs_install_10.png&quot; alt=&quot;mkdocs 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/mkdocs_install_11.png&quot; alt=&quot;mkdocs 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/mkdocs_install_12.png&quot; alt=&quot;mkdocs 설치 화면&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;“문서 최종 수정일 : 2020-11-30”&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">설치 전체과정 요약</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Load Balancer는 수신 트래픽을 다수의 서버로 분산시키는 서비스로서, 수신 트래픽을 등록된 멤버 서버로 분산시켜 가용성을 높이고 시스템 가동률을 조절하는 역할을 수행합니다. VPC 플랫폼에서는 Network Load Balancer / Application Load Balancer / Network Proxy Load Balancer 가 제공되어 서비스에 적합한 로드밸런서를 선택할 수 있습니다.</summary></entry></feed>
