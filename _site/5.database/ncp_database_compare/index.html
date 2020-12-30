@@ -162,12 +162,12 @@
     <tr>
       <td style="text-align: center">mysql</td>
       <td style="text-align: center">69,000원/월</td>
-      <td style="text-align: center">230,400원/월</td>
+      <td style="text-align: center">115,200원/월</td>
     </tr>
     <tr>
       <td style="text-align: center">MSSQL</td>
       <td style="text-align: center">379,000원/월</td>
-      <td style="text-align: center">809,280원/월</td>
+      <td style="text-align: center">614,880원/월</td>
     </tr>
   </tbody>
 </table>
@@ -180,9 +180,7 @@
 </ul>
 
 <h3 id="관리형-cloud">관리형 Cloud</h3>
-<ul>
-  <li>230,400원/월 : 160원(시간당) * 24(1일) * 30일(한달) * 2(장애 대비 자동 Fail-over용 DB포함)</li>
-</ul>
+<p>-115,200원/월 : 160원(시간당) * 24시간(1일) * 30일(한달)</p>
 
 <h2 id="비용-비교-상세-mssql">비용 비교 상세 (MSSQL)</h2>
 
@@ -193,8 +191,16 @@
 
 <h3 id="관리형-cloud-1">관리형 Cloud</h3>
 <ul>
-  <li>809,280원/월 : 1124원 (시간당 , 854원+270원: 장애 대비 자동 Fail-over용 Mirror DB 포함) * 24시간 * 30일</li>
+  <li>614,880원/월 : 854원 (시간당) * 24시간(1일) * 30일(한달)</li>
 </ul>
+
+<blockquote>
+  <p>관리형 Cloud for MSSQL은 2020년 12월 기준으로 Classic 환경에서만 이용 가능합니다. VPC 환경에서는 아직 이용할 수 없습니다.</p>
+</blockquote>
+
+<blockquote>
+  <p>관리형 Cloud for MSSQL에서 HA (Principal-Mirror 구성) 구성을 할 경우, DBMS 라이선스 요금은 마스터/슬레이브 서버에만 적용됩니다.</p>
+</blockquote>
 
 <h2 id="설치형-db서버를-사용하면-좋은-경우">설치형 DB서버를 사용하면 좋은 경우</h2>
 <ul>
