@@ -1,4 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2020-12-28T08:08:18+00:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">스토리지 비교</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_compare/" rel="alternate" type="text/html" title="스토리지 비교" /><published>2020-12-24T00:00:00+00:00</published><updated>2020-12-24T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_compare</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_compare/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2020-12-30T07:16:21+00:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">일반 DB서버와 Cloud DB 비교</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_compare/" rel="alternate" type="text/html" title="일반 DB서버와 Cloud DB 비교" /><published>2020-12-28T00:00:00+00:00</published><updated>2020-12-28T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_compare</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_compare/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;서버에 DB가 설치된 상태로 제공되는 일반 DB서버와 Cloud 형태로 제공되는 DB서버는 어떤 특징과 차이점이 있는지 확인합니다.
+더불어 비용 비교와 함께 각각의 DB서버를 어떤 경우에 사용하면 좋은지 예시를 통해 DB서버 선택에 도움을 드리고자 합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;일반-db--특징&quot;&gt;일반 DB  특징&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;저렴한 비용&lt;/li&gt;
+  &lt;li&gt;DB관련 아주 세부적인 부분까지 직접 설정 가능&lt;/li&gt;
+  &lt;li&gt;자체 보유 중인 라이선스 사용 가능(MSSQL)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;cloud-db-특징&quot;&gt;Cloud DB 특징&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;빠르고 손쉬운 설치&lt;/li&gt;
+  &lt;li&gt;네이버 클라우드에서 검증된 최적화 설정&lt;/li&gt;
+  &lt;li&gt;자동으로 증가하는 데이터 스토리지 (MSSQL : 2TB까지, Mysql : 6000GB까지)&lt;/li&gt;
+  &lt;li&gt;장애 발생시 자동 Fail-over를 통한 장애 최소화를 할 수 있는 탁월한 가용성 제공&lt;/li&gt;
+  &lt;li&gt;읽기 부하 분산을 위한 읽기 전용 Slave 5개까지 지원&lt;/li&gt;
+  &lt;li&gt;자동화된 DB 백업, 최대 30일까지 보관&lt;/li&gt;
+  &lt;li&gt;성능 모니터링과 알람&lt;/li&gt;
+  &lt;li&gt;원하는 시간을 선택하여 DB 자동 복원 (Mysql)&lt;/li&gt;
+  &lt;li&gt;1분 단위의 쿼리 레벨 성능 분석을 지원 (MSSQL)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;비용-전체-비교&quot;&gt;비용 전체 비교&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;DB 서버 스펙 : Standard(2 vCPU, 4GB 메모리, 100GB 디스크)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;DB 구분&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;일반 DB (서버 비용 포함)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Cloud for DB&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;mysql&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;69,000원/월&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;230,400원/월&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;MSSQL&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;379,000원/월&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;809,280원/월&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;비용-비교-상세-mysql&quot;&gt;비용 비교 상세 (Mysql)&lt;/h2&gt;
+
+&lt;h3 id=&quot;일반&quot;&gt;일반&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;69,000원/월 : 서버 비용 + DB 무료&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cloud&quot;&gt;Cloud&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;230,400원/월 : 160원(시간당) * 24(1일) * 30일(한달) * 2(장애 대비 자동 Fail-over용 DB포함)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;비용-비교-상세-mssql&quot;&gt;비용 비교 상세 (MSSQL)&lt;/h2&gt;
+
+&lt;h3 id=&quot;일반-1&quot;&gt;일반&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;379,000원/월 : 69,000원(서버) + 20,000원(서버 Windows 라이선스) + 290,000원(MSSQL 라이선스)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cloud-1&quot;&gt;Cloud&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;809,280원/월 : 1124원 (시간당 , 854원+270원: 장애 대비 자동 Fail-over용 Mirror DB 포함) * 24시간 * 30일&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;일반-db서버를-사용하면-좋은-경우&quot;&gt;일반 DB서버를 사용하면 좋은 경우&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;사내에 DB전문가가 있을 경우&lt;/li&gt;
+  &lt;li&gt;서비스에 최적화된 DB설정을 하고 싶은 경우&lt;/li&gt;
+  &lt;li&gt;장애 시 자동 Fail-over가 굳이 필요하지 않은 경우&lt;/li&gt;
+  &lt;li&gt;DB백업을 원하는 방식으로 직접 하고 싶은 경우&lt;/li&gt;
+  &lt;li&gt;DB 사이즈가 일정 크기 이상으로 늘어나는 것을 원하지 않는 경우&lt;/li&gt;
+  &lt;li&gt;서비스 안정성 보다 비용 절감이 더 중요한 경우&lt;/li&gt;
+  &lt;li&gt;DB 라이선스를 자체 보유하고 있는 경우(MSSQL)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;cloud-db를-사용하면-좋은-경우&quot;&gt;Cloud DB를 사용하면 좋은 경우&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;장애 시 자동 Fail-over를 통해 서비스 중지 시간을 최소로 하고 싶을 경우&lt;/li&gt;
+  &lt;li&gt;DB의 읽기 요청이 많아서 읽기 전용 DB를 마련했을 때 효과가 큰 경우&lt;/li&gt;
+  &lt;li&gt;DB백업과 디스크 용량 증설 등이 특별한 작업 없이 자동으로 진행되길 원하는 경우&lt;/li&gt;
+  &lt;li&gt;비용보다 서비스 안정성이 더 중요한 경우&lt;/li&gt;
+  &lt;li&gt;DB전문가가 없는 경우&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.ncloud.com/product/database&quot; target=&quot;_blank&quot;&gt;https://www.ncloud.com/product/database&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2020-12-30&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 서버에 DB가 설치된 상태로 제공되는 일반 DB서버와 Cloud 형태로 제공되는 DB서버는 어떤 특징과 차이점이 있는지 확인합니다. 더불어 비용 비교와 함께 각각의 DB서버를 어떤 경우에 사용하면 좋은지 예시를 통해 DB서버 선택에 도움을 드리고자 합니다.</summary></entry><entry><title type="html">스토리지 비교</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_compare/" rel="alternate" type="text/html" title="스토리지 비교" /><published>2020-12-24T00:00:00+00:00</published><updated>2020-12-24T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_compare</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_compare/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드에서 제공하는 스토리지들의 주요 기능과 용도를 QnA 형식으로 비교 정리해보겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;비교-대상-스토리지&quot;&gt;비교 대상 스토리지&lt;/h2&gt;
@@ -249,7 +349,87 @@ Archive Storage는 높은 내구성과 저렴한 비용이 특징인 데이터 �
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2020-12-21&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서 리눅스 서버에 접속하는 방법 중에서 공인아이피가 없을 때 접속하는 방법에 대한 내용을 정리하였습니다. 여기서는 서버에 접속하는 방법을 정리하기 때문에 이미 서버는 생성되어 있다는 전제하게 정리하게 됩니다. 또한, Classic 과 VPC 환경 중에서 VPC는 포트 포워딩이 없고 공인 IP로만 접속하기 때문에 아래에서 설명하는 내용은 Classic 환경 기준입니다.</summary></entry><entry><title type="html">http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/CentOS</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_centos/" rel="alternate" type="text/html" title="http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/CentOS" /><published>2020-12-09T00:00:00+00:00</published><updated>2020-12-09T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_centos</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_centos/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서 리눅스 서버에 접속하는 방법 중에서 공인아이피가 없을 때 접속하는 방법에 대한 내용을 정리하였습니다. 여기서는 서버에 접속하는 방법을 정리하기 때문에 이미 서버는 생성되어 있다는 전제하게 정리하게 됩니다. 또한, Classic 과 VPC 환경 중에서 VPC는 포트 포워딩이 없고 공인 IP로만 접속하기 때문에 아래에서 설명하는 내용은 Classic 환경 기준입니다.</summary></entry><entry><title type="html">http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/Ubuntu</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_ubuntu/" rel="alternate" type="text/html" title="http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/Ubuntu" /><published>2020-12-09T00:00:00+00:00</published><updated>2020-12-09T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_ubuntu</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_ubuntu/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;웹사이트 SSL 인증서를 설치하고 https 접속을 유도할 때 http로 접속하면 https로 강제로 리다이렉트 시키는 방법을 사용하는 경우가 많습니다.&lt;br /&gt;
+웹페이지 소스에서 http 접속 여부를 판단해서 redirect 시키는 방법 등 여러가지 있을 수 있는데 여기서는 Apache 설정으로 쉽게 할 수 있는 방법을 소개합니다.&lt;/p&gt;
+
+&lt;p&gt;SSL 인증서가 설치되어 있다는 가정하에 우선 Linux Ubuntu에서 설정하는 방법을 확인해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;rewrite-모듈-설치&quot;&gt;Rewrite 모듈 설치&lt;/h2&gt;
+&lt;p&gt;혹시 Apache에 이미 &lt;code class=&quot;highlighter-rouge&quot;&gt;mod_rewrite&lt;/code&gt; 가 로드 되어 있다면 설치하지 않아도 됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@test-lamp:~# a2enmod rewrite
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;apache-conf-파일-수정&quot;&gt;Apache conf 파일 수정&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;/etc/apache2/sites-enabled/000-default.conf&lt;/strong&gt; 의 Vritual host에 다음 코드를 추가하고 Apache를 재시작하면 됩니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;RewriteEngine On
+RewriteCond %&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;HTTPS&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;on
+RewriteRule ^&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;https://%&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;HTTP_HOST&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;R,L]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;000-default.conf 파일에 실제로 적용하면 다음과 비슷한 모습이 되겠습니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;VirtualHost &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:80&amp;gt;
+	DocumentRoot &lt;span class=&quot;s2&quot;&gt;&quot;/ncp/data/www/&quot;&lt;/span&gt;
+	ServerName www.test.com
+
+	RewriteEngine On
+	RewriteCond %&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;HTTPS&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;on
+	RewriteRule ^&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;https://%&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;HTTP_HOST&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;R,L]
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;apache-재시작&quot;&gt;Apache 재시작&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@test-lamp:~# systemctl restart apache2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;이렇게 재시작하고 http로 접속을 해보면 https로 전환되는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;apache-재시작-오류---sslengine&quot;&gt;Apache 재시작 오류 - SSLEngine&lt;/h2&gt;
+&lt;p&gt;위 내용처럼 아파치 재시작 명령어를 입력하면 끝입니다만, 재시작이 되지 않고 오류 메시지가 뜨는 경우가 있습니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@test-lamp:~# systemctl restart apache2
+Job &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;apache2.service failed because the control process exited with error code. 
+See &lt;span class=&quot;s2&quot;&gt;&quot;systemctl status apache2.service&quot;&lt;/span&gt; and &lt;span class=&quot;s2&quot;&gt;&quot;journalctl -xe&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;details.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;오류 메시지에 나온 것 처럼 상세 내용을 확인해봅니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@test-lamp:~# systemctl status apache2.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;상세 오류 메시지 중에서 핵심 내용만 살펴보면 다음과 같습니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Dec 04 16:09:44 test-lamp apachectl[11924]: AH00526: Syntax error on line 36 of /etc/apache2/sites-enabled/000-default.conf:
+Dec 04 16:09:44 test-lamp apachectl[11924]: Invalid &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'SSLEngine'&lt;/span&gt;, perhaps misspelled or defined by a module not included &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;the server configuration
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 오류 메시지에 나온 /etc/apache2/sites-enabled/000-default.conf 파일을 찾아가서 SSLEngine을 확인해보면 다음과 같습니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;VirtualHost &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:443&amp;gt;
+    ServerName www.test.com
+    ServerAdmin web@test.com
+
+    &lt;span class=&quot;o&quot;&gt;{==&lt;/span&gt;SSLEngine &lt;span class=&quot;nv&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==}&lt;/span&gt;
+    SSLCertificateFile /etc/&lt;span class=&quot;k&quot;&gt;******&lt;/span&gt;/server.crt
+    SSLCertificateKeyFile /etc/&lt;span class=&quot;k&quot;&gt;******&lt;/span&gt;/server.key
+
+    &lt;span class=&quot;c&quot;&gt;###중략###&lt;/span&gt;
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;확인해보면 SSLEngine on 명령어가 제대로 동작하지 못해서 생긴 문제라는 것을 알 수 있습니다.   &lt;br /&gt;
+즉, SSL 모듈이 제대로 활성화 되지 않았기에 활성화 해주면 문제가 해결됩니다.&lt;br /&gt;
+(나중에 살펴보면 socache_shmcb 모듈이 활성화되지 않았기 때문임을 알 수 있습니다)&lt;/p&gt;
+
+&lt;h2 id=&quot;ssl-엔진-모듈-활성화&quot;&gt;SSL 엔진 모듈 활성화&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@test-lamp:~# a2enmod ssl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그리고 나서 다시 Apache를 재시작 하면 됩니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@test-lamp:~# systemctl restart apache2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이제 http로 접속하셔서 https로 전환되는지 확인해보시기 바랍니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2020-12-07&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 웹사이트 SSL 인증서를 설치하고 https 접속을 유도할 때 http로 접속하면 https로 강제로 리다이렉트 시키는 방법을 사용하는 경우가 많습니다. 웹페이지 소스에서 http 접속 여부를 판단해서 redirect 시키는 방법 등 여러가지 있을 수 있는데 여기서는 Apache 설정으로 쉽게 할 수 있는 방법을 소개합니다.</summary></entry><entry><title type="html">http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/CentOS</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_centos/" rel="alternate" type="text/html" title="http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/CentOS" /><published>2020-12-09T00:00:00+00:00</published><updated>2020-12-09T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_centos</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_centos/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;웹사이트 SSL 인증서를 설치하고 https 접속을 유도할 때 http로 접속하면 https로 강제로 리다이렉트 시키는 방법을 사용하는 경우가 많습니다.&lt;br /&gt;
 웹페이지 소스에서 http 접속 여부를 판단해서 redirect 시키는 방법 등 여러가지 있을 수 있는데 여기서는 Apache 설정으로 쉽게 할 수 있는 방법을 소개합니다.&lt;/p&gt;
 
@@ -356,202 +536,7 @@ Complete!
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2020-12-07&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 웹사이트 SSL 인증서를 설치하고 https 접속을 유도할 때 http로 접속하면 https로 강제로 리다이렉트 시키는 방법을 사용하는 경우가 많습니다. 웹페이지 소스에서 http 접속 여부를 판단해서 redirect 시키는 방법 등 여러가지 있을 수 있는데 여기서는 Apache 설정으로 쉽게 할 수 있는 방법을 소개합니다.</summary></entry><entry><title type="html">http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/Ubuntu</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_ubuntu/" rel="alternate" type="text/html" title="http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/Ubuntu" /><published>2020-12-09T00:00:00+00:00</published><updated>2020-12-09T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_ubuntu</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_ubuntu/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;웹사이트 SSL 인증서를 설치하고 https 접속을 유도할 때 http로 접속하면 https로 강제로 리다이렉트 시키는 방법을 사용하는 경우가 많습니다.&lt;br /&gt;
-웹페이지 소스에서 http 접속 여부를 판단해서 redirect 시키는 방법 등 여러가지 있을 수 있는데 여기서는 Apache 설정으로 쉽게 할 수 있는 방법을 소개합니다.&lt;/p&gt;
-
-&lt;p&gt;SSL 인증서가 설치되어 있다는 가정하에 우선 Linux Ubuntu에서 설정하는 방법을 확인해보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;rewrite-모듈-설치&quot;&gt;Rewrite 모듈 설치&lt;/h2&gt;
-&lt;p&gt;혹시 Apache에 이미 &lt;code class=&quot;highlighter-rouge&quot;&gt;mod_rewrite&lt;/code&gt; 가 로드 되어 있다면 설치하지 않아도 됩니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@test-lamp:~# a2enmod rewrite
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;apache-conf-파일-수정&quot;&gt;Apache conf 파일 수정&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;/etc/apache2/sites-enabled/000-default.conf&lt;/strong&gt; 의 Vritual host에 다음 코드를 추가하고 Apache를 재시작하면 됩니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;RewriteEngine On
-RewriteCond %&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;HTTPS&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;on
-RewriteRule ^&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;https://%&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;HTTP_HOST&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;R,L]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;000-default.conf 파일에 실제로 적용하면 다음과 비슷한 모습이 되겠습니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;VirtualHost &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:80&amp;gt;
-	DocumentRoot &lt;span class=&quot;s2&quot;&gt;&quot;/ncp/data/www/&quot;&lt;/span&gt;
-	ServerName www.test.com
-
-	RewriteEngine On
-	RewriteCond %&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;HTTPS&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;on
-	RewriteRule ^&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;https://%&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;HTTP_HOST&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;R,L]
-&amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;apache-재시작&quot;&gt;Apache 재시작&lt;/h2&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@test-lamp:~# systemctl restart apache2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;이렇게 재시작하고 http로 접속을 해보면 https로 전환되는 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;apache-재시작-오류---sslengine&quot;&gt;Apache 재시작 오류 - SSLEngine&lt;/h2&gt;
-&lt;p&gt;위 내용처럼 아파치 재시작 명령어를 입력하면 끝입니다만, 재시작이 되지 않고 오류 메시지가 뜨는 경우가 있습니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@test-lamp:~# systemctl restart apache2
-Job &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;apache2.service failed because the control process exited with error code. 
-See &lt;span class=&quot;s2&quot;&gt;&quot;systemctl status apache2.service&quot;&lt;/span&gt; and &lt;span class=&quot;s2&quot;&gt;&quot;journalctl -xe&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;details.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;오류 메시지에 나온 것 처럼 상세 내용을 확인해봅니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@test-lamp:~# systemctl status apache2.service
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;상세 오류 메시지 중에서 핵심 내용만 살펴보면 다음과 같습니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Dec 04 16:09:44 test-lamp apachectl[11924]: AH00526: Syntax error on line 36 of /etc/apache2/sites-enabled/000-default.conf:
-Dec 04 16:09:44 test-lamp apachectl[11924]: Invalid &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'SSLEngine'&lt;/span&gt;, perhaps misspelled or defined by a module not included &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;the server configuration
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;위 오류 메시지에 나온 /etc/apache2/sites-enabled/000-default.conf 파일을 찾아가서 SSLEngine을 확인해보면 다음과 같습니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;VirtualHost &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:443&amp;gt;
-    ServerName www.test.com
-    ServerAdmin web@test.com
-
-    &lt;span class=&quot;o&quot;&gt;{==&lt;/span&gt;SSLEngine &lt;span class=&quot;nv&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==}&lt;/span&gt;
-    SSLCertificateFile /etc/&lt;span class=&quot;k&quot;&gt;******&lt;/span&gt;/server.crt
-    SSLCertificateKeyFile /etc/&lt;span class=&quot;k&quot;&gt;******&lt;/span&gt;/server.key
-
-    &lt;span class=&quot;c&quot;&gt;###중략###&lt;/span&gt;
-&amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;확인해보면 SSLEngine on 명령어가 제대로 동작하지 못해서 생긴 문제라는 것을 알 수 있습니다.   &lt;br /&gt;
-즉, SSL 모듈이 제대로 활성화 되지 않았기에 활성화 해주면 문제가 해결됩니다.&lt;br /&gt;
-(나중에 살펴보면 socache_shmcb 모듈이 활성화되지 않았기 때문임을 알 수 있습니다)&lt;/p&gt;
-
-&lt;h2 id=&quot;ssl-엔진-모듈-활성화&quot;&gt;SSL 엔진 모듈 활성화&lt;/h2&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@test-lamp:~# a2enmod ssl
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;그리고 나서 다시 Apache를 재시작 하면 됩니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@test-lamp:~# systemctl restart apache2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이제 http로 접속하셔서 https로 전환되는지 확인해보시기 바랍니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2020-12-07&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 웹사이트 SSL 인증서를 설치하고 https 접속을 유도할 때 http로 접속하면 https로 강제로 리다이렉트 시키는 방법을 사용하는 경우가 많습니다. 웹페이지 소스에서 http 접속 여부를 판단해서 redirect 시키는 방법 등 여러가지 있을 수 있는데 여기서는 Apache 설정으로 쉽게 할 수 있는 방법을 소개합니다.</summary></entry><entry><title type="html">Security 서비스 요약</title><link href="https://docs.3rdeyesys.com/3.security/ncp_security_service_summary/" rel="alternate" type="text/html" title="Security 서비스 요약" /><published>2020-12-02T00:00:00+00:00</published><updated>2020-12-02T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/3.security/ncp_security_service_summary</id><content type="html" xml:base="https://docs.3rdeyesys.com/3.security/ncp_security_service_summary/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드에서 제공하는 Security 서비스 상품들을 간단한 설명과 함께 요약 정리한 내용입니다.
-이 내용도 파트너 테크데이에서 공개된 자료입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;서비스-요약&quot;&gt;서비스 요약&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;구분&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;상품&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;설명&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;침입탐지/대응&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Basic Security&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;모든 고객에게 기본으로 제공되는 무료 보안 서비스&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Security Monitoring&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;IDS, Anti-DDos, Anti-Virus, IPS, WAF와 같은 다양한 보안 상품들을 이용하여 높은 수준의 보안 서비스를 제공&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Site Safer&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;고객이 개발한 웹사이트가 해킹 또는 다른 보안 문제로 인해 악성코드를 배포하는지 검사&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;File Safer&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;고객의 서비스에서 제공하는 파일과 아웃링크 URL의 악성코드 감염 여부를 해시 기반으로 검사&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;App Safer&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;고객의 앱이 모바일에서 실행될 때, 루팅/탈옥, 악성 앱 설치, 앱 변조 등 보안 위협 여부를 실시간으로 탐지&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;접근제어&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;ACG&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;인스턴스 그룹 단위로 IP, Port 기반의 네트워크 패킷 필터링 기능을 제공&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Secure Zone&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;개인정보와 같이 중요한 정보를 보다 더 안전하게 보호할 수 있도록 대외 인터넷 망과 분리된 별도의 존을 제공&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;인증/권한 관리&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Sub Account&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;사용자 업무 역할별로 권한 관리를 할 수 있는 기능 제공&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;암호화&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;KMS&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;고객 데이터의 암/복호화에 이용되는 키를 안전하게 보호할 수 있는 서비스&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;SSL VPN&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;고객 사이트로 안전하게 접근 가능한 SSL방식의 가상 사설망을 제공&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Certificate Manager&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;SSL 인증서의 손쉬운 등록 및 관리 서비스를 제공&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;로깅 및 모니터링&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Resource Manager&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;네이버 클라우드 서비스 내에 생성한 모든 리소스를 한 눈에 볼 수 있는 통합관리 서비스&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Cloud Activity Tracer&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;네이버 클라우드 서비스에서 발생한 계정 활동 로그를 자동으로 수집해주는 서비스&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Cloud Advisor&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;네이버 클라우드 모범 사례에 따른 서비스 이용 권장 지침 안내&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;취약점 관리&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;System Security Checker&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;고객 서버의 운영체제 및 WAS 시스템에 대해서 보안상 취약점이 없는지 점검하고 결과 리포트를 제공해주는 서비스&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Web Security Checker&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;고객의 웹서비스에 대해 총 20가지의 주요 웹 취약점을 자동으로 진단하고 결과 리포트를 제공해주는 서비스&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;App Security Checker&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;고객의 Andorid 모바일 앱에 대해 취약점을 자동으로 점검하고 결과 리포트를 제공해주는 서비스&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Compliance&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Compliance Guide&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;고객이 보안 인증이나 규제에 대응하는데 필요한 사항을 알기 쉽게 정리한 가이드&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_service_summary.png&quot; alt=&quot;Security 서비스 요약&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/security/security-1-1.html&quot; target=&quot;_blank&quot;&gt;https://docs.ncloud.com/ko/security/security-1-1.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2020-12-02&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서 제공하는 Security 서비스 상품들을 간단한 설명과 함께 요약 정리한 내용입니다. 이 내용도 파트너 테크데이에서 공개된 자료입니다.</summary></entry><entry><title type="html">(Security) NCP vs On-Premise 비교</title><link href="https://docs.3rdeyesys.com/3.security/ncp_security_ncp_onpremise_compare/" rel="alternate" type="text/html" title="(Security) NCP vs On-Premise 비교" /><published>2020-12-02T00:00:00+00:00</published><updated>2020-12-02T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/3.security/ncp_security_ncp_onpremise_compare</id><content type="html" xml:base="https://docs.3rdeyesys.com/3.security/ncp_security_ncp_onpremise_compare/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 웹사이트 SSL 인증서를 설치하고 https 접속을 유도할 때 http로 접속하면 https로 강제로 리다이렉트 시키는 방법을 사용하는 경우가 많습니다. 웹페이지 소스에서 http 접속 여부를 판단해서 redirect 시키는 방법 등 여러가지 있을 수 있는데 여기서는 Apache 설정으로 쉽게 할 수 있는 방법을 소개합니다.</summary></entry><entry><title type="html">(Security) NCP vs On-Premise 비교</title><link href="https://docs.3rdeyesys.com/3.security/ncp_security_ncp_onpremise_compare/" rel="alternate" type="text/html" title="(Security) NCP vs On-Premise 비교" /><published>2020-12-02T00:00:00+00:00</published><updated>2020-12-02T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/3.security/ncp_security_ncp_onpremise_compare</id><content type="html" xml:base="https://docs.3rdeyesys.com/3.security/ncp_security_ncp_onpremise_compare/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;기존의 IDC 등의 On-Premise 환경에서 사용하고 있는 보안 서비스를 네이버 클라우드 환경에서 어떻게 구현할 수 있는지에 대한 비교 가이드입니다.&lt;br /&gt;
 IDC에 있는 서버들을 네이버 클라우드로 마이그레이션 할 때 참고하시면 되겠습니다.&lt;/p&gt;
 
@@ -676,7 +661,122 @@ IDC에 있는 서버들을 네이버 클라우드로 마이그레이션 할 때 
 
 &lt;blockquote&gt;
   &lt;p&gt;info “문서 최종 수정일 : 2020-12-02”&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 기존의 IDC 등의 On-Premise 환경에서 사용하고 있는 보안 서비스를 네이버 클라우드 환경에서 어떻게 구현할 수 있는지에 대한 비교 가이드입니다. IDC에 있는 서버들을 네이버 클라우드로 마이그레이션 할 때 참고하시면 되겠습니다.</summary></entry><entry><title type="html">ACG와 NACL 비교</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_acg_nacl/" rel="alternate" type="text/html" title="ACG와 NACL 비교" /><published>2020-12-01T00:00:00+00:00</published><updated>2020-12-01T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_acg_nacl</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_acg_nacl/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 기존의 IDC 등의 On-Premise 환경에서 사용하고 있는 보안 서비스를 네이버 클라우드 환경에서 어떻게 구현할 수 있는지에 대한 비교 가이드입니다. IDC에 있는 서버들을 네이버 클라우드로 마이그레이션 할 때 참고하시면 되겠습니다.</summary></entry><entry><title type="html">Security 서비스 요약</title><link href="https://docs.3rdeyesys.com/3.security/ncp_security_service_summary/" rel="alternate" type="text/html" title="Security 서비스 요약" /><published>2020-12-02T00:00:00+00:00</published><updated>2020-12-02T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/3.security/ncp_security_service_summary</id><content type="html" xml:base="https://docs.3rdeyesys.com/3.security/ncp_security_service_summary/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드에서 제공하는 Security 서비스 상품들을 간단한 설명과 함께 요약 정리한 내용입니다.
+이 내용도 파트너 테크데이에서 공개된 자료입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;서비스-요약&quot;&gt;서비스 요약&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;구분&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;상품&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;침입탐지/대응&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Basic Security&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;모든 고객에게 기본으로 제공되는 무료 보안 서비스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Security Monitoring&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;IDS, Anti-DDos, Anti-Virus, IPS, WAF와 같은 다양한 보안 상품들을 이용하여 높은 수준의 보안 서비스를 제공&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Site Safer&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;고객이 개발한 웹사이트가 해킹 또는 다른 보안 문제로 인해 악성코드를 배포하는지 검사&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;File Safer&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;고객의 서비스에서 제공하는 파일과 아웃링크 URL의 악성코드 감염 여부를 해시 기반으로 검사&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;App Safer&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;고객의 앱이 모바일에서 실행될 때, 루팅/탈옥, 악성 앱 설치, 앱 변조 등 보안 위협 여부를 실시간으로 탐지&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;접근제어&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;ACG&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;인스턴스 그룹 단위로 IP, Port 기반의 네트워크 패킷 필터링 기능을 제공&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Secure Zone&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;개인정보와 같이 중요한 정보를 보다 더 안전하게 보호할 수 있도록 대외 인터넷 망과 분리된 별도의 존을 제공&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;인증/권한 관리&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Sub Account&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;사용자 업무 역할별로 권한 관리를 할 수 있는 기능 제공&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;암호화&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;KMS&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;고객 데이터의 암/복호화에 이용되는 키를 안전하게 보호할 수 있는 서비스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;SSL VPN&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;고객 사이트로 안전하게 접근 가능한 SSL방식의 가상 사설망을 제공&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Certificate Manager&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;SSL 인증서의 손쉬운 등록 및 관리 서비스를 제공&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;로깅 및 모니터링&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Resource Manager&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;네이버 클라우드 서비스 내에 생성한 모든 리소스를 한 눈에 볼 수 있는 통합관리 서비스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Cloud Activity Tracer&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;네이버 클라우드 서비스에서 발생한 계정 활동 로그를 자동으로 수집해주는 서비스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Cloud Advisor&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;네이버 클라우드 모범 사례에 따른 서비스 이용 권장 지침 안내&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;취약점 관리&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;System Security Checker&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;고객 서버의 운영체제 및 WAS 시스템에 대해서 보안상 취약점이 없는지 점검하고 결과 리포트를 제공해주는 서비스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Web Security Checker&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;고객의 웹서비스에 대해 총 20가지의 주요 웹 취약점을 자동으로 진단하고 결과 리포트를 제공해주는 서비스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;App Security Checker&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;고객의 Andorid 모바일 앱에 대해 취약점을 자동으로 점검하고 결과 리포트를 제공해주는 서비스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Compliance&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Compliance Guide&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;고객이 보안 인증이나 규제에 대응하는데 필요한 사항을 알기 쉽게 정리한 가이드&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_service_summary.png&quot; alt=&quot;Security 서비스 요약&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/security/security-1-1.html&quot; target=&quot;_blank&quot;&gt;https://docs.ncloud.com/ko/security/security-1-1.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2020-12-02&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서 제공하는 Security 서비스 상품들을 간단한 설명과 함께 요약 정리한 내용입니다. 이 내용도 파트너 테크데이에서 공개된 자료입니다.</summary></entry><entry><title type="html">ACG와 NACL 비교</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_acg_nacl/" rel="alternate" type="text/html" title="ACG와 NACL 비교" /><published>2020-12-01T00:00:00+00:00</published><updated>2020-12-01T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_acg_nacl</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_acg_nacl/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드에서는 VPC의 보안을 강화하기 위해 ACG와 NACL의 두 가지 보안 정책을 제공하고 있습니다.&lt;/p&gt;
 
 &lt;ol&gt;
@@ -769,107 +869,4 @@ IDC에 있는 서버들을 네이버 클라우드로 마이그레이션 할 때 
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2020-12-01&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서는 VPC의 보안을 강화하기 위해 두 가지 서브넷을 제공하고 있습니다.</summary></entry><entry><title type="html">Load Balancer 상품군의 변화</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_load_balancer/" rel="alternate" type="text/html" title="Load Balancer 상품군의 변화" /><published>2020-12-01T00:00:00+00:00</published><updated>2020-12-01T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_load_balancer</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_load_balancer/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;Load Balancer는 수신 트래픽을 다수의 서버로 분산시키는 서비스로서, 수신 트래픽을 등록된 멤버 서버로 분산시켜 가용성을 높이고 시스템 가동률을 조절하는 역할을 수행합니다.&lt;br /&gt;
-VPC 플랫폼에서는 Network Load Balancer / Application Load Balancer / Network Proxy Load Balancer 가 제공되어 서비스에 적합한 로드밸런서를 선택할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;종류&quot;&gt;종류&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Application Load Balancer&lt;br /&gt;
-HTTP 및 HTTPS 트래픽을 사용하는 웹 애플리케이션을 위한 유연한 기능을 제공&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Network Load Balancer&lt;br /&gt;
-DSR(Direct Server Return) 구조의 고성능, 대규모 네트워크 연결에 적합한 로드밸런서로 &lt;strong&gt;고정 IP&lt;/strong&gt;를 제공&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Network Proxy Load Balancer&lt;br /&gt;
-TCP 세련 유지에 최적화 되어 있으며, Network Load Balancer와 다르게 DSR를 지원하지 않으며, Load Balander가 세션을 관리.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;KR존/서브넷 별 LB 생성지역 지정 가능
-	VPC 환경에서는 &lt;strong&gt;내가 원하는 KR존의 특정 서브넷에 LB생성 가능, KR-1/2 존에 각각 생성하여 고가용성을 확보&lt;/strong&gt; 할 수 있다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;lb-선택-기준-및-기능-비교&quot;&gt;LB 선택 기준 및 기능 비교&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;기능&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Network LB&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Network Proxy LB&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Application&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;프로토콜&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;TCP&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;TCP, TLS&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;HTTP/HTTPS&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;상태확인&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;로깅&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;X&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;DSR&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;X&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;X&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;동일 인스턴스의&lt;br /&gt;여러 포트로&lt;br /&gt;로드밸런싱&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;X&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;X&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;HTTP 2.0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;N/A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;N/A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;경로기반 라우팅&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;N/A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;N/A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O (출시 예정)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;SSL Offload&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;X&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;고정 세션&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;X&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_vpc_load_balancer_01.png&quot; alt=&quot;Load Balancer 상품군의 변화&quot; style=&quot;width:800px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/ncp_vpc_load_balancer_02.png&quot; alt=&quot;Load Balancer 상품군의 변화&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/networking/loadbalancer/loadbalancer_overview.html&quot; target=&quot;_blank&quot;&gt;https://docs.ncloud.com/ko/networking/loadbalancer/loadbalancer_overview.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2020-12-01&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Load Balancer는 수신 트래픽을 다수의 서버로 분산시키는 서비스로서, 수신 트래픽을 등록된 멤버 서버로 분산시켜 가용성을 높이고 시스템 가동률을 조절하는 역할을 수행합니다. VPC 플랫폼에서는 Network Load Balancer / Application Load Balancer / Network Proxy Load Balancer 가 제공되어 서비스에 적합한 로드밸런서를 선택할 수 있습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서는 VPC의 보안을 강화하기 위해 두 가지 서브넷을 제공하고 있습니다.</summary></entry></feed>

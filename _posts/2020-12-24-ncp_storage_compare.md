@@ -7,7 +7,6 @@ description: 네이버 클라우드 스토리지 비교
 type: Document
 set: storage
 order_number: 1
-
 ---
 
 ## 개요
