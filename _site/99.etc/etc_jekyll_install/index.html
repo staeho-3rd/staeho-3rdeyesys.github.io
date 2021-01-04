@@ -17,19 +17,19 @@
 		
 
 		<!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Micro 타입 서버에서 사용할 수 없는 서비스 | 3rdeyesys</title>
+<title>jekyll 설치(윈도 10) with base-theme | 3rdeyesys</title>
 <meta name="generator" content="Jekyll v3.7.2" />
-<meta property="og:title" content="Micro 타입 서버에서 사용할 수 없는 서비스" />
+<meta property="og:title" content="jekyll 설치(윈도 10) with base-theme" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="네이버 클라우드 Micro 타입 서버에서 사용할 수 없는 서비스" />
-<meta property="og:description" content="네이버 클라우드 Micro 타입 서버에서 사용할 수 없는 서비스" />
-<link rel="canonical" href="http://localhost:4000/1.compute/ncp_server_micro_limit/" />
-<meta property="og:url" content="http://localhost:4000/1.compute/ncp_server_micro_limit/" />
+<meta name="description" content="윈도 10 환경에서 base-theme를 기반으로 jekyll 설치하는 방법에 대한 가이드입니다." />
+<meta property="og:description" content="윈도 10 환경에서 base-theme를 기반으로 jekyll 설치하는 방법에 대한 가이드입니다." />
+<link rel="canonical" href="http://localhost:4000/99.etc/etc_jekyll_install/" />
+<meta property="og:url" content="http://localhost:4000/99.etc/etc_jekyll_install/" />
 <meta property="og:site_name" content="3rdeyesys" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-11-13T00:00:00+00:00" />
+<meta property="article:published_time" content="2021-01-04T00:00:00+00:00" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/1.compute/ncp_server_micro_limit/"},"url":"http://localhost:4000/1.compute/ncp_server_micro_limit/","description":"네이버 클라우드 Micro 타입 서버에서 사용할 수 없는 서비스","headline":"Micro 타입 서버에서 사용할 수 없는 서비스","dateModified":"2020-11-13T00:00:00+00:00","datePublished":"2020-11-13T00:00:00+00:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/99.etc/etc_jekyll_install/"},"url":"http://localhost:4000/99.etc/etc_jekyll_install/","description":"윈도 10 환경에서 base-theme를 기반으로 jekyll 설치하는 방법에 대한 가이드입니다.","headline":"jekyll 설치(윈도 10) with base-theme","dateModified":"2021-01-04T00:00:00+00:00","datePublished":"2021-01-04T00:00:00+00:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 		<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="3rdeyesys" />
@@ -96,69 +96,106 @@
 		<ul>
 			
 			
-				<li><a href="#개요">개요</a></li>
+				<li><a href="#설치-전체과정-요약">설치 전체과정 요약</a></li>
 			
-				<li><a href="#제한되는-서비스">제한되는 서비스</a></li>
+				<li><a href="#ruby-설치">Ruby 설치</a></li>
 			
-				<li><a href="#참고-url">참고 URL</a></li>
+				<li><a href="#gem-업데이트">gem 업데이트</a></li>
+			
+				<li><a href="#jekyll-bundler-설치">Jekyll, Bundler 설치</a></li>
+			
+				<li><a href="#base-theme-설치">base-theme 설치</a></li>
+			
+				<li><a href="#블로그-실행-접속">블로그 실행, 접속</a></li>
+			
+				<li><a href="#추가-패키지-설치">추가 패키지 설치</a></li>
+			
+				<li><a href="#기본-블로그-생성">기본 블로그 생성</a></li>
+			
+				<li><a href="#설치과정-스크린샷-모음">설치과정 스크린샷 모음</a></li>
 			
 		</ul>
 	</section>
 	<section class="tutorial-content">
-		<h1>Micro 타입 서버에서 사용할 수 없는 서비스</h1>
+		<h1>jekyll 설치(윈도 10) with base-theme</h1>
 
 		
 		
 		<div class="tutorial-main">
-			<h2 id="개요">개요</h2>
-<p>네이버 클라우드에서 제공하는 서버 타입 중에서 Micro 타입의 서버는 신규 가입 후 최초 결제수단 등록월부터 1년간 무료로 제공되는 체험용 서버입니다.
-계정당 1대만 이용 가능하며 1년이 지나면 유료로 전환됩니다.</p>
+			<h2 id="설치-전체과정-요약">설치 전체과정 요약</h2>
 
-<h2 id="제한되는-서비스">제한되는 서비스</h2>
-<p>Micro 타입의 서버에서 사용할 수 없는 서비스는 다음과 같습니다.</p>
+<ol>
+  <li>Ruby 설치</li>
+  <li>ridk 설치</li>
+  <li>gem 업데이트</li>
+  <li>jekyll, Bundler 설치</li>
+</ol>
 
-<ul>
-  <li>mssql</li>
-  <li>LAMP, WordPress, LEMP 등</li>
-  <li>Network Interface</li>
-  <li>Private Subnet</li>
-</ul>
+<h2 id="ruby-설치">Ruby 설치</h2>
+<p>일반적으로 jekyll를 사용한다면 최신 버전을 사용하면 되겠지만 여기서는 base-theme를 기반으로 하기 때문에 호환에 잘되는 2.5를 설치합니다.</p>
 
-<h3 id="mssql">MSSQL</h3>
-<p>mssql 중에서 mssql 2017 Express은 무료로 제공되는 서비스이지만, mssql이 1년 무료제공 서버인 Micro서버에서는 설치가 되지 않기 때문에, compact 이상의 유료 서버를 이용해야 합니다.
-즉, mssql 2017 Express는 무료이나 서버와 그에 따른 하드 디스크 비용은 유료입니다.</p>
+<p>Ruby Installer 다운로드 경로
+<a href="https://rubyinstaller.org/downloads/" target="_blank">https://rubyinstaller.org/downloads/</a></p>
 
-<h3 id="lamp">LAMP</h3>
-<p>LAMP (Linux + Apache, Mysql, PHP)의 경우 Micro 타입의 서버에 설치를 할 수 없고, Standard 이상의 서버에서만 설치할 수 있는데, 대신 네이버 클라우드에서는 LAMP 등 많이 사용되는 오픈 소스 소프트웨어가 설치된 서버를 쉽게 이용할 수 있도록 해주는 서비스인 Application Server Launcher를 제공하고 있습니다.</p>
+<p>위 사이트에서 rubyinstaller-devkit-2.5.8-2-x64 를 다운 받아 설치하면 됩니다.</p>
 
-<p>Application Server Launcher에서는 원하는 소프트웨어의 이미지를 선택하기만 하면 쉽게 Micro 타입의 서버를 세팅하고 이용할 수 있습니다.</p>
+<p>Ruby 설치가 끝나면서 완료화면에 <strong>Run ‘ridk install’ to setup MSYS2 and development toolchain.</strong> 이라는 옵션이 나타납니다.<br />
+반드시 선택하고 완료를 하시기 바랍니다.</p>
+
+<h3 id="ridk-설치">ridk 설치</h3>
+<p>앞단계인 Ruby 설치 완료에서 ridk install을 선택했다면 ridk 설치 커맨드 창이 나타납니다.<br />
+(혹시 선택하지 않았다면 커맨드 창을 열어서 ridk install 을 입력하면 됩니다)<br />
+이때 설치 옵션을 선택할 수 있는데 1,2,3 을 선택하고 Enter 키를 입력하면 설치가 진행됩니다.</p>
+
+<h2 id="gem-업데이트">gem 업데이트</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem update
+</code></pre></div></div>
+
+<h2 id="jekyll-bundler-설치">Jekyll, Bundler 설치</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>jekyll bundler
+</code></pre></div></div>
+
+<h2 id="base-theme-설치">base-theme 설치</h2>
+<p>base-theme는 jekyll의 여러 테마 중에서 CloudCannon에서 제작한 테마입니다.</p>
+
+<p>다운로드 경로
+<a href="https://github.com/CloudCannon/base-jekyll-template" target="_blank">https://github.com/CloudCannon/base-jekyll-template</a></p>
+
+<p>위 다운로드 경로에서 소스를 직접 다운 받거나 GitHub Desktop을 이용해서 가져오면 됩니다.</p>
+
+<h2 id="블로그-실행-접속">블로그 실행, 접속</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<h3 id="사이트-빌드">사이트 빌드</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll build
+</code></pre></div></div>
+
+<h2 id="추가-패키지-설치">추가 패키지 설치</h2>
+<p>혹시 블로그 실행, 접속에서 오류가 발생하면 나타나는 메시지를 보고 처리를 해주면 됩니다.<br />
+혹시 필요한 gem이 설치되지 않았을 경우에는 다음과 같이 설치해주면 됩니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>public_suffix <span class="nt">-v</span> 3.0.1
+</code></pre></div></div>
+
+<h2 id="기본-블로그-생성">기본 블로그 생성</h2>
+<p>위에서 소개한 것처럼 테마를 사용하는 것이 아닌 기본 설정만의 블로그를 새로 만들려면 다음과 같이 입력하면 됩니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll new PATH
+</code></pre></div></div>
+
+<h2 id="설치과정-스크린샷-모음">설치과정 스크린샷 모음</h2>
+
+<p><img src="../../images/python_install_01.png" alt="python 설치 화면" style="width:600px;align:center" /></p>
 
 <blockquote>
-  <p>다만, Application Server Launcher에서 생성한 서버도 Micro 타입의 서버이기 때문에 계정당 1개만 제공되는 Micro 타입 서버 기준에 따라 Micro 타입의 서버는 더 이상 추가할 수 없습니다.</p>
+  <p>“문서 최종 수정일 : 2021-01-04”</p>
 </blockquote>
 
-<p>Application Server Launcher에서 OS버전(CentOS, Ubuntu)별로 제공되는 애플리케이션은 다음과 같은데 <code class="highlighter-rouge">현재(2020년 11월 12일 기준)는 Ubuntu만 제공</code> 되고 있습니다.</p>
-
-<ul>
-  <li>Drupal (CMS)</li>
-  <li>Joomla! (CMS)</li>
-  <li>Magento (E-Commerce)</li>
-  <li>Shadowsocks (VPN)</li>
-  <li>LAMP (Web Stack)</li>
-  <li>WordPress (CMS)</li>
-  <li>Jenkins (Dev Tools)</li>
-</ul>
-
-<h3 id="private-subnet">Private Subnet</h3>
-<p>Private Subnet을 구성해서 서버환경을 만들려고 해도 Micro 서버 타입은 Network Interface를 추가할 수 없고, 그에 따라 Private Subnet도 적용할 수 없습니다.</p>
-
-<h2 id="참고-url">참고 URL</h2>
-<p><a href="https://docs.ncloud.com/ko/compute/compute-1-1-v2.html" target="_blank">https://docs.ncloud.com/ko/compute/compute-1-1-v2.html</a>
-<a href="https://docs.ncloud.com/ko/asl/asl_console.html" target="_blank">https://docs.ncloud.com/ko/asl/asl_console.html</a></p>
-
-<blockquote>
-  <p>문서 최종 수정일 : 2020-11-13</p>
-</blockquote>
 
 		</div>
 		<div class="tutorial-share">
@@ -182,13 +219,13 @@
 	
 	
 	<div class="tutorial-series">
-		<h3>Server - Series</h3>
-		<p>네이버 클라우드 Server 관련 문서들입니다.</p>
+		<h3>Jekyll - Series</h3>
+		<p>Jekyll 관련 문서들입니다.</p>
 
 		<ul class="listing">
 	
 		<li class="active">
-			<a href="/1.compute/ncp_server_micro_limit/">
+			<a href="/99.etc/etc_jekyll_install/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -197,15 +234,15 @@
 </div>
 				<article>
 					<div>
-						<h3>1. Micro 타입 서버에서 사용할 수 없는 서비스</h3>
-						<p class="description">네이버 클라우드 Micro 타입 서버에서 사용할 수 없는 서비스</p>
+						<h3>1. jekyll 설치(윈도 10) with base-theme</h3>
+						<p class="description">윈도 10 환경에서 base-theme를 기반으로 jekyll 설치하는 방법에 대한 가이드입니다.</p>
 					</div>
 				</article>
 			</a>
 		</li>
 	
 		<li >
-			<a href="/1.compute/ncp_server_spec_change/">
+			<a href="/99.etc/etc_jekyll_customizing/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -214,127 +251,8 @@
 </div>
 				<article>
 					<div>
-						<h3>2. 서버 스펙 변경</h3>
-						<p class="description">네이버 클라우드 서버 스펙 변경</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_stop_price/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>3. 서버 정지 시 요금할인</h3>
-						<p class="description">네이버 클라우드 서버 정지 시 요금할인</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_autoscaling_limit/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>4. Auto Scaling 서비스 제한사항</h3>
-						<p class="description">네이버 클라우드 Auto Scaling 서비스 제한사항</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_storage_add_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>5. 스토리지 추가 생성 가이드</h3>
-						<p class="description">네이버 클라우드 스토리지 추가 생성 가이드</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/3.security/ncp_security_acg_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>6. ACG(Access Control Group) 가이드</h3>
-						<p class="description">네이버 클라우드 ACG(Access Control Group) 가이드</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/4.storage/ncp_storage_backup_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>7. 백업 서비스 가이드와 신청 절차</h3>
-						<p class="description">네이버 클라우드 백업 서비스 가이드와 신청 절차</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_connect_no_public_ip/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>8. 서버 접속 가이드(Linux) - 공인IP 없을 때</h3>
-						<p class="description">네이버 클라우드 서버 접속 가이드 - 공인IP 없을 때</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_connect_by_public_ip/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>9. 서버 접속 가이드(Linux) - 공인IP 있을 때</h3>
-						<p class="description">네이버 클라우드 서버 접속 가이드 - 공인IP 있을 때</p>
+						<h3>2. jekyll base-theme 커스터마이징</h3>
+						<p class="description">jekyll base-theme에서 블로그 특성이 맞게 수정하는 방법을 정리한 문서입니다.</p>
 					</div>
 				</article>
 			</a>
@@ -350,23 +268,6 @@
 		<h3>Related tutorials</h3>
 
 		<ul class="listing">
-	
-		<li >
-			<a href="/99.etc/etc_jekyll_install/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>jekyll 설치(윈도 10) with base-theme</h3>
-						<p class="description">윈도 10 환경에서 base-theme를 기반으로 jekyll 설치하는 방법에 대한 가이드입니다.</p>
-					</div>
-				</article>
-			</a>
-		</li>
 	
 		<li >
 			<a href="/99.etc/etc_jekyll_customizing/">
@@ -521,6 +422,23 @@
 			</a>
 		</li>
 	
+		<li >
+			<a href="/2.networking/ncp_networking_vpc_subnet_natgw/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>Subnet 과 NAT GW</h3>
+						<p class="description">네이버 클라우드 Subnet 과 NAT GW</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
 </ul>
 	</div>
 
@@ -545,17 +463,17 @@
 		<h2>Share</h2>
 		<p>Share this tutorial with your community.</p>
 		<ul>
-			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A4000%2F1.compute%2Fncp_server_micro_limit%2F">
+			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A4000%2F99.etc%2Fetc_jekyll_install%2F">
 		<svg class="twitter" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg>
 	
  Twitter</a></li>
-			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F1.compute%2Fncp_server_micro_limit%2F">
+			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F99.etc%2Fetc_jekyll_install%2F">
 		<svg class="facebook" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="15.8 15.8 25 25"><path d="M32.8 24.7h-3.2v-2.1c0-0.8 0.5-1 0.9-1s2.3 0 2.3 0v-3.5l-3.1 0c-3.5 0-4.3 2.6-4.3 4.3v2.3h-2v3.6h2c0 4.6 0 10.2 0 10.2h4.2c0 0 0-5.6 0-10.2h2.8L32.8 24.7z"/></svg>
 	
  Facebook</a></li>
-			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2F1.compute%2Fncp_server_micro_limit%2F">
+			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2F99.etc%2Fetc_jekyll_install%2F">
  Google+</a></li>
-			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=http%3A%2F%2Flocalhost%3A4000%2F1.compute%2Fncp_server_micro_limit%2F&t=Micro%20%ED%83%80%EC%9E%85%20%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C%20%EC%82%AC%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%97%86%EB%8A%94%20%EC%84%9C%EB%B9%84%EC%8A%A4">
+			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=http%3A%2F%2Flocalhost%3A4000%2F99.etc%2Fetc_jekyll_install%2F&t=jekyll%20%EC%84%A4%EC%B9%98%28%EC%9C%88%EB%8F%84%2010%29%20with%20base-theme">
 		<svg class="hacker-news" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.8 3.3c-0.4 0.8-5.6 11.1-5.6 11.2 0 2 0 6.2 0 6.2 -0.1 0-2.2 0-2.3 0 0 0 0-5.9 0-6.2 0 0-5.5-10.9-5.6-11.1C5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3c0 0 0 0 0.1 0 0.9 0 1.7 0 2.6 0 0 0 0 0 0 0.1 0.1 0.1 4 8.3 4.1 8.3 0 0 4.2-8.3 4.3-8.4 0.8 0 1.6 0 2.4 0 0 0 0 0 0 0C18.8 3.3 18.8 3.3 18.8 3.3z"/></svg>
 	
  Hacker News</a></li>
