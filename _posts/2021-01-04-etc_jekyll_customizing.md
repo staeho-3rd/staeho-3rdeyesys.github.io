@@ -15,7 +15,6 @@ base-theme는 기본 폰트가 Merriweather로 되어 있습니다.
 
 그리고 폰트 파일을 별도로 추가하기 보다는 구글에서 제공하는 폰트 경로를 설정하는 방식으로 교체했습니다.  
 구글에서 제공하는 폰트 리스트와 적용 방법은 아래 사이트에서 확인 가능합니다.
-
 <a href="https://fonts.google.com/" target="_blank">https://fonts.google.com/</a>
 
 
@@ -35,6 +34,7 @@ body {
   height: 100%;
   max-height: 100%;
   font-family: 'Nanum Gothic', sans-serif;
+  }
 ``` 
 
 ## 한글 검색 오류 수정
