@@ -66,12 +66,12 @@ window.index.field('content');
 html 파일 위치 : \search.html
 ``` html
 기존: 
-<script src="{{ site.baseurl }}/js/lunr.min.js"></script>
-<script src="{{ site.baseurl }}/js/search.js"></script>
+{% raw %}<script src="{{ site.baseurl }}/js/lunr.min.js"></script>{% endraw %}
+{% raw %}<script src="{{ site.baseurl }}/js/search.js"></script>{% endraw %}
 
 수정: 
-<script src="{{ site.baseurl }}/js/lunr.min.js" charset="utf-8"></script>
-<script src="{{ site.baseurl }}/js/search.js" charset="utf-8"></script>
+{% raw %}<script src="{{ site.baseurl }}/js/lunr.min.js" charset="utf-8"></script>{% endraw %}
+{% raw %}<script src="{{ site.baseurl }}/js/search.js" charset="utf-8"></script>{% endraw %}
 ```
 
 ## 상단 header bg 교체

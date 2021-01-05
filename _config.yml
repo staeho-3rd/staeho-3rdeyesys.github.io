@@ -4,7 +4,7 @@
 title: 3rdeyesys
 url: "https://docs.3rdeyesys.com"
 baseurl:
-google_analytics_key:
+google_analytics_key: G-4Q6RVEFJ3S
 disqus_shortname:
 newsletter_action:
 
@@ -16,9 +16,9 @@ author:
   email:
   twitter: # twitter username without the @ symbol
 social:
-  name: Base Template
+  name: 3rdeyesys homepage
   links:
-    - https://github.com/CloudCannon/base-jekyll-template
+    - https://www.3rdeyesys.com/
 
 # -----
 # Build
@@ -46,6 +46,7 @@ collections:
 
 jekyll-archives:
   enabled: ['categories']
+
 
 defaults:
   -

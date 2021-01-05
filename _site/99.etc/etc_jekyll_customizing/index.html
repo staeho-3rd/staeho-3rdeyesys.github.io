@@ -15,6 +15,15 @@
 		<!--link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400italic,400,300italic,300,700,700italic|Open+Sans:400italic,600italic,700italic,700,600,400|Inconsolata:400,700"-->
 
 		
+			<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q6RVEFJ3S"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'G-4Q6RVEFJ3S');
+			</script>
+		
 
 		<!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>jekyll base-theme 커스터마이징 | 3rdeyesys</title>
@@ -170,12 +179,12 @@
 다음으로 charset 을 설정합니다.<br />
 html 파일 위치 : \search.html</p>
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>기존: 
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/js/lunr.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/js/search.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ site.baseurl }}/js/lunr.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ site.baseurl }}/js/search.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 
 수정: 
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/js/lunr.min.js"</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/js/search.js"</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ site.baseurl }}/js/lunr.min.js"</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ site.baseurl }}/js/search.js"</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div></div>
 
 <h2 id="상단-header-bg-교체">상단 header bg 교체</h2>
