@@ -108,6 +108,21 @@
 				
 					
 					
+					"1-compute-ncp-server-vpc-create": {
+						"id": "1-compute-ncp-server-vpc-create",
+						"title": "VPC 환경에서 서버 생성",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_server_vpc_create/",
+						"content": "개요\n네이버 클라우드 VPC환경에서 서버를 생성하는 순서를 정리해보겠습니다.\n아래 순서는 굳이 기억하지 않아도 필요한 부분은 그때그때  안내가 잘 되어 있기 때문에 별 문제는 없지만 그래도 어떤 것들이 필요한 가에 대해 어느 정도 알아둘 필요는 있어 보입니다.\n\nVPC 생성\nVPC (Virtual Private Cloud) 즉, 클라우드 상에서 논리적으로 격리된 고객 전용 네트워크 공간을 먼저 생성하고 해당 공간에 서버를 생성하게 됩니다.\n\n\n  VPC 이름 입력\n  IP 주소 범위 입력\n\n\n\n  VPC의 IP 주소 범위는, private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /16~/28 범위\n\n\n\n\nSubnet 생성\n\n  Subnet 이름 입력\n  VPC 선택\n  IP 주소 범위 입력\n  Zone 선택\n  Network ACL 선택\n  Internet Gateway 전용여부 선택 (Public or Private)\n\n\n\n\n서버 설정\n\n  VPC 선택\n  Subnet 선택\n  스토리지 종류 선택\n  서버 세대 선택\n  서버 타입 선택\n  요금제 선택\n  서버 개수 입력\n  서버 이름 입력\n  Network Interface 추가\n  물리 배치 그룹 여부 선택\n  반납 보호 여부 선택\n\n\n\n\n인증키 설정\n\n\n네트워크 접근 설정 (ACL)\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/compute/compute-1-1-v2.html\n\n\n  문서 최종 수정일 : 2020-12-22"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
 					"99-etc-etc-jekyll-install": {
 						"id": "99-etc-etc-jekyll-install",
 						"title": "jekyll 설치(윈도 10) with base-theme",
