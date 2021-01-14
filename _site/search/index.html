@@ -108,12 +108,42 @@
 				
 					
 					
+					"2-networking-ncp-networking-service-port-info": {
+						"id": "2-networking-ncp-networking-service-port-info",
+						"title": "주요 서비스 포트(Port) 정보",
+						"categories": "2.networking",
+						"url": " /2.networking/ncp_networking_service_port_info/",
+						"content": "포트(Port) 정보\n네이버 클라우드 주요 서비스들에서 사용하는 포트(Port) 정보를 정리해보았습니다.\n네이버 클라우드에서 사용하는 포트이므로 일부 서비스의 경우 일반적으로 사용되는 포트와 조금 다른 경우도 있을 수 있습니다.\n\n\n  22 : SSH\n  80 : http\n  443 : https\n  1433 : mssql\n  3000 : Node.js Express\n  3306 : mysql\n  3389 : 윈도 원격데스크톱\n  5432 : PostgreSQL\n  5672 : RabbitMQ\n  5985 : Packer\n  6379 : Redis\n  8001 : CUBRID\n  8080 : Ambari\n  8081 : Hue\n  8388 : Shadowsocks 서버\n  9736 : Jeus WebAdmin\n  10090 : Pinpoint 서버\n  11313 : Hugo 서버\n  15672 : RabbitMQ Management UI\n  18080 : Tomcat, Jenkins\n  18088 : Superset\n  18888 : TensorFlow Jupyter Notebook\n  18889 : TensorBoard\n  27017 : MongoDB\n  50070 : HDFS NameNode\n\n\n\n  문서 최종 수정일 : 2021-01-14"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"2-networking-ncp-networking-load-balancer-acg": {
+						"id": "2-networking-ncp-networking-load-balancer-acg",
+						"title": "Classic Load Balancer 운영을 위한 ACG 설정 방법",
+						"categories": "2.networking",
+						"url": " /2.networking/ncp_networking_load_balancer_acg/",
+						"content": "개요\nLoad Balancer가 정상적으로 동작하기 위해서는 Load Balancer –&gt; Server의 지정된 포트로 접근할 수 있어야 합니다.\n그러기 위해서는 Server의 ACG에 Load Balancer가 접근할 수 있도록 권한을 설정해주어야 하는데, 여기서는 네이버 클라우드의 Classic Load Balancer를 운영할 때 ACG 설정을 어떻게 하는가에 대한 내용을 정리해보겠습니다.\n\n서버연결 실패 상황\n서버 등록하고 Load Balancer의 다른 설정들을 모두 올바르게 했는데도 아래와 같이 서버연결 상태가 실패로 나타나고 Load Balancer는 동작이 정지되는 경우가 있습니다.\n이런 경우가 바로 ACG에 Load Balancer의 접근 권한을 설정하지 않았을 때 입니다.\n\n\n\nACG 권한 설정\nACG에 Load Balancer가 접근할 수 있도록 권한을 설정하려면 접근소스에 아래와 같이 입력합니다.\n접근소스 : ncloud-load-balancer\n\n\n그 외에 프로토콜과 허용포트도 지정된 정보를 입력하고 추가를 하면 됩니다.\n\n\n\n\n서버연결 성공\nACG에 접근권한을 설정하고 나서 잠시 기다리면 Load Balancer가 서버에 접근시도를 하고 정상 접근이 되면서 서버연결 상태가 성공으로 바뀌고 Load Balancer도 정상 작동하게 됩니다.\n\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/networking/loadbalancer/classiclb_console.html\n\n\n  문서 최종 수정일 : 2021-01-14"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
 					"1-compute-ncp-server-vpc-create": {
 						"id": "1-compute-ncp-server-vpc-create",
 						"title": "VPC 환경에서 서버 생성",
 						"categories": "1.compute",
 						"url": " /1.compute/ncp_server_vpc_create/",
-						"content": "개요\n네이버 클라우드 VPC환경에서 서버를 생성하는 순서를 정리해보겠습니다.\n아래 순서는 굳이 기억하지 않아도 필요한 부분은 그때그때  안내가 잘 되어 있기 때문에 별 문제는 없지만 그래도 어떤 것들이 필요한 가에 대해 어느 정도 알아둘 필요는 있어 보입니다.\n\nVPC 생성\nVPC (Virtual Private Cloud) 즉, 클라우드 상에서 논리적으로 격리된 고객 전용 네트워크 공간을 먼저 생성하고 해당 공간에 서버를 생성하게 됩니다.\n\n\n  VPC 이름 입력\n  IP 주소 범위 입력\n\n\n\n  VPC의 IP 주소 범위는, private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /16~/28 범위\n\n\n\n\nSubnet 생성\n\n  Subnet 이름 입력\n  VPC 선택\n  IP 주소 범위 입력\n  Zone 선택\n  Network ACL 선택\n  Internet Gateway 전용여부 선택 (Public or Private)\n\n\n\n\n서버 설정\n\n  VPC 선택\n  Subnet 선택\n  스토리지 종류 선택\n  서버 세대 선택\n  서버 타입 선택\n  요금제 선택\n  서버 개수 입력\n  서버 이름 입력\n  Network Interface 추가\n  물리 배치 그룹 여부 선택\n  반납 보호 여부 선택\n\n\n\n\n인증키 설정\n\n\n네트워크 접근 설정 (ACL)\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/compute/compute-1-1-v2.html\n\n\n  문서 최종 수정일 : 2020-12-22"
+						"content": "개요\n네이버 클라우드 VPC환경에서 서버를 생성하는 순서를 정리해보겠습니다.\n아래 순서는 굳이 기억하지 않아도 필요한 부분은 그때그때  안내가 잘 되어 있기 때문에 별 문제는 없지만 그래도 어떤 것들이 필요한 가에 대해 어느 정도 알아둘 필요는 있어 보입니다.\n\nVPC 생성\nVPC (Virtual Private Cloud) 즉, 클라우드 상에서 논리적으로 격리된 고객 전용 네트워크 공간을 먼저 생성하고 해당 공간에 서버를 생성하게 됩니다.\nVPC는 고객의 계정마다 최대 3개를 생성할 수 있으며, 각 VPC는 최대 넷마스크 0.0.255.255/16 (IP 65,536개) 크기의 네트워크 주소 공간을 제공합니다.\n\n\n  VPC 이름 입력\n  IP 주소 범위 입력\n\n\n\n  VPC의 IP 주소 범위는, private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /16~/28 범위\n\n\n\n\nSubnet 생성\n\n  Subnet 이름 입력\n  VPC 선택\n  IP 주소 범위 입력\n  Zone 선택\n  Network ACL 선택\n  Internet Gateway 전용여부 선택 (Public or Private)\n\n\n\n\n서버 설정\n\n  VPC 선택\n  Subnet 선택\n  스토리지 종류 선택\n  서버 세대 선택\n  서버 타입 선택\n  요금제 선택\n  서버 개수 입력\n  서버 이름 입력\n  Network Interface 추가\n  물리 배치 그룹 여부 선택\n  반납 보호 여부 선택\n\n\n\n\n인증키 설정\n\n\n네트워크 접근 설정 (ACL)\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/compute/compute-1-1-v2.html\n\n\n  문서 최종 수정일 : 2021-01-12"
 					}
 					
 				
@@ -393,9 +423,24 @@
 				
 					,
 					
+					"1-compute-ncp-server-storage-add-detail-process": {
+						"id": "1-compute-ncp-server-storage-add-detail-process",
+						"title": "Linux 스토리지(디스크) 추가 상세 가이드",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_server_storage_add_detail_process/",
+						"content": "개요\n네이버 클라우드에서 리눅스 서버에 디스크를 추가하는 것은 스토리지 즉, Block Storage를 생성해서 서버에 연결하는 작업이 필요합니다.\n\n전체 과정 요약\n\nfdisk -l\n\nfdisk /dev/xvdb\n\nmkfs.ext4 /dev/xvdb1\n\n\t- CentOS 5.x: mkfs.ext3 /dev/xvdb1\n\t- CentOS 6.x: mkfs.ext4 /dev/xvdb1\n\t- CentOS 7.x: mkfs.xfs /dev/xvdb1\n\t- Ubuntu : mkfs.ext4 /dev/xvdb1\n\nmkdir /mnt/data\n\nmount /dev/xvdb1 /mnt/data\n\ndf\n\nvi /etc/fstab\n...\n/dev/xvdb1 /mnt/data ext4 defaults 1 2\n...\n\n\n\n스토리지 생성, 할당\n우선은 네이버 클라우드 콘솔에서 해당 서버의 상세정보에서 스토리지 생성 메뉴를 선택해서 원하는 타입과 용량을 선택하고 생성하면 서버에 스토리지가 할당됩니다.\n\n스토리지 할당 확인\n네이버 클라우드 콘솔에서 할당한 스토리지를 확인하기 위해 putty를 실행하여 서버에 접속합니다.\n이후 과정은 모두 서버에 접속한 상태에서 진행하게 됩니다.\nfdisk -l\n\n\n스토리지(디스크) 파티션\n할당된 스토리지에 파티션을 생성합니다.\nfdisk /dev/xvdb\n\n\nfdisk /dev/xvdb\n파티션을 생성할 때는 여러 단계의 옵션이 있습니다. 일반적으로는 아래와 같은 단계로 진행하면 됩니다.\n\n\n  파티션을 새로 생성하기 위해 ‘n’을 입력\n  생성할 파티션 타입에 따라 primary type이면 ‘p’, extended type이면 ‘e’를 입력. (primary type으로 생성하는 것이 일반적이며, primary 영역의 파티션이 부족할 경우 추가로 extended type으로 생성)\n  생성할 파티션 번호와 cylinder 영역을 입력 (일반적으로 추가할 disk 전체를 mount하게 되고, 이 경우 default값을 그대로 사용하므로 Enter 입력)\n  ‘w’를 눌러서 해당 구성을 적용. 파티션 생성 완료.\n\n\n스토리지(디스크) 포맷\n다음으로 파티션이 생성된 디스크를 포맷하면 되는데, OS별로 명령어가 다르므로 확인 후에 실행하면 됩니다.\n\n- CentOS 5.x: mkfs.ext3 /dev/xvdb1\n- CentOS 6.x: mkfs.ext4 /dev/xvdb1\n- CentOS 7.x: mkfs.xfs /dev/xvdb1\n- Ubuntu : mkfs.ext4 /dev/xvdb1\n\n\n스토리지(디스크) 마운트\n다음으로 스토리지를 마운트할 포인트 즉, 디렉토리를 원하는 이름으로 생성하고 마운트를 합니다.\n아래에 있는 마운트 경로 (/mnt/data)는 예시입니다. 원하는 경로를 직접 설정하시면 됩니다.\n\nmkdir /mnt/data\nmount /dev/xvdb1 /mnt/data\n\n\n마운트된 내역을 확인합니다.\ndf\n\n\n마운트 정보 등록\n마운트 정보는 설정에 저장하지 않으면 서버가 리부팅될 때 사라지기 때문에 fstab에 저장합니다.\n\nvi /etc/fstab\n...\n/dev/xvdb1 /mnt/data ext4 defaults 1 2\n...\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/compute/compute-4-1-v2.html\n\n\n  문서 최종 수정일 : 2021-01-13"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
 					"1-compute-ncp-server-storage-add-guide": {
 						"id": "1-compute-ncp-server-storage-add-guide",
-						"title": "스토리지 추가 생성 가이드",
+						"title": "스토리지 추가 생성 기본 가이드",
 						"categories": "1.compute",
 						"url": " /1.compute/ncp_server_storage_add_guide/",
 						"content": "개요\n네이버 클라우드에서 서버 생성 후에 스토리지를 추가 생성하는 경우가 있는데 이때 사용되는 스토리지는 Block Storage라고 해서 AWS의 EBS(Elastic Block Store)와 유사합니다.\n\n스토리지 추가 제약 사항\n\n\n  부팅 스토리지가 SSD인 경우, 추가 스토리지로 HDD, SSD 모두 추가할 수 있습니다.\n  부팅 스토리지가 HDD인 경우, HDD, SSD 모두 추가할 수 있으나 SSD 스토리지는 최신 서버에만 추가가 가능합니다. 서버 상세정보의 ‘SSD 스토리지 추가 여부’가 적용 가능인지 확인해야 합니다.\n  Micro 타입의 서버, Bare Metal 서버는 스토리지를 추가할 수 없습니다.\n\n\n추가 가능한 최대 사이즈와 개수\n스토리지는 최대 2,000GB를 지원하며, 서버 1대당 최대 16개의 스토리지를 이용할 수 있습니다. (단, Local Disk 서버 타입 및 2017년 1월 23일 이전에 생성된 서버에 대해서는 1,000GB까지 지원됩니다.)\n\n리눅스 OS 서버 이미지별 포맷 명령어\n리눅스는 OS 즉, 네이버 클라우드에서 제공하는 서버 이미지별로 추가된 스토리지를 포맷하는 명령어가 다릅니다.\n\n\n  CentOS 5.x: mkfs.ext3 /dev/xvdb1\n  CentOS 6.x: mkfs.ext4 /dev/xvdb1\n  CentOS 7.x: mkfs.xfs /dev/xvdb1\n  Ubuntu Server / Desktop: mkfs.ext4 /dev/xvdb1\n\n\n참고 URL\nhttps://docs.ncloud.com/ko/compute/compute-4-1-v2.html\n\n\n  문서 최종 수정일 : 2020-11-19"

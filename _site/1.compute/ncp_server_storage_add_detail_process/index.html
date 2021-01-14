@@ -26,19 +26,19 @@
 		
 
 		<!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Auto Scaling 서비스 제한사항 | 3rdeyesys</title>
+<title>Linux 스토리지(디스크) 추가 상세 가이드 | 3rdeyesys</title>
 <meta name="generator" content="Jekyll v3.7.2" />
-<meta property="og:title" content="Auto Scaling 서비스 제한사항" />
+<meta property="og:title" content="Linux 스토리지(디스크) 추가 상세 가이드" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="네이버 클라우드 Auto Scaling 서비스 제한사항" />
-<meta property="og:description" content="네이버 클라우드 Auto Scaling 서비스 제한사항" />
-<link rel="canonical" href="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_limit/" />
-<meta property="og:url" content="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_limit/" />
+<meta name="description" content="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" />
+<meta property="og:description" content="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" />
+<link rel="canonical" href="https://docs.3rdeyesys.com/1.compute/ncp_server_storage_add_detail_process/" />
+<meta property="og:url" content="https://docs.3rdeyesys.com/1.compute/ncp_server_storage_add_detail_process/" />
 <meta property="og:site_name" content="3rdeyesys" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-11-29T00:00:00+09:00" />
+<meta property="article:published_time" content="2020-11-19T00:00:00+09:00" />
 <script type="application/ld+json">
-{"url":"https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_limit/","headline":"Auto Scaling 서비스 제한사항","dateModified":"2020-11-29T00:00:00+09:00","datePublished":"2020-11-29T00:00:00+09:00","description":"네이버 클라우드 Auto Scaling 서비스 제한사항","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_limit/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://docs.3rdeyesys.com/1.compute/ncp_server_storage_add_detail_process/","headline":"Linux 스토리지(디스크) 추가 상세 가이드","dateModified":"2020-11-19T00:00:00+09:00","datePublished":"2020-11-19T00:00:00+09:00","description":"네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/1.compute/ncp_server_storage_add_detail_process/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 		<link type="application/atom+xml" rel="alternate" href="https://docs.3rdeyesys.com/feed.xml" title="3rdeyesys" />
@@ -107,66 +107,118 @@
 			
 				<li><a href="#개요">개요</a></li>
 			
-				<li><a href="#스펙-및-서비스-환경-제한-사항">스펙 및 서비스 환경 제한 사항</a></li>
+				<li><a href="#전체-과정-요약">전체 과정 요약</a></li>
 			
-				<li><a href="#os-서버-이미지-제한-사항">OS 서버 이미지 제한 사항</a></li>
+				<li><a href="#스토리지-생성-할당">스토리지 생성, 할당</a></li>
 			
-				<li><a href="#설정-제한-사항">설정 제한 사항</a></li>
+				<li><a href="#스토리지-할당-확인">스토리지 할당 확인</a></li>
+			
+				<li><a href="#스토리지디스크-파티션">스토리지(디스크) 파티션</a></li>
+			
+				<li><a href="#스토리지디스크-포맷">스토리지(디스크) 포맷</a></li>
+			
+				<li><a href="#스토리지디스크-마운트">스토리지(디스크) 마운트</a></li>
+			
+				<li><a href="#마운트-정보-등록">마운트 정보 등록</a></li>
 			
 				<li><a href="#참고-url">참고 URL</a></li>
 			
 		</ul>
 	</section>
 	<section class="tutorial-content">
-		<h1>Auto Scaling 서비스 제한사항</h1>
+		<h1>Linux 스토리지(디스크) 추가 상세 가이드</h1>
 
 		
 		
 		<div class="tutorial-main">
 			<h2 id="개요">개요</h2>
-<p>모든 클라우드 서비스의 핵심 중의 하나가 Auto Scaling이라고 할 수 있습니다.
-네이버 클라우드도 예외가 아닌데, Auto Scaling을 설정할 때 몇가지 제한사항이 있어서 정리해보았습니다.</p>
+<p>네이버 클라우드에서 리눅스 서버에 디스크를 추가하는 것은 스토리지 즉, Block Storage를 생성해서 서버에 연결하는 작업이 필요합니다.</p>
 
-<h2 id="스펙-및-서비스-환경-제한-사항">스펙 및 서비스 환경 제한 사항</h2>
-<p>서버 스펙이나 서비스 환경과 관련한 제한 사항은 다음과 같습니다.</p>
+<h2 id="전체-과정-요약">전체 과정 요약</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+fdisk <span class="nt">-l</span>
 
-<ul>
-  <li>총 디스크 사이즈 150GB 이하 서버만 가능</li>
-  <li>Windows OS는 Windows 2012. 2016만 지원</li>
-  <li>Micro 서버는 불가</li>
-  <li>High Memory 서버는 불가(추후 개선 예정)</li>
-  <li>Local Disk 기반 서버는 불가</li>
-  <li>Global Internet Service 영역 내의 서비스 불가</li>
-</ul>
+fdisk /dev/xvdb
 
-<p>따라서 서버타입 기준으로  <code class="highlighter-rouge">Auto Scaling 설정이 가능한 서버타입은 Compact, Standard 2가지 뿐</code>입니다.</p>
+mkfs.ext4 /dev/xvdb1
 
-<p><img src="../../images/ncp_server_autoscaling_limit.png" alt="Auto Scaling 서비스 제한사항" style="width:600px;align:center" /></p>
+	- CentOS 5.x: mkfs.ext3 /dev/xvdb1
+	- CentOS 6.x: mkfs.ext4 /dev/xvdb1
+	- CentOS 7.x: mkfs.xfs /dev/xvdb1
+	- Ubuntu : mkfs.ext4 /dev/xvdb1
 
-<h2 id="os-서버-이미지-제한-사항">OS 서버 이미지 제한 사항</h2>
-<p>centos-7.8-64, ubuntu-18.04 이 2가지 OS 이미지는 개인 회원은 KR-1 1세대 서버에서 생성이 불가능한 이미지입니다. 2세대 서버를 선택하시거나 KR-2에서 생성해야 합니다.</p>
+<span class="nb">mkdir</span> /mnt/data
 
-<h2 id="설정-제한-사항">설정 제한 사항</h2>
-<p>다음으로 Auto Scaling 설정을 할 때 생성 가능한 최대 서버 수 등의 설정 제한 사항은 다음과 같습니다.</p>
+mount /dev/xvdb1 /mnt/data
 
-<ul>
-  <li>고객별 생성 가능한 Auto Scaling Group 최대 수: 100</li>
-  <li>고객별 생성 가능한 Launch Configuration 최대 수: 100</li>
-  <li>Auto Scaling Group당 생성 가능한 스케줄(Scheduled Action) 최대 수: 100</li>
-  <li>Auto Scaling Group당 생성 가능한 Scaling Policy 최대 수: 10</li>
-  <li>Auto Scaling Group당 생성 가능한 최대 서버 수: 30대</li>
-  <li>Auto Scaling Group당 연결 가능한 Load Balancer 최대 수 : 10</li>
-</ul>
+<span class="nb">df
 
-<blockquote>
-  <p>계정당 생성 가능한 최대 서버 대수 : 네이버 클라우드 플랫폼에서 한 <strong>계정당 생성할 수 있는 최대 서버 수 기본 50대</strong>입니다. 서버 수 한도를 조정하려면 고객지원으로 문의해야 합니다.</p>
-</blockquote>
+</span>vi /etc/fstab
+...
+/dev/xvdb1 /mnt/data ext4 defaults 1 2
+...
+
+</code></pre></div></div>
+
+<h2 id="스토리지-생성-할당">스토리지 생성, 할당</h2>
+<p>우선은 네이버 클라우드 콘솔에서 해당 서버의 상세정보에서 스토리지 생성 메뉴를 선택해서 원하는 타입과 용량을 선택하고 생성하면 서버에 스토리지가 할당됩니다.</p>
+
+<h2 id="스토리지-할당-확인">스토리지 할당 확인</h2>
+<p>네이버 클라우드 콘솔에서 할당한 스토리지를 확인하기 위해 putty를 실행하여 서버에 접속합니다.<br />
+이후 과정은 모두 서버에 접속한 상태에서 진행하게 됩니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fdisk <span class="nt">-l</span>
+</code></pre></div></div>
+
+<h2 id="스토리지디스크-파티션">스토리지(디스크) 파티션</h2>
+<p>할당된 스토리지에 파티션을 생성합니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fdisk /dev/xvdb
+</code></pre></div></div>
+<p><br /></p>
+<h4 id="fdisk-devxvdb">fdisk /dev/xvdb</h4>
+<p>파티션을 생성할 때는 여러 단계의 옵션이 있습니다. 일반적으로는 아래와 같은 단계로 진행하면 됩니다.</p>
+
+<ol>
+  <li>파티션을 새로 생성하기 위해 ‘n’을 입력</li>
+  <li>생성할 파티션 타입에 따라 primary type이면 ‘p’, extended type이면 ‘e’를 입력. (primary type으로 생성하는 것이 일반적이며, primary 영역의 파티션이 부족할 경우 추가로 extended type으로 생성)</li>
+  <li>생성할 파티션 번호와 cylinder 영역을 입력 (일반적으로 추가할 disk 전체를 mount하게 되고, 이 경우 default값을 그대로 사용하므로 Enter 입력)</li>
+  <li>‘w’를 눌러서 해당 구성을 적용. 파티션 생성 완료.</li>
+</ol>
+
+<h2 id="스토리지디스크-포맷">스토리지(디스크) 포맷</h2>
+<p>다음으로 파티션이 생성된 디스크를 포맷하면 되는데, OS별로 명령어가 다르므로 확인 후에 실행하면 됩니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+- CentOS 5.x: mkfs.ext3 /dev/xvdb1
+- CentOS 6.x: mkfs.ext4 /dev/xvdb1
+- CentOS 7.x: mkfs.xfs /dev/xvdb1
+- Ubuntu : mkfs.ext4 /dev/xvdb1
+</code></pre></div></div>
+
+<h2 id="스토리지디스크-마운트">스토리지(디스크) 마운트</h2>
+<p>다음으로 스토리지를 마운트할 포인트 즉, 디렉토리를 원하는 이름으로 생성하고 마운트를 합니다.<br />
+아래에 있는 마운트 경로 (/mnt/data)는 예시입니다. 원하는 경로를 직접 설정하시면 됩니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nb">mkdir</span> /mnt/data
+mount /dev/xvdb1 /mnt/data
+</code></pre></div></div>
+<p><br />
+마운트된 내역을 확인합니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">df</span>
+</code></pre></div></div>
+
+<h2 id="마운트-정보-등록">마운트 정보 등록</h2>
+<p>마운트 정보는 설정에 저장하지 않으면 서버가 리부팅될 때 사라지기 때문에 fstab에 저장합니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+vi /etc/fstab
+...
+/dev/xvdb1 /mnt/data ext4 defaults 1 2
+...
+</code></pre></div></div>
 
 <h2 id="참고-url">참고 URL</h2>
-<p><a href="https://docs.ncloud.com/ko/compute/autoscaling/autoscaling_overview.html" target="_blank">https://docs.ncloud.com/ko/compute/autoscaling/autoscaling_overview.html</a></p>
+<p><a href="https://docs.ncloud.com/ko/compute/compute-4-1-v2.html" target="_blank">https://docs.ncloud.com/ko/compute/compute-4-1-v2.html</a></p>
 
 <blockquote>
-  <p>문서 최종 수정일 : 2020-11-19</p>
+  <p>문서 최종 수정일 : 2021-01-13</p>
 </blockquote>
 
 		</div>
@@ -247,7 +299,7 @@
 			</a>
 		</li>
 	
-		<li class="active">
+		<li >
 			<a href="/1.compute/ncp_server_autoscaling_limit/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -281,7 +333,7 @@
 			</a>
 		</li>
 	
-		<li >
+		<li class="active">
 			<a href="/1.compute/ncp_server_storage_add_detail_process/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -588,17 +640,17 @@
 		<h2>Share</h2>
 		<p>Share this tutorial with your community.</p>
 		<ul>
-			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_limit%2F">
+			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_storage_add_detail_process%2F">
 		<svg class="twitter" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg>
 	
  Twitter</a></li>
-			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_limit%2F">
+			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_storage_add_detail_process%2F">
 		<svg class="facebook" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="15.8 15.8 25 25"><path d="M32.8 24.7h-3.2v-2.1c0-0.8 0.5-1 0.9-1s2.3 0 2.3 0v-3.5l-3.1 0c-3.5 0-4.3 2.6-4.3 4.3v2.3h-2v3.6h2c0 4.6 0 10.2 0 10.2h4.2c0 0 0-5.6 0-10.2h2.8L32.8 24.7z"/></svg>
 	
  Facebook</a></li>
-			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_limit%2F">
+			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_storage_add_detail_process%2F">
  Google+</a></li>
-			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_limit%2F&t=Auto%20Scaling%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD">
+			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_storage_add_detail_process%2F&t=Linux%20%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80%28%EB%94%94%EC%8A%A4%ED%81%AC%29%20%EC%B6%94%EA%B0%80%20%EC%83%81%EC%84%B8%20%EA%B0%80%EC%9D%B4%EB%93%9C">
 		<svg class="hacker-news" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.8 3.3c-0.4 0.8-5.6 11.1-5.6 11.2 0 2 0 6.2 0 6.2 -0.1 0-2.2 0-2.3 0 0 0 0-5.9 0-6.2 0 0-5.5-10.9-5.6-11.1C5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3c0 0 0 0 0.1 0 0.9 0 1.7 0 2.6 0 0 0 0 0 0 0.1 0.1 0.1 4 8.3 4.1 8.3 0 0 4.2-8.3 4.3-8.4 0.8 0 1.6 0 2.4 0 0 0 0 0 0 0C18.8 3.3 18.8 3.3 18.8 3.3z"/></svg>
 	
  Hacker News</a></li>

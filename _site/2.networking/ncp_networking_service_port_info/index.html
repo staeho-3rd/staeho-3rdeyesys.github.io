@@ -26,19 +26,19 @@
 		
 
 		<!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Auto Scaling 서비스 제한사항 | 3rdeyesys</title>
+<title>주요 서비스 포트(Port) 정보 | 3rdeyesys</title>
 <meta name="generator" content="Jekyll v3.7.2" />
-<meta property="og:title" content="Auto Scaling 서비스 제한사항" />
+<meta property="og:title" content="주요 서비스 포트(Port) 정보" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="네이버 클라우드 Auto Scaling 서비스 제한사항" />
-<meta property="og:description" content="네이버 클라우드 Auto Scaling 서비스 제한사항" />
-<link rel="canonical" href="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_limit/" />
-<meta property="og:url" content="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_limit/" />
+<meta name="description" content="네이버 클라우드 주요 서비스 포트(Port) 정보" />
+<meta property="og:description" content="네이버 클라우드 주요 서비스 포트(Port) 정보" />
+<link rel="canonical" href="https://docs.3rdeyesys.com/2.networking/ncp_networking_service_port_info/" />
+<meta property="og:url" content="https://docs.3rdeyesys.com/2.networking/ncp_networking_service_port_info/" />
 <meta property="og:site_name" content="3rdeyesys" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-11-29T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-01-14T00:00:00+09:00" />
 <script type="application/ld+json">
-{"url":"https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_limit/","headline":"Auto Scaling 서비스 제한사항","dateModified":"2020-11-29T00:00:00+09:00","datePublished":"2020-11-29T00:00:00+09:00","description":"네이버 클라우드 Auto Scaling 서비스 제한사항","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_limit/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://docs.3rdeyesys.com/2.networking/ncp_networking_service_port_info/","headline":"주요 서비스 포트(Port) 정보","dateModified":"2021-01-14T00:00:00+09:00","datePublished":"2021-01-14T00:00:00+09:00","description":"네이버 클라우드 주요 서비스 포트(Port) 정보","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/2.networking/ncp_networking_service_port_info/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 		<link type="application/atom+xml" rel="alternate" href="https://docs.3rdeyesys.com/feed.xml" title="3rdeyesys" />
@@ -105,68 +105,50 @@
 		<ul>
 			
 			
-				<li><a href="#개요">개요</a></li>
-			
-				<li><a href="#스펙-및-서비스-환경-제한-사항">스펙 및 서비스 환경 제한 사항</a></li>
-			
-				<li><a href="#os-서버-이미지-제한-사항">OS 서버 이미지 제한 사항</a></li>
-			
-				<li><a href="#설정-제한-사항">설정 제한 사항</a></li>
-			
-				<li><a href="#참고-url">참고 URL</a></li>
+				<li><a href="#포트port-정보">포트(Port) 정보</a></li>
 			
 		</ul>
 	</section>
 	<section class="tutorial-content">
-		<h1>Auto Scaling 서비스 제한사항</h1>
+		<h1>주요 서비스 포트(Port) 정보</h1>
 
 		
 		
 		<div class="tutorial-main">
-			<h2 id="개요">개요</h2>
-<p>모든 클라우드 서비스의 핵심 중의 하나가 Auto Scaling이라고 할 수 있습니다.
-네이버 클라우드도 예외가 아닌데, Auto Scaling을 설정할 때 몇가지 제한사항이 있어서 정리해보았습니다.</p>
-
-<h2 id="스펙-및-서비스-환경-제한-사항">스펙 및 서비스 환경 제한 사항</h2>
-<p>서버 스펙이나 서비스 환경과 관련한 제한 사항은 다음과 같습니다.</p>
+			<h2 id="포트port-정보">포트(Port) 정보</h2>
+<p>네이버 클라우드 주요 서비스들에서 사용하는 포트(Port) 정보를 정리해보았습니다.<br />
+네이버 클라우드에서 사용하는 포트이므로 일부 서비스의 경우 일반적으로 사용되는 포트와 조금 다른 경우도 있을 수 있습니다.</p>
 
 <ul>
-  <li>총 디스크 사이즈 150GB 이하 서버만 가능</li>
-  <li>Windows OS는 Windows 2012. 2016만 지원</li>
-  <li>Micro 서버는 불가</li>
-  <li>High Memory 서버는 불가(추후 개선 예정)</li>
-  <li>Local Disk 기반 서버는 불가</li>
-  <li>Global Internet Service 영역 내의 서비스 불가</li>
-</ul>
-
-<p>따라서 서버타입 기준으로  <code class="highlighter-rouge">Auto Scaling 설정이 가능한 서버타입은 Compact, Standard 2가지 뿐</code>입니다.</p>
-
-<p><img src="../../images/ncp_server_autoscaling_limit.png" alt="Auto Scaling 서비스 제한사항" style="width:600px;align:center" /></p>
-
-<h2 id="os-서버-이미지-제한-사항">OS 서버 이미지 제한 사항</h2>
-<p>centos-7.8-64, ubuntu-18.04 이 2가지 OS 이미지는 개인 회원은 KR-1 1세대 서버에서 생성이 불가능한 이미지입니다. 2세대 서버를 선택하시거나 KR-2에서 생성해야 합니다.</p>
-
-<h2 id="설정-제한-사항">설정 제한 사항</h2>
-<p>다음으로 Auto Scaling 설정을 할 때 생성 가능한 최대 서버 수 등의 설정 제한 사항은 다음과 같습니다.</p>
-
-<ul>
-  <li>고객별 생성 가능한 Auto Scaling Group 최대 수: 100</li>
-  <li>고객별 생성 가능한 Launch Configuration 최대 수: 100</li>
-  <li>Auto Scaling Group당 생성 가능한 스케줄(Scheduled Action) 최대 수: 100</li>
-  <li>Auto Scaling Group당 생성 가능한 Scaling Policy 최대 수: 10</li>
-  <li>Auto Scaling Group당 생성 가능한 최대 서버 수: 30대</li>
-  <li>Auto Scaling Group당 연결 가능한 Load Balancer 최대 수 : 10</li>
+  <li>22 : SSH</li>
+  <li>80 : http</li>
+  <li>443 : https</li>
+  <li>1433 : mssql</li>
+  <li>3000 : Node.js Express</li>
+  <li>3306 : mysql</li>
+  <li>3389 : 윈도 원격데스크톱</li>
+  <li>5432 : PostgreSQL</li>
+  <li>5672 : RabbitMQ</li>
+  <li>5985 : Packer</li>
+  <li>6379 : Redis</li>
+  <li>8001 : CUBRID</li>
+  <li>8080 : Ambari</li>
+  <li>8081 : Hue</li>
+  <li>8388 : Shadowsocks 서버</li>
+  <li>9736 : Jeus WebAdmin</li>
+  <li>10090 : Pinpoint 서버</li>
+  <li>11313 : Hugo 서버</li>
+  <li>15672 : RabbitMQ Management UI</li>
+  <li>18080 : Tomcat, Jenkins</li>
+  <li>18088 : Superset</li>
+  <li>18888 : TensorFlow Jupyter Notebook</li>
+  <li>18889 : TensorBoard</li>
+  <li>27017 : MongoDB</li>
+  <li>50070 : HDFS NameNode</li>
 </ul>
 
 <blockquote>
-  <p>계정당 생성 가능한 최대 서버 대수 : 네이버 클라우드 플랫폼에서 한 <strong>계정당 생성할 수 있는 최대 서버 수 기본 50대</strong>입니다. 서버 수 한도를 조정하려면 고객지원으로 문의해야 합니다.</p>
-</blockquote>
-
-<h2 id="참고-url">참고 URL</h2>
-<p><a href="https://docs.ncloud.com/ko/compute/autoscaling/autoscaling_overview.html" target="_blank">https://docs.ncloud.com/ko/compute/autoscaling/autoscaling_overview.html</a></p>
-
-<blockquote>
-  <p>문서 최종 수정일 : 2020-11-19</p>
+  <p>문서 최종 수정일 : 2021-01-14</p>
 </blockquote>
 
 		</div>
@@ -191,13 +173,13 @@
 	
 	
 	<div class="tutorial-series">
-		<h3>Server - Series</h3>
-		<p>네이버 클라우드 Server 관련 문서들입니다.</p>
+		<h3>Networking - Series</h3>
+		<p>네이버 클라우드 Networking 관련 문서들입니다.</p>
 
 		<ul class="listing">
 	
 		<li >
-			<a href="/1.compute/ncp_server_micro_limit/">
+			<a href="/2.networking/ncp_networking_vpc/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -206,15 +188,15 @@
 </div>
 				<article>
 					<div>
-						<h3>1. Micro 타입 서버에서 사용할 수 없는 서비스</h3>
-						<p class="description">네이버 클라우드 Micro 타입 서버에서 사용할 수 없는 서비스</p>
+						<h3>1. VPC 구성요소</h3>
+						<p class="description">네이버 클라우드 VPC 구성요소</p>
 					</div>
 				</article>
 			</a>
 		</li>
 	
 		<li >
-			<a href="/1.compute/ncp_server_spec_change/">
+			<a href="/2.networking/ncp_networking_vpc_acg_nacl/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -223,15 +205,15 @@
 </div>
 				<article>
 					<div>
-						<h3>2. 서버 스펙 변경</h3>
-						<p class="description">네이버 클라우드 서버 스펙 변경</p>
+						<h3>2. ACG와 NACL 비교</h3>
+						<p class="description">네이버 클라우드 ACG와 NACL 비교</p>
 					</div>
 				</article>
 			</a>
 		</li>
 	
 		<li >
-			<a href="/1.compute/ncp_server_stop_price/">
+			<a href="/2.networking/ncp_networking_vpc_subnet_natgw/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -240,15 +222,49 @@
 </div>
 				<article>
 					<div>
-						<h3>3. 서버 정지 시 요금할인</h3>
-						<p class="description">네이버 클라우드 서버 정지 시 요금할인</p>
+						<h3>3. Subnet 과 NAT GW</h3>
+						<p class="description">네이버 클라우드 Subnet 과 NAT GW</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+			<a href="/2.networking/ncp_networking_vpc_load_balancer/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>4. Load Balancer 상품군의 변화</h3>
+						<p class="description">네이버 클라우드 Load Balancer 상품군의 변화</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+			<a href="/2.networking/ncp_networking_load_balancer_acg/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>5. Classic Load Balancer 운영을 위한 ACG 설정 방법</h3>
+						<p class="description">네이버 클라우드 Classic Load Balancer 운영을 위한 ACG 설정 방법</p>
 					</div>
 				</article>
 			</a>
 		</li>
 	
 		<li class="active">
-			<a href="/1.compute/ncp_server_autoscaling_limit/">
+			<a href="/2.networking/ncp_networking_service_port_info/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -257,127 +273,8 @@
 </div>
 				<article>
 					<div>
-						<h3>4. Auto Scaling 서비스 제한사항</h3>
-						<p class="description">네이버 클라우드 Auto Scaling 서비스 제한사항</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_storage_add_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>5. 스토리지 추가 생성 기본 가이드</h3>
-						<p class="description">네이버 클라우드 스토리지 추가 생성 기본 가이드</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_storage_add_detail_process/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>6. Linux 스토리지(디스크) 추가 상세 가이드</h3>
-						<p class="description">네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/3.security/ncp_security_acg_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>7. ACG(Access Control Group) 가이드</h3>
-						<p class="description">네이버 클라우드 ACG(Access Control Group) 가이드</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/4.storage/ncp_storage_backup_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>8. 백업 서비스 가이드와 신청 절차</h3>
-						<p class="description">네이버 클라우드 백업 서비스 가이드와 신청 절차</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_connect_no_public_ip/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>9. 서버 접속 가이드(Linux) - 공인IP 없을 때</h3>
-						<p class="description">네이버 클라우드 서버 접속 가이드 - 공인IP 없을 때</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_connect_by_public_ip/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>10. 서버 접속 가이드(Linux) - 공인IP 있을 때</h3>
-						<p class="description">네이버 클라우드 서버 접속 가이드 - 공인IP 있을 때</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_vpc_create/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>11. VPC 환경에서 서버 생성</h3>
-						<p class="description">네이버 클라우드 VPC 환경에서 서버 생성</p>
+						<h3>6. 주요 서비스 포트(Port) 정보</h3>
+						<p class="description">네이버 클라우드 주요 서비스 포트(Port) 정보</p>
 					</div>
 				</article>
 			</a>
@@ -393,23 +290,6 @@
 		<h3>Related tutorials</h3>
 
 		<ul class="listing">
-	
-		<li >
-			<a href="/2.networking/ncp_networking_service_port_info/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>주요 서비스 포트(Port) 정보</h3>
-						<p class="description">네이버 클라우드 주요 서비스 포트(Port) 정보</p>
-					</div>
-				</article>
-			</a>
-		</li>
 	
 		<li >
 			<a href="/2.networking/ncp_networking_load_balancer_acg/">
@@ -564,6 +444,23 @@
 			</a>
 		</li>
 	
+		<li >
+			<a href="/1.compute/ncp_http_to_https_centos/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/CentOS</h3>
+						<p class="description">네이버 클라우드 http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/CentOS</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
 </ul>
 	</div>
 
@@ -588,17 +485,17 @@
 		<h2>Share</h2>
 		<p>Share this tutorial with your community.</p>
 		<ul>
-			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_limit%2F">
+			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F2.networking%2Fncp_networking_service_port_info%2F">
 		<svg class="twitter" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg>
 	
  Twitter</a></li>
-			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_limit%2F">
+			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F2.networking%2Fncp_networking_service_port_info%2F">
 		<svg class="facebook" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="15.8 15.8 25 25"><path d="M32.8 24.7h-3.2v-2.1c0-0.8 0.5-1 0.9-1s2.3 0 2.3 0v-3.5l-3.1 0c-3.5 0-4.3 2.6-4.3 4.3v2.3h-2v3.6h2c0 4.6 0 10.2 0 10.2h4.2c0 0 0-5.6 0-10.2h2.8L32.8 24.7z"/></svg>
 	
  Facebook</a></li>
-			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_limit%2F">
+			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F2.networking%2Fncp_networking_service_port_info%2F">
  Google+</a></li>
-			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_limit%2F&t=Auto%20Scaling%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD">
+			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F2.networking%2Fncp_networking_service_port_info%2F&t=%EC%A3%BC%EC%9A%94%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%ED%8F%AC%ED%8A%B8%28Port%29%20%EC%A0%95%EB%B3%B4">
 		<svg class="hacker-news" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.8 3.3c-0.4 0.8-5.6 11.1-5.6 11.2 0 2 0 6.2 0 6.2 -0.1 0-2.2 0-2.3 0 0 0 0-5.9 0-6.2 0 0-5.5-10.9-5.6-11.1C5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3c0 0 0 0 0.1 0 0.9 0 1.7 0 2.6 0 0 0 0 0 0 0.1 0.1 0.1 4 8.3 4.1 8.3 0 0 4.2-8.3 4.3-8.4 0.8 0 1.6 0 2.4 0 0 0 0 0 0 0C18.8 3.3 18.8 3.3 18.8 3.3z"/></svg>
 	
  Hacker News</a></li>

@@ -15,7 +15,8 @@ order_number: 11
 
 
 ## VPC 생성
-VPC (Virtual Private Cloud) 즉, 클라우드 상에서 논리적으로 격리된 고객 전용 네트워크 공간을 먼저 생성하고 해당 공간에 서버를 생성하게 됩니다.
+VPC (Virtual Private Cloud) 즉, 클라우드 상에서 논리적으로 격리된 고객 전용 네트워크 공간을 먼저 생성하고 해당 공간에 서버를 생성하게 됩니다.  
+VPC는 고객의 계정마다 **최대 3개**를 생성할 수 있으며, 각 VPC는 최대 넷마스크 0.0.255.255/16 (IP 65,536개) 크기의 네트워크 주소 공간을 제공합니다.
 
 - VPC 이름 입력
 - IP 주소 범위 입력
@@ -60,4 +61,4 @@ VPC (Virtual Private Cloud) 즉, 클라우드 상에서 논리적으로 격리�
 <a href="https://docs.ncloud.com/ko/compute/compute-1-1-v2.html" target="_blank">https://docs.ncloud.com/ko/compute/compute-1-1-v2.html</a>
 
 
-> 문서 최종 수정일 : 2020-12-22
+> 문서 최종 수정일 : 2021-01-12

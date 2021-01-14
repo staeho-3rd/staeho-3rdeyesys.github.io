@@ -1,9 +1,9 @@
 ---
 date: 2020-11-19
-title: 스토리지 추가 생성 가이드
+title: 스토리지 추가 생성 기본 가이드
 categories:
   - 1.compute
-description: 네이버 클라우드 스토리지 추가 생성 가이드
+description: 네이버 클라우드 스토리지 추가 생성 기본 가이드
 type: Document
 set: server
 order_number: 5
