@@ -115,6 +115,14 @@
 		
 			<li><a href="#네이버-클라우드에서-vpc는-최대-몇개까지-생성할-수-있나요">네이버 클라우드에서 VPC는 최대 몇개까지 생성할 수 있나요?</a></li>
 		
+			<li><a href="#네이버-클라우드-application-server는-상세-모니터링을-어떻게-하면-확인할-수-있나요">네이버 클라우드 Application Server는 상세 모니터링을 어떻게 하면 확인할 수 있나요?</a></li>
+		
+			<li><a href="#aws의-s3와-비슷한-네이버-클라우드의-서비스는-어떤-것인가요">AWS의 S3와 비슷한 네이버 클라우드의 서비스는 어떤 것인가요?</a></li>
+		
+			<li><a href="#aws의-ebs와-비슷한-네이버-클라우드의-스토리지는-어떤-것인가요">AWS의 EBS와 비슷한 네이버 클라우드의 스토리지는 어떤 것인가요?</a></li>
+		
+			<li><a href="#네이버-클라우드-autoscaling-그룹-이벤트는-어디에서-설정하나요">네이버 클라우드 AutoScaling 그룹 이벤트는 어디에서 설정하나요?</a></li>
+		
 	</ul>	
 
 	
@@ -135,6 +143,18 @@
 	
 		<h2 id="네이버-클라우드에서-vpc는-최대-몇개까지-생성할-수-있나요">네이버 클라우드에서 VPC는 최대 몇개까지 생성할 수 있나요?<a class="header-link" href="#네이버-클라우드에서-vpc는-최대-몇개까지-생성할-수-있나요">#</a></h2>
 		<p>네이버 클라우드에서 VPC는 고객의 계정마다 <b>최대 3개</b>를 생성할 수 있으며, 각 VPC는 최대 넷마스크 0.0.255.255/16 (IP 65,536개) 크기의 네트워크 주소 공간을 제공합니다 <br /><span style="font-size:15px">- 참고문서: <a href="/1.compute/ncp_server_vpc_create/" style="text-decoration:none">https://docs.3rdeyesys.com/1.compute/ncp_server_vpc_create/</a></span></p>
+	
+		<h2 id="네이버-클라우드-application-server는-상세-모니터링을-어떻게-하면-확인할-수-있나요">네이버 클라우드 Application Server는 상세 모니터링을 어떻게 하면 확인할 수 있나요?<a class="header-link" href="#네이버-클라우드-application-server는-상세-모니터링을-어떻게-하면-확인할-수-있나요">#</a></h2>
+		<p>네이버 클라우드 Application Server Launcher 서비스에서 실행한 Application Server는 개발이나 테스트 용도의 최소 스펙과 최소 기능으로 제공되는 서버로, 기본 모니터링 외에 <b>상세 모니터링은 제공되지 않습니다</b>. 그 외에도 스토리지 추가, 스펙 변경 등도 제공되지 않습니다. </p>
+	
+		<h2 id="aws의-s3와-비슷한-네이버-클라우드의-서비스는-어떤-것인가요">AWS의 S3와 비슷한 네이버 클라우드의 서비스는 어떤 것인가요?<a class="header-link" href="#aws의-s3와-비슷한-네이버-클라우드의-서비스는-어떤-것인가요">#</a></h2>
+		<p>네이버 클라우드에서 어떤 종류의 데이터든지 언제 어디서나 데이터를 저장하고 확인할 수 있는 객체 스토리지 서비스는 <b>Object Storage</b>입니다. <br /><span style="font-size:15px">- 참고문서: <a href="/4.storage/ncp_storage_compare/" style="text-decoration:none">https://docs.3rdeyesys.com/4.storage/ncp_storage_compare/</a></span></p>
+	
+		<h2 id="aws의-ebs와-비슷한-네이버-클라우드의-스토리지는-어떤-것인가요">AWS의 EBS와 비슷한 네이버 클라우드의 스토리지는 어떤 것인가요?<a class="header-link" href="#aws의-ebs와-비슷한-네이버-클라우드의-스토리지는-어떤-것인가요">#</a></h2>
+		<p>네이버 클라우드에서 하드 디스크를 추가 하듯이 서버에 할당하여 사용하는 스토리지는 <b>Block Storage</b>입니다. Console화면에서는 별도의 메뉴가 없고, 해당 서버의 관리 메뉴에서 <b>스토리지 생성</b> 기능을 이용하시면 됩니다. <br /><span style="font-size:15px">- 참고문서: <a href="/4.storage/ncp_storage_compare/" style="text-decoration:none">https://docs.3rdeyesys.com/4.storage/ncp_storage_compare/</a></span></p>
+	
+		<h2 id="네이버-클라우드-autoscaling-그룹-이벤트는-어디에서-설정하나요">네이버 클라우드 AutoScaling 그룹 이벤트는 어디에서 설정하나요?<a class="header-link" href="#네이버-클라우드-autoscaling-그룹-이벤트는-어디에서-설정하나요">#</a></h2>
+		<p>네이버 클라우드 AutoScaling 그룹 이벤트는 <b>Console - Monitoring - Group Event Setting 메뉴</b>에서 설정할 수 있습니다. 그리고 사전에 AutoScaling Group을 설정하셔야 합니다. <br /><span style="font-size:15px">- 참고문서: <a href="/1.compute/ncp_server_autoscaling_event_setting/" style="text-decoration:none">https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_event_setting/</a></span></p>
 	
 </section>
 			</div>
