@@ -42,20 +42,8 @@ find $BACKUP_DIR -ctime +7 -exec rm -f {} \;
 aws cli를 설치하려면 pip가 먼저 설치되어 있어야 합니다.  
 혹시 이미 pip가 설치되어 있다면 아래에 있는 <a href="#aws-cli-%EC%84%A4%EC%B9%98">AWS CLI설치</a>로 바로 이동하시면 되겠습니다.
 ``` bash
-~# curl -O https://bootstrap.pypa.io/get-pip.py
-~# python get-pip.py --user
-```
+~# yum -y install python-pip
 
-## bash profile 수정
-``` bash
-~# vi .bash_profile
-
-# 기존 PATH=$PATH:$HOME/bin:에 ~/.local/bin: 추가
-PATH=$PATH:$HOME/bin:~/.local/bin:
-
-# bash_profile 리로드
-~# source ~/.bash_profile
-```
 
 ## AWS CLI 설치
 네이버 클라우드의 설명에 따르면 aws cli 1.16이후 버전은 일부 기능을 사용할 수 없어서 1.15버전을 사용한다고 합니다.

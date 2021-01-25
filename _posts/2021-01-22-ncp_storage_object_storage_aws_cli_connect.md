@@ -19,25 +19,10 @@ aws cli를 설치하려면 pip가 먼저 설치되어 있어야 합니다.
 혹시 이미 pip가 설치되어 있다면 아래에 있는 <a href="#aws-cli-%EC%84%A4%EC%B9%98">AWS CLI설치</a>로 바로 이동하시면 되겠습니다.
 ``` bash
 # CentOS
-~# curl -O https://bootstrap.pypa.io/get-pip.py
-~# python get-pip.py --user
+~# yum -y install python-pip
 
 # Ubuntu
 ~# apt-get install python-pip
-```
-
-## bash profile 수정
-PATH를 추가 하기 위한 bash profile 수정은 CentOS에서만 필요합니다.  
-Ubuntu는 다음 단계로 이동하시면 됩니다.
-``` bash
-# CentOS
-~# vi .bash_profile
-
-# 기존 PATH=$PATH:$HOME/bin:에 ~/.local/bin: 추가
-PATH=$PATH:$HOME/bin:~/.local/bin:
-
-# bash_profile 리로드
-~# source ~/.bash_profile
 ```
 
 ## AWS CLI 설치

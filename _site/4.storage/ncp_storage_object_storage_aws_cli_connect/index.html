@@ -109,8 +109,6 @@
 			
 				<li><a href="#pip-설치">pip 설치</a></li>
 			
-				<li><a href="#bash-profile-수정">bash profile 수정</a></li>
-			
 				<li><a href="#aws-cli-설치">AWS CLI 설치</a></li>
 			
 				<li><a href="#api-인증키-생성">API 인증키 생성</a></li>
@@ -138,24 +136,10 @@
 설치 방법은 CentOS와 Ubuntu가 다르니 각각의 OS에 맞게 설치하시면 됩니다.<br />
 혹시 이미 pip가 설치되어 있다면 아래에 있는 <a href="#aws-cli-%EC%84%A4%EC%B9%98">AWS CLI설치</a>로 바로 이동하시면 되겠습니다.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CentOS</span>
-~# curl <span class="nt">-O</span> https://bootstrap.pypa.io/get-pip.py
-~# python get-pip.py <span class="nt">--user</span>
+~# yum <span class="nt">-y</span> <span class="nb">install </span>python-pip
 
 <span class="c"># Ubuntu</span>
 ~# apt-get <span class="nb">install </span>python-pip
-</code></pre></div></div>
-
-<h2 id="bash-profile-수정">bash profile 수정</h2>
-<p>PATH를 추가 하기 위한 bash profile 수정은 CentOS에서만 필요합니다.<br />
-Ubuntu는 다음 단계로 이동하시면 됩니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CentOS</span>
-~# vi .bash_profile
-
-<span class="c"># 기존 PATH=$PATH:$HOME/bin:에 ~/.local/bin: 추가</span>
-<span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HOME</span>/bin:~/.local/bin:
-
-<span class="c"># bash_profile 리로드</span>
-~# <span class="nb">source</span> ~/.bash_profile
 </code></pre></div></div>
 
 <h2 id="aws-cli-설치">AWS CLI 설치</h2>
