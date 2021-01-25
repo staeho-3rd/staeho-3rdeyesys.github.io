@@ -43,6 +43,7 @@ aws cli를 설치하려면 pip가 먼저 설치되어 있어야 합니다.
 혹시 이미 pip가 설치되어 있다면 아래에 있는 <a href="#aws-cli-%EC%84%A4%EC%B9%98">AWS CLI설치</a>로 바로 이동하시면 되겠습니다.
 ``` bash
 ~# yum -y install python-pip
+```
 
 
 ## AWS CLI 설치
