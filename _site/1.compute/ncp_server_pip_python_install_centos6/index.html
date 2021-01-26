@@ -145,9 +145,10 @@ yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이�
 </code></pre></div></div>
 
 <h2 id="필요-패키지들-설치">필요 패키지들 설치</h2>
-<p>~# yum -y groupinstall ‘Development Tools’
-~# yum -y install openssl-devel* ncurses-devel* zlib*.x86_64
-~# yum update curl nss</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# yum <span class="nt">-y</span> groupinstall <span class="s1">'Development Tools'</span>
+~# yum <span class="nt">-y</span> <span class="nb">install </span>openssl-devel<span class="k">*</span> ncurses-devel<span class="k">*</span> zlib<span class="k">*</span>.x86_64
+~# yum update curl nss
+</code></pre></div></div>
 
 <h2 id="python-설치">Python 설치</h2>
 <p>CentOS6에는 Python 2.6이 설치되어 있습니다.<br />

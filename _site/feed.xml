@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-01-26T16:31:02+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">CentOS6에서 pip - Python 설치하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/" rel="alternate" type="text/html" title="CentOS6에서 pip - Python 설치하기" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-01-26T16:49:40+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">CentOS6에서 pip - Python 설치하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/" rel="alternate" type="text/html" title="CentOS6에서 pip - Python 설치하기" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;2020년 12월 01일부로 CentOS6의 기술지원이 공식 종료되었습니다.&lt;br /&gt;
 yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이기에 pip, Python등의 설치가 원활하지 않습니다.
 그래서 pip설치에 필요한 CentOS6.x의 yum 명령을 수행하려면 
@@ -16,9 +16,10 @@ yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;필요-패키지들-설치&quot;&gt;필요 패키지들 설치&lt;/h2&gt;
-&lt;p&gt;~# yum -y groupinstall ‘Development Tools’
-~# yum -y install openssl-devel* ncurses-devel* zlib*.x86_64
-~# yum update curl nss&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# yum &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; groupinstall &lt;span class=&quot;s1&quot;&gt;'Development Tools'&lt;/span&gt;
+~# yum &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;openssl-devel&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; ncurses-devel&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; zlib&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.x86_64
+~# yum update curl nss
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;python-설치&quot;&gt;Python 설치&lt;/h2&gt;
 &lt;p&gt;CentOS6에는 Python 2.6이 설치되어 있습니다.&lt;br /&gt;

@@ -28,9 +28,11 @@ yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이�
 ```
 
 ## 필요 패키지들 설치
+``` bash
 ~# yum -y groupinstall 'Development Tools'
 ~# yum -y install openssl-devel* ncurses-devel* zlib*.x86_64
 ~# yum update curl nss
+```
 
 ## Python 설치
 CentOS6에는 Python 2.6이 설치되어 있습니다.  
