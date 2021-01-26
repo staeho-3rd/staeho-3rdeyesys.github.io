@@ -24,6 +24,9 @@ aws cli를 설치하려면 pip가 먼저 설치되어 있어야 합니다.
 # Ubuntu
 ~# apt-get install python-pip
 ```
+> **CentOS 6.x** 버전은 기술지원 종료로 인해 위 방법대로 설치가 되지 않습니다. 다음 경로에 나온 방법대로 설치하면 됩니다.
+<a href="/1.compute/ncp_server_pip_python_install_centos6/" target="_blank">CentOS6에서 pip - Python 설치하기</a>
+
 
 ## AWS CLI 설치
 네이버 클라우드의 설명에 따르면 aws cli 1.16이후 버전은 일부 기능을 사용할 수 없어서 1.15버전을 사용한다고 합니다.

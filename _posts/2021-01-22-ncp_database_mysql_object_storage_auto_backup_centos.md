@@ -44,6 +44,8 @@ aws cli를 설치하려면 pip가 먼저 설치되어 있어야 합니다.
 ``` bash
 ~# yum -y install python-pip
 ```
+> **CentOS 6.x** 버전은 기술지원 종료로 인해 위 방법대로 설치가 되지 않습니다. 다음 경로에 나온 방법대로 설치하면 됩니다.
+<a href="/1.compute/ncp_server_pip_python_install_centos6/" target="_blank">CentOS6에서 pip - Python 설치하기</a>
 
 
 ## AWS CLI 설치

@@ -8,6 +8,7 @@ type: Document
 set: database
 order_number: 4
 ---
+
 ## 개요
 네이버 클라우드 Ubuntu에서 설치형 mysql  DB를 매일 일정한 시간에 Object Storage로 자동으로 백업 받는 방법에 대해 정리해보았습니다.  
 순서는 로컬에 백업 파일 생성 후에 Object Storage로 저장하는 단계로 진행됩니다.
@@ -125,4 +126,4 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
 	- <a href="/4.storage/ncp_storage_object_storage_aws_cli_connect/" target="_blank">/4.storage/ncp_storage_object_storage_aws_cli_connect/</a>
 
 
-> 문서 최종 수정일 : 2021-01-29
+> 문서 최종 수정일 : 2021-01-26
