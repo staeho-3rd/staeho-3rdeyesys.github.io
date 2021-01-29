@@ -26,19 +26,19 @@
 		
 
 		<!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>ACG(Access Control Group) 가이드 | 3rdeyesys</title>
+<title>Object Storage와 연동이 필수인 서비스 | 3rdeyesys</title>
 <meta name="generator" content="Jekyll v3.7.2" />
-<meta property="og:title" content="ACG(Access Control Group) 가이드" />
+<meta property="og:title" content="Object Storage와 연동이 필수인 서비스" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="네이버 클라우드 ACG(Access Control Group) 가이드" />
-<meta property="og:description" content="네이버 클라우드 ACG(Access Control Group) 가이드" />
-<link rel="canonical" href="https://docs.3rdeyesys.com/3.security/ncp_security_acg_guide/" />
-<meta property="og:url" content="https://docs.3rdeyesys.com/3.security/ncp_security_acg_guide/" />
+<meta name="description" content="네이버 클라우드 Object Storage와 연동이 필수인 서비스" />
+<meta property="og:description" content="네이버 클라우드 Object Storage와 연동이 필수인 서비스" />
+<link rel="canonical" href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_required_service/" />
+<meta property="og:url" content="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_required_service/" />
 <meta property="og:site_name" content="3rdeyesys" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-11-26T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-01-29T00:00:00+09:00" />
 <script type="application/ld+json">
-{"url":"https://docs.3rdeyesys.com/3.security/ncp_security_acg_guide/","headline":"ACG(Access Control Group) 가이드","dateModified":"2020-11-26T00:00:00+09:00","datePublished":"2020-11-26T00:00:00+09:00","description":"네이버 클라우드 ACG(Access Control Group) 가이드","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/3.security/ncp_security_acg_guide/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_required_service/","headline":"Object Storage와 연동이 필수인 서비스","dateModified":"2021-01-29T00:00:00+09:00","datePublished":"2021-01-29T00:00:00+09:00","description":"네이버 클라우드 Object Storage와 연동이 필수인 서비스","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_required_service/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 		<link type="application/atom+xml" rel="alternate" href="https://docs.3rdeyesys.com/feed.xml" title="3rdeyesys" />
@@ -107,80 +107,50 @@
 			
 				<li><a href="#개요">개요</a></li>
 			
-				<li><a href="#제한-사항">제한 사항</a></li>
+				<li><a href="#연동-필수-서비스">연동 필수 서비스</a></li>
 			
-				<li><a href="#기본-규칙">기본 규칙</a></li>
-			
-				<li><a href="#참고-url">참고 URL</a></li>
+				<li><a href="#연동-선택-서비스">연동 선택 서비스</a></li>
 			
 		</ul>
 	</section>
 	<section class="tutorial-content">
-		<h1>ACG(Access Control Group) 가이드</h1>
+		<h1>Object Storage와 연동이 필수인 서비스</h1>
 
 		
 		
 		<div class="tutorial-main">
 			<h2 id="개요">개요</h2>
-<p>ACG(Access Control Group)는 서버 간 네트워크 접근 제어 및 관리를 할 수 있는 IP/Port 기반 필터링 방화벽 서비스로 AWS에서는 비슷하게 Security Group이라는 것이 있습니다.</p>
+<p>네이버 클라우드의 수 많은 서비스들 중에는 Object Storage가 설정, 준비되어 있어야 하는 서비스들, 즉, Object Storage와 연동이 필수인 서비스들이 여럿 있습니다.<br />
+어떤 서비스들이 이에 해당하는지 정리해보겠습니다.</p>
 
-<h2 id="제한-사항">제한 사항</h2>
+<h2 id="연동-필수-서비스">연동 필수 서비스</h2>
+<p>Object Storage와 연동이 필수인 서비스들에는 AI-Application Service와 Media 관련 서비스들이 많습니다.</p>
 
-<h3 id="vpc">VPC</h3>
 <ul>
-  <li>VPC당 최대 <strong>500개</strong>까지 ACG 생성 가능</li>
-  <li><code class="highlighter-rouge">NIC당 3개의 ACG</code>를 허용</li>
-  <li>Inbound / Outbound 각각 <strong>50개의 규칙</strong> 생성 가능</li>
+  <li>CLOVA Speech</li>
+  <li>CLOVA Dubbing</li>
+  <li>VOD Transcoder</li>
+  <li>VOD Station</li>
+  <li>Video Player</li>
+  <li>Image Optimizer</li>
+  <li>SourceBuild</li>
+  <li>Cloud Hadoop</li>
 </ul>
 
-<h3 id="classic">Classic</h3>
+<p><img src="../../images/ncp_storage_object_storage_required_service_01.jpg" alt="Object Storage와 연동이 필수인 서비스" style="width:800px;align:center" /></p>
+
+<p><img src="../../images/ncp_storage_object_storage_required_service_02.jpg" alt="Object Storage와 연동이 필수인 서비스" style="width:800px;align:center" /></p>
+
+<h2 id="연동-선택-서비스">연동 선택 서비스</h2>
+<p>Object Storage와 반드시 연동해야 하는 것은 아니지만, Object Storage를 이용하면 훨씬 편하고, 빠르고 안정적으로 서비스 가능한 경우도 있습니다.</p>
+
 <ul>
-  <li>계정당 최대 <strong>100개</strong>까지 ACG를 생성 가능</li>
-  <li>각 ACG에는 최대 <strong>100개</strong>까지의 규칙을 설정할 수 있음</li>
-  <li>서버는 <strong>최대 5개</strong>의 ACG에 중복 포함될 수 있음</li>
-  <li>서버가 생성될 시 선택한 ACG는 변경이 불가하며, 반납 전까지 해당 ACG 규칙을 적용 받게 됨</li>
+  <li>CDN+</li>
+  <li>Global CDN</li>
 </ul>
 
 <blockquote>
-  <p>Classic 환경에서는 서버 자체에 할당되는 개념이었으나 VPC에는 NIC 즉, 네트워크 카드에 할당되는 개념이어서 VPC 환경에서는 <strong>NIC 당 최대 3개</strong>까지 ACG를 적용할 수 있다.</p>
-</blockquote>
-
-<h2 id="기본-규칙">기본 규칙</h2>
-
-<h3 id="default-acg">Default ACG</h3>
-<p>기본적으로 추가되는 ACG</p>
-
-<ul>
-  <li>모든 들어오는 연결(inbound traffic)을 차단함</li>
-  <li>모든 나가는 연결(outbound traffic)을 허용함</li>
-  <li>Default ACG 내 속한 서버들끼리의 네트워크 양방향 통신(TCP, UDP, ICMP)이 허용됨</li>
-  <li>원격 접속 기본 포트 (<strong>Linux - 22, Windows - 3389</strong>)에 대한 TCP 허용됨</li>
-</ul>
-
-<h4 id="vpc-화면">VPC 화면</h4>
-
-<h5 id="inbound">Inbound</h5>
-<p><img src="../../images/ncp_server_acg_vpc_inbound.png" alt="VPC Default ACG Inbound " style="width:600px;align:center" /></p>
-
-<h5 id="outbound">Outbound</h5>
-<p><img src="../../images/ncp_server_acg_vpc_outbound.png" alt="VPC Default ACG Outbound " style="width:600px;align:center" /></p>
-
-<h4 id="classic-화면">Classic 화면</h4>
-<p><img src="../../images/ncp_server_acg_classic.png" alt="Classic Default ACG " style="width:600px;align:center" /></p>
-
-<h3 id="custom-acg">Custom ACG</h3>
-<p>Default ACG 이외에 사용자가 추가하는 ACG</p>
-
-<ul>
-  <li>모든 inbound traffic을 차단함(규칙으로 명시되어 있지 않음)</li>
-  <li>모든 outbound traffic을 허용함(규칙으로 명시되어 있지 않음)</li>
-</ul>
-
-<h2 id="참고-url">참고 URL</h2>
-<p><a href="https://docs.ncloud.com/ko/compute/compute-2-3.html" target="_blank">https://docs.ncloud.com/ko/compute/compute-2-3.html</a></p>
-
-<blockquote>
-  <p>문서 최종 수정일 : 2020-11-26</p>
+  <p>문서 최종 수정일 : 2021-01-29</p>
 </blockquote>
 
 		</div>
@@ -205,13 +175,13 @@
 	
 	
 	<div class="tutorial-series">
-		<h3>Server - Series</h3>
-		<p>네이버 클라우드 Server 관련 문서들입니다.</p>
+		<h3> - Series</h3>
+		<p></p>
 
 		<ul class="listing">
 	
 		<li >
-			<a href="/1.compute/ncp_server_micro_limit/">
+			<a href="/4.storage/ncp_storage_compare/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -220,15 +190,15 @@
 </div>
 				<article>
 					<div>
-						<h3>1. Micro 타입 서버에서 사용할 수 없는 서비스</h3>
-						<p class="description">네이버 클라우드 Micro 타입 서버에서 사용할 수 없는 서비스</p>
+						<h3>1. 스토리지 비교</h3>
+						<p class="description">네이버 클라우드 스토리지 비교</p>
 					</div>
 				</article>
 			</a>
 		</li>
 	
 		<li >
-			<a href="/1.compute/ncp_server_spec_change/">
+			<a href="/4.storage/ncp_storage_object_storage_lifecycle_management/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -237,15 +207,15 @@
 </div>
 				<article>
 					<div>
-						<h3>2. 서버 스펙 변경</h3>
-						<p class="description">네이버 클라우드 서버 스펙 변경</p>
+						<h3>2. Object Storage Lifecycle Management 관리대상 설정 방법</h3>
+						<p class="description">네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법</p>
 					</div>
 				</article>
 			</a>
 		</li>
 	
 		<li >
-			<a href="/1.compute/ncp_server_stop_price/">
+			<a href="/4.storage/ncp_storage_object_storage_aws_cli_connect/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -254,66 +224,15 @@
 </div>
 				<article>
 					<div>
-						<h3>3. 서버 정지 시 요금할인</h3>
-						<p class="description">네이버 클라우드 서버 정지 시 요금할인</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_autoscaling_limit/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>4. Auto Scaling 서비스 제한사항</h3>
-						<p class="description">네이버 클라우드 Auto Scaling 서비스 제한사항</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_storage_add_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>5. 스토리지 추가 생성 기본 가이드</h3>
-						<p class="description">네이버 클라우드 스토리지 추가 생성 기본 가이드</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_storage_add_detail_process/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>6. Linux 스토리지(디스크) 추가 상세 가이드</h3>
-						<p class="description">네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드</p>
+						<h3>3. AWS CLI를 이용한 Object Storage 접속 방법</h3>
+						<p class="description">네이버 클라우드 Object Storage를 AWS CLI를 이용해서 접속하는 방법</p>
 					</div>
 				</article>
 			</a>
 		</li>
 	
 		<li class="active">
-			<a href="/3.security/ncp_security_acg_guide/">
+			<a href="/4.storage/ncp_storage_object_storage_required_service/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -322,93 +241,8 @@
 </div>
 				<article>
 					<div>
-						<h3>7. ACG(Access Control Group) 가이드</h3>
-						<p class="description">네이버 클라우드 ACG(Access Control Group) 가이드</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/4.storage/ncp_storage_backup_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>8. 백업 서비스 가이드와 신청 절차</h3>
-						<p class="description">네이버 클라우드 백업 서비스 가이드와 신청 절차</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_connect_no_public_ip/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>9. 서버 접속 가이드(Linux) - 공인IP 없을 때</h3>
-						<p class="description">네이버 클라우드 서버 접속 가이드 - 공인IP 없을 때</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_connect_by_public_ip/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>10. 서버 접속 가이드(Linux) - 공인IP 있을 때</h3>
-						<p class="description">네이버 클라우드 서버 접속 가이드 - 공인IP 있을 때</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_vpc_create/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>11. VPC 환경에서 서버 생성</h3>
-						<p class="description">네이버 클라우드 VPC 환경에서 서버 생성</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/1.compute/ncp_server_autoscaling_event_setting/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>12. AutoScaling 이벤트 설정하는 방법</h3>
-						<p class="description">네이버 클라우드 AutoScaling 그룹 이벤트 설정하는 방법</p>
+						<h3>4. Object Storage와 연동이 필수인 서비스</h3>
+						<p class="description">네이버 클라우드 Object Storage와 연동이 필수인 서비스</p>
 					</div>
 				</article>
 			</a>
@@ -424,23 +258,6 @@
 		<h3>Related tutorials</h3>
 
 		<ul class="listing">
-	
-		<li >
-			<a href="/4.storage/ncp_storage_object_storage_required_service/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>Object Storage와 연동이 필수인 서비스</h3>
-						<p class="description">네이버 클라우드 Object Storage와 연동이 필수인 서비스</p>
-					</div>
-				</article>
-			</a>
-		</li>
 	
 		<li >
 			<a href="/1.compute/ncp_server_pip_python_install_centos6/">
@@ -595,6 +412,23 @@
 			</a>
 		</li>
 	
+		<li >
+			<a href="/1.compute/ncp_server_vpc_create/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>VPC 환경에서 서버 생성</h3>
+						<p class="description">네이버 클라우드 VPC 환경에서 서버 생성</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
 </ul>
 	</div>
 
@@ -619,17 +453,17 @@
 		<h2>Share</h2>
 		<p>Share this tutorial with your community.</p>
 		<ul>
-			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F3.security%2Fncp_security_acg_guide%2F">
+			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F4.storage%2Fncp_storage_object_storage_required_service%2F">
 		<svg class="twitter" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg>
 	
  Twitter</a></li>
-			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F3.security%2Fncp_security_acg_guide%2F">
+			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F4.storage%2Fncp_storage_object_storage_required_service%2F">
 		<svg class="facebook" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="15.8 15.8 25 25"><path d="M32.8 24.7h-3.2v-2.1c0-0.8 0.5-1 0.9-1s2.3 0 2.3 0v-3.5l-3.1 0c-3.5 0-4.3 2.6-4.3 4.3v2.3h-2v3.6h2c0 4.6 0 10.2 0 10.2h4.2c0 0 0-5.6 0-10.2h2.8L32.8 24.7z"/></svg>
 	
  Facebook</a></li>
-			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F3.security%2Fncp_security_acg_guide%2F">
+			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F4.storage%2Fncp_storage_object_storage_required_service%2F">
  Google+</a></li>
-			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F3.security%2Fncp_security_acg_guide%2F&t=ACG%28Access%20Control%20Group%29%20%EA%B0%80%EC%9D%B4%EB%93%9C">
+			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F4.storage%2Fncp_storage_object_storage_required_service%2F&t=Object%20Storage%EC%99%80%20%EC%97%B0%EB%8F%99%EC%9D%B4%20%ED%95%84%EC%88%98%EC%9D%B8%20%EC%84%9C%EB%B9%84%EC%8A%A4">
 		<svg class="hacker-news" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.8 3.3c-0.4 0.8-5.6 11.1-5.6 11.2 0 2 0 6.2 0 6.2 -0.1 0-2.2 0-2.3 0 0 0 0-5.9 0-6.2 0 0-5.5-10.9-5.6-11.1C5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3c0 0 0 0 0.1 0 0.9 0 1.7 0 2.6 0 0 0 0 0 0 0.1 0.1 0.1 4 8.3 4.1 8.3 0 0 4.2-8.3 4.3-8.4 0.8 0 1.6 0 2.4 0 0 0 0 0 0 0C18.8 3.3 18.8 3.3 18.8 3.3z"/></svg>
 	
  Hacker News</a></li>

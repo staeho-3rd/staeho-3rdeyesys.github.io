@@ -36,8 +36,8 @@ yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이�
 
 ## Python 설치
 CentOS6에는 Python 2.6이 설치되어 있습니다.  
-하지만, 위에서 설명한 대로 CentOS 6에 대한 지원이 종료되면서 일반적인 방법으로는 Python과 pip를 설치할 수 없습니다.  
-몇가지 상황을 테스트 해본 결과 Python 2.7과 Python 3.5는 정상적으로 설치하는 방법을 찾았고, 그래서 여기서는 Python 3.5.10을 설치하겠습니다.
+하지만, 위에서 설명한 대로 CentOS 6에 대한 지원이 종료되면서 일반적인 방법으로는 pip를 설치할 수 없습니다.  
+몇가지 상황을 테스트 해본 결과 Python 2.7과 Python 3.5에서는 pip를 설치할 수 있는 방법을 찾았고, 그래서 여기서는 Python 3.5.10을 설치하겠습니다.
 
 ``` bash
 # Python 3.5 설치 압축파일 다운로드
@@ -65,6 +65,8 @@ pip설치 파일도 위에서 설치한 Python 버전에 맞는 설치파일을 
 ~# python3 get-pip.py
 ```
 
+이후에 aws cli설치나 Object Storage 백업과 관련된 내용은 다음 문서를 참고하시기 바랍니다.
+<a href="/5.database/ncp_database_mysql_object_storage_auto_backup_centos/" target="_blank">CentOS에서 mysql DB를 Object Storage로 자동 백업하기</a>
 
 ## 설치 오류 상황과 해결 방법
 pip를 설치하는 과정에 발생하는 몇가지 오류 상황과 그에 따른 해결방법을 정리해보겠습니다.
@@ -91,4 +93,4 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 ~# curl -O https://bootstrap.pypa.io/3.5/get-pip.py
 ```
 
-> 문서 최종 수정일 : 2021-01-26
+> 문서 최종 수정일 : 2021-01-27

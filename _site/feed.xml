@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-01-26T16:49:40+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">CentOS6에서 pip - Python 설치하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/" rel="alternate" type="text/html" title="CentOS6에서 pip - Python 설치하기" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-01-29T15:22:26+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Object Storage와 연동이 필수인 서비스</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_required_service/" rel="alternate" type="text/html" title="Object Storage와 연동이 필수인 서비스" /><published>2021-01-29T00:00:00+09:00</published><updated>2021-01-29T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_required_service</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_required_service/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드의 수 많은 서비스들 중에는 Object Storage가 설정, 준비되어 있어야 하는 서비스들, 즉, Object Storage와 연동이 필수인 서비스들이 여럿 있습니다.&lt;br /&gt;
+어떤 서비스들이 이에 해당하는지 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;연동-필수-서비스&quot;&gt;연동 필수 서비스&lt;/h2&gt;
+&lt;p&gt;Object Storage와 연동이 필수인 서비스들에는 AI-Application Service와 Media 관련 서비스들이 많습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CLOVA Speech&lt;/li&gt;
+  &lt;li&gt;CLOVA Dubbing&lt;/li&gt;
+  &lt;li&gt;VOD Transcoder&lt;/li&gt;
+  &lt;li&gt;VOD Station&lt;/li&gt;
+  &lt;li&gt;Video Player&lt;/li&gt;
+  &lt;li&gt;Image Optimizer&lt;/li&gt;
+  &lt;li&gt;SourceBuild&lt;/li&gt;
+  &lt;li&gt;Cloud Hadoop&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_required_service_01.jpg&quot; alt=&quot;Object Storage와 연동이 필수인 서비스&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_required_service_02.jpg&quot; alt=&quot;Object Storage와 연동이 필수인 서비스&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;연동-선택-서비스&quot;&gt;연동 선택 서비스&lt;/h2&gt;
+&lt;p&gt;Object Storage와 반드시 연동해야 하는 것은 아니지만, Object Storage를 이용하면 훨씬 편하고, 빠르고 안정적으로 서비스 가능한 경우도 있습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CDN+&lt;/li&gt;
+  &lt;li&gt;Global CDN&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-01-29&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드의 수 많은 서비스들 중에는 Object Storage가 설정, 준비되어 있어야 하는 서비스들, 즉, Object Storage와 연동이 필수인 서비스들이 여럿 있습니다. 어떤 서비스들이 이에 해당하는지 정리해보겠습니다.</summary></entry><entry><title type="html">CentOS6에서 pip - Python 설치하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/" rel="alternate" type="text/html" title="CentOS6에서 pip - Python 설치하기" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;2020년 12월 01일부로 CentOS6의 기술지원이 공식 종료되었습니다.&lt;br /&gt;
 yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이기에 pip, Python등의 설치가 원활하지 않습니다.
 그래서 pip설치에 필요한 CentOS6.x의 yum 명령을 수행하려면 
@@ -23,8 +55,8 @@ yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이�
 
 &lt;h2 id=&quot;python-설치&quot;&gt;Python 설치&lt;/h2&gt;
 &lt;p&gt;CentOS6에는 Python 2.6이 설치되어 있습니다.&lt;br /&gt;
-하지만, 위에서 설명한 대로 CentOS 6에 대한 지원이 종료되면서 일반적인 방법으로는 Python과 pip를 설치할 수 없습니다.&lt;br /&gt;
-몇가지 상황을 테스트 해본 결과 Python 2.7과 Python 3.5는 정상적으로 설치하는 방법을 찾았고, 그래서 여기서는 Python 3.5.10을 설치하겠습니다.&lt;/p&gt;
+하지만, 위에서 설명한 대로 CentOS 6에 대한 지원이 종료되면서 일반적인 방법으로는 pip를 설치할 수 없습니다.&lt;br /&gt;
+몇가지 상황을 테스트 해본 결과 Python 2.7과 Python 3.5에서는 pip를 설치할 수 있는 방법을 찾았고, 그래서 여기서는 Python 3.5.10을 설치하겠습니다.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Python 3.5 설치 압축파일 다운로드&lt;/span&gt;
 ~# wget https://www.python.org/ftp/python/3.5.10/Python-3.5.10.tgz
@@ -49,6 +81,9 @@ yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이�
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# curl &lt;span class=&quot;nt&quot;&gt;-O&lt;/span&gt; https://bootstrap.pypa.io/3.5/get-pip.py
 ~# python3 get-pip.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이후에 aws cli설치나 Object Storage 백업과 관련된 내용은 다음 문서를 참고하시기 바랍니다.
+&lt;a href=&quot;/5.database/ncp_database_mysql_object_storage_auto_backup_centos/&quot; target=&quot;_blank&quot;&gt;CentOS에서 mysql DB를 Object Storage로 자동 백업하기&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;설치-오류-상황과-해결-방법&quot;&gt;설치 오류 상황과 해결 방법&lt;/h2&gt;
 &lt;p&gt;pip를 설치하는 과정에 발생하는 몇가지 오류 상황과 그에 따른 해결방법을 정리해보겠습니다.&lt;/p&gt;
@@ -76,7 +111,7 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-01-26&lt;/p&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-01-27&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 2020년 12월 01일부로 CentOS6의 기술지원이 공식 종료되었습니다. yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이기에 pip, Python등의 설치가 원활하지 않습니다. 그래서 pip설치에 필요한 CentOS6.x의 yum 명령을 수행하려면 먼저 아래의 가이드대로 Repository mirror를 변경하는 Script를 다운받아 설치해야 그 다음 단계를 진행할 수 있습니다.</summary></entry><entry><title type="html">mysql DB 자동백업 방법</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup/" rel="alternate" type="text/html" title="mysql DB 자동백업 방법" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;매일 일정한 시간에 mysql DB를 자동으로 백업 받는 방법에 대해 정리해보았습니다.&lt;/p&gt;
 
@@ -629,63 +664,4 @@ CPU 사용량 등의 서버 상태를 확인해야 하는 것이다 보니 &lt;s
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-01-14&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Load Balancer가 정상적으로 동작하기 위해서는 Load Balancer –&amp;gt; Server의 지정된 포트로 접근할 수 있어야 합니다. 그러기 위해서는 Server의 ACG에 Load Balancer가 접근할 수 있도록 권한을 설정해주어야 하는데, 여기서는 네이버 클라우드의 Classic Load Balancer를 운영할 때 ACG 설정을 어떻게 하는가에 대한 내용을 정리해보겠습니다.</summary></entry><entry><title type="html">VPC 환경에서 서버 생성</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_vpc_create/" rel="alternate" type="text/html" title="VPC 환경에서 서버 생성" /><published>2021-01-06T00:00:00+09:00</published><updated>2021-01-06T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_vpc_create</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_vpc_create/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 VPC환경에서 서버를 생성하는 순서를 정리해보겠습니다.&lt;br /&gt;
-아래 순서는 굳이 기억하지 않아도 필요한 부분은 그때그때  안내가 잘 되어 있기 때문에 별 문제는 없지만 그래도 어떤 것들이 필요한 가에 대해 어느 정도 알아둘 필요는 있어 보입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;vpc-생성&quot;&gt;VPC 생성&lt;/h2&gt;
-&lt;p&gt;VPC (Virtual Private Cloud) 즉, 클라우드 상에서 논리적으로 격리된 고객 전용 네트워크 공간을 먼저 생성하고 해당 공간에 서버를 생성하게 됩니다.&lt;br /&gt;
-VPC는 고객의 계정마다 &lt;strong&gt;최대 3개&lt;/strong&gt;를 생성할 수 있으며, 각 VPC는 최대 넷마스크 0.0.255.255/16 (IP 65,536개) 크기의 네트워크 주소 공간을 제공합니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;VPC 이름 입력&lt;/li&gt;
-  &lt;li&gt;IP 주소 범위 입력&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;VPC의 IP 주소 범위는, private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /16~/28 범위&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_vpc_create_02.jpg&quot; alt=&quot;VPC 환경에서 서버 생성&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;subnet-생성&quot;&gt;Subnet 생성&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Subnet 이름 입력&lt;/li&gt;
-  &lt;li&gt;VPC 선택&lt;/li&gt;
-  &lt;li&gt;IP 주소 범위 입력&lt;/li&gt;
-  &lt;li&gt;Zone 선택&lt;/li&gt;
-  &lt;li&gt;Network ACL 선택&lt;/li&gt;
-  &lt;li&gt;Internet Gateway 전용여부 선택 (Public or Private)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_vpc_create_03.jpg&quot; alt=&quot;VPC 환경에서 서버 생성&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;서버-설정&quot;&gt;서버 설정&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;VPC 선택&lt;/li&gt;
-  &lt;li&gt;Subnet 선택&lt;/li&gt;
-  &lt;li&gt;스토리지 종류 선택&lt;/li&gt;
-  &lt;li&gt;서버 세대 선택&lt;/li&gt;
-  &lt;li&gt;서버 타입 선택&lt;/li&gt;
-  &lt;li&gt;요금제 선택&lt;/li&gt;
-  &lt;li&gt;서버 개수 입력&lt;/li&gt;
-  &lt;li&gt;서버 이름 입력&lt;/li&gt;
-  &lt;li&gt;Network Interface 추가&lt;/li&gt;
-  &lt;li&gt;물리 배치 그룹 여부 선택&lt;/li&gt;
-  &lt;li&gt;반납 보호 여부 선택&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_vpc_create_01.jpg&quot; alt=&quot;VPC 환경에서 서버 생성&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;인증키-설정&quot;&gt;인증키 설정&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_vpc_create_04.jpg&quot; alt=&quot;VPC 환경에서 서버 생성&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;네트워크-접근-설정-acl&quot;&gt;네트워크 접근 설정 (ACL)&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_vpc_create_05.jpg&quot; alt=&quot;VPC 환경에서 서버 생성&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/compute/compute-1-1-v2.html&quot; target=&quot;_blank&quot;&gt;https://docs.ncloud.com/ko/compute/compute-1-1-v2.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-01-12&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 VPC환경에서 서버를 생성하는 순서를 정리해보겠습니다. 아래 순서는 굳이 기억하지 않아도 필요한 부분은 그때그때 안내가 잘 되어 있기 때문에 별 문제는 없지만 그래도 어떤 것들이 필요한 가에 대해 어느 정도 알아둘 필요는 있어 보입니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Load Balancer가 정상적으로 동작하기 위해서는 Load Balancer –&amp;gt; Server의 지정된 포트로 접근할 수 있어야 합니다. 그러기 위해서는 Server의 ACG에 Load Balancer가 접근할 수 있도록 권한을 설정해주어야 하는데, 여기서는 네이버 클라우드의 Classic Load Balancer를 운영할 때 ACG 설정을 어떻게 하는가에 대한 내용을 정리해보겠습니다.</summary></entry></feed>

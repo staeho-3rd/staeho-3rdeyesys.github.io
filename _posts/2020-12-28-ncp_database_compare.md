@@ -55,8 +55,6 @@ order_number: 1
 ### 관리형 Cloud
 - 614,880원/월 : 854원 (시간당) * 24시간(1일) * 30일(한달)
 
-> 관리형 Cloud for MSSQL은 2020년 12월 기준으로 Classic 환경에서만 이용 가능합니다. VPC 환경에서는 아직 이용할 수 없습니다.
-
 > 관리형 Cloud for MSSQL에서 HA (Principal-Mirror 구성) 구성을 할 경우, DBMS 라이선스 요금은 마스터/슬레이브 서버에만 적용됩니다.
 
 
@@ -82,4 +80,4 @@ order_number: 1
 <a href="https://www.ncloud.com/product/database" target="_blank">https://www.ncloud.com/product/database</a>
 
 
-> 문서 최종 수정일 : 2020-12-30
+> 문서 최종 수정일 : 2021-01-26

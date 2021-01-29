@@ -152,8 +152,8 @@ yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이�
 
 <h2 id="python-설치">Python 설치</h2>
 <p>CentOS6에는 Python 2.6이 설치되어 있습니다.<br />
-하지만, 위에서 설명한 대로 CentOS 6에 대한 지원이 종료되면서 일반적인 방법으로는 Python과 pip를 설치할 수 없습니다.<br />
-몇가지 상황을 테스트 해본 결과 Python 2.7과 Python 3.5는 정상적으로 설치하는 방법을 찾았고, 그래서 여기서는 Python 3.5.10을 설치하겠습니다.</p>
+하지만, 위에서 설명한 대로 CentOS 6에 대한 지원이 종료되면서 일반적인 방법으로는 pip를 설치할 수 없습니다.<br />
+몇가지 상황을 테스트 해본 결과 Python 2.7과 Python 3.5에서는 pip를 설치할 수 있는 방법을 찾았고, 그래서 여기서는 Python 3.5.10을 설치하겠습니다.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Python 3.5 설치 압축파일 다운로드</span>
 ~# wget https://www.python.org/ftp/python/3.5.10/Python-3.5.10.tgz
@@ -178,6 +178,9 @@ yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이�
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# curl <span class="nt">-O</span> https://bootstrap.pypa.io/3.5/get-pip.py
 ~# python3 get-pip.py
 </code></pre></div></div>
+
+<p>이후에 aws cli설치나 Object Storage 백업과 관련된 내용은 다음 문서를 참고하시기 바랍니다.
+<a href="/5.database/ncp_database_mysql_object_storage_auto_backup_centos/" target="_blank">CentOS에서 mysql DB를 Object Storage로 자동 백업하기</a></p>
 
 <h2 id="설치-오류-상황과-해결-방법">설치 오류 상황과 해결 방법</h2>
 <p>pip를 설치하는 과정에 발생하는 몇가지 오류 상황과 그에 따른 해결방법을 정리해보겠습니다.</p>
@@ -205,7 +208,7 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 </code></pre></div></div>
 
 <blockquote>
-  <p>문서 최종 수정일 : 2021-01-26</p>
+  <p>문서 최종 수정일 : 2021-01-27</p>
 </blockquote>
 
 		</div>
@@ -330,6 +333,23 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 		<h3>Related tutorials</h3>
 
 		<ul class="listing">
+	
+		<li >
+			<a href="/4.storage/ncp_storage_object_storage_required_service/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>Object Storage와 연동이 필수인 서비스</h3>
+						<p class="description">네이버 클라우드 Object Storage와 연동이 필수인 서비스</p>
+					</div>
+				</article>
+			</a>
+		</li>
 	
 		<li >
 			<a href="/4.storage/ncp_storage_object_storage_aws_cli_connect/">
@@ -479,23 +499,6 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 					<div>
 						<h3>VPC 환경에서 서버 생성</h3>
 						<p class="description">네이버 클라우드 VPC 환경에서 서버 생성</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/99.etc/etc_jekyll_install/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>jekyll 설치(윈도 10) with base-theme</h3>
-						<p class="description">윈도 10 환경에서 base-theme를 기반으로 jekyll 설치하는 방법에 대한 가이드입니다.</p>
 					</div>
 				</article>
 			</a>
