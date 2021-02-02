@@ -1,4 +1,174 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-02-01T17:27:16+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Object Storage와 연동이 필수인 서비스</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_required_service/" rel="alternate" type="text/html" title="Object Storage와 연동이 필수인 서비스" /><published>2021-01-29T00:00:00+09:00</published><updated>2021-01-29T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_required_service</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_required_service/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-02-02T18:22:35+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Object Storage 접속용 Windows Client Tool - CloudBerry Explorer</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/" rel="alternate" type="text/html" title="Object Storage 접속용 Windows Client Tool - CloudBerry Explorer" /><published>2021-02-02T00:00:00+09:00</published><updated>2021-02-02T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드의 Object Storage에 접속, 관리하는 방법은 aws cli 등 여러가지 있지만 Windows PC에서 간편하게 접속해서 관리할 수 있는 클라이언트 툴이 몇개 있습니다.&lt;br /&gt;
+그 중에서 가장 많이 사용되는 것이 바로 CloudBerry Explorer 인데, 사용법에 대해 간단히 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;cloudberry-explorer&quot;&gt;CloudBerry Explorer&lt;/h2&gt;
+&lt;p&gt;CloudBerry Explorer의 정식 명칭은 CloudBerry Explorer Freeware for Amazon S3입니다.&lt;br /&gt;
+이 버전은 무료버전이며 더 많은 기능이 포함된 유료 버전도 있습니다. 
+그리고 Amazon S3 뿐만 아니라 Microsoft Azur, Google Cloud 등을 위한 버전도 따로 있습니다.&lt;/p&gt;
+
+&lt;p&gt;상세한 정보와 다운로드는 아래 링크에서 확인하시면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.msp360.com/explorer/windows.aspx&quot; target=&quot;_blank&quot;&gt;https://www.msp360.com/explorer/windows.aspx&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;사용법&quot;&gt;사용법&lt;/h2&gt;
+
+&lt;p&gt;프로그램을 다운 받아서 설치하고, 실행을 하면 여러 종류의 스토리지 중에서 원하는 것을 선택하게 됩니다.&lt;br /&gt;
+이 클라이언트는 AWS S3를 위한 것이지만, 많은 스토리지들이 S3와 호환되는 구조로 만들어졌기 때문에 공통으로 사용 가능합니다. 
+이용 가능한 스토리지 리스트는 마지막에서 정리해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_s3_client_cloudberry_explorer_05.jpg&quot; alt=&quot;Object Storage 접속용 Windows Client Tool - CloudBerry Explorer&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기에 아직 네이버 클라우드는 리스트에 없기 때문에 저희는 &lt;strong&gt;S3 Compatible&lt;/strong&gt;을 선택하면 됩니다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Display name: 여기는 알아보기 쉬운 이름을 적으면 됩니다. 예를 들어 Naver Cloud&lt;/li&gt;
+  &lt;li&gt;Service point: 여기는 네이버 클라우드의 endpoint-url을 적습니다. &lt;strong&gt;http://kr.objectstorage.ncloud.com&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Access key: 여기는 Access Key ID&lt;/li&gt;
+  &lt;li&gt;Secret key: 여기는 Secret Key&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_s3_client_cloudberry_explorer_02.jpg&quot; alt=&quot;Object Storage 접속용 Windows Client Tool - CloudBerry Explorer&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;네이버 클라우드 포탈 -&amp;gt; 마이페이지 -&amp;gt; 계정관리 -&amp;gt; 인증키 관리 - API 인증키 관리 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;계정 정보를 입력하고 접속을 하면 왼쪽에 로컬PC 폴더가, 오른쪽에 버킷 리스트가 나타나고 원하는 버킷을 선택해서 들어가면 다음처럼 파일들을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_s3_client_cloudberry_explorer_01.jpg&quot; alt=&quot;Object Storage 접속용 Windows Client Tool - CloudBerry Explorer&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Object Storage에 있는 파일을 로컬PC로 가져오려면 원하는 파일을 선택하고 마우스 오른쪽 버튼을 눌러서 Copy 명령을 선택하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_s3_client_cloudberry_explorer_03.jpg&quot; alt=&quot;Object Storage 접속용 Windows Client Tool - CloudBerry Explorer&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그 외 여러 가지 기능들이 있는데 그리 어려운 기능은 아니므로 직접 사용해보시면 금방 알 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;마지막으로 CloudBerry Explorer Freeware for Amazon S3로 접속 가능한 클라우드 스토리지 리스트를 확인해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_s3_client_cloudberry_explorer_04.jpg&quot; alt=&quot;Object Storage 접속용 Windows Client Tool - CloudBerry Explorer&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Amazon S3&lt;/li&gt;
+  &lt;li&gt;Amazon S3 (China)&lt;/li&gt;
+  &lt;li&gt;Amazon Glacier&lt;/li&gt;
+  &lt;li&gt;Amazon Glacier (China)&lt;/li&gt;
+  &lt;li&gt;Amazon Cloud Drive&lt;/li&gt;
+  &lt;li&gt;Alibaba&lt;/li&gt;
+  &lt;li&gt;S3 Compatible&lt;/li&gt;
+  &lt;li&gt;Akaza&lt;/li&gt;
+  &lt;li&gt;Aruba Cloud&lt;/li&gt;
+  &lt;li&gt;Backblaze B3&lt;/li&gt;
+  &lt;li&gt;Caringo&lt;/li&gt;
+  &lt;li&gt;CenturyLink&lt;/li&gt;
+  &lt;li&gt;Cisco&lt;/li&gt;
+  &lt;li&gt;Cloudian&lt;/li&gt;
+  &lt;li&gt;Connectria&lt;/li&gt;
+  &lt;li&gt;Constant&lt;/li&gt;
+  &lt;li&gt;DDN&lt;/li&gt;
+  &lt;li&gt;dinCloud&lt;/li&gt;
+  &lt;li&gt;DreamObjects&lt;/li&gt;
+  &lt;li&gt;Dunkel&lt;/li&gt;
+  &lt;li&gt;Easy Storage&lt;/li&gt;
+  &lt;li&gt;Exoscale&lt;/li&gt;
+  &lt;li&gt;GreenQloud&lt;/li&gt;
+  &lt;li&gt;HGST&lt;/li&gt;
+  &lt;li&gt;Hitachi&lt;/li&gt;
+  &lt;li&gt;HostEurope&lt;/li&gt;
+  &lt;li&gt;IDC Frontier&lt;/li&gt;
+  &lt;li&gt;LeoNovus (S3)&lt;/li&gt;
+  &lt;li&gt;Mandic&lt;/li&gt;
+  &lt;li&gt;NetApp&lt;/li&gt;
+  &lt;li&gt;NiftyCloud&lt;/li&gt;
+  &lt;li&gt;Numergy&lt;/li&gt;
+  &lt;li&gt;QNAP&lt;/li&gt;
+  &lt;li&gt;Revera&lt;/li&gt;
+  &lt;li&gt;Scality&lt;/li&gt;
+  &lt;li&gt;Seeweb&lt;/li&gt;
+  &lt;li&gt;SwiftStack (S3)&lt;/li&gt;
+  &lt;li&gt;ThinkOn&lt;/li&gt;
+  &lt;li&gt;Tiscali&lt;/li&gt;
+  &lt;li&gt;Verizon&lt;/li&gt;
+  &lt;li&gt;vCloud Air (EMC)&lt;/li&gt;
+  &lt;li&gt;Walrus&lt;/li&gt;
+  &lt;li&gt;Zettagrid&lt;/li&gt;
+  &lt;li&gt;Wasabi&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;s3-browser&quot;&gt;S3 Browser&lt;/h2&gt;
+&lt;p&gt;또 다른 클라이언트인 S3 Browser입니다. 자세한  내용은 아래 링크에서 확인 가능합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/4.storage/ncp_storage_object_storage_s3_client_s3browser/&quot; target=&quot;_blank&quot;&gt;Object Storage 접속용 Windows Client Tool - S3 Browser&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-02-02&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드의 Object Storage에 접속, 관리하는 방법은 aws cli 등 여러가지 있지만 Windows PC에서 간편하게 접속해서 관리할 수 있는 클라이언트 툴이 몇개 있습니다. 그 중에서 가장 많이 사용되는 것이 바로 CloudBerry Explorer 인데, 사용법에 대해 간단히 정리해보겠습니다.</summary></entry><entry><title type="html">Object Storage 접속용 Windows Client Tool - S3 Browser</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_s3browser/" rel="alternate" type="text/html" title="Object Storage 접속용 Windows Client Tool - S3 Browser" /><published>2021-02-02T00:00:00+09:00</published><updated>2021-02-02T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_s3browser</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_s3browser/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드의 Object Storage에 접속, 관리하는 방법은 aws cli 등 여러가지 있지만 Windows PC에서 간편하게 접속해서 관리할 수 있는 클라이언트 툴이 몇개 있습니다.&lt;br /&gt;
+그 중에서 이번에는 S3 Browser의 사용법에 대해 간단히 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;s3-browser&quot;&gt;S3 Browser&lt;/h2&gt;
+&lt;p&gt;S3 Browser는 Amazon S3 and Amazon CloudFront를 위한 클라이언트입니다
+이 버전은 무료버전이기는 하지만, 정확히는 &lt;strong&gt;personal use only&lt;/strong&gt;, &lt;strong&gt;non-commecial use only&lt;/strong&gt;라고 명시되어 있습니다.&lt;br /&gt;
+그래서 라이선스와 관계없이 사용 가능하고, 더 많은 기능이 포함된 유료 버전도 있습니다.&lt;/p&gt;
+
+&lt;p&gt;상세한 정보와 다운로드는 아래 링크에서 확인하시면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://s3browser.com/&quot; target=&quot;_blank&quot;&gt;https://s3browser.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;사용법&quot;&gt;사용법&lt;/h2&gt;
+
+&lt;p&gt;프로그램을 다운 받아서 설치하고, 실행을 하면 여러 종류의 스토리지 중에서 원하는 것을 선택하게 됩니다.&lt;br /&gt;
+이 클라이언트는 AWS S3를 위한 것으로 CloudBerry Explorer와는 다르게 AWS의 다양한 S3 서비스들만 접속이 가능한데, 이용 가능한 스토리지 리스트는 마지막에서 정리해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_s3_client_s3browser_01.jpg&quot; alt=&quot;Object Storage 접속용 Windows Client Tool - S3 Browser&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Account Type은  &lt;strong&gt;S3 Compatible Storage&lt;/strong&gt;를 선택하면 됩니다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Account name: 여기는 알아보기 쉬운 이름을 적으면 됩니다. 예를 들어 Naver Cloud&lt;/li&gt;
+  &lt;li&gt;REST Endpoint: 여기는 네이버 클라우드의 endpoint-url을 적습니다. &lt;strong&gt;http://kr.objectstorage.ncloud.com&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Access Key ID: 여기는 Access Key ID&lt;/li&gt;
+  &lt;li&gt;Secret Access Key: 여기는 Secret Key&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_s3_client_s3browser_02.jpg&quot; alt=&quot;Object Storage 접속용 Windows Client Tool - S3 Browser&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;네이버 클라우드 포탈 -&amp;gt; 마이페이지 -&amp;gt; 계정관리 -&amp;gt; 인증키 관리 - API 인증키 관리 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;계정 정보를 입력하고 접속을 하면 버킷 리스트가 나타나고 원하는 버킷을 선택해서 들어가면 다음처럼 파일들을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_s3_client_s3browser_03.jpg&quot; alt=&quot;Object Storage 접속용 Windows Client Tool - S3 Browser&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Object Storage에 있는 파일을 로컬PC로 가져오려면 원하는 파일을 선택하고 마우스 오른쪽 버튼을 눌러서 &lt;strong&gt;Download&lt;/strong&gt; 명령을 선택하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_s3_client_s3browser_04.jpg&quot; alt=&quot;Object Storage 접속용 Windows Client Tool - S3 Browser&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그 외 여러 가지 기능들이 있는데 그리 어려운 기능은 아니므로 직접 사용해보시면 금방 알 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;마지막으로 S3 Browser로 접속 가능한 S3 리스트를 확인해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_s3_client_s3browser_05.jpg&quot; alt=&quot;Object Storage 접속용 Windows Client Tool - S3 Browser&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Amazon S3 Storage&lt;/li&gt;
+  &lt;li&gt;S3 Compatible Storage&lt;/li&gt;
+  &lt;li&gt;Amazon S3 in China&lt;/li&gt;
+  &lt;li&gt;Amazon S3 GovCloud Storage&lt;/li&gt;
+  &lt;li&gt;Amazon S3 GovCloud Storage (FIPS 140-2)&lt;/li&gt;
+  &lt;li&gt;Amazon S3 via EC2 IAM Role&lt;/li&gt;
+  &lt;li&gt;Amazon S3 via AssumeRole&lt;/li&gt;
+  &lt;li&gt;Amazon S3 (Credentials from Environment Variables)&lt;/li&gt;
+  &lt;li&gt;Amazon S3 (Credentials from AWS Config or Credential file)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;cloudberry-explorer&quot;&gt;CloudBerry Explorer&lt;/h2&gt;
+&lt;p&gt;또 다른 클라이언트인 CloudBerry Explorer입니다. 자세한  내용은 아래 링크에서 확인 가능합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/&quot; target=&quot;_blank&quot;&gt;Object Storage 접속용 Windows Client Tool - CloudBerry Explorer&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-02-02&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드의 Object Storage에 접속, 관리하는 방법은 aws cli 등 여러가지 있지만 Windows PC에서 간편하게 접속해서 관리할 수 있는 클라이언트 툴이 몇개 있습니다. 그 중에서 이번에는 S3 Browser의 사용법에 대해 간단히 정리해보겠습니다.</summary></entry><entry><title type="html">Object Storage와 연동이 필수인 서비스</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_required_service/" rel="alternate" type="text/html" title="Object Storage와 연동이 필수인 서비스" /><published>2021-01-29T00:00:00+09:00</published><updated>2021-01-29T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_required_service</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_required_service/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드의 수 많은 서비스들 중에는 Object Storage가 설정, 준비되어 있어야 하는 서비스들, 즉, Object Storage와 연동이 필수인 서비스들이 여럿 있습니다.&lt;br /&gt;
 어떤 서비스들이 이에 해당하는지 정리해보겠습니다.&lt;/p&gt;
 
@@ -112,66 +282,7 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-01-27&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 2020년 12월 01일부로 CentOS6의 기술지원이 공식 종료되었습니다. yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이기에 pip, Python등의 설치가 원활하지 않습니다. 그래서 pip설치에 필요한 CentOS6.x의 yum 명령을 수행하려면 먼저 아래의 가이드대로 Repository mirror를 변경하는 Script를 다운받아 설치해야 그 다음 단계를 진행할 수 있습니다.</summary></entry><entry><title type="html">mysql DB 자동백업 방법</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup/" rel="alternate" type="text/html" title="mysql DB 자동백업 방법" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;매일 일정한 시간에 mysql DB를 자동으로 백업 받는 방법에 대해 정리해보았습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;백업-폴더-생성&quot;&gt;백업 폴더 생성&lt;/h2&gt;
-&lt;p&gt;루트에 /data_backup 폴더를 만들고 그 아래에 db 폴더를 생성합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /data_backup
-~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /data_backup/db
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;mysql-db-백업-스크립트-작성&quot;&gt;mysql DB 백업 스크립트 작성&lt;/h2&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; +%Y%m%d%H%M%S&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/data_backup/db/
-mysqldump &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;디비패스워드  &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;backup_&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DATE&lt;/span&gt;.sql
-
-find &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-ctime&lt;/span&gt; +7 &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# DATE=$(date +%Y%m%d%H%M%S)는 백업할 파일명을 &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# 202001224505 와 같은 형식으로 저장할 수 있게 날짜를 변수로 담습니다.  &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# find $BACKUP_DIR -ctime +7 -exec rm -f {} \;  &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# 여기서 -ctime +7은 7일이 지난 백업 파일을 찾아서 삭제하기 위한 코드입니다.  &lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# 추가로 분 단위로 설정하려고 할 때는 아래와 같이 &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# -cmin +10 처럼 작성하면 10분이 지난 파일을 찾아서 삭제하게 됩니다.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# find $BACKUP_DIR -cmin +10 -exec rm -f {} \;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 백업 스크립트에 실행 권한을 부여합니다.&lt;/span&gt;
-~# &lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;755 /bin/db_backup.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;스케쥴링을-위한-crontab-설정&quot;&gt;스케쥴링을 위한 crontab 설정&lt;/h2&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# crontab &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# 매일 새벽 6시에 백업이 진행됩니다.&lt;/span&gt;
-00 06 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4 id=&quot;그-외-시간-설정-방법&quot;&gt;그 외 시간 설정 방법&lt;/h4&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 30분 마다 실행&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/30 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;# 매주 일요일 새벽 6시에 실행&lt;/span&gt;
-0 06 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 0 /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;# 매월 1일 새벽 6시에 실행&lt;/span&gt;
-0 06 1 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;# 매년 12월 31일 새벽 6시에 실행&lt;/span&gt;
-0 06 31 12 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.ncloud.com/product/database&quot; target=&quot;_blank&quot;&gt;https://www.ncloud.com/product/database&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-01-22&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 매일 일정한 시간에 mysql DB를 자동으로 백업 받는 방법에 대해 정리해보았습니다.</summary></entry><entry><title type="html">AWS CLI를 이용한 Object Storage 접속 방법</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect/" rel="alternate" type="text/html" title="AWS CLI를 이용한 Object Storage 접속 방법" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 2020년 12월 01일부로 CentOS6의 기술지원이 공식 종료되었습니다. yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이기에 pip, Python등의 설치가 원활하지 않습니다. 그래서 pip설치에 필요한 CentOS6.x의 yum 명령을 수행하려면 먼저 아래의 가이드대로 Repository mirror를 변경하는 Script를 다운받아 설치해야 그 다음 단계를 진행할 수 있습니다.</summary></entry><entry><title type="html">AWS CLI를 이용한 Object Storage 접속 방법</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect/" rel="alternate" type="text/html" title="AWS CLI를 이용한 Object Storage 접속 방법" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 Object Storage는 AWS의 스토리지 서비스 S3와 호환이 되도록 설계되어 있습니다.&lt;br /&gt;
 그래서 Object Storage에 접속, 관리할 때 AWS의 CLI(Command Line Interface)를 사용할 수 있는데 이번에 설치와 사용방법에 대해 정리해보겠습니다.&lt;/p&gt;
 
@@ -463,7 +574,66 @@ aws &lt;span class=&quot;nt&quot;&gt;--endpoint-url&lt;/span&gt;&lt;span class=&
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-01-25&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 CentOS에서 설치형 mysql DB를 매일 일정한 시간에 Object Storage로 자동으로 백업 받는 방법에 대해 정리해보았습니다. 순서는 로컬에 백업 파일 생성 후에 Object Storage로 저장하는 단계로 진행됩니다.</summary></entry><entry><title type="html">Object Storage Lifecycle Management 관리대상 설정 방법</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_lifecycle_management/" rel="alternate" type="text/html" title="Object Storage Lifecycle Management 관리대상 설정 방법" /><published>2021-01-21T00:00:00+09:00</published><updated>2021-01-21T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_lifecycle_management</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_lifecycle_management/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 CentOS에서 설치형 mysql DB를 매일 일정한 시간에 Object Storage로 자동으로 백업 받는 방법에 대해 정리해보았습니다. 순서는 로컬에 백업 파일 생성 후에 Object Storage로 저장하는 단계로 진행됩니다.</summary></entry><entry><title type="html">mysql DB 자동백업 방법</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup/" rel="alternate" type="text/html" title="mysql DB 자동백업 방법" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;매일 일정한 시간에 mysql DB를 자동으로 백업 받는 방법에 대해 정리해보았습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;백업-폴더-생성&quot;&gt;백업 폴더 생성&lt;/h2&gt;
+&lt;p&gt;루트에 /data_backup 폴더를 만들고 그 아래에 db 폴더를 생성합니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /data_backup
+~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /data_backup/db
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;mysql-db-백업-스크립트-작성&quot;&gt;mysql DB 백업 스크립트 작성&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /bin/db_backup.sh
+
+&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; +%Y%m%d%H%M%S&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/data_backup/db/
+mysqldump &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;디비패스워드  &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;backup_&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DATE&lt;/span&gt;.sql
+
+find &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-ctime&lt;/span&gt; +7 &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# DATE=$(date +%Y%m%d%H%M%S)는 백업할 파일명을 &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 202001224505 와 같은 형식으로 저장할 수 있게 날짜를 변수로 담습니다.  &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# find $BACKUP_DIR -ctime +7 -exec rm -f {} \;  &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 여기서 -ctime +7은 7일이 지난 백업 파일을 찾아서 삭제하기 위한 코드입니다.  &lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 추가로 분 단위로 설정하려고 할 때는 아래와 같이 &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# -cmin +10 처럼 작성하면 10분이 지난 파일을 찾아서 삭제하게 됩니다.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# find $BACKUP_DIR -cmin +10 -exec rm -f {} \;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 백업 스크립트에 실행 권한을 부여합니다.&lt;/span&gt;
+~# &lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;755 /bin/db_backup.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;스케쥴링을-위한-crontab-설정&quot;&gt;스케쥴링을 위한 crontab 설정&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# crontab &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 매일 새벽 6시에 백업이 진행됩니다.&lt;/span&gt;
+00 06 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;그-외-시간-설정-방법&quot;&gt;그 외 시간 설정 방법&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 30분 마다 실행&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/30 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
+
+&lt;span class=&quot;c&quot;&gt;# 매주 일요일 새벽 6시에 실행&lt;/span&gt;
+0 06 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 0 /bin/db_backup.sh
+
+&lt;span class=&quot;c&quot;&gt;# 매월 1일 새벽 6시에 실행&lt;/span&gt;
+0 06 1 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
+
+&lt;span class=&quot;c&quot;&gt;# 매년 12월 31일 새벽 6시에 실행&lt;/span&gt;
+0 06 31 12 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.ncloud.com/product/database&quot; target=&quot;_blank&quot;&gt;https://www.ncloud.com/product/database&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-01-22&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 매일 일정한 시간에 mysql DB를 자동으로 백업 받는 방법에 대해 정리해보았습니다.</summary></entry><entry><title type="html">Object Storage Lifecycle Management 관리대상 설정 방법</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_lifecycle_management/" rel="alternate" type="text/html" title="Object Storage Lifecycle Management 관리대상 설정 방법" /><published>2021-01-21T00:00:00+09:00</published><updated>2021-01-21T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_lifecycle_management</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_lifecycle_management/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 Object Storage에 저장된 Object 즉, 파일들의 Lifecycle(수명주기)를 설정할 때 관리대상이 되는 Object를 결정하는 규칙에 대해 정리해보겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;lifecycle-management-수명주기-정책-설정&quot;&gt;Lifecycle Management (수명주기) 정책 설정&lt;/h2&gt;
@@ -600,68 +770,4 @@ CPU 사용량 등의 서버 상태를 확인해야 하는 것이다 보니 &lt;s
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-01-19&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서 AutoScaling을 설정할 때 중요한 것이 이벤트 설정입니다. 예를 들어 CPU 사용률이 70%가 넘는 상태가 1분 이상 지속되면 서버를 늘리는 작업이 진행되도록 설정한다고 할 때, CPU가 70% 이상인 상태가 1분 이상 지속되는 이벤트가 발생하는지 체크하는 것을 말합니다. 현재 네이버 클라우드 Console에서는 AutoScaling 그룹을 생성한 후에 바로 이 이벤트 설정을 하는 방법에 대한 메뉴나 링크가 없어서 그에 대한 내용을 정리해보겠습니다.</summary></entry><entry><title type="html">주요 서비스 포트(Port) 정보</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_service_port_info/" rel="alternate" type="text/html" title="주요 서비스 포트(Port) 정보" /><published>2021-01-14T00:00:00+09:00</published><updated>2021-01-14T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_service_port_info</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_service_port_info/">&lt;h2 id=&quot;포트port-정보&quot;&gt;포트(Port) 정보&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 주요 서비스들에서 사용하는 포트(Port) 정보를 정리해보았습니다.&lt;br /&gt;
-네이버 클라우드에서 사용하는 포트이므로 일부 서비스의 경우 일반적으로 사용되는 포트와 조금 다른 경우도 있을 수 있습니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;22 : SSH&lt;/li&gt;
-  &lt;li&gt;80 : http&lt;/li&gt;
-  &lt;li&gt;443 : https&lt;/li&gt;
-  &lt;li&gt;1433 : mssql&lt;/li&gt;
-  &lt;li&gt;3000 : Node.js Express&lt;/li&gt;
-  &lt;li&gt;3306 : mysql&lt;/li&gt;
-  &lt;li&gt;3389 : 윈도 원격데스크톱&lt;/li&gt;
-  &lt;li&gt;5432 : PostgreSQL&lt;/li&gt;
-  &lt;li&gt;5672 : RabbitMQ&lt;/li&gt;
-  &lt;li&gt;5985 : Packer&lt;/li&gt;
-  &lt;li&gt;6379 : Redis&lt;/li&gt;
-  &lt;li&gt;8001 : CUBRID&lt;/li&gt;
-  &lt;li&gt;8080 : Ambari&lt;/li&gt;
-  &lt;li&gt;8081 : Hue&lt;/li&gt;
-  &lt;li&gt;8388 : Shadowsocks 서버&lt;/li&gt;
-  &lt;li&gt;9736 : Jeus WebAdmin&lt;/li&gt;
-  &lt;li&gt;10090 : Pinpoint 서버&lt;/li&gt;
-  &lt;li&gt;11313 : Hugo 서버&lt;/li&gt;
-  &lt;li&gt;15672 : RabbitMQ Management UI&lt;/li&gt;
-  &lt;li&gt;18080 : Tomcat, Jenkins&lt;/li&gt;
-  &lt;li&gt;18088 : Superset&lt;/li&gt;
-  &lt;li&gt;18888 : TensorFlow Jupyter Notebook&lt;/li&gt;
-  &lt;li&gt;18889 : TensorBoard&lt;/li&gt;
-  &lt;li&gt;27017 : MongoDB&lt;/li&gt;
-  &lt;li&gt;50070 : HDFS NameNode&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-01-14&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">포트(Port) 정보 네이버 클라우드 주요 서비스들에서 사용하는 포트(Port) 정보를 정리해보았습니다. 네이버 클라우드에서 사용하는 포트이므로 일부 서비스의 경우 일반적으로 사용되는 포트와 조금 다른 경우도 있을 수 있습니다.</summary></entry><entry><title type="html">Classic Load Balancer 운영을 위한 ACG 설정 방법</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_load_balancer_acg/" rel="alternate" type="text/html" title="Classic Load Balancer 운영을 위한 ACG 설정 방법" /><published>2021-01-14T00:00:00+09:00</published><updated>2021-01-14T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_load_balancer_acg</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_load_balancer_acg/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;Load Balancer가 정상적으로 동작하기 위해서는 Load Balancer –&amp;gt; Server의 지정된 포트로 접근할 수 있어야 합니다.&lt;br /&gt;
-그러기 위해서는 Server의 ACG에 Load Balancer가 접근할 수 있도록 권한을 설정해주어야 하는데, 여기서는 네이버 클라우드의 Classic Load Balancer를 운영할 때 ACG 설정을 어떻게 하는가에 대한 내용을 정리해보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;서버연결-실패-상황&quot;&gt;서버연결 실패 상황&lt;/h2&gt;
-&lt;p&gt;서버 등록하고 Load Balancer의 다른 설정들을 모두 올바르게 했는데도 아래와 같이 서버연결 상태가 실패로 나타나고 Load Balancer는 동작이 정지되는 경우가 있습니다.&lt;br /&gt;
-이런 경우가 바로 ACG에 Load Balancer의 접근 권한을 설정하지 않았을 때 입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_load_balancer_acg_01.jpg&quot; alt=&quot;Load Balancer 운영을 위한 ACG 설정&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;acg-권한-설정&quot;&gt;ACG 권한 설정&lt;/h2&gt;
-&lt;p&gt;ACG에 Load Balancer가 접근할 수 있도록 권한을 설정하려면 접근소스에 아래와 같이 입력합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;접근소스 : ncloud-load-balancer
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;그 외에 프로토콜과 허용포트도 지정된 정보를 입력하고 추가를 하면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_load_balancer_acg_02.jpg&quot; alt=&quot;Load Balancer 운영을 위한 ACG 설정&quot; style=&quot;width:800px;align:center&quot; /&gt;
-&lt;img src=&quot;../../images/ncp_networking_load_balancer_acg_03.jpg&quot; alt=&quot;Load Balancer 운영을 위한 ACG 설정&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;서버연결-성공&quot;&gt;서버연결 성공&lt;/h2&gt;
-&lt;p&gt;ACG에 접근권한을 설정하고 나서 잠시 기다리면 Load Balancer가 서버에 접근시도를 하고 정상 접근이 되면서 서버연결 상태가 성공으로 바뀌고 Load Balancer도 정상 작동하게 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_load_balancer_acg_04.jpg&quot; alt=&quot;Load Balancer 운영을 위한 ACG 설정&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/networking/loadbalancer/classiclb_console.html&quot; target=&quot;_blank&quot;&gt;https://docs.ncloud.com/ko/networking/loadbalancer/classiclb_console.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-01-14&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Load Balancer가 정상적으로 동작하기 위해서는 Load Balancer –&amp;gt; Server의 지정된 포트로 접근할 수 있어야 합니다. 그러기 위해서는 Server의 ACG에 Load Balancer가 접근할 수 있도록 권한을 설정해주어야 하는데, 여기서는 네이버 클라우드의 Classic Load Balancer를 운영할 때 ACG 설정을 어떻게 하는가에 대한 내용을 정리해보겠습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서 AutoScaling을 설정할 때 중요한 것이 이벤트 설정입니다. 예를 들어 CPU 사용률이 70%가 넘는 상태가 1분 이상 지속되면 서버를 늘리는 작업이 진행되도록 설정한다고 할 때, CPU가 70% 이상인 상태가 1분 이상 지속되는 이벤트가 발생하는지 체크하는 것을 말합니다. 현재 네이버 클라우드 Console에서는 AutoScaling 그룹을 생성한 후에 바로 이 이벤트 설정을 하는 방법에 대한 메뉴나 링크가 없어서 그에 대한 내용을 정리해보겠습니다.</summary></entry></feed>
