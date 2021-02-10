@@ -4,22 +4,27 @@ news:
     answer: 지난 2020년 8월 정식 DNS 상품(Global DNS)가 출시됨에 따라 Beta로 무료제공되고 있는 DNS 서비스가 종료됩니다. 이에 따라 2020년 12월 1일부로 DNS(Beta)를 통한 신규등록/레코드 추가/레코드 삭제 기능이 차단되고, 2021년 3월 해당 서비스를 완전 종료될 예정입니다.
     dates: 2020-11-19
     link: https://www.ncloud.com/support/notice/all/991
+    target: _blank
   - question: 네이버 클라우드 VPC 환경에 Cloud DB for MSSQL 서비스 추가
     answer: 2021년 1월 네이버 클라우드 VPC 환경에 Cloud DB for MSSQL 서비스가 추가되었습니다. 지원되는 MSSQL 버전은 MSSQL 2019 Standard edition입니다.
     dates: 2021-01
     link: https://www.ncloud.com/product/database/cloudDbMssql
+    target: _blank
   - question: 네이버 클라우드 Game 서비스에 Game Chat 서비스 추가
     answer: 2021년 1월 네이버 클라우드 Game 서비스에 게임에 꼭 필요한 라이브 채팅을 할 수 있는 플랫폼을 쉽고 빠르게 제공해주는 Game Chat 서비스가 추가되었습니다.
     dates: 2021-01
     link: https://www.ncloud.com/product/game/gameChat
+    target: _blank
   - question: 네이버 클라우드 Game 서비스에 Game Report 서비스 추가
     answer: 2021년 1월 네이버 클라우드 Game 서비스에 게임에서 발생하는 모든 데이터를 분석하고 정리하는 게임 데이터 전문 빅데이터 서비스인 Game Report 서비스가 추가되었습니다. 
     dates: 2021-01
     link: https://www.ncloud.com/product/game/gameReport
+    target: _blank
   - question: 네이버 클라우드 Media 서비스에 Video Player 서비스 추가
     answer: 2021년 1월 네이버 클라우드 Media 서비스에 네이버 클라우드 서비스의 미디어 상품들과 함께 사용할 수 있는, 최신의 네이버 미디어 플레이어를 기반으로 개발된 클라우드 전용 Video Player 서비스가 추가되었습니다. 
     dates: 2021-01
     link: https://www.ncloud.com/product/media/videoPlayer
+    target: _blank
 ---
 
 <h1>NEWS</h1>
@@ -35,6 +40,6 @@ news:
 
 	{% for item in news_array %}
 		<h2 id="{{ item.question | slugify}}">[{{ item.dates }}] {{ item.question }}<a class="header-link" href="#{{ item.question | slugify }}">#</a></h2>
-		<p>{{ item.answer }} {% if item.link %}<br /><span style="font-size:15px">- 참고문서: <a href="{{ item.link }}" style="text-decoration:none">{{ item.link }}</a></span>{% endif %}</p>
+		<p>{{ item.answer }} {% if item.link %}<br /><span style="font-size:15px">- 참고문서: <a href="{{ item.link }}" style="text-decoration:none" target="{{ item.target }}">{{ item.link }}</a></span>{% endif %}</p>
 	{% endfor %}
 </section>
