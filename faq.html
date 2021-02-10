@@ -42,6 +42,12 @@ faq:
   - question: 네이버 클라우드 Classic 환경에서 사용하던  Block Storage, NAS, Object Storage, Archive Storage 를 VPC 환경에서 사용할 수 있나요?
     answer: Block Storage, NAS는 환경에 종속적이라 사용할 수 없지만, Object Storage와 Archive Storage는 환경에 독립적인 스토리지이기 때문에 Classic, VPC 어느 쪽에서 만들더라고 양쪽 모두에서 공용으로 사용할 수 있습니다.
     link: 
+  - question: 네이버 클라우드에서 서버당 디스크는 최대 얼마까지 추가할 수 있나요?
+    answer: 네이버 클라우드에서 서버에 직접 추가되는 디스크는 Block Storage로 최대 2,000GB를 지원하며, 서버 1대당 최대 16개의 스토리지를 추가할 수 있습니다.
+    link: /4.storage/ncp_storage_compare/
+  - question: 네이버 클라우드에서 디스크를 추가할 수 없는 서버도 있나요?
+    answer: 네이버 클라우드에서 서버에 직접 추가되는 디스크는 Block Storage로 Micro 타입의 서버, Bare Metal 서버, Application Server Launcher는 Block Storage를 추가할 수 없습니다.
+    link: /4.storage/ncp_storage_compare/
 
 ---
 
@@ -49,13 +55,15 @@ faq:
 
 <section class="faq">
 	<ul>
-		{% for item in page.faq %}
+		{% assign faq_array = page.faq | reverse %}
+		{% assign faq_array_count = faq_array.size %}
+		{% for item in faq_array %}
 			<li><a href="#{{ item.question | slugify }}">{{ item.question }}</a></li>
 		{% endfor %}
 	</ul>	
 
-	{% for item in page.faq %}
+	{% for item in faq_array %}
 		<h2 id="{{ item.question | slugify}}">{{ item.question }}<a class="header-link" href="#{{ item.question | slugify }}">#</a></h2>
-		<p>{{ item.answer }} {% if item.link %}<br /><span style="font-size:15px">- 참고문서: <a href="{{ item.link }}" style="text-decoration:none">{{ site.url }}{{ item.link }}</a></span>{% endif %}</p>
+		<p>{{ item.answer }} {% if item.link %}<br /><span style="font-size:15px">- 참고문서: <a href="{{ item.link }}" style="text-decoration:none">{{ item.link }}</a></span>{% endif %}</p>
 	{% endfor %}
 </section>

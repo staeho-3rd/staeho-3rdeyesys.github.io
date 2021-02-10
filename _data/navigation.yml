@@ -4,6 +4,9 @@
 - name: FAQ
   link: /faq/
   target: _self
+- name: NEWS
+  link: /news/
+  target: _self
 - name: Company
   link: https://3rdeyesys.com
   target: _blank
