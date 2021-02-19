@@ -31,7 +31,7 @@ Cloud Log Analytics에서 수집하는 각 종 서비스의 로그 템플릿 종
 
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/cla/cla-1-1.html" target="_blank">https://docs.ncloud.com/ko/cla/cla-1-1.html</a>
+<a href="https://docs.ncloud.com/ko/cla/cla-1-1.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/cla/cla-1-1.html</a>
 
 
 !!! info "문서 최종 수정일 : 2020-11-19" 

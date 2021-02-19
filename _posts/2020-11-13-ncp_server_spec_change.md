@@ -19,7 +19,7 @@ order_number: 2
 > 타입 간 스펙 변경이 가능한 경우 타입간 스펙 변경은 대부분은 불가능하나 **Classic 1세대의 Compact 타입과 Standard 타입** 간에는 스펙 변경을 할 수 있습니다.
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/compute/compute-1-1-v2.html" target="_blank">https://docs.ncloud.com/ko/compute/compute-1-1-v2.html</a>
+<a href="https://docs.ncloud.com/ko/compute/compute-1-1-v2.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/compute/compute-1-1-v2.html</a>
 
 
 > 문서 최종 수정일 : 2020-11-13

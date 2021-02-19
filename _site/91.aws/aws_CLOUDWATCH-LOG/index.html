@@ -260,18 +260,15 @@ yum install -y awslogs</li>
   <li>sudo sqlite3 /var/lib/awslogs/agent-state</li>
   <li>select * from stream_state; 통해 문제가 되는 소스ID확인</li>
   <li>select * from push_state where k=”확인된 소스ID”;</li>
-  <li>update push_state set v=’… insert new value here …’ where k=’7675f84405fcb8fe5b6bb14eaa0c4bfd’;</li>
+  <li><span style="word-break:break-all;">update push_state set v=’… insert new value here …’  where k=’7675f84405fcb8fe5b6bb14eaa0c4bfd’;</span></li>
   <li>service awslogs restart</li>
 </ol>
 
 <h2 id="참고-url">참고 URL</h2>
 
-<p><a href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/AgentReference.html">https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/AgentReference.html</a></p>
-
-<p><a href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html">https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html</a></p>
-
-<p>https://stackoverflow.com/questions/40604940/cloudwatch-logs-acting-weird</p>
-
+<p><a href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/AgentReference.html" target="_blank" style="word-break:break-all;">https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/AgentReference.html</a><br />
+<a href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html" target="_blank" style="word-break:break-all;">https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html</a><br />
+<a href="https://stackoverflow.com/questions/40604940/cloudwatch-logs-acting-weird" target="_blank" style="word-break:break-all;">https://stackoverflow.com/questions/40604940/cloudwatch-logs-acting-weird</a></p>
 
 		</div>
 		<div class="tutorial-share">

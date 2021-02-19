@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-02-10T11:48:22+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Object Storage 접속용 Windows Client Tool - CloudBerry Explorer</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/" rel="alternate" type="text/html" title="Object Storage 접속용 Windows Client Tool - CloudBerry Explorer" /><published>2021-02-02T00:00:00+09:00</published><updated>2021-02-02T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-02-19T10:38:28+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Object Storage 접속용 Windows Client Tool - CloudBerry Explorer</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/" rel="alternate" type="text/html" title="Object Storage 접속용 Windows Client Tool - CloudBerry Explorer" /><published>2021-02-02T00:00:00+09:00</published><updated>2021-02-02T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드의 Object Storage에 접속, 관리하는 방법은 aws cli 등 여러가지 있지만 Windows PC에서 간편하게 접속해서 관리할 수 있는 클라이언트 툴이 몇개 있습니다.&lt;br /&gt;
 그 중에서 가장 많이 사용되는 것이 바로 CloudBerry Explorer 인데, 사용법에 대해 간단히 정리해보겠습니다.&lt;/p&gt;
 
@@ -9,7 +9,7 @@
 
 &lt;p&gt;상세한 정보와 다운로드는 아래 링크에서 확인하시면 됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.msp360.com/explorer/windows.aspx&quot; target=&quot;_blank&quot;&gt;https://www.msp360.com/explorer/windows.aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.msp360.com/explorer/windows.aspx&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://www.msp360.com/explorer/windows.aspx&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;사용법&quot;&gt;사용법&lt;/h2&gt;
 
@@ -97,7 +97,7 @@
 &lt;h2 id=&quot;s3-browser&quot;&gt;S3 Browser&lt;/h2&gt;
 &lt;p&gt;또 다른 클라이언트인 S3 Browser입니다. 자세한  내용은 아래 링크에서 확인 가능합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/4.storage/ncp_storage_object_storage_s3_client_s3browser/&quot; target=&quot;_blank&quot;&gt;Object Storage 접속용 Windows Client Tool - S3 Browser&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/4.storage/ncp_storage_object_storage_s3_client_s3browser/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;Object Storage 접속용 Windows Client Tool - S3 Browser&lt;/a&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-02-02&lt;/p&gt;
@@ -112,7 +112,7 @@
 
 &lt;p&gt;상세한 정보와 다운로드는 아래 링크에서 확인하시면 됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://s3browser.com/&quot; target=&quot;_blank&quot;&gt;https://s3browser.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://s3browser.com/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://s3browser.com/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;사용법&quot;&gt;사용법&lt;/h2&gt;
 
@@ -164,7 +164,7 @@
 &lt;h2 id=&quot;cloudberry-explorer&quot;&gt;CloudBerry Explorer&lt;/h2&gt;
 &lt;p&gt;또 다른 클라이언트인 CloudBerry Explorer입니다. 자세한  내용은 아래 링크에서 확인 가능합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/&quot; target=&quot;_blank&quot;&gt;Object Storage 접속용 Windows Client Tool - CloudBerry Explorer&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;Object Storage 접속용 Windows Client Tool - CloudBerry Explorer&lt;/a&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-02-02&lt;/p&gt;
@@ -184,6 +184,7 @@
   &lt;li&gt;Image Optimizer&lt;/li&gt;
   &lt;li&gt;SourceBuild&lt;/li&gt;
   &lt;li&gt;Cloud Hadoop&lt;/li&gt;
+  &lt;li&gt;Data Analytics Service&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_required_service_01.jpg&quot; alt=&quot;Object Storage와 연동이 필수인 서비스&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
@@ -199,7 +200,7 @@
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-01-29&lt;/p&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-02-16&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드의 수 많은 서비스들 중에는 Object Storage가 설정, 준비되어 있어야 하는 서비스들, 즉, Object Storage와 연동이 필수인 서비스들이 여럿 있습니다. 어떤 서비스들이 이에 해당하는지 정리해보겠습니다.</summary></entry><entry><title type="html">CentOS6에서 pip - Python 설치하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/" rel="alternate" type="text/html" title="CentOS6에서 pip - Python 설치하기" /><published>2021-01-26T00:00:00+09:00</published><updated>2021-01-26T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;2020년 12월 01일부로 CentOS6의 기술지원이 공식 종료되었습니다.&lt;br /&gt;
 yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이기에 pip, Python등의 설치가 원활하지 않습니다.
@@ -253,7 +254,7 @@ yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;이후에 aws cli설치나 Object Storage 백업과 관련된 내용은 다음 문서를 참고하시기 바랍니다.
-&lt;a href=&quot;/5.database/ncp_database_mysql_object_storage_auto_backup_centos/&quot; target=&quot;_blank&quot;&gt;CentOS에서 mysql DB를 Object Storage로 자동 백업하기&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;/5.database/ncp_database_mysql_object_storage_auto_backup_centos/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;CentOS에서 mysql DB를 Object Storage로 자동 백업하기&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;설치-오류-상황과-해결-방법&quot;&gt;설치 오류 상황과 해결 방법&lt;/h2&gt;
 &lt;p&gt;pip를 설치하는 과정에 발생하는 몇가지 오류 상황과 그에 따른 해결방법을 정리해보겠습니다.&lt;/p&gt;
@@ -298,7 +299,7 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;blockquote&gt;
   &lt;p&gt;&lt;strong&gt;CentOS 6.x&lt;/strong&gt; 버전은 기술지원 종료로 인해 위 방법대로 설치가 되지 않습니다. 다음 경로에 나온 방법대로 설치하면 됩니다.
-&lt;a href=&quot;/1.compute/ncp_server_pip_python_install_centos6/&quot; target=&quot;_blank&quot;&gt;CentOS6에서 pip - Python 설치하기&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;/1.compute/ncp_server_pip_python_install_centos6/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;CentOS6에서 pip - Python 설치하기&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;aws-cli-설치&quot;&gt;AWS CLI 설치&lt;/h2&gt;
@@ -332,7 +333,7 @@ Default output format &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;None]: &lt;s
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://clidocs.ncloud.com/ko/guide/objectstorage/&quot; target=&quot;_blank&quot;&gt;https://clidocs.ncloud.com/ko/guide/objectstorage/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://clidocs.ncloud.com/ko/guide/objectstorage/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://clidocs.ncloud.com/ko/guide/objectstorage/&lt;/a&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-01-22&lt;/p&gt;
@@ -444,12 +445,12 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
 &lt;ol&gt;
   &lt;li&gt;mysql DB 자동백업 방법
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;/5.database/ncp_database_mysql_auto_backup/&quot; target=&quot;_blank&quot;&gt;/5.database/ncp_database_mysql_auto_backup/&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/5.database/ncp_database_mysql_auto_backup/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;/5.database/ncp_database_mysql_auto_backup/&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;AWS CLI를 이용한 Object Storage 접속 방법
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;/4.storage/ncp_storage_object_storage_aws_cli_connect/&quot; target=&quot;_blank&quot;&gt;/4.storage/ncp_storage_object_storage_aws_cli_connect/&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/4.storage/ncp_storage_object_storage_aws_cli_connect/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;/4.storage/ncp_storage_object_storage_aws_cli_connect/&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
@@ -490,7 +491,7 @@ find &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt; &lt;span class=&q
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;blockquote&gt;
   &lt;p&gt;&lt;strong&gt;CentOS 6.x&lt;/strong&gt; 버전은 기술지원 종료로 인해 위 방법대로 설치가 되지 않습니다. 다음 경로에 나온 방법대로 설치하면 됩니다.
-&lt;a href=&quot;/1.compute/ncp_server_pip_python_install_centos6/&quot; target=&quot;_blank&quot;&gt;CentOS6에서 pip - Python 설치하기&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;/1.compute/ncp_server_pip_python_install_centos6/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;CentOS6에서 pip - Python 설치하기&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;aws-cli-설치&quot;&gt;AWS CLI 설치&lt;/h2&gt;
@@ -562,12 +563,12 @@ aws &lt;span class=&quot;nt&quot;&gt;--endpoint-url&lt;/span&gt;&lt;span class=&
 &lt;ol&gt;
   &lt;li&gt;mysql DB 자동백업 방법
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;/5.database/ncp_database_mysql_auto_backup/&quot; target=&quot;_blank&quot;&gt;/5.database/ncp_database_mysql_auto_backup/&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/5.database/ncp_database_mysql_auto_backup/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;/5.database/ncp_database_mysql_auto_backup/&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;AWS CLI를 이용한 Object Storage 접속 방법
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;/4.storage/ncp_storage_object_storage_aws_cli_connect/&quot; target=&quot;_blank&quot;&gt;/4.storage/ncp_storage_object_storage_aws_cli_connect/&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/4.storage/ncp_storage_object_storage_aws_cli_connect/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;/4.storage/ncp_storage_object_storage_aws_cli_connect/&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
@@ -629,7 +630,7 @@ find &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt; &lt;span class=&q
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.ncloud.com/product/database&quot; target=&quot;_blank&quot;&gt;https://www.ncloud.com/product/database&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.ncloud.com/product/database&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://www.ncloud.com/product/database&lt;/a&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-01-22&lt;/p&gt;
@@ -741,7 +742,7 @@ find &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt; &lt;span class=&q
 물론 마찬가지로 수명주기 날짜에 해당하는 파일만 이동하게되고, 폴더 아래에 해당하는 파일이 없을 경우 해동 폴더는 이동하지 않습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/storage/storage-6-1.html&quot; target=&quot;_blank&quot;&gt;https://docs.ncloud.com/ko/storage/storage-6-1.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/storage/storage-6-1.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.ncloud.com/ko/storage/storage-6-1.html&lt;/a&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-01-21&lt;/p&gt;
@@ -766,7 +767,7 @@ CPU 사용량 등의 서버 상태를 확인해야 하는 것이다 보니 &lt;s
 &lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_event_setting_02.jpg&quot; alt=&quot;네이버 클라우드 AutoScaling 그룹 이벤트 설정하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/management/management-1-1.html&quot; target=&quot;_blank&quot;&gt;https://docs.ncloud.com/ko/management/management-1-1.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/management/management-1-1.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.ncloud.com/ko/management/management-1-1.html&lt;/a&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-01-19&lt;/p&gt;

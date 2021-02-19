@@ -53,6 +53,6 @@ LAMP 설치 상태와 정보 확인 명령 : /root/lamp/lamp_info.sh
 
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/lamp/lamp-1-1.html" target="_blank">https://docs.ncloud.com/ko/lamp/lamp-1-1.html</a>
+<a href="https://docs.ncloud.com/ko/lamp/lamp-1-1.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/lamp/lamp-1-1.html</a>
 
 > 문서 최종 수정일 : 2020-12-03

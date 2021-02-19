@@ -77,7 +77,7 @@ order_number: 1
 
 
 ## 참고 URL
-<a href="https://www.ncloud.com/product/database" target="_blank">https://www.ncloud.com/product/database</a>
+<a href="https://www.ncloud.com/product/database" target="_blank" style="word-break:break-all;">https://www.ncloud.com/product/database</a>
 
 
 > 문서 최종 수정일 : 2021-01-26

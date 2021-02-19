@@ -22,7 +22,7 @@ CloudBerry Explorer의 정식 명칭은 CloudBerry Explorer Freeware for Amazon 
 
 상세한 정보와 다운로드는 아래 링크에서 확인하시면 됩니다.
 
-<a href="https://www.msp360.com/explorer/windows.aspx" target="_blank">https://www.msp360.com/explorer/windows.aspx</a>
+<a href="https://www.msp360.com/explorer/windows.aspx" target="_blank" style="word-break:break-all;">https://www.msp360.com/explorer/windows.aspx</a>
 
 
 ## 사용법
@@ -110,7 +110,7 @@ Object Storage에 있는 파일을 로컬PC로 가져오려면 원하는 파일�
 ## S3 Browser
 또 다른 클라이언트인 S3 Browser입니다. 자세한  내용은 아래 링크에서 확인 가능합니다.
 
-<a href="/4.storage/ncp_storage_object_storage_s3_client_s3browser/" target="_blank">Object Storage 접속용 Windows Client Tool - S3 Browser</a>
+<a href="/4.storage/ncp_storage_object_storage_s3_client_s3browser/" target="_blank" style="word-break:break-all;">Object Storage 접속용 Windows Client Tool - S3 Browser</a>
 
 
 > 문서 최종 수정일 : 2021-02-02

@@ -49,8 +49,8 @@ Application Server Launcher에서 OS버전(CentOS, Ubuntu)별로 제공되는 �
 Private Subnet을 구성해서 서버환경을 만들려고 해도 Micro 서버 타입은 Network Interface를 추가할 수 없고, 그에 따라 Private Subnet도 적용할 수 없습니다.
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/compute/compute-1-1-v2.html" target="_blank">https://docs.ncloud.com/ko/compute/compute-1-1-v2.html</a>
-<a href="https://docs.ncloud.com/ko/asl/asl_console.html" target="_blank">https://docs.ncloud.com/ko/asl/asl_console.html</a>
+<a href="https://docs.ncloud.com/ko/compute/compute-1-1-v2.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/compute/compute-1-1-v2.html</a>
+<a href="https://docs.ncloud.com/ko/asl/asl_console.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/asl/asl_console.html</a>
 
 
 > 문서 최종 수정일 : 2021-01-19

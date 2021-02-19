@@ -53,7 +53,7 @@ VPC Peering은 단방향 통신을 제공하기 때문에 양방향 통신을 �
 
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/networking/vpc/vpc_overview.html" target="_blank">https://docs.ncloud.com/ko/networking/vpc/vpc_overview.html</a>
+<a href="https://docs.ncloud.com/ko/networking/vpc/vpc_overview.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/networking/vpc/vpc_overview.html</a>
 
 
 > 문서 최종 수정일 : 2020-11-30

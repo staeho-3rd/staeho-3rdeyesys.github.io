@@ -25,7 +25,7 @@ aws cli를 설치하려면 pip가 먼저 설치되어 있어야 합니다.
 ~# apt-get install python-pip
 ```
 > **CentOS 6.x** 버전은 기술지원 종료로 인해 위 방법대로 설치가 되지 않습니다. 다음 경로에 나온 방법대로 설치하면 됩니다.
-<a href="/1.compute/ncp_server_pip_python_install_centos6/" target="_blank">CentOS6에서 pip - Python 설치하기</a>
+<a href="/1.compute/ncp_server_pip_python_install_centos6/" target="_blank" style="word-break:break-all;">CentOS6에서 pip - Python 설치하기</a>
 
 
 ## AWS CLI 설치
@@ -62,7 +62,7 @@ Default output format [None]: [Enter]
 ```
 
 ## 참고 URL
-<a href="https://clidocs.ncloud.com/ko/guide/objectstorage/" target="_blank">https://clidocs.ncloud.com/ko/guide/objectstorage/</a>
+<a href="https://clidocs.ncloud.com/ko/guide/objectstorage/" target="_blank" style="word-break:break-all;">https://clidocs.ncloud.com/ko/guide/objectstorage/</a>
 
 
 > 문서 최종 수정일 : 2021-01-22

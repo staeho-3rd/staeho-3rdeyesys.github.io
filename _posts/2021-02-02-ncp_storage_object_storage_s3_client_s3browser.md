@@ -22,7 +22,7 @@ S3 Browser는 Amazon S3 and Amazon CloudFront를 위한 클라이언트입니다
 
 상세한 정보와 다운로드는 아래 링크에서 확인하시면 됩니다.
 
-<a href="https://s3browser.com/" target="_blank">https://s3browser.com/</a>
+<a href="https://s3browser.com/" target="_blank" style="word-break:break-all;">https://s3browser.com/</a>
 
 
 ## 사용법
@@ -74,6 +74,6 @@ Object Storage에 있는 파일을 로컬PC로 가져오려면 원하는 파일�
 ## CloudBerry Explorer
 또 다른 클라이언트인 CloudBerry Explorer입니다. 자세한  내용은 아래 링크에서 확인 가능합니다.
 
-<a href="/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/" target="_blank">Object Storage 접속용 Windows Client Tool - CloudBerry Explorer</a>
+<a href="/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/" target="_blank" style="word-break:break-all;">Object Storage 접속용 Windows Client Tool - CloudBerry Explorer</a>
 
 > 문서 최종 수정일 : 2021-02-02

@@ -120,10 +120,10 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
 
 ## 참고 URL
 1. mysql DB 자동백업 방법
-	- <a href="/5.database/ncp_database_mysql_auto_backup/" target="_blank">/5.database/ncp_database_mysql_auto_backup/</a>
+	- <a href="/5.database/ncp_database_mysql_auto_backup/" target="_blank" style="word-break:break-all;">/5.database/ncp_database_mysql_auto_backup/</a>
 
 2. AWS CLI를 이용한 Object Storage 접속 방법
-	- <a href="/4.storage/ncp_storage_object_storage_aws_cli_connect/" target="_blank">/4.storage/ncp_storage_object_storage_aws_cli_connect/</a>
+	- <a href="/4.storage/ncp_storage_object_storage_aws_cli_connect/" target="_blank" style="word-break:break-all;">/4.storage/ncp_storage_object_storage_aws_cli_connect/</a>
 
 
 > 문서 최종 수정일 : 2021-01-26

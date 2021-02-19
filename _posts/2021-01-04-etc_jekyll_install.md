@@ -21,7 +21,7 @@ order_number: 1
 일반적으로 jekyll를 사용한다면 최신 버전을 사용하면 되겠지만 여기서는 base-theme를 기반으로 하기 때문에 호환에 잘되는 2.5를 설치합니다.
 
 Ruby Installer 다운로드 경로
-<a href="https://rubyinstaller.org/downloads/" target="_blank">https://rubyinstaller.org/downloads/</a>
+<a href="https://rubyinstaller.org/downloads/" target="_blank" style="word-break:break-all;">https://rubyinstaller.org/downloads/</a>
 
 위 사이트에서 rubyinstaller-devkit-2.5.8-2-x64 를 다운 받아 설치하면 됩니다.
 
@@ -55,7 +55,7 @@ base-theme는 jekyll의 여러 테마 중에서 CloudCannon에서 제작한 테�
 <img src="../../images/jekyll_base_theme.png" alt="jekyll base-theme" style="width:600px;align:center">
 
 다운로드 경로
-<a href="https://github.com/CloudCannon/base-jekyll-template" target="_blank">https://github.com/CloudCannon/base-jekyll-template</a>
+<a href="https://github.com/CloudCannon/base-jekyll-template" target="_blank" style="word-break:break-all;">https://github.com/CloudCannon/base-jekyll-template</a>
 
 
 위 다운로드 경로에서 소스를 직접 다운 받거나 GitHub Desktop을 이용해서 가져오면 됩니다.

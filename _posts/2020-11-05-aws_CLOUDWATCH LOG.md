@@ -123,14 +123,11 @@ cloudwatch log수집을 위해서는 서버 작업과 별도로 IAM 계정생성
    1. sudo sqlite3 /var/lib/awslogs/agent-state
    2. select * from stream_state; 통해 문제가 되는 소스ID확인
    3. select * from push_state where k="확인된 소스ID";
-   4. update push_state set v='... insert new value here ...' where k='7675f84405fcb8fe5b6bb14eaa0c4bfd';
+   4. <span style="word-break:break-all;">update push_state set v='... insert new value here ...'  where k='7675f84405fcb8fe5b6bb14eaa0c4bfd';</span>
    5. service awslogs restart
 
 ## 참고 URL
 
-<https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/AgentReference.html>
-
-<https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html>
-
-https://stackoverflow.com/questions/40604940/cloudwatch-logs-acting-weird
-
+<a href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/AgentReference.html" target="_blank" style="word-break:break-all;">https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/AgentReference.html</a>  
+<a href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html" target="_blank" style="word-break:break-all;">https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html</a>  
+<a href="https://stackoverflow.com/questions/40604940/cloudwatch-logs-acting-weird" target="_blank" style="word-break:break-all;" style="word-break:break-all;">https://stackoverflow.com/questions/40604940/cloudwatch-logs-acting-weird</a>

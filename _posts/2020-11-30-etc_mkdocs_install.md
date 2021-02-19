@@ -32,7 +32,7 @@ type: Document
 ## Python 다운로드
 mkdocs를 사용하려면 먼저 Python을 설치해야 합니다.
 
-<a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>
+<a href="https://www.python.org/downloads/" target="_blank" style="word-break:break-all;">https://www.python.org/downloads/</a>
 
 2020-11-27일 현재 최신버전은 3.9.0입니다.
 

@@ -66,7 +66,7 @@ pip설치 파일도 위에서 설치한 Python 버전에 맞는 설치파일을 
 ```
 
 이후에 aws cli설치나 Object Storage 백업과 관련된 내용은 다음 문서를 참고하시기 바랍니다.
-<a href="/5.database/ncp_database_mysql_object_storage_auto_backup_centos/" target="_blank">CentOS에서 mysql DB를 Object Storage로 자동 백업하기</a>
+<a href="/5.database/ncp_database_mysql_object_storage_auto_backup_centos/" target="_blank" style="word-break:break-all;">CentOS에서 mysql DB를 Object Storage로 자동 백업하기</a>
 
 ## 설치 오류 상황과 해결 방법
 pip를 설치하는 과정에 발생하는 몇가지 오류 상황과 그에 따른 해결방법을 정리해보겠습니다.

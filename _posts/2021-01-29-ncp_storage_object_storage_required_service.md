@@ -24,6 +24,7 @@ Object Storage와 연동이 필수인 서비스들에는 AI-Application Service�
 - Image Optimizer
 - SourceBuild
 - Cloud Hadoop
+- Data Analytics Service
 
 <img src="../../images/ncp_storage_object_storage_required_service_01.jpg" alt="Object Storage와 연동이 필수인 서비스" style="width:800px;align:center">
 
@@ -36,4 +37,4 @@ Object Storage와 반드시 연동해야 하는 것은 아니지만, Object Stor
 - CDN+
 - Global CDN
 
-> 문서 최종 수정일 : 2021-01-29
+> 문서 최종 수정일 : 2021-02-16
