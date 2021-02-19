@@ -113,6 +113,36 @@
 				
 					
 					
+					"5-database-ncp-database-mariadb-access-from-remote-ubuntu": {
+						"id": "5-database-ncp-database-mariadb-access-from-remote-ubuntu",
+						"title": "Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL",
+						"categories": "5.database",
+						"url": " /5.database/ncp_database_mariadb_access_from_remote_ubuntu/",
+						"content": "개요\n네이버 클라우드 Ubuntu에서 mariaDB 외부접속을 허용하고, mariaDB용 클라이언트 HeidiSQL을 이용해서 원격접속하는 방법을 정리해보겠습니다.\n여기서 원격접속이라 함은 SSH의 Tunnels를 이용하지 않고, 외부 클라이언트 등을 이용한 직접 접속을 뜻합니다.\n\n계정 비밀번호 생성\n여기서는 네이버 클라우드에서 서버를 생성했을 때 자동으로 설정되는 root 계정을 이용한 방법을 정리하게 됩니다. \n네이버 클라우드에서는 처음 mariaDB를 설치하면 root 계정에 비밀번호가 설정되어 있지 않습니다.\n\n# mariadb 실행\n~# mysql\n\n# 비밀번호 설정\nMariaDB [(None)]&gt; set password=password('비밀번호');\n\n\n계정 권한 부여\n외부에서 해당 계정(여기서는 root)으로 접속할 수 있도록 계정에 권한을 부여하는 쿼리입니다.\nMariaDB [(None)]&gt; GRANT ALL PRIVILEGES ON *.* to 'root'@'%' IDENTIFIED BY '비밀번호';\n\n\n환경설정 파일 수정\nmariaDB의 환경설정 파일 위치는 /etc/mysql/my.cnf 입니다.\nCentOS와 달리 Ubuntu에서 mariaDB는 기본적으로 외부 IP에 대한 접속이 차단되어 있고, 127.0.0.1 즉, localhost만 접속이 허용되어 있는 상태입니다.\n~# vi /etc/mysql/my.cnf\n\n\n아래는 환경 설정 파일의 일부입니다.\n# MariaDB database server configuration file.\n#\n# 중략 #\n\n[mysqld]\n#\n# * Basic Settings\n#\nport            = 3306\nbasedir         = /usr\ndatadir         = /var/lib/mysql\ntmpdir          = /tmp\n#\n# Instead of skip-networking the default is now to listen only on\n# localhost which is more compatible and is not less secure.\nbind-address            = 127.0.0.1\n#\n\n\n위 환경설정 파일중에서 bind-address 항목을 주석처리하면 외부에서 접속이 가능합니다.\n# bind-address            = 127.0.0.1\n\n# 다른 방법\nbind-address            = 0.0.0.0\n\n# 특정 IP만 허용\nbind-address            = 허용할 IP 리스트\nbind-address            = 192.168.1.1,10.0.0.1\n\n\nDB 재시작\n~# systemctl restart mysql.service\n\n\nACG 포트 추가\n네이버 클라우드 ACG에 mariaDB가 사용하는 포트 3306을 추가해줍니다.\n\n\n\nHeidiSQL 다운로드\nmariaDB용 클라이언트 중에서 대표적인 HeidiSQL을 사용합니다.\n\n다운로드 경로 : https://www.heidisql.com/download.php\n\n\n\nHeidiSQL 설정\nHeidiSQL를 실행하면 DB접속을 위한 세션관리자가 먼저 나타납니다.\n왼쪽 하단의 [신규] 버튼을 누르고 서버 IP, 사용자, 암호를 입력하고 열기 버튼을 누르면 DB에 접속할 수 있습니다.\n\n\n\nDB 접속\nmariaDB 접속에 성공하면 아래와 같은 화면을 볼 수 있습니다.\n\n\n\n참고 URL\n\n  CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL\n  https://docs.ncloud.com/ko/database/database-7-1.html\n\n\n\n  문서 최종 수정일 : 2021-02-19"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"5-database-ncp-database-mariadb-access-from-remote-centos": {
+						"id": "5-database-ncp-database-mariadb-access-from-remote-centos",
+						"title": "CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL",
+						"categories": "5.database",
+						"url": " /5.database/ncp_database_mariadb_access_from_remote_centos/",
+						"content": "개요\n네이버 클라우드 CentOS에서 mariaDB 외부접속을 허용하고, mariaDB용 클라이언트 HeidiSQL을 이용해서 원격접속하는 방법을 정리해보겠습니다.\n여기서 원격접속이라 함은 SSH의 Tunnels를 이용하지 않고, 외부 클라이언트 등을 이용한 직접 접속을 뜻합니다.\nCentOS는 Ubuntu와 달리 mariaDB 환경설정 파일 my.cnf에서 외부 IP에서 접근이 막혀 있지 않기에 환경설정 파일은 수정하지 않습니다.\n\n계정 비밀번호 생성\n여기서는 네이버 클라우드에서 서버를 생성했을 때 자동으로 설정되는 root 계정을 이용한 방법을 정리하게 됩니다. \n네이버 클라우드에서는 처음 mariaDB를 설치하면 root 계정에 비밀번호가 설정되어 있지 않습니다.\n\n# mariadb 실행\n~# mysql\n\n# 비밀번호 설정\nMariaDB [(None)]&gt; set password=password('비밀번호');\n\n\n계정 권한 부여\n외부에서 해당 계정(여기서는 root)으로 접속할 수 있도록 계정에 권한을 부여하는 쿼리입니다.\nMariaDB [(None)]&gt; GRANT ALL PRIVILEGES ON *.* to 'root'@'%' IDENTIFIED BY '비밀번호';\n\n\nACG 포트 추가\n네이버 클라우드 ACG에 mariaDB가 사용하는 포트 3306을 추가해줍니다.\n\n\n\nHeidiSQL 다운로드\nmariaDB용 클라이언트 중에서 대표적인 HeidiSQL을 사용합니다.\n\n다운로드 경로 : https://www.heidisql.com/download.php\n\n\n\nHeidiSQL 설정\nHeidiSQL를 실행하면 DB접속을 위한 세션관리자가 먼저 나타납니다.\n왼쪽 하단의 [신규] 버튼을 누르고 서버 IP, 사용자, 암호를 입력하고 열기 버튼을 누르면 DB에 접속할 수 있습니다.\n\n\n\nDB 접속\nmariaDB 접속에 성공하면 아래와 같은 화면을 볼 수 있습니다.\n\n\n\n참고 URL\n\n  Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL\n  https://docs.ncloud.com/ko/database/database-7-1.html\n\n\n\n  문서 최종 수정일 : 2021-02-19"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
 					"4-storage-ncp-storage-object-storage-s3-client-s3browser": {
 						"id": "4-storage-ncp-storage-object-storage-s3-client-s3browser",
 						"title": "Object Storage 접속용 Windows Client Tool - S3 Browser",

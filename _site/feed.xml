@@ -1,4 +1,148 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-02-19T10:38:28+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Object Storage 접속용 Windows Client Tool - CloudBerry Explorer</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/" rel="alternate" type="text/html" title="Object Storage 접속용 Windows Client Tool - CloudBerry Explorer" /><published>2021-02-02T00:00:00+09:00</published><updated>2021-02-02T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-02-19T16:41:05+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mariadb_access_from_remote_centos/" rel="alternate" type="text/html" title="CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL" /><published>2021-02-19T00:00:00+09:00</published><updated>2021-02-19T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mariadb_access_from_remote_centos</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mariadb_access_from_remote_centos/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드 CentOS에서 mariaDB 외부접속을 허용하고, mariaDB용 클라이언트 HeidiSQL을 이용해서 원격접속하는 방법을 정리해보겠습니다.&lt;br /&gt;
+여기서 원격접속이라 함은 SSH의 Tunnels를 이용하지 않고, 외부 클라이언트 등을 이용한 직접 접속을 뜻합니다.&lt;br /&gt;
+CentOS는 Ubuntu와 달리 mariaDB 환경설정 파일 my.cnf에서 외부 IP에서 접근이 막혀 있지 않기에 환경설정 파일은 수정하지 않습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;계정-비밀번호-생성&quot;&gt;계정 비밀번호 생성&lt;/h2&gt;
+&lt;p&gt;여기서는 네이버 클라우드에서 서버를 생성했을 때 자동으로 설정되는 root 계정을 이용한 방법을 정리하게 됩니다. &lt;br /&gt;
+네이버 클라우드에서는 처음 mariaDB를 설치하면 root 계정에 비밀번호가 설정되어 있지 않습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# mariadb 실행&lt;/span&gt;
+~# mysql
+
+&lt;span class=&quot;c&quot;&gt;# 비밀번호 설정&lt;/span&gt;
+MariaDB &lt;span class=&quot;o&quot;&gt;[(&lt;/span&gt;None&lt;span class=&quot;o&quot;&gt;)]&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;password&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'비밀번호'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;계정-권한-부여&quot;&gt;계정 권한 부여&lt;/h2&gt;
+&lt;p&gt;외부에서 해당 계정(여기서는 root)으로 접속할 수 있도록 계정에 권한을 부여하는 쿼리입니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MariaDB &lt;span class=&quot;o&quot;&gt;[(&lt;/span&gt;None&lt;span class=&quot;o&quot;&gt;)]&amp;gt;&lt;/span&gt; GRANT ALL PRIVILEGES ON &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; to &lt;span class=&quot;s1&quot;&gt;'root'&lt;/span&gt;@&lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt; IDENTIFIED BY &lt;span class=&quot;s1&quot;&gt;'비밀번호'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;acg-포트-추가&quot;&gt;ACG 포트 추가&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드 ACG에 mariaDB가 사용하는 포트 3306을 추가해줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mariadb_access_from_remote_ubuntu_04.jpg&quot; alt=&quot;네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;heidisql-다운로드&quot;&gt;HeidiSQL 다운로드&lt;/h2&gt;
+&lt;p&gt;mariaDB용 클라이언트 중에서 대표적인 HeidiSQL을 사용합니다.&lt;/p&gt;
+
+&lt;p&gt;다운로드 경로 : &lt;a href=&quot;https://www.heidisql.com/download.php&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://www.heidisql.com/download.php&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mariadb_access_from_remote_ubuntu_01.jpg&quot; alt=&quot;네이버 클라우드 CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;heidisql-설정&quot;&gt;HeidiSQL 설정&lt;/h2&gt;
+&lt;p&gt;HeidiSQL를 실행하면 DB접속을 위한 세션관리자가 먼저 나타납니다.&lt;br /&gt;
+왼쪽 하단의 [신규] 버튼을 누르고 서버 IP, 사용자, 암호를 입력하고 열기 버튼을 누르면 DB에 접속할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mariadb_access_from_remote_ubuntu_02.jpg&quot; alt=&quot;네이버 클라우드 CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;db-접속&quot;&gt;DB 접속&lt;/h2&gt;
+&lt;p&gt;mariaDB 접속에 성공하면 아래와 같은 화면을 볼 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mariadb_access_from_remote_ubuntu_03.jpg&quot; alt=&quot;네이버 클라우드 CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/5.database/ncp_database_mariadb_access_from_remote_ubuntu/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/database/database-7-1.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.ncloud.com/ko/database/database-7-1.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-02-19&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 CentOS에서 mariaDB 외부접속을 허용하고, mariaDB용 클라이언트 HeidiSQL을 이용해서 원격접속하는 방법을 정리해보겠습니다. 여기서 원격접속이라 함은 SSH의 Tunnels를 이용하지 않고, 외부 클라이언트 등을 이용한 직접 접속을 뜻합니다. CentOS는 Ubuntu와 달리 mariaDB 환경설정 파일 my.cnf에서 외부 IP에서 접근이 막혀 있지 않기에 환경설정 파일은 수정하지 않습니다.</summary></entry><entry><title type="html">Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mariadb_access_from_remote_ubuntu/" rel="alternate" type="text/html" title="Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL" /><published>2021-02-19T00:00:00+09:00</published><updated>2021-02-19T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mariadb_access_from_remote_ubuntu</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mariadb_access_from_remote_ubuntu/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드 Ubuntu에서 mariaDB 외부접속을 허용하고, mariaDB용 클라이언트 HeidiSQL을 이용해서 원격접속하는 방법을 정리해보겠습니다.&lt;br /&gt;
+여기서 원격접속이라 함은 SSH의 Tunnels를 이용하지 않고, 외부 클라이언트 등을 이용한 직접 접속을 뜻합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;계정-비밀번호-생성&quot;&gt;계정 비밀번호 생성&lt;/h2&gt;
+&lt;p&gt;여기서는 네이버 클라우드에서 서버를 생성했을 때 자동으로 설정되는 root 계정을 이용한 방법을 정리하게 됩니다. &lt;br /&gt;
+네이버 클라우드에서는 처음 mariaDB를 설치하면 root 계정에 비밀번호가 설정되어 있지 않습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# mariadb 실행&lt;/span&gt;
+~# mysql
+
+&lt;span class=&quot;c&quot;&gt;# 비밀번호 설정&lt;/span&gt;
+MariaDB &lt;span class=&quot;o&quot;&gt;[(&lt;/span&gt;None&lt;span class=&quot;o&quot;&gt;)]&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;password&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'비밀번호'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;계정-권한-부여&quot;&gt;계정 권한 부여&lt;/h2&gt;
+&lt;p&gt;외부에서 해당 계정(여기서는 root)으로 접속할 수 있도록 계정에 권한을 부여하는 쿼리입니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MariaDB &lt;span class=&quot;o&quot;&gt;[(&lt;/span&gt;None&lt;span class=&quot;o&quot;&gt;)]&amp;gt;&lt;/span&gt; GRANT ALL PRIVILEGES ON &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; to &lt;span class=&quot;s1&quot;&gt;'root'&lt;/span&gt;@&lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt; IDENTIFIED BY &lt;span class=&quot;s1&quot;&gt;'비밀번호'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;환경설정-파일-수정&quot;&gt;환경설정 파일 수정&lt;/h2&gt;
+&lt;p&gt;mariaDB의 환경설정 파일 위치는 /etc/mysql/my.cnf 입니다.&lt;br /&gt;
+CentOS와 달리 Ubuntu에서 mariaDB는 기본적으로 외부 IP에 대한 접속이 차단되어 있고, 127.0.0.1 즉, localhost만 접속이 허용되어 있는 상태입니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /etc/mysql/my.cnf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+아래는 환경 설정 파일의 일부입니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# MariaDB database server configuration file.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 중략 #&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;mysqld]
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# * Basic Settings&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+port            &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 3306
+basedir         &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /usr
+datadir         &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /var/lib/mysql
+tmpdir          &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /tmp
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Instead of skip-networking the default is now to listen only on&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# localhost which is more compatible and is not less secure.&lt;/span&gt;
+bind-address            &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 127.0.0.1
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+위 환경설정 파일중에서 bind-address 항목을 주석처리하면 외부에서 접속이 가능합니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# bind-address            = 127.0.0.1&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 다른 방법&lt;/span&gt;
+bind-address            &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0.0.0.0
+
+&lt;span class=&quot;c&quot;&gt;# 특정 IP만 허용&lt;/span&gt;
+bind-address            &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 허용할 IP 리스트
+bind-address            &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 192.168.1.1,10.0.0.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;db-재시작&quot;&gt;DB 재시작&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# systemctl restart mysql.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;acg-포트-추가&quot;&gt;ACG 포트 추가&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드 ACG에 mariaDB가 사용하는 포트 3306을 추가해줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mariadb_access_from_remote_ubuntu_04.jpg&quot; alt=&quot;네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;heidisql-다운로드&quot;&gt;HeidiSQL 다운로드&lt;/h2&gt;
+&lt;p&gt;mariaDB용 클라이언트 중에서 대표적인 HeidiSQL을 사용합니다.&lt;/p&gt;
+
+&lt;p&gt;다운로드 경로 : &lt;a href=&quot;https://www.heidisql.com/download.php&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://www.heidisql.com/download.php&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mariadb_access_from_remote_ubuntu_01.jpg&quot; alt=&quot;네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;heidisql-설정&quot;&gt;HeidiSQL 설정&lt;/h2&gt;
+&lt;p&gt;HeidiSQL를 실행하면 DB접속을 위한 세션관리자가 먼저 나타납니다.&lt;br /&gt;
+왼쪽 하단의 [신규] 버튼을 누르고 서버 IP, 사용자, 암호를 입력하고 열기 버튼을 누르면 DB에 접속할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mariadb_access_from_remote_ubuntu_02.jpg&quot; alt=&quot;네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;db-접속&quot;&gt;DB 접속&lt;/h2&gt;
+&lt;p&gt;mariaDB 접속에 성공하면 아래와 같은 화면을 볼 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mariadb_access_from_remote_ubuntu_03.jpg&quot; alt=&quot;네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/5.database/ncp_database_mariadb_access_from_remote_centos/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/database/database-7-1.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.ncloud.com/ko/database/database-7-1.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-02-19&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Ubuntu에서 mariaDB 외부접속을 허용하고, mariaDB용 클라이언트 HeidiSQL을 이용해서 원격접속하는 방법을 정리해보겠습니다. 여기서 원격접속이라 함은 SSH의 Tunnels를 이용하지 않고, 외부 클라이언트 등을 이용한 직접 접속을 뜻합니다.</summary></entry><entry><title type="html">Object Storage 접속용 Windows Client Tool - CloudBerry Explorer</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/" rel="alternate" type="text/html" title="Object Storage 접속용 Windows Client Tool - CloudBerry Explorer" /><published>2021-02-02T00:00:00+09:00</published><updated>2021-02-02T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드의 Object Storage에 접속, 관리하는 방법은 aws cli 등 여러가지 있지만 Windows PC에서 간편하게 접속해서 관리할 수 있는 클라이언트 툴이 몇개 있습니다.&lt;br /&gt;
 그 중에서 가장 많이 사용되는 것이 바로 CloudBerry Explorer 인데, 사용법에 대해 간단히 정리해보겠습니다.&lt;/p&gt;
 
@@ -283,7 +427,66 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-01-27&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 2020년 12월 01일부로 CentOS6의 기술지원이 공식 종료되었습니다. yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이기에 pip, Python등의 설치가 원활하지 않습니다. 그래서 pip설치에 필요한 CentOS6.x의 yum 명령을 수행하려면 먼저 아래의 가이드대로 Repository mirror를 변경하는 Script를 다운받아 설치해야 그 다음 단계를 진행할 수 있습니다.</summary></entry><entry><title type="html">AWS CLI를 이용한 Object Storage 접속 방법</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect/" rel="alternate" type="text/html" title="AWS CLI를 이용한 Object Storage 접속 방법" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 2020년 12월 01일부로 CentOS6의 기술지원이 공식 종료되었습니다. yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이기에 pip, Python등의 설치가 원활하지 않습니다. 그래서 pip설치에 필요한 CentOS6.x의 yum 명령을 수행하려면 먼저 아래의 가이드대로 Repository mirror를 변경하는 Script를 다운받아 설치해야 그 다음 단계를 진행할 수 있습니다.</summary></entry><entry><title type="html">mysql DB 자동백업 방법</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup/" rel="alternate" type="text/html" title="mysql DB 자동백업 방법" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;매일 일정한 시간에 mysql DB를 자동으로 백업 받는 방법에 대해 정리해보았습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;백업-폴더-생성&quot;&gt;백업 폴더 생성&lt;/h2&gt;
+&lt;p&gt;루트에 /data_backup 폴더를 만들고 그 아래에 db 폴더를 생성합니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /data_backup
+~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /data_backup/db
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;mysql-db-백업-스크립트-작성&quot;&gt;mysql DB 백업 스크립트 작성&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /bin/db_backup.sh
+
+&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; +%Y%m%d%H%M%S&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/data_backup/db/
+mysqldump &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;디비패스워드  &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;backup_&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DATE&lt;/span&gt;.sql
+
+find &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-ctime&lt;/span&gt; +7 &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# DATE=$(date +%Y%m%d%H%M%S)는 백업할 파일명을 &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 202001224505 와 같은 형식으로 저장할 수 있게 날짜를 변수로 담습니다.  &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# find $BACKUP_DIR -ctime +7 -exec rm -f {} \;  &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 여기서 -ctime +7은 7일이 지난 백업 파일을 찾아서 삭제하기 위한 코드입니다.  &lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 추가로 분 단위로 설정하려고 할 때는 아래와 같이 &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# -cmin +10 처럼 작성하면 10분이 지난 파일을 찾아서 삭제하게 됩니다.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# find $BACKUP_DIR -cmin +10 -exec rm -f {} \;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 백업 스크립트에 실행 권한을 부여합니다.&lt;/span&gt;
+~# &lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;755 /bin/db_backup.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;스케쥴링을-위한-crontab-설정&quot;&gt;스케쥴링을 위한 crontab 설정&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# crontab &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 매일 새벽 6시에 백업이 진행됩니다.&lt;/span&gt;
+00 06 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;그-외-시간-설정-방법&quot;&gt;그 외 시간 설정 방법&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 30분 마다 실행&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/30 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
+
+&lt;span class=&quot;c&quot;&gt;# 매주 일요일 새벽 6시에 실행&lt;/span&gt;
+0 06 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 0 /bin/db_backup.sh
+
+&lt;span class=&quot;c&quot;&gt;# 매월 1일 새벽 6시에 실행&lt;/span&gt;
+0 06 1 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
+
+&lt;span class=&quot;c&quot;&gt;# 매년 12월 31일 새벽 6시에 실행&lt;/span&gt;
+0 06 31 12 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.ncloud.com/product/database&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://www.ncloud.com/product/database&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-01-22&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 매일 일정한 시간에 mysql DB를 자동으로 백업 받는 방법에 대해 정리해보았습니다.</summary></entry><entry><title type="html">AWS CLI를 이용한 Object Storage 접속 방법</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect/" rel="alternate" type="text/html" title="AWS CLI를 이용한 Object Storage 접속 방법" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 Object Storage는 AWS의 스토리지 서비스 S3와 호환이 되도록 설계되어 있습니다.&lt;br /&gt;
 그래서 Object Storage에 접속, 관리할 때 AWS의 CLI(Command Line Interface)를 사용할 수 있는데 이번에 설치와 사용방법에 대해 정리해보겠습니다.&lt;/p&gt;
 
@@ -575,200 +778,4 @@ aws &lt;span class=&quot;nt&quot;&gt;--endpoint-url&lt;/span&gt;&lt;span class=&
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-01-25&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 CentOS에서 설치형 mysql DB를 매일 일정한 시간에 Object Storage로 자동으로 백업 받는 방법에 대해 정리해보았습니다. 순서는 로컬에 백업 파일 생성 후에 Object Storage로 저장하는 단계로 진행됩니다.</summary></entry><entry><title type="html">mysql DB 자동백업 방법</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup/" rel="alternate" type="text/html" title="mysql DB 자동백업 방법" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;매일 일정한 시간에 mysql DB를 자동으로 백업 받는 방법에 대해 정리해보았습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;백업-폴더-생성&quot;&gt;백업 폴더 생성&lt;/h2&gt;
-&lt;p&gt;루트에 /data_backup 폴더를 만들고 그 아래에 db 폴더를 생성합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /data_backup
-~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /data_backup/db
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;mysql-db-백업-스크립트-작성&quot;&gt;mysql DB 백업 스크립트 작성&lt;/h2&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; +%Y%m%d%H%M%S&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/data_backup/db/
-mysqldump &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;디비패스워드  &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;backup_&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DATE&lt;/span&gt;.sql
-
-find &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-ctime&lt;/span&gt; +7 &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# DATE=$(date +%Y%m%d%H%M%S)는 백업할 파일명을 &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# 202001224505 와 같은 형식으로 저장할 수 있게 날짜를 변수로 담습니다.  &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# find $BACKUP_DIR -ctime +7 -exec rm -f {} \;  &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# 여기서 -ctime +7은 7일이 지난 백업 파일을 찾아서 삭제하기 위한 코드입니다.  &lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# 추가로 분 단위로 설정하려고 할 때는 아래와 같이 &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# -cmin +10 처럼 작성하면 10분이 지난 파일을 찾아서 삭제하게 됩니다.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# find $BACKUP_DIR -cmin +10 -exec rm -f {} \;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 백업 스크립트에 실행 권한을 부여합니다.&lt;/span&gt;
-~# &lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;755 /bin/db_backup.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;스케쥴링을-위한-crontab-설정&quot;&gt;스케쥴링을 위한 crontab 설정&lt;/h2&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# crontab &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# 매일 새벽 6시에 백업이 진행됩니다.&lt;/span&gt;
-00 06 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4 id=&quot;그-외-시간-설정-방법&quot;&gt;그 외 시간 설정 방법&lt;/h4&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 30분 마다 실행&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/30 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;# 매주 일요일 새벽 6시에 실행&lt;/span&gt;
-0 06 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 0 /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;# 매월 1일 새벽 6시에 실행&lt;/span&gt;
-0 06 1 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;# 매년 12월 31일 새벽 6시에 실행&lt;/span&gt;
-0 06 31 12 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.ncloud.com/product/database&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://www.ncloud.com/product/database&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-01-22&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 매일 일정한 시간에 mysql DB를 자동으로 백업 받는 방법에 대해 정리해보았습니다.</summary></entry><entry><title type="html">Object Storage Lifecycle Management 관리대상 설정 방법</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_lifecycle_management/" rel="alternate" type="text/html" title="Object Storage Lifecycle Management 관리대상 설정 방법" /><published>2021-01-21T00:00:00+09:00</published><updated>2021-01-21T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_lifecycle_management</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_lifecycle_management/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 Object Storage에 저장된 Object 즉, 파일들의 Lifecycle(수명주기)를 설정할 때 관리대상이 되는 Object를 결정하는 규칙에 대해 정리해보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;lifecycle-management-수명주기-정책-설정&quot;&gt;Lifecycle Management (수명주기) 정책 설정&lt;/h2&gt;
-&lt;p&gt;수명주기 정책 설정은 크게 정책, 관리대상, 이동위치 3가지 항목으로 구성됩니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;정책&quot;&gt;정책&lt;/h3&gt;
-&lt;p&gt;정책 유형은 다음의 3가지가 있습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;만료 삭제 : 설정된 기간이 지난 파일을 삭제&lt;/li&gt;
-  &lt;li&gt;이관 : 설정된 기간이 지난 파일을 Archive Storage로 이동&lt;/li&gt;
-  &lt;li&gt;이관 후 삭제 : 설정된 기간이 지난 파일을 Archive Storage로 이동한 후 Object Storage에서 삭제&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;그리고 이동 시점은 파일이 Object Storage에 저장-생성된 후 경과한 일자를 기준으로 하며 1일 ~ 3,650일 사이의 값을 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_lifecycle_01.jpg&quot; alt=&quot;네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;관리대상-source&quot;&gt;관리대상 (Source)&lt;/h3&gt;
-&lt;p&gt;관리대상의 버킷(Bucket)을 선택하고 Object 이름의 규칙을 접두어 방식으로 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_lifecycle_02.jpg&quot; alt=&quot;네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;이동위치-target&quot;&gt;이동위치 (Target)&lt;/h3&gt;
-&lt;p&gt;이동할 위치는 Archive Storage로 고정이며, Archive Storage의 컨테이너(버킷)을 선택하고 세부경로 즉, 폴더를 입력합니다.&lt;br /&gt;
-세부경로에 아무것도 입력하지 않으면 Source 즉, Object Storage의 위치, 폴더 구조 그대로 이동됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_lifecycle_03.jpg&quot; alt=&quot;네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;관리대상source-object-이름-규칙&quot;&gt;관리대상(Source) Object 이름 규칙&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;네이버 클라우드에서 채택하고 있는 규칙은 &lt;strong&gt;접두어 방식&lt;/strong&gt;입니다.&lt;br /&gt;
-예를 들어 규칙을 &lt;strong&gt;ncp&lt;/strong&gt;라고 설정하면 이름이 ncp로 시작되는 모든 파일과 폴더가 대상이 됩니다.&lt;br /&gt;
-하지만, 접두어 규칙이기 때문에 img_ncp_01.png 처럼 파일명 중간이나 끝에 &lt;strong&gt;ncp&lt;/strong&gt;가  들어간 파일과 폴더는 대상이 아닙니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;object-이름-규칙의-특수-문자-사용&quot;&gt;Object 이름 규칙의 특수 문자 사용&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&amp;lt; &amp;gt; : “ \ | ? * % 는 사용할수 없습니다&lt;/li&gt;
-  &lt;li&gt;”/”는 첫 글자에 사용할 수 없습니다.&lt;/li&gt;
-  &lt;li&gt;”//”처럼 “/”는 연속해서 사용할 수 없습니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;적용-예시&quot;&gt;적용 예시&lt;/h2&gt;
-&lt;p&gt;아래 스샷처럼 폴더와 파일이 저장되어 있다고 가정하고 예를 들어보겠습니다.&lt;br /&gt;
-다른 항목들은 동일하고, 관리대상(Source) Object 이름 규칙에 따라 어떤 결과가 나오지는 확인해보겠습니다.&lt;br /&gt;
-물론 아래의 예시들에서 공통적으로 위에서 지정한 수명주기 날짜에 해당하는 파일들만 이동하게 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_lifecycle_04.jpg&quot; alt=&quot;네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 3rdeyesys
-	- img_01.png
-	- screenshot_01.png
-- 3rdeyesys_img
-	- img_02.png
-- ncp
-	- 
-- 3rdeyesys_biz.png
-- ncp_server_acg_classic.png
-- ncp_server_acg_vpc_inbound.png
-- vpc_acg_nacl_ncp.png
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이렇게 3rdeyesys, 3rdeyesys_img 2개의 폴더에는 각각 파일이 존재하고, ncp 폴더에는 아무것도 없습니다.  그리고 4개 파일이 루트에 저장되어 있습니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;object-이름-규칙접두어--3rdeyesys&quot;&gt;Object 이름 규칙(접두어) : 3rdeyesys&lt;/h4&gt;
-&lt;p&gt;이 경우 Archive Storage로 이동하는 파일과 폴더는 다음과 같습니다.&lt;br /&gt;
-즉, 3rdeyesys로 시작하는 파일과 폴더 아래에 있는 파일까지 모두 이동하게 됩니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 3rdeyesys
-	- img_01.png
-	- screenshot_01.png
-- 3rdeyesys_img
-	- img_02.png
-- 3rdeyesys_biz.png
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4 id=&quot;object-이름-규칙접두어--ncp&quot;&gt;Object 이름 규칙(접두어) : ncp&lt;/h4&gt;
-&lt;p&gt;이 경우 Archive Storage로 이동하는 파일과 폴더는 다음과 같습니다.&lt;br /&gt;
-위의 경우와 다르게 ncp 폴더는 이동하지 않는데 그 이유는 ncp 폴더 아래에 아무 파일도 없기 때문에 이동할 파일이 없어 폴더도 이동하지 않습니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- ncp_server_acg_classic.png
-- ncp_server_acg_vpc_inbound.png
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;마찬가지로 ncp 폴더 아래에 파일이 존재하더라도 위에서 지정한 수명주기 날짜에 해당하는 파일이 없는 경우에도 ncp 폴더는 이동하지 않습니다.&lt;br /&gt;
-또한 접두어 방식이기 때문에 파일명 중간에 ncp가 들어간 vpc_acg_nacl_ncp.png 파일은 해당되지 않아서 이동하지 않습니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;object-이름-규칙접두어--3rdeyesys-1&quot;&gt;Object 이름 규칙(접두어) : 3rdeyesys/&lt;/h4&gt;
-&lt;p&gt;이렇게 뒤에 “/”를 입력하여 폴더라고 명시한 경우에 Archive Storage로 이동하는 파일과 폴더는 다음과 같습니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 3rdeyesys
-	- img_01.png
-	- screenshot_01.png
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;즉, 끝에 “/”를 입력했기 때문에 3rdeyesys로 시작하는 폴더만 대상이 되어 다른 파일은 이동하지 않습니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;object-이름-규칙접두어--3rdeyesysimg&quot;&gt;Object 이름 규칙(접두어) : 3rdeyesys/img&lt;/h4&gt;
-&lt;p&gt;이렇게 폴더와 파일명 접두어까지 함께 입력한 경우 Archive Storage로 이동하는 파일과 폴더는 다음과 같습니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 3rdeyesys
-	- img_01.png
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;즉, 3rdeyesys 폴더 아래에 있는 파일들 중에서 img로 시작하는 이름을 가진 파일만 이동하게 됩니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;object-이름-규칙접두어--아무것도-입력하지-않았을-때&quot;&gt;Object 이름 규칙(접두어) : 아무것도 입력하지 않았을 때&lt;/h4&gt;
-&lt;p&gt;아무것도 입력하지 않았을 때는 모든 파일과 폴더 아래에 있는 파일들이 이동하게 됩니다.&lt;br /&gt;
-물론 마찬가지로 수명주기 날짜에 해당하는 파일만 이동하게되고, 폴더 아래에 해당하는 파일이 없을 경우 해동 폴더는 이동하지 않습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/storage/storage-6-1.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.ncloud.com/ko/storage/storage-6-1.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-01-21&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Object Storage에 저장된 Object 즉, 파일들의 Lifecycle(수명주기)를 설정할 때 관리대상이 되는 Object를 결정하는 규칙에 대해 정리해보겠습니다.</summary></entry><entry><title type="html">AutoScaling 이벤트 설정하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_event_setting/" rel="alternate" type="text/html" title="AutoScaling 이벤트 설정하는 방법" /><published>2021-01-19T00:00:00+09:00</published><updated>2021-01-19T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_event_setting</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_event_setting/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드에서 AutoScaling을 설정할 때 중요한 것이 이벤트 설정입니다.&lt;br /&gt;
-예를 들어 CPU 사용률이 70%가 넘는 상태가 1분 이상 지속되면 서버를 늘리는 작업이 진행되도록 설정한다고 할 때, CPU가 70% 이상인 상태가 1분 이상 지속되는 이벤트가 발생하는지 체크하는 것을 말합니다.&lt;br /&gt;
-현재 네이버 클라우드 Console에서는 AutoScaling 그룹을 생성한 후에 바로 이 이벤트 설정을 하는 방법에 대한 메뉴나 링크가 없어서 그에 대한 내용을 정리해보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;autoscaling-group-생성&quot;&gt;AutoScaling Group 생성&lt;/h2&gt;
-&lt;p&gt;AutoScaling 이벤트를 설정하려면 우선 AutoScaling Group을 생성해야 합니다.&lt;br /&gt;
-&lt;strong&gt;Console - Auto Scaling - Auto Scaling Group 메뉴&lt;/strong&gt;에서 설정할 수 있습니다.&lt;br /&gt;
-AutoScaling Group을 설정한 후에는 AutoScaling Group Event를 설정해야 하니 해당 기능이 있는 메뉴로 이동할 수 있도록 버튼이나 링크가 생겼으면 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_event_setting_01.jpg&quot; alt=&quot;네이버 클라우드 AutoScaling 그룹 이벤트 설정하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;autoscaling-group-event-설정&quot;&gt;AutoScaling Group Event 설정&lt;/h2&gt;
-&lt;p&gt;AutoScaling의 그룹 이벤트를 설정하는 곳은 &lt;strong&gt;Monitoring 메뉴&lt;/strong&gt;에 있습니다.&lt;br /&gt;
-CPU 사용량 등의 서버 상태를 확인해야 하는 것이다 보니 &lt;strong&gt;Console - Monitoring - Group Event Setting 메뉴&lt;/strong&gt;에서 관련된 이벤트 설정을 할 수 있습니다.&lt;br /&gt;
-아래 스샷에서 확인할 수 있듯이 앞에서 생성한 AutoScaling Group이 나타납니다. 만약 AutoScaling Group을 생성하지 않았다면 여기서는 아무런 설정도 할 수 없습니다.&lt;br /&gt;
-혹시 AutoScaling Group이 생성되지 않은 상태에서 이 메뉴에 들어오는 경우에는 AutoScaling Group 생성 페이지로 이동하는 버튼이나 링크가 추가되길 바랍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_event_setting_02.jpg&quot; alt=&quot;네이버 클라우드 AutoScaling 그룹 이벤트 설정하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/management/management-1-1.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.ncloud.com/ko/management/management-1-1.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-01-19&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서 AutoScaling을 설정할 때 중요한 것이 이벤트 설정입니다. 예를 들어 CPU 사용률이 70%가 넘는 상태가 1분 이상 지속되면 서버를 늘리는 작업이 진행되도록 설정한다고 할 때, CPU가 70% 이상인 상태가 1분 이상 지속되는 이벤트가 발생하는지 체크하는 것을 말합니다. 현재 네이버 클라우드 Console에서는 AutoScaling 그룹을 생성한 후에 바로 이 이벤트 설정을 하는 방법에 대한 메뉴나 링크가 없어서 그에 대한 내용을 정리해보겠습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 CentOS에서 설치형 mysql DB를 매일 일정한 시간에 Object Storage로 자동으로 백업 받는 방법에 대해 정리해보았습니다. 순서는 로컬에 백업 파일 생성 후에 Object Storage로 저장하는 단계로 진행됩니다.</summary></entry></feed>
