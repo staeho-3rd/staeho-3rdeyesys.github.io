@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-02-23T11:21:03+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">mysql, mariadb 환경설정 파일 my.cnf 위치</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf/" rel="alternate" type="text/html" title="mysql, mariadb 환경설정 파일 my.cnf 위치" /><published>2021-02-22T00:00:00+09:00</published><updated>2021-02-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-02-23T17:43:44+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">mysql, mariadb 환경설정 파일 my.cnf 위치</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf/" rel="alternate" type="text/html" title="mysql, mariadb 환경설정 파일 my.cnf 위치" /><published>2021-02-22T00:00:00+09:00</published><updated>2021-02-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 DB중에서 mysql과 mariadb의 환경설정 파일인 my.cnf 파일이 OS 별로 어떤 경로에 위치하고 있는지 정리해보겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;centos&quot;&gt;CentOS&lt;/h2&gt;
@@ -438,10 +438,13 @@ yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이�
 
 &lt;ol&gt;
   &lt;li&gt;curl: (35) SSL connect error&lt;br /&gt;
-pip 설치파일을 다운 받기 위해 curl을 실행할 때 발생하는 오류 메시지로 위쪽에서 필요 패키지들 설치할 때 있었던 다음 명령을 실행하면 해결됩니다.
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# yum update curl nss
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
+pip 설치파일을 다운 받기 위해 curl을 실행할 때 발생하는 오류 메시지로 위쪽에서 필요 패키지들 설치할 때 있었던 다음 명령을 실행하면 해결됩니다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# yum update curl nss
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
   &lt;li&gt;SyntaxError: invalid syntax&lt;br /&gt;
 pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발생하는 문제입니다.&lt;br /&gt;
 위에서 설명했던 대로 Python 버전과 일치하는 pip 설치 파일을 다운 받으면 됩니다.&lt;/li&gt;

@@ -73,13 +73,14 @@ pip를 설치하는 과정에 발생하는 몇가지 오류 상황과 그에 따
 
 1. curl: (35) SSL connect error  
 pip 설치파일을 다운 받기 위해 curl을 실행할 때 발생하는 오류 메시지로 위쪽에서 필요 패키지들 설치할 때 있었던 다음 명령을 실행하면 해결됩니다.
+
 ``` bash
 ~# yum update curl nss
 ```
 
 2. SyntaxError: invalid syntax  
 pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발생하는 문제입니다.  
-위에서 설명했던 대로 Python 버전과 일치하는 pip 설치 파일을 다운 받으면 됩니다.  
+위에서 설명했던 대로 Python 버전과 일치하는 pip 설치 파일을 다운 받으면 됩니다.
 
 ``` bash
 # 오류가 발생하는 경로

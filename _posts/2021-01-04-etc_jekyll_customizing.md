@@ -20,7 +20,7 @@ base-theme는 기본 폰트가 Merriweather로 되어 있습니다.
 
 ### html 수정
 
-파일 위치 : \_layouts\default.html
+파일 위치 : \\_layouts\default.html
 ``` html
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet"> 
@@ -28,7 +28,7 @@ base-theme는 기본 폰트가 Merriweather로 되어 있습니다.
 <br>
 ### css 수정
 
-파일 위치: \_sass\typography.scss
+파일 위치: \\_sass\typography.scss
 ``` css
 body {
   height: 100%;
@@ -76,7 +76,7 @@ html 파일 위치 : \search.html
 
 ## 상단 header bg 교체
 
-파일 위치: \_sass\header.scss
+파일 위치: \\_sass\header.scss
 
 ``` css
 기존:
@@ -93,7 +93,7 @@ header {
 
 ## logo 파일 교체
 
-파일 위치: \_includes\logo.html
+파일 위치: \\_includes\logo.html
 
 ``` html
 
@@ -108,7 +108,7 @@ header {
 
 ## 상단 메뉴 수정
 
-파일 위치: \_data\navigation.yml
+파일 위치: \\_data\navigation.yml
 
 ``` yml
 - name: Docs
@@ -124,7 +124,7 @@ header {
 
 ## 상단 header에 검색 박스 추가
 
-파일 위치: \_includes\navigation.html
+파일 위치: \\_includes\navigation.html
 
 ``` liquid
 {% raw %}{% if page.url != "/" %}
@@ -135,7 +135,7 @@ header {
 
 ## 하단 footer social 아이콘 수정
 
-파일 위치: \_data\footer.yml
+파일 위치: \\_data\footer.yml
 
 ``` yml
 - name:
@@ -148,5 +148,41 @@ header {
   target: _blank
 ```
 
-> "문서 최종 수정일 : 2021-01-04"
+
+## 코드 블럭 스타일 수정
+- 첫째줄만 들여쓰기 되는 현상 수정
+- 컨텐츠 넓이 정도로 영역이 자동 할당되도록 수정
+- 과도한 padding, margin 영역 축소
+
+파일 위치: \\_sass\dark-theme.scss
+
+``` css
+기존:
+.highlight { 
+ padding: 10px 15px;
+}
+ 
+수정: 
+.highlight { 
+  padding: 7px 30px 7px 10px;
+  display:inline-block;
+}
+```
+<br />
+파일 위치: \\_sass\elements.scss
+
+``` css
+기존:
+code, pre, tt {	
+	padding: 2px 5px;
+}
+ 
+수정: 
+code, pre, tt {	
+	margin: 0px;
+	display:inline-block;
+}
+```
+
+> "문서 최종 수정일 : 2021-02-23"
 

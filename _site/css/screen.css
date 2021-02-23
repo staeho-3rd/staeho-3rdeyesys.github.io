@@ -274,7 +274,8 @@ code, pre, tt {
   background-color: #404145;
   color: #FAFAFA;
   border-radius: 2px;
-  padding: 2px 5px; }
+  margin: 0px;
+  display: inline-block; }
 
 .count {
   color: #ccc;
@@ -712,9 +713,10 @@ dt:hover a, h2:hover a {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  padding: 10px 15px;
+  padding: 7px 30px 7px 10px;
   background: #404145;
-  color: #C1C2C3; }
+  color: #C1C2C3;
+  display: inline-block; }
 
 .highlight .hll {
   background-color: #ffc; }

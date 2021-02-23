@@ -124,6 +124,8 @@
 			
 				<li><a href="#하단-footer-social-아이콘-수정">하단 footer social 아이콘 수정</a></li>
 			
+				<li><a href="#코드-블럭-스타일-수정">코드 블럭 스타일 수정</a></li>
+			
 		</ul>
 	</section>
 	<section class="tutorial-content">
@@ -142,14 +144,14 @@
 
 <h3 id="html-수정">html 수정</h3>
 
-<p>파일 위치 : _layouts\default.html</p>
+<p>파일 위치 : \_layouts\default.html</p>
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"preconnect"</span> <span class="na">href=</span><span class="s">"https://fonts.gstatic.com"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Nanum+Gothic&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span> 
 </code></pre></div></div>
 <p><br /></p>
 <h3 id="css-수정">css 수정</h3>
 
-<p>파일 위치: _sass\typography.scss</p>
+<p>파일 위치: \_sass\typography.scss</p>
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
   <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
   <span class="nl">max-height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
@@ -194,7 +196,7 @@ html 파일 위치 : \search.html</p>
 
 <h2 id="상단-header-bg-교체">상단 header bg 교체</h2>
 
-<p>파일 위치: _sass\header.scss</p>
+<p>파일 위치: \_sass\header.scss</p>
 
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">기존</span><span class="o">:</span>
 <span class="nt">header</span> <span class="p">{</span>
@@ -210,7 +212,7 @@ html 파일 위치 : \search.html</p>
 
 <h2 id="logo-파일-교체">logo 파일 교체</h2>
 
-<p>파일 위치: _includes\logo.html</p>
+<p>파일 위치: \_includes\logo.html</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 기존:
@@ -224,7 +226,7 @@ html 파일 위치 : \search.html</p>
 
 <h2 id="상단-메뉴-수정">상단 메뉴 수정</h2>
 
-<p>파일 위치: _data\navigation.yml</p>
+<p>파일 위치: \_data\navigation.yml</p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Docs</span>
   <span class="na">link</span><span class="pi">:</span> <span class="s">/</span>
@@ -239,7 +241,7 @@ html 파일 위치 : \search.html</p>
 
 <h2 id="상단-header에-검색-박스-추가">상단 header에 검색 박스 추가</h2>
 
-<p>파일 위치: _includes\navigation.html</p>
+<p>파일 위치: \_includes\navigation.html</p>
 
 <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">url</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">"/"</span><span class="w"> </span><span class="p">%}</span>
 	&lt;span style="width:100px"&gt;\<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>search.html<span class="w"> </span><span class="p">%}</span>&lt;/span&gt;
@@ -249,7 +251,7 @@ html 파일 위치 : \search.html</p>
 
 <h2 id="하단-footer-social-아이콘-수정">하단 footer social 아이콘 수정</h2>
 
-<p>파일 위치: _data\footer.yml</p>
+<p>파일 위치: \_data\footer.yml</p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">name</span><span class="pi">:</span>
   <span class="na">link</span><span class="pi">:</span> <span class="s">https://www.facebook.com/3rdeyesys</span>
@@ -261,8 +263,43 @@ html 파일 위치 : \search.html</p>
   <span class="na">target</span><span class="pi">:</span> <span class="s">_blank</span>
 </code></pre></div></div>
 
+<h2 id="코드-블럭-스타일-수정">코드 블럭 스타일 수정</h2>
+<ul>
+  <li>첫째줄만 들여쓰기 되는 현상 수정</li>
+  <li>컨텐츠 넓이 정도로 영역이 자동 할당되도록 수정</li>
+  <li>과도한 padding, margin 영역 축소</li>
+</ul>
+
+<p>파일 위치: \_sass\dark-theme.scss</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">기존</span><span class="o">:</span>
+<span class="nc">.highlight</span> <span class="p">{</span> 
+ <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span> <span class="m">15px</span><span class="p">;</span>
+<span class="p">}</span>
+ 
+<span class="nt">수정</span><span class="o">:</span> 
+<span class="nc">.highlight</span> <span class="p">{</span> 
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">7px</span> <span class="m">30px</span> <span class="m">7px</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span><span class="n">inline-block</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><br />
+파일 위치: \_sass\elements.scss</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">기존</span><span class="o">:</span>
+<span class="nt">code</span><span class="o">,</span> <span class="nt">pre</span><span class="o">,</span> <span class="nt">tt</span> <span class="p">{</span>	
+	<span class="nl">padding</span><span class="p">:</span> <span class="m">2px</span> <span class="m">5px</span><span class="p">;</span>
+<span class="p">}</span>
+ 
+<span class="nt">수정</span><span class="o">:</span> 
+<span class="nt">code</span><span class="o">,</span> <span class="nt">pre</span><span class="o">,</span> <span class="nt">tt</span> <span class="p">{</span>	
+	<span class="nl">margin</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+	<span class="nl">display</span><span class="p">:</span><span class="n">inline-block</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
 <blockquote>
-  <p>“문서 최종 수정일 : 2021-01-04”</p>
+  <p>“문서 최종 수정일 : 2021-02-23”</p>
 </blockquote>
 
 

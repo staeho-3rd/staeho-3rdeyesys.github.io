@@ -192,10 +192,13 @@ yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이�
 
 <ol>
   <li>curl: (35) SSL connect error<br />
-pip 설치파일을 다운 받기 위해 curl을 실행할 때 발생하는 오류 메시지로 위쪽에서 필요 패키지들 설치할 때 있었던 다음 명령을 실행하면 해결됩니다.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# yum update curl nss
-</code></pre></div>    </div>
-  </li>
+pip 설치파일을 다운 받기 위해 curl을 실행할 때 발생하는 오류 메시지로 위쪽에서 필요 패키지들 설치할 때 있었던 다음 명령을 실행하면 해결됩니다.</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# yum update curl nss
+</code></pre></div></div>
+
+<ol>
   <li>SyntaxError: invalid syntax<br />
 pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발생하는 문제입니다.<br />
 위에서 설명했던 대로 Python 버전과 일치하는 pip 설치 파일을 다운 받으면 됩니다.</li>

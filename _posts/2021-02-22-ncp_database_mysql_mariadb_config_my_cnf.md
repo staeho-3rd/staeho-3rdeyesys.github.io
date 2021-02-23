@@ -6,7 +6,7 @@ categories:
 description: 네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치
 type: Document
 set: database
-order_number: 5
+order_number: 8
 ---
 
 ## 개요
