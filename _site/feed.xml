@@ -1,4 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-02-19T16:41:05+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mariadb_access_from_remote_centos/" rel="alternate" type="text/html" title="CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL" /><published>2021-02-19T00:00:00+09:00</published><updated>2021-02-19T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mariadb_access_from_remote_centos</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mariadb_access_from_remote_centos/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-02-23T11:21:03+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">mysql, mariadb 환경설정 파일 my.cnf 위치</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf/" rel="alternate" type="text/html" title="mysql, mariadb 환경설정 파일 my.cnf 위치" /><published>2021-02-22T00:00:00+09:00</published><updated>2021-02-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드 DB중에서 mysql과 mariadb의 환경설정 파일인 my.cnf 파일이 OS 별로 어떤 경로에 위치하고 있는지 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;centos&quot;&gt;CentOS&lt;/h2&gt;
+&lt;p&gt;CentOS에서는 my.cnf 파일이 /etc/ 바로 밑에 위치합니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/etc/my.cnf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;mysql&quot;&gt;mysql&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_mariadb_config_my_cnf_01.jpg&quot; alt=&quot;네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;mariadb&quot;&gt;mariadb&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_mariadb_config_my_cnf_03.jpg&quot; alt=&quot;네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;ubuntu&quot;&gt;Ubuntu&lt;/h2&gt;
+&lt;p&gt;Ubuntu에서는 my.cnf 파일이 /etc/mysql 밑에 위치합니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/etc/mysql/my.cnf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;mysql-1&quot;&gt;mysql&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_mariadb_config_my_cnf_02.jpg&quot; alt=&quot;네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;mariadb-1&quot;&gt;mariadb&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_mariadb_config_my_cnf_04.jpg&quot; alt=&quot;네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/database/database-1-1.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.ncloud.com/ko/database/database-1-1.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.ncloud.com/ko/database/database-7-1.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.ncloud.com/ko/database/database-7-1.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-02-22&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 DB중에서 mysql과 mariadb의 환경설정 파일인 my.cnf 파일이 OS 별로 어떤 경로에 위치하고 있는지 정리해보겠습니다.</summary></entry><entry><title type="html">CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mariadb_access_from_remote_centos/" rel="alternate" type="text/html" title="CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL" /><published>2021-02-19T00:00:00+09:00</published><updated>2021-02-19T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mariadb_access_from_remote_centos</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mariadb_access_from_remote_centos/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 CentOS에서 mariaDB 외부접속을 허용하고, mariaDB용 클라이언트 HeidiSQL을 이용해서 원격접속하는 방법을 정리해보겠습니다.&lt;br /&gt;
 여기서 원격접속이라 함은 SSH의 Tunnels를 이용하지 않고, 외부 클라이언트 등을 이용한 직접 접속을 뜻합니다.&lt;br /&gt;
 CentOS는 Ubuntu와 달리 mariaDB 환경설정 파일 my.cnf에서 외부 IP에서 접근이 막혀 있지 않기에 환경설정 파일은 수정하지 않습니다.&lt;/p&gt;
@@ -427,66 +460,7 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-01-27&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 2020년 12월 01일부로 CentOS6의 기술지원이 공식 종료되었습니다. yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이기에 pip, Python등의 설치가 원활하지 않습니다. 그래서 pip설치에 필요한 CentOS6.x의 yum 명령을 수행하려면 먼저 아래의 가이드대로 Repository mirror를 변경하는 Script를 다운받아 설치해야 그 다음 단계를 진행할 수 있습니다.</summary></entry><entry><title type="html">mysql DB 자동백업 방법</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup/" rel="alternate" type="text/html" title="mysql DB 자동백업 방법" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_auto_backup/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;매일 일정한 시간에 mysql DB를 자동으로 백업 받는 방법에 대해 정리해보았습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;백업-폴더-생성&quot;&gt;백업 폴더 생성&lt;/h2&gt;
-&lt;p&gt;루트에 /data_backup 폴더를 만들고 그 아래에 db 폴더를 생성합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /data_backup
-~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /data_backup/db
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;mysql-db-백업-스크립트-작성&quot;&gt;mysql DB 백업 스크립트 작성&lt;/h2&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; +%Y%m%d%H%M%S&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/data_backup/db/
-mysqldump &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;디비패스워드  &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;backup_&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DATE&lt;/span&gt;.sql
-
-find &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-ctime&lt;/span&gt; +7 &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# DATE=$(date +%Y%m%d%H%M%S)는 백업할 파일명을 &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# 202001224505 와 같은 형식으로 저장할 수 있게 날짜를 변수로 담습니다.  &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# find $BACKUP_DIR -ctime +7 -exec rm -f {} \;  &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# 여기서 -ctime +7은 7일이 지난 백업 파일을 찾아서 삭제하기 위한 코드입니다.  &lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# 추가로 분 단위로 설정하려고 할 때는 아래와 같이 &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# -cmin +10 처럼 작성하면 10분이 지난 파일을 찾아서 삭제하게 됩니다.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# find $BACKUP_DIR -cmin +10 -exec rm -f {} \;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 백업 스크립트에 실행 권한을 부여합니다.&lt;/span&gt;
-~# &lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;755 /bin/db_backup.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;스케쥴링을-위한-crontab-설정&quot;&gt;스케쥴링을 위한 crontab 설정&lt;/h2&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# crontab &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# 매일 새벽 6시에 백업이 진행됩니다.&lt;/span&gt;
-00 06 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4 id=&quot;그-외-시간-설정-방법&quot;&gt;그 외 시간 설정 방법&lt;/h4&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 30분 마다 실행&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/30 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;# 매주 일요일 새벽 6시에 실행&lt;/span&gt;
-0 06 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 0 /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;# 매월 1일 새벽 6시에 실행&lt;/span&gt;
-0 06 1 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;# 매년 12월 31일 새벽 6시에 실행&lt;/span&gt;
-0 06 31 12 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.ncloud.com/product/database&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://www.ncloud.com/product/database&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-01-22&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 매일 일정한 시간에 mysql DB를 자동으로 백업 받는 방법에 대해 정리해보았습니다.</summary></entry><entry><title type="html">AWS CLI를 이용한 Object Storage 접속 방법</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect/" rel="alternate" type="text/html" title="AWS CLI를 이용한 Object Storage 접속 방법" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 2020년 12월 01일부로 CentOS6의 기술지원이 공식 종료되었습니다. yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이기에 pip, Python등의 설치가 원활하지 않습니다. 그래서 pip설치에 필요한 CentOS6.x의 yum 명령을 수행하려면 먼저 아래의 가이드대로 Repository mirror를 변경하는 Script를 다운받아 설치해야 그 다음 단계를 진행할 수 있습니다.</summary></entry><entry><title type="html">AWS CLI를 이용한 Object Storage 접속 방법</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect/" rel="alternate" type="text/html" title="AWS CLI를 이용한 Object Storage 접속 방법" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_aws_cli_connect/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 Object Storage는 AWS의 스토리지 서비스 S3와 호환이 되도록 설계되어 있습니다.&lt;br /&gt;
 그래서 Object Storage에 접속, 관리할 때 AWS의 CLI(Command Line Interface)를 사용할 수 있는데 이번에 설치와 사용방법에 대해 정리해보겠습니다.&lt;/p&gt;
 
