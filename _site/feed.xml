@@ -1,4 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-02-23T17:43:44+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">mysql, mariadb 환경설정 파일 my.cnf 위치</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf/" rel="alternate" type="text/html" title="mysql, mariadb 환경설정 파일 my.cnf 위치" /><published>2021-02-22T00:00:00+09:00</published><updated>2021-02-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-02-24T17:58:46+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_bind_address/" rel="alternate" type="text/html" title="mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치" /><published>2021-02-24T00:00:00+09:00</published><updated>2021-02-24T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_bind_address</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_bind_address/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드 DB중에서 mysql과 mariadb를 외부에서 접속하기 위해서는 여러 설정이 필요한데 그 중에서 bind-address 설정 항목이 어느 파일에 위치하고 있는지 정리해보겠습니다.&lt;br /&gt;
+OS중에서 CentOS는 기본 설정이 허용이지만, Ubuntu는 기본 설정이 localhost 만 접속 가능하도록 되어 있기 때문에 외부 접속을 허용해주기 위해서는 bind-address 설정을 수정해야 합니다.&lt;br /&gt;
+그래서 여기서는 Ubuntu에 대해서 살펴보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;mysql-56&quot;&gt;mysql 5.6&lt;/h2&gt;
+&lt;p&gt;mysql 5.6에서는 bind-address 설정이 &lt;strong&gt;/etc/mysql/my.cnf&lt;/strong&gt; 파일에 있습니다.&lt;br /&gt;
+OS는 Ubuntu 14.04만 제공됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_mariadb_config_bind_address_01.jpg&quot; alt=&quot;네이버 클라우드 mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;mysql-57&quot;&gt;mysql 5.7&lt;/h2&gt;
+&lt;p&gt;mysql 5.7에서는 bind-address 설정이 &lt;strong&gt;/etc/mysql/mysql.conf.d/mysqld.cnf&lt;/strong&gt; 파일에 있습니다.&lt;br /&gt;
+OS는 Ubuntu 14.04와 16.04 두 버전이 있는데 모두 동일합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_mariadb_config_bind_address_02.jpg&quot; alt=&quot;네이버 클라우드 mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치&quot; style=&quot;width:800px;align:center&quot; /&gt;
+&lt;img src=&quot;../../images/ncp_database_mysql_mariadb_config_bind_address_03.jpg&quot; alt=&quot;네이버 클라우드 mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;mariadb&quot;&gt;mariaDB&lt;/h2&gt;
+&lt;p&gt;mariaDB는 10.2 버전만 있으며 bind-address 설정이 &lt;strong&gt;/etc/mysql/my.cnf&lt;/strong&gt; 파일에 있습니다.&lt;br /&gt;
+OS는 Ubuntu 16.04만 제공됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_mariadb_config_bind_address_04.jpg&quot; alt=&quot;네이버 클라우드 mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;기타---mariadb-centos&quot;&gt;기타 - mariaDB CentOS&lt;/h2&gt;
+&lt;p&gt;그 외에 mysql의 경우 CentOS는 개요에서 말씀드렸듯이 기본적으로 외부 접속을 차단하는 bind-address 항목이 존재하지 않는데
+mariaDB의 경우 외부 접속을 차단하지는 않지만, bind-address 항목이 주석처리된 상태로 포함되어 있습니다.&lt;br /&gt;
+혹시나 차단하고 싶을 경우 사용하기 쉽게 미리 준비해둔 것으로 보입니다.
+주석처리된 bind-address의 위치는 &lt;strong&gt;/etc/my.cnf.d/server.cnf&lt;/strong&gt; 입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_mariadb_config_bind_address_05.jpg&quot; alt=&quot;네이버 클라우드 mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/5.database/ncp_database_mariadb_access_from_remote_ubuntu/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/5.database/ncp_database_mariadb_access_from_remote_centos/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-02-24&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 DB중에서 mysql과 mariadb를 외부에서 접속하기 위해서는 여러 설정이 필요한데 그 중에서 bind-address 설정 항목이 어느 파일에 위치하고 있는지 정리해보겠습니다. OS중에서 CentOS는 기본 설정이 허용이지만, Ubuntu는 기본 설정이 localhost 만 접속 가능하도록 되어 있기 때문에 외부 접속을 허용해주기 위해서는 bind-address 설정을 수정해야 합니다. 그래서 여기서는 Ubuntu에 대해서 살펴보겠습니다.</summary></entry><entry><title type="html">mysql, mariadb 환경설정 파일 my.cnf 위치</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf/" rel="alternate" type="text/html" title="mysql, mariadb 환경설정 파일 my.cnf 위치" /><published>2021-02-22T00:00:00+09:00</published><updated>2021-02-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_config_my_cnf/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 DB중에서 mysql과 mariadb의 환경설정 파일인 my.cnf 파일이 OS 별로 어떤 경로에 위치하고 있는지 정리해보겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;centos&quot;&gt;CentOS&lt;/h2&gt;
@@ -494,7 +534,7 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 
 &lt;h2 id=&quot;aws-cli-환경-설정&quot;&gt;AWS CLI 환경 설정&lt;/h2&gt;
 &lt;p&gt;이제 AWS CLI로 접속하기 위해 환경설정을 해야 합니다.&lt;br /&gt;
-위 단계에서 확인한 Access Key ID와 Secret Key를 아래 화면에서 입력하고 나머지 2가지 항목을 입력하지 않으셔도 됩니다.&lt;/p&gt;
+위 단계에서 확인한 Access Key ID와 Secret Key를 아래 화면에서 입력하고 나머지 2가지 항목은 입력하지 않으셔도 됩니다.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# aws configure
 
 AWS Access Key ID &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;None]: 3frEtFjfkdsj89243nkfv89s
@@ -637,122 +677,4 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-01-26&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Ubuntu에서 설치형 mysql DB를 매일 일정한 시간에 Object Storage로 자동으로 백업 받는 방법에 대해 정리해보았습니다. 순서는 로컬에 백업 파일 생성 후에 Object Storage로 저장하는 단계로 진행됩니다.</summary></entry><entry><title type="html">CentOS에서 mysql DB를 Object Storage로 자동 백업하기</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_object_storage_auto_backup_centos/" rel="alternate" type="text/html" title="CentOS에서 mysql DB를 Object Storage로 자동 백업하기" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_object_storage_auto_backup_centos</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_object_storage_auto_backup_centos/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 CentOS에서 설치형 mysql  DB를 매일 일정한 시간에 Object Storage로 자동으로 백업 받는 방법에 대해 정리해보았습니다.&lt;br /&gt;
-순서는 로컬에 백업 파일 생성 후에 Object Storage로 저장하는 단계로 진행됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;백업-폴더-생성&quot;&gt;백업 폴더 생성&lt;/h2&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /data_backup
-~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /data_backup/db
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;mysql-db-로컬-백업-스크립트-작성&quot;&gt;mysql DB 로컬 백업 스크립트 작성&lt;/h2&gt;
-&lt;p&gt;우선은 mysql DB를 로컬에 백업 받는 스크립트를 작성합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; +%Y%m%d%H%M%S&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/data_backup/db/
-mysqldump &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;디비패스워드  &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;backup_&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DATE&lt;/span&gt;.sql
-
-find &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-ctime&lt;/span&gt; +7 &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# 백업 파일을 202001224505 와 같은 형식으로 저장하고, 생성된지 7일이 지난 백업 파일을 삭제하는 코드입니다.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 백업 스크립트에 실행 권한을 부여합니다.&lt;/span&gt;
-~# &lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;755 /bin/db_backup.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;pip-설치&quot;&gt;pip 설치&lt;/h2&gt;
-&lt;p&gt;aws cli를 설치하려면 pip가 먼저 설치되어 있어야 합니다.&lt;br /&gt;
-혹시 이미 pip가 설치되어 있다면 아래에 있는 &lt;a href=&quot;#aws-cli-%EC%84%A4%EC%B9%98&quot;&gt;AWS CLI설치&lt;/a&gt;로 바로 이동하시면 되겠습니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# yum &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;python-pip
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;CentOS 6.x&lt;/strong&gt; 버전은 기술지원 종료로 인해 위 방법대로 설치가 되지 않습니다. 다음 경로에 나온 방법대로 설치하면 됩니다.
-&lt;a href=&quot;/1.compute/ncp_server_pip_python_install_centos6/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;CentOS6에서 pip - Python 설치하기&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;aws-cli-설치&quot;&gt;AWS CLI 설치&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드의 설명에 따르면 aws cli 1.16이후 버전은 일부 기능을 사용할 수 없어서 1.15버전을 사용한다고 합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;awscli&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;1.15.85
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;api-인증키-생성&quot;&gt;API 인증키 생성&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 포탈 -&amp;gt; 마이페이지 -&amp;gt; 계정관리 -&amp;gt; 인증키 관리 - API 인증키 관리 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_api_key_01.jpg&quot; alt=&quot;AWS CLI를 이용한 Object Storage 접속 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;aws-cli-환경-설정&quot;&gt;AWS CLI 환경 설정&lt;/h2&gt;
-&lt;p&gt;이제 AWS CLI로 접속하기 위해 환경설정을 해야 합니다.&lt;br /&gt;
-위 단계에서 확인한 Access Key ID와 Secret Key를 아래 화면에서 입력하고 나머지 2가지 항목을 입력하지 않으셔도 됩니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# aws configure
-
-AWS Access Key ID &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;None]: 3frEtFjfkdsj89243nkfv89s
-AWS Secret Access Key &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;None]: 0kr23-0vsijr2390fw:L?K23-0vcdsjr2390fchnr123[]vl/fwsh
-Default region name &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;None]: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Enter]
-Default output format &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;None]: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Enter]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;object-storage-bucket-생성&quot;&gt;Object Storage Bucket 생성&lt;/h2&gt;
-&lt;p&gt;Object Storage에 data-back-up Bucket을 생성하고 그 아래에 db 폴더를 생성합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_backup_to_object_storage_01.jpg&quot; alt=&quot;AWS CLI를 이용한 Object Storage 접속 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;object-storage-접속-테스트&quot;&gt;Object Storage 접속 테스트&lt;/h2&gt;
-&lt;p&gt;이제 Object Storage로 접속해보겠습니다. 얼핏 명령어만 보면 AWS에 접속하는 것처럼 보입니다. 그래서 네이버 클라우드로 접속하기 위한 –endpoint-url= 로 시작하는 옵션이 반드시 필요합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# s3 ls 명령으로 Object Storage에 존재하는 버킷 리스트를 조회합니다.&lt;/span&gt;
-~# aws &lt;span class=&quot;nt&quot;&gt;--endpoint-url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;http://kr.objectstorage.ncloud.com s3 &lt;span class=&quot;nb&quot;&gt;ls
-
-&lt;/span&gt;2021-01-21 15:34:07 data-back-up
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;mysql-db-백업-스크립트-수정&quot;&gt;mysql DB 백업 스크립트 수정&lt;/h2&gt;
-&lt;p&gt;이제 위 단계에서 만들었던 DB 로컬 백업 스크립트에 DB백업 파일을 Object Storage로 백업-동기화 하는 명령을 추가하겠습니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /bin/db_backup.sh
-
-&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; +%Y%m%d%H%M%S&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/data_backup/db/
-mysqldump &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;디비패스워드  &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;backup_&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DATE&lt;/span&gt;.sql
-
-find &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-ctime&lt;/span&gt; +7 &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# 로컬에 백업된 데이터를 Object Storage에 백업-동기화하는 명령어입니다.&lt;/span&gt;
-aws &lt;span class=&quot;nt&quot;&gt;--endpoint-url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;http://kr.objectstorage.ncloud.com s3 &lt;span class=&quot;nb&quot;&gt;sync&lt;/span&gt; /data_backup/ s3://data-back-up/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;여기서 db 폴더만 백업-동기화를 하는 것이 아닌 상위 폴더인 /data_backup/ 폴더부터 백업-동기화를 한 이유는 이후에 db 말고도 개발소스 파일 등도 압축해서 백업하기 위해서입니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;스케쥴링을-위한-crontab-설정&quot;&gt;스케쥴링을 위한 crontab 설정&lt;/h2&gt;
-&lt;p&gt;이제 마지막으로 완성된 스크립트를 일정한 시간, 여기서는 매일 새벽 6시에 실행되도록 설정합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# crontab &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# 매일 새벽 6시에 백업이 진행되는 코드입니다.&lt;/span&gt;
-00 06 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /bin/db_backup.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;백업-결과-확인&quot;&gt;백업 결과 확인&lt;/h2&gt;
-&lt;p&gt;백업이 진행되고 나면 아래와 같이 db 백업 파일이 Object Storage에 저장된 것을 확인할 수 있습니다.&lt;br /&gt;
-스샷에서는 빠른 확인을 위해 새벽 6시가 아닌 5분 단위로 백업한 내역입니다.
-&lt;img src=&quot;../../images/ncp_database_mysql_backup_to_object_storage_02.jpg&quot; alt=&quot;AWS CLI를 이용한 Object Storage 접속 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;mysql DB 자동백업 방법
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;/5.database/ncp_database_mysql_auto_backup/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;/5.database/ncp_database_mysql_auto_backup/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;AWS CLI를 이용한 Object Storage 접속 방법
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;/4.storage/ncp_storage_object_storage_aws_cli_connect/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;/4.storage/ncp_storage_object_storage_aws_cli_connect/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-01-25&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 CentOS에서 설치형 mysql DB를 매일 일정한 시간에 Object Storage로 자동으로 백업 받는 방법에 대해 정리해보았습니다. 순서는 로컬에 백업 파일 생성 후에 Object Storage로 저장하는 단계로 진행됩니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Ubuntu에서 설치형 mysql DB를 매일 일정한 시간에 Object Storage로 자동으로 백업 받는 방법에 대해 정리해보았습니다. 순서는 로컬에 백업 파일 생성 후에 Object Storage로 저장하는 단계로 진행됩니다.</summary></entry></feed>

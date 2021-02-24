@@ -41,7 +41,7 @@ aws cli를 설치하려면 pip가 먼저 설치되어 있어야 합니다.
 
 ## AWS CLI 환경 설정
 이제 AWS CLI로 접속하기 위해 환경설정을 해야 합니다.  
-위 단계에서 확인한 Access Key ID와 Secret Key를 아래 화면에서 입력하고 나머지 2가지 항목을 입력하지 않으셔도 됩니다.
+위 단계에서 확인한 Access Key ID와 Secret Key를 아래 화면에서 입력하고 나머지 2가지 항목은 입력하지 않으셔도 됩니다.
 ``` bash
 ~# aws configure
 
