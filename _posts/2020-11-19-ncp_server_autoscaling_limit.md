@@ -40,7 +40,7 @@ centos-7.8-64, ubuntu-18.04 이 2가지 OS 이미지는 개인 회원은 KR-1 1�
 - Auto Scaling Group당 생성 가능한 최대 서버 수: 30대
 - Auto Scaling Group당 연결 가능한 Load Balancer 최대 수 : 10
 
-> 계정당 생성 가능한 최대 서버 대수 : 네이버 클라우드 플랫폼에서 한 **계정당 생성할 수 있는 최대 서버 수 기본 50대**입니다. 서버 수 한도를 조정하려면 고객지원으로 문의해야 합니다.
+> 계정당 생성 가능한 최대 서버 대수 : 네이버 클라우드에서 한 **계정당 생성할 수 있는 최대 서버 수 기본 50대**입니다. 서버 수 한도를 조정하려면 고객지원으로 문의해야 합니다.
 
 ## 참고 URL
 <a href="https://docs.ncloud.com/ko/compute/autoscaling/autoscaling_overview.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/compute/autoscaling/autoscaling_overview.html</a>
