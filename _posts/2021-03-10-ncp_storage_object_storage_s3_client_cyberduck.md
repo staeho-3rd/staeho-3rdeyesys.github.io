@@ -10,12 +10,12 @@ order_number: 6
 ---
 
 ## 개요
-네이버 클라우드 Object Storage에 접속해서 파일을 업로드, 다운로드 등의 관리를 할 수 있는 클라이언트 툴중에서 이번에는 Cyberduck라는 무료 제품을 소개하려고 합니다.
-Object Storage는 AWS S3와 호환되기 때문에 S3를 지원하는 Cyberduck도 사용할 수 있는데 Cyberduck는 S3뿐만 아니라  
+네이버 클라우드 Object Storage에 접속해서 파일을 업로드, 다운로드 등의 관리를 할 수 있는 클라이언트 툴중에서 이번에는 Cyberduck이라는 무료 제품을 소개하려고 합니다.
+Object Storage는 AWS S3와 호환되기 때문에 S3를 지원하는 Cyberduck도 사용할 수 있는데 Cyberduck은 S3뿐만 아니라  
 FTP, SFTP, WebDAV, Amazon S3, OpenStack Swift, Backblaze B2, Microsoft Azure & OneDrive, Google Drive, Dropbox 등에도 접속 가능합니다.
 
 ## 설치파일 다운로드
-Cyberduck는 윈도우용과 macOS용 프로그램을 제공하고 있어, 원하는 제품을 다운 받으면 됩니다.
+Cyberduck은 윈도우용과 macOS용 프로그램을 제공하고 있어, 원하는 제품을 다운 받으면 됩니다.
 
 <a href="https://cyberduck.io/download/" target="_blank" style="word-break:break-all;">https://cyberduck.io/download/</a>
 
@@ -27,7 +27,7 @@ Cyberduck는 윈도우용과 macOS용 프로그램을 제공하고 있어, 원�
 <img src="../../images/ncp_storage_object_storage_s3_client_cyberduck_02.jpg" alt="네이버 클라우드 Object Storage 접속용 Windows Client Tool - Cyberduck" style="width:800px;align:center">
 
 ## 접속정보 확인
-Cyberduck를 실행하고 새 연결을 메뉴를 선택하면 스토리지에 접속 정보를 입력하는 창이 나타납니다.  
+Cyberduck을 실행하고 새 연결을 메뉴를 선택하면 스토리지에 접속 정보를 입력하는 창이 나타납니다.  
 여기서 필요한 정보는 서버 접속용 Endpoint URL, API 인증키 (접근 키 ID, Secret Access Key)가 필요한데, 관련된 정보는 아래쪽에서 다시 확인해보겠습니다.
 
 <img src="../../images/ncp_storage_object_storage_s3_client_cyberduck_03.jpg" alt="네이버 클라우드 Object Storage 접속용 Windows Client Tool - Cyberduck" style="width:800px;align:center">
@@ -172,7 +172,7 @@ Cyberduck의 환경설정에서 중요한 것들을 살펴 보겠습니다.
 
 
 ## 평가
-Cyberduck 툴의 장점과 단점을 정리해보겠습니다.
+마지막으로 Cyberduck 클라이언트 툴의 장점과 단점을 정리해보겠습니다.
 
 #### 장점
 - 무료제품으로 상업적인 용도로도 사용 가능하다.
