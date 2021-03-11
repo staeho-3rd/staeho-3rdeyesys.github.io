@@ -55,10 +55,10 @@ Default output format [None]: [Enter]
 이제 Object Storage로 접속해보겠습니다. 얼핏 명령어만 보면 AWS에 접속하는 것처럼 보입니다. 그래서 네이버 클라우드로 접속하기 위한 --endpoint-url= 로 시작하는 옵션이 반드시 필요합니다.
 ``` bash
 # s3 ls 명령으로 Object Storage에 존재하는 버킷 리스트를 조회합니다.
-~# aws --endpoint-url=http://kr.objectstorage.ncloud.com s3 ls
+~# aws --endpoint-url=https://kr.objectstorage.ncloud.com s3 ls
 
 # 로컬에 백업된 데이터를 Object Storage에 백업-동기화하는 명령어입니다.
-~# aws --endpoint-url=http://kr.objectstorage.ncloud.com s3 sync /data_backup/ s3://data-back-up/
+~# aws --endpoint-url=https://kr.objectstorage.ncloud.com s3 sync /data_backup/ s3://data-back-up/
 ```
 
 ## 참고 URL

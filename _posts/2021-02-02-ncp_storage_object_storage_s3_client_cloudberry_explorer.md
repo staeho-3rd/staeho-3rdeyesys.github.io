@@ -36,7 +36,7 @@ CloudBerry Explorer의 정식 명칭은 CloudBerry Explorer Freeware for Amazon 
 
 여기에 아직 네이버 클라우드는 리스트에 없기 때문에 저희는 **S3 Compatible**을 선택하면 됩니다.  
 - Display name: 여기는 알아보기 쉬운 이름을 적으면 됩니다. 예를 들어 Naver Cloud
-- Service point: 여기는 네이버 클라우드의 endpoint-url을 적습니다. **http://kr.objectstorage.ncloud.com**
+- Service point: 여기는 네이버 클라우드의 endpoint-url을 적습니다. **https://kr.objectstorage.ncloud.com**
 - Access key: 여기는 Access Key ID
 - Secret key: 여기는 Secret Key
 
