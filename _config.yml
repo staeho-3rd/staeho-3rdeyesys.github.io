@@ -7,7 +7,7 @@ baseurl:
 google_analytics_key: G-4Q6RVEFJ3S
 disqus_shortname:
 newsletter_action:
-environment : production
+#environment : production
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
 logo: /siteicon.png
