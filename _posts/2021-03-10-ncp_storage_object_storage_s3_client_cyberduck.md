@@ -1,6 +1,6 @@
 ---
 date: 2021-03-10
-title: Object Storage 접속용 Windows Client Tool - Cyberduck
+title: Object Storage 접속용 Windows, MacOS Client Tool - Cyberduck
 categories:
   - 4.storage
 description: 네이버 클라우드 Object Storage 접속용 Windows, MacOS Client Tool - Cyberduck

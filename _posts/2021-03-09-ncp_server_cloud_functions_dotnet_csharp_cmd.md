@@ -21,8 +21,6 @@ order_number: 13
 - Visual Studio 무료버전 : <a href="https://visualstudio.microsoft.com/ko/free-developer-offers/" target="_blank" style="word-break:break-all;">https://visualstudio.microsoft.com/ko/free-developer-offers/</a>
 - .Net, .Net Core SDK : <a href="https://dotnet.microsoft.com/download" target="_blank" style="word-break:break-all;">https://dotnet.microsoft.com/download</a>
 
-C:\Program Files\dotnet\
-
 ## 프로젝트 생성
 CloudFunctionsTestConsole 라는 이름의 Class Library 프로젝트를 생성하면서 언어는 C#, 타겟 프레임워크는 .Net Standard 2.0으로 지정하는 명령어입니다.  
 다음으로 생성된 프로젝트 폴더로 이동해서 Newtonsoft.Json이라는 Json 패키지를 설치합니다.
@@ -67,6 +65,8 @@ namespace CloudFunctionsTestConsole
 }
 ```
 
+<img src="../../images/ncp_server_cloud_functions_dotnet_csharp_cmd_04.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 윈도우 명령프롬프트(cmd)에서 만드는 방법 " style="width:600px;align:center">
+
 ## 프로젝트 게시
 이제 위에서 작성한 스크립트를 publish폴더로 게시하고, zip 파일로 압축합니다.  
 여기서 만든 zip 파일을 네이버 클라우드 콘솔에서 등록하게 됩니다.
@@ -80,7 +80,19 @@ D:\CloudFunctionsTestConsole>cd publish
 
 :: 파일 압축
 D:\CloudFunctionsTestConsole\publish>zip -r -0 CloudFunctionsTestConsole.zip *
+
+:: zip 명령이 실행되지 않을 경우 아래와 같이 윈도우 탐색기에서 직접 압축해도 됩니다.
 ```
+
+<img src="../../images/ncp_server_cloud_functions_dotnet_csharp_cmd_02.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 윈도우 명령프롬프트(cmd)에서 만드는 방법 " style="width:800px;align:center">
+
+> zip 명령이 실행되지 않을 경우 아래와 같이 윈도우 탐색기에서 직접 압축해도 됩니다.
+
+<img src="../../images/ncp_server_cloud_functions_dotnet_csharp_cmd_05.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 윈도우 명령프롬프트(cmd)에서 만드는 방법 " style="width:800px;align:center">
+
+<img src="../../images/ncp_server_cloud_functions_dotnet_csharp_cmd_03.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 윈도우 명령프롬프트(cmd)에서 만드는 방법 " style="width:650px;align:center">
+
+
 
 ## CF 이용신청
 네이버 클라우드 콘솔에서 Cloud Functions에 들어가 이용신청을 합니다.
@@ -102,7 +114,7 @@ D:\CloudFunctionsTestConsole\publish>zip -r -0 CloudFunctionsTestConsole.zip *
 #### 이름 입력
 액션의 이름은 특별한 규칙이 없으니 알아보기 쉬운 것으로 입력하면 됩니다.
 
-<img src="../../images/ncp_server_cloud_functions_dotnet_csharp_04.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 만드는 방법 " style="width:800px;align:center">
+<img src="../../images/ncp_server_cloud_functions_dotnet_csharp_cmd_06.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 만드는 방법 " style="width:800px;align:center">
 
 #### 소스코드 언어 선택
 소스코드 언어 중에서 저희는 dotnet:2.2를 선택합니다.

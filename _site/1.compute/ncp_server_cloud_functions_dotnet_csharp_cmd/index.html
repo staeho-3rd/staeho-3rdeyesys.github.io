@@ -152,8 +152,6 @@
   <li>.Net, .Net Core SDK : <a href="https://dotnet.microsoft.com/download" target="_blank" style="word-break:break-all;">https://dotnet.microsoft.com/download</a></li>
 </ul>
 
-<p>C:\Program Files\dotnet\</p>
-
 <h2 id="프로젝트-생성">프로젝트 생성</h2>
 <p>CloudFunctionsTestConsole 라는 이름의 Class Library 프로젝트를 생성하면서 언어는 C#, 타겟 프레임워크는 .Net Standard 2.0으로 지정하는 명령어입니다.<br />
 다음으로 생성된 프로젝트 폴더로 이동해서 Newtonsoft.Json이라는 Json 패키지를 설치합니다.</p>
@@ -196,6 +194,8 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
+<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_cmd_04.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 윈도우 명령프롬프트(cmd)에서 만드는 방법 " style="width:600px;align:center" /></p>
+
 <h2 id="프로젝트-게시">프로젝트 게시</h2>
 <p>이제 위에서 작성한 스크립트를 publish폴더로 게시하고, zip 파일로 압축합니다.<br />
 여기서 만든 zip 파일을 네이버 클라우드 콘솔에서 등록하게 됩니다.</p>
@@ -208,7 +208,19 @@
 
 <span class="c">:: 파일 압축</span>
 <span class="kd">D</span>:\CloudFunctionsTestConsole\publish&gt;zip <span class="na">-r </span><span class="o">-</span><span class="m">0</span> <span class="kd">CloudFunctionsTestConsole</span>.zip <span class="o">*</span>
+
+<span class="c">:: zip 명령이 실행되지 않을 경우 아래와 같이 윈도우 탐색기에서 직접 압축해도 됩니다.</span>
 </code></pre></div></div>
+
+<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_cmd_02.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 윈도우 명령프롬프트(cmd)에서 만드는 방법 " style="width:800px;align:center" /></p>
+
+<blockquote>
+  <p>zip 명령이 실행되지 않을 경우 아래와 같이 윈도우 탐색기에서 직접 압축해도 됩니다.</p>
+</blockquote>
+
+<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_cmd_05.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 윈도우 명령프롬프트(cmd)에서 만드는 방법 " style="width:800px;align:center" /></p>
+
+<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_cmd_03.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 윈도우 명령프롬프트(cmd)에서 만드는 방법 " style="width:650px;align:center" /></p>
 
 <h2 id="cf-이용신청">CF 이용신청</h2>
 <p>네이버 클라우드 콘솔에서 Cloud Functions에 들어가 이용신청을 합니다.</p>
@@ -230,7 +242,7 @@
 <h4 id="이름-입력">이름 입력</h4>
 <p>액션의 이름은 특별한 규칙이 없으니 알아보기 쉬운 것으로 입력하면 됩니다.</p>
 
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_04.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 만드는 방법 " style="width:800px;align:center" /></p>
+<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_cmd_06.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 만드는 방법 " style="width:800px;align:center" /></p>
 
 <h4 id="소스코드-언어-선택">소스코드 언어 선택</h4>
 <p>소스코드 언어 중에서 저희는 dotnet:2.2를 선택합니다.</p>
@@ -447,23 +459,6 @@
 		</li>
 	
 		<li >
-			<a href="/1.compute/ncp_server_storage_add_detail_process/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>6. Linux 스토리지(디스크) 추가 상세 가이드</h3>
-						<p class="description">네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
 			<a href="/3.security/ncp_security_acg_guide/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -473,8 +468,25 @@
 </div>
 				<article>
 					<div>
-						<h3>7. ACG(Access Control Group) 가이드</h3>
+						<h3>6. ACG(Access Control Group) 가이드</h3>
 						<p class="description">네이버 클라우드 ACG(Access Control Group) 가이드</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+			<a href="/1.compute/ncp_server_storage_add_detail_process/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>7. Linux 스토리지(디스크) 추가 상세 가이드</h3>
+						<p class="description">네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드</p>
 					</div>
 				</article>
 			</a>
@@ -582,6 +594,23 @@
 			</a>
 		</li>
 	
+		<li >
+			<a href="/1.compute/ncp_server_cloud_functions_dotnet_csharp_vs/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>14. Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법</h3>
+						<p class="description">네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
 </ul>
 	</div>
 
@@ -594,6 +623,23 @@
 		<ul class="listing">
 	
 		<li >
+			<a href="/1.compute/ncp_server_cloud_functions_dotnet_csharp_vs/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법</h3>
+						<p class="description">네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
 			<a href="/4.storage/ncp_storage_object_storage_s3_client_cyberduck/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -603,7 +649,7 @@
 </div>
 				<article>
 					<div>
-						<h3>Object Storage 접속용 Windows Client Tool - Cyberduck</h3>
+						<h3>Object Storage 접속용 Windows, MacOS Client Tool - Cyberduck</h3>
 						<p class="description">네이버 클라우드 Object Storage 접속용 Windows, MacOS Client Tool - Cyberduck</p>
 					</div>
 				</article>
@@ -741,23 +787,6 @@
 					<div>
 						<h3>CentOS6에서 pip - Python 설치하기</h3>
 						<p class="description">네이버 클라우드 CentOS6.x에서 pip - Python 설치하기</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/4.storage/ncp_storage_object_storage_aws_cli_connect/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>AWS CLI를 이용한 Object Storage 접속 방법</h3>
-						<p class="description">네이버 클라우드 Object Storage를 AWS CLI를 이용해서 접속하는 방법</p>
 					</div>
 				</article>
 			</a>
