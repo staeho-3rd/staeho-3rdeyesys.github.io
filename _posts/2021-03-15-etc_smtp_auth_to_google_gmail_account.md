@@ -136,4 +136,14 @@ client.Credentials = new System.Net.NetworkCredential("Gmail 계정", "앱 비�
 이렇게 기존에 gmail 계정 비밀번호를 입력하던 곳에 앱 비밀번호를 입력하면 문제없이 잘 접속됩니다.
 
 
+## 기타 사항
+앱 비밀번호는 PC에서 Outlook으로 gmail을 연동할 때 등 여러 경우에 아래와 같이 설정해서 사용할 수 있습니다.
+
+<img src="../../images/etc_smtp_auth_to_google_gmail_account_16.jpg" alt="Gmail을 이용하여 smtp 메일 발송할 때 인증오류 해결 방법" style="width:800px;align:center">
+
+그리고 2단계 인증을 사용하게 되면 기존의 "보안 수준이 낮은 앱의 액세스" 설정을 사용할 수 없습니다.
+
+<img src="../../images/etc_smtp_auth_to_google_gmail_account_17.jpg" alt="Gmail을 이용하여 smtp 메일 발송할 때 인증오류 해결 방법" style="width:800px;align:center">
+
+
 > 문서 최종 수정일 : 2021-03-16

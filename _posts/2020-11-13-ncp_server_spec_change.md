@@ -16,7 +16,7 @@ order_number: 2
 
 <img src="../../images/ncp_server_spec_change.png" alt="서버 스펙 변경 제한" style="width:600px;align:center">
 
-> 타입 간 스펙 변경이 가능한 경우 타입간 스펙 변경은 대부분은 불가능하나 **Classic 1세대의 Compact 타입과 Standard 타입** 간에는 스펙 변경을 할 수 있습니다.
+> 타입 간 스펙 변경이 가능한 경우 : 타입간 스펙 변경은 대부분은 불가능하나 **Classic 1세대의 Compact 타입과 Standard 타입** 간에는 스펙 변경을 할 수 있습니다.
 
 ## 참고 URL
 <a href="https://docs.ncloud.com/ko/compute/compute-1-1-v2.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/compute/compute-1-1-v2.html</a>
