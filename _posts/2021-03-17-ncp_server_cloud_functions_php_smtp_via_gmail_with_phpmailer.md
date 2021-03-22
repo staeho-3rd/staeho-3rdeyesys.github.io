@@ -47,7 +47,7 @@ PHPMailer에서 제공하는 샘플코드를 참고해서 꼭 필요한 코드�
 	function main(array $args) : array
 	{
 		$gmail_user_name = 'gmail 계정';
-		$gmail_app_passwrod = '앱 비밀번호';
+		$gmail_app_password = '앱 비밀번호';
 
 		$from_name = '발신자 이름';	
 		$from_email = '발신자 메일주소';
@@ -74,7 +74,7 @@ PHPMailer에서 제공하는 샘플코드를 참고해서 꼭 필요한 코드�
 			$mail->CharSet = PHPMailer::CHARSET_UTF8;
 
 			$mail->Username = $gmail_user_name;
-			$mail->Password = $gmail_app_passwrod;
+			$mail->Password = $gmail_app_password;
 
 			$mail->setFrom($from_email, $from_name);
 			$mail->addAddress($to_email, $to_name);
@@ -102,13 +102,18 @@ PHPMailer에서 제공하는 샘플코드를 참고해서 꼭 필요한 코드�
 	}
 ?>
 ```
+
+> 보안 이슈 : 위 소스코드에서 알아보기 쉽게 password 라는 변수명을 사용하기는 했지만, 
+여러 상황에서 해킹 관련 이슈(예, grep 명령어를 사용해 password 정보가 포함된 파일 검색)가 발생할 수 있으니 실제 서비스에서는 password 라는 단어 대신에 다른 단어를 사용하기를 추천 드립니다. 
+$gmail_app_password 뿐만 아니라 $mail->Password 가 포함된 PHPMailer.php 소스도 함께 수정하시면 더욱 안전할 수 있습니다.
+
 <br />
 #### 앱 비밀번호
 위 소스코드에서 gmail에 로그인할 계정과 비밀번호를 적는 부분에서 앱 비밀번호를 관심있게 보셔야 합니다.  
 
 ``` php
 $gmail_user_name = 'gmail 계정';
-$gmail_app_passwrod = '앱 비밀번호';
+$gmail_app_password = '앱 비밀번호';
 ```
 외부앱이나 서버에서 gmail 즉 google 계정에 로그인 인증을 하려면 2단계 인증을 설정하고, **앱 비밀번호**를 생성해서 사용해야 합니다. 
 예전에는 **보안 수준이 낮은 앱의 액세스 허용** 옵션으로 가능했었지만, 지금은 그렇게 하면 인증이 실패하는 경우가 많습니다. 
