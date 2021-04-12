@@ -56,7 +56,7 @@ Default ACG 이외에 사용자가 추가하는 ACG
 
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/compute/compute-2-3.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/compute/compute-2-3.html</a>
+<a href="https://guide.ncloud-docs.com/docs/compute-compute-2-3" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-2-3.html</a>
 
 
 > 문서 최종 수정일 : 2020-11-26

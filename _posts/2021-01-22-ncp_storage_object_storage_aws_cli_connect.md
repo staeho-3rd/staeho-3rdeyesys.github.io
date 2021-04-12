@@ -62,7 +62,7 @@ Default output format [None]: [Enter]
 ```
 
 ## 참고 URL
-<a href="https://clidocs.ncloud.com/ko/guide/objectstorage/" target="_blank" style="word-break:break-all;">https://clidocs.ncloud.com/ko/guide/objectstorage/</a>
+<a href="https://cli.ncloud-docs.com/docs/guide-objectstorage" target="_blank" style="word-break:break-all;">https://cli.ncloud-docs.com/docs/guide-objectstorage</a>
 
 
 > 문서 최종 수정일 : 2021-01-22

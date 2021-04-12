@@ -38,7 +38,7 @@ Ubuntu에서는 my.cnf 파일이 /etc/mysql 밑에 위치합니다.
 
 
 ## 참고 URL
-- <a href="https://docs.ncloud.com/ko/database/database-1-1.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/database/database-1-1.html</a>
-- <a href="https://docs.ncloud.com/ko/database/database-7-1.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/database/database-7-1.html</a>
+- <a href="https://guide.ncloud-docs.com/docs/database-database-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/database-database-1-1.html</a>
+- <a href="https://guide.ncloud-docs.com/docs/database-database-7-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/database-database-7-1.html</a>
 
 > 문서 최종 수정일 : 2021-02-22

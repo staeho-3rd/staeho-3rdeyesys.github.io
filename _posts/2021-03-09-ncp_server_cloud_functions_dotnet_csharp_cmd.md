@@ -219,6 +219,6 @@ D:\>dotnet new classlib -n CloudFunctionsTestConsole -lang "C#" -f netstandard2.
 
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/compute/compute-15-2-6.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/compute/compute-15-2-6.html</a>
+<a href="https://guide.ncloud-docs.com/docs/compute-compute-15-2-6" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-15-2-6.html</a>
 
 > 문서 최종 수정일 : 2021-03-09

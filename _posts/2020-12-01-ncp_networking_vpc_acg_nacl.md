@@ -28,7 +28,7 @@ order_number: 2
 <img src="../../images/ncp_vpc_acg_nacl.png" alt="VPC ACG와 NACL 비교" style="width:800px;align:center">
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/networking/vpc/vpc_detailedsubnet.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/networking/vpc/vpc_detailedsubnet.html</a>
+<a href="https://guide.ncloud-docs.com/docs/networking-vpc-vpcdetailedsubnet" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-vpc-vpcdetailedsubnet.html</a>
 
 
 > 문서 최종 수정일 : 2020-12-01

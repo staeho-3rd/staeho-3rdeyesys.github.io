@@ -100,7 +100,7 @@ vi /etc/fstab
 
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/compute/compute-4-1-v2.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/compute/compute-4-1-v2.html</a>
+<a href="https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2.html</a>
 
 
 > 문서 최종 수정일 : 2021-01-13

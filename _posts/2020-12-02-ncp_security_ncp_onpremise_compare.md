@@ -36,7 +36,7 @@ IDC에 있는 서버들을 네이버 클라우드로 마이그레이션 할 때 
 <img src="../../images/ncp_security_ncp_onpremise_compare.png" alt="Security 서비스 NCP : On-Premise 비교" style="width:800px;align:center">
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/security/security-1-1.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/security/security-1-1.html</a>
+<a href="https://guide.ncloud-docs.com/docs/security-security-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/security-security-1-1.html</a>
 
 
 > info "문서 최종 수정일 : 2020-12-02"

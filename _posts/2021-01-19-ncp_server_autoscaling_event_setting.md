@@ -33,7 +33,7 @@ CPU 사용량 등의 서버 상태를 확인해야 하는 것이다 보니 **Con
 
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/management/management-1-1.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/management/management-1-1.html</a>
+<a href="https://guide.ncloud-docs.com/docs/management-management-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/management-management-1-1.html</a>
 
 
 > 문서 최종 수정일 : 2021-01-19

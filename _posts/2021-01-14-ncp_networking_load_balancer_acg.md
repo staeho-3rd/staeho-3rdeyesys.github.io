@@ -40,7 +40,7 @@ ACG에 접근권한을 설정하고 나서 잠시 기다리면 Load Balancer가 
 
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/networking/loadbalancer/classiclb_console.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/networking/loadbalancer/classiclb_console.html</a>
+<a href="https://guide.ncloud-docs.com/docs/networking-loadbalancer-classiclbconsole" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-loadbalancer-classiclbconsole.html</a>
 
 
 > 문서 최종 수정일 : 2021-01-14

@@ -60,6 +60,6 @@ mariaDB 접속에 성공하면 아래와 같은 화면을 볼 수 있습니다.
 
 ## 참고 URL
 - <a href="/5.database/ncp_database_mariadb_access_from_remote_ubuntu/" target="_blank" style="word-break:break-all;">Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</a>
-- <a href="https://docs.ncloud.com/ko/database/database-7-1.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/database/database-7-1.html</a>
+- <a href="https://guide.ncloud-docs.com/docs/database-database-7-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/database-database-7-1.html</a>
 
 > 문서 최종 수정일 : 2021-02-19

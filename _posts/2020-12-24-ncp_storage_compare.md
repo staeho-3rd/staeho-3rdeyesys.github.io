@@ -66,7 +66,7 @@ Object Storage를 사용하시면 됩니다.
 
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/storage/storage-5-1.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/storage/storage-5-1.html</a>
+<a href="https://guide.ncloud-docs.com/docs/storage-storage-5-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/storage-storage-5-1.html</a>
 
 
 > 문서 최종 수정일 : 2020-12-28

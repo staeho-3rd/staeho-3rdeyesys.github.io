@@ -40,7 +40,7 @@ order_number: 1
 <img src="../../images/ncp_security_service_summary.png" alt="Security 서비스 요약" style="width:800px;align:center">
 
 ## 참고 URL
-<a href="https://docs.ncloud.com/ko/security/security-1-1.html" target="_blank" style="word-break:break-all;">https://docs.ncloud.com/ko/security/security-1-1.html</a>
+<a href="https://guide.ncloud-docs.com/docs/security-security-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/security-security-1-1.html</a>
 
 
 > 문서 최종 수정일 : 2020-12-02
