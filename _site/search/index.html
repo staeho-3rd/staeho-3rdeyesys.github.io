@@ -113,6 +113,36 @@
 				
 					
 					
+					"5-database-ncp-database-mysql-mariadb-replication": {
+						"id": "5-database-ncp-database-mysql-mariadb-replication",
+						"title": "MYSQL(MARIADB) replication 생성하기",
+						"categories": "5.database",
+						"url": " /5.database/ncp_database_mysql_mariadb_replication/",
+						"content": "선행조건\n\n\n  master, slave 장비의 mysql설치가 사전에 완료된 조건\n  mysql 버전 5.7이상 조건에서 작성됨\n  mysql 리플리케이션작업을 진행시 masterdb의 데이터베이스는 쓰기작업이 없는 서비스 미진행 상태이어야함.\n\n\nMASTER 장비 구성\n\nmy.cnf파일 내용 추가\n\n[mysqld]\nlog-bin=mysql-bin\nbinlog_format = mixed\n\n# 해당 ID값은 마스터장비만 1을 설정할수있음\nserver-id = 1 \n\n# 마스터 장비의 bin로그 특정일자(예시는10일) 이후 삭제\n# (해당 내역이없을 경우 지속적으로 기록되어 디스크 사용)\nexpire_logs_days = 10 \n\n\nmysql접속 후 리플리케이션을 진행할 계정 생성\n\nGRANT REPLICATION SLAVE ON *.* TO '리플리케이션계정명'@'%' IDENTIFIED BY '패스워드';\nFLUSH PRIVILEGES;\n\n\nSLAVE 장비 구성\n\nmy.cnf파일 내용 추가\n\n[mysqld]\nserver-id=2 #해당ID값은 1을 제외한 숫자지정\nslave-skip-errors = all  \n\n\n데이터베이스 사전 동기화작업\n\n\n  \n    master장비의 데이터베이스가 생성되어 있고 데이터가 있을 경우\n\n    A. master장비 데이터베이스 백업 진행\n    # 데이터베이스가 추가로 있다면 남은 데이터베이스도 백업\nmysqldump -u root -p --databases 데이터베이스명 &gt; 백업파일.sql \n    \n    \n B. slave장비 데이터베이스 복구 진행\n    create database 데이터베이스명; #mysql 접속 후 생성\nmysql -u root -p 데이터베이스명 &lt; 백업파일.sql  \n    \n    \n  \n  \n    master 장비의 데이터베이스가 없을 경우\n\n    A. 별도 작업 없으며, 데이터베이스만 생성되어 데이터가 없을경우도 slave장비에 동일한 데이터베이스 생성으로 마무리\n  \n\n\n리플리케이션 작업\n\n\n  \n    master 장비 mysql 접속 후 현재 로그파일번호와 포지션 넘버 확인\n\n    show master status;\nfile| Position #내역을 확인 후 별도 기입.\n    \n  \n  \n    slave 장비 mysql 접속 후 아래 명령어 실행 하여 리플리케이션 master정보 기입\n\n    CHANGE MASTER TO MASTER_HOST='마스터IP',MASTER_USER='생성한리플리케이션계정명',MASTER_PASSWORD='패스워드',MASTER_LOG_FILE='위에서확인된 file이름',MASTER_LOG_POS=위에서 확인된 포지션번호;\n    \n  \n  \n    slave 리플리케이션 시작및 확인\n\n    start slave;\nshow slave status\\G; #실행 후 에러가 없다면 정상.\n    \n  \n\n\n\n  문서 최종 수정일 : 2021-04-13"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
+					"99-etc-etc-phpspreadsheet-sample-code": {
+						"id": "99-etc-etc-phpspreadsheet-sample-code",
+						"title": "PhpSpreadsheet 설정 샘플 코드",
+						"categories": "99.ETC",
+						"url": " /99.etc/etc_phpspreadsheet_sample_code/",
+						"content": "개요\n\n클래스 로드\n\n\n&lt;?php\n\n\trequire 'vendor/autoload.php';\n\n\tuse PhpOffice\\PhpSpreadsheet\\IOFactory;\n\tuse PhpOffice\\PhpSpreadsheet\\Spreadsheet;\n\n\t$spreadsheet = new Spreadsheet();\n?&gt;\n\n\n기본 설정\n\n\n&lt;? php\n\n // 문서 가로,세로 방향 설정\t\n $spreadsheet-&gt;getActiveSheet()-&gt;getPageSetup()\n -&gt;setOrientation(\\PhpOffice\\PhpSpreadsheet\\Worksheet\\PageSetup::ORIENTATION_PORTRAIT);\n\n // 문서 사이즈 설정\n $spreadsheet-&gt;getActiveSheet()-&gt;getPageSetup()\n -&gt;setPaperSize(\\PhpOffice\\PhpSpreadsheet\\Worksheet\\PageSetup::PAPERSIZE_A4);\n\n // 문서 정보 설정\n $spreadsheet-&gt;getProperties()-&gt;setCreator(\"써드아이시스템\")\n -&gt;setLastModifiedBy(\"써드아이시스템\")\n -&gt;setTitle(\"문서 타이틀\")\n -&gt;setSubject(\"문서 제목\")\n -&gt;setDescription(\"문서 설명\")\n -&gt;setKeywords(\"키워드\")\n -&gt;setCategory(\"카테고리\");\n\n\n // 문서 좌우 여백 설정\n $spreadsheet-&gt;getActiveSheet()-&gt;getPageMargins()-&gt;setTop(0.5);\t\n $spreadsheet-&gt;getActiveSheet()-&gt;getPageMargins()-&gt;setBottom(0.25);\n $spreadsheet-&gt;getActiveSheet()-&gt;getPageMargins()-&gt;setRight(0.75);\n $spreadsheet-&gt;getActiveSheet()-&gt;getPageMargins()-&gt;setLeft(0.75);\n?&gt;\n\n\n셀 값 설정\n\n\n&lt;? php\t\n  $spreadsheet-&gt;setActiveSheetIndex(0)-&gt;setCellValue(\"C11\", $value);\n  $spreadsheet-&gt;setActiveSheetIndex(0)-&gt;setCellValue(\"B25\", \"셀 값 설정\\r\\n다음 줄\");\n?&gt;\n\n\n셀에 이미지 설정\n\n\n&lt;? php\n  $drawing_logo = new \\PhpOffice\\PhpSpreadsheet\\Worksheet\\Drawing();\t\n  $drawing_logo-&gt;setName('Logo');\n  $drawing_logo-&gt;setDescription('3rdEYESYS Logo');\n  $drawing_logo-&gt;setPath('/ncp/data/www/img/3rdeyesys_logo.png');\n  $drawing_logo-&gt;setCoordinates('A1');\n  $drawing_logo-&gt;setWidth(230);\n  $drawing_logo-&gt;getShadow()-&gt;setVisible(true);\n  $drawing_logo-&gt;setWorksheet($spreadsheet-&gt;getActiveSheet());\n?&gt;\n\n\n셀 병합\n\n\n&lt;? php\t\n  // 동일한 행에서 병합\n  $spreadsheet-&gt;getActiveSheet()-&gt;mergeCells(\"A1:D1\");\n\n  // 여러 행에서 병합\n  $spreadsheet-&gt;getActiveSheet()-&gt;mergeCells(\"G5:I7\");\n\n  // 변수 사용\n  for ($j = 52; $j &lt;= 57; $j++)\n  {\n    $spreadsheet-&gt;getActiveSheet()-&gt;mergeCells(\"B\".$j.\":C\".$j);\n  }\n?&gt;\n\n\n행 높이 설정\n\n&lt;?php\n\n  for ($j = 1; $j &lt;= 5; $j++)\n  {\n    $spreadsheet-&gt;getActiveSheet()-&gt;getRowDimension($j)-&gt;setRowHeight(12);\n  }\n\n  $spreadsheet-&gt;getActiveSheet()-&gt;getRowDimension(10)-&gt;setRowHeight(35);\n?&gt;\n\n\n열 너비 설정\n\n\n&lt;?php\n\n  // 특정 열 너비 설정\n  $spreadsheet-&gt;getActiveSheet()-&gt;getColumnDimension(\"A\")-&gt;setWidth(3);\n\n  // 범위 내 여러 열 너비 설정\n  foreach(range(\"B\",\"J\") as $columnID) \n  {\n    $spreadsheet-&gt;getActiveSheet()-&gt;getColumnDimension($columnID)-&gt;setWidth(15);\n  }\n?&gt;\n\n\n스타일 지정\n\n\n&lt;?php\n\n  $styleArray_Cell = [\n    'borders' =&gt; [\n      'allBorders' =&gt; [\n        'borderStyle' =&gt; \\PhpOffice\\PhpSpreadsheet\\Style\\Border::BORDER_THIN,\n        'color' =&gt; ['argb' =&gt; 'FF20AFA5']\n      ]\n    ],\n    'font' =&gt; [\n      'bold' =&gt; true,\n      'size' =&gt; 9,\n      'color'    =&gt; ['argb' =&gt; 'FFFFFFFF'],\n    ],\n    'fill' =&gt;[\n      'fillType' =&gt; \\PhpOffice\\PhpSpreadsheet\\Style\\Fill::FILL_SOLID,\n  'color' =&gt; ['argb' =&gt; 'FF20AFA5']\n  ]\n  ];\n  $spreadsheet-&gt;getActiveSheet()-&gt;getStyle(\"B40\")-&gt;applyFromArray($styleArray_Cell);\n\n  $spreadsheet-&gt;getActiveSheet()-&gt;getStyle(\"G45:G46\")-&gt;applyFromArray($styleArray_Cell);\n\n  $spreadsheet-&gt;getActiveSheet()-&gt;getStyle(\"B80\")-&gt;getFont()-&gt;setSize(13)-&gt;setBold(true);\n\t\n?&gt;\n\n$spreadsheet-&gt;setActiveSheetIndex(0);\n\n// PDF로 저장\nIOFactory::registerWriter('Pdf', \\PhpOffice\\PhpSpreadsheet\\Writer\\Pdf\\Mpdf::class);\n\n$out_put_file_full_name = \"sample.pdf\";\n\n// Redirect output to a client’s web browser (PDF)\nheader('Content-Type: application/pdf; charset=utf-8' );\nheader('Content-Disposition: attachment;filename=\"'.$out_put_file_full_name.'\"');\nheader('Cache-Control: max-age=0');\n\n$writer = IOFactory::createWriter($spreadsheet, 'Pdf');\n$writer-&gt;save('php://output');\nexit;\n\n// Redirect output to a client’s web browser (Excel2007)\n$out_put_file_full_name = \"sample.xlsx\";\n\nheader('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');\nheader('Content-Disposition: attachment;filename=\"'.$out_put_file_full_name.'\"');\nheader('Cache-Control: max-age=0');\n\n// If you're serving to IE over SSL, then the following may be needed\nheader ('Expires: Mon, 26 Jul 2022 05:00:00 GMT'); // Date in the past\nheader ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified\nheader ('Cache-Control: cache, must-revalidate'); // HTTP/1.1\nheader ('Pragma: public'); // HTTP/1.0\n\n$writer = IOFactory::createWriter($spreadsheet, 'Xlsx');\t\n$writer-&gt;save('php://output');\nexit; ?&gt;"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
 					"4-storage-ncp-storage-object-storage-transfer-to-archive-storage": {
 						"id": "4-storage-ncp-storage-object-storage-transfer-to-archive-storage",
 						"title": "Object Storage 데이터를 Archive Storage로 자동으로 이동시키는 방법",

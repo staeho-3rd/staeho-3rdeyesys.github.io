@@ -26,19 +26,19 @@
 		
 
 		<!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/Ubuntu | 3rdeyesys</title>
+<title>MYSQL(MARIADB) replication 생성하기 | 3rdeyesys</title>
 <meta name="generator" content="Jekyll v3.7.2" />
-<meta property="og:title" content="http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/Ubuntu" />
+<meta property="og:title" content="MYSQL(MARIADB) replication 생성하기" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="네이버 클라우드" />
-<meta property="og:description" content="네이버 클라우드" />
-<link rel="canonical" href="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_ubuntu/" />
-<meta property="og:url" content="https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_ubuntu/" />
+<meta name="description" content="네이버 클라우드 MYSQL(MARIADB) replication 생성하기" />
+<meta property="og:description" content="네이버 클라우드 MYSQL(MARIADB) replication 생성하기" />
+<link rel="canonical" href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_replication/" />
+<meta property="og:url" content="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_replication/" />
 <meta property="og:site_name" content="3rdeyesys" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-12-09T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-04-13T00:00:00+09:00" />
 <script type="application/ld+json">
-{"url":"https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_ubuntu/","headline":"http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/Ubuntu","dateModified":"2020-12-09T00:00:00+09:00","datePublished":"2020-12-09T00:00:00+09:00","description":"네이버 클라우드","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/1.compute/ncp_http_to_https_ubuntu/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_replication/","headline":"MYSQL(MARIADB) replication 생성하기","dateModified":"2021-04-13T00:00:00+09:00","datePublished":"2021-04-13T00:00:00+09:00","description":"네이버 클라우드 MYSQL(MARIADB) replication 생성하기","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/5.database/ncp_database_mysql_mariadb_replication/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 		<link type="application/atom+xml" rel="alternate" href="https://docs.3rdeyesys.com/feed.xml" title="3rdeyesys" />
@@ -110,106 +110,114 @@
 		<ul>
 			
 			
-				<li><a href="#개요">개요</a></li>
+				<li><a href="#선행조건">선행조건</a></li>
 			
-				<li><a href="#rewrite-모듈-설치">Rewrite 모듈 설치</a></li>
+				<li><a href="#master-장비-구성">MASTER 장비 구성</a></li>
 			
-				<li><a href="#apache-conf-파일-수정">Apache conf 파일 수정</a></li>
+				<li><a href="#slave-장비-구성">SLAVE 장비 구성</a></li>
 			
-				<li><a href="#apache-재시작">Apache 재시작</a></li>
+				<li><a href="#데이터베이스-사전-동기화작업">데이터베이스 사전 동기화작업</a></li>
 			
-				<li><a href="#apache-재시작-오류---sslengine">Apache 재시작 오류 - SSLEngine</a></li>
-			
-				<li><a href="#ssl-엔진-모듈-활성화">SSL 엔진 모듈 활성화</a></li>
+				<li><a href="#리플리케이션-작업">리플리케이션 작업</a></li>
 			
 		</ul>
 	</section>
 	<section class="tutorial-content">
-		<h1>http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/Ubuntu</h1>
+		<h1>MYSQL(MARIADB) replication 생성하기</h1>
 
 		
 		
 		<div class="tutorial-main">
-			<h2 id="개요">개요</h2>
-<p>웹사이트 SSL 인증서를 설치하고 https 접속을 유도할 때 http로 접속하면 https로 강제로 리다이렉트 시키는 방법을 사용하는 경우가 많습니다.<br />
-웹페이지 소스에서 http 접속 여부를 판단해서 redirect 시키는 방법 등 여러가지 있을 수 있는데 여기서는 Apache 설정으로 쉽게 할 수 있는 방법을 소개합니다.</p>
+			<h2 id="선행조건">선행조건</h2>
 
-<p>SSL 인증서가 설치되어 있다는 가정하에 우선 Linux Ubuntu에서 설정하는 방법을 확인해보겠습니다.</p>
+<ul>
+  <li>master, slave 장비의 mysql설치가 사전에 완료된 조건</li>
+  <li>mysql 버전 5.7이상 조건에서 작성됨</li>
+  <li>mysql 리플리케이션작업을 진행시 masterdb의 데이터베이스는 쓰기작업이 없는 서비스 미진행 상태이어야함.</li>
+</ul>
 
-<h2 id="rewrite-모듈-설치">Rewrite 모듈 설치</h2>
-<p>혹시 Apache에 이미 <code class="highlighter-rouge">mod_rewrite</code> 가 로드 되어 있다면 설치하지 않아도 됩니다.</p>
+<h2 id="master-장비-구성">MASTER 장비 구성</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@test-lamp:~# a2enmod rewrite
+<p>my.cnf파일 내용 추가</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>mysqld]
+log-bin<span class="o">=</span>mysql-bin
+binlog_format <span class="o">=</span> mixed
+
+<span class="c"># 해당 ID값은 마스터장비만 1을 설정할수있음</span>
+server-id <span class="o">=</span> 1 
+
+<span class="c"># 마스터 장비의 bin로그 특정일자(예시는10일) 이후 삭제</span>
+<span class="c"># (해당 내역이없을 경우 지속적으로 기록되어 디스크 사용)</span>
+expire_logs_days <span class="o">=</span> 10 
 </code></pre></div></div>
 
-<h2 id="apache-conf-파일-수정">Apache conf 파일 수정</h2>
+<p>mysql접속 후 리플리케이션을 진행할 계정 생성</p>
 
-<p><strong>/etc/apache2/sites-enabled/000-default.conf</strong> 의 Vritual host에 다음 코드를 추가하고 Apache를 재시작하면 됩니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RewriteEngine On
-RewriteCond %<span class="o">{</span>HTTPS<span class="o">}</span> <span class="o">!</span>on
-RewriteRule ^<span class="o">(</span>.<span class="k">*</span><span class="o">)</span><span class="nv">$ </span>https://%<span class="o">{</span>HTTP_HOST<span class="o">}</span><span class="nv">$1</span> <span class="o">[</span>R,L]
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GRANT REPLICATION SLAVE ON <span class="k">*</span>.<span class="k">*</span> TO <span class="s1">'리플리케이션계정명'</span>@<span class="s1">'%'</span> IDENTIFIED BY <span class="s1">'패스워드'</span><span class="p">;</span>
+FLUSH PRIVILEGES<span class="p">;</span>
 </code></pre></div></div>
 
-<p>000-default.conf 파일에 실제로 적용하면 다음과 비슷한 모습이 되겠습니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;VirtualHost <span class="k">*</span>:80&gt;
-	DocumentRoot <span class="s2">"/ncp/data/www/"</span>
-	ServerName www.test.com
+<h2 id="slave-장비-구성">SLAVE 장비 구성</h2>
 
-	RewriteEngine On
-	RewriteCond %<span class="o">{</span>HTTPS<span class="o">}</span> <span class="o">!</span>on
-	RewriteRule ^<span class="o">(</span>.<span class="k">*</span><span class="o">)</span><span class="nv">$ </span>https://%<span class="o">{</span>HTTP_HOST<span class="o">}</span><span class="nv">$1</span> <span class="o">[</span>R,L]
-&lt;/VirtualHost&gt;
+<p>my.cnf파일 내용 추가</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>mysqld]
+server-id<span class="o">=</span>2 <span class="c">#해당ID값은 1을 제외한 숫자지정</span>
+slave-skip-errors <span class="o">=</span> all  
 </code></pre></div></div>
+<p><br /></p>
+<h2 id="데이터베이스-사전-동기화작업">데이터베이스 사전 동기화작업</h2>
 
-<h2 id="apache-재시작">Apache 재시작</h2>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@test-lamp:~# systemctl restart apache2
-</code></pre></div></div>
-<p>이렇게 재시작하고 http로 접속을 해보면 https로 전환되는 것을 확인할 수 있습니다.</p>
+<ol>
+  <li>
+    <p>master장비의 데이터베이스가 생성되어 있고 데이터가 있을 경우</p>
 
-<h2 id="apache-재시작-오류---sslengine">Apache 재시작 오류 - SSLEngine</h2>
-<p>위 내용처럼 아파치 재시작 명령어를 입력하면 끝입니다만, 재시작이 되지 않고 오류 메시지가 뜨는 경우가 있습니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@test-lamp:~# systemctl restart apache2
-Job <span class="k">for </span>apache2.service failed because the control process exited with error code. 
-See <span class="s2">"systemctl status apache2.service"</span> and <span class="s2">"journalctl -xe"</span> <span class="k">for </span>details.
-</code></pre></div></div>
+    <p>A. master장비 데이터베이스 백업 진행</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 데이터베이스가 추가로 있다면 남은 데이터베이스도 백업</span>
+mysqldump <span class="nt">-u</span> root <span class="nt">-p</span> <span class="nt">--databases</span> 데이터베이스명 <span class="o">&gt;</span> 백업파일.sql 
+</code></pre></div>    </div>
+    <p><br />
+ B. slave장비 데이터베이스 복구 진행</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>create database 데이터베이스명<span class="p">;</span> <span class="c">#mysql 접속 후 생성</span>
+mysql <span class="nt">-u</span> root <span class="nt">-p</span> 데이터베이스명 &lt; 백업파일.sql  
+</code></pre></div>    </div>
+    <p><br /></p>
+  </li>
+  <li>
+    <p>master 장비의 데이터베이스가 없을 경우</p>
 
-<p>오류 메시지에 나온 것 처럼 상세 내용을 확인해봅니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@test-lamp:~# systemctl status apache2.service
-</code></pre></div></div>
-<p>상세 오류 메시지 중에서 핵심 내용만 살펴보면 다음과 같습니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Dec 04 16:09:44 test-lamp apachectl[11924]: AH00526: Syntax error on line 36 of /etc/apache2/sites-enabled/000-default.conf:
-Dec 04 16:09:44 test-lamp apachectl[11924]: Invalid <span class="nb">command</span> <span class="s1">'SSLEngine'</span>, perhaps misspelled or defined by a module not included <span class="k">in </span>the server configuration
-</code></pre></div></div>
+    <p>A. 별도 작업 없으며, 데이터베이스만 생성되어 데이터가 없을경우도 slave장비에 동일한 데이터베이스 생성으로 마무리</p>
+  </li>
+</ol>
 
-<p>위 오류 메시지에 나온 /etc/apache2/sites-enabled/000-default.conf 파일을 찾아가서 SSLEngine을 확인해보면 다음과 같습니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;VirtualHost <span class="k">*</span>:443&gt;
-    ServerName www.test.com
-    ServerAdmin web@test.com
+<h2 id="리플리케이션-작업">리플리케이션 작업</h2>
 
-    <span class="o">{==</span>SSLEngine <span class="nv">on</span><span class="o">==}</span>
-    SSLCertificateFile /etc/<span class="k">******</span>/server.crt
-    SSLCertificateKeyFile /etc/<span class="k">******</span>/server.key
+<ol>
+  <li>
+    <p>master 장비 mysql 접속 후 현재 로그파일번호와 포지션 넘버 확인</p>
 
-    <span class="c">###중략###</span>
-&lt;/VirtualHost&gt;
-</code></pre></div></div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show master status<span class="p">;</span>
+file| Position <span class="c">#내역을 확인 후 별도 기입.</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>slave 장비 mysql 접속 후 아래 명령어 실행 하여 리플리케이션 master정보 기입</p>
 
-<p>확인해보면 SSLEngine on 명령어가 제대로 동작하지 못해서 생긴 문제라는 것을 알 수 있습니다.   <br />
-즉, SSL 모듈이 제대로 활성화 되지 않았기에 활성화 해주면 문제가 해결됩니다.<br />
-(나중에 살펴보면 socache_shmcb 모듈이 활성화되지 않았기 때문임을 알 수 있습니다)</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHANGE MASTER TO <span class="nv">MASTER_HOST</span><span class="o">=</span><span class="s1">'마스터IP'</span>,MASTER_USER<span class="o">=</span><span class="s1">'생성한리플리케이션계정명'</span>,MASTER_PASSWORD<span class="o">=</span><span class="s1">'패스워드'</span>,MASTER_LOG_FILE<span class="o">=</span><span class="s1">'위에서확인된 file이름'</span>,MASTER_LOG_POS<span class="o">=</span>위에서 확인된 포지션번호<span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>slave 리플리케이션 시작및 확인</p>
 
-<h2 id="ssl-엔진-모듈-활성화">SSL 엔진 모듈 활성화</h2>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@test-lamp:~# a2enmod ssl
-</code></pre></div></div>
-
-<p>그리고 나서 다시 Apache를 재시작 하면 됩니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@test-lamp:~# systemctl restart apache2
-</code></pre></div></div>
-
-<p>이제 http로 접속하셔서 https로 전환되는지 확인해보시기 바랍니다.</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>start slave<span class="p">;</span>
+show slave status<span class="se">\G</span><span class="p">;</span> <span class="c">#실행 후 에러가 없다면 정상.</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
 
 <blockquote>
-  <p>문서 최종 수정일 : 2020-12-07</p>
+  <p>문서 최종 수정일 : 2021-04-13</p>
 </blockquote>
 
 		</div>
@@ -230,15 +238,169 @@ Dec 04 16:09:44 test-lamp apachectl[11924]: Invalid <span class="nb">command</sp
 </section>
 
 
-
-
-
-	<div class="related">
-		<h3>Related tutorials</h3>
+	
+	
+	
+	<div class="tutorial-series">
+		<h3> - Series</h3>
+		<p></p>
 
 		<ul class="listing">
 	
 		<li >
+			<a href="/5.database/ncp_database_compare/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>1. 설치형 DB서버와 관리형 Cloud DB 비교</h3>
+						<p class="description">네이버 클라우드 설치형 DB와 관리형 Cloud for DB 비교</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+			<a href="/5.database/ncp_database_mysql_auto_backup/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>2. mysql DB 자동백업 방법</h3>
+						<p class="description">네이버 클라우드 mysql DB 자동백업 방법</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+			<a href="/5.database/ncp_database_mysql_object_storage_auto_backup_centos/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>3. CentOS에서 mysql DB를 Object Storage로 자동 백업하기</h3>
+						<p class="description">네이버 클라우드 mysql DB를 Object Storage로 자동 백업하기 - CentOS버전입니다</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+			<a href="/5.database/ncp_database_mysql_object_storage_auto_backup_ubuntu/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>4. Ubuntu에서 mysql DB를 Object Storage로 자동 백업하기</h3>
+						<p class="description">네이버 클라우드 mysql DB를 Object Storage로 자동 백업하기 - Ubuntu버전입니다</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+			<a href="/1.compute/ncp_server_pip_python_install_centos6/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>5. CentOS6에서 pip - Python 설치하기</h3>
+						<p class="description">네이버 클라우드 CentOS6.x에서 pip - Python 설치하기</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+			<a href="/5.database/ncp_database_mariadb_access_from_remote_centos/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>6. CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</h3>
+						<p class="description">네이버 클라우드 CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+			<a href="/5.database/ncp_database_mariadb_access_from_remote_ubuntu/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>7. Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</h3>
+						<p class="description">네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+			<a href="/5.database/ncp_database_mysql_mariadb_config_my_cnf/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>8. mysql, mariadb 환경설정 파일 my.cnf 위치</h3>
+						<p class="description">네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+			<a href="/5.database/ncp_database_mysql_mariadb_config_bind_address/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>9. mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치</h3>
+						<p class="description">네이버 클라우드 mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li class="active">
 			<a href="/5.database/ncp_database_mysql_mariadb_replication/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -248,12 +410,23 @@ Dec 04 16:09:44 test-lamp apachectl[11924]: Invalid <span class="nb">command</sp
 </div>
 				<article>
 					<div>
-						<h3>MYSQL(MARIADB) replication 생성하기</h3>
+						<h3>10. MYSQL(MARIADB) replication 생성하기</h3>
 						<p class="description">네이버 클라우드 MYSQL(MARIADB) replication 생성하기</p>
 					</div>
 				</article>
 			</a>
 		</li>
+	
+</ul>
+	</div>
+
+
+
+
+	<div class="related">
+		<h3>Related tutorials</h3>
+
+		<ul class="listing">
 	
 		<li >
 			<a href="/99.etc/etc_phpspreadsheet_sample_code/">
@@ -408,6 +581,23 @@ Dec 04 16:09:44 test-lamp apachectl[11924]: Invalid <span class="nb">command</sp
 			</a>
 		</li>
 	
+		<li >
+			<a href="/5.database/ncp_database_mysql_mariadb_config_bind_address/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치</h3>
+						<p class="description">네이버 클라우드 mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
 </ul>
 	</div>
 
@@ -432,17 +622,17 @@ Dec 04 16:09:44 test-lamp apachectl[11924]: Invalid <span class="nb">command</sp
 		<h2>Share</h2>
 		<p>Share this tutorial with your community.</p>
 		<ul>
-			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_http_to_https_ubuntu%2F">
+			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F5.database%2Fncp_database_mysql_mariadb_replication%2F">
 		<svg class="twitter" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg>
 	
  Twitter</a></li>
-			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_http_to_https_ubuntu%2F">
+			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F5.database%2Fncp_database_mysql_mariadb_replication%2F">
 		<svg class="facebook" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="15.8 15.8 25 25"><path d="M32.8 24.7h-3.2v-2.1c0-0.8 0.5-1 0.9-1s2.3 0 2.3 0v-3.5l-3.1 0c-3.5 0-4.3 2.6-4.3 4.3v2.3h-2v3.6h2c0 4.6 0 10.2 0 10.2h4.2c0 0 0-5.6 0-10.2h2.8L32.8 24.7z"/></svg>
 	
  Facebook</a></li>
-			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_http_to_https_ubuntu%2F">
+			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F5.database%2Fncp_database_mysql_mariadb_replication%2F">
  Google+</a></li>
-			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_http_to_https_ubuntu%2F&t=http%20%EC%A0%91%EC%86%8D%20%EC%8B%9C%EC%97%90%20https%EB%A1%9C%20%EA%B0%95%EC%A0%9C%20%EB%A6%AC%EB%8B%A4%EC%9D%B4%EB%A0%89%ED%8A%B8%20%EC%8B%9C%ED%82%A4%EB%8A%94%20%EB%B0%A9%EB%B2%95%20-%20Apache%2FUbuntu">
+			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F5.database%2Fncp_database_mysql_mariadb_replication%2F&t=MYSQL%28MARIADB%29%20replication%20%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0">
 		<svg class="hacker-news" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.8 3.3c-0.4 0.8-5.6 11.1-5.6 11.2 0 2 0 6.2 0 6.2 -0.1 0-2.2 0-2.3 0 0 0 0-5.9 0-6.2 0 0-5.5-10.9-5.6-11.1C5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3c0 0 0 0 0.1 0 0.9 0 1.7 0 2.6 0 0 0 0 0 0 0.1 0.1 0.1 4 8.3 4.1 8.3 0 0 4.2-8.3 4.3-8.4 0.8 0 1.6 0 2.4 0 0 0 0 0 0 0C18.8 3.3 18.8 3.3 18.8 3.3z"/></svg>
 	
  Hacker News</a></li>
