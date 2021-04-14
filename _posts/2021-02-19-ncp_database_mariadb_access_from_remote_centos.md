@@ -1,6 +1,7 @@
 ---
 date: 2021-02-19
 title: CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL
+image: ../../images/ncp_database_mariadb_access_from_remote_ubuntu_03.jpg
 categories:
   - 5.database
 description: 네이버 클라우드 CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL

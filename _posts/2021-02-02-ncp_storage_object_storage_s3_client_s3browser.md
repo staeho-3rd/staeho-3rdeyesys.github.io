@@ -1,6 +1,7 @@
 ---
 date: 2021-02-02
 title: Object Storage 접속용 Windows Client Tool - S3 Browser
+image: ../../images/ncp_storage_object_storage_s3_client_s3browser_01.jpg
 categories:
   - 4.storage
 description: 네이버 클라우드 Object Storage 접속용 Windows Client Tool - S3 Browser

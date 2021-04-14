@@ -126,7 +126,13 @@
 			
 				<li><a href="#열-너비-설정">열 너비 설정</a></li>
 			
-				<li><a href="#스타일-지정">스타일 지정</a></li>
+				<li><a href="#셀-스타일-지정">셀 스타일 지정</a></li>
+			
+				<li><a href="#pdf-로-저장">PDF 로 저장</a></li>
+			
+				<li><a href="#excel로-저장">Excel로 저장</a></li>
+			
+				<li><a href="#참고-url">참고 URL</a></li>
 			
 		</ul>
 	</section>
@@ -137,6 +143,10 @@
 		
 		<div class="tutorial-main">
 			<h2 id="개요">개요</h2>
+<p>PHP에서 Excel 문서를 읽거나 Excel 형태로 문서를 저장해야 할 때 주로 PhpSpreadsheet를 사용하게 됩니다. 
+이전에는 PHPExcel이라는 이름이었으나 현재는 해당 버전의 개발-유지보수가 중단되고 새로운 프로젝트로 PhpSpreasheet라는 이름으로 업그레이드 되었습니다.<br />
+또한 PhpSpreadsheet는 Excel 뿐만 아니라 PDF 형식으로도 파일을 저장할 수 있어서 많이 사용되고 있습니다. <br />
+이번에는 이 PhpSpreadsheet로 문서를 저장할 때 사용하는 주요 소스 코드의 샘플을 정리해보겠습니다.</p>
 
 <h2 id="클래스-로드">클래스 로드</h2>
 
@@ -254,11 +264,13 @@
 <span class="cp">?&gt;</span>
 </code></pre></div></div>
 
-<h2 id="스타일-지정">스타일 지정</h2>
+<h2 id="셀-스타일-지정">셀 스타일 지정</h2>
 
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="cp">&lt;?php</span>
 
+  <span class="c1">// 셀 스타일을 배열 형식으로 저장</span>
+  <span class="c1">// 순서대로 border, font, 배경색 지정하는 스타일</span>
   <span class="nv">$styleArray_Cell</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">'borders'</span> <span class="o">=&gt;</span> <span class="p">[</span>
       <span class="s1">'allBorders'</span> <span class="o">=&gt;</span> <span class="p">[</span>
@@ -273,50 +285,91 @@
     <span class="p">],</span>
     <span class="s1">'fill'</span> <span class="o">=&gt;</span><span class="p">[</span>
       <span class="s1">'fillType'</span> <span class="o">=&gt;</span> <span class="err">\</span><span class="nc">PhpOffice\PhpSpreadsheet\Style\Fill</span><span class="o">::</span><span class="no">FILL_SOLID</span><span class="p">,</span>
-  <span class="s1">'color'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'argb'</span> <span class="o">=&gt;</span> <span class="s1">'FF20AFA5'</span><span class="p">]</span>
-  <span class="p">]</span>
+      <span class="s1">'color'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'argb'</span> <span class="o">=&gt;</span> <span class="s1">'FF20AFA5'</span><span class="p">]</span>
+    <span class="p">]</span>
   <span class="p">];</span>
-  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getStyle</span><span class="p">(</span><span class="s2">"B40"</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">applyFromArray</span><span class="p">(</span><span class="nv">$styleArray_Cell</span><span class="p">);</span>
 
-  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getStyle</span><span class="p">(</span><span class="s2">"G45:G46"</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">applyFromArray</span><span class="p">(</span><span class="nv">$styleArray_Cell</span><span class="p">);</span>
+  <span class="c1">// 특정 셀에 스타일 적용</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span>
+  <span class="o">-&gt;</span><span class="nf">getStyle</span><span class="p">(</span><span class="s2">"B40"</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">applyFromArray</span><span class="p">(</span><span class="nv">$styleArray_Cell</span><span class="p">);</span>
+  
+  <span class="c1">// 특정 범위의 여러 셀에 스타일 동시 적용</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span>
+  <span class="o">-&gt;</span><span class="nf">getStyle</span><span class="p">(</span><span class="s2">"G45:G46"</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">applyFromArray</span><span class="p">(</span><span class="nv">$styleArray_Cell</span><span class="p">);</span>
 
-  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getStyle</span><span class="p">(</span><span class="s2">"B80"</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">getFont</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">setSize</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">setBold</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="c1">// 특정 셀에 폰트 스타일 직접 적용</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span>
+  <span class="o">-&gt;</span><span class="nf">getStyle</span><span class="p">(</span><span class="s2">"B80"</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">getFont</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">setSize</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">setBold</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 	
 <span class="cp">?&gt;</span>
 </code></pre></div></div>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$spreadsheet-&gt;setActiveSheetIndex(0);
 
-// PDF로 저장
-IOFactory::registerWriter('Pdf', \PhpOffice\PhpSpreadsheet\Writer\Pdf\Mpdf::class);
+<h2 id="pdf-로-저장">PDF 로 저장</h2>
 
-$out_put_file_full_name = "sample.pdf";
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?php</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">setActiveSheetIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 
-// Redirect output to a client’s web browser (PDF)
-header('Content-Type: application/pdf; charset=utf-8' );
-header('Content-Disposition: attachment;filename="'.$out_put_file_full_name.'"');
-header('Cache-Control: max-age=0');
+  <span class="c1">// Mpdf 클래스 별로 설치해야 함</span>
+  <span class="nc">IOFactory</span><span class="o">::</span><span class="nf">registerWriter</span><span class="p">(</span><span class="s1">'Pdf'</span><span class="p">,</span> <span class="err">\</span><span class="nc">PhpOffice\PhpSpreadsheet\Writer\Pdf\Mpdf</span><span class="o">::</span><span class="n">class</span><span class="p">);</span>
 
-$writer = IOFactory::createWriter($spreadsheet, 'Pdf');
-$writer-&gt;save('php://output');
-exit;
+  <span class="nv">$out_put_file_full_name</span> <span class="o">=</span> <span class="s2">"sample.pdf"</span><span class="p">;</span>
 
-// Redirect output to a client’s web browser (Excel2007)
-$out_put_file_full_name = "sample.xlsx";
+  <span class="c1">// Redirect output to a client’s web browser (PDF)</span>
+  <span class="nb">header</span><span class="p">(</span><span class="s1">'Content-Type: application/pdf; charset=utf-8'</span> <span class="p">);</span>
+  <span class="nb">header</span><span class="p">(</span><span class="s1">'Content-Disposition: attachment;filename="'</span><span class="mf">.</span><span class="nv">$out_put_file_full_name</span><span class="mf">.</span><span class="s1">'"'</span><span class="p">);</span>
+  <span class="nb">header</span><span class="p">(</span><span class="s1">'Cache-Control: max-age=0'</span><span class="p">);</span>
 
-header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment;filename="'.$out_put_file_full_name.'"');
-header('Cache-Control: max-age=0');
-
-// If you're serving to IE over SSL, then the following may be needed
-header ('Expires: Mon, 26 Jul 2022 05:00:00 GMT'); // Date in the past
-header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
-header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
-header ('Pragma: public'); // HTTP/1.0
-
-$writer = IOFactory::createWriter($spreadsheet, 'Xlsx');	
-$writer-&gt;save('php://output');
-exit; ?&gt;
+  <span class="nv">$writer</span> <span class="o">=</span> <span class="nc">IOFactory</span><span class="o">::</span><span class="nf">createWriter</span><span class="p">(</span><span class="nv">$spreadsheet</span><span class="p">,</span> <span class="s1">'Pdf'</span><span class="p">);</span>
+  <span class="nv">$writer</span><span class="o">-&gt;</span><span class="nf">save</span><span class="p">(</span><span class="s1">'php://output'</span><span class="p">);</span>
+  <span class="k">exit</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
 </code></pre></div></div>
+<p>PhpSpreadsheet를 사용해서 pdf 파일을 저장하려면 Mpdf 를 추가로 설치해야 합니다. <br />
+이와 관련된 내용은 다음 문서에서 다시 정리하겠습니다.</p>
+
+<h2 id="excel로-저장">Excel로 저장</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?php</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">setActiveSheetIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="c1">// Redirect output to a client’s web browser (Excel2007)</span>
+  <span class="nv">$out_put_file_full_name</span> <span class="o">=</span> <span class="s2">"sample.xlsx"</span><span class="p">;</span>
+
+  <span class="nb">header</span><span class="p">(</span><span class="s1">'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'</span><span class="p">);</span>
+  <span class="nb">header</span><span class="p">(</span><span class="s1">'Content-Disposition: attachment;filename="'</span><span class="mf">.</span><span class="nv">$out_put_file_full_name</span><span class="mf">.</span><span class="s1">'"'</span><span class="p">);</span>
+  <span class="nb">header</span><span class="p">(</span><span class="s1">'Cache-Control: max-age=0'</span><span class="p">);</span>
+
+  <span class="c1">// If you're serving to IE over SSL, then the following may be needed</span>
+  <span class="nb">header</span> <span class="p">(</span><span class="s1">'Expires: Mon, 26 Jul 2022 05:00:00 GMT'</span><span class="p">);</span> <span class="c1">// Date in the past</span>
+  <span class="nb">header</span> <span class="p">(</span><span class="s1">'Last-Modified: '</span><span class="mf">.</span><span class="nb">gmdate</span><span class="p">(</span><span class="s1">'D, d M Y H:i:s'</span><span class="p">)</span><span class="mf">.</span><span class="s1">' GMT'</span><span class="p">);</span> <span class="c1">// always modified</span>
+  <span class="nb">header</span> <span class="p">(</span><span class="s1">'Cache-Control: cache, must-revalidate'</span><span class="p">);</span> <span class="c1">// HTTP/1.1</span>
+  <span class="nb">header</span> <span class="p">(</span><span class="s1">'Pragma: public'</span><span class="p">);</span> <span class="c1">// HTTP/1.0</span>
+
+  <span class="nv">$writer</span> <span class="o">=</span> <span class="nc">IOFactory</span><span class="o">::</span><span class="nf">createWriter</span><span class="p">(</span><span class="nv">$spreadsheet</span><span class="p">,</span> <span class="s1">'Xlsx'</span><span class="p">);</span>	
+  <span class="nv">$writer</span><span class="o">-&gt;</span><span class="nf">save</span><span class="p">(</span><span class="s1">'php://output'</span><span class="p">);</span>
+  <span class="k">exit</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="참고-url">참고 URL</h2>
+<ol>
+  <li>PhpSpreadsheet Documentation
+    <ul>
+      <li><a href="https://phpspreadsheet.readthedocs.io/" target="_blank" style="word-break:break-all;">https://phpspreadsheet.readthedocs.io/</a></li>
+    </ul>
+  </li>
+  <li>PhpSpreadsheet GitHub Source and Download
+    <ul>
+      <li><a href="https://github.com/PHPOffice/PhpSpreadsheet" target="_blank" style="word-break:break-all;">https://github.com/PHPOffice/PhpSpreadsheet</a></li>
+    </ul>
+  </li>
+</ol>
+
+<blockquote>
+  <p>문서 최종 수정일 : 2021-04-14</p>
+</blockquote>
 
 		</div>
 		<div class="tutorial-share">

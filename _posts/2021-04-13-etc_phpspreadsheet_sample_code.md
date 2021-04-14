@@ -10,7 +10,10 @@ order_number: 1
 ---
 
 ## 개요
-
+PHP에서 Excel 문서를 읽거나 Excel 형태로 문서를 저장해야 할 때 주로 PhpSpreadsheet를 사용하게 됩니다. 
+이전에는 PHPExcel이라는 이름이었으나 현재는 해당 버전의 개발-유지보수가 중단되고 새로운 프로젝트로 PhpSpreasheet라는 이름으로 업그레이드 되었습니다.  
+또한 PhpSpreadsheet는 Excel 뿐만 아니라 PDF 형식으로도 파일을 저장할 수 있어서 많이 사용되고 있습니다.   
+이번에는 이 PhpSpreadsheet로 문서를 저장할 때 사용하는 주요 소스 코드의 샘플을 정리해보겠습니다.
 
 ## 클래스 로드
 
@@ -136,12 +139,14 @@ order_number: 1
 ```
 
 
-## 스타일 지정
+## 셀 스타일 지정
 
 ``` php
 
 <?php
 
+  // 셀 스타일을 배열 형식으로 저장
+  // 순서대로 border, font, 배경색 지정하는 스타일
   $styleArray_Cell = [
     'borders' => [
       'allBorders' => [
@@ -156,47 +161,81 @@ order_number: 1
     ],
     'fill' =>[
       'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
-  'color' => ['argb' => 'FF20AFA5']
-  ]
+      'color' => ['argb' => 'FF20AFA5']
+    ]
   ];
-  $spreadsheet->getActiveSheet()->getStyle("B40")->applyFromArray($styleArray_Cell);
 
-  $spreadsheet->getActiveSheet()->getStyle("G45:G46")->applyFromArray($styleArray_Cell);
+  // 특정 셀에 스타일 적용
+  $spreadsheet->getActiveSheet()
+  ->getStyle("B40")->applyFromArray($styleArray_Cell);
+  
+  // 특정 범위의 여러 셀에 스타일 동시 적용
+  $spreadsheet->getActiveSheet()
+  ->getStyle("G45:G46")->applyFromArray($styleArray_Cell);
 
-  $spreadsheet->getActiveSheet()->getStyle("B80")->getFont()->setSize(13)->setBold(true);
+  // 특정 셀에 폰트 스타일 직접 적용
+  $spreadsheet->getActiveSheet()
+  ->getStyle("B80")->getFont()->setSize(13)->setBold(true);
 	
 ?>
 ```
-	$spreadsheet->setActiveSheetIndex(0);
-	
-	// PDF로 저장
-	IOFactory::registerWriter('Pdf', \PhpOffice\PhpSpreadsheet\Writer\Pdf\Mpdf::class);
 
-	$out_put_file_full_name = "sample.pdf";
+## PDF 로 저장
 
-	// Redirect output to a client’s web browser (PDF)
-	header('Content-Type: application/pdf; charset=utf-8' );
-	header('Content-Disposition: attachment;filename="'.$out_put_file_full_name.'"');
-	header('Cache-Control: max-age=0');
+``` php
 
-	$writer = IOFactory::createWriter($spreadsheet, 'Pdf');
-	$writer->save('php://output');
-	exit;
+<?php
+  $spreadsheet->setActiveSheetIndex(0);
 
-	// Redirect output to a client’s web browser (Excel2007)
-	$out_put_file_full_name = "sample.xlsx";
+  // Mpdf 클래스 별로 설치해야 함
+  IOFactory::registerWriter('Pdf', \PhpOffice\PhpSpreadsheet\Writer\Pdf\Mpdf::class);
 
-	header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-	header('Content-Disposition: attachment;filename="'.$out_put_file_full_name.'"');
-	header('Cache-Control: max-age=0');
+  $out_put_file_full_name = "sample.pdf";
 
-	// If you're serving to IE over SSL, then the following may be needed
-	header ('Expires: Mon, 26 Jul 2022 05:00:00 GMT'); // Date in the past
-	header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
-	header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
-	header ('Pragma: public'); // HTTP/1.0
+  // Redirect output to a client’s web browser (PDF)
+  header('Content-Type: application/pdf; charset=utf-8' );
+  header('Content-Disposition: attachment;filename="'.$out_put_file_full_name.'"');
+  header('Cache-Control: max-age=0');
 
-	$writer = IOFactory::createWriter($spreadsheet, 'Xlsx');	
-	$writer->save('php://output');
-	exit;
+  $writer = IOFactory::createWriter($spreadsheet, 'Pdf');
+  $writer->save('php://output');
+  exit;
 ?>
+```
+PhpSpreadsheet를 사용해서 pdf 파일을 저장하려면 Mpdf 를 추가로 설치해야 합니다.   
+이와 관련된 내용은 다음 문서에서 다시 정리하겠습니다.
+
+## Excel로 저장
+
+``` php
+
+<?php
+  $spreadsheet->setActiveSheetIndex(0);
+
+  // Redirect output to a client’s web browser (Excel2007)
+  $out_put_file_full_name = "sample.xlsx";
+
+  header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  header('Content-Disposition: attachment;filename="'.$out_put_file_full_name.'"');
+  header('Cache-Control: max-age=0');
+
+  // If you're serving to IE over SSL, then the following may be needed
+  header ('Expires: Mon, 26 Jul 2022 05:00:00 GMT'); // Date in the past
+  header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+  header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+  header ('Pragma: public'); // HTTP/1.0
+
+  $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');	
+  $writer->save('php://output');
+  exit;
+?>
+```
+
+## 참고 URL
+1.  PhpSpreadsheet Documentation
+	- <a href="https://phpspreadsheet.readthedocs.io/" target="_blank" style="word-break:break-all;">https://phpspreadsheet.readthedocs.io/</a>
+2.  PhpSpreadsheet GitHub Source and Download
+	- <a href="https://github.com/PHPOffice/PhpSpreadsheet" target="_blank" style="word-break:break-all;">https://github.com/PHPOffice/PhpSpreadsheet</a>
+
+
+> 문서 최종 수정일 : 2021-04-14
