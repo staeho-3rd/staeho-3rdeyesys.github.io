@@ -22,6 +22,7 @@ order_number: 1
 |  | Site Safer | 고객이 개발한 웹사이트가 해킹 또는 다른 보안 문제로 인해 악성코드를 배포하는지 검사 |
 |  | File Safer | 고객의 서비스에서 제공하는 파일과 아웃링크 URL의 악성코드 감염 여부를 해시 기반으로 검사 |
 |  | App Safer | 고객의 앱이 모바일에서 실행될 때, 루팅/탈옥, 악성 앱 설치, 앱 변조 등 보안 위협 여부를 실시간으로 탐지 |
+|  | Webshell Behavior Detector | 고객의 웹 서비스를 공격하는 다양한 웹셀을 행위기반으로 실시간 탐지하는 서비스 |
 | 접근제어 | ACG | 인스턴스 그룹 단위로 IP, Port 기반의 네트워크 패킷 필터링 기능을 제공 |
 |  | Secure Zone | 개인정보와 같이 중요한 정보를 보다 더 안전하게 보호할 수 있도록 대외 인터넷 망과 분리된 별도의 존을 제공 |
 | 인증/권한 관리 | Sub Account | 사용자 업무 역할별로 권한 관리를 할 수 있는 기능 제공 |
@@ -43,4 +44,4 @@ order_number: 1
 <a href="https://guide.ncloud-docs.com/docs/security-security-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/security-security-1-1.html</a>
 
 
-> 문서 최종 수정일 : 2020-12-02
+> 문서 최종 수정일 : 2021-04-26
