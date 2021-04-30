@@ -113,6 +113,21 @@
 				
 					
 					
+					"9-application-20service-ncp-application-service-nshorturl-php-sample": {
+						"id": "9-application-20service-ncp-application-service-nshorturl-php-sample",
+						"title": "PHP로 nShortURL 서비스 이용하기 샘플 예제",
+						"categories": "9.application service",
+						"url": " /9.application%20service/ncp_application_service_nshorturl_php_sample/",
+						"content": "개요\nSNS를 사용하거나 SMS를 보낼 때 길고 복잡한 URL은 무척 불편하기에 짧게 바꿔주는 서비스들이 인기를 얻었습니다.\n대표적으로 goo.gl, bit.ly 등이 있는데 현재 구글의 goo.gl는 서비스가 종료되었습니다.\n그래서 이를 대신해서 네이버 클라우드에 있는 길고 복잡한 URL을 간단하고 짧게 바꿔주는 API 서비스 nShortURL 서비스를 추천합니다.\nnShortURL은 OpenAPI 형태로 제공되는데 여기서는 PHP로 호출하는 방식을 살펴볼텐데, 우선 전체 소스코드를 살펴보고 다음으로 주요 코드를 상세하게 살펴보겠습니다.\n\n이용 요금\nnShortURL은 무료로 제공되는 서비스이며, 일 25,000건, 월 750,000건 내에서 사용 가능하며 상향이 필요한 경우 고객지원으로 문의하면 됩니다.\n\nAPI 이용 신청\nnShortURL을 이용하기 위해서는 [네이버 클라우드 콘솔] - [AI·NAVER API] -  [Application]에서 등록을 해야 합니다.\n아래와 같이 NAVER 서비스에서 nShortURL을 선택하고, 이름과 사용할 서비스 환경을 입력하고 등록하면 됩니다.\nnShortURL은 웹페이지, 모바일앱 어디서든 사용 가능하며 URL이나 앱 패키지이름, Bundle ID 등을 입력하시면 됩니다.\n\n\n\nApplication 등록을 하고 나면 다음과 같은 화면을 볼 수 있는데 여기서 인증 정보를 확인해야 합니다.\n\n\n\n인증키 확인\nnShortURL API를 호출하려면 Client ID와 Client Secret 로 이루어진 Application Key를 사용해야 하는데 아래와 같이 [인증 정보] 버튼을 클릭하면 확인할 수 있습니다.\n\n\n\nAPI 호출 샘플 코드\n\n&lt;?php\n\t\n\t$long_url = \"변환할 URL\";\t\n\t\t\n\t$client_id = \"Client ID\";\n\t$client_secret = \"Client Secret\";\n\t$api_url = \"https://naveropenapi.apigw.ntruss.com/util/v1/shorturl\";\n\t$enc_url = urlencode($long_url);\n\t$postvars = \"url=\".$enc_url;\t\n\t$is_post = true;\n\n\t$ch = curl_init();\n\tcurl_setopt($ch, CURLOPT_URL, $api_url);\n\tcurl_setopt($ch, CURLOPT_POST, $is_post);\n\tcurl_setopt($ch, CURLOPT_RETURNTRANSFER, true);\n\tcurl_setopt($ch,CURLOPT_POSTFIELDS, $postvars);\n\n\t$headers = array();\n\t$headers[] = \"X-NCP-APIGW-API-KEY-ID: \".$client_id;\n\t$headers[] = \"X-NCP-APIGW-API-KEY: \".$client_secret;\n\n\tcurl_setopt($ch, CURLOPT_HTTPHEADER, $headers);\n\n\t$json_response = curl_exec ($ch);\n\n\t$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);\n\n\tcurl_close ($ch);\n\n\tif($status_code == 200) \n\t{\n\t\t$rows_response = json_decode($json_response, JSON_OBJECT_AS_ARRAY);\n\t\t$rows_result = $rows_response[\"result\"];\n\t\t$short_url = $rows_result[\"url\"];\n\t\t$hash_val = $rows_result[\"hash\"];\n\t\t$org_url = $rows_result[\"orgUrl\"];\n\t} \n\telse \n\t{\n\t\t$short_url = \"Error 내용:\".$json_response;\n\t}\n\n?&gt;\n\n\n코드 상세 설명\n\nApplication Key\n$client_id = \"Client ID\";\n$client_secret = \"Client Secret\";\n\n네이버 클라우드 콘솔에서 nShortURL 서비스를 등록하고 인증 정보에서 확인한 [Client ID] 와 [Client Secret]를 가져와서 사용하면 됩니다.\n\nAPI URL\n$api_url = \"https://naveropenapi.apigw.ntruss.com/util/v1/shorturl\";\n\n\nnShortURL의 API URL은 위와 같습니다.\n\n파라미터 설정\n$enc_url = urlencode($long_url);\n$postvars = \"url=\".$enc_url;\t\n$is_post = true;\n\n변환할 URL을 urlencode로 인코딩하고, POST 방식으로 호출하면서 넘겨줄 변수에 할당합니다.\n\nhttp 호출 헤더값 설정\n$headers = array();\n$headers[] = \"X-NCP-APIGW-API-KEY-ID: \".$client_id;\n$headers[] = \"X-NCP-APIGW-API-KEY: \".$client_secret;\n\n위에서 가져온 Application Key를 호출할 API에 헤더값으로 설정해서 호출하게 됩니다.\n\n결과값 반환\n$rows_response = json_decode($json_response, JSON_OBJECT_AS_ARRAY);\n$rows_result = $rows_response[\"result\"];\n$short_url = $rows_result[\"url\"];\n$hash_val = $rows_result[\"hash\"];\n$org_url = $rows_result[\"orgUrl\"];\n\nnShortURL에서 json형태로 반환된 값을 배열에 담아 사용하면 됩니다.\n반환되는 값은 짧게 변환된 URL와 해시값, 그리고 원본 URL입니다.\n\n사용 한도 및 알람 설정\nnShortURL 서비스는 과도한 사용을 방지하기 위해 일별 25,000회, 월별 750,000회의 제한이 있습니다.\n그리고 지정된 한도 내에서 일정한 사용을 초과하면 알람을 받도록 설정할 수 있습니다.\n아래처럼 Application 등록 화면에서 [한도 및 알람 설정] 버튼을 클릭하면 확인할 수 있습니다.\n\n\n\n참고 URL\nhttps://api.ncloud-docs.com/docs/ai-naver-nshorturl\n\n\n  “문서 최종 수정일 : 2021-04-30”"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
 					"5-database-ncp-database-mysql-mariadb-replication": {
 						"id": "5-database-ncp-database-mysql-mariadb-replication",
 						"title": "MYSQL(MARIADB) replication 생성하기",
