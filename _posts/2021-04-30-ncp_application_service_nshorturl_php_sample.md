@@ -55,7 +55,7 @@ nShortURL API를 호출하려면 Client ID와 Client Secret 로 이루어진 App
 	curl_setopt($ch, CURLOPT_URL, $api_url);
 	curl_setopt($ch, CURLOPT_POST, $is_post);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch,CURLOPT_POSTFIELDS, $postvars);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $postvars);
 
 	$headers = array();
 	$headers[] = "X-NCP-APIGW-API-KEY-ID: ".$client_id;
