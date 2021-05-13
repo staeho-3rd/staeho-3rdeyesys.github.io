@@ -134,6 +134,8 @@ PDFMerger.php 파일에서 파일 합치기 함수 merge를 찾습니다.
 ``` php
 
 <? php
+
+  /* ./vendor/jurosh/pdf-merge/src/Jurosh/PDFMerge/PDFMerger.php */
   
   /*== 기존 ==*/ 
   public function merge($outputmode = 'browser', $outputpath = 'newfile.pdf') {
@@ -182,21 +184,25 @@ PDFMerger.php 파일에서 파일 합치기 함수 merge를 찾습니다.
 <? php
   // 기존
   $fpdi->Output($outputpath, 'S');
-
+  $fpdi->Output($outputpath, $mode);
   // 수정
   $fpdi->Output($outputpath, 'S', true);
+  $fpdi->Output($outputpath, $mode, true);
 ?>
 ```
 
 <br />
 왜 그런지 실제 Output 함수가 선언된 곳을 찾아가보겠습니다.
 파일 위치는 ./vendor/setasign/fpdf/fpdf.php 입니다.  
-아래와 같이 Output 함수의 파라미터는 3개로 마지막이 UTF8 여부를 설정하는 것이었습니다.  
+아래와 같이 Output 함수의 파라미터는 3개로 마지막이 UTF-8 여부를 설정하는 것이었습니다.  
 그러므로 마지막 파라미터를 true 로 설정만 해도 한글, UTF-8 문제가 해결됩니다.
 
 ``` php
 
 <? php
+
+  /* ./vendor/setasign/fpdf/fpdf.php */
+
   function Output($dest='', $name='', $isUTF8=false)
   {
 	/* 중략 */
@@ -231,6 +237,9 @@ PDFMerger.php 파일에서 파일 합치기 함수 merge를 찾습니다.
 ``` php
 
 <? php
+
+  /* ./vendor/jurosh/pdf-merge/src/Jurosh/PDFMerge/PDFMerger.php */
+
   // 파라미터 추가
   public function merge($outputmode = 'browser', $outputpath = 'newfile.pdf', $author = '3rdEYESYS', $creator = '3rdEYESYS', $title = 'title', $subject = 'subject', $keywords = 'keywords') {
     
@@ -253,6 +262,9 @@ PDFMerger.php 파일에서 파일 합치기 함수 merge를 찾습니다.
 ``` php
 
 <? php
+
+  /* ./vendor/setasign/fpdf/fpdf.php */
+
   function SetTitle($title, $isUTF8=false)
   {
     // Title of document

@@ -250,6 +250,8 @@ $pdf-&gt;addPDF(파일경로, 페이지, 문서방향);</p>
 <p>PDFMerger.php 파일에서 파일 합치기 함수 merge를 찾습니다.</p>
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="cp">&lt;?</span> <span class="n">php</span>
+
+  <span class="cm">/* ./vendor/jurosh/pdf-merge/src/Jurosh/PDFMerge/PDFMerger.php */</span>
   
   <span class="cm">/*== 기존 ==*/</span> 
   <span class="k">public</span> <span class="k">function</span> <span class="n">merge</span><span class="p">(</span><span class="nv">$outputmode</span> <span class="o">=</span> <span class="s1">'browser'</span><span class="p">,</span> <span class="nv">$outputpath</span> <span class="o">=</span> <span class="s1">'newfile.pdf'</span><span class="p">)</span> <span class="p">{</span>
@@ -297,20 +299,24 @@ $pdf-&gt;addPDF(파일경로, 페이지, 문서방향);</p>
 <span class="cp">&lt;?</span> <span class="n">php</span>
   <span class="c1">// 기존</span>
   <span class="nv">$fpdi</span><span class="o">-&gt;</span><span class="nf">Output</span><span class="p">(</span><span class="nv">$outputpath</span><span class="p">,</span> <span class="s1">'S'</span><span class="p">);</span>
-
+  <span class="nv">$fpdi</span><span class="o">-&gt;</span><span class="nf">Output</span><span class="p">(</span><span class="nv">$outputpath</span><span class="p">,</span> <span class="nv">$mode</span><span class="p">);</span>
   <span class="c1">// 수정</span>
   <span class="nv">$fpdi</span><span class="o">-&gt;</span><span class="nf">Output</span><span class="p">(</span><span class="nv">$outputpath</span><span class="p">,</span> <span class="s1">'S'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nv">$fpdi</span><span class="o">-&gt;</span><span class="nf">Output</span><span class="p">(</span><span class="nv">$outputpath</span><span class="p">,</span> <span class="nv">$mode</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 <span class="cp">?&gt;</span>
 </code></pre></div></div>
 
 <p><br />
 왜 그런지 실제 Output 함수가 선언된 곳을 찾아가보겠습니다.
 파일 위치는 ./vendor/setasign/fpdf/fpdf.php 입니다.<br />
-아래와 같이 Output 함수의 파라미터는 3개로 마지막이 UTF8 여부를 설정하는 것이었습니다.<br />
+아래와 같이 Output 함수의 파라미터는 3개로 마지막이 UTF-8 여부를 설정하는 것이었습니다.<br />
 그러므로 마지막 파라미터를 true 로 설정만 해도 한글, UTF-8 문제가 해결됩니다.</p>
 
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="cp">&lt;?</span> <span class="n">php</span>
+
+  <span class="cm">/* ./vendor/setasign/fpdf/fpdf.php */</span>
+
   <span class="k">function</span> <span class="n">Output</span><span class="p">(</span><span class="nv">$dest</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="nv">$name</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="nv">$isUTF8</span><span class="o">=</span><span class="kc">false</span><span class="p">)</span>
   <span class="p">{</span>
 	<span class="cm">/* 중략 */</span>
@@ -342,6 +348,9 @@ $pdf-&gt;addPDF(파일경로, 페이지, 문서방향);</p>
 
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="cp">&lt;?</span> <span class="n">php</span>
+
+  <span class="cm">/* ./vendor/jurosh/pdf-merge/src/Jurosh/PDFMerge/PDFMerger.php */</span>
+
   <span class="c1">// 파라미터 추가</span>
   <span class="k">public</span> <span class="k">function</span> <span class="n">merge</span><span class="p">(</span><span class="nv">$outputmode</span> <span class="o">=</span> <span class="s1">'browser'</span><span class="p">,</span> <span class="nv">$outputpath</span> <span class="o">=</span> <span class="s1">'newfile.pdf'</span><span class="p">,</span> <span class="nv">$author</span> <span class="o">=</span> <span class="s1">'3rdEYESYS'</span><span class="p">,</span> <span class="nv">$creator</span> <span class="o">=</span> <span class="s1">'3rdEYESYS'</span><span class="p">,</span> <span class="nv">$title</span> <span class="o">=</span> <span class="s1">'title'</span><span class="p">,</span> <span class="nv">$subject</span> <span class="o">=</span> <span class="s1">'subject'</span><span class="p">,</span> <span class="nv">$keywords</span> <span class="o">=</span> <span class="s1">'keywords'</span><span class="p">)</span> <span class="p">{</span>
     
@@ -363,6 +372,9 @@ $pdf-&gt;addPDF(파일경로, 페이지, 문서방향);</p>
 
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="cp">&lt;?</span> <span class="n">php</span>
+
+  <span class="cm">/* ./vendor/setasign/fpdf/fpdf.php */</span>
+
   <span class="k">function</span> <span class="n">SetTitle</span><span class="p">(</span><span class="nv">$title</span><span class="p">,</span> <span class="nv">$isUTF8</span><span class="o">=</span><span class="kc">false</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="c1">// Title of document</span>
@@ -462,6 +474,23 @@ $pdf-&gt;addPDF(파일경로, 페이지, 문서방향);</p>
 		<h3>Related tutorials</h3>
 
 		<ul class="listing">
+	
+		<li >
+			<a href="/9.application%20service/ncp_application_service_cloud_outbound_mailer_bulk_mail_send/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>Cloud Outbound Mailer로 대량 메일 발송하는 방법</h3>
+						<p class="description">네이버 클라우드에서 Cloud Outbound Mailer로 대량 메일 발송하는 방법입니다.</p>
+					</div>
+				</article>
+			</a>
+		</li>
 	
 		<li >
 			<a href="/9.application%20service/ncp_application_service_nshorturl_php_sample/">
@@ -611,23 +640,6 @@ $pdf-&gt;addPDF(파일경로, 페이지, 문서방향);</p>
 					<div>
 						<h3>Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법</h3>
 						<p class="description">네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/4.storage/ncp_storage_object_storage_s3_client_cyberduck/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>Object Storage 접속용 Windows, MacOS Client Tool - Cyberduck</h3>
-						<p class="description">네이버 클라우드 Object Storage 접속용 Windows, MacOS Client Tool - Cyberduck</p>
 					</div>
 				</article>
 			</a>
