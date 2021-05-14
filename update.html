@@ -1,0 +1,25 @@
+---
+update:
+---
+<h1>Update</h1>
+최근에 업데이트 된 기술문서 10개 리스트입니다.
+{% assign update_posts = site.posts  %}
+		<div class="tutorial-series">
+		
+		<ul class="listing">
+		{% for item in update_posts limit: 10 %}
+			<li {% if item.url == page.url %}class="active"{% endif %}>
+				<a href="{{ site.baseurl }}{{ item.url }}">
+					<div class="icon">{% include document-icon.html icon=item.type %}</div>
+					<article>
+						<div>
+							<h3>[{{ item.date | date: "%Y-%m-%d" }}] : {{ item.title }}</h3>
+							<p class="description">[{{ item.categories }}] : {{ item.description }}</p>
+						</div>
+					</article>
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+	</div>
+		

@@ -1,6 +1,9 @@
 - name: Docs
   link: /
   target: _self
+- name: Update
+  link: /update/
+  target: _self
 - name: FAQ
   link: /faq/
   target: _self
