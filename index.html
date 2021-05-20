@@ -6,10 +6,17 @@
 	{% for category in categories %}		
 		{% assign name = category[0] %}
 		{% assign posts = category[1] %}
-		{% assign size = posts | size %}		
+		{% assign size = posts | size %}
+			{% assign tutorials = posts | reverse %}
+			{% for tutorial in tutorials limit: 1 %}
+				{% assign dateCreated = tutorial.date | date: '%s' %}
+				{% assign nowTimestamp = 'now' | date: '%s' %}
+				{% assign diffSeconds = nowTimestamp | minus: dateCreated %}
+				{% assign diffDays = diffSeconds | divided_by: 3600 | divided_by: 24 %}
+			{% endfor %}
 		<section class="category">
 				<h3>
-					<a href="{{ site.baseurl }}/category/{{ name | slugify }}/">{{ name | replace: "-", " " }}</a>
+					<a href="{{ site.baseurl }}/category/{{ name | slugify }}/">{{ name | replace: "-", " " }}{% if diffDays <= 30 %}<img src="/images/new_dot_10x10.png" style="width:8px;vertical-align:top;">{% endif %}</a>
 				</h3>
 			<ul>
 				{% assign tutorials = posts | sample: 10 %}
