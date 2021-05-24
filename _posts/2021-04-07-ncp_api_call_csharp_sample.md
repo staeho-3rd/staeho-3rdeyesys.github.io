@@ -78,7 +78,7 @@ DateTime unixOriginalTime = new DateTime(1970, 1, 1, 9, 0, 0);
 double totalMilliSeconds = now.Subtract(unixOriginalTime).TotalMilliseconds;
 unixTimeStamp = Math.Round(totalMilliSeconds).ToString();
 ```
-네이버 클라우드 API를 호출할 때는 13자리 형식의 유닉스 타임 스탬프가 필요므로 TotalMilliseconds 값을 가져와서 소수점 아래는 반올림해서 정수값만 취합니다.  
+네이버 클라우드 API를 호출할 때는 13자리 형식의 유닉스 타임 스탬프가 필요하므로 TotalMilliseconds 값을 가져와서 소수점 아래는 반올림해서 정수값만 취합니다.  
 여기서 전달하는 타임스탬프값이 네이버 클라우드 API Gateway의 시간과 5분 이상 차이가 나면 인증 실패가 됩니다.  
 그런데 API Gateway는 UTC 기준으로 설정되어 있기 때문에 C#으로 만든 애플리케이션을 로컬PC등의 UTC+9 시간으로 설정된 곳에서 1970년 1월 1일 00시 기준으로 계산하면 9시간의 시간차가 발생해 인증이 실패하게 됩니다.  
 정리하면 다음과 같습니다.
@@ -86,7 +86,7 @@ unixTimeStamp = Math.Round(totalMilliSeconds).ToString();
 - 로컬PC 타임스탬프 : UTC+9 현재시간 - 1970년 1월 1일 09시
 
 즉, **로컬PC 등은 API Gateway보다 9시간 빠르기 때문에 동일한 타임스탬프 값을 얻으려면 1970년 1월 1일 09시 기준으로 계산해야 한다**는 것입니다.  
-그래서 위의 코드에서 DateTime unixOriginalTime = new DateTime(1970, 1, 1, 9, 0, 0); 이렇게 사용된 것입니다.
+그래서 위의 코드에서 DateTime unixOriginalTime = new DateTime(1970, 1, 1, 9, 0, 0); 이렇게 적용했습니다.
 
 #### hmac으로 암호화할 문자열 설정
 ``` c#

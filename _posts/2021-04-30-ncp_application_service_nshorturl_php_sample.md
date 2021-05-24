@@ -6,7 +6,7 @@ categories:
 description: 네이버 클라우드에서 길고 복잡한 URL을 간단하고 짧게 바꿔주는 API nShortURL을 PHP로 이용하는 샘플 예제입니다.
 type: Document
 set: api
-order_number: 1
+order_number: 3
 ---
 
 ## 개요
