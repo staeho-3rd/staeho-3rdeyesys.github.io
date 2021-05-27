@@ -97,7 +97,7 @@ $enc_korean_name = urlencode($korean_name);
 $getvars = "query=".$enc_korean_name;
 $is_post = false;
 ```
-변환할 한글 이름을 urlencode로 인코딩하고, GET 방식으로 호출하면서 넘겨줄 변수에 할당합니다.
+변환할 한글 이름을 **urlencode로 인코딩**하고, GET 방식으로 호출하면서 넘겨줄 변수에 할당합니다.
 
 
 #### API URL
@@ -132,7 +132,6 @@ if (count($rows_response["aResult"]) > 0){
 }else{
 	$roman_name = "변환할 수 없는 이름입니다";
 }
-?>
 ```
 Papago Korean Name Romanizer에서 json형태로 반환된 값을 배열에 담아 사용하면 됩니다.  
 반환되는 값은 한글 성과 변환된 로마자 이름과 빈도수가 담긴 배열입니다.  

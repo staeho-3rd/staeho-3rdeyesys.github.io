@@ -7,7 +7,7 @@
 		{% assign name = category[0] %}
 		{% assign posts = category[1] %}
 		{% assign size = posts | size %}
-			{% assign tutorials = posts | reverse %}
+			{% assign tutorials = posts %}
 			{% for tutorial in tutorials limit: 1 %}
 				{% assign dateCreated = tutorial.date | date: '%s' %}
 				{% assign nowTimestamp = 'now' | date: '%s' %}
