@@ -123,6 +123,21 @@
 				
 					
 					
+					"1-compute-ncp-server-ssh-security-setting": {
+						"id": "1-compute-ncp-server-ssh-security-setting",
+						"title": "리눅스서버 SSH 접속 보안 설정하기",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_server_ssh_security_setting/",
+						"content": "개요\n리눅스 서버들은 서버에 접속할 때 SSH를 이용하게 되는데, 이때 root 계정에 대한 무작위 패스워드 입력 등의 해킹시도가 있을 수 있습니다.\n여기서는 이러한 해킹시도를 차단하기 위한 보안설정 중에서 root 계정과 관련한 보안설정 2가지를 정리해보겠습니다.\n\n설정 파일 위치\nroot 계정에 대한 보안 설정은 /etc/ssh/sshd_config 파일에 있습니다.\n\n~# vi /etc/ssh/sshd_config\n\n\nCentOS\n\n\nUbuntu\n\n\nroot 로그인 차단\n로그인 차단은 위 설정에서 PermitRootLogin 항목을 바꾸시면 됩니다.\nCentOS는 주석처리 되어 있으므로 주석을 해제하고 설정을 변경하시면 되고, Ubuntu는 주석이 해제된 상태이므로 설정값만 변경하시면 됩니다.\n\n\n  root 로그인을 차단하기 전에 다른 관리자 계정을 생성한 후에 차단 설정을 적용해야 합니다.\n\n\n# 기존 - CentOS\n#PermitRootLogin yes\n\n# 기존 - Ubuntu\nPermitRootLogin yes\n\n# 변경\nPermitRootLogin no\n\n\n\n기타 옵션\n# 패스워드 로그인은 차단하고 Key 파일을 이용한 로그인만 허용\nPermitRootLogin prohibit-password\n\n\n\n로그인 시도 횟수 제한\n이 옵션을 지정하게 되면 지정한 횟수 이상으로 로그인을 실패했을 때 접속이 강제 종료되는데, 기본값은 6회이니 적절하게 수정하시면 됩니다.\n\n# 기존\n#MaxAuthTries 6\n\n# 변경\nMaxAuthTries 3\n\n\n데몬 재시작\n설정을 수정하고 파일을 저장한 후에 sshd 데몬을 재시작합니다.\n\n~# systemctl restart sshd\n\n\n데몬 재시작 후 로그인을 시도해보면 로그인이 실패하는 것을 확인하실 수 있습니다.\n\n\n\nSSH 접속 로그 확인\nSSH로 접속을 하면 성공, 실패에 대한 로그가 모두 남게 되는데, 이 로그를 주기적으로 확인하는 것이 좋습니다.\n\n접속 실패 로그\n~# last -f /var/log/btmp\n\n# 또는\n~# lastb\n\n\n\n접속 성공 로그\n~# last -f /var/log/wtmp\n\n\n\n참고 URL\n\n  네이버 클라우드 리눅스서버 접속 가이드\n    \n      https://guide.ncloud-docs.com/docs/compute-compute-3-1-v2.html\n    \n  \n  네이버 클라우드 플랫폼을 활용한 보안 강화\n    \n      https://m.blog.naver.com/n_cloudplatform/221117956958\n    \n  \n\n\n\n  문서 최종 수정일 : 2021-05-28"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
 					"2-networking-ncp-networking-global-dns-guide": {
 						"id": "2-networking-ncp-networking-global-dns-guide",
 						"title": "Global DNS 사용 가이드 - 도메인 추가",

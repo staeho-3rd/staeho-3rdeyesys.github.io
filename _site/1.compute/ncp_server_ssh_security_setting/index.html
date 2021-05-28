@@ -26,19 +26,19 @@
 		
 
 		<!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>CentOS6에서 pip - Python 설치하기 | 3rdeyesys</title>
+<title>리눅스서버 SSH 접속 보안 설정하기 | 3rdeyesys</title>
 <meta name="generator" content="Jekyll v3.7.2" />
-<meta property="og:title" content="CentOS6에서 pip - Python 설치하기" />
+<meta property="og:title" content="리눅스서버 SSH 접속 보안 설정하기" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="네이버 클라우드 CentOS6.x에서 pip - Python 설치하기" />
-<meta property="og:description" content="네이버 클라우드 CentOS6.x에서 pip - Python 설치하기" />
-<link rel="canonical" href="https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/" />
-<meta property="og:url" content="https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/" />
+<meta name="description" content="네이버 클라우드 리눅스 서버에 SSH로 접속할 때 필요한 보안 설정입니다." />
+<meta property="og:description" content="네이버 클라우드 리눅스 서버에 SSH로 접속할 때 필요한 보안 설정입니다." />
+<link rel="canonical" href="https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting/" />
+<meta property="og:url" content="https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting/" />
 <meta property="og:site_name" content="3rdeyesys" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-01-26T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-05-27T00:00:00+09:00" />
 <script type="application/ld+json">
-{"url":"https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/","headline":"CentOS6에서 pip - Python 설치하기","dateModified":"2021-01-26T00:00:00+09:00","datePublished":"2021-01-26T00:00:00+09:00","description":"네이버 클라우드 CentOS6.x에서 pip - Python 설치하기","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/1.compute/ncp_server_pip_python_install_centos6/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting/","headline":"리눅스서버 SSH 접속 보안 설정하기","dateModified":"2021-05-27T00:00:00+09:00","datePublished":"2021-05-27T00:00:00+09:00","description":"네이버 클라우드 리눅스 서버에 SSH로 접속할 때 필요한 보안 설정입니다.","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 		<link type="application/atom+xml" rel="alternate" href="https://docs.3rdeyesys.com/feed.xml" title="3rdeyesys" />
@@ -122,111 +122,117 @@
 			
 				<li><a href="#개요">개요</a></li>
 			
-				<li><a href="#목적">목적</a></li>
+				<li><a href="#설정-파일-위치">설정 파일 위치</a></li>
 			
-				<li><a href="#repository-변경">Repository 변경</a></li>
+				<li><a href="#root-로그인-차단">root 로그인 차단</a></li>
 			
-				<li><a href="#필요-패키지들-설치">필요 패키지들 설치</a></li>
+				<li><a href="#로그인-시도-횟수-제한">로그인 시도 횟수 제한</a></li>
 			
-				<li><a href="#python-설치">Python 설치</a></li>
+				<li><a href="#ssh-접속-로그-확인">SSH 접속 로그 확인</a></li>
 			
-				<li><a href="#pip-설치">PIP 설치</a></li>
-			
-				<li><a href="#설치-오류-상황과-해결-방법">설치 오류 상황과 해결 방법</a></li>
+				<li><a href="#참고-url">참고 URL</a></li>
 			
 		</ul>
 	</section>
 	<section class="tutorial-content">
-		<h1>CentOS6에서 pip - Python 설치하기</h1>
+		<h1>리눅스서버 SSH 접속 보안 설정하기</h1>
 
 		
 		
 		<div class="tutorial-main">
 			<h2 id="개요">개요</h2>
-<p>2020년 12월 01일부로 CentOS6의 기술지원이 공식 종료되었습니다.<br />
-yum을 이용한 패키지 설치, 업데이트 등을 할 수 없는 상황이기에 pip, Python등의 설치가 원활하지 않습니다.
-그래서 pip설치에 필요한 CentOS6.x의 yum 명령을 수행하려면 
-먼저 아래의 가이드대로 Repository mirror를 변경하는 Script를 다운받아 설치해야 그 다음 단계를 진행할 수 있습니다.</p>
+<p>리눅스 서버들은 서버에 접속할 때 SSH를 이용하게 되는데, 이때 root 계정에 대한 무작위 패스워드 입력 등의 해킹시도가 있을 수 있습니다.<br />
+여기서는 이러한 해킹시도를 차단하기 위한 보안설정 중에서 root 계정과 관련한 보안설정 2가지를 정리해보겠습니다.</p>
 
-<h2 id="목적">목적</h2>
-<p>지원이 종료된 CentOS6에서 굳이 pip를 설치하려고 하는 이유는 DB 백업 파일을 aws cli를 이용해서 Object Storage에 저장하기 위해서 입니다.<br />
-매 일정 시간에 DB나 소스 파일을 백업하고 백업된 파일을 Object Storage에 백업-동기화 하는 작업을 aws cli를 이용해서 처리하게 됩니다.</p>
+<h2 id="설정-파일-위치">설정 파일 위치</h2>
+<p>root 계정에 대한 보안 설정은 <strong>/etc/ssh/sshd_config</strong> 파일에 있습니다.</p>
 
-<h2 id="repository-변경">Repository 변경</h2>
-<p>이 Repository 변경 스트립트는 네이버 클라우드에서 공식 제공하는 스크립트입니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# wget http://repo.ncloud.com/etc/patch/Add-CentOS-Vault-Repo.sh
-~# bash Add-CentOS-Vault-Repo.sh
-~# yum <span class="nb">install </span>zsh
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# vi /etc/ssh/sshd_config
 </code></pre></div></div>
+<p><br /></p>
+<h4 id="centos">CentOS</h4>
+<p><img src="../../images/ncp_server_ssh_security_setting_01.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center" /></p>
 
-<h2 id="필요-패키지들-설치">필요 패키지들 설치</h2>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# yum <span class="nt">-y</span> groupinstall <span class="s1">'Development Tools'</span>
-~# yum <span class="nt">-y</span> <span class="nb">install </span>openssl-devel<span class="k">*</span> ncurses-devel<span class="k">*</span> zlib<span class="k">*</span>.x86_64
-~# yum update curl nss
-</code></pre></div></div>
+<h4 id="ubuntu">Ubuntu</h4>
+<p><img src="../../images/ncp_server_ssh_security_setting_06.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center" /></p>
 
-<h2 id="python-설치">Python 설치</h2>
-<p>CentOS6에는 Python 2.6이 설치되어 있습니다.<br />
-하지만, 위에서 설명한 대로 CentOS 6에 대한 지원이 종료되면서 일반적인 방법으로는 pip를 설치할 수 없습니다.<br />
-몇가지 상황을 테스트 해본 결과 Python 2.7과 Python 3.5에서는 pip를 설치할 수 있는 방법을 찾았고, 그래서 여기서는 Python 3.5.10을 설치하겠습니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Python 3.5 설치 압축파일 다운로드</span>
-~# wget https://www.python.org/ftp/python/3.5.10/Python-3.5.10.tgz
-
-<span class="c"># Python 설치파일 압축해제 후 설치</span>
-~# <span class="nb">tar </span>vxzf Python-3.5.10.tgz
-~# <span class="nb">cd </span>Python-3.5.10
-~# ./configure
-~# make
-~# make <span class="nb">install</span>
-
-<span class="c"># Python 설치 확인</span>
-~# which python3
-
-<span class="c"># Python 버전 확인</span>
-~# python3 <span class="nt">-V</span>
-</code></pre></div></div>
-
-<h2 id="pip-설치">PIP 설치</h2>
-<p>pip설치 파일도 위에서 설치한 Python 버전에 맞는 설치파일을 다운받아서 설치해야 문제없이 설치됩니다.<br />
-현재까지 문제 없는 것으로 확인된 버전은 2.7과 3.5 입니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# curl <span class="nt">-O</span> https://bootstrap.pypa.io/3.5/get-pip.py
-~# python3 get-pip.py
-</code></pre></div></div>
-
-<p>이후에 aws cli설치나 Object Storage 백업과 관련된 내용은 다음 문서를 참고하시기 바랍니다.
-<a href="/5.database/ncp_database_mysql_object_storage_auto_backup_centos/" target="_blank" style="word-break:break-all;">CentOS에서 mysql DB를 Object Storage로 자동 백업하기</a></p>
-
-<h2 id="설치-오류-상황과-해결-방법">설치 오류 상황과 해결 방법</h2>
-<p>pip를 설치하는 과정에 발생하는 몇가지 오류 상황과 그에 따른 해결방법을 정리해보겠습니다.</p>
-
-<ol>
-  <li>curl: (35) SSL connect error<br />
-pip 설치파일을 다운 받기 위해 curl을 실행할 때 발생하는 오류 메시지로 위쪽에서 필요 패키지들 설치할 때 있었던 다음 명령을 실행하면 해결됩니다.</li>
-</ol>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# yum update curl nss
-</code></pre></div></div>
-
-<ol>
-  <li>SyntaxError: invalid syntax<br />
-pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발생하는 문제입니다.<br />
-위에서 설명했던 대로 Python 버전과 일치하는 pip 설치 파일을 다운 받으면 됩니다.</li>
-</ol>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 오류가 발생하는 경로</span>
-~# curl <span class="nt">-O</span> https://bootstrap.pypa.io/get-pip.py
-
-<span class="c"># 해결방법 : 경로 중간에 Python 버전을 추가</span>
-~# curl <span class="nt">-O</span> https://bootstrap.pypa.io/<span class="o">{</span>Python 버전<span class="o">}</span>/get-pip.py
-
-<span class="c"># 오류 없는 버전 예시</span>
-~# curl <span class="nt">-O</span> https://bootstrap.pypa.io/2.7/get-pip.py
-~# curl <span class="nt">-O</span> https://bootstrap.pypa.io/3.5/get-pip.py
-</code></pre></div></div>
+<h2 id="root-로그인-차단">root 로그인 차단</h2>
+<p>로그인 차단은 위 설정에서 PermitRootLogin 항목을 바꾸시면 됩니다.<br />
+CentOS는 주석처리 되어 있으므로 주석을 해제하고 설정을 변경하시면 되고, Ubuntu는 주석이 해제된 상태이므로 설정값만 변경하시면 됩니다.</p>
 
 <blockquote>
-  <p>문서 최종 수정일 : 2021-01-27</p>
+  <p>root 로그인을 차단하기 전에 다른 관리자 계정을 생성한 후에 차단 설정을 적용해야 합니다.</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 기존 - CentOS</span>
+<span class="c">#PermitRootLogin yes</span>
+
+<span class="c"># 기존 - Ubuntu</span>
+PermitRootLogin <span class="nb">yes</span>
+
+<span class="c"># 변경</span>
+PermitRootLogin no
+</code></pre></div></div>
+<p><img src="../../images/ncp_server_ssh_security_setting_02.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center" /></p>
+
+<h4 id="기타-옵션">기타 옵션</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 패스워드 로그인은 차단하고 Key 파일을 이용한 로그인만 허용</span>
+PermitRootLogin prohibit-password
+</code></pre></div></div>
+
+<p><br /></p>
+<h2 id="로그인-시도-횟수-제한">로그인 시도 횟수 제한</h2>
+<p>이 옵션을 지정하게 되면 지정한 횟수 이상으로 로그인을 실패했을 때 접속이 강제 종료되는데, 기본값은 6회이니 적절하게 수정하시면 됩니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 기존</span>
+<span class="c">#MaxAuthTries 6</span>
+
+<span class="c"># 변경</span>
+MaxAuthTries 3
+</code></pre></div></div>
+<p><br /></p>
+<h4 id="데몬-재시작">데몬 재시작</h4>
+<p>설정을 수정하고 파일을 저장한 후에 sshd 데몬을 재시작합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# systemctl restart sshd
+</code></pre></div></div>
+<p><br />
+데몬 재시작 후 로그인을 시도해보면 로그인이 실패하는 것을 확인하실 수 있습니다.</p>
+
+<p><img src="../../images/ncp_server_ssh_security_setting_03.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center" /></p>
+
+<h2 id="ssh-접속-로그-확인">SSH 접속 로그 확인</h2>
+<p>SSH로 접속을 하면 성공, 실패에 대한 로그가 모두 남게 되는데, 이 로그를 주기적으로 확인하는 것이 좋습니다.</p>
+
+<h4 id="접속-실패-로그">접속 실패 로그</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# last <span class="nt">-f</span> /var/log/btmp
+
+<span class="c"># 또는</span>
+~# lastb
+</code></pre></div></div>
+<p><img src="../../images/ncp_server_ssh_security_setting_04.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center" /></p>
+
+<h4 id="접속-성공-로그">접속 성공 로그</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# last <span class="nt">-f</span> /var/log/wtmp
+</code></pre></div></div>
+<p><img src="../../images/ncp_server_ssh_security_setting_05.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center" /></p>
+
+<h2 id="참고-url">참고 URL</h2>
+<ol>
+  <li>네이버 클라우드 리눅스서버 접속 가이드
+    <ul>
+      <li><a href="https://guide.ncloud-docs.com/docs/compute-compute-3-1-v2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-3-1-v2.html</a></li>
+    </ul>
+  </li>
+  <li>네이버 클라우드 플랫폼을 활용한 보안 강화
+    <ul>
+      <li><a href="https://m.blog.naver.com/n_cloudplatform/221117956958" target="_blank" style="word-break:break-all;">https://m.blog.naver.com/n_cloudplatform/221117956958</a></li>
+    </ul>
+  </li>
+</ol>
+
+<blockquote>
+  <p>문서 최종 수정일 : 2021-05-28</p>
 </blockquote>
 
 		</div>
@@ -251,8 +257,8 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 	
 	
 	<div class="tutorial-series">
-		<h3> - Series</h3>
-		<p></p>
+		<h3>Server - Series</h3>
+		<p>네이버 클라우드 Server 관련 문서들입니다.</p>
 
 		<ul class="listing">
 	
@@ -261,7 +267,7 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 		
 		
 		
-			<a href="/5.database/ncp_database_compare/">
+			<a href="/1.compute/ncp_server_micro_limit/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -270,8 +276,8 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 </div>
 				<article>
 					<div>
-						<h3>1. 설치형 DB서버와 관리형 Cloud DB 비교 </h3>
-						<p class="description">네이버 클라우드 설치형 DB와 관리형 Cloud for DB 비교</p>
+						<h3>1. Micro 타입 서버에서 사용할 수 없는 서비스 </h3>
+						<p class="description">네이버 클라우드 Micro 타입 서버에서 사용할 수 없는 서비스</p>
 					</div>
 				</article>
 			</a>
@@ -282,7 +288,7 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 		
 		
 		
-			<a href="/5.database/ncp_database_mysql_auto_backup/">
+			<a href="/1.compute/ncp_server_spec_change/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -291,8 +297,8 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 </div>
 				<article>
 					<div>
-						<h3>2. mysql DB 자동백업 방법 </h3>
-						<p class="description">네이버 클라우드 mysql DB 자동백업 방법</p>
+						<h3>2. 서버 스펙 변경 </h3>
+						<p class="description">네이버 클라우드 서버 스펙 변경</p>
 					</div>
 				</article>
 			</a>
@@ -303,7 +309,7 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 		
 		
 		
-			<a href="/5.database/ncp_database_mysql_object_storage_auto_backup_centos/">
+			<a href="/1.compute/ncp_server_stop_price/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -312,8 +318,8 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 </div>
 				<article>
 					<div>
-						<h3>3. CentOS에서 mysql DB를 Object Storage로 자동 백업하기 </h3>
-						<p class="description">네이버 클라우드 mysql DB를 Object Storage로 자동 백업하기 - CentOS버전입니다</p>
+						<h3>3. 서버 정지 시 요금할인 </h3>
+						<p class="description">네이버 클라우드 서버 정지 시 요금할인</p>
 					</div>
 				</article>
 			</a>
@@ -324,7 +330,7 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 		
 		
 		
-			<a href="/5.database/ncp_database_mysql_object_storage_auto_backup_ubuntu/">
+			<a href="/1.compute/ncp_server_autoscaling_limit/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -333,8 +339,239 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 </div>
 				<article>
 					<div>
-						<h3>4. Ubuntu에서 mysql DB를 Object Storage로 자동 백업하기 </h3>
-						<p class="description">네이버 클라우드 mysql DB를 Object Storage로 자동 백업하기 - Ubuntu버전입니다</p>
+						<h3>4. Auto Scaling 서비스 제한사항 </h3>
+						<p class="description">네이버 클라우드 Auto Scaling 서비스 제한사항</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+			<a href="/1.compute/ncp_server_storage_add_guide/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>5. 스토리지 추가 생성 기본 가이드 </h3>
+						<p class="description">네이버 클라우드 스토리지 추가 생성 기본 가이드</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+			<a href="/3.security/ncp_security_acg_guide/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>6. ACG(Access Control Group) 가이드 </h3>
+						<p class="description">네이버 클라우드 ACG(Access Control Group) 가이드</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+			<a href="/1.compute/ncp_server_storage_add_detail_process/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>7. Linux 스토리지(디스크) 추가 상세 가이드 </h3>
+						<p class="description">네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+			<a href="/4.storage/ncp_storage_backup_guide/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>8. 백업 서비스 가이드와 신청 절차 </h3>
+						<p class="description">네이버 클라우드 백업 서비스 가이드와 신청 절차</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+			<a href="/1.compute/ncp_server_connect_no_public_ip/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>9. 서버 접속 가이드(Linux) - 공인IP 없을 때 </h3>
+						<p class="description">네이버 클라우드 서버 접속 가이드 - 공인IP 없을 때</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+			<a href="/1.compute/ncp_server_connect_by_public_ip/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>10. 서버 접속 가이드(Linux) - 공인IP 있을 때 </h3>
+						<p class="description">네이버 클라우드 서버 접속 가이드 - 공인IP 있을 때</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+			<a href="/1.compute/ncp_server_vpc_create/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>11. VPC 환경에서 서버 생성 </h3>
+						<p class="description">네이버 클라우드 VPC 환경에서 서버 생성</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+			<a href="/1.compute/ncp_server_autoscaling_event_setting/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>12. AutoScaling 이벤트 설정하는 방법 </h3>
+						<p class="description">네이버 클라우드 AutoScaling 그룹 이벤트 설정하는 방법</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+			<a href="/1.compute/ncp_server_cloud_functions_dotnet_csharp_cmd/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>13. Cloud Functions Action을 .Net (C#)을 사용하여 윈도우 명령프롬프트(cmd)에서 만드는 방법 </h3>
+						<p class="description">네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 윈도우 명령프롬프트(cmd)에서 만드는 방법</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+			<a href="/1.compute/ncp_server_cloud_functions_dotnet_csharp_vs/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>14. Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 </h3>
+						<p class="description">네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+			<a href="/1.compute/ncp_server_cloud_functions_php_smtp_via_gmail_with_phpmailer/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>15. Cloud Functions에서 PHPMailer를 사용하여 gmail을 통해 SMTP로 메일 발송하는 방법 </h3>
+						<p class="description">네이버 클라우드 Cloud Functions에서 PHPMailer를 사용하여 gmail을 통해 SMTP로 메일 발송하는 방법</p>
 					</div>
 				</article>
 			</a>
@@ -345,7 +582,7 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 		
 		
 		
-			<a href="/1.compute/ncp_server_pip_python_install_centos6/">
+			<a href="/1.compute/ncp_server_ssh_security_setting/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -354,113 +591,8 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 </div>
 				<article>
 					<div>
-						<h3>5. CentOS6에서 pip - Python 설치하기 </h3>
-						<p class="description">네이버 클라우드 CentOS6.x에서 pip - Python 설치하기</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-			<a href="/5.database/ncp_database_mariadb_access_from_remote_centos/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>6. CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL </h3>
-						<p class="description">네이버 클라우드 CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-			<a href="/5.database/ncp_database_mariadb_access_from_remote_ubuntu/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>7. Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL </h3>
-						<p class="description">네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-			<a href="/5.database/ncp_database_mysql_mariadb_config_my_cnf/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>8. mysql, mariadb 환경설정 파일 my.cnf 위치 </h3>
-						<p class="description">네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-			<a href="/5.database/ncp_database_mysql_mariadb_config_bind_address/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>9. mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치 </h3>
-						<p class="description">네이버 클라우드 mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-			<a href="/5.database/ncp_database_mysql_mariadb_replication/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>10. MYSQL(MARIADB) replication 생성하기 </h3>
-						<p class="description">네이버 클라우드 MYSQL(MARIADB) replication 생성하기</p>
+						<h3>16. 리눅스서버 SSH 접속 보안 설정하기 <span class="badge badge-pill badge-danger" style="font-size:50%">new</span></h3>
+						<p class="description">네이버 클라우드 리눅스 서버에 SSH로 접속할 때 필요한 보안 설정입니다.</p>
 					</div>
 				</article>
 			</a>
@@ -476,27 +608,6 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 		<h3>Related docs</h3>
 
 		<ul class="listing">
-	
-		<li >
-		
-		
-		
-		
-			<a href="/1.compute/ncp_server_ssh_security_setting/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>리눅스서버 SSH 접속 보안 설정하기 <span class="badge badge-pill badge-danger" style="font-size:50%">new</span></h3>
-						<p class="description">네이버 클라우드 리눅스 서버에 SSH로 접속할 때 필요한 보안 설정입니다.</p>
-					</div>
-				</article>
-			</a>
-		</li>
 	
 		<li >
 		
@@ -687,6 +798,27 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 			</a>
 		</li>
 	
+		<li >
+		
+		
+		
+		
+			<a href="/8.api/ncp_api_call_php_sample/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>PHP로 네이버 클라우드 API를 호출하는 샘플 예제 </h3>
+						<p class="description">PHP로 네이버 클라우드 API를 호출하는 샘플 예제입니다.</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
 </ul>
 	</div>
 
@@ -711,17 +843,17 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 		<h2>Share</h2>
 		<p>Share this tutorial with your community.</p>
 		<ul>
-			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_pip_python_install_centos6%2F">
+			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_ssh_security_setting%2F">
 		<svg class="twitter" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg>
 	
  Twitter</a></li>
-			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_pip_python_install_centos6%2F">
+			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_ssh_security_setting%2F">
 		<svg class="facebook" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="15.8 15.8 25 25"><path d="M32.8 24.7h-3.2v-2.1c0-0.8 0.5-1 0.9-1s2.3 0 2.3 0v-3.5l-3.1 0c-3.5 0-4.3 2.6-4.3 4.3v2.3h-2v3.6h2c0 4.6 0 10.2 0 10.2h4.2c0 0 0-5.6 0-10.2h2.8L32.8 24.7z"/></svg>
 	
  Facebook</a></li>
-			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_pip_python_install_centos6%2F">
+			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_ssh_security_setting%2F">
  Google+</a></li>
-			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_pip_python_install_centos6%2F&t=CentOS6%EC%97%90%EC%84%9C%20pip%20-%20Python%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">
+			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_ssh_security_setting%2F&t=%EB%A6%AC%EB%88%85%EC%8A%A4%EC%84%9C%EB%B2%84%20SSH%20%EC%A0%91%EC%86%8D%20%EB%B3%B4%EC%95%88%20%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0">
 		<svg class="hacker-news" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.8 3.3c-0.4 0.8-5.6 11.1-5.6 11.2 0 2 0 6.2 0 6.2 -0.1 0-2.2 0-2.3 0 0 0 0-5.9 0-6.2 0 0-5.5-10.9-5.6-11.1C5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3c0 0 0 0 0.1 0 0.9 0 1.7 0 2.6 0 0 0 0 0 0 0.1 0.1 0.1 4 8.3 4.1 8.3 0 0 4.2-8.3 4.3-8.4 0.8 0 1.6 0 2.4 0 0 0 0 0 0 0C18.8 3.3 18.8 3.3 18.8 3.3z"/></svg>
 	
  Hacker News</a></li>
