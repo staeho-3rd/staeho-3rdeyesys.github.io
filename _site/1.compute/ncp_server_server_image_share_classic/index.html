@@ -26,19 +26,19 @@
 		
 
 		<!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Auto Scaling 서비스 제한사항 | 3rdeyesys</title>
+<title>Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 | 3rdeyesys</title>
 <meta name="generator" content="Jekyll v3.7.2" />
-<meta property="og:title" content="Auto Scaling 서비스 제한사항" />
+<meta property="og:title" content="Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="네이버 클라우드 Auto Scaling 서비스 제한사항" />
-<meta property="og:description" content="네이버 클라우드 Auto Scaling 서비스 제한사항" />
-<link rel="canonical" href="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_limit/" />
-<meta property="og:url" content="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_limit/" />
+<meta name="description" content="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법을 소개합니다." />
+<meta property="og:description" content="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법을 소개합니다." />
+<link rel="canonical" href="https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic/" />
+<meta property="og:url" content="https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic/" />
 <meta property="og:site_name" content="3rdeyesys" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-11-29T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-05-26T00:00:00+09:00" />
 <script type="application/ld+json">
-{"url":"https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_limit/","headline":"Auto Scaling 서비스 제한사항","dateModified":"2020-11-29T00:00:00+09:00","datePublished":"2020-11-29T00:00:00+09:00","description":"네이버 클라우드 Auto Scaling 서비스 제한사항","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_limit/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic/","headline":"Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법","dateModified":"2021-05-26T00:00:00+09:00","datePublished":"2021-05-26T00:00:00+09:00","description":"네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법을 소개합니다.","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 		<link type="application/atom+xml" rel="alternate" href="https://docs.3rdeyesys.com/feed.xml" title="3rdeyesys" />
@@ -122,66 +122,85 @@
 			
 				<li><a href="#개요">개요</a></li>
 			
-				<li><a href="#스펙-및-서비스-환경-제한-사항">스펙 및 서비스 환경 제한 사항</a></li>
+				<li><a href="#공유-권한-설정">공유 권한 설정</a></li>
 			
-				<li><a href="#os-서버-이미지-제한-사항">OS 서버 이미지 제한 사항</a></li>
+				<li><a href="#공유-상태-확인">공유 상태 확인</a></li>
 			
-				<li><a href="#설정-제한-사항">설정 제한 사항</a></li>
+				<li><a href="#공유-권한-삭제">공유 권한 삭제</a></li>
 			
 				<li><a href="#참고-url">참고 URL</a></li>
 			
 		</ul>
 	</section>
 	<section class="tutorial-content">
-		<h1>Auto Scaling 서비스 제한사항</h1>
+		<h1>Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법</h1>
 
 		
 		
 		<div class="tutorial-main">
 			<h2 id="개요">개요</h2>
-<p>모든 클라우드 서비스의 핵심 중의 하나가 Auto Scaling이라고 할 수 있습니다.
-네이버 클라우드도 예외가 아닌데, Auto Scaling을 설정할 때 몇가지 제한사항이 있어서 정리해보았습니다.</p>
+<p>네이버 클라우드 Classic 환경에서 내 서버 이미지를 다른 계정에 공유하는 방법입니다.<br />
+Linux와 Windows OS별 차이는 없으며, 일단은 서버 이미지가 생성되어 있는 것을 가정해서 내용을 정리해보겠습니다.</p>
 
-<h2 id="스펙-및-서비스-환경-제한-사항">스펙 및 서비스 환경 제한 사항</h2>
-<p>서버 스펙이나 서비스 환경과 관련한 제한 사항은 다음과 같습니다.</p>
+<h2 id="공유-권한-설정">공유 권한 설정</h2>
+<p>네이버 클라우드 콘솔 [Server] - [Server Image]에서 공유할 서버 이미지를 선택하고 상단 메뉴에 있는 [공유 권한 설정]을 클릭합니다.</p>
 
-<ul>
-  <li>총 디스크 사이즈 150GB 이하 서버만 가능</li>
-  <li>Windows OS는 Windows 2012. 2016만 지원</li>
-  <li>Micro 서버는 불가</li>
-  <li>High Memory 서버는 불가(추후 개선 예정)</li>
-  <li>Local Disk 기반 서버는 불가</li>
-  <li>Global Internet Service 영역 내의 서비스 불가</li>
-</ul>
+<p><img src="../../images/ncp_server_server_image_share_classic_01.jpg" alt="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 " style="width:770px;align:center" /></p>
 
-<p>따라서 서버타입 기준으로  <code class="highlighter-rouge">Auto Scaling 설정이 가능한 서버타입은 Compact, Standard 2가지 뿐</code>입니다.</p>
+<p>다음으로 서버 이미지를 공유할 계정 즉, 로그인 ID를 입력합니다.</p>
 
-<p><img src="../../images/ncp_server_autoscaling_limit.png" alt="Auto Scaling 서비스 제한사항" style="width:600px;align:center" /></p>
+<p><img src="../../images/ncp_server_server_image_share_classic_02.jpg" alt="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 " style="width:770px;align:center" /></p>
 
-<h2 id="os-서버-이미지-제한-사항">OS 서버 이미지 제한 사항</h2>
-<p>centos-7.8-64, ubuntu-18.04 이 2가지 OS 이미지는 개인 회원은 KR-1 1세대 서버에서 생성이 불가능한 이미지입니다. 2세대 서버를 선택하시거나 KR-2에서 생성해야 합니다.</p>
+<p>로그인 ID 입력 후 [권한 추가] 버튼을 클릭하고, [적용] 버튼을 클릭해 설정을 적용합니다.</p>
 
-<h2 id="설정-제한-사항">설정 제한 사항</h2>
-<p>다음으로 Auto Scaling 설정을 할 때 생성 가능한 최대 서버 수 등의 설정 제한 사항은 다음과 같습니다.</p>
+<p><img src="../../images/ncp_server_server_image_share_classic_03.jpg" alt="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 " style="width:770px;align:center" /></p>
 
-<ul>
-  <li>고객별 생성 가능한 Auto Scaling Group 최대 수: 100</li>
-  <li>고객별 생성 가능한 Launch Configuration 최대 수: 100</li>
-  <li>Auto Scaling Group당 생성 가능한 스케줄(Scheduled Action) 최대 수: 100</li>
-  <li>Auto Scaling Group당 생성 가능한 Scaling Policy 최대 수: 10</li>
-  <li>Auto Scaling Group당 생성 가능한 최대 서버 수: 30대</li>
-  <li>Auto Scaling Group당 연결 가능한 Load Balancer 최대 수 : 10</li>
-</ul>
+<p>공유 권한 설정을 적용하면 서버 이미지 정보에 [공유 중]이라고 표시되고, [공유 받은 계정] 정보도 확인할 수 있습니다.</p>
 
-<blockquote>
-  <p>계정당 생성 가능한 최대 서버 대수 : 네이버 클라우드에서 한 <strong>계정당 생성할 수 있는 최대 서버 수 기본 50대</strong>입니다. 서버 수 한도를 조정하려면 고객지원으로 문의해야 합니다.</p>
-</blockquote>
+<h4 id="linux-centos-ubuntu">Linux (CentOS, Ubuntu)</h4>
+<p><img src="../../images/ncp_server_server_image_share_classic_04.jpg" alt="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 " style="width:770px;align:center" /></p>
+
+<h4 id="windows">Windows</h4>
+<p><img src="../../images/ncp_server_server_image_share_classic_12.jpg" alt="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 " style="width:770px;align:center" /></p>
+
+<h2 id="공유-상태-확인">공유 상태 확인</h2>
+
+<p>이제 공유 받은 계정으로 접속해보면 [Server Image]에 추가된 서버 이미지가 보이고, [공유 받음] 표시를 확인할 수 있습니다.</p>
+
+<h4 id="linux-centos-ubuntu-1">Linux (CentOS, Ubuntu)</h4>
+<p><img src="../../images/ncp_server_server_image_share_classic_05.jpg" alt="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 " style="width:770px;align:center" /></p>
+
+<h4 id="windows-1">Windows</h4>
+<p><img src="../../images/ncp_server_server_image_share_classic_13.jpg" alt="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 " style="width:770px;align:center" /></p>
+
+<p>다음으로 공유 받은 서버 이미지를 선택하고, [서버 생성] 버튼을 클릭합니다.</p>
+
+<p><img src="../../images/ncp_server_server_image_share_classic_06.jpg" alt="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 " style="width:770px;align:center" /></p>
+
+<p>서버 생성 정보 입력 화면이 나타나면서 문제 없이 서버를 생성할 수 있다는 것을 알 수 있습니다.</p>
+
+<p><img src="../../images/ncp_server_server_image_share_classic_07.jpg" alt="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 " style="width:770px;align:center" /></p>
+
+<h2 id="공유-권한-삭제">공유 권한 삭제</h2>
+
+<p>이제 공유된 권한을 삭제해보겠습니다.<br />
+처음 서버 이미지를 공유할 때 처럼 서버 이미지를 선택하고, [공유 권한 설정]을 클릭하고, [공유 받은 계정]을 삭제합니다.</p>
+
+<p><img src="../../images/ncp_server_server_image_share_classic_08.jpg" alt="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 " style="width:770px;align:center" /></p>
+
+<p>공유된 계정을 삭제하고, [적용] 버튼을 클릭해 변경될 설정을 적용합니다.</p>
+
+<p><img src="../../images/ncp_server_server_image_share_classic_09.jpg" alt="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 " style="width:770px;align:center" /></p>
+
+<p>아까 공유 받았던 계정으로 접속해 [Server Image]에 들어가보면 공유되었던 서버 이미지가 삭제된 것을 확인할 수 있습니다.</p>
+
+<p><img src="../../images/ncp_server_server_image_share_classic_10.jpg" alt="네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 " style="width:770px;align:center" /></p>
 
 <h2 id="참고-url">참고 URL</h2>
-<p><a href="https://guide.ncloud-docs.com/docs/compute/autoscaling-autoscaling_overview" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute/autoscaling-autoscaling_overview.html</a></p>
+<p><a href="https://guide.ncloud-docs.com/docs/compute-compute-5-1-v2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-5-1-v2</a></p>
 
 <blockquote>
-  <p>문서 최종 수정일 : 2020-11-19</p>
+  <p>문서 최종 수정일 : 2021-05-31</p>
 </blockquote>
 
 		</div>
@@ -274,7 +293,7 @@
 			</a>
 		</li>
 	
-		<li class="active">
+		<li >
 		
 		
 		
@@ -547,7 +566,7 @@
 			</a>
 		</li>
 	
-		<li >
+		<li class="active">
 		
 		
 		
@@ -616,27 +635,6 @@
 					<div>
 						<h3>Global DNS 사용 가이드 - 도메인 추가 <span class="badge badge-pill badge-danger" style="font-size:50%">new</span></h3>
 						<p class="description">네이버 클라우드 Global DNS 사용 방법 중에서 도메인과 레코드 추가에 대한 가이드입니다</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-			<a href="/1.compute/ncp_server_server_image_share_classic/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 <span class="badge badge-pill badge-danger" style="font-size:50%">new</span></h3>
-						<p class="description">네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법을 소개합니다.</p>
 					</div>
 				</article>
 			</a>
@@ -789,6 +787,27 @@
 			</a>
 		</li>
 	
+		<li >
+		
+		
+		
+		
+			<a href="/8.api/ncp_api_call_csharp_sample/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>C#으로 네이버 클라우드 API를 호출하는 샘플 예제 </h3>
+						<p class="description">C#으로 네이버 클라우드 API를 호출하는 샘플 예제입니다.</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
 </ul>
 	</div>
 
@@ -813,17 +832,17 @@
 		<h2>Share</h2>
 		<p>Share this tutorial with your community.</p>
 		<ul>
-			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_limit%2F">
+			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_server_image_share_classic%2F">
 		<svg class="twitter" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg>
 	
  Twitter</a></li>
-			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_limit%2F">
+			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_server_image_share_classic%2F">
 		<svg class="facebook" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="15.8 15.8 25 25"><path d="M32.8 24.7h-3.2v-2.1c0-0.8 0.5-1 0.9-1s2.3 0 2.3 0v-3.5l-3.1 0c-3.5 0-4.3 2.6-4.3 4.3v2.3h-2v3.6h2c0 4.6 0 10.2 0 10.2h4.2c0 0 0-5.6 0-10.2h2.8L32.8 24.7z"/></svg>
 	
  Facebook</a></li>
-			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_limit%2F">
+			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_server_image_share_classic%2F">
  Google+</a></li>
-			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_limit%2F&t=Auto%20Scaling%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%9C%ED%95%9C%EC%82%AC%ED%95%AD">
+			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_server_image_share_classic%2F&t=Classic%20%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%20%EC%84%9C%EB%B2%84%20%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A5%BC%20%EB%8B%A4%EB%A5%B8%20%EA%B3%84%EC%A0%95%EC%97%90%20%EA%B3%B5%EC%9C%A0%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95">
 		<svg class="hacker-news" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.8 3.3c-0.4 0.8-5.6 11.1-5.6 11.2 0 2 0 6.2 0 6.2 -0.1 0-2.2 0-2.3 0 0 0 0-5.9 0-6.2 0 0-5.5-10.9-5.6-11.1C5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3c0 0 0 0 0.1 0 0.9 0 1.7 0 2.6 0 0 0 0 0 0 0.1 0.1 0.1 4 8.3 4.1 8.3 0 0 4.2-8.3 4.3-8.4 0.8 0 1.6 0 2.4 0 0 0 0 0 0 0C18.8 3.3 18.8 3.3 18.8 3.3z"/></svg>
 	
  Hacker News</a></li>
