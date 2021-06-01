@@ -123,6 +123,21 @@
 				
 					
 					
+					"1-compute-ncp-server-windows-server-image-copy-classic-to-vpc": {
+						"id": "1-compute-ncp-server-windows-server-image-copy-classic-to-vpc",
+						"title": "Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/",
+						"content": "개요\n네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다.  이 사전 작업과 조건을 차례대로 정리해보겠습니다.\n\nOS 조건 확인\nClassic 환경의 서버 이미지를 VPC 환경으로 복제하는 것이므로 VPC에서 지원하는 OS만 복제 가능합니다.\n즉, 현재 네이버 클라우드 VPC 환경에서 지원하는 Windows OS 버전은\nWindows Server 2016 (64-bit) English Edition 하나이기 때문에 2016 R2 등의 OS를 사용 중이라면 \nVPC에서 지원하지 않아 복제가 불가능하니 VPC에서 지원할 때까지 작업을 보류하셔야 합니다.\n\n\n(2021년 6월 1일 현재 VPC 환경에서 지원하는 Windows OS 버전)\n\n사전 작업 확인\n우선 사전 작업이 어떤 것이 있는지 확인해 보기 위해 Windows 서버 이미지를 하나 만들어서 상단에 있는 [VPC로 복제] 버튼을 클릭해 봅니다.\n\n안내 팝업에는 다음과 같은 작업이 필요하다고 적혀 있습니다.\n\n\n  백신 솔루션 확인 및 필요시 백신 삭제\n  백신 상태 확인 스크립트 실행\n  내 서버 이미지 다시 생성 후 VPC 복제 기능 사용\n\n\n\n\n백신 삭제\nWindows 서버에 설치된 백신 솔루션을 확인해서, ApexOne 또는 OfficeScan이라면 백신 삭제가 필요하며, 그 외 솔루션은 삭제하지 않아도 됩니다.\n\nApexOne 삭제방법\n\n  제어판 -&gt; 프로그램 추가제거로 이동 후 ‘Trend Micro Apex One Security Agent’를 선택하고, 삭제합니다.\n  C:\\Program Files (x86) 경로의 Trend Micro\\Security Agent 폴더를 삭제합니다.\n(삭제되지 않는 파일은 그대로 두셔도 됩니다)\n\n\nOfficeScan 삭제방법\n\n  제어판 -&gt; 프로그램 추가제거로 이동 후 ‘Trend Micro officescan Security Agent’를 선택하고, 삭제합니다.\n  C:\\Program Files (x86) 경로의 Trend Micro\\Security Agent 폴더를 삭제합니다.\n\n\n그 외 솔루션\n\n  백신 삭제 불필요\n\n\n\n\n\n\n\n\n백신상태 확인\n백신이 모두 정상적으로 제거되었는지 확인하는 툴을 실행합니다.\n\n백신상태 확인 Tool 다운로드\nWindows PowerShell을 열고, 다음의 명령어를 실행하면 바탕화면에 Tool이 다운로드 됩니다.\n\ncd c:\\users\\Administrator\\Desktop \nInvoke-WebRequest http://init.ncloud.com/vpcporting/real/ncp_vac_chk.exe -outfile ncp_vac_chk.exe\n\n\n\n백신상태 확인 Tool 실행\n바탕화면에 다운로드 된 ncp_vac_chk.exe 파일을 관리자 권한으로 실행합니다.\n\n\n\n백신상태 확인 체크 결과 확인\n백신상태 확인이 정상적으로 수행되면 바탕화면에 notifyFreeAntiVirusRemoved, result 파일 2개가 생성되며, 백신상태 확인이 비정상으로 수행되면 result 파일 1개만 생성이 됩니다.\n\nnotifyFreeAntiVirusRemoved 파일이 생성되지 않거나 해당 파일의 내용이 OK가 아닌 경우 백신상태 확인이 정상적으로 완료되지 못한 경우이므로 백신솔루션에 따라 필요시 백신이 잘 제거되었는지 다시 한번 더 체크 후 해당 Tool을 실행해야 합니다.\n\n백신상태 확인이 정상적으로 완료되지 않고 문제가 지속되면 result 파일을 첨부하여 네이버 클라우드 고객센터에 문의하셔야 합니다.\n\n\n\n서버 이미지 복제\n\n서버 이미지 재 생성\n위에서 백신상태 확인 체크가 정상적으로 완료되었다면, 서버 이미지를 다시 생성합니다.\n\n서버 이미지 VPC로 복제\n[콘솔] - [Classic] - [Server] - [Server Image]에서 새로 생성한 이미지를 선택하고 상단의 [VPC 로 복제] 버튼을 클릭합니다.\n위에서도 설명했듯이 현재는 Windows Server 2016 (64-bit) English Edition 버전만 지원합니다.\n\n\n\n복제되는 신규 서버 이미지 이름을 입력하고 [생성] 버튼을 클릭합니다.\n\n\n\n실제 VPC 환경에 복제 진행 중인 이미지가 표시되기까지는 다소 시간이 걸릴 수 있으니 잠시 기다리시면 확인하실 수 있습니다.\n\n\n\n복제된 서버 이미지 확인\n복제가 완료된 서버 이미지의 상세 정보를 살펴보면 Classic 복제 여부 항목이 Y로 표시되는 것을 확인할 수 있습니다.\n\n\n\n서버 생성\nClassic 환경에서 VPC 환경으로 복제된 서버 이미지로 새로운 서버가 생성되는지 확인해보겠습니다.\n이미지를 선택하고 [서버 생성] 버튼을 클릭해서 서버 생성화면에서 정보를 입력하고 서버를 생성합니다.\n\n\n\n정상적으로 생성된 서버를 확인할 수 있습니다.\n\n\n\n참고 URL\nhttps://guide.ncloud-docs.com/docs/compute-compute-5-1-v2\n\n\n  문서 최종 수정일 : 2021-06-01"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
 					"1-compute-ncp-server-ssh-security-setting": {
 						"id": "1-compute-ncp-server-ssh-security-setting",
 						"title": "리눅스서버 SSH 접속 보안 설정하기",

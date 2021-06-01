@@ -1,4 +1,120 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-05-31T16:23:43+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Global DNS 사용 가이드 - 도메인 추가</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/" rel="alternate" type="text/html" title="Global DNS 사용 가이드 - 도메인 추가" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-06-01T17:29:40+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/" rel="alternate" type="text/html" title="Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법" /><published>2021-05-31T00:00:00+09:00</published><updated>2021-05-31T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다.  이 사전 작업과 조건을 차례대로 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;os-조건-확인&quot;&gt;OS 조건 확인&lt;/h2&gt;
+&lt;p&gt;Classic 환경의 서버 이미지를 VPC 환경으로 복제하는 것이므로 &lt;strong&gt;VPC에서 지원하는 OS만 복제 가능&lt;/strong&gt;합니다.&lt;br /&gt;
+즉, 현재 네이버 클라우드 VPC 환경에서 지원하는 Windows OS 버전은&lt;br /&gt;
+&lt;strong&gt;Windows Server 2016 (64-bit) English Edition&lt;/strong&gt; 하나이기 때문에 2016 R2 등의 OS를 사용 중이라면 
+VPC에서 지원하지 않아 복제가 불가능하니 VPC에서 지원할 때까지 작업을 보류하셔야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_14.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;
+&lt;strong&gt;(2021년 6월 1일 현재 VPC 환경에서 지원하는 Windows OS 버전)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;사전-작업-확인&quot;&gt;사전 작업 확인&lt;/h2&gt;
+&lt;p&gt;우선 사전 작업이 어떤 것이 있는지 확인해 보기 위해 Windows 서버 이미지를 하나 만들어서 상단에 있는 [VPC로 복제] 버튼을 클릭해 봅니다.&lt;/p&gt;
+
+&lt;p&gt;안내 팝업에는 다음과 같은 작업이 필요하다고 적혀 있습니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;백신 솔루션 확인 및 필요시 백신 삭제&lt;/li&gt;
+  &lt;li&gt;백신 상태 확인 스크립트 실행&lt;/li&gt;
+  &lt;li&gt;내 서버 이미지 다시 생성 후 VPC 복제 기능 사용&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_01.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;백신-삭제&quot;&gt;백신 삭제&lt;/h2&gt;
+&lt;p&gt;Windows 서버에 설치된 백신 솔루션을 확인해서, ApexOne 또는 OfficeScan이라면 백신 삭제가 필요하며, 그 외 솔루션은 삭제하지 않아도 됩니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;apexone-삭제방법&quot;&gt;ApexOne 삭제방법&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;제어판 -&amp;gt; 프로그램 추가제거로 이동 후 &lt;strong&gt;‘Trend Micro Apex One Security Agent’&lt;/strong&gt;를 선택하고, 삭제합니다.&lt;/li&gt;
+  &lt;li&gt;C:\Program Files (x86) 경로의 Trend Micro\Security Agent 폴더를 삭제합니다.&lt;br /&gt;
+(삭제되지 않는 파일은 그대로 두셔도 됩니다)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;officescan-삭제방법&quot;&gt;OfficeScan 삭제방법&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;제어판 -&amp;gt; 프로그램 추가제거로 이동 후 &lt;strong&gt;‘Trend Micro officescan Security Agent’&lt;/strong&gt;를 선택하고, 삭제합니다.&lt;/li&gt;
+  &lt;li&gt;C:\Program Files (x86) 경로의 Trend Micro\Security Agent 폴더를 삭제합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;그-외-솔루션&quot;&gt;그 외 솔루션&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;백신 삭제 불필요&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_02.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_03.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_13.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;백신상태-확인&quot;&gt;백신상태 확인&lt;/h2&gt;
+&lt;p&gt;백신이 모두 정상적으로 제거되었는지 확인하는 툴을 실행합니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;백신상태-확인-tool-다운로드&quot;&gt;백신상태 확인 Tool 다운로드&lt;/h4&gt;
+&lt;p&gt;Windows PowerShell을 열고, 다음의 명령어를 실행하면 바탕화면에 Tool이 다운로드 됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;c:&lt;span class=&quot;se&quot;&gt;\u&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\A&lt;/span&gt;dministrator&lt;span class=&quot;se&quot;&gt;\D&lt;/span&gt;esktop 
+Invoke-WebRequest http://init.ncloud.com/vpcporting/real/ncp_vac_chk.exe &lt;span class=&quot;nt&quot;&gt;-outfile&lt;/span&gt; ncp_vac_chk.exe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_04.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:732px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;백신상태-확인-tool-실행&quot;&gt;백신상태 확인 Tool 실행&lt;/h4&gt;
+&lt;p&gt;바탕화면에 다운로드 된 &lt;strong&gt;ncp_vac_chk.exe&lt;/strong&gt; 파일을 관리자 권한으로 실행합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_05.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;백신상태-확인-체크-결과-확인&quot;&gt;백신상태 확인 체크 결과 확인&lt;/h4&gt;
+&lt;p&gt;백신상태 확인이 정상적으로 수행되면 바탕화면에 notifyFreeAntiVirusRemoved, result 파일 2개가 생성되며, 백신상태 확인이 비정상으로 수행되면 result 파일 1개만 생성이 됩니다.&lt;/p&gt;
+
+&lt;p&gt;notifyFreeAntiVirusRemoved 파일이 생성되지 않거나 해당 파일의 내용이 OK가 아닌 경우 백신상태 확인이 정상적으로 완료되지 못한 경우이므로 백신솔루션에 따라 필요시 백신이 잘 제거되었는지 다시 한번 더 체크 후 해당 Tool을 실행해야 합니다.&lt;/p&gt;
+
+&lt;p&gt;백신상태 확인이 정상적으로 완료되지 않고 문제가 지속되면 result 파일을 첨부하여 네이버 클라우드 고객센터에 문의하셔야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_06.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;서버-이미지-복제&quot;&gt;서버 이미지 복제&lt;/h2&gt;
+
+&lt;h4 id=&quot;서버-이미지-재-생성&quot;&gt;서버 이미지 재 생성&lt;/h4&gt;
+&lt;p&gt;위에서 백신상태 확인 체크가 정상적으로 완료되었다면, 서버 이미지를 다시 생성합니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;서버-이미지-vpc로-복제&quot;&gt;서버 이미지 VPC로 복제&lt;/h4&gt;
+&lt;p&gt;[콘솔] - [Classic] - [Server] - [Server Image]에서 새로 생성한 이미지를 선택하고 상단의 [VPC 로 복제] 버튼을 클릭합니다.&lt;br /&gt;
+위에서도 설명했듯이 현재는 &lt;strong&gt;Windows Server 2016 (64-bit) English Edition&lt;/strong&gt; 버전만 지원합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_07.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;복제되는 신규 서버 이미지 이름을 입력하고 [생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_08.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:740px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;실제 VPC 환경에 복제 진행 중인 이미지가 표시되기까지는 다소 시간이 걸릴 수 있으니 잠시 기다리시면 확인하실 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_09.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:550px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;복제된-서버-이미지-확인&quot;&gt;복제된 서버 이미지 확인&lt;/h4&gt;
+&lt;p&gt;복제가 완료된 서버 이미지의 상세 정보를 살펴보면 &lt;strong&gt;Classic 복제 여부&lt;/strong&gt; 항목이 &lt;strong&gt;Y&lt;/strong&gt;로 표시되는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_10.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;서버-생성&quot;&gt;서버 생성&lt;/h2&gt;
+&lt;p&gt;Classic 환경에서 VPC 환경으로 복제된 서버 이미지로 새로운 서버가 생성되는지 확인해보겠습니다.&lt;br /&gt;
+이미지를 선택하고 [서버 생성] 버튼을 클릭해서 서버 생성화면에서 정보를 입력하고 서버를 생성합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_11.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;정상적으로 생성된 서버를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_12.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/compute-compute-5-1-v2&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/compute-compute-5-1-v2&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-06-01&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다. 이 사전 작업과 조건을 차례대로 정리해보겠습니다.</summary></entry><entry><title type="html">Global DNS 사용 가이드 - 도메인 추가</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/" rel="alternate" type="text/html" title="Global DNS 사용 가이드 - 도메인 추가" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드 Global DNS를 이용하면 도메인 설정 등을 쉽고 편하게 사용할 수 있습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;도메인-추가&quot;&gt;도메인 추가&lt;/h2&gt;
@@ -1159,99 +1275,4 @@ show slave status&lt;span class=&quot;se&quot;&gt;\G&lt;/span&gt;&lt;span class=
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-04-14&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 PHP에서 Excel 문서를 읽거나 Excel 형태로 문서를 저장해야 할 때 주로 PhpSpreadsheet를 사용하게 됩니다. 이전에는 PHPExcel이라는 이름이었으나 현재는 해당 버전의 개발-유지보수가 중단되고 새로운 프로젝트로 PhpSpreasheet라는 이름으로 업그레이드 되었습니다. 또한 PhpSpreadsheet는 Excel 뿐만 아니라 PDF 형식으로도 파일을 저장할 수 있어서 많이 사용되고 있습니다. 이번에는 이 PhpSpreadsheet로 문서를 저장할 때 사용하는 주요 소스 코드의 샘플을 정리해보겠습니다.</summary></entry><entry><title type="html">Object Storage 데이터를 Archive Storage로 자동으로 이동시키는 방법</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_transfer_to_archive_storage/" rel="alternate" type="text/html" title="Object Storage 데이터를 Archive Storage로 자동으로 이동시키는 방법" /><published>2021-04-12T00:00:00+09:00</published><updated>2021-04-12T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_transfer_to_archive_storage</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_transfer_to_archive_storage/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 Object Storage는 일반 디스크인 Block Storage나 NAS에 비해 가격도 1/2 ~ 1/4정도이면서도 안정적이기 때문에 데이터 저장 특히 백업 용도로 많이 사용합니다.&lt;br /&gt;
-그럼에도 불구하고 많이 양의 데이터가 저장되면 비용에 대한 부담이 생길 수 밖에 없는데, 이럴 때 Archive Storage를 이용하면 Object Storage의 1/5정도로 비용이 줄어들기에 매우 효과적입니다.&lt;br /&gt;
-그래서 이번에는 Object Storage에 있는 데이터를 Archive Storage로 이동시키는 즉, 이관하는 방법에 대해 정리해보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;스토리지-가격-비교&quot;&gt;스토리지 가격 비교&lt;/h2&gt;
-&lt;p&gt;위 개요에서도 간단하게 설명했지만, Archive Storage는 Object Storage에 비해 비용이 1/5 정도입니다.&lt;br /&gt;
-이 두가지 뿐만 아니라 여러 스토리지들의 가격과 용도에 대한 비교는 아래 문서에서 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/4.storage/ncp_storage_compare/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.3rdeyesys.com/4.storage/ncp_storage_compare/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;스토리지-용도-구분&quot;&gt;스토리지 용도 구분&lt;/h2&gt;
-&lt;p&gt;Object Storage와 Archive Storage 2가지 스토리지 모두 데이터를 백업하는 용도로 많이 사용됩니다.&lt;br /&gt;
-비슷하기는 하지만 전혀 다르기도 한 2가지 스토리지에 대한 용도를 간단하게 구분해보겠습니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;object-storage&quot;&gt;Object Storage&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;데이터 저장, 삭제가 수시로 이루어지는 경우&lt;/li&gt;
-  &lt;li&gt;저장된 데이터에 대한 조회가 빈번한 경우&lt;/li&gt;
-  &lt;li&gt;앱을 사용하는 일반 유저들이 앱을 통해 데이터에 접근하는 경우&lt;/li&gt;
-  &lt;li&gt;네이버 클라우드의 다른 서비스에서 데이터를 저장, 조회해야 하는 경우&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;archive-storage&quot;&gt;Archive Storage&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;저장된 데이터에 대한 조회가 거의 없는 경우&lt;/li&gt;
-  &lt;li&gt;당장 사용할 일은 없으나 오랜 기간 데이터를 저장해야 하는 경우&lt;/li&gt;
-  &lt;li&gt;매우 저렴한 비용으로 데이터를 보관하고 싶은 경우&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;데이터-이관&quot;&gt;데이터 이관&lt;/h2&gt;
-&lt;p&gt;Object Storage에 있는 데이터를 자동으로 Archive Storage로 이관하는 방법은 수명주기 관리(LifeCycle Mangement)를 이용하면 됩니다.&lt;br /&gt;
-[ &lt;strong&gt;네이버 클라우드 콘솔 - Object Storage - Lifecycle Management - 수명주기 정책 추가&lt;/strong&gt; ] 기능을 이용하시면 설정할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_transfer_to_archive_storage_01.jpg&quot; alt=&quot;네이버 클라우드 Object Storage 데이터를 Archive Storage로 이동시키는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;수명주기-정책-추가&quot;&gt;수명주기 정책 추가&lt;/h3&gt;
-&lt;p&gt;수명주기 정책 추가 화면에서 정책 유형은 [이관] 또는 [이관 후 삭제], 관리대상은 Object Storage에 있는 대상 버킷, 이동 위치는 Archive Storage에 있는 버킷을 선택하시면 됩니다.&lt;br /&gt;
-이렇게 설정하시면 대상 버킷에 있는 데이터 중에서 이름 규칙에 해당하는 데이터가 Archive Storage로 이동하게 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_transfer_to_archive_storage_02.jpg&quot; alt=&quot;네이버 클라우드 Object Storage 데이터를 Archive Storage로 이동시키는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;정책&quot;&gt;정책&lt;/h4&gt;
-&lt;p&gt;정책 유형은 다음의 3가지가 있습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;만료 삭제 : 설정된 기간이 지난 파일을 삭제&lt;/li&gt;
-  &lt;li&gt;이관 : 설정된 기간이 지난 파일을 Archive Storage로 이동&lt;/li&gt;
-  &lt;li&gt;이관 후 삭제 : 설정된 기간이 지난 파일을 Archive Storage로 이동한 후 Object Storage에서 삭제&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;그리고 이동 시점은 파일이 Object Storage에 저장-생성된 후 경과한 일자를 기준으로 하며 1일 ~ 3,650일 사이의 값을 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_lifecycle_01.jpg&quot; alt=&quot;네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;관리대상-source&quot;&gt;관리대상 (Source)&lt;/h4&gt;
-&lt;p&gt;관리대상의 버킷(Bucket)을 선택하고 Object 이름의 규칙을 접두어 방식으로 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_lifecycle_02.jpg&quot; alt=&quot;네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;이동위치-target&quot;&gt;이동위치 (Target)&lt;/h4&gt;
-&lt;p&gt;이동할 위치는 Archive Storage로 고정이며, Archive Storage의 컨테이너(버킷)을 선택하고 세부경로 즉, 폴더를 입력합니다.&lt;br /&gt;
-세부경로에 아무것도 입력하지 않으면 Source 즉, Object Storage의 위치, 폴더 구조 그대로 이동됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_object_storage_lifecycle_03.jpg&quot; alt=&quot;네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;정책-실행-시간&quot;&gt;정책 실행 시간&lt;/h4&gt;
-&lt;p&gt;Lifecycle Management의 수명주기 정책 실행시간은 아래와 같습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;01:00~02:00,  07:00~08:00, 13:00~14:00, 19:00~20:00
- (※ 파일용량이 클 경우 일부 변동될 수 있음)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;예시) 정책 유형(만료 삭제)﻿, 이동 시점(생성 후 1일)로 정책을 생성하고 대상 파일이 15시에 업로드 되었다면 정책실행은 익일 19~20시 사이에 이관 완료&lt;/p&gt;
-
-&lt;h2 id=&quot;관리대상-이름-규칙&quot;&gt;관리대상 이름 규칙&lt;/h2&gt;
-&lt;p&gt;관리대상인 Object를 이관하는 이름 규칙은 접두어 방식인데 자세한 규칙 설명은 다음 문서를 참고 하시면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/4.storage/ncp_storage_object_storage_lifecycle_management/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.3rdeyesys.com/4.storage/ncp_storage_object_storage_lifecycle_management/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;Object Storage 가이드
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/storage-storage-6-1&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/storage-storage-6-1&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;CentOS에서 mysql DB를 Object Storage로 자동 백업하기
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;/5.database/ncp_database_mysql_object_storage_auto_backup_centos/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;/5.database/ncp_database_mysql_object_storage_auto_backup_centos/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-04-12&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Object Storage는 일반 디스크인 Block Storage나 NAS에 비해 가격도 1/2 ~ 1/4정도이면서도 안정적이기 때문에 데이터 저장 특히 백업 용도로 많이 사용합니다. 그럼에도 불구하고 많이 양의 데이터가 저장되면 비용에 대한 부담이 생길 수 밖에 없는데, 이럴 때 Archive Storage를 이용하면 Object Storage의 1/5정도로 비용이 줄어들기에 매우 효과적입니다. 그래서 이번에는 Object Storage에 있는 데이터를 Archive Storage로 이동시키는 즉, 이관하는 방법에 대해 정리해보겠습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 PHP에서 Excel 문서를 읽거나 Excel 형태로 문서를 저장해야 할 때 주로 PhpSpreadsheet를 사용하게 됩니다. 이전에는 PHPExcel이라는 이름이었으나 현재는 해당 버전의 개발-유지보수가 중단되고 새로운 프로젝트로 PhpSpreasheet라는 이름으로 업그레이드 되었습니다. 또한 PhpSpreadsheet는 Excel 뿐만 아니라 PDF 형식으로도 파일을 저장할 수 있어서 많이 사용되고 있습니다. 이번에는 이 PhpSpreadsheet로 문서를 저장할 때 사용하는 주요 소스 코드의 샘플을 정리해보겠습니다.</summary></entry></feed>
