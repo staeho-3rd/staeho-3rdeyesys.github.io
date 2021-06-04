@@ -128,13 +128,15 @@
 			
 				<li><a href="#스토리지-할당-확인">스토리지 할당 확인</a></li>
 			
-				<li><a href="#스토리지디스크-파티션">스토리지(디스크) 파티션</a></li>
+				<li><a href="#디스크-파티션">디스크 파티션</a></li>
 			
-				<li><a href="#스토리지디스크-포맷">스토리지(디스크) 포맷</a></li>
+				<li><a href="#디스크-포맷">디스크 포맷</a></li>
 			
-				<li><a href="#스토리지디스크-마운트">스토리지(디스크) 마운트</a></li>
+				<li><a href="#디스크-마운트">디스크 마운트</a></li>
 			
 				<li><a href="#마운트-정보-등록">마운트 정보 등록</a></li>
+			
+				<li><a href="#fstab-설정-상세정보">fstab 설정 상세정보</a></li>
 			
 				<li><a href="#참고-url">참고 URL</a></li>
 			
@@ -151,89 +153,228 @@
 
 <h2 id="전체-과정-요약">전체 과정 요약</h2>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-fdisk <span class="nt">-l</span>
+~# fdisk <span class="nt">-l</span>
 
-fdisk /dev/xvdb
+~# fdisk /dev/xvdb
 
-mkfs.ext4 /dev/xvdb1
+~# mkfs.xfs /dev/xvdb1
 
-	- CentOS 5.x: mkfs.ext3 /dev/xvdb1
-	- CentOS 6.x: mkfs.ext4 /dev/xvdb1
-	- CentOS 7.x: mkfs.xfs /dev/xvdb1
-	- Ubuntu : mkfs.ext4 /dev/xvdb1
+  - CentOS 5.x: mkfs.ext3 /dev/xvdb1
+  - CentOS 6.x: mkfs.ext4 /dev/xvdb1
+  - CentOS 7.x: mkfs.xfs /dev/xvdb1
+  - Ubuntu : mkfs.ext4 /dev/xvdb1
 
-<span class="nb">mkdir</span> /mnt/data
+~# <span class="nb">mkdir</span> /mnt/data
 
-mount /dev/xvdb1 /mnt/data
+~# mount /dev/xvdb1 /mnt/data
 
-<span class="nb">df
+~# <span class="nb">df</span> <span class="nt">-k</span>
 
-</span>vi /etc/fstab
-...
+~# vi /etc/fstab
+<span class="c">### =============================</span>
+<span class="nv">UUID</span><span class="o">=</span>1fd5s61f5d-<span class="k">***</span> 중략 <span class="k">***</span><span class="nt">-f84ew13</span> /mnt/data xfs defaults 1 2
+
+<span class="c"># 또는</span>
 /dev/xvdb1 /mnt/data ext4 defaults 1 2
+<span class="c">### =============================</span>
 ...
 
 </code></pre></div></div>
 
 <h2 id="스토리지-생성-할당">스토리지 생성, 할당</h2>
-<p>우선은 네이버 클라우드 콘솔에서 해당 서버의 상세정보에서 스토리지 생성 메뉴를 선택해서 원하는 타입과 용량을 선택하고 생성하면 서버에 스토리지가 할당됩니다.</p>
+<p>우선은 네이버 클라우드 콘솔 [Server] - [Server]에서 해당 서버를 선택하고 
+[서버 관리 및 설정 변경] - [스토리지 생성]을 선택하거나<br />
+[Server] - [Storage]에서 [스토리지 생성]을 클릭합니다.</p>
+
+<p><img src="../../images/ncp_server_storage_add_detail_process_01.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center" /></p>
+
+<p><img src="../../images/ncp_server_storage_add_detail_process_02.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center" /></p>
+
+<p>다음으로 [스토리지 생성] 화면에서 스토리지 종류, 이름, 적용서버, 크기 (최소 10GB, 최대 2000GB) 등을 선택하고 [추가] 버튼을 클릭합니다.</p>
+
+<p><img src="../../images/ncp_server_storage_add_detail_process_03.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center" /></p>
+
+<p>앞에서 설정한 스토리지 정보를 다시 살펴보고 이상이 없으면 [확인] 버튼을 클릭합니다.</p>
+
+<p><img src="../../images/ncp_server_storage_add_detail_process_04.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center" /></p>
+
+<p>추가된 스토리지는 [Server] - [Server] 리스트에서 해당 서버를 클릭해 상세정보에서 확인하거나
+[Server] - [Storage] 리스트에서 연결정보까지 포함해서 확인할 수 있습니다.</p>
+
+<p><img src="../../images/ncp_server_storage_add_detail_process_05.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center" /></p>
+
+<p><img src="../../images/ncp_server_storage_add_detail_process_06.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center" /></p>
 
 <h2 id="스토리지-할당-확인">스토리지 할당 확인</h2>
-<p>네이버 클라우드 콘솔에서 할당한 스토리지를 확인하기 위해 putty를 실행하여 서버에 접속합니다.<br />
+<p>네이버 클라우드 콘솔에서 할당한 스토리지를 확인하기 위해 putty를 실행해 서버에 접속합니다.<br />
 이후 과정은 모두 서버에 접속한 상태에서 진행하게 됩니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fdisk <span class="nt">-l</span>
+
+<p>fdisk -l 명령어를 실행해보면 아래 화면처럼 /dev/xvdb 디스크가 할당된 것을 확인할 수 있습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# fdisk <span class="nt">-l</span>
 </code></pre></div></div>
 
-<h2 id="스토리지디스크-파티션">스토리지(디스크) 파티션</h2>
-<p>할당된 스토리지에 파티션을 생성합니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fdisk /dev/xvdb
+<p><img src="../../images/ncp_server_storage_add_detail_process_07.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center" /></p>
+
+<h2 id="디스크-파티션">디스크 파티션</h2>
+<p>다음 명령어를 입력해 할당된 디스크에 파티션을 생성합니다.<br />
+파티션 설정에는 기본인 MBR 방식과 2TB 이상의 디스크를 인식하기 위해 사용하는 GPT 방식이 있는데, 네이버 클라우드는 최대 2,000GB까지만 지원하므로 여기서는 기본방식인 MBR을 사용하겠습니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# fdisk /dev/xvdb
 </code></pre></div></div>
 <p><br /></p>
-<h4 id="fdisk-devxvdb">fdisk /dev/xvdb</h4>
+<h4 id="파티션-생성">파티션 생성</h4>
 <p>파티션을 생성할 때는 여러 단계의 옵션이 있습니다. 일반적으로는 아래와 같은 단계로 진행하면 됩니다.</p>
 
-<ol>
+<ul>
   <li>파티션을 새로 생성하기 위해 ‘n’을 입력</li>
-  <li>생성할 파티션 타입에 따라 primary type이면 ‘p’, extended type이면 ‘e’를 입력. (primary type으로 생성하는 것이 일반적이며, primary 영역의 파티션이 부족할 경우 추가로 extended type으로 생성)</li>
-  <li>생성할 파티션 번호와 cylinder 영역을 입력 (일반적으로 추가할 disk 전체를 mount하게 되고, 이 경우 default값을 그대로 사용하므로 Enter 입력)</li>
-  <li>‘w’를 눌러서 해당 구성을 적용. 파티션 생성 완료.</li>
-</ol>
+</ul>
 
-<h2 id="스토리지디스크-포맷">스토리지(디스크) 포맷</h2>
-<p>다음으로 파티션이 생성된 디스크를 포맷하면 되는데, OS별로 명령어가 다르므로 확인 후에 실행하면 됩니다.</p>
+<p><img src="../../images/ncp_server_storage_add_detail_process_08-01.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center" /></p>
+
+<ul>
+  <li>생성할 파티션 타입에 따라 primary type이면 ‘p’, extended type이면 ‘e’를 입력.<br />
+(primary type으로 생성하는 것이 일반적이며, primary 영역의 파티션이 부족할 경우 추가로 extended type으로 생성)</li>
+</ul>
+
+<p><img src="../../images/ncp_server_storage_add_detail_process_08-02.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center" /></p>
+
+<ul>
+  <li>생성할 파티션 번호와 cylinder 영역을 입력 (일반적으로 추가할 disk 전체를 mount하게 되고, 이 경우 default값을 그대로 사용하므로 Enter 입력)</li>
+</ul>
+
+<p><img src="../../images/ncp_server_storage_add_detail_process_08-03.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center" /></p>
+
+<ul>
+  <li>‘w’를 입력해 해당 구성을 적용. 파티션 생성 완료.</li>
+</ul>
+
+<p><img src="../../images/ncp_server_storage_add_detail_process_08-04.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center" /></p>
+
+<p>마지막으로 fdisk -l 명령어로 생성된 파티션을 다시 확인합니다.<br />
+디스크가 /dev/xvdb1 장치로 인식된 것을 확인할 수 있습니다.</p>
+
+<p><img src="../../images/ncp_server_storage_add_detail_process_09.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center" /></p>
+
+<h2 id="디스크-포맷">디스크 포맷</h2>
+<p>다음으로 파티션이 생성된 디스크를 포맷하면 되는데, OS별로 명령어가 다르므로 확인 후에 실행해야 합니다.<br />
+여기서는 CentOS 7.x 기준으로 mkfs.xfs 명령어를 사용했습니다.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+~# mkfs.xfs /dev/xvdb1
+
 - CentOS 5.x: mkfs.ext3 /dev/xvdb1
 - CentOS 6.x: mkfs.ext4 /dev/xvdb1
 - CentOS 7.x: mkfs.xfs /dev/xvdb1
 - Ubuntu : mkfs.ext4 /dev/xvdb1
 </code></pre></div></div>
 
-<h2 id="스토리지디스크-마운트">스토리지(디스크) 마운트</h2>
-<p>다음으로 스토리지를 마운트할 포인트 즉, 디렉토리를 원하는 이름으로 생성하고 마운트를 합니다.<br />
+<h2 id="디스크-마운트">디스크 마운트</h2>
+<p>다음으로 디스크를 마운트할 포인트 즉, 디렉토리를 원하는 이름으로 생성하고 마운트를 합니다.<br />
 아래에 있는 마운트 경로 (/mnt/data)는 예시입니다. 원하는 경로를 직접 설정하시면 됩니다.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="nb">mkdir</span> /mnt/data
-mount /dev/xvdb1 /mnt/data
+~# <span class="nb">mkdir</span> /mnt/data
+~# mount /dev/xvdb1 /mnt/data
 </code></pre></div></div>
+<p><img src="../../images/ncp_server_storage_add_detail_process_11-01.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center" /></p>
+
 <p><br />
 마운트된 내역을 확인합니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">df</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# <span class="nb">df</span> <span class="nt">-k</span>
 </code></pre></div></div>
+<p><img src="../../images/ncp_server_storage_add_detail_process_11-02.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center" /></p>
 
 <h2 id="마운트-정보-등록">마운트 정보 등록</h2>
-<p>마운트 정보는 설정에 저장하지 않으면 서버가 리부팅될 때 사라지기 때문에 fstab에 저장합니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-vi /etc/fstab
-...
-/dev/xvdb1 /mnt/data ext4 defaults 1 2
-...
+<p>마운트 정보는 설정에 저장하지 않으면 서버가 리부팅될 때 사라지기 때문에 fstab에 저장합니다.<br />
+마운트 정보를 등록할 때 장치명을 사용하는 방법과 장치의 UUID를 사용하는 방법이 있는데, 경우에 따라서는 장치명이 변경될 수도 있어, 이를 대비해 가능하면 UUID로 등록합니다.</p>
+
+<h4 id="uuid-확인">UUID 확인</h4>
+<p>UUID를 확인하려면 blkid 명령어를 사용합니다.<br />
+여기서 확인한 UUID를 별도로 복사해두었다가 fstab에 입력하게 됩니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# blkid /dev/xvdb1
 </code></pre></div></div>
+<p><img src="../../images/ncp_server_storage_add_detail_process_12.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center" /></p>
+
+<p>vi로 /etc/fstab 파일을 열면 다음과 같습니다.<br />
+서버 생성과 함께 장착된 기본 디스크도 UUID로 입력된 것을 확인할 수 있습니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# vi /etc/fstab
+</code></pre></div></div>
+<p><img src="../../images/ncp_server_storage_add_detail_process_13.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center" /></p>
+
+<p>앞에서 확인하고 복사해둔 추가 디스크의 UUID와 기타 정보를 입력합니다.<br />
+입력을 완료한 후 fstab 파일을 저장하고 빠져 나옵니다.<br />
+(fstab에 입력할때 사용하는 디스크 정보 옵션에 대한 정리는 아래에서 다시 확인할 수 있습니다.)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">### /etc/fstab</span>
+
+<span class="nv">UUID</span><span class="o">=</span>29f58417-<span class="k">***</span> 중략 <span class="k">***</span>38d0f /mnt/data xfs defaults 1 2
+
+<span class="c"># 또는</span>
+/dev/xvdb1 /mnt/data ext4 defaults 1 2
+
+</code></pre></div></div>
+<p><img src="../../images/ncp_server_storage_add_detail_process_14.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center" /></p>
+
+<h2 id="fstab-설정-상세정보">fstab 설정 상세정보</h2>
+
+<p>/etc/fstab은 부팅 단계에서 마운트되어야 할 볼륨 정보들이 저장되는 곳입니다.<br />
+(OS 이미지에 따라 파일 시스템이 다르기 때문에 주의해야 합니다.)</p>
+
+<p>파일의 각 항목이 의미하는 바는 아래와 같으며 각 항목은 Tab 또는 Space Bar로 구분합니다.</p>
+
+<p>(장치명) (마운트 포인트) (파일시스템 종류) (옵션) (dump 설정) (fsck 설정)</p>
+
+<ul>
+  <li>
+    <p>장치명: 장치명은 장치의 UUID를 사용하거나 /dev/xvdb1와 같은 장치이름을 사용합니다.</p>
+  </li>
+  <li>
+    <p>마운트 포인트: 볼륨을 마운트하고자 하는 위치입니다. 예시에서는 /mnt/data 디렉토리에 마운트했습니다.</p>
+  </li>
+  <li>
+    <p>파일시스템 종류: OS별로 기본 파일시스템이 다르므로 알맞게 입력합니다.</p>
+
+    <ul>
+      <li>CentOS 5.x : ext3</li>
+      <li>CentOS 6.x : ext4</li>
+      <li>CentOS 7.x : xfs</li>
+      <li>Ubuntu Server / Desktop : ext4</li>
+    </ul>
+  </li>
+  <li>
+    <p>옵션: 예시에서는 default 옵션을 사용하였으며, 해당 옵션에는 rw, nouser, auto, exec, suid 속성이 포함됩니다.<br />
+각 속성의 내용은 다음과 같습니다. (필요한 옵션만 사용할 시, 각 옵션을 쉼표(,)로 구분하여 작성해주시면 됩니다.)</p>
+
+    <ul>
+      <li>auto : 부팅 시 자동 마운트</li>
+      <li>rw : 읽기, 쓰기 모두 가능하도록 마운트</li>
+      <li>nouser : root 계정만 마운트 가능</li>
+      <li>exec : 파일 실행을 허용</li>
+      <li>suid : SetUID와 SetGID를 허용</li>
+    </ul>
+  </li>
+  <li>
+    <p>dump 설정: dump 명령으로 백업을 할 것인지에 대한 설정</p>
+
+    <ul>
+      <li>0: dump되지 않는 파일 시스템</li>
+      <li>1: dump 가능한 파일 시스템</li>
+    </ul>
+  </li>
+  <li>
+    <p>fsck 설정: 부팅시에 fsck 명령으로 파일시스템에 대한 무결성 검사를 할 것인지에 대한 설정</p>
+
+    <ul>
+      <li>0 : 부팅 시 fsck 실행하지 않음</li>
+      <li>1 : 부팅 시 root 파일 시스템을 우선 체크</li>
+      <li>2 : 부팅 시 root 이외의 파일 시스템을 우선 체크</li>
+    </ul>
+  </li>
+</ul>
 
 <h2 id="참고-url">참고 URL</h2>
 <p><a href="https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2.html</a></p>
 
 <blockquote>
-  <p>문서 최종 수정일 : 2021-01-13</p>
+  <p>문서 최종 수정일 : 2021-06-04</p>
 </blockquote>
 
 		</div>

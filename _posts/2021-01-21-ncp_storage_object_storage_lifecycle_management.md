@@ -117,8 +117,16 @@ order_number: 2
 물론 마찬가지로 수명주기 날짜에 해당하는 파일만 이동하게되고, 폴더 아래에 해당하는 파일이 없을 경우 해동 폴더는 이동하지 않습니다.
 
 
+## 정책 실행 시간
+Lifecycle Management(수명주기) 정책 실행시간은 아래와 같습니다. 
+
+ - 01:00~02:00,  07:00~08:00, 13:00~14:00, 19:00~20:00  
+ (※ 파일용량이 클 경우 일부 변동될 수 있음)
+
+예시) 정책 유형(이관), 이동 시점(생성 후 1일)로 정책을 생성하고, 대상 파일이 15시에 업로드 되었다면 다음 날 19~20시 사이에 이관 완료.
+
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/storage-storage-6-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/storage-storage-6-1.html</a>
 
 
-> 문서 최종 수정일 : 2021-01-21
+> 문서 최종 수정일 : 2021-06-02
