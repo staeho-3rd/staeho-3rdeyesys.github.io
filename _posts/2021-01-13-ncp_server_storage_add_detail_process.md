@@ -1,5 +1,6 @@
 ---
-date: 2020-11-19
+date: 2021-01-13
+update: 2021-06-04
 title: Linux 스토리지(디스크) 추가 상세 가이드
 categories:
   - 1.compute

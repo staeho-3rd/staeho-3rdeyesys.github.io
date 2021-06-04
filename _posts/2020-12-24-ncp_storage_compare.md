@@ -1,5 +1,6 @@
 ---
 date: 2020-12-24
+update: 2020-12-24
 title: 스토리지 비교
 categories:
   - 4.storage

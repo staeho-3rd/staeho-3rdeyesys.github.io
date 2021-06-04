@@ -10,14 +10,23 @@ update:
 		{% for item in update_posts limit: 10 %}
 			<li {% if item.url == page.url %}class="active"{% endif %}>
 			{% assign dateCreated = item.date | date: '%s' %}
+			{% assign dateUpdated = item.update | date: '%s' %}
 			{% assign nowTimestamp = 'now' | date: '%s' %}
-			{% assign diffSeconds = nowTimestamp | minus: dateCreated %}
-			{% assign diffDays = diffSeconds | divided_by: 3600 | divided_by: 24 %}
+			{% assign createdDiffSeconds = nowTimestamp | minus: dateCreated %}
+			{% assign createdDiffDays = createdDiffSeconds | divided_by: 3600 | divided_by: 24 %}
+			{% assign updatedDiffSeconds = nowTimestamp | minus: dateUpdated %}
+			{% assign updatedDiffDays = updatedDiffSeconds | divided_by: 3600 | divided_by: 24 %}
 				<a href="{{ site.baseurl }}{{ item.url }}">
 					<div class="icon">{% include document-icon.html icon=item.type %}</div>
 					<article>
 						<div>
-							<h3>[{{ item.date | date: "%Y-%m-%d" }}] : {{ item.title }} {% if diffDays <= 30 %}<span class="badge badge-pill badge-danger" style="font-size:60%">new</span>{% endif %}</h3>
+							<h3>[{{ item.date | date: "%Y-%m-%d" }}] : {{ item.title }} 
+							{% if createdDiffDays <= 30 %}
+								<span class="badge badge-pill badge-danger" style="font-size:60%">new</span>
+							{% elsif updatedDiffDays <= 30 %}
+								<span class="badge badge-pill badge-success" style="font-size:60%">update</span>
+							{% endif %}
+							</h3>
 							<p class="description">[{{ item.categories }}] : {{ item.description }}</p>
 						</div>
 					</article>

@@ -37,10 +37,6 @@
 <lastmod>2020-11-19T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>https://docs.3rdeyesys.com/1.compute/ncp_server_storage_add_detail_process/</loc>
-<lastmod>2020-11-19T00:00:00+09:00</lastmod>
-</url>
-<url>
 <loc>https://docs.3rdeyesys.com/4.storage/ncp_storage_backup_guide/</loc>
 <lastmod>2020-11-25T00:00:00+09:00</lastmod>
 </url>
@@ -115,6 +111,10 @@
 <url>
 <loc>https://docs.3rdeyesys.com/1.compute/ncp_server_vpc_create/</loc>
 <lastmod>2021-01-06T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>https://docs.3rdeyesys.com/1.compute/ncp_server_storage_add_detail_process/</loc>
+<lastmod>2021-01-13T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>https://docs.3rdeyesys.com/2.networking/ncp_networking_load_balancer_acg/</loc>
