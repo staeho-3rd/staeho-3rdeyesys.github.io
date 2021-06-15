@@ -1,5 +1,6 @@
 ---
 date: 2021-01-22
+update: 2021-06-11
 title: Ubuntu에서 mysql DB를 Object Storage로 자동 백업하기
 categories:
   - 5.database
@@ -27,7 +28,11 @@ order_number: 4
 #!/bin/bash
 DATE=$(date +%Y%m%d%H%M%S)
 BACKUP_DIR=/data_backup/db/
-mysqldump -u root -p디비패스워드  > $BACKUP_DIR"backup_"$DATE.sql
+# 전체 DB를 백업할 경우
+mysqldump -u root -p디비패스워드 --all-databases > $BACKUP_DIR"backup_"$DATE.sql
+
+# 특정 DB를 백업할 경우
+# mysqldump -u root -p디비패스워드 --databases DB명  > $BACKUP_DIR"backup_"$DATE.sql
 
 find $BACKUP_DIR -ctime +7 -exec rm -f {} \;
 
@@ -78,7 +83,7 @@ Object Storage에 data-back-up Bucket을 생성하고 그 아래에 db 폴더를
 이제 Object Storage로 접속해보겠습니다. 얼핏 명령어만 보면 AWS에 접속하는 것처럼 보입니다. 그래서 네이버 클라우드로 접속하기 위한 --endpoint-url= 로 시작하는 옵션이 반드시 필요합니다.
 ``` bash
 # s3 ls 명령으로 Object Storage에 존재하는 버킷 리스트를 조회합니다.
-~# aws --endpoint-url=http://kr.objectstorage.ncloud.com s3 ls
+~# aws --endpoint-url=https://kr.objectstorage.ncloud.com s3 ls
 
 2021-01-21 15:34:07 data-back-up
 ```
@@ -91,14 +96,18 @@ Object Storage에 data-back-up Bucket을 생성하고 그 아래에 db 폴더를
 #!/bin/bash
 DATE=$(date +%Y%m%d%H%M%S)
 BACKUP_DIR=/data_backup/db/
-mysqldump -u root -p디비패스워드  > $BACKUP_DIR"backup_"$DATE.sql
+# 전체 DB를 백업할 경우
+mysqldump -u root -p디비패스워드 --all-databases > $BACKUP_DIR"backup_"$DATE.sql
+
+# 특정 DB를 백업할 경우
+# mysqldump -u root -p디비패스워드 --databases DB명  > $BACKUP_DIR"backup_"$DATE.sql
 
 find $BACKUP_DIR -ctime +7 -exec rm -f {} \;
 
 # 여기서부터 추가되는 명령입니다.
 # 로컬에 백업된 데이터를 Object Storage에 백업-동기화하는 명령어입니다.
 # aws 명령어를 crontab에서 실행하기 위해 aws 파일의 전체 경로를 적어줍니다
-/usr/local/bin/aws --endpoint-url=http://kr.objectstorage.ncloud.com s3 sync /data_backup/ s3://data-back-up/
+/usr/local/bin/aws --endpoint-url=https://kr.objectstorage.ncloud.com s3 sync /data_backup/ s3://data-back-up/
 ```
 > 여기서 db 폴더만 백업-동기화를 하는 것이 아닌 상위 폴더인 /data_backup/ 폴더부터 백업-동기화를 한 이유는 이후에 db 말고도 개발소스 파일 등도 압축해서 백업하기 위해서입니다.
 
@@ -126,4 +135,4 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
 	- <a href="/4.storage/ncp_storage_object_storage_aws_cli_connect/" target="_blank" style="word-break:break-all;">/4.storage/ncp_storage_object_storage_aws_cli_connect/</a>
 
 
-> 문서 최종 수정일 : 2021-01-26
+> 문서 최종 수정일 : 문서 최종 수정일 : 2021-06-11

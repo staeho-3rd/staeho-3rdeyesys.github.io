@@ -142,6 +142,8 @@
 	<section class="tutorial-content">
 		<h1>mysql DB 자동백업 방법
 		
+			<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
+		
 		</h1>
 
 		
@@ -162,7 +164,14 @@
 <span class="c">#!/bin/bash</span>
 <span class="nv">DATE</span><span class="o">=</span><span class="si">$(</span><span class="nb">date</span> +%Y%m%d%H%M%S<span class="si">)</span>
 <span class="nv">BACKUP_DIR</span><span class="o">=</span>/data_backup/db/
-mysqldump <span class="nt">-u</span> root <span class="nt">-p</span>디비패스워드  <span class="o">&gt;</span> <span class="nv">$BACKUP_DIR</span><span class="s2">"backup_"</span><span class="nv">$DATE</span>.sql
+
+<span class="c"># 전체 DB를 백업할 경우</span>
+mysqldump <span class="nt">-u</span> root <span class="nt">-p</span>디비패스워드 <span class="nt">--all-databases</span> <span class="o">&gt;</span> <span class="nv">$BACKUP_DIR</span><span class="s2">"backup_"</span><span class="nv">$DATE</span>.sql
+
+<span class="c"># 특정 DB를 백업할 경우</span>
+<span class="c"># mysqldump -u root -p디비패스워드 --databases DB명  &gt; $BACKUP_DIR"backup_"$DATE.sql</span>
+
+
 
 find <span class="nv">$BACKUP_DIR</span> <span class="nt">-ctime</span> +7 <span class="nt">-exec</span> <span class="nb">rm</span> <span class="nt">-f</span> <span class="o">{}</span> <span class="se">\;</span>
 
@@ -175,6 +184,7 @@ find <span class="nv">$BACKUP_DIR</span> <span class="nt">-ctime</span> +7 <span
 <span class="c"># -cmin +10 처럼 작성하면 10분이 지난 파일을 찾아서 삭제하게 됩니다.</span>
 <span class="c"># find $BACKUP_DIR -cmin +10 -exec rm -f {} \;</span>
 </code></pre></div></div>
+
 <p><br /></p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 백업 스크립트에 실행 권한을 부여합니다.</span>
 ~# <span class="nb">chmod </span>755 /bin/db_backup.sh
@@ -205,7 +215,7 @@ find <span class="nv">$BACKUP_DIR</span> <span class="nt">-ctime</span> +7 <span
 <p><a href="https://www.ncloud.com/product/database" target="_blank" style="word-break:break-all;">https://www.ncloud.com/product/database</a></p>
 
 <blockquote>
-  <p>문서 최종 수정일 : 2021-01-22</p>
+  <p>문서 최종 수정일 : 2021-06-11</p>
 </blockquote>
 
 		</div>
@@ -280,6 +290,8 @@ find <span class="nv">$BACKUP_DIR</span> <span class="nt">-ctime</span> +7 <span
 					<div>
 						<h3>2. mysql DB 자동백업 방법 
 							
+								<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
+							
 						</h3>
 						<p class="description">네이버 클라우드 mysql DB 자동백업 방법</p>
 					</div>
@@ -306,6 +318,8 @@ find <span class="nv">$BACKUP_DIR</span> <span class="nt">-ctime</span> +7 <span
 					<div>
 						<h3>3. CentOS에서 mysql DB를 Object Storage로 자동 백업하기 
 							
+								<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
+							
 						</h3>
 						<p class="description">네이버 클라우드 mysql DB를 Object Storage로 자동 백업하기 - CentOS버전입니다</p>
 					</div>
@@ -331,6 +345,8 @@ find <span class="nv">$BACKUP_DIR</span> <span class="nt">-ctime</span> +7 <span
 				<article>
 					<div>
 						<h3>4. Ubuntu에서 mysql DB를 Object Storage로 자동 백업하기 
+							
+								<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
 							
 						</h3>
 						<p class="description">네이버 클라우드 mysql DB를 Object Storage로 자동 백업하기 - Ubuntu버전입니다</p>
@@ -514,6 +530,34 @@ find <span class="nv">$BACKUP_DIR</span> <span class="nt">-ctime</span> +7 <span
 		
 		
 		
+			<a href="/6.media/ncp_media_video_player_sample/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>Video Player 구현하기 샘플 예제 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">네이버 클라우드 Video Player 구현하기 샘플 예제입니다.</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+		
+		
+		
 			<a href="/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -665,8 +709,6 @@ find <span class="nv">$BACKUP_DIR</span> <span class="nt">-ctime</span> +7 <span
 					<div>
 						<h3>Cloud Outbound Mailer로 대량 메일 발송하는 방법 
 							
-								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
-							
 						</h3>
 						<p class="description">네이버 클라우드에서 Cloud Outbound Mailer로 대량 메일 발송하는 방법입니다.</p>
 					</div>
@@ -747,32 +789,6 @@ find <span class="nv">$BACKUP_DIR</span> <span class="nt">-ctime</span> +7 <span
 							
 						</h3>
 						<p class="description">네이버 클라우드 MYSQL(MARIADB) replication 생성하기</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-		
-		
-		
-			<a href="/99.etc/etc_phpspreadsheet_sample_code/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>PhpSpreadsheet 설정 샘플 코드 
-							
-						</h3>
-						<p class="description">PhpSpreadsheet 설정 샘플 코드를 정리한 문서입니다.</p>
 					</div>
 				</article>
 			</a>

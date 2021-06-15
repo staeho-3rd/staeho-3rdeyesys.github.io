@@ -1,5 +1,6 @@
 ---
 date: 2021-01-22
+update: 2021-06-11
 title: mysql DB 자동백업 방법
 categories:
   - 5.database
@@ -26,7 +27,14 @@ order_number: 2
 #!/bin/bash
 DATE=$(date +%Y%m%d%H%M%S)
 BACKUP_DIR=/data_backup/db/
-mysqldump -u root -p디비패스워드  > $BACKUP_DIR"backup_"$DATE.sql
+
+# 전체 DB를 백업할 경우
+mysqldump -u root -p디비패스워드 --all-databases > $BACKUP_DIR"backup_"$DATE.sql
+
+# 특정 DB를 백업할 경우
+# mysqldump -u root -p디비패스워드 --databases DB명  > $BACKUP_DIR"backup_"$DATE.sql
+
+
 
 find $BACKUP_DIR -ctime +7 -exec rm -f {} \;
 
@@ -39,6 +47,7 @@ find $BACKUP_DIR -ctime +7 -exec rm -f {} \;
 # -cmin +10 처럼 작성하면 10분이 지난 파일을 찾아서 삭제하게 됩니다.
 # find $BACKUP_DIR -cmin +10 -exec rm -f {} \;
 ```
+
 <br />
 ``` bash
 # 백업 스크립트에 실행 권한을 부여합니다.
@@ -73,4 +82,4 @@ find $BACKUP_DIR -ctime +7 -exec rm -f {} \;
 <a href="https://www.ncloud.com/product/database" target="_blank" style="word-break:break-all;">https://www.ncloud.com/product/database</a>
 
 
-> 문서 최종 수정일 : 2021-01-22
+> 문서 최종 수정일 : 2021-06-11

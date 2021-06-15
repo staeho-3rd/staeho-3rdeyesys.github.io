@@ -158,6 +158,8 @@
 	<section class="tutorial-content">
 		<h1>Ubuntu에서 mysql DB를 Object Storage로 자동 백업하기
 		
+			<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
+		
 		</h1>
 
 		
@@ -179,7 +181,11 @@
 <span class="c">#!/bin/bash</span>
 <span class="nv">DATE</span><span class="o">=</span><span class="si">$(</span><span class="nb">date</span> +%Y%m%d%H%M%S<span class="si">)</span>
 <span class="nv">BACKUP_DIR</span><span class="o">=</span>/data_backup/db/
-mysqldump <span class="nt">-u</span> root <span class="nt">-p</span>디비패스워드  <span class="o">&gt;</span> <span class="nv">$BACKUP_DIR</span><span class="s2">"backup_"</span><span class="nv">$DATE</span>.sql
+<span class="c"># 전체 DB를 백업할 경우</span>
+mysqldump <span class="nt">-u</span> root <span class="nt">-p</span>디비패스워드 <span class="nt">--all-databases</span> <span class="o">&gt;</span> <span class="nv">$BACKUP_DIR</span><span class="s2">"backup_"</span><span class="nv">$DATE</span>.sql
+
+<span class="c"># 특정 DB를 백업할 경우</span>
+<span class="c"># mysqldump -u root -p디비패스워드 --databases DB명  &gt; $BACKUP_DIR"backup_"$DATE.sql</span>
 
 find <span class="nv">$BACKUP_DIR</span> <span class="nt">-ctime</span> +7 <span class="nt">-exec</span> <span class="nb">rm</span> <span class="nt">-f</span> <span class="o">{}</span> <span class="se">\;</span>
 
@@ -225,7 +231,7 @@ Default output format <span class="o">[</span>None]: <span class="o">[</span>Ent
 <h2 id="object-storage-접속-테스트">Object Storage 접속 테스트</h2>
 <p>이제 Object Storage로 접속해보겠습니다. 얼핏 명령어만 보면 AWS에 접속하는 것처럼 보입니다. 그래서 네이버 클라우드로 접속하기 위한 –endpoint-url= 로 시작하는 옵션이 반드시 필요합니다.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># s3 ls 명령으로 Object Storage에 존재하는 버킷 리스트를 조회합니다.</span>
-~# aws <span class="nt">--endpoint-url</span><span class="o">=</span>http://kr.objectstorage.ncloud.com s3 <span class="nb">ls
+~# aws <span class="nt">--endpoint-url</span><span class="o">=</span>https://kr.objectstorage.ncloud.com s3 <span class="nb">ls
 
 </span>2021-01-21 15:34:07 data-back-up
 </code></pre></div></div>
@@ -237,14 +243,18 @@ Default output format <span class="o">[</span>None]: <span class="o">[</span>Ent
 <span class="c">#!/bin/bash</span>
 <span class="nv">DATE</span><span class="o">=</span><span class="si">$(</span><span class="nb">date</span> +%Y%m%d%H%M%S<span class="si">)</span>
 <span class="nv">BACKUP_DIR</span><span class="o">=</span>/data_backup/db/
-mysqldump <span class="nt">-u</span> root <span class="nt">-p</span>디비패스워드  <span class="o">&gt;</span> <span class="nv">$BACKUP_DIR</span><span class="s2">"backup_"</span><span class="nv">$DATE</span>.sql
+<span class="c"># 전체 DB를 백업할 경우</span>
+mysqldump <span class="nt">-u</span> root <span class="nt">-p</span>디비패스워드 <span class="nt">--all-databases</span> <span class="o">&gt;</span> <span class="nv">$BACKUP_DIR</span><span class="s2">"backup_"</span><span class="nv">$DATE</span>.sql
+
+<span class="c"># 특정 DB를 백업할 경우</span>
+<span class="c"># mysqldump -u root -p디비패스워드 --databases DB명  &gt; $BACKUP_DIR"backup_"$DATE.sql</span>
 
 find <span class="nv">$BACKUP_DIR</span> <span class="nt">-ctime</span> +7 <span class="nt">-exec</span> <span class="nb">rm</span> <span class="nt">-f</span> <span class="o">{}</span> <span class="se">\;</span>
 
 <span class="c"># 여기서부터 추가되는 명령입니다.</span>
 <span class="c"># 로컬에 백업된 데이터를 Object Storage에 백업-동기화하는 명령어입니다.</span>
 <span class="c"># aws 명령어를 crontab에서 실행하기 위해 aws 파일의 전체 경로를 적어줍니다</span>
-/usr/local/bin/aws <span class="nt">--endpoint-url</span><span class="o">=</span>http://kr.objectstorage.ncloud.com s3 <span class="nb">sync</span> /data_backup/ s3://data-back-up/
+/usr/local/bin/aws <span class="nt">--endpoint-url</span><span class="o">=</span>https://kr.objectstorage.ncloud.com s3 <span class="nb">sync</span> /data_backup/ s3://data-back-up/
 </code></pre></div></div>
 <blockquote>
   <p>여기서 db 폴더만 백업-동기화를 하는 것이 아닌 상위 폴더인 /data_backup/ 폴더부터 백업-동기화를 한 이유는 이후에 db 말고도 개발소스 파일 등도 압축해서 백업하기 위해서입니다.</p>
@@ -282,7 +292,7 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
 </ol>
 
 <blockquote>
-  <p>문서 최종 수정일 : 2021-01-26</p>
+  <p>문서 최종 수정일 : 문서 최종 수정일 : 2021-06-11</p>
 </blockquote>
 
 		</div>
@@ -357,6 +367,8 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
 					<div>
 						<h3>2. mysql DB 자동백업 방법 
 							
+								<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
+							
 						</h3>
 						<p class="description">네이버 클라우드 mysql DB 자동백업 방법</p>
 					</div>
@@ -383,6 +395,8 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
 					<div>
 						<h3>3. CentOS에서 mysql DB를 Object Storage로 자동 백업하기 
 							
+								<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
+							
 						</h3>
 						<p class="description">네이버 클라우드 mysql DB를 Object Storage로 자동 백업하기 - CentOS버전입니다</p>
 					</div>
@@ -408,6 +422,8 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
 				<article>
 					<div>
 						<h3>4. Ubuntu에서 mysql DB를 Object Storage로 자동 백업하기 
+							
+								<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
 							
 						</h3>
 						<p class="description">네이버 클라우드 mysql DB를 Object Storage로 자동 백업하기 - Ubuntu버전입니다</p>
@@ -591,6 +607,34 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
 		
 		
 		
+			<a href="/6.media/ncp_media_video_player_sample/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>Video Player 구현하기 샘플 예제 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">네이버 클라우드 Video Player 구현하기 샘플 예제입니다.</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+		
+		
+		
 			<a href="/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -742,8 +786,6 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
 					<div>
 						<h3>Cloud Outbound Mailer로 대량 메일 발송하는 방법 
 							
-								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
-							
 						</h3>
 						<p class="description">네이버 클라우드에서 Cloud Outbound Mailer로 대량 메일 발송하는 방법입니다.</p>
 					</div>
@@ -824,32 +866,6 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
 							
 						</h3>
 						<p class="description">네이버 클라우드 MYSQL(MARIADB) replication 생성하기</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-		
-		
-		
-			<a href="/99.etc/etc_phpspreadsheet_sample_code/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>PhpSpreadsheet 설정 샘플 코드 
-							
-						</h3>
-						<p class="description">PhpSpreadsheet 설정 샘플 코드를 정리한 문서입니다.</p>
 					</div>
 				</article>
 			</a>
