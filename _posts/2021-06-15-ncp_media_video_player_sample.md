@@ -43,7 +43,7 @@ order_number: 1
 
 js 파일이 저장된 Object Storage에서도 확인 가능합니다.
 
-<img src="../../images/ncp_media_video_player_06.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
+<img src="../../images/ncp_media_video_player_07.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
 
 
 ## 플레이어 구현하기

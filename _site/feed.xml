@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-06-15T17:42:26+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Video Player 구현하기 샘플 예제</title><link href="https://docs.3rdeyesys.com/6.media/ncp_media_video_player_sample/" rel="alternate" type="text/html" title="Video Player 구현하기 샘플 예제" /><published>2021-06-15T00:00:00+09:00</published><updated>2021-06-15T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/6.media/ncp_media_video_player_sample</id><content type="html" xml:base="https://docs.3rdeyesys.com/6.media/ncp_media_video_player_sample/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-06-15T17:50:38+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Video Player 구현하기 샘플 예제</title><link href="https://docs.3rdeyesys.com/6.media/ncp_media_video_player_sample/" rel="alternate" type="text/html" title="Video Player 구현하기 샘플 예제" /><published>2021-06-15T00:00:00+09:00</published><updated>2021-06-15T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/6.media/ncp_media_video_player_sample</id><content type="html" xml:base="https://docs.3rdeyesys.com/6.media/ncp_media_video_player_sample/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 비디오 플레이어는 최신의 네이버 미디어 플레이어를 기반으로 개발된 클라우드 전용 상품으로 
 네이버 동영상 서비스에 적용되어 수 많은 성공사례를 가지고 있는 최신의 네이버 플레이어를 손쉽고 빠르게 고객의 미디어 서비스에 적용할 수 있습니다.&lt;/p&gt;
 
@@ -31,7 +31,7 @@
 
 &lt;p&gt;js 파일이 저장된 Object Storage에서도 확인 가능합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_media_video_player_06.jpg&quot; alt=&quot;Video Player 구현하기 샘플 예제&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_media_video_player_07.jpg&quot; alt=&quot;Video Player 구현하기 샘플 예제&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;플레이어-구현하기&quot;&gt;플레이어 구현하기&lt;/h2&gt;
 &lt;p&gt;생성된 플레이어는 자바스크립트 js 파일이므로 html 파일을 만들어서 플레이어를 구현해야 합니다.&lt;/p&gt;
