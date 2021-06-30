@@ -9,7 +9,7 @@
 - name: FAQ
   link: /faq/
   target: _self
-  new: n
+  new: y
 - name: NEWS
   link: /news/
   target: _self
