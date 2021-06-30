@@ -5,7 +5,7 @@ categories:
   - 2.networking
 description: 네이버 클라우드 Classic Load Balancer 운영을 위한 ACG 설정 방법
 type: Document
-set: networking
+set: Load Balancer
 order_number: 5
 ---
 

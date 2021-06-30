@@ -1,5 +1,6 @@
 ---
 date: 2021-06-15
+update: 2021-06-15
 title: Video Player 구현하기 샘플 예제
 categories:
   - 6.media

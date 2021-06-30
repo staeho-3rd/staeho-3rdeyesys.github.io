@@ -1,5 +1,6 @@
 ---
 date: 2021-05-31
+update: 2021-05-31
 title: Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법
 categories:
   - 1.compute

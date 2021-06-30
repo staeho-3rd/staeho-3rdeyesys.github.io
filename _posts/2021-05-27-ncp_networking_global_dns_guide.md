@@ -1,5 +1,6 @@
 ---
 date: 2021-05-27
+update: 2021-05-27
 title: Global DNS 사용 가이드 - 도메인 추가
 categories:
   - 2.networking
@@ -7,6 +8,7 @@ description: 네이버 클라우드 Global DNS 사용 방법 중에서 도메인
 type: Document
 set: dns
 order_number: 7
+creator: franky
 ---
 
 ## 개요

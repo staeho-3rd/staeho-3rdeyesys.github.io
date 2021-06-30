@@ -1,5 +1,6 @@
 ---
 date: 2021-05-27
+update: 2021-05-27
 title: 리눅스서버 SSH 접속 보안 설정하기
 categories:
   - 1.compute
@@ -7,6 +8,7 @@ description: 네이버 클라우드 리눅스 서버에 SSH로 접속할 때 필
 type: Document
 set: server
 order_number: 16
+creator: ljh0519
 ---
 
 

@@ -5,7 +5,7 @@ categories:
   - 2.networking
 description: 네이버 클라우드 Load Balancer 상품군의 변화
 type: Document
-set: networking
+set: Load Balancer
 order_number: 4
 ---
 
