@@ -1,5 +1,6 @@
 ---
 date: 2020-11-29
+update: 2021-07-01
 title: Auto Scaling 서비스 제한사항
 categories:
   - 1.compute
@@ -17,15 +18,20 @@ order_number: 4
 서버 스펙이나 서비스 환경과 관련한 제한 사항은 다음과 같습니다.
 
 - 총 디스크 사이즈 150GB 이하 서버만 가능
-- Windows OS는 Windows 2012. 2016만 지원
+- Windows OS는 Windows 2012 (Classic 전용), 2016만 지원
 - Micro 서버는 불가
-- High Memory 서버는 불가(추후 개선 예정)
 - Local Disk 기반 서버는 불가
 - Global Internet Service 영역 내의 서비스 불가
 
-따라서 서버타입 기준으로  `Auto Scaling 설정이 가능한 서버타입은 Compact, Standard 2가지 뿐`입니다.
 
-<img src="../../images/ncp_server_autoscaling_limit.png" alt="Auto Scaling 서비스 제한사항" style="width:600px;align:center">
+따라서 서버타입 기준으로  Auto Scaling 설정이 가능한 서버타입은 다음과 같습니다.
+- Classic : Compact, Standard
+- VPC : High CPU, Standard, High Memory
+
+<img src="../../images/ncp_server_autoscaling_limit_01.jpg" alt="Auto Scaling 서비스 제한사항" style="width:770px;align:center">
+<img src="../../images/ncp_server_autoscaling_limit_02.jpg" alt="Auto Scaling 서비스 제한사항" style="width:770px;align:center">
+
+> 현재 [Auto Scaling] - [Launch Configuration] 화면과 가이드에 나오는 [High Memory 타입은 지원되지 않습니다]는 예전 메시지로 조만간 삭제될 예정이라고 합니다.
 
 ## OS 서버 이미지 제한 사항
 centos-7.8-64, ubuntu-18.04 이 2가지 OS 이미지는 개인 회원은 KR-1 1세대 서버에서 생성이 불가능한 이미지입니다. 2세대 서버를 선택하시거나 KR-2에서 생성해야 합니다.
@@ -43,7 +49,7 @@ centos-7.8-64, ubuntu-18.04 이 2가지 OS 이미지는 개인 회원은 KR-1 1�
 > 계정당 생성 가능한 최대 서버 대수 : 네이버 클라우드에서 한 **계정당 생성할 수 있는 최대 서버 수 기본 50대**입니다. 서버 수 한도를 조정하려면 고객지원으로 문의해야 합니다.
 
 ## 참고 URL
-<a href="https://guide.ncloud-docs.com/docs/compute/autoscaling-autoscaling_overview" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute/autoscaling-autoscaling_overview.html</a>
+<a href="https://guide.ncloud-docs.com/docs/compute-autoscaling-autoscalingoverview" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-autoscaling-autoscalingoverview</a>
 
 
-> 문서 최종 수정일 : 2020-11-19
+> 문서 최종 수정일 : 2021-07-02
