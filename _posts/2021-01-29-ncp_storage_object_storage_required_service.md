@@ -26,9 +26,9 @@ Object Storage와 연동이 필수인 서비스들에는 AI-Application Service�
 - Cloud Hadoop
 - Data Analytics Service
 
-<img src="../../images/ncp_storage_object_storage_required_service_01.jpg" alt="Object Storage와 연동이 필수인 서비스" style="width:800px;align:center">
+<img src="../../images/ncp_storage_object_storage_required_service_01.jpg" alt="Object Storage와 연동이 필수인 서비스" style="width:770px;align:center">
 
-<img src="../../images/ncp_storage_object_storage_required_service_02.jpg" alt="Object Storage와 연동이 필수인 서비스" style="width:800px;align:center">
+<img src="../../images/ncp_storage_object_storage_required_service_02.jpg" alt="Object Storage와 연동이 필수인 서비스" style="width:770px;align:center">
 
 
 ## 연동 선택 서비스
