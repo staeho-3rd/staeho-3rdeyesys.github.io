@@ -129,6 +129,21 @@
 				
 					
 					
+					"1-compute-ncp-server-storage-lvm-create": {
+						"id": "1-compute-ncp-server-storage-lvm-create",
+						"title": "리눅스서버 스토리지(디스크) LVM 구성하기",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_server_storage_lvm_create/",
+						"content": "개요\n네이버 클라우드 서버는 하나의 서버당 로컬 디스크 즉, 블록 스토리지(Block Storage)를 OS가 설치되는 기본 스토리지 1개 이외에 15개를 추가할 수 있으며, 각 스토리지 용량은 10GB ~2,000GB 까지 가능합니다.\n그리고, 2,000GB 이상을 사용해야 할 경우는 NAS 장비를 사용하거나 Object Storage를 활용하는 경우가 많지만, 상황에 따라서는 2,000GB를 초과하는 용량의 블록 스토리지를 사용해야 하는 경우도 있습니다.\n이럴때 사용하는 방법이 LVM (Logical Volume Manager)를 사용하여 여러 개의 스토리지를 합쳐서 대용량으로 사용하거나 합쳐진 대용량을 다시 필요한 용량으로 나누어서 사용하는 방법입니다.\n그래서 이번에는 리눅스 환경에서 LVM으로 대용량 스토리지를 생성하는 방법을 정리해보겠습니다.\n\n스토리지 생성\n2000GB 이상의 용량을 필요로 할 때에 대한 내용이지만, 테스트를 위해 10GB 스토리지 2개를 생성하겠습니다.\n\n\n\nlvm-test-1, lvm-test-2 이름으로 생성된 스토리지 2개를 Ubuntu OS가 설치된 lvm-test-svr 서버에 연결했습니다.\n\n\n\n파티션 설정\n생성된 스토리지 2개에 각각 파티션을 설정합니다.\n파티션 설정에는 parted 명령어를 사용합니다.\n\n~# parted /dev/xvdb\n\n# (parted)\nmklabel gpt\nmkpart primary 0 100%\ni\nset 1 lvm on   # 1번 파티션에 lvm 사용 가능하게 설정\np\nquit\n\n\n\n\n~# parted /dev/xvdc\n\n# (parted)\nmklabel gpt\nmkpart primary 0 100%\ni\nset 1 lvm on   # 1번 파티션에 lvm 사용 가능하게 설정\np\nquit\n\n\n\n\n설정된 파티션들을 확인합니다.\n~# fdisk -l\n\n\n\n\nPhysical Volume 생성\n각 스토리지 장치에 Physical Volume을 생성합니다.\n\n~# pvcreate /dev/xvdb1\n\n~# pvcreate /dev/xvdc1\n\n\n\n\nPhysical Volume이 제대로 생성되었는지 확인합니다.\n~# pvdisplay\n\n\n\n\nVolume Group 생성\n준비된 두개의 Volume으로 하나의 Volume Group을 생성합니다.\n\n~# vgcreate VG01 /dev/xvdb1 /dev/xvdc1\n\n\n\n\n생성된 Volume Group을 확인합니다.\n~# vgdisplay\n\n\n\n\nLogical Volume 생성\n생성된 Volume Group 전체 크기를 사용하는 Logical Volume을 생성합니다.\n~# lvcreate --extents 100%FREE -n LV01 VG01\n\n\n\n\n생성된 Logical Volume을 확인합니다.\n~# lvdisplay\n\n\n\n\n포맷\n다음으로 포맷을 해야하는데, OS별로 명령어가 다르므로 확인 후에 실행해야 합니다.\n여기서는 Ubuntu 기준으로 mkfs.ext4 명령어를 사용했습니다.\n\n~# mkfs.ext4 /dev/VG01/LV01\n\n- CentOS 5.x: mkfs.ext3 /dev/VG01/LV01\n- CentOS 6.x: mkfs.ext4 /dev/VG01/LV01\n- CentOS 7.x: mkfs.xfs /dev/VG01/LV01\n- Ubuntu : mkfs.ext4 /dev/VG01/LV01\n\n\n\n\n마운트\n마운트를 하기 위해 우선 생성된 디스크 장치명을 확인합니다.\n~# fdisk -l\n\n\n\n\n다음으로 디스크를 마운트할 포인트 즉, 디렉토리를 원하는 이름으로 생성하고 마운트를 합니다.\n아래에 있는 마운트 경로 (/mnt/data)는 예시입니다. 원하는 경로를 직접 설정하시면 됩니다.\n\n~# mkdir /mnt/data\n~# mount /dev/mapper/VG01-LV01 /mnt/data\n\n\n\n\nfstab 설정\n새로 생성된 디스크를 부팅 후에도 인식할 수 있게 blkid 명령으로 UUID를 확인하고 fstab에 등록합니다.\n\n~# blkid |grep /dev/mapper/VG01-LV01\n\n\n\n~# vi /etc/fstab\n\n\n\nfstab 설정 상세정보\n\n/etc/fstab은 부팅 단계에서 마운트되어야 할 볼륨 정보들이 저장되는 곳입니다.\n(OS 이미지에 따라 파일 시스템이 다르기 때문에 주의해야 합니다.)\n\n파일의 각 항목이 의미하는 바는 아래와 같으며 각 항목은 Tab 또는 Space Bar로 구분합니다.\n\n(장치명) (마운트 포인트) (파일시스템 종류) (옵션) (dump 설정) (fsck 설정)\n\n\n  \n    장치명: 장치명은 장치의 UUID를 사용하거나 /dev/xvdb1와 같은 장치이름을 사용합니다.\n  \n  \n    마운트 포인트: 볼륨을 마운트하고자 하는 위치입니다. 예시에서는 /mnt/data 디렉토리에 마운트했습니다.\n  \n  \n    파일시스템 종류: OS별로 기본 파일시스템이 다르므로 알맞게 입력합니다.\n\n    \n      CentOS 5.x : ext3\n      CentOS 6.x : ext4\n      CentOS 7.x : xfs\n      Ubuntu Server / Desktop : ext4\n    \n  \n  \n    옵션: 예시에서는 default 옵션을 사용하였으며, 해당 옵션에는 rw, nouser, auto, exec, suid 속성이 포함됩니다.\n각 속성의 내용은 다음과 같습니다. (필요한 옵션만 사용할 시, 각 옵션을 쉼표(,)로 구분하여 작성해주시면 됩니다.)\n\n    \n      auto : 부팅 시 자동 마운트\n      rw : 읽기, 쓰기 모두 가능하도록 마운트\n      nouser : root 계정만 마운트 가능\n      exec : 파일 실행을 허용\n      suid : SetUID와 SetGID를 허용\n    \n  \n  \n    dump 설정: dump 명령으로 백업을 할 것인지에 대한 설정\n\n    \n      0: dump되지 않는 파일 시스템\n      1: dump 가능한 파일 시스템\n    \n  \n  \n    fsck 설정: 부팅시에 fsck 명령으로 파일시스템에 대한 무결성 검사를 할 것인지에 대한 설정\n\n    \n      0 : 부팅 시 fsck 실행하지 않음\n      1 : 부팅 시 root 파일 시스템을 우선 체크\n      2 : 부팅 시 root 이외의 파일 시스템을 우선 체크\n    \n  \n\n\n참고 URL\nhttps://guide.ncloud-docs.com/docs/compute-compute-4-1-v2.html\n\n\n  문서 최종 수정일 : 2021-07-06"
+					}
+					
+				
+			
+		
+			
+				
+					,
+					
 					"2-networking-ncp-networking-load-balancer-application-lb": {
 						"id": "2-networking-ncp-networking-load-balancer-application-lb",
 						"title": "VPC 환경에서 Application Load Balancer 생성하기",
