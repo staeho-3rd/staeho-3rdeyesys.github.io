@@ -15,15 +15,6 @@
 		<!--link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400italic,400,300italic,300,700,700italic|Open+Sans:400italic,600italic,700italic,700,600,400|Inconsolata:400,700"-->
 
 		
-			<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q6RVEFJ3S"></script>
-			<script>
-			  window.dataLayer = window.dataLayer || [];
-			  function gtag(){dataLayer.push(arguments);}
-			  gtag('js', new Date());
-
-			  gtag('config', 'G-4Q6RVEFJ3S');
-			</script>
-		
 
 		<!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Search | 3rdeyesys</title>
@@ -32,14 +23,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="써드아이시스템 기술문서" />
 <meta property="og:description" content="써드아이시스템 기술문서" />
-<link rel="canonical" href="https://docs.3rdeyesys.com/search/" />
-<meta property="og:url" content="https://docs.3rdeyesys.com/search/" />
+<link rel="canonical" href="http://localhost:4000/search/" />
+<meta property="og:url" content="http://localhost:4000/search/" />
 <meta property="og:site_name" content="3rdeyesys" />
 <script type="application/ld+json">
-{"url":"https://docs.3rdeyesys.com/search/","headline":"Search","description":"써드아이시스템 기술문서","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/search/","headline":"Search","description":"써드아이시스템 기술문서","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/siteicon.png"}},"@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-		<link type="application/atom+xml" rel="alternate" href="https://docs.3rdeyesys.com/feed.xml" title="3rdeyesys" />
+		<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="3rdeyesys" />
 
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	</head>
@@ -128,6 +119,21 @@
 			
 				
 					
+					
+					"1-compute-ncp-server-kubernetes-service-start-guide": {
+						"id": "1-compute-ncp-server-kubernetes-service-start-guide",
+						"title": "Kubernetes Service 클러스터 생성 및 제어 가이드",
+						"categories": "1.compute",
+						"url": " /1.compute/ncp_server_kubernetes_service_start_guide/",
+						"content": "NKS 클러스터 생성 및 제어 가이드\n네이버 클라우드 Kubernetes서비스의 생성 및 제어 하는 방법에 대해 설명하겠습니다 .\n\nNKS 클러스터 생성\n\n선행조건\n\n클러스터에 사용할 전용VPC 와 Private, LB전용 Subnet 이 필요합니다.\n\n\n  -Private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /17~/26 범위의 Private Subnet, 로드밸런서 전용 Subnet이 필요합니다.\n-Docker Bridge 대역의 충돌을 방지하기 위해 172.17.0.0/16 범위 내의 Private Subnet, 로드밸런서 전용Subnet은 선택할 수 없습니다.\n\n\n\n\nkubernetes Sevice탭에 들어간뒤 생성하기를 클릭합니다.\n\n\n\n생성하실 클러스터의 정보를 설정해줍니다.\n(ACG는 자동으로 생성 됩니다.)\n\n  현재 지원되고 있는 Kubenetes 버전은 &lt;1.17.16&gt;, &lt;1.18.17&gt; 입니다.\n\n\n\n\n클러스터에 생성되는 노드풀과 서버의 스펙 및 수를 지정해줍니다.\n\n\n  현재 지원되고 있는 OS는   입니다.\n\n\n\n\n워커노드의 로그인키를 설정 합니다.\n\n\n\n설정 정보를 최종적으로 확인한 후 생성버튼을 클릭하여 클러스터를 생성합니다.\n\nkubectl 설치\n\n사용자 로컬 머신에서 클러스터를 제어하기 위해 kubectl을 설치합니다.\n\nwindows에서 cmd 창을 열어 kubctl의 최신 릴리즈 버전을 다운로드 합니다.\n\n최신릴리즈 v1.21.0\n\n또는 curl 을 이용하여 다운로드 받습니다.\ncurl -LO https://dl.k8s.io/v1.21.0/bin/windows/amd64/kubectl.exe.sha256\n\n\nkubectl 의 버전을 확인합니다.\nkubectl version --client\n\n다른OS의 설치방법도 필요하시면 아래의 링크가 있습니다.\n\nLinux kubectl 설치&lt;/br&gt;\nmacOS kubectl 설치\n\nNKS 접속하여 제어하기 (windows)\n\n클러스터를 제어하기 위해서는 NKS에서 제공해주는 접속을 위한 인증정보가 있는 설정파일을 다운로드 합니다.\n\n\n\n가이드 보기 버튼을 누른 뒤\n\n\n\nNKS에서 제공해주는 설정 파일을 다운로드 받습니다.\n\n그 후 다운로드한 파일경로로 %KUBE_CONFIG% 환경변수를 지정합니다.\n\n예시)\n&gt; SET KUBE_CONFIG=%USERPROFILE%\\Downloads\\kubeconfig-734929a7-8a13-49a2-a2ca-99e7d5d9661e.yaml\n\n\n이제 –kubeconfig 옵션을 사용하여 NKS의 클러스터를 제어할수 있습니다.\n\n예시)\n&gt; kubectl --kubeconfig %KUBE_CONFIG% get nodes\nNAME                 STATUS   ROLES   AGE    VERSION\nnks-pool-1865-w2zy   Ready    node    4d5h   v1.16.6\nnks-pool-1865-w2zz   Ready    node    4d5h   v1.16.6\n\n\n참조\n\n참고 URL\nhttps://guide.ncloud-docs.com/docs/compute-compute-4-1-v2.html\n\nhttps://guide.ncloud-docs.com/docs/vnks-nks-1-1\nhttps://guide.ncloud-docs.com/docs/vnks-nks-1-2\nhttps://kubernetes.io/ko/docs/tasks/tools/\n\n\n  문서 최종 수정일 : 2021-07-12"
+					}
+					
+				
+			
+		
+			
+				
+					,
 					
 					"2-networking-ncp-networking-natgw-routetb": {
 						"id": "2-networking-ncp-networking-natgw-routetb",

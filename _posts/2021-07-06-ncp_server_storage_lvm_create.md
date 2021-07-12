@@ -7,7 +7,7 @@ categories:
 description: 네이버 클라우드 리눅스 서버의 Block Storage를 LVM으로 구성하는 방법입니다
 type: Document
 set: server
-order_number: 17
+order_number: 19
 creator: ljh0519
 ---
 

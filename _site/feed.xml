@@ -1,4 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-07-09T18:20:32+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">VPC 환경에서 NAT Gateway 설정하기</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_natgw_routetb/" rel="alternate" type="text/html" title="VPC 환경에서 NAT Gateway 설정하기" /><published>2021-07-09T00:00:00+09:00</published><updated>2021-07-09T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_natgw_routetb</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_natgw_routetb/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-12T21:00:27+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Kubernetes Service 클러스터 생성 및 제어 가이드</title><link href="http://localhost:4000/1.compute/ncp_server_kubernetes_service_start_guide/" rel="alternate" type="text/html" title="Kubernetes Service 클러스터 생성 및 제어 가이드" /><published>2021-07-12T00:00:00+09:00</published><updated>2021-07-12T00:00:00+09:00</updated><id>http://localhost:4000/1.compute/ncp_server_kubernetes_service_start_guide</id><content type="html" xml:base="http://localhost:4000/1.compute/ncp_server_kubernetes_service_start_guide/">&lt;h2 id=&quot;nks-클러스터-생성-및-제어-가이드&quot;&gt;NKS 클러스터 생성 및 제어 가이드&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드 Kubernetes서비스의 생성 및 제어 하는 방법에 대해 설명하겠습니다 .&lt;/p&gt;
+
+&lt;h2 id=&quot;nks-클러스터-생성&quot;&gt;NKS 클러스터 생성&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;선행조건&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;클러스터에 사용할 전용VPC 와 Private, LB전용 Subnet 이 필요합니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;-Private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /17~/26 범위의 Private Subnet, 로드밸런서 전용 Subnet이 필요합니다.&lt;br /&gt;
+-Docker Bridge 대역의 충돌을 방지하기 위해 172.17.0.0/16 범위 내의 Private Subnet, 로드밸런서 전용Subnet은 선택할 수 없습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;nks_9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;kubernetes Sevice탭에 들어간뒤 생성하기를 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;nks_1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;생성하실 클러스터의 정보를 설정해줍니다.&lt;br /&gt;
+(ACG는 자동으로 생성 됩니다.)&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;현재 지원되고 있는 Kubenetes 버전은 &amp;lt;1.17.16&amp;gt;, &amp;lt;1.18.17&amp;gt; 입니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;nks_2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;클러스터에 생성되는 노드풀과 서버의 스펙 및 수를 지정해줍니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;현재 지원되고 있는 OS는 &lt;ubuntu16.04&gt; &lt;ubuntu18.04&gt; 입니다.&lt;/ubuntu18.04&gt;&lt;/ubuntu16.04&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;nks_3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;워커노드의 로그인키를 설정 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;nks_4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;설정 정보를 최종적으로 확인한 후 생성버튼을 클릭하여 클러스터를 생성합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;kubectl-설치&quot;&gt;kubectl 설치&lt;/h2&gt;
+
+&lt;p&gt;사용자 로컬 머신에서 클러스터를 제어하기 위해 kubectl을 설치합니다.&lt;/p&gt;
+
+&lt;p&gt;windows에서 cmd 창을 열어 kubctl의 최신 릴리즈 버전을 다운로드 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe&quot;&gt;최신릴리즈 v1.21.0&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;또는 curl 을 이용하여 다운로드 받습니다.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -LO https://dl.k8s.io/v1.21.0/bin/windows/amd64/kubectl.exe.sha256
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;kubectl 의 버전을 확인합니다.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl version --client
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;다른OS의 설치방법도 필요하시면 아래의 링크가 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://kubernetes.io/ko/docs/tasks/tools/install-kubectl-linux/&quot;&gt;Linux kubectl 설치&lt;/a&gt;&amp;lt;/br&amp;gt;
+&lt;a href=&quot;https://kubernetes.io/ko/docs/tasks/tools/install-kubectl-macos/&quot;&gt;macOS kubectl 설치&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;nks-접속하여-제어하기-windows&quot;&gt;NKS 접속하여 제어하기 (windows)&lt;/h2&gt;
+
+&lt;p&gt;클러스터를 제어하기 위해서는 NKS에서 제공해주는 접속을 위한 인증정보가 있는 설정파일을 다운로드 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;nks_5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;가이드 보기 버튼을 누른 뒤&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;nks_6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;NKS에서 제공해주는 설정 파일을 다운로드 받습니다.&lt;/p&gt;
+
+&lt;p&gt;그 후 다운로드한 파일경로로 %KUBE_CONFIG% 환경변수를 지정합니다.&lt;/p&gt;
+
+&lt;p&gt;예시)&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; SET KUBE_CONFIG=%USERPROFILE%\Downloads\kubeconfig-734929a7-8a13-49a2-a2ca-99e7d5d9661e.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이제 –kubeconfig 옵션을 사용하여 NKS의 클러스터를 제어할수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;예시)&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; kubectl --kubeconfig %KUBE_CONFIG% get nodes
+NAME                 STATUS   ROLES   AGE    VERSION
+nks-pool-1865-w2zy   Ready    node    4d5h   v1.16.6
+nks-pool-1865-w2zz   Ready    node    4d5h   v1.16.6
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;참조&quot;&gt;참조&lt;/h2&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;https://guide.ncloud-docs.com/docs/vnks-nks-1-1&lt;br /&gt;
+https://guide.ncloud-docs.com/docs/vnks-nks-1-2&lt;br /&gt;
+https://kubernetes.io/ko/docs/tasks/tools/&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-07-12&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">NKS 클러스터 생성 및 제어 가이드 네이버 클라우드 Kubernetes서비스의 생성 및 제어 하는 방법에 대해 설명하겠습니다 .</summary></entry><entry><title type="html">VPC 환경에서 NAT Gateway 설정하기</title><link href="http://localhost:4000/2.networking/ncp_networking_natgw_routetb/" rel="alternate" type="text/html" title="VPC 환경에서 NAT Gateway 설정하기" /><published>2021-07-09T00:00:00+09:00</published><updated>2021-07-09T00:00:00+09:00</updated><id>http://localhost:4000/2.networking/ncp_networking_natgw_routetb</id><content type="html" xml:base="http://localhost:4000/2.networking/ncp_networking_natgw_routetb/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;NAT Gateway는 비공인 IP를 가진 다수의 서버들이 대표 공인 IP를 이용해 외부와 통신을 할 수 있도록 도와주는 네트워킹 서비스입니다.&lt;br /&gt;
 그리고, 일반적으로 서버에 직접 공인 IP를 부여하는 것과 달리 외부에서 서버로의 직접 접근은 허용하지 않기 때문에 높은 수준의 보안을 유지할 수 있는 것이 특징입니다.&lt;br /&gt;
 여기서는 VPC 환경에서 NAT Gateway를 어떻게 구성하고, NAT Gateway를 적용하기 전과 후의 외부와 통신 상태에 대해 확인해보도록 하겠습니다.&lt;/p&gt;
@@ -118,7 +218,7 @@
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-07-09&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 NAT Gateway는 비공인 IP를 가진 다수의 서버들이 대표 공인 IP를 이용해 외부와 통신을 할 수 있도록 도와주는 네트워킹 서비스입니다. 그리고, 일반적으로 서버에 직접 공인 IP를 부여하는 것과 달리 외부에서 서버로의 직접 접근은 허용하지 않기 때문에 높은 수준의 보안을 유지할 수 있는 것이 특징입니다. 여기서는 VPC 환경에서 NAT Gateway를 어떻게 구성하고, NAT Gateway를 적용하기 전과 후의 외부와 통신 상태에 대해 확인해보도록 하겠습니다.</summary></entry><entry><title type="html">리눅스서버 스토리지(디스크) LVM 구성하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_storage_lvm_create/" rel="alternate" type="text/html" title="리눅스서버 스토리지(디스크) LVM 구성하기" /><published>2021-07-06T00:00:00+09:00</published><updated>2021-07-06T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_storage_lvm_create</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_storage_lvm_create/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 NAT Gateway는 비공인 IP를 가진 다수의 서버들이 대표 공인 IP를 이용해 외부와 통신을 할 수 있도록 도와주는 네트워킹 서비스입니다. 그리고, 일반적으로 서버에 직접 공인 IP를 부여하는 것과 달리 외부에서 서버로의 직접 접근은 허용하지 않기 때문에 높은 수준의 보안을 유지할 수 있는 것이 특징입니다. 여기서는 VPC 환경에서 NAT Gateway를 어떻게 구성하고, NAT Gateway를 적용하기 전과 후의 외부와 통신 상태에 대해 확인해보도록 하겠습니다.</summary></entry><entry><title type="html">리눅스서버 스토리지(디스크) LVM 구성하기</title><link href="http://localhost:4000/1.compute/ncp_server_storage_lvm_create/" rel="alternate" type="text/html" title="리눅스서버 스토리지(디스크) LVM 구성하기" /><published>2021-07-06T00:00:00+09:00</published><updated>2021-07-06T00:00:00+09:00</updated><id>http://localhost:4000/1.compute/ncp_server_storage_lvm_create</id><content type="html" xml:base="http://localhost:4000/1.compute/ncp_server_storage_lvm_create/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 서버는 하나의 서버당 로컬 디스크 즉, 블록 스토리지(Block Storage)를 OS가 설치되는 기본 스토리지 1개 이외에 15개를 추가할 수 있으며, 각 스토리지 용량은 10GB ~2,000GB 까지 가능합니다.&lt;br /&gt;
 그리고, 2,000GB 이상을 사용해야 할 경우는 NAS 장비를 사용하거나 Object Storage를 활용하는 경우가 많지만, 상황에 따라서는 2,000GB를 초과하는 용량의 블록 스토리지를 사용해야 하는 경우도 있습니다.&lt;br /&gt;
 이럴때 사용하는 방법이 LVM (Logical Volume Manager)를 사용하여 여러 개의 스토리지를 합쳐서 대용량으로 사용하거나 합쳐진 대용량을 다시 필요한 용량으로 나누어서 사용하는 방법입니다.&lt;br /&gt;
@@ -315,7 +415,7 @@ quit
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-07-06&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 서버는 하나의 서버당 로컬 디스크 즉, 블록 스토리지(Block Storage)를 OS가 설치되는 기본 스토리지 1개 이외에 15개를 추가할 수 있으며, 각 스토리지 용량은 10GB ~2,000GB 까지 가능합니다. 그리고, 2,000GB 이상을 사용해야 할 경우는 NAS 장비를 사용하거나 Object Storage를 활용하는 경우가 많지만, 상황에 따라서는 2,000GB를 초과하는 용량의 블록 스토리지를 사용해야 하는 경우도 있습니다. 이럴때 사용하는 방법이 LVM (Logical Volume Manager)를 사용하여 여러 개의 스토리지를 합쳐서 대용량으로 사용하거나 합쳐진 대용량을 다시 필요한 용량으로 나누어서 사용하는 방법입니다. 그래서 이번에는 리눅스 환경에서 LVM으로 대용량 스토리지를 생성하는 방법을 정리해보겠습니다.</summary></entry><entry><title type="html">VPC 환경에서 Application Load Balancer 생성하기</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_load_balancer_application_lb/" rel="alternate" type="text/html" title="VPC 환경에서 Application Load Balancer 생성하기" /><published>2021-06-30T00:00:00+09:00</published><updated>2021-06-30T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_load_balancer_application_lb</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_load_balancer_application_lb/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 서버는 하나의 서버당 로컬 디스크 즉, 블록 스토리지(Block Storage)를 OS가 설치되는 기본 스토리지 1개 이외에 15개를 추가할 수 있으며, 각 스토리지 용량은 10GB ~2,000GB 까지 가능합니다. 그리고, 2,000GB 이상을 사용해야 할 경우는 NAS 장비를 사용하거나 Object Storage를 활용하는 경우가 많지만, 상황에 따라서는 2,000GB를 초과하는 용량의 블록 스토리지를 사용해야 하는 경우도 있습니다. 이럴때 사용하는 방법이 LVM (Logical Volume Manager)를 사용하여 여러 개의 스토리지를 합쳐서 대용량으로 사용하거나 합쳐진 대용량을 다시 필요한 용량으로 나누어서 사용하는 방법입니다. 그래서 이번에는 리눅스 환경에서 LVM으로 대용량 스토리지를 생성하는 방법을 정리해보겠습니다.</summary></entry><entry><title type="html">VPC 환경에서 Application Load Balancer 생성하기</title><link href="http://localhost:4000/2.networking/ncp_networking_load_balancer_application_lb/" rel="alternate" type="text/html" title="VPC 환경에서 Application Load Balancer 생성하기" /><published>2021-06-30T00:00:00+09:00</published><updated>2021-06-30T00:00:00+09:00</updated><id>http://localhost:4000/2.networking/ncp_networking_load_balancer_application_lb</id><content type="html" xml:base="http://localhost:4000/2.networking/ncp_networking_load_balancer_application_lb/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 VPC 환경의 대표적인 Load Balancer인 Application Load Balancer 를 생성하는 가이드입니다.&lt;br /&gt;
 VPC와 Subnet을 생성하고, 테스트를 위한 서버 2대를 CentOS와 Ubuntu 각각 1대씩 준비해서 Application Load Balancer와 연결하고 접속해보는 과정까지 정리해보겠습니다.&lt;/p&gt;
 
@@ -475,7 +575,7 @@ systemctl status httpd
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-06-30&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 VPC 환경의 대표적인 Load Balancer인 Application Load Balancer 를 생성하는 가이드입니다. VPC와 Subnet을 생성하고, 테스트를 위한 서버 2대를 CentOS와 Ubuntu 각각 1대씩 준비해서 Application Load Balancer와 연결하고 접속해보는 과정까지 정리해보겠습니다.</summary></entry><entry><title type="html">Video Player 구현하기 샘플 예제</title><link href="https://docs.3rdeyesys.com/6.media/ncp_media_video_player_sample/" rel="alternate" type="text/html" title="Video Player 구현하기 샘플 예제" /><published>2021-06-15T00:00:00+09:00</published><updated>2021-06-15T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/6.media/ncp_media_video_player_sample</id><content type="html" xml:base="https://docs.3rdeyesys.com/6.media/ncp_media_video_player_sample/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 VPC 환경의 대표적인 Load Balancer인 Application Load Balancer 를 생성하는 가이드입니다. VPC와 Subnet을 생성하고, 테스트를 위한 서버 2대를 CentOS와 Ubuntu 각각 1대씩 준비해서 Application Load Balancer와 연결하고 접속해보는 과정까지 정리해보겠습니다.</summary></entry><entry><title type="html">Video Player 구현하기 샘플 예제</title><link href="http://localhost:4000/6.media/ncp_media_video_player_sample/" rel="alternate" type="text/html" title="Video Player 구현하기 샘플 예제" /><published>2021-06-15T00:00:00+09:00</published><updated>2021-06-15T00:00:00+09:00</updated><id>http://localhost:4000/6.media/ncp_media_video_player_sample</id><content type="html" xml:base="http://localhost:4000/6.media/ncp_media_video_player_sample/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 비디오 플레이어는 최신의 네이버 미디어 플레이어를 기반으로 개발된 클라우드 전용 상품으로 
 네이버 동영상 서비스에 적용되어 수 많은 성공사례를 가지고 있는 최신의 네이버 플레이어를 손쉽고 빠르게 고객의 미디어 서비스에 적용할 수 있습니다.&lt;/p&gt;
 
@@ -681,7 +781,7 @@ systemctl status httpd
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-06-14&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 비디오 플레이어는 최신의 네이버 미디어 플레이어를 기반으로 개발된 클라우드 전용 상품으로 네이버 동영상 서비스에 적용되어 수 많은 성공사례를 가지고 있는 최신의 네이버 플레이어를 손쉽고 빠르게 고객의 미디어 서비스에 적용할 수 있습니다.</summary></entry><entry><title type="html">Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/" rel="alternate" type="text/html" title="Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법" /><published>2021-05-31T00:00:00+09:00</published><updated>2021-05-31T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 비디오 플레이어는 최신의 네이버 미디어 플레이어를 기반으로 개발된 클라우드 전용 상품으로 네이버 동영상 서비스에 적용되어 수 많은 성공사례를 가지고 있는 최신의 네이버 플레이어를 손쉽고 빠르게 고객의 미디어 서비스에 적용할 수 있습니다.</summary></entry><entry><title type="html">Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법</title><link href="http://localhost:4000/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/" rel="alternate" type="text/html" title="Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법" /><published>2021-05-31T00:00:00+09:00</published><updated>2021-05-31T00:00:00+09:00</updated><id>http://localhost:4000/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc</id><content type="html" xml:base="http://localhost:4000/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다.  이 사전 작업과 조건을 차례대로 정리해보겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;os-조건-확인&quot;&gt;OS 조건 확인&lt;/h2&gt;
@@ -797,7 +897,7 @@ Invoke-WebRequest http://init.ncloud.com/vpcporting/real/ncp_vac_chk.exe &lt;spa
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-06-01&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다. 이 사전 작업과 조건을 차례대로 정리해보겠습니다.</summary></entry><entry><title type="html">리눅스서버 SSH 접속 보안 설정하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting/" rel="alternate" type="text/html" title="리눅스서버 SSH 접속 보안 설정하기" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다. 이 사전 작업과 조건을 차례대로 정리해보겠습니다.</summary></entry><entry><title type="html">리눅스서버 SSH 접속 보안 설정하기</title><link href="http://localhost:4000/1.compute/ncp_server_ssh_security_setting/" rel="alternate" type="text/html" title="리눅스서버 SSH 접속 보안 설정하기" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>http://localhost:4000/1.compute/ncp_server_ssh_security_setting</id><content type="html" xml:base="http://localhost:4000/1.compute/ncp_server_ssh_security_setting/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;리눅스 서버들은 서버에 접속할 때 SSH를 이용하게 되는데, 이때 root 계정에 대한 무작위 패스워드 입력 등의 해킹시도가 있을 수 있습니다.&lt;br /&gt;
 여기서는 이러한 해킹시도를 차단하기 위한 보안설정 중에서 root 계정과 관련한 보안설정 2가지를 정리해보겠습니다.&lt;/p&gt;
 
@@ -890,7 +990,7 @@ MaxAuthTries 3
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-05-28&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 리눅스 서버들은 서버에 접속할 때 SSH를 이용하게 되는데, 이때 root 계정에 대한 무작위 패스워드 입력 등의 해킹시도가 있을 수 있습니다. 여기서는 이러한 해킹시도를 차단하기 위한 보안설정 중에서 root 계정과 관련한 보안설정 2가지를 정리해보겠습니다.</summary></entry><entry><title type="html">Global DNS 사용 가이드 - 도메인 추가</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/" rel="alternate" type="text/html" title="Global DNS 사용 가이드 - 도메인 추가" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 리눅스 서버들은 서버에 접속할 때 SSH를 이용하게 되는데, 이때 root 계정에 대한 무작위 패스워드 입력 등의 해킹시도가 있을 수 있습니다. 여기서는 이러한 해킹시도를 차단하기 위한 보안설정 중에서 root 계정과 관련한 보안설정 2가지를 정리해보겠습니다.</summary></entry><entry><title type="html">Global DNS 사용 가이드 - 도메인 추가</title><link href="http://localhost:4000/2.networking/ncp_networking_global_dns_guide/" rel="alternate" type="text/html" title="Global DNS 사용 가이드 - 도메인 추가" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>http://localhost:4000/2.networking/ncp_networking_global_dns_guide</id><content type="html" xml:base="http://localhost:4000/2.networking/ncp_networking_global_dns_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드 Global DNS를 이용하면 도메인 설정 등을 쉽고 편하게 사용할 수 있습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;도메인-추가&quot;&gt;도메인 추가&lt;/h2&gt;
@@ -935,7 +1035,7 @@ MaxAuthTries 3
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-05-27&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드 Global DNS를 이용하면 도메인 설정 등을 쉽고 편하게 사용할 수 있습니다.</summary></entry><entry><title type="html">Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic/" rel="alternate" type="text/html" title="Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법" /><published>2021-05-26T00:00:00+09:00</published><updated>2021-05-26T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드 Global DNS를 이용하면 도메인 설정 등을 쉽고 편하게 사용할 수 있습니다.</summary></entry><entry><title type="html">Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법</title><link href="http://localhost:4000/1.compute/ncp_server_server_image_share_classic/" rel="alternate" type="text/html" title="Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법" /><published>2021-05-26T00:00:00+09:00</published><updated>2021-05-26T00:00:00+09:00</updated><id>http://localhost:4000/1.compute/ncp_server_server_image_share_classic</id><content type="html" xml:base="http://localhost:4000/1.compute/ncp_server_server_image_share_classic/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 Classic 환경에서 내 서버 이미지를 다른 계정에 공유하는 방법입니다.&lt;br /&gt;
 Linux와 Windows OS별 차이는 없으며, 일단은 서버 이미지가 생성되어 있는 것을 가정해서 내용을 정리해보겠습니다.&lt;/p&gt;
 
@@ -998,7 +1098,7 @@ Linux와 Windows OS별 차이는 없으며, 일단은 서버 이미지가 생성
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-05-31&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경에서 내 서버 이미지를 다른 계정에 공유하는 방법입니다. Linux와 Windows OS별 차이는 없으며, 일단은 서버 이미지가 생성되어 있는 것을 가정해서 내용을 정리해보겠습니다.</summary></entry><entry><title type="html">PHP로 Papago Korean Name Romanizer 서비스 이용하기 샘플 예제</title><link href="https://docs.3rdeyesys.com/9.application%20service/ncp_application_service_papago_korean_name_romanizer_php_sample/" rel="alternate" type="text/html" title="PHP로 Papago Korean Name Romanizer 서비스 이용하기 샘플 예제" /><published>2021-05-24T00:00:00+09:00</published><updated>2021-05-24T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/9.application%20service/ncp_application_service_papago_korean_name_romanizer_php_sample</id><content type="html" xml:base="https://docs.3rdeyesys.com/9.application%20service/ncp_application_service_papago_korean_name_romanizer_php_sample/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경에서 내 서버 이미지를 다른 계정에 공유하는 방법입니다. Linux와 Windows OS별 차이는 없으며, 일단은 서버 이미지가 생성되어 있는 것을 가정해서 내용을 정리해보겠습니다.</summary></entry><entry><title type="html">PHP로 Papago Korean Name Romanizer 서비스 이용하기 샘플 예제</title><link href="http://localhost:4000/9.application%20service/ncp_application_service_papago_korean_name_romanizer_php_sample/" rel="alternate" type="text/html" title="PHP로 Papago Korean Name Romanizer 서비스 이용하기 샘플 예제" /><published>2021-05-24T00:00:00+09:00</published><updated>2021-05-24T00:00:00+09:00</updated><id>http://localhost:4000/9.application%20service/ncp_application_service_papago_korean_name_romanizer_php_sample</id><content type="html" xml:base="http://localhost:4000/9.application%20service/ncp_application_service_papago_korean_name_romanizer_php_sample/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;Papago Korean Name Romanizer는 한글로 된 이름을 로마자 표기로 변환해주는 서비스로, 현행 로마자 표기법을 따라 변환한 이름과 통계적으로 많이 사용되는 로마자 이름도 함께 제안 받을 수 있습니다.&lt;br /&gt;
 Papago Korean Name Romanizer는 OpenAPI 형태로 제공되며 여기서는 PHP로 호출하는 방식을 살펴볼텐데, 우선 전체 소스코드를 살펴보고 다음으로 주요 코드를 상세하게 살펴보겠습니다.&lt;/p&gt;
 
@@ -1126,111 +1226,4 @@ Papago Korean Name Romanizer에서 변환할 수 없는 이름일 경우 상태�
 
 &lt;blockquote&gt;
   &lt;p&gt;“문서 최종 수정일 : 2021-05-24”&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Papago Korean Name Romanizer는 한글로 된 이름을 로마자 표기로 변환해주는 서비스로, 현행 로마자 표기법을 따라 변환한 이름과 통계적으로 많이 사용되는 로마자 이름도 함께 제안 받을 수 있습니다. Papago Korean Name Romanizer는 OpenAPI 형태로 제공되며 여기서는 PHP로 호출하는 방식을 살펴볼텐데, 우선 전체 소스코드를 살펴보고 다음으로 주요 코드를 상세하게 살펴보겠습니다.</summary></entry><entry><title type="html">Cloud Outbound Mailer로 대량 메일 발송하는 방법</title><link href="https://docs.3rdeyesys.com/9.application%20service/ncp_application_service_cloud_outbound_mailer_bulk_mail_send/" rel="alternate" type="text/html" title="Cloud Outbound Mailer로 대량 메일 발송하는 방법" /><published>2021-05-12T00:00:00+09:00</published><updated>2021-05-12T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/9.application%20service/ncp_application_service_cloud_outbound_mailer_bulk_mail_send</id><content type="html" xml:base="https://docs.3rdeyesys.com/9.application%20service/ncp_application_service_cloud_outbound_mailer_bulk_mail_send/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 서비스 중에서 각 종 공지나 이벤트, 마케팅으로 회원들에게 대량의 메일을 발송해야 할 때 사용할 수 있는 것이 Cloud Outbound Mailer 입니다.&lt;br /&gt;
-대량 메일을 발송하는 방법은 여러가지 있지만, 그 중에서도 가장 자주, 간편하게 사용하는 것이 Excel 등의 파일을 업로드 해서 발송하는 방법입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;이용-신청&quot;&gt;이용 신청&lt;/h2&gt;
-&lt;p&gt;Cloud Outbound Mailer는 먼저 이용신청을 하셔야 합니다.
-[Console] - [Cloud Outbound Mailer] - [Mailing list] 에서 [이용 신청] 버튼을 클릭하시면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_01.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음으로 서비스 이용약관에 동의하시면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_02.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;메일-작성&quot;&gt;메일 작성&lt;/h2&gt;
-&lt;p&gt;메일링 리스트 화면에서 발송하기 버튼을 클릭합니다.
-&lt;img src=&quot;../../images/cloud_outbound_mailer_03.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;메일 작성-발송하기 화면입니다.&lt;br /&gt;
-이중에서 보내는 메일주소, 제목, 내용, 받는 사람은 필수 입력 사항입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_01.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;[대량 발송용 입력양식 파일다운로드]와 [대량 발송용 파일 선택]은 [보내는 메일 주소]와 [제목], [내용] 을 입력해야 활성화 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_02.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;대량메일-발송용-입력양식&quot;&gt;대량메일 발송용 입력양식&lt;/h4&gt;
-&lt;p&gt;Cloud Outbound Mailer에서 제공하는 대량메일 발송용 입력양식을 다운 받아서 보면, [수신자 Email 주소], [NAME] 이렇게 2가지 항목으로 구성되어 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_03.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그 외에도 필요한 항목들을 추가해서 사용할 수 있습니다. 여기서는 [GRADE], [GIFT	] 항목을 추가해서 테스트 해보겠습니다. 
-추가 항목의 이름은 어떤 것이든 상관없습니다. 실제 메일 내용에서 동일한 이름을 사용하기만 하면 문제 없습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_04.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;보내는-이름-보내는-메일주소-제목-입력&quot;&gt;보내는 이름, 보내는 메일주소, 제목 입력&lt;/h4&gt;
-&lt;p&gt;우선, 보내는 이름과 보내는 메일주소, 제목을 입력합니다.&lt;br /&gt;
-제목에는 대량 메일 수신자들의 이름이 들어가도록 위에서 확인한 입력 양식에 있던 이름에 해당하는 [NAME] 필드가 들어갈 수 있게 &lt;strong&gt;${NAME} 코드를 입력&lt;/strong&gt;합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_05.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;내용-입력&quot;&gt;내용 입력&lt;/h4&gt;
-&lt;p&gt;내용은 직접 입력해도 되고 별도로 제작된 html 파일을 이용할 수도 있는데 Cloud Outbound Mailer에서는 html 파일 업로드는 지원하지 않습니다.&lt;br /&gt;
-그러므로 html 소스를 직접 복사해서 화면에 입력해야 합니다.  다음과 같은 샘플용 html을 준비해서 &amp;lt;body&amp;gt;와 &amp;lt;/body&amp;gt;태그 사이에 있는 내용을 복사해서 에디터의 html모드에 붙여넣습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;스타일은 css 파일이나 style태그를 사용하지 말고 가급적 태그 안에 inline으로 적용하는 것이 좋습니다.
-메일 서비스 별로 head 태그만 없애는 곳도 있고, style태그를 모두 없애거나, body태그 안쪽의 내용만 남기고 모두 없애는 곳도 있기 때문에 inline 형식으로 적용하는 것이 가장 안전합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_06.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;복사한 html을 Editor 모드로 바꾸면 다음과 같이 보입니다.&lt;br /&gt;
-여기서 위에서 준비한 입력양식 Excel 파일에 있던 ${NAME}, ${GRADE}, ${GIFT} 항목을 적절하게 배치해서 입력해두었습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_07.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;대량메일-수신자-파일-등록-확인-후-발송&quot;&gt;대량메일 수신자 파일 등록, 확인 후 발송&lt;/h4&gt;
-&lt;p&gt;위에서 준비했던 대량메일 수신자 정보가 들어있는 Excel 파일을 등록하고 [확인 후 발송] 버튼을 클릭합니다.&lt;br /&gt;
-바로 발송을 해도 되지만 그것보다는 메일 내용이 제대로 표시되는지, 수신자 목록은 문제 없이 로딩되었는지 확인 한 후에 발송하는 것이 안전합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_08.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;발송-준비&quot;&gt;발송 준비&lt;/h2&gt;
-&lt;p&gt;확인 후 발송을 선택하면 이렇게 [발송 준비] 상태로 리스트에 나타납니다.&lt;br /&gt;
-이 상태에서 수신자와 메일 내용이 올바르게 설정되었는지 확인하기 위해 [수신자별 목록] 탭을 선택합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_09.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;수신자별-목록&quot;&gt;수신자별 목록&lt;/h4&gt;
-&lt;p&gt;수신자별 목록을 살펴보면 다음과 같이 나옵니다.  Excel 파일에 등록해 두었던 이름과 이메일 주소가 문제없이 나타납니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_10.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;메일-내용-확인&quot;&gt;메일 내용 확인&lt;/h4&gt;
-&lt;p&gt;수신자별 목록에서 하나를 선택하면 상세 내용이 나오는데, 그 중에서 아래쪽에 있는 [내용보기] 버튼을 클릭해서 메일 본문 내용도 문제가 없는지 확인합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_11.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;내용 보기를 하시면 아래와 같이 Excel 파일에 등록해 두었던  [NAME], [GRADE], [GIFT] 항목들이 문제없이 설정되어 표시된 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_12.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;메일-발송&quot;&gt;메일 발송&lt;/h2&gt;
-&lt;p&gt;이제 다시 [요청별 목록]으로 돌아와서 [즉시 발송] 버튼을 클릭해 메일을 발송합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_13.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;메일-도착-확인&quot;&gt;메일 도착 확인&lt;/h4&gt;
-&lt;p&gt;실제 존재하는 메일 주소로 발송해보면 이렇게 메일이 잘 들어온 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_bulk_mail_14.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;메일-발송-도메인&quot;&gt;메일 발송 도메인&lt;/h2&gt;
-&lt;p&gt;메일 발송은 잘되었고, 도착도 잘했는데 궁금한 것이 한가지 생깁니다.&lt;br /&gt;
-과연 메일 발송 도메인은 어떤 것일까?  그래서 구글 계정으로 보낸 메일에서 발송 도메인을 확인해보았습니다.&lt;br /&gt;
-도메인은 &lt;strong&gt;email.ncloud.com&lt;/strong&gt; 인 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/cloud_outbound_mailer_00.jpg&quot; alt=&quot;Cloud Outbound Mailer로 대량 메일 발송하는 방법&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/email-email-1-2&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/email-email-1-2&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;“문서 최종 수정일 : 2021-05-13”&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 서비스 중에서 각 종 공지나 이벤트, 마케팅으로 회원들에게 대량의 메일을 발송해야 할 때 사용할 수 있는 것이 Cloud Outbound Mailer 입니다. 대량 메일을 발송하는 방법은 여러가지 있지만, 그 중에서도 가장 자주, 간편하게 사용하는 것이 Excel 등의 파일을 업로드 해서 발송하는 방법입니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Papago Korean Name Romanizer는 한글로 된 이름을 로마자 표기로 변환해주는 서비스로, 현행 로마자 표기법을 따라 변환한 이름과 통계적으로 많이 사용되는 로마자 이름도 함께 제안 받을 수 있습니다. Papago Korean Name Romanizer는 OpenAPI 형태로 제공되며 여기서는 PHP로 호출하는 방식을 살펴볼텐데, 우선 전체 소스코드를 살펴보고 다음으로 주요 코드를 상세하게 살펴보겠습니다.</summary></entry></feed>
