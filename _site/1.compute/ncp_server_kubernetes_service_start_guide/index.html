@@ -117,7 +117,11 @@
 		<ul>
 			
 			
-				<li><a href="#nks-클러스터-생성-및-제어-가이드">NKS 클러스터 생성 및 제어 가이드</a></li>
+				<li><a href="#개요">개요</a></li>
+			
+				<li><a href="#쿠버네티스란">쿠버네티스란?</a></li>
+			
+				<li><a href="#특징">특징</a></li>
 			
 				<li><a href="#nks-클러스터-생성">NKS 클러스터 생성</a></li>
 			
@@ -148,8 +152,26 @@
 		
 		
 		<div class="tutorial-main">
-			<h2 id="nks-클러스터-생성-및-제어-가이드">NKS 클러스터 생성 및 제어 가이드</h2>
-<p>네이버 클라우드 Kubernetes서비스의 생성 및 제어 하는 방법에 대해 설명하겠습니다 .</p>
+			<h2 id="개요">개요</h2>
+<p>네이버 클라우드에서 제공하는 Kubernetes(쿠버네티스) 서비스를 생성하고 제어하는 방법에 대해 소개합니다.</p>
+
+<h2 id="쿠버네티스란">쿠버네티스란?</h2>
+<p>쿠버네티스는 배포, 스케일링, 그리고 컨테이너화된 애플리케이션의 관리를 자동화 해주는 오픈 소스 컨테이너 오케스트레이션 엔진이라고 정의되어 있습니다.<br />
+구글에서 처음 개발하기 시작했으나 현재는 구글이 오픈소스 프로젝트로 공개한 상태입니다.</p>
+
+<h2 id="특징">특징</h2>
+<p>쿠버네티스는 다음과 같은 특징이 있으며, 자세한 내용은 쿠버네티스 공식 페이지를 참고하시기 바랍니다.</p>
+
+<ul>
+  <li>서비스 디스커버리와 로드 밸런싱</li>
+  <li>스토리지 오케스트레이션</li>
+  <li>자동화된 롤아웃과 롤백</li>
+  <li>자동화된 빈 패킹(bin packing)</li>
+  <li>자동화된 복구(self-healing)</li>
+  <li>시크릿과 구성 관리</li>
+</ul>
+
+<p><a href="https://kubernetes.io/ko/docs/home/" target="_blank" style="word-break:break-all;">https://kubernetes.io/ko/docs/home/</a></p>
 
 <h2 id="nks-클러스터-생성">NKS 클러스터 생성</h2>
 
@@ -749,34 +771,6 @@ https://kubernetes.io/ko/docs/tasks/tools/</p>
 			</a>
 		</li>
 	
-		<li class="active">
-		
-		
-		
-		
-		
-		
-		
-			<a href="/1.compute/ncp_server_kubernetes_service_start_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>19. Kubernetes Service 클러스터 생성 및 제어 가이드 
-							
-								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
-							
-						</h3>
-						<p class="description">네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드입니다</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
 		<li >
 		
 		
@@ -794,12 +788,40 @@ https://kubernetes.io/ko/docs/tasks/tools/</p>
 </div>
 				<article>
 					<div>
-						<h3>20. 리눅스서버 스토리지(디스크) LVM 구성하기 
+						<h3>19. 리눅스서버 스토리지(디스크) LVM 구성하기 
 							
 								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
 							
 						</h3>
 						<p class="description">네이버 클라우드 리눅스 서버의 Block Storage를 LVM으로 구성하는 방법입니다</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li class="active">
+		
+		
+		
+		
+		
+		
+		
+			<a href="/1.compute/ncp_server_kubernetes_service_start_guide/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>20. Kubernetes Service 클러스터 생성 및 제어 가이드 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드입니다</p>
 					</div>
 				</article>
 			</a>

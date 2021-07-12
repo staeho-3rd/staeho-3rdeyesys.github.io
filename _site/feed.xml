@@ -1,5 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-12T21:00:27+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Kubernetes Service 클러스터 생성 및 제어 가이드</title><link href="http://localhost:4000/1.compute/ncp_server_kubernetes_service_start_guide/" rel="alternate" type="text/html" title="Kubernetes Service 클러스터 생성 및 제어 가이드" /><published>2021-07-12T00:00:00+09:00</published><updated>2021-07-12T00:00:00+09:00</updated><id>http://localhost:4000/1.compute/ncp_server_kubernetes_service_start_guide</id><content type="html" xml:base="http://localhost:4000/1.compute/ncp_server_kubernetes_service_start_guide/">&lt;h2 id=&quot;nks-클러스터-생성-및-제어-가이드&quot;&gt;NKS 클러스터 생성 및 제어 가이드&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 Kubernetes서비스의 생성 및 제어 하는 방법에 대해 설명하겠습니다 .&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-13T01:11:34+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Kubernetes Service 클러스터 생성 및 제어 가이드</title><link href="http://localhost:4000/1.compute/ncp_server_kubernetes_service_start_guide/" rel="alternate" type="text/html" title="Kubernetes Service 클러스터 생성 및 제어 가이드" /><published>2021-07-12T00:00:00+09:00</published><updated>2021-07-12T00:00:00+09:00</updated><id>http://localhost:4000/1.compute/ncp_server_kubernetes_service_start_guide</id><content type="html" xml:base="http://localhost:4000/1.compute/ncp_server_kubernetes_service_start_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드에서 제공하는 Kubernetes(쿠버네티스) 서비스를 생성하고 제어하는 방법에 대해 소개합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;쿠버네티스란&quot;&gt;쿠버네티스란?&lt;/h2&gt;
+&lt;p&gt;쿠버네티스는 배포, 스케일링, 그리고 컨테이너화된 애플리케이션의 관리를 자동화 해주는 오픈 소스 컨테이너 오케스트레이션 엔진이라고 정의되어 있습니다.&lt;br /&gt;
+구글에서 처음 개발하기 시작했으나 현재는 구글이 오픈소스 프로젝트로 공개한 상태입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;특징&quot;&gt;특징&lt;/h2&gt;
+&lt;p&gt;쿠버네티스는 다음과 같은 특징이 있으며, 자세한 내용은 쿠버네티스 공식 페이지를 참고하시기 바랍니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;서비스 디스커버리와 로드 밸런싱&lt;/li&gt;
+  &lt;li&gt;스토리지 오케스트레이션&lt;/li&gt;
+  &lt;li&gt;자동화된 롤아웃과 롤백&lt;/li&gt;
+  &lt;li&gt;자동화된 빈 패킹(bin packing)&lt;/li&gt;
+  &lt;li&gt;자동화된 복구(self-healing)&lt;/li&gt;
+  &lt;li&gt;시크릿과 구성 관리&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://kubernetes.io/ko/docs/home/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://kubernetes.io/ko/docs/home/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;nks-클러스터-생성&quot;&gt;NKS 클러스터 생성&lt;/h2&gt;
 
@@ -98,7 +116,7 @@ https://kubernetes.io/ko/docs/tasks/tools/&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-07-12&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">NKS 클러스터 생성 및 제어 가이드 네이버 클라우드 Kubernetes서비스의 생성 및 제어 하는 방법에 대해 설명하겠습니다 .</summary></entry><entry><title type="html">VPC 환경에서 NAT Gateway 설정하기</title><link href="http://localhost:4000/2.networking/ncp_networking_natgw_routetb/" rel="alternate" type="text/html" title="VPC 환경에서 NAT Gateway 설정하기" /><published>2021-07-09T00:00:00+09:00</published><updated>2021-07-09T00:00:00+09:00</updated><id>http://localhost:4000/2.networking/ncp_networking_natgw_routetb</id><content type="html" xml:base="http://localhost:4000/2.networking/ncp_networking_natgw_routetb/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서 제공하는 Kubernetes(쿠버네티스) 서비스를 생성하고 제어하는 방법에 대해 소개합니다.</summary></entry><entry><title type="html">VPC 환경에서 NAT Gateway 설정하기</title><link href="http://localhost:4000/2.networking/ncp_networking_natgw_routetb/" rel="alternate" type="text/html" title="VPC 환경에서 NAT Gateway 설정하기" /><published>2021-07-09T00:00:00+09:00</published><updated>2021-07-09T00:00:00+09:00</updated><id>http://localhost:4000/2.networking/ncp_networking_natgw_routetb</id><content type="html" xml:base="http://localhost:4000/2.networking/ncp_networking_natgw_routetb/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;NAT Gateway는 비공인 IP를 가진 다수의 서버들이 대표 공인 IP를 이용해 외부와 통신을 할 수 있도록 도와주는 네트워킹 서비스입니다.&lt;br /&gt;
 그리고, 일반적으로 서버에 직접 공인 IP를 부여하는 것과 달리 외부에서 서버로의 직접 접근은 허용하지 않기 때문에 높은 수준의 보안을 유지할 수 있는 것이 특징입니다.&lt;br /&gt;
 여기서는 VPC 환경에서 NAT Gateway를 어떻게 구성하고, NAT Gateway를 적용하기 전과 후의 외부와 통신 상태에 대해 확인해보도록 하겠습니다.&lt;/p&gt;
