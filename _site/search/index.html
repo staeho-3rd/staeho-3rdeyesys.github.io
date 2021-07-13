@@ -15,6 +15,15 @@
 		<!--link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400italic,400,300italic,300,700,700italic|Open+Sans:400italic,600italic,700italic,700,600,400|Inconsolata:400,700"-->
 
 		
+			<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q6RVEFJ3S"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'G-4Q6RVEFJ3S');
+			</script>
+		
 
 		<!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Search | 3rdeyesys</title>
@@ -23,14 +32,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="써드아이시스템 기술문서" />
 <meta property="og:description" content="써드아이시스템 기술문서" />
-<link rel="canonical" href="http://localhost:4000/search/" />
-<meta property="og:url" content="http://localhost:4000/search/" />
+<link rel="canonical" href="https://docs.3rdeyesys.com/search/" />
+<meta property="og:url" content="https://docs.3rdeyesys.com/search/" />
 <meta property="og:site_name" content="3rdeyesys" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/search/","headline":"Search","description":"써드아이시스템 기술문서","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/siteicon.png"}},"@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"https://docs.3rdeyesys.com/search/","headline":"Search","description":"써드아이시스템 기술문서","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-		<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="3rdeyesys" />
+		<link type="application/atom+xml" rel="alternate" href="https://docs.3rdeyesys.com/feed.xml" title="3rdeyesys" />
 
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	</head>
@@ -125,7 +134,7 @@
 						"title": "Kubernetes Service 클러스터 생성 및 제어 가이드",
 						"categories": "1.compute",
 						"url": " /1.compute/ncp_server_kubernetes_service_start_guide/",
-						"content": "개요\n네이버 클라우드에서 제공하는 Kubernetes(쿠버네티스) 서비스를 생성하고 제어하는 방법에 대해 소개합니다.\n\n쿠버네티스란?\n쿠버네티스는 배포, 스케일링, 그리고 컨테이너화된 애플리케이션의 관리를 자동화 해주는 오픈 소스 컨테이너 오케스트레이션 엔진이라고 정의되어 있습니다.\n구글에서 처음 개발하기 시작했으나 현재는 구글이 오픈소스 프로젝트로 공개한 상태입니다.\n\n특징\n쿠버네티스는 다음과 같은 특징이 있으며, 자세한 내용은 쿠버네티스 공식 페이지를 참고하시기 바랍니다.\n\n\n  서비스 디스커버리와 로드 밸런싱\n  스토리지 오케스트레이션\n  자동화된 롤아웃과 롤백\n  자동화된 빈 패킹(bin packing)\n  자동화된 복구(self-healing)\n  시크릿과 구성 관리\n\n\nhttps://kubernetes.io/ko/docs/home/\n\nNKS 클러스터 생성\n\n선행조건\n\n클러스터에 사용할 전용VPC 와 Private, LB전용 Subnet 이 필요합니다.\n\n\n  -Private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /17~/26 범위의 Private Subnet, 로드밸런서 전용 Subnet이 필요합니다.\n-Docker Bridge 대역의 충돌을 방지하기 위해 172.17.0.0/16 범위 내의 Private Subnet, 로드밸런서 전용Subnet은 선택할 수 없습니다.\n\n\n\n\nkubernetes Sevice탭에 들어간뒤 생성하기를 클릭합니다.\n\n\n\n생성하실 클러스터의 정보를 설정해줍니다.\n(ACG는 자동으로 생성 됩니다.)\n\n  현재 지원되고 있는 Kubenetes 버전은 &lt;1.17.16&gt;, &lt;1.18.17&gt; 입니다.\n\n\n\n\n클러스터에 생성되는 노드풀과 서버의 스펙 및 수를 지정해줍니다.\n\n\n  현재 지원되고 있는 OS는   입니다.\n\n\n\n\n워커노드의 로그인키를 설정 합니다.\n\n\n\n설정 정보를 최종적으로 확인한 후 생성버튼을 클릭하여 클러스터를 생성합니다.\n\nkubectl 설치\n\n사용자 로컬 머신에서 클러스터를 제어하기 위해 kubectl을 설치합니다.\n\nwindows에서 cmd 창을 열어 kubctl의 최신 릴리즈 버전을 다운로드 합니다.\n\n최신릴리즈 v1.21.0\n\n또는 curl 을 이용하여 다운로드 받습니다.\ncurl -LO https://dl.k8s.io/v1.21.0/bin/windows/amd64/kubectl.exe.sha256\n\n\nkubectl 의 버전을 확인합니다.\nkubectl version --client\n\n다른OS의 설치방법도 필요하시면 아래의 링크가 있습니다.\n\nLinux kubectl 설치&lt;/br&gt;\nmacOS kubectl 설치\n\nNKS 접속하여 제어하기 (windows)\n\n클러스터를 제어하기 위해서는 NKS에서 제공해주는 접속을 위한 인증정보가 있는 설정파일을 다운로드 합니다.\n\n\n\n가이드 보기 버튼을 누른 뒤\n\n\n\nNKS에서 제공해주는 설정 파일을 다운로드 받습니다.\n\n그 후 다운로드한 파일경로로 %KUBE_CONFIG% 환경변수를 지정합니다.\n\n예시)\n&gt; SET KUBE_CONFIG=%USERPROFILE%\\Downloads\\kubeconfig-734929a7-8a13-49a2-a2ca-99e7d5d9661e.yaml\n\n\n이제 –kubeconfig 옵션을 사용하여 NKS의 클러스터를 제어할수 있습니다.\n\n예시)\n&gt; kubectl --kubeconfig %KUBE_CONFIG% get nodes\nNAME                 STATUS   ROLES   AGE    VERSION\nnks-pool-1865-w2zy   Ready    node    4d5h   v1.16.6\nnks-pool-1865-w2zz   Ready    node    4d5h   v1.16.6\n\n\n참조\n\n참고 URL\nhttps://guide.ncloud-docs.com/docs/compute-compute-4-1-v2.html\n\nhttps://guide.ncloud-docs.com/docs/vnks-nks-1-1\nhttps://guide.ncloud-docs.com/docs/vnks-nks-1-2\nhttps://kubernetes.io/ko/docs/tasks/tools/\n\n\n  문서 최종 수정일 : 2021-07-12"
+						"content": "개요\n네이버 클라우드 VPC 환경에서 Kubernetes(쿠버네티스) 서비스를 생성하고 제어하는 방법에 대해 소개합니다.\n\n쿠버네티스란?\n쿠버네티스(Kubernetes)는 배포, 스케일링, 그리고 컨테이너화된 애플리케이션의 관리를 자동화 해주는 오픈 소스 컨테이너 오케스트레이션 엔진으로 \n구글에서 처음 개발하기 시작했으나 현재는 구글이 오픈소스 프로젝트로 공개한 상태입니다.\n\n특징\n쿠버네티스는 다음과 같은 특징이 있으며, 자세한 내용은 쿠버네티스 공식 페이지를 참고하시기 바랍니다.\n\nhttps://kubernetes.io/ko/docs/home/\n\n\n  서비스 디스커버리와 로드 밸런싱\n  스토리지 오케스트레이션\n  자동화된 롤아웃과 롤백\n  자동화된 빈 패킹(bin packing)\n  자동화된 복구(self-healing)\n  시크릿과 구성 관리\n\n\n사전 준비\n먼저 쿠버네티스 클러스터에 사용할 전용 VPC와 Private Subnet, Load Balancer용 Subnet이 필요합니다.\n\n\n\n\n  \n    Private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /17~/26 범위의 Private Subnet, 로드밸런서 전용 Subnet이 필요합니다.\n    Docker Bridge 대역의 충돌을 방지하기 위해 172.17.0.0/16 범위 내의 Private Subnet, 로드밸런서 전용Subnet은 선택할 수 없습니다.\n  \n\n\n클러스터 생성\n\nVPC와 Subnet이 준비되었다면, 다음으로 [Kubernetes Sevice] - [Cluster]에서 생성하기를 클릭합니다.\n\n\n\n생성하실 클러스터의 정보를 설정해줍니다.\n(ACG는 자동으로 생성 됩니다.)\n\n\n\n\n  현재 지원되고 있는 Kubenetes 버전은 [1.17.16], [1.18.17] 입니다.\n\n\n클러스터에 생성되는 노드풀과 서버의 스펙 및 수를 지정해줍니다.\n\n\n\n\n  현재 지원되고 있는 OS는 [ubuntu16.04], [ubuntu18.04] 입니다.\n\n\n워커노드의 로그인키를 설정 합니다.\n\n\n\n설정 정보를 최종적으로 확인한 후 생성버튼을 클릭하여 클러스터를 생성합니다.\n\n\n\nkubectl 설치\n\n사용자 로컬PC에서 클러스터를 제어하기 위해 kubectl을 설치합니다.\nkubctl의 최신 릴리즈 버전은 아래  링크에서 다운받을 수 있습니다.\n\n\n  kubctl v1.21.0 :  https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe\n\n\n또는 windows에서 cmd 창에서 curl 을 이용하해 다운로드 받을 수도 있습니다.\n&gt; curl -LO https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe\n\n\nkubectl의 버전 확인이 필요한 경우 다음 명령어를 사용하시면 됩니다.\n&gt; kubectl version --client\n\n\n\n다른 OS 환경에서 설치하는 방법은 아래 링크에서 확인할 수 있습니다.\n\n\n  Linux kubectl 설치 : https://kubernetes.io/ko/docs/tasks/tools/install-kubectl-linux/\n  macOS kubectl 설치 : https://kubernetes.io/ko/docs/tasks/tools/install-kubectl-macos/\n\n\n접속-제어\n\n클러스터를 제어하기 위해서는 네이버 클라우드 쿠버네티스 서비스에서 제공해주는 접속을 위한 인증정보가 있는 설정파일이 필요합니다. \n[설정파일] - [다운로드] 또는 [가이드 보기] - [설정파일 다운로드] 버튼을 클릭해 설정 파일을 다운로드 받습니다.\n\n\n\nkubectl을 실행해 Kubernetes에 접속하고 제어하는 방법은 [가이드 보기] 버튼 클릭하면 아래와 같이 자세히 확인할 수 있습니다.\n\n\n\n다운로드한 설정 파일경로를 %KUBE_CONFIG% 환경변수에 지정합니다.\n\n&gt; SET KUBE_CONFIG=%USERPROFILE%\\Downloads\\kubeconfig-7349***-8***-4***-a***-99e***.yaml\n\n\n이제 –kubeconfig 옵션을 사용하여 쿠버네티스의 클러스터를 제어할수 있습니다.\n\n&gt; kubectl --kubeconfig %KUBE_CONFIG% get nodes\nNAME                 STATUS   ROLES   AGE    VERSION\nnks-pool-1865-w2zy   Ready    node    4d5h   v1.16.6\nnks-pool-1865-w2zz   Ready    node    4d5h   v1.16.6\n\n\n참고 URL\n\n  쿠버네티스 사용 가이드\n    \n      https://guide.ncloud-docs.com/docs/vnks-nks-1-1\n    \n  \n  클러스터 이용 가이드\n    \n      https://guide.ncloud-docs.com/docs/vnks-nks-1-2\n    \n  \n  kubectl 설치 가이드\n    \n      https://kubernetes.io/ko/docs/tasks/tools/\n    \n  \n\n\n\n  문서 최종 수정일 : 2021-07-13"
 					}
 					
 				
