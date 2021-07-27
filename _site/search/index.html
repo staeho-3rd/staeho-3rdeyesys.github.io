@@ -15,6 +15,15 @@
 		<!--link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400italic,400,300italic,300,700,700italic|Open+Sans:400italic,600italic,700italic,700,600,400|Inconsolata:400,700"-->
 
 		
+			<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q6RVEFJ3S"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'G-4Q6RVEFJ3S');
+			</script>
+		
 
 		<!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Search | 3rdeyesys</title>
@@ -23,14 +32,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="써드아이시스템 기술문서" />
 <meta property="og:description" content="써드아이시스템 기술문서" />
-<link rel="canonical" href="http://localhost:4000/search/" />
-<meta property="og:url" content="http://localhost:4000/search/" />
+<link rel="canonical" href="https://docs.3rdeyesys.com/search/" />
+<meta property="og:url" content="https://docs.3rdeyesys.com/search/" />
 <meta property="og:site_name" content="3rdeyesys" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/search/","headline":"Search","description":"써드아이시스템 기술문서","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/siteicon.png"}},"@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"https://docs.3rdeyesys.com/search/","headline":"Search","description":"써드아이시스템 기술문서","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-		<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="3rdeyesys" />
+		<link type="application/atom+xml" rel="alternate" href="https://docs.3rdeyesys.com/feed.xml" title="3rdeyesys" />
 
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	</head>
@@ -119,6 +128,21 @@
 			
 				
 					
+					
+					"4-storage-ncp-storage-nas-vpc-guide": {
+						"id": "4-storage-ncp-storage-nas-vpc-guide",
+						"title": "NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드",
+						"categories": "4.storage",
+						"url": " /4.storage/ncp_storage_nas_vpc_guide/",
+						"content": "개요\nNAS (Network Attached Storage)는 다수의 서버, 사용자가 함께 사용하는 네트워크 저장공간으로, \n서버 간 데이터 공유, 대용량 스토리지, 유연한 용량 확대/축소, 스냅샷 백업 등이 필요한 경우에 주로 사용하며, \n네이버 클라우드 NAS 서비스의 주요 기능을 활용해 안전하고 편리하게 데이터를 관리할 수 있습니다.\n이번 가이드에서는 NAS 볼륨을 생성하고, Linux 즉, CentOS와 Ubuntu 서버에 마운트하는 방법을 정리해보겠습니다.\n\n특징\n\n  용량: 500GB ~ 10,000GB까지 가능하며, 확장은 100GB단위로 가능\n  접근제어 설정 가능\n  스냅샷 설정: 자동생성의 경우  최대 7개까지 보관 가능\n  볼륨 암호화: 볼륨 단위로 AES-256 알고리즘 기반의 암호화 키를 사용하여 FIPS-140-2 레벨 1 수준의 암호화를 제공\n  모니터링 및 이벤트 설정 가능\n\n\nVPC-Subnet  생성\n\nVPC 생성\nVPC환경에서 작업할 것이므로 우선 VPC를 생성합니다.\n\n\n\n\n\nSubnet 생성\nSubnet 설정은 [Public]과 [일반]을 선택합니다.\n\n\n\n\n\n서버 생성\nNAS 볼륨을 마운트할 서버 2개를 CentOS 7.8과 Ubuntu 18.04로 생성합니다.\n\n\n\nNAS 생성\n[NAS] - [Volume]에서 [NAS 볼륨 생성] 버튼을 클릭합니다.\n\n\n\nNAS 볼륨 이름과 용량을 입력하고, 리눅스용 프로토콜인 NFS를 선택합니다.  CIFS는 윈도우용 프로토콜입니다.\n용량은 500GB ~ 10,000GB까지 가능하며, 100GB단위로 추가할 수 있습니다.\n\n\n\nNFS 접근 제어 설정\nNFS 접근 제어 설정에서는 NAS 볼륨을 마운트할 장비를 선택해서 ACL(네트워그 접근제어) 설정을 하게 됩니다.\n\n\n\nNAS 볼륨을 마운트할 장비를 선택하고, [ &gt; ] 버튼을 클릭해 오른쪽으로 이동시킵니다.\n\n\n\n\n마지막으로 설정 내용을 확인하고 [볼륨 생성] 버튼을 클릭합니다.\n\n\n\nCentOS 설정\n\nNFS 관련 패키지 설치\nNAS 볼륨을 서버에 마운트하기 위해 우선 서버에 NFS 프로토콜 관련 패키지를 설치합니다.\n\n~# yum install nfs-utils\n\n\n\n\nNAS 볼륨 마운트하기\nNAS 볼륨을 마운트할 디렉토리를 생성하고 {NAS 볼륨 마운트 정보}를 이용해 마운트한 후에 상태를 확인합니다.\n네이버 클라우드에서는 안정성이 높은 NFS v3(-o vers=3)로 마운트하여 사용할 것을 권고하고 있습니다.\n\n~# mkdir /nas\n~# mount -t nfs -o vers=3 {NAS 볼륨 마운트 정보} /nas\n~# df -Th\n\n\n\n\n\nfstab 설정\n부팅 후에도 마운트가 될 수 있도록 /etc/fstab 파일에 추가합니다.\n\n\n\nUbuntu 설정\n\nNFS 관련 패키지 설치\n우분투에서도 우선 NFS 관련 패키지를 설치합니다.\n\n~# apt-get install nfs-common -y\n\n\n\nNAS 마운트하기\nNAS 볼륨을 마운트할 디렉토리를 생성하고 {NAS 볼륨 마운트 정보}를 이용해 마운트한 후에 상태를 확인합니다.\n네이버 클라우드에서는 안정성이 높은 NFS v3(-o vers=3)로 마운트하여 사용할 것을 권고하고 있습니다.\n\n~# mkdir /nas\n~# mount -t nfs -o vers=3 {NAS 볼륨 마운트 정보} /nas\n~# df -Th\n\n\n\nfstab 설정\n부팅 후에도 마운트가 될 수 있도록 /etc/fstab 파일에 추가합니다.\n\n\n\n이벤트 설정\n이벤트 설정에서는 NAS 볼륨 사용량 임계치를 설정하고 이벤트 발생 시 SMS나 Email로 통보를 받습니다.\n볼륨 설정에서 이벤트 설정을 클릭합니다.\n\n\n\n이벤트 통보 방법과 휴대폰 또는 이메일 등을 입력하고 설정을 완료합니다.\n\n\n\n참고 URL\n\n  NAS 사용 가이드\n    \n      https://guide.ncloud-docs.com/docs/ko/storage-storage-4-1\n    \n  \n\n\n\n  문서 최종 수정일 : 2021-07-27"
+					}
+					
+				
+			
+		
+			
+				
+					,
 					
 					"1-compute-ncp-server-kubernetes-service-start-guide": {
 						"id": "1-compute-ncp-server-kubernetes-service-start-guide",
