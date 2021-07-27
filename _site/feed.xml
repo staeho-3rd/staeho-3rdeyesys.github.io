@@ -1,4 +1,136 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-07-13T16:32:31+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Kubernetes Service 클러스터 생성 및 제어 가이드</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_kubernetes_service_start_guide/" rel="alternate" type="text/html" title="Kubernetes Service 클러스터 생성 및 제어 가이드" /><published>2021-07-12T00:00:00+09:00</published><updated>2021-07-12T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_kubernetes_service_start_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_kubernetes_service_start_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-07-27T18:03:06+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_nas_vpc_guide/" rel="alternate" type="text/html" title="NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드" /><published>2021-07-27T00:00:00+09:00</published><updated>2021-07-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_nas_vpc_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_nas_vpc_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;NAS (Network Attached Storage)는 다수의 서버, 사용자가 함께 사용하는 네트워크 저장공간으로, 
+서버 간 데이터 공유, 대용량 스토리지, 유연한 용량 확대/축소, 스냅샷 백업 등이 필요한 경우에 주로 사용하며, 
+네이버 클라우드 NAS 서비스의 주요 기능을 활용해 안전하고 편리하게 데이터를 관리할 수 있습니다.&lt;br /&gt;
+이번 가이드에서는 NAS 볼륨을 생성하고, Linux 즉, CentOS와 Ubuntu 서버에 마운트하는 방법을 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;특징&quot;&gt;특징&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;용량: 500GB ~ 10,000GB까지 가능하며, 확장은 100GB단위로 가능&lt;/li&gt;
+  &lt;li&gt;접근제어 설정 가능&lt;/li&gt;
+  &lt;li&gt;스냅샷 설정: 자동생성의 경우  최대 7개까지 보관 가능&lt;/li&gt;
+  &lt;li&gt;볼륨 암호화: 볼륨 단위로 AES-256 알고리즘 기반의 암호화 키를 사용하여 FIPS-140-2 레벨 1 수준의 암호화를 제공&lt;/li&gt;
+  &lt;li&gt;모니터링 및 이벤트 설정 가능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;vpc-subnet--생성&quot;&gt;VPC-Subnet  생성&lt;/h2&gt;
+
+&lt;h4 id=&quot;vpc-생성&quot;&gt;VPC 생성&lt;/h4&gt;
+&lt;p&gt;VPC환경에서 작업할 것이므로 우선 VPC를 생성합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_01.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_02.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:680px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;subnet-생성&quot;&gt;Subnet 생성&lt;/h4&gt;
+&lt;p&gt;Subnet 설정은 [Public]과 [일반]을 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_03.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_04.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:680px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;서버-생성&quot;&gt;서버 생성&lt;/h2&gt;
+&lt;p&gt;NAS 볼륨을 마운트할 서버 2개를 CentOS 7.8과 Ubuntu 18.04로 생성합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_05.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;nas-생성&quot;&gt;NAS 생성&lt;/h2&gt;
+&lt;p&gt;[NAS] - [Volume]에서 [NAS 볼륨 생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_06.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;NAS 볼륨 이름과 용량을 입력하고, 리눅스용 프로토콜인 NFS를 선택합니다.  CIFS는 윈도우용 프로토콜입니다.&lt;br /&gt;
+용량은 500GB ~ 10,000GB까지 가능하며, 100GB단위로 추가할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_07.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;nfs-접근-제어-설정&quot;&gt;NFS 접근 제어 설정&lt;/h4&gt;
+&lt;p&gt;NFS 접근 제어 설정에서는 NAS 볼륨을 마운트할 장비를 선택해서 ACL(네트워그 접근제어) 설정을 하게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_08.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;NAS 볼륨을 마운트할 장비를 선택하고, [ &amp;gt; ] 버튼을 클릭해 오른쪽으로 이동시킵니다.
+&lt;img src=&quot;../../images/ncp_storage_nas_guide_09.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_10.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;마지막으로 설정 내용을 확인하고 [볼륨 생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_11.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;centos-설정&quot;&gt;CentOS 설정&lt;/h2&gt;
+
+&lt;h4 id=&quot;nfs-관련-패키지-설치&quot;&gt;NFS 관련 패키지 설치&lt;/h4&gt;
+&lt;p&gt;NAS 볼륨을 서버에 마운트하기 위해 우선 서버에 NFS 프로토콜 관련 패키지를 설치합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# yum &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nfs-utils
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_12.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:660px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;nas-볼륨-마운트하기&quot;&gt;NAS 볼륨 마운트하기&lt;/h4&gt;
+&lt;p&gt;NAS 볼륨을 마운트할 디렉토리를 생성하고 {NAS 볼륨 마운트 정보}를 이용해 마운트한 후에 상태를 확인합니다.&lt;br /&gt;
+네이버 클라우드에서는 안정성이 높은 NFS v3(-o vers=3)로 마운트하여 사용할 것을 권고하고 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /nas
+~# mount &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; nfs &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;vers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;NAS 볼륨 마운트 정보&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; /nas
+~# &lt;span class=&quot;nb&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Th&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_20.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:660px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_13.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:660px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;fstab-설정&quot;&gt;fstab 설정&lt;/h4&gt;
+&lt;p&gt;부팅 후에도 마운트가 될 수 있도록 /etc/fstab 파일에 추가합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_14.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:660px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;ubuntu-설정&quot;&gt;Ubuntu 설정&lt;/h2&gt;
+
+&lt;h4 id=&quot;nfs-관련-패키지-설치-1&quot;&gt;NFS 관련 패키지 설치&lt;/h4&gt;
+&lt;p&gt;우분투에서도 우선 NFS 관련 패키지를 설치합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nfs-common &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_15.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:660px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;nas-마운트하기&quot;&gt;NAS 마운트하기&lt;/h4&gt;
+&lt;p&gt;NAS 볼륨을 마운트할 디렉토리를 생성하고 {NAS 볼륨 마운트 정보}를 이용해 마운트한 후에 상태를 확인합니다.&lt;br /&gt;
+네이버 클라우드에서는 안정성이 높은 NFS v3(-o vers=3)로 마운트하여 사용할 것을 권고하고 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /nas
+~# mount &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; nfs &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;vers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;NAS 볼륨 마운트 정보&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; /nas
+~# &lt;span class=&quot;nb&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Th&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_16.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:660px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;fstab-설정-1&quot;&gt;fstab 설정&lt;/h4&gt;
+&lt;p&gt;부팅 후에도 마운트가 될 수 있도록 /etc/fstab 파일에 추가합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_17.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:660px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;이벤트-설정&quot;&gt;이벤트 설정&lt;/h2&gt;
+&lt;p&gt;이벤트 설정에서는 NAS 볼륨 사용량 임계치를 설정하고 이벤트 발생 시 SMS나 Email로 통보를 받습니다.&lt;br /&gt;
+볼륨 설정에서 이벤트 설정을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_18.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이벤트 통보 방법과 휴대폰 또는 이메일 등을 입력하고 설정을 완료합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_storage_nas_guide_19.jpg&quot; alt=&quot;네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;NAS 사용 가이드
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/ko/storage-storage-4-1&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/ko/storage-storage-4-1&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-07-27&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 NAS (Network Attached Storage)는 다수의 서버, 사용자가 함께 사용하는 네트워크 저장공간으로, 서버 간 데이터 공유, 대용량 스토리지, 유연한 용량 확대/축소, 스냅샷 백업 등이 필요한 경우에 주로 사용하며, 네이버 클라우드 NAS 서비스의 주요 기능을 활용해 안전하고 편리하게 데이터를 관리할 수 있습니다. 이번 가이드에서는 NAS 볼륨을 생성하고, Linux 즉, CentOS와 Ubuntu 서버에 마운트하는 방법을 정리해보겠습니다.</summary></entry><entry><title type="html">Kubernetes Service 클러스터 생성 및 제어 가이드</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_kubernetes_service_start_guide/" rel="alternate" type="text/html" title="Kubernetes Service 클러스터 생성 및 제어 가이드" /><published>2021-07-12T00:00:00+09:00</published><updated>2021-07-12T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_kubernetes_service_start_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_kubernetes_service_start_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 VPC 환경에서 Kubernetes(쿠버네티스) 서비스를 생성하고 제어하는 방법에 대해 소개합니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;쿠버네티스란&quot;&gt;쿠버네티스란?&lt;/h2&gt;
@@ -931,7 +1063,52 @@ Invoke-WebRequest http://init.ncloud.com/vpcporting/real/ncp_vac_chk.exe &lt;spa
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-06-01&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다. 이 사전 작업과 조건을 차례대로 정리해보겠습니다.</summary></entry><entry><title type="html">리눅스서버 SSH 접속 보안 설정하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting/" rel="alternate" type="text/html" title="리눅스서버 SSH 접속 보안 설정하기" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다. 이 사전 작업과 조건을 차례대로 정리해보겠습니다.</summary></entry><entry><title type="html">Global DNS 사용 가이드 - 도메인 추가</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/" rel="alternate" type="text/html" title="Global DNS 사용 가이드 - 도메인 추가" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드 Global DNS를 이용하면 도메인 설정 등을 쉽고 편하게 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;도메인-추가&quot;&gt;도메인 추가&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드는 도메인 구매/등록을 지원 하지 않습니다. 그러므로 가비아, 아이네임즈, 닷네임코리아 등 전문 도메인 등록 기관에서 도메인을 구입 하셔야 합니다.&lt;br /&gt;
+새로 구입한 도메인 혹은 기존 도메인을 [네이버 클라우드 콘솔] - [Networking] - [Global DNS] 메뉴에서 [도메인 추가] 버튼을 클릭해 도메인주소를 입력합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_01.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_02.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:496px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음과 같이 생성된 도메인 정보에서 네임서버의 주소를 확인합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_03.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;도메인을 구입한 등록기관 사이트에서 해당 도메인의 네임서버를 위에서 확인한 네이버 클라우드 Global DNS에서 제공하는 네임서버 정보로 등록합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_04.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;레코드-추가&quot;&gt;레코드 추가&lt;/h2&gt;
+&lt;p&gt;레코드를 추가하려면 도메인 정보에서 [레코드 추가]를 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_05-1.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;추가하려고 하는 레코드 즉, 호스트명과 IP 주소를 입력합니다,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_05.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;추가된 레코드를 도메인 정보에서 아래와 같이 확인한 후, [설정 적용] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_06.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[배포] 버튼을 클릭해 변경된 정보를 배포-적용합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_07.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;네이버 클라우드 네임서버를 클라이언트의 DNS로 설정하지 않은 경우, 레코드의 추가/변경 내역이 반영되는데 전파시간이 소요될 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_08.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:469px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/networking-networking-12-1&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/networking-networking-12-1&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-05-27&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드 Global DNS를 이용하면 도메인 설정 등을 쉽고 편하게 사용할 수 있습니다.</summary></entry><entry><title type="html">리눅스서버 SSH 접속 보안 설정하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting/" rel="alternate" type="text/html" title="리눅스서버 SSH 접속 보안 설정하기" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;리눅스 서버들은 서버에 접속할 때 SSH를 이용하게 되는데, 이때 root 계정에 대한 무작위 패스워드 입력 등의 해킹시도가 있을 수 있습니다.&lt;br /&gt;
 여기서는 이러한 해킹시도를 차단하기 위한 보안설정 중에서 root 계정과 관련한 보안설정 2가지를 정리해보겠습니다.&lt;/p&gt;
 
@@ -1024,52 +1201,7 @@ MaxAuthTries 3
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-05-28&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 리눅스 서버들은 서버에 접속할 때 SSH를 이용하게 되는데, 이때 root 계정에 대한 무작위 패스워드 입력 등의 해킹시도가 있을 수 있습니다. 여기서는 이러한 해킹시도를 차단하기 위한 보안설정 중에서 root 계정과 관련한 보안설정 2가지를 정리해보겠습니다.</summary></entry><entry><title type="html">Global DNS 사용 가이드 - 도메인 추가</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/" rel="alternate" type="text/html" title="Global DNS 사용 가이드 - 도메인 추가" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드 Global DNS를 이용하면 도메인 설정 등을 쉽고 편하게 사용할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;도메인-추가&quot;&gt;도메인 추가&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드는 도메인 구매/등록을 지원 하지 않습니다. 그러므로 가비아, 아이네임즈, 닷네임코리아 등 전문 도메인 등록 기관에서 도메인을 구입 하셔야 합니다.&lt;br /&gt;
-새로 구입한 도메인 혹은 기존 도메인을 [네이버 클라우드 콘솔] - [Networking] - [Global DNS] 메뉴에서 [도메인 추가] 버튼을 클릭해 도메인주소를 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_01.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_02.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:496px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음과 같이 생성된 도메인 정보에서 네임서버의 주소를 확인합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_03.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;도메인을 구입한 등록기관 사이트에서 해당 도메인의 네임서버를 위에서 확인한 네이버 클라우드 Global DNS에서 제공하는 네임서버 정보로 등록합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_04.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;레코드-추가&quot;&gt;레코드 추가&lt;/h2&gt;
-&lt;p&gt;레코드를 추가하려면 도메인 정보에서 [레코드 추가]를 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_05-1.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;추가하려고 하는 레코드 즉, 호스트명과 IP 주소를 입력합니다,&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_05.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;추가된 레코드를 도메인 정보에서 아래와 같이 확인한 후, [설정 적용] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_06.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;[배포] 버튼을 클릭해 변경된 정보를 배포-적용합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_07.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;네이버 클라우드 네임서버를 클라이언트의 DNS로 설정하지 않은 경우, 레코드의 추가/변경 내역이 반영되는데 전파시간이 소요될 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_08.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:469px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/networking-networking-12-1&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/networking-networking-12-1&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-05-27&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드 Global DNS를 이용하면 도메인 설정 등을 쉽고 편하게 사용할 수 있습니다.</summary></entry><entry><title type="html">Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic/" rel="alternate" type="text/html" title="Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법" /><published>2021-05-26T00:00:00+09:00</published><updated>2021-05-26T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 리눅스 서버들은 서버에 접속할 때 SSH를 이용하게 되는데, 이때 root 계정에 대한 무작위 패스워드 입력 등의 해킹시도가 있을 수 있습니다. 여기서는 이러한 해킹시도를 차단하기 위한 보안설정 중에서 root 계정과 관련한 보안설정 2가지를 정리해보겠습니다.</summary></entry><entry><title type="html">Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic/" rel="alternate" type="text/html" title="Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법" /><published>2021-05-26T00:00:00+09:00</published><updated>2021-05-26T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 Classic 환경에서 내 서버 이미지를 다른 계정에 공유하는 방법입니다.&lt;br /&gt;
 Linux와 Windows OS별 차이는 없으며, 일단은 서버 이미지가 생성되어 있는 것을 가정해서 내용을 정리해보겠습니다.&lt;/p&gt;
 
@@ -1132,132 +1264,4 @@ Linux와 Windows OS별 차이는 없으며, 일단은 서버 이미지가 생성
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-05-31&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경에서 내 서버 이미지를 다른 계정에 공유하는 방법입니다. Linux와 Windows OS별 차이는 없으며, 일단은 서버 이미지가 생성되어 있는 것을 가정해서 내용을 정리해보겠습니다.</summary></entry><entry><title type="html">PHP로 Papago Korean Name Romanizer 서비스 이용하기 샘플 예제</title><link href="https://docs.3rdeyesys.com/9.application%20service/ncp_application_service_papago_korean_name_romanizer_php_sample/" rel="alternate" type="text/html" title="PHP로 Papago Korean Name Romanizer 서비스 이용하기 샘플 예제" /><published>2021-05-24T00:00:00+09:00</published><updated>2021-05-24T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/9.application%20service/ncp_application_service_papago_korean_name_romanizer_php_sample</id><content type="html" xml:base="https://docs.3rdeyesys.com/9.application%20service/ncp_application_service_papago_korean_name_romanizer_php_sample/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;Papago Korean Name Romanizer는 한글로 된 이름을 로마자 표기로 변환해주는 서비스로, 현행 로마자 표기법을 따라 변환한 이름과 통계적으로 많이 사용되는 로마자 이름도 함께 제안 받을 수 있습니다.&lt;br /&gt;
-Papago Korean Name Romanizer는 OpenAPI 형태로 제공되며 여기서는 PHP로 호출하는 방식을 살펴볼텐데, 우선 전체 소스코드를 살펴보고 다음으로 주요 코드를 상세하게 살펴보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;이용-요금&quot;&gt;이용 요금&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Papago Korean Name Romanizer는 무료로 제공되는 서비스&lt;/strong&gt;이며, 일 25,000자, 월 750,000자 내에서 사용 가능하며 상향이 필요한 경우 고객지원으로 문의하면 됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;api-이용-신청&quot;&gt;API 이용 신청&lt;/h2&gt;
-&lt;p&gt;Papago Korean Name Romanizer를 이용하기 위해서는 [네이버 클라우드 콘솔] - [AI·NAVER API] -  [Application]에서 등록을 해야 합니다.&lt;br /&gt;
-아래와 같이 NAVER 서비스에서 Papago Korean Name Romanizer를 선택하고, 이름과 사용할 서비스 환경을 입력하고 등록하면 됩니다.&lt;br /&gt;
-Papago Korean Name Romanizer는 웹페이지, 모바일앱 어디서든 사용 가능하며 URL이나 앱 패키지이름, Bundle ID 등을 입력하시면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_application_service_papago_korean_name_romanizer_php_01.jpg&quot; alt=&quot;PHP로 Papago Korean Name Romanizer 서비스 이용하기 샘플 예제&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Application 등록을 하고 나면 다음과 같은 화면을 볼 수 있는데 여기서 인증 정보를 확인해야 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_application_service_papago_korean_name_romanizer_php_02.jpg&quot; alt=&quot;PHP로 Papago Korean Name Romanizer 서비스 이용하기 샘플 예제&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;인증키-확인&quot;&gt;인증키 확인&lt;/h2&gt;
-&lt;p&gt;Papago Korean Name Romanizer API를 호출하려면 Client ID와 Client Secret 로 이루어진 Application Key를 사용해야 하는데 아래와 같이 [인증 정보] 버튼을 클릭하면 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_application_service_papago_korean_name_romanizer_php_03.jpg&quot; alt=&quot;PHP로 Papago Korean Name Romanizer 서비스 이용하기 샘플 예제&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;api-호출-샘플-코드&quot;&gt;API 호출 샘플 코드&lt;/h2&gt;
-
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
-	
-&lt;span class=&quot;nv&quot;&gt;$korean_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;변환할 한글 이름&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;	
-	
-&lt;span class=&quot;nv&quot;&gt;$client_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Client ID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$client_secret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Client Secret&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$enc_korean_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;urlencode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$korean_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$getvars&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;query=&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$enc_korean_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$api_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://naveropenapi.apigw.ntruss.com/krdict/v1/romanization?&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$getvars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$is_post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;curl_init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$api_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_POST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$is_post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_RETURNTRANSFER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;X-NCP-APIGW-API-KEY-ID: &quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$client_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;X-NCP-APIGW-API-KEY: &quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$client_secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_HTTPHEADER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;$json_response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;curl_exec&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;$status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;curl_getinfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLINFO_HTTP_CODE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;curl_close&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-	&lt;span class=&quot;nv&quot;&gt;$rows_response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;json_decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$json_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON_OBJECT_AS_ARRAY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$rows_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;aResult&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-		&lt;span class=&quot;nv&quot;&gt;$rows_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$rows_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;aResult&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-		&lt;span class=&quot;nv&quot;&gt;$sFirstName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$rows_result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sFirstName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-		&lt;span class=&quot;nv&quot;&gt;$aItems&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$rows_result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;aItems&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;nv&quot;&gt;$roman_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;변환할 수 없는 이름입니다&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;nv&quot;&gt;$roman_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Error 내용:&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$json_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;코드-상세-설명&quot;&gt;코드 상세 설명&lt;/h2&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4 id=&quot;application-key&quot;&gt;Application Key&lt;/h4&gt;
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$client_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Client ID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$client_secret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Client Secret&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;네이버 클라우드 콘솔에서 Papago Korean Name Romanizer 서비스를 등록하고 인증 정보에서 확인한 [Client ID] 와 [Client Secret]를 가져와서 사용하면 됩니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;파라미터-설정&quot;&gt;파라미터 설정&lt;/h4&gt;
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$enc_korean_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;urlencode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$korean_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$getvars&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;query=&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$enc_korean_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$is_post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;변환할 한글 이름을 &lt;strong&gt;urlencode로 인코딩&lt;/strong&gt;하고, GET 방식으로 호출하면서 넘겨줄 변수에 할당합니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;api-url&quot;&gt;API URL&lt;/h4&gt;
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$api_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://naveropenapi.apigw.ntruss.com/krdict/v1/romanization?&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$getvars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Papago Korean Name Romanizer의 API URL은 위와 같고, GET 방식으로 호출하므로 url 뒤에 파라미터를 붙여서 전송합니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;http-호출-헤더값-설정&quot;&gt;http 호출 헤더값 설정&lt;/h4&gt;
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;X-NCP-APIGW-API-KEY-ID: &quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$client_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;X-NCP-APIGW-API-KEY: &quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$client_secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;위에서 가져온 Application Key를 호출할 API에 헤더값으로 설정해서 호출하게 됩니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;결과값-반환&quot;&gt;결과값 반환&lt;/h4&gt;
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$rows_response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;json_decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$json_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON_OBJECT_AS_ARRAY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$rows_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;aResult&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-	&lt;span class=&quot;nv&quot;&gt;$rows_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$rows_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;aResult&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-	&lt;span class=&quot;nv&quot;&gt;$sFirstName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$rows_result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sFirstName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-	&lt;span class=&quot;nv&quot;&gt;$aItems&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$rows_result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;aItems&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-	&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$aItems&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-		&lt;span class=&quot;nv&quot;&gt;$roman_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-		&lt;span class=&quot;nv&quot;&gt;$score&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;nv&quot;&gt;$roman_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;변환할 수 없는 이름입니다&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Papago Korean Name Romanizer에서 json형태로 반환된 값을 배열에 담아 사용하면 됩니다.&lt;br /&gt;
-반환되는 값은 한글 성과 변환된 로마자 이름과 빈도수가 담긴 배열입니다.&lt;br /&gt;
-Papago Korean Name Romanizer에서 변환할 수 없는 이름일 경우 상태코드는 정상이지만 배열에 정보가 없기 때문에 예외처리를 해주어야 합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;사용-한도-및-알람-설정&quot;&gt;사용 한도 및 알람 설정&lt;/h2&gt;
-&lt;p&gt;Papago Korean Name Romanizer 서비스는 과도한 사용을 방지하기 위해 일별 25,000자, 월별 750,000자의 제한이 있습니다.&lt;br /&gt;
-그리고 지정된 한도 내에서 일정한 사용을 초과하면 알람을 받도록 설정할 수 있습니다.&lt;br /&gt;
-아래처럼 Application 등록 화면에서 [한도 및 알람 설정] 버튼을 클릭하면 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_application_service_papago_korean_name_romanizer_php_04.jpg&quot; alt=&quot;PHP로 Papago Korean Name Romanizer 서비스 이용하기 샘플 예제&quot; style=&quot;width:800px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://api.ncloud-docs.com/docs/ai-naver-papagokoreannameromanizer&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://api.ncloud-docs.com/docs/ai-naver-papagokoreannameromanizer&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;“문서 최종 수정일 : 2021-05-24”&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Papago Korean Name Romanizer는 한글로 된 이름을 로마자 표기로 변환해주는 서비스로, 현행 로마자 표기법을 따라 변환한 이름과 통계적으로 많이 사용되는 로마자 이름도 함께 제안 받을 수 있습니다. Papago Korean Name Romanizer는 OpenAPI 형태로 제공되며 여기서는 PHP로 호출하는 방식을 살펴볼텐데, 우선 전체 소스코드를 살펴보고 다음으로 주요 코드를 상세하게 살펴보겠습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경에서 내 서버 이미지를 다른 계정에 공유하는 방법입니다. Linux와 Windows OS별 차이는 없으며, 일단은 서버 이미지가 생성되어 있는 것을 가정해서 내용을 정리해보겠습니다.</summary></entry></feed>

@@ -1,5 +1,6 @@
 ---
 date: 2021-07-27
+update: 2021-07-27
 title: NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드
 categories:
   - 4.storage
@@ -7,6 +8,7 @@ description: 네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 �
 type: Document
 set: storage
 order_number: 9
+creator: ljh0519
 ---
 
 ## 개요
