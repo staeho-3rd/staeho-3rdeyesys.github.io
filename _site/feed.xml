@@ -1,4 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-07-27T18:03:06+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_nas_vpc_guide/" rel="alternate" type="text/html" title="NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드" /><published>2021-07-27T00:00:00+09:00</published><updated>2021-07-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_nas_vpc_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_nas_vpc_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-30T18:12:13+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">VPC환경에서 Cloud DB for MySQL 생성하기</title><link href="http://localhost:4000/5.database/ncp_database_cloud_db_for_mysql_guide/" rel="alternate" type="text/html" title="VPC환경에서 Cloud DB for MySQL 생성하기" /><published>2021-07-30T00:00:00+09:00</published><updated>2021-07-30T00:00:00+09:00</updated><id>http://localhost:4000/5.database/ncp_database_cloud_db_for_mysql_guide</id><content type="html" xml:base="http://localhost:4000/5.database/ncp_database_cloud_db_for_mysql_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드의 Cloud DB for MySQL 서비스는 MySQL 데이터베이스를 쉽고 간편하게 구축하고 관리할 수 있고 자동 Fail-Over, 자동백업, 네이버 서비스에서 검증된 최적화된 설정 등을 제공해주는 
+완전 관리형 클라우드 데이터베이스 서비스입니다.&lt;br /&gt;
+여기서는 VPC환경에서 Cloud DB for MySQL 서비스를 생성하는 과정을 정리해보겠습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;네이버 클라우드는 Classic환경에서는 DB 서버 이미지를 제공하지만, VPC 환경에서는 제공하지 않습니다. 
+그러므로 VPC 환경에서 DB서버를 사용하려면 OS에 사용자가 직접 DB를 설치해서 사용하는 방법과 Cloud DB를 사용하는 방법 중에서 선택해야 합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;특징&quot;&gt;특징&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;기본 10GB 데이터 스토리지를 제공하며, 10GB 단위로 6000GB까지 자동으로 용량이 증가합니다.&lt;/li&gt;
+  &lt;li&gt;하나의 마스터 DB마다 최대 10대의 슬레이브 DB를 생성할 수 있습니다.&lt;/li&gt;
+  &lt;li&gt;Load Balancer 상품을 통해 슬레이브 DB 서버들을 읽기 전용 복제본으로 사용함으로써 데이터베이스의 읽기 부하를 분산 시킬 수 있습니다.&lt;/li&gt;
+  &lt;li&gt;매일 1회 고객이 원하는 시간에 DB를 자동으로 백업하며, 백업한 데이터를 최대 30일까지 보관할 수 있습니다.&lt;/li&gt;
+  &lt;li&gt;VPC 환경에서는 멀티 존으로 구성해 높은 안정성을 보장받을 수 있습니다.&lt;/li&gt;
+  &lt;li&gt;Cloud DB for MySQL 서비스는 완전 관리형 상품으로 사용자는 DB서버의 운영체제에 접근할 수 없습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;db-접속-방법-3가지&quot;&gt;DB 접속 방법 3가지&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Private 도메인을 이용해 접속하는 방법&lt;/li&gt;
+  &lt;li&gt;SSL VPN을 이용해 접속하는 방법&lt;/li&gt;
+  &lt;li&gt;Public 도메인을 이용해 접속하는 방법&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;아래에서는 VPC환경에서 Private 도메인을 이용해 접속하는 방법을 설명하도록 하겠습니다.&lt;br /&gt;
+만약 네이버 클라우드 외부 환경에서  Cloud DB for MySQL로 접속하려면 Public 도메인을 사용해야 합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;vpc-subnet--생성&quot;&gt;VPC-Subnet  생성&lt;/h2&gt;
+
+&lt;h4 id=&quot;vpc-생성&quot;&gt;VPC 생성&lt;/h4&gt;
+&lt;p&gt;VPC환경에서 작업할 것이므로 우선 VPC를 생성합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_01.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_02.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:680px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;subnet-생성&quot;&gt;Subnet 생성&lt;/h4&gt;
+&lt;p&gt;Subnet은 Cloud DB for MySQL을 위한 Private Subnet과 DB 접속 테스트를 위한 Server용 Public Subnet을 각각 생성합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_03.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;cloud-db-for-mysql을-위한-private-subnet&quot;&gt;Cloud DB for MySQL을 위한 Private Subnet&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_05.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:680px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;테스트용-server를-위한-public-subnet&quot;&gt;테스트용 Server를 위한 Public Subnet&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_04.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:680px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;db-생성&quot;&gt;DB 생성&lt;/h2&gt;
+&lt;p&gt;[Database] - [Cloud DB for MySQL]에서 [DB Server 생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_11.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:670px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;db-엔진-버전&quot;&gt;DB 엔진 버전&lt;/h4&gt;
+&lt;p&gt;DB 엔진 버전은 MySQL 최신 버전 중 네이버에서 안정성이 검증된 버전인 5.7버전과 8.0버전을 제공합니다. (기본값 5.7.32)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_12-1.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;db-서버-이름과-db-서비스-이름&quot;&gt;DB 서버 이름과 DB 서비스 이름&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;DB Server 이름은 고객이 DB 서버를 구분하기 위한 명칭으로, 사용자가 입력한 이름 뒤에 001, 002와 같이 숫자를 붙여 서버를 구분하게 됩니다.&lt;/li&gt;
+  &lt;li&gt;예를 들어 DB 서버 이름을 mydb라고 입력하면 생성되는 DB 서버 이름은 mydb-001, mydb-002와 같습니다.&lt;/li&gt;
+  &lt;li&gt;DB 서비스 이름은 역할별 DB 서버를 구분하기 위한 이름입니다.&lt;/li&gt;
+  &lt;li&gt;일반적으로 하나의 액티브 마스터 DB, 스탠바이 마스터 DB, 다수의 슬레이브 DB로 구성되는 DB 서버군을 말하며, 동일한 데이터를 갖고 있는 DB 서버들을 하나의 DB 서비스라 말합니다.&lt;/li&gt;
+  &lt;li&gt;예를 들어 “쇼핑 메인 DB”, “게임 유저 DB”와 같은 식으로 DB 서비스의 역할을 구분하기 위해 사용합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Cloud DB를 위한 ACG는 자동 생성됩니다(예: cloud-db-*)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_12-2.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;db-설정&quot;&gt;DB 설정&lt;/h4&gt;
+&lt;p&gt;DB 이름과 계정. 비번, 접속 포트 등을 설정합니다.&lt;br /&gt;
+HOST(IP) 설정에는 DB에 접근을 허용할 IP대역을 입력합니다. 여기서는 테스트용 서버의 Subnet 대역을 모두 허용하기 위해 [192.168.0.%]를 입력합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_12-3.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;acg-설정&quot;&gt;ACG 설정&lt;/h2&gt;
+&lt;p&gt;Cloud DB for MySQL을 생성할 때 자동 생성된 ACG [cloud-mysql-*]을 선택하고 ACG 설정을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_14.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Inbound 설정에 테스트용 Server의 Subnet 대역인 192.168.0.0/16을 접근소스에 입력합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_15.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-07-30&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드의 Cloud DB for MySQL 서비스는 MySQL 데이터베이스를 쉽고 간편하게 구축하고 관리할 수 있고 자동 Fail-Over, 자동백업, 네이버 서비스에서 검증된 최적화된 설정 등을 제공해주는 완전 관리형 클라우드 데이터베이스 서비스입니다. 여기서는 VPC환경에서 Cloud DB for MySQL 서비스를 생성하는 과정을 정리해보겠습니다.</summary></entry><entry><title type="html">NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드</title><link href="http://localhost:4000/4.storage/ncp_storage_nas_vpc_guide/" rel="alternate" type="text/html" title="NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드" /><published>2021-07-27T00:00:00+09:00</published><updated>2021-07-27T00:00:00+09:00</updated><id>http://localhost:4000/4.storage/ncp_storage_nas_vpc_guide</id><content type="html" xml:base="http://localhost:4000/4.storage/ncp_storage_nas_vpc_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;NAS (Network Attached Storage)는 다수의 서버, 사용자가 함께 사용하는 네트워크 저장공간으로, 
 서버 간 데이터 공유, 대용량 스토리지, 유연한 용량 확대/축소, 스냅샷 백업 등이 필요한 경우에 주로 사용하며, 
 네이버 클라우드 NAS 서비스의 주요 기능을 활용해 안전하고 편리하게 데이터를 관리할 수 있습니다.&lt;br /&gt;
@@ -130,7 +222,7 @@
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-07-27&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 NAS (Network Attached Storage)는 다수의 서버, 사용자가 함께 사용하는 네트워크 저장공간으로, 서버 간 데이터 공유, 대용량 스토리지, 유연한 용량 확대/축소, 스냅샷 백업 등이 필요한 경우에 주로 사용하며, 네이버 클라우드 NAS 서비스의 주요 기능을 활용해 안전하고 편리하게 데이터를 관리할 수 있습니다. 이번 가이드에서는 NAS 볼륨을 생성하고, Linux 즉, CentOS와 Ubuntu 서버에 마운트하는 방법을 정리해보겠습니다.</summary></entry><entry><title type="html">Kubernetes Service 클러스터 생성 및 제어 가이드</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_kubernetes_service_start_guide/" rel="alternate" type="text/html" title="Kubernetes Service 클러스터 생성 및 제어 가이드" /><published>2021-07-12T00:00:00+09:00</published><updated>2021-07-12T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_kubernetes_service_start_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_kubernetes_service_start_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 NAS (Network Attached Storage)는 다수의 서버, 사용자가 함께 사용하는 네트워크 저장공간으로, 서버 간 데이터 공유, 대용량 스토리지, 유연한 용량 확대/축소, 스냅샷 백업 등이 필요한 경우에 주로 사용하며, 네이버 클라우드 NAS 서비스의 주요 기능을 활용해 안전하고 편리하게 데이터를 관리할 수 있습니다. 이번 가이드에서는 NAS 볼륨을 생성하고, Linux 즉, CentOS와 Ubuntu 서버에 마운트하는 방법을 정리해보겠습니다.</summary></entry><entry><title type="html">Kubernetes Service 클러스터 생성 및 제어 가이드</title><link href="http://localhost:4000/1.compute/ncp_server_kubernetes_service_start_guide/" rel="alternate" type="text/html" title="Kubernetes Service 클러스터 생성 및 제어 가이드" /><published>2021-07-12T00:00:00+09:00</published><updated>2021-07-12T00:00:00+09:00</updated><id>http://localhost:4000/1.compute/ncp_server_kubernetes_service_start_guide</id><content type="html" xml:base="http://localhost:4000/1.compute/ncp_server_kubernetes_service_start_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 VPC 환경에서 Kubernetes(쿠버네티스) 서비스를 생성하고 제어하는 방법에 대해 소개합니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;쿠버네티스란&quot;&gt;쿠버네티스란?&lt;/h2&gt;
@@ -264,7 +356,7 @@ nks-pool-1865-w2zz   Ready    node    4d5h   v1.16.6
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-07-13&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 VPC 환경에서 Kubernetes(쿠버네티스) 서비스를 생성하고 제어하는 방법에 대해 소개합니다.</summary></entry><entry><title type="html">VPC 환경에서 NAT Gateway 설정하기</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_natgw_routetb/" rel="alternate" type="text/html" title="VPC 환경에서 NAT Gateway 설정하기" /><published>2021-07-09T00:00:00+09:00</published><updated>2021-07-09T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_natgw_routetb</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_natgw_routetb/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 VPC 환경에서 Kubernetes(쿠버네티스) 서비스를 생성하고 제어하는 방법에 대해 소개합니다.</summary></entry><entry><title type="html">VPC 환경에서 NAT Gateway 설정하기</title><link href="http://localhost:4000/2.networking/ncp_networking_natgw_routetb/" rel="alternate" type="text/html" title="VPC 환경에서 NAT Gateway 설정하기" /><published>2021-07-09T00:00:00+09:00</published><updated>2021-07-09T00:00:00+09:00</updated><id>http://localhost:4000/2.networking/ncp_networking_natgw_routetb</id><content type="html" xml:base="http://localhost:4000/2.networking/ncp_networking_natgw_routetb/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;NAT Gateway는 비공인 IP를 가진 다수의 서버들이 대표 공인 IP를 이용해 외부와 통신을 할 수 있도록 도와주는 네트워킹 서비스입니다.&lt;br /&gt;
 그리고, 일반적으로 서버에 직접 공인 IP를 부여하는 것과 달리 외부에서 서버로의 직접 접근은 허용하지 않기 때문에 높은 수준의 보안을 유지할 수 있는 것이 특징입니다.&lt;br /&gt;
 여기서는 VPC 환경에서 NAT Gateway를 어떻게 구성하고, NAT Gateway를 적용하기 전과 후의 외부와 통신 상태에 대해 확인해보도록 하겠습니다.&lt;/p&gt;
@@ -384,7 +476,7 @@ nks-pool-1865-w2zz   Ready    node    4d5h   v1.16.6
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-07-09&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 NAT Gateway는 비공인 IP를 가진 다수의 서버들이 대표 공인 IP를 이용해 외부와 통신을 할 수 있도록 도와주는 네트워킹 서비스입니다. 그리고, 일반적으로 서버에 직접 공인 IP를 부여하는 것과 달리 외부에서 서버로의 직접 접근은 허용하지 않기 때문에 높은 수준의 보안을 유지할 수 있는 것이 특징입니다. 여기서는 VPC 환경에서 NAT Gateway를 어떻게 구성하고, NAT Gateway를 적용하기 전과 후의 외부와 통신 상태에 대해 확인해보도록 하겠습니다.</summary></entry><entry><title type="html">리눅스서버 스토리지(디스크) LVM 구성하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_storage_lvm_create/" rel="alternate" type="text/html" title="리눅스서버 스토리지(디스크) LVM 구성하기" /><published>2021-07-06T00:00:00+09:00</published><updated>2021-07-06T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_storage_lvm_create</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_storage_lvm_create/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 NAT Gateway는 비공인 IP를 가진 다수의 서버들이 대표 공인 IP를 이용해 외부와 통신을 할 수 있도록 도와주는 네트워킹 서비스입니다. 그리고, 일반적으로 서버에 직접 공인 IP를 부여하는 것과 달리 외부에서 서버로의 직접 접근은 허용하지 않기 때문에 높은 수준의 보안을 유지할 수 있는 것이 특징입니다. 여기서는 VPC 환경에서 NAT Gateway를 어떻게 구성하고, NAT Gateway를 적용하기 전과 후의 외부와 통신 상태에 대해 확인해보도록 하겠습니다.</summary></entry><entry><title type="html">리눅스서버 스토리지(디스크) LVM 구성하기</title><link href="http://localhost:4000/1.compute/ncp_server_storage_lvm_create/" rel="alternate" type="text/html" title="리눅스서버 스토리지(디스크) LVM 구성하기" /><published>2021-07-06T00:00:00+09:00</published><updated>2021-07-06T00:00:00+09:00</updated><id>http://localhost:4000/1.compute/ncp_server_storage_lvm_create</id><content type="html" xml:base="http://localhost:4000/1.compute/ncp_server_storage_lvm_create/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 서버는 하나의 서버당 로컬 디스크 즉, 블록 스토리지(Block Storage)를 OS가 설치되는 기본 스토리지 1개 이외에 15개를 추가할 수 있으며, 각 스토리지 용량은 10GB ~2,000GB 까지 가능합니다.&lt;br /&gt;
 그리고, 2,000GB 이상을 사용해야 할 경우는 NAS 장비를 사용하거나 Object Storage를 활용하는 경우가 많지만, 상황에 따라서는 2,000GB를 초과하는 용량의 블록 스토리지를 사용해야 하는 경우도 있습니다.&lt;br /&gt;
 이럴때 사용하는 방법이 LVM (Logical Volume Manager)를 사용하여 여러 개의 스토리지를 합쳐서 대용량으로 사용하거나 합쳐진 대용량을 다시 필요한 용량으로 나누어서 사용하는 방법입니다.&lt;br /&gt;
@@ -581,7 +673,7 @@ quit
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-07-06&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 서버는 하나의 서버당 로컬 디스크 즉, 블록 스토리지(Block Storage)를 OS가 설치되는 기본 스토리지 1개 이외에 15개를 추가할 수 있으며, 각 스토리지 용량은 10GB ~2,000GB 까지 가능합니다. 그리고, 2,000GB 이상을 사용해야 할 경우는 NAS 장비를 사용하거나 Object Storage를 활용하는 경우가 많지만, 상황에 따라서는 2,000GB를 초과하는 용량의 블록 스토리지를 사용해야 하는 경우도 있습니다. 이럴때 사용하는 방법이 LVM (Logical Volume Manager)를 사용하여 여러 개의 스토리지를 합쳐서 대용량으로 사용하거나 합쳐진 대용량을 다시 필요한 용량으로 나누어서 사용하는 방법입니다. 그래서 이번에는 리눅스 환경에서 LVM으로 대용량 스토리지를 생성하는 방법을 정리해보겠습니다.</summary></entry><entry><title type="html">VPC 환경에서 Application Load Balancer 생성하기</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_load_balancer_application_lb/" rel="alternate" type="text/html" title="VPC 환경에서 Application Load Balancer 생성하기" /><published>2021-06-30T00:00:00+09:00</published><updated>2021-06-30T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_load_balancer_application_lb</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_load_balancer_application_lb/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 서버는 하나의 서버당 로컬 디스크 즉, 블록 스토리지(Block Storage)를 OS가 설치되는 기본 스토리지 1개 이외에 15개를 추가할 수 있으며, 각 스토리지 용량은 10GB ~2,000GB 까지 가능합니다. 그리고, 2,000GB 이상을 사용해야 할 경우는 NAS 장비를 사용하거나 Object Storage를 활용하는 경우가 많지만, 상황에 따라서는 2,000GB를 초과하는 용량의 블록 스토리지를 사용해야 하는 경우도 있습니다. 이럴때 사용하는 방법이 LVM (Logical Volume Manager)를 사용하여 여러 개의 스토리지를 합쳐서 대용량으로 사용하거나 합쳐진 대용량을 다시 필요한 용량으로 나누어서 사용하는 방법입니다. 그래서 이번에는 리눅스 환경에서 LVM으로 대용량 스토리지를 생성하는 방법을 정리해보겠습니다.</summary></entry><entry><title type="html">VPC 환경에서 Application Load Balancer 생성하기</title><link href="http://localhost:4000/2.networking/ncp_networking_load_balancer_application_lb/" rel="alternate" type="text/html" title="VPC 환경에서 Application Load Balancer 생성하기" /><published>2021-06-30T00:00:00+09:00</published><updated>2021-06-30T00:00:00+09:00</updated><id>http://localhost:4000/2.networking/ncp_networking_load_balancer_application_lb</id><content type="html" xml:base="http://localhost:4000/2.networking/ncp_networking_load_balancer_application_lb/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 VPC 환경의 대표적인 Load Balancer인 Application Load Balancer 를 생성하는 가이드입니다.&lt;br /&gt;
 VPC와 Subnet을 생성하고, 테스트를 위한 서버 2대를 CentOS와 Ubuntu 각각 1대씩 준비해서 Application Load Balancer와 연결하고 접속해보는 과정까지 정리해보겠습니다.&lt;/p&gt;
 
@@ -741,7 +833,7 @@ systemctl status httpd
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-06-30&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 VPC 환경의 대표적인 Load Balancer인 Application Load Balancer 를 생성하는 가이드입니다. VPC와 Subnet을 생성하고, 테스트를 위한 서버 2대를 CentOS와 Ubuntu 각각 1대씩 준비해서 Application Load Balancer와 연결하고 접속해보는 과정까지 정리해보겠습니다.</summary></entry><entry><title type="html">Video Player 구현하기 샘플 예제</title><link href="https://docs.3rdeyesys.com/6.media/ncp_media_video_player_sample/" rel="alternate" type="text/html" title="Video Player 구현하기 샘플 예제" /><published>2021-06-15T00:00:00+09:00</published><updated>2021-06-15T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/6.media/ncp_media_video_player_sample</id><content type="html" xml:base="https://docs.3rdeyesys.com/6.media/ncp_media_video_player_sample/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 VPC 환경의 대표적인 Load Balancer인 Application Load Balancer 를 생성하는 가이드입니다. VPC와 Subnet을 생성하고, 테스트를 위한 서버 2대를 CentOS와 Ubuntu 각각 1대씩 준비해서 Application Load Balancer와 연결하고 접속해보는 과정까지 정리해보겠습니다.</summary></entry><entry><title type="html">Video Player 구현하기 샘플 예제</title><link href="http://localhost:4000/6.media/ncp_media_video_player_sample/" rel="alternate" type="text/html" title="Video Player 구현하기 샘플 예제" /><published>2021-06-15T00:00:00+09:00</published><updated>2021-06-15T00:00:00+09:00</updated><id>http://localhost:4000/6.media/ncp_media_video_player_sample</id><content type="html" xml:base="http://localhost:4000/6.media/ncp_media_video_player_sample/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 비디오 플레이어는 최신의 네이버 미디어 플레이어를 기반으로 개발된 클라우드 전용 상품으로 
 네이버 동영상 서비스에 적용되어 수 많은 성공사례를 가지고 있는 최신의 네이버 플레이어를 손쉽고 빠르게 고객의 미디어 서비스에 적용할 수 있습니다.&lt;/p&gt;
 
@@ -947,7 +1039,7 @@ systemctl status httpd
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-06-14&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 비디오 플레이어는 최신의 네이버 미디어 플레이어를 기반으로 개발된 클라우드 전용 상품으로 네이버 동영상 서비스에 적용되어 수 많은 성공사례를 가지고 있는 최신의 네이버 플레이어를 손쉽고 빠르게 고객의 미디어 서비스에 적용할 수 있습니다.</summary></entry><entry><title type="html">Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/" rel="alternate" type="text/html" title="Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법" /><published>2021-05-31T00:00:00+09:00</published><updated>2021-05-31T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 비디오 플레이어는 최신의 네이버 미디어 플레이어를 기반으로 개발된 클라우드 전용 상품으로 네이버 동영상 서비스에 적용되어 수 많은 성공사례를 가지고 있는 최신의 네이버 플레이어를 손쉽고 빠르게 고객의 미디어 서비스에 적용할 수 있습니다.</summary></entry><entry><title type="html">Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법</title><link href="http://localhost:4000/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/" rel="alternate" type="text/html" title="Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법" /><published>2021-05-31T00:00:00+09:00</published><updated>2021-05-31T00:00:00+09:00</updated><id>http://localhost:4000/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc</id><content type="html" xml:base="http://localhost:4000/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다.  이 사전 작업과 조건을 차례대로 정리해보겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;os-조건-확인&quot;&gt;OS 조건 확인&lt;/h2&gt;
@@ -1063,7 +1155,7 @@ Invoke-WebRequest http://init.ncloud.com/vpcporting/real/ncp_vac_chk.exe &lt;spa
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-06-01&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다. 이 사전 작업과 조건을 차례대로 정리해보겠습니다.</summary></entry><entry><title type="html">Global DNS 사용 가이드 - 도메인 추가</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/" rel="alternate" type="text/html" title="Global DNS 사용 가이드 - 도메인 추가" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다. 이 사전 작업과 조건을 차례대로 정리해보겠습니다.</summary></entry><entry><title type="html">Global DNS 사용 가이드 - 도메인 추가</title><link href="http://localhost:4000/2.networking/ncp_networking_global_dns_guide/" rel="alternate" type="text/html" title="Global DNS 사용 가이드 - 도메인 추가" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>http://localhost:4000/2.networking/ncp_networking_global_dns_guide</id><content type="html" xml:base="http://localhost:4000/2.networking/ncp_networking_global_dns_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드 Global DNS를 이용하면 도메인 설정 등을 쉽고 편하게 사용할 수 있습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;도메인-추가&quot;&gt;도메인 추가&lt;/h2&gt;
@@ -1108,7 +1200,7 @@ Invoke-WebRequest http://init.ncloud.com/vpcporting/real/ncp_vac_chk.exe &lt;spa
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-05-27&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드 Global DNS를 이용하면 도메인 설정 등을 쉽고 편하게 사용할 수 있습니다.</summary></entry><entry><title type="html">리눅스서버 SSH 접속 보안 설정하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting/" rel="alternate" type="text/html" title="리눅스서버 SSH 접속 보안 설정하기" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_ssh_security_setting/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드 Global DNS를 이용하면 도메인 설정 등을 쉽고 편하게 사용할 수 있습니다.</summary></entry><entry><title type="html">리눅스서버 SSH 접속 보안 설정하기</title><link href="http://localhost:4000/1.compute/ncp_server_ssh_security_setting/" rel="alternate" type="text/html" title="리눅스서버 SSH 접속 보안 설정하기" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>http://localhost:4000/1.compute/ncp_server_ssh_security_setting</id><content type="html" xml:base="http://localhost:4000/1.compute/ncp_server_ssh_security_setting/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;리눅스 서버들은 서버에 접속할 때 SSH를 이용하게 되는데, 이때 root 계정에 대한 무작위 패스워드 입력 등의 해킹시도가 있을 수 있습니다.&lt;br /&gt;
 여기서는 이러한 해킹시도를 차단하기 위한 보안설정 중에서 root 계정과 관련한 보안설정 2가지를 정리해보겠습니다.&lt;/p&gt;
 
@@ -1201,67 +1293,4 @@ MaxAuthTries 3
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-05-28&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 리눅스 서버들은 서버에 접속할 때 SSH를 이용하게 되는데, 이때 root 계정에 대한 무작위 패스워드 입력 등의 해킹시도가 있을 수 있습니다. 여기서는 이러한 해킹시도를 차단하기 위한 보안설정 중에서 root 계정과 관련한 보안설정 2가지를 정리해보겠습니다.</summary></entry><entry><title type="html">Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic/" rel="alternate" type="text/html" title="Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법" /><published>2021-05-26T00:00:00+09:00</published><updated>2021-05-26T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_server_image_share_classic/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 Classic 환경에서 내 서버 이미지를 다른 계정에 공유하는 방법입니다.&lt;br /&gt;
-Linux와 Windows OS별 차이는 없으며, 일단은 서버 이미지가 생성되어 있는 것을 가정해서 내용을 정리해보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;공유-권한-설정&quot;&gt;공유 권한 설정&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 콘솔 [Server] - [Server Image]에서 공유할 서버 이미지를 선택하고 상단 메뉴에 있는 [공유 권한 설정]을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_server_image_share_classic_01.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음으로 서버 이미지를 공유할 계정 즉, 로그인 ID를 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_server_image_share_classic_02.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;로그인 ID 입력 후 [권한 추가] 버튼을 클릭하고, [적용] 버튼을 클릭해 설정을 적용합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_server_image_share_classic_03.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;공유 권한 설정을 적용하면 서버 이미지 정보에 [공유 중]이라고 표시되고, [공유 받은 계정] 정보도 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;linux-centos-ubuntu&quot;&gt;Linux (CentOS, Ubuntu)&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_server_image_share_classic_04.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;windows&quot;&gt;Windows&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_server_image_share_classic_12.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;공유-상태-확인&quot;&gt;공유 상태 확인&lt;/h2&gt;
-
-&lt;p&gt;이제 공유 받은 계정으로 접속해보면 [Server Image]에 추가된 서버 이미지가 보이고, [공유 받음] 표시를 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;linux-centos-ubuntu-1&quot;&gt;Linux (CentOS, Ubuntu)&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_server_image_share_classic_05.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;windows-1&quot;&gt;Windows&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_server_image_share_classic_13.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음으로 공유 받은 서버 이미지를 선택하고, [서버 생성] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_server_image_share_classic_06.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;서버 생성 정보 입력 화면이 나타나면서 문제 없이 서버를 생성할 수 있다는 것을 알 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_server_image_share_classic_07.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;공유-권한-삭제&quot;&gt;공유 권한 삭제&lt;/h2&gt;
-
-&lt;p&gt;이제 공유된 권한을 삭제해보겠습니다.&lt;br /&gt;
-처음 서버 이미지를 공유할 때 처럼 서버 이미지를 선택하고, [공유 권한 설정]을 클릭하고, [공유 받은 계정]을 삭제합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_server_image_share_classic_08.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;공유된 계정을 삭제하고, [적용] 버튼을 클릭해 변경될 설정을 적용합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_server_image_share_classic_09.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;아까 공유 받았던 계정으로 접속해 [Server Image]에 들어가보면 공유되었던 서버 이미지가 삭제된 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_server_image_share_classic_10.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/compute-compute-5-1-v2&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/compute-compute-5-1-v2&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-05-31&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경에서 내 서버 이미지를 다른 계정에 공유하는 방법입니다. Linux와 Windows OS별 차이는 없으며, 일단은 서버 이미지가 생성되어 있는 것을 가정해서 내용을 정리해보겠습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 리눅스 서버들은 서버에 접속할 때 SSH를 이용하게 되는데, 이때 root 계정에 대한 무작위 패스워드 입력 등의 해킹시도가 있을 수 있습니다. 여기서는 이러한 해킹시도를 차단하기 위한 보안설정 중에서 root 계정과 관련한 보안설정 2가지를 정리해보겠습니다.</summary></entry></feed>
