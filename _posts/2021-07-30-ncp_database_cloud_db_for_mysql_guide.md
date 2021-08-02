@@ -20,7 +20,7 @@ creator: ljh0519
 >그러므로 VPC 환경에서 DB서버를 사용하려면 OS에 사용자가 직접 DB를 설치해서 사용하는 방법과 Cloud DB를 사용하는 방법 중에서 선택해야 합니다.
 
 ## 특징
-- 기본 10GB 데이터 스토리지를 제공하며, 10GB 단위로 6000GB까지 자동으로 용량이 증가합니다. 
+- 기본 10GB 데이터 스토리지를 제공하며, 10GB 단위로 6,000GB까지 자동으로 용량이 증가합니다. 
 - 하나의 마스터 DB마다 최대 10대의 슬레이브 DB를 생성할 수 있습니다.
 - Load Balancer 상품을 통해 슬레이브 DB 서버들을 읽기 전용 복제본으로 사용함으로써 데이터베이스의 읽기 부하를 분산 시킬 수 있습니다.
 - 매일 1회 고객이 원하는 시간에 DB를 자동으로 백업하며, 백업한 데이터를 최대 30일까지 보관할 수 있습니다.
@@ -55,12 +55,17 @@ Subnet은 Cloud DB for MySQL을 위한 Private Subnet과 DB 접속 테스트를 
 #### 테스트용 Server를 위한 Public Subnet
 <img src="../../images/ncp_database_cloud_db_for_mysql_04.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:680px;align:center">
 
-## DB 생성
+## 테스트 Server 생성
+DB 서버 접속을 테스트 하기 위한 Server를 생성합니다.
+
+<img src="../../images/ncp_database_cloud_db_for_mysql_06.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
+
+## DB 서버 생성
 [Database] - [Cloud DB for MySQL]에서 [DB Server 생성] 버튼을 클릭합니다.
 
 <img src="../../images/ncp_database_cloud_db_for_mysql_11.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:670px;align:center">
 
-#### DB 엔진 버전
+#### DB 서버 엔진 버전
 DB 엔진 버전은 MySQL 최신 버전 중 네이버에서 안정성이 검증된 버전인 5.7버전과 8.0버전을 제공합니다. (기본값 5.7.32)
 
 <img src="../../images/ncp_database_cloud_db_for_mysql_12-1.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
@@ -76,9 +81,10 @@ DB 엔진 버전은 MySQL 최신 버전 중 네이버에서 안정성이 검증�
 
 <img src="../../images/ncp_database_cloud_db_for_mysql_12-2.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
 
-#### DB 설정
+#### DB 서버 설정
 DB 이름과 계정. 비번, 접속 포트 등을 설정합니다.  
-HOST(IP) 설정에는 DB에 접근을 허용할 IP대역을 입력합니다. 여기서는 테스트용 서버의 Subnet 대역을 모두 허용하기 위해 [192.168.0.%]를 입력합니다. 
+HOST(IP) 설정에는 DB에 접근을 허용할 IP대역을 입력합니다. 여기서는 테스트용 서버의 Subnet 대역을 모두 허용하기 위해 [192.168.2.%]를 입력합니다.  
+만약 특정 서버 1대만 허용하려고 할 경우에는 앞에서 생성한 테스트 서버 IP처럼 [192.168.2.6]을 입력합니다.
 
 <img src="../../images/ncp_database_cloud_db_for_mysql_12-3.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
 
@@ -88,9 +94,52 @@ Cloud DB for MySQL을 생성할 때 자동 생성된 ACG [cloud-mysql-*]을 선�
 
 <img src="../../images/ncp_database_cloud_db_for_mysql_14.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
 
-Inbound 설정에 테스트용 Server의 Subnet 대역인 192.168.0.0/16을 접근소스에 입력합니다.
+Inbound 설정에 테스트용 Server의 Subnet 대역인 192.168.2.0/24를 접근소스에 입력합니다.  
+또는 특정 서버 1대만 허용하려고 할 경우에는 앞에서 생성한 테스트 서버 IP처럼 [192.168.2.6]을 입력합니다.
 
 <img src="../../images/ncp_database_cloud_db_for_mysql_15.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
 
 
-> 문서 최종 수정일 : 2021-07-30  
+
+## MySQL Client 설치
+DB 접속 테스트를 위해 생성한 서버에서 MySQL Client를 설치합니다.
+
+``` bash
+~# yum install -y mysql mysql-server
+```
+
+<img src="../../images/ncp_database_cloud_db_for_mysql_19.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
+
+
+## DB 서버 접속
+Cloud DB for MySQL에 접속하기 위한 주소인 [Private 도메인]을 확인 합니다.
+
+<img src="../../images/ncp_database_cloud_db_for_mysql_13.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
+
+테스트용 Server에서 Cloud DB for MySQL로 접속하는 방법은 다음과 같습니다.
+
+``` bash
+~# mysql -h [Private 도메인명] -u user_id -p
+```
+<br />
+DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이터베이스 [test]를 확인할 수 있습니다.
+
+<img src="../../images/ncp_database_cloud_db_for_mysql_18.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:650px;align:center">
+
+## DB 서버 상세보기
+DB 서버 상세보기 메뉴에서는 [Process list], [Variables], [Status], [Database 관리], [DB Config 관리], [DB User 관리], [Backup 설정 관리], [DB Server Logs] 등을 확인할 수 있습니다.
+
+<img src="../../images/ncp_database_cloud_db_for_mysql_16.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
+
+<img src="../../images/ncp_database_cloud_db_for_mysql_17.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
+
+
+## 참고 URL
+1. Cloud DB for MySQL 기본 가이드
+	- <a href="https://guide.ncloud-docs.com/docs/database-database-5-6" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/database-database-5-6</a>
+
+2. Cloud DB 서버 외부 접근 가이드
+	- <a href="https://guide.ncloud-docs.com/docs/database-database-5-10" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/database-database-5-10</a>
+
+
+> 문서 최종 수정일 : 2021-08-02
