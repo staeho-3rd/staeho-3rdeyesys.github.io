@@ -241,11 +241,11 @@
   <li>예를 들어 “쇼핑 메인 DB”, “게임 유저 DB”와 같은 식으로 DB 서비스의 역할을 구분하기 위해 사용합니다.</li>
 </ul>
 
-<blockquote>
-  <p>Cloud DB를 위한 ACG는 자동 생성됩니다(예: cloud-db-*)</p>
-</blockquote>
-
 <p><img src="../../images/ncp_database_cloud_db_for_mysql_12-2.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center" /></p>
+
+<blockquote>
+  <p>Cloud DB를 위한 ACG는 자동 생성됩니다(예: cloud-mysql-*)</p>
+</blockquote>
 
 <h4 id="db-서버-설정">DB 서버 설정</h4>
 <p>DB 이름과 계정. 비번, 접속 포트 등을 설정합니다.<br />
@@ -279,7 +279,7 @@ HOST(IP) 설정에는 DB에 접근을 허용할 IP대역을 입력합니다. 여
 
 <p>테스트용 Server에서 Cloud DB for MySQL로 접속하는 방법은 다음과 같습니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# mysql <span class="nt">-h</span> <span class="o">[</span>Private 도메인명] <span class="nt">-u</span> user_id <span class="nt">-p</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# mysql <span class="nt">-h</span> <span class="o">[</span>Private 도메인명] <span class="nt">-u</span> <span class="o">[</span>user_id] <span class="nt">-p</span>
 </code></pre></div></div>
 <p><br />
 DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이터베이스 [test]를 확인할 수 있습니다.</p>
@@ -292,6 +292,19 @@ DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이�
 <p><img src="../../images/ncp_database_cloud_db_for_mysql_16.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center" /></p>
 
 <p><img src="../../images/ncp_database_cloud_db_for_mysql_17.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center" /></p>
+
+<h4 id="db-user-관리">DB User 관리</h4>
+<p>DB 서버를 이용하다보면 여러 계정이 필요하게 됩니다. 이때 계정을 추가하기 위해 [DB 서버 상세보기] - [DB User 관리] 메뉴를 클릭합니다.</p>
+
+<p>USER_ID, HOST, DB 권한, 암호를 입력하고 DB User 추가 버튼을 클릭합니다.</p>
+<ul>
+  <li>사용자가 변경한 DB 계정은 DB 서비스 전체에 적용됩니다.</li>
+  <li>USER_ID + HOST(IP) 단위로 계정 추가 및 권한 관리를 합니다.</li>
+  <li>DB 권한에서 DDL 권한은 CRUD 권한을 포함합니다.</li>
+  <li>최대 1,000개까지 계정을 추가 및 조회 할 수 있습니다.</li>
+</ul>
+
+<p><img src="../../images/ncp_database_cloud_db_for_mysql_20.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center" /></p>
 
 <h2 id="참고-url">참고 URL</h2>
 <ol>
@@ -450,6 +463,32 @@ DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이�
 		
 		
 		
+			<a href="/1.compute/ncp_server_pip_python_install_centos6/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>5. CentOS6에서 pip - Python 설치하기 
+							
+						</h3>
+						<p class="description">네이버 클라우드 CentOS6.x에서 pip - Python 설치하기</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+		
+		
+		
 			<a href="/5.database/ncp_database_mariadb_access_from_remote_ubuntu/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -459,7 +498,7 @@ DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이�
 </div>
 				<article>
 					<div>
-						<h3>5. Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL 
+						<h3>6. Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL 
 							
 						</h3>
 						<p class="description">네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</p>
@@ -485,36 +524,10 @@ DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이�
 </div>
 				<article>
 					<div>
-						<h3>6. CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL 
+						<h3>7. CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL 
 							
 						</h3>
 						<p class="description">네이버 클라우드 CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-		
-		
-		
-			<a href="/1.compute/ncp_server_pip_python_install_centos6/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>7. CentOS6에서 pip - Python 설치하기 
-							
-						</h3>
-						<p class="description">네이버 클라우드 CentOS6.x에서 pip - Python 설치하기</p>
 					</div>
 				</article>
 			</a>
@@ -626,6 +639,34 @@ DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이�
 			</a>
 		</li>
 	
+		<li >
+		
+		
+		
+		
+		
+		
+		
+			<a href="/5.database/ncp_database_cloud_db_for_mysql_public_domain_guide/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>12. Cloud DB for MySQL 생성후 Public 도메인으로 접속하기 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">네이버 클라우드 Cloud DB for MySQL 생성하고 Public 도메인으로 접속하기 가이드입니다</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
 </ul>
 	</div>
 
@@ -636,6 +677,34 @@ DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이�
 		<h3>Related docs</h3>
 
 		<ul class="listing">
+	
+		<li >
+		
+		
+		
+		
+		
+		
+		
+			<a href="/5.database/ncp_database_cloud_db_for_mysql_public_domain_guide/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>Cloud DB for MySQL 생성후 Public 도메인으로 접속하기 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">네이버 클라우드 Cloud DB for MySQL 생성하고 Public 도메인으로 접속하기 가이드입니다</p>
+					</div>
+				</article>
+			</a>
+		</li>
 	
 		<li >
 		
@@ -874,32 +943,6 @@ DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이�
 							
 						</h3>
 						<p class="description">네이버 클라우드 Global DNS 사용 방법 중에서 도메인과 레코드 추가에 대한 가이드입니다</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-		
-		
-		
-			<a href="/1.compute/ncp_server_server_image_share_classic/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법 
-							
-						</h3>
-						<p class="description">네이버 클라우드 Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법을 소개합니다.</p>
 					</div>
 				</article>
 			</a>

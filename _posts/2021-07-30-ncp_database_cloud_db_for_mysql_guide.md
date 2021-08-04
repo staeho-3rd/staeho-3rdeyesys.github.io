@@ -77,9 +77,9 @@ DB 엔진 버전은 MySQL 최신 버전 중 네이버에서 안정성이 검증�
 - 일반적으로 하나의 액티브 마스터 DB, 스탠바이 마스터 DB, 다수의 슬레이브 DB로 구성되는 DB 서버군을 말하며, 동일한 데이터를 갖고 있는 DB 서버들을 하나의 DB 서비스라 말합니다.
 - 예를 들어 "쇼핑 메인 DB", "게임 유저 DB"와 같은 식으로 DB 서비스의 역할을 구분하기 위해 사용합니다.
 
->Cloud DB를 위한 ACG는 자동 생성됩니다(예: cloud-db-*)
-
 <img src="../../images/ncp_database_cloud_db_for_mysql_12-2.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
+
+>Cloud DB를 위한 ACG는 자동 생성됩니다(예: cloud-mysql-*)
 
 #### DB 서버 설정
 DB 이름과 계정. 비번, 접속 포트 등을 설정합니다.  
@@ -119,7 +119,7 @@ Cloud DB for MySQL에 접속하기 위한 주소인 [Private 도메인]을 확�
 테스트용 Server에서 Cloud DB for MySQL로 접속하는 방법은 다음과 같습니다.
 
 ``` bash
-~# mysql -h [Private 도메인명] -u user_id -p
+~# mysql -h [Private 도메인명] -u [user_id] -p
 ```
 <br />
 DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이터베이스 [test]를 확인할 수 있습니다.
@@ -132,6 +132,18 @@ DB 서버 상세보기 메뉴에서는 [Process list], [Variables], [Status], [D
 <img src="../../images/ncp_database_cloud_db_for_mysql_16.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
 
 <img src="../../images/ncp_database_cloud_db_for_mysql_17.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
+
+
+#### DB User 관리
+DB 서버를 이용하다보면 여러 계정이 필요하게 됩니다. 이때 계정을 추가하기 위해 [DB 서버 상세보기] - [DB User 관리] 메뉴를 클릭합니다. 
+
+USER_ID, HOST, DB 권한, 암호를 입력하고 DB User 추가 버튼을 클릭합니다.  
+- 사용자가 변경한 DB 계정은 DB 서비스 전체에 적용됩니다.
+- USER_ID + HOST(IP) 단위로 계정 추가 및 권한 관리를 합니다.
+- DB 권한에서 DDL 권한은 CRUD 권한을 포함합니다.
+- 최대 1,000개까지 계정을 추가 및 조회 할 수 있습니다.
+
+<img src="../../images/ncp_database_cloud_db_for_mysql_20.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
 
 
 ## 참고 URL
