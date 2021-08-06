@@ -1,4 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-08-04T14:51:12+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Cloud DB for MySQL 생성후 Public 도메인으로 접속하기</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_cloud_db_for_mysql_public_domain_guide/" rel="alternate" type="text/html" title="Cloud DB for MySQL 생성후 Public 도메인으로 접속하기" /><published>2021-08-03T00:00:00+09:00</published><updated>2021-08-03T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_cloud_db_for_mysql_public_domain_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_cloud_db_for_mysql_public_domain_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-08-06T10:45:08+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">설치형 MySQL DB에서 root Password 설정, 변경하는 방법</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide/" rel="alternate" type="text/html" title="설치형 MySQL DB에서 root Password 설정, 변경하는 방법" /><published>2021-08-05T00:00:00+09:00</published><updated>2021-08-05T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드에서는 MySQL Password 정책에 따라 처음 MySQL DB를 설치할 때 root의 초기 패스워드가 설정되지 않습니다. 
+그러므로 보안 침해 방지를 위해 설치 후에 root Password를 설정한 후에 DB를 사용하는 것이 안전합니다.&lt;br /&gt;
+여기서는 Classic환경에서 MySQL 5.6과 5.7 버전의 root Password를 설정, 변경하는 방법에 대해 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;mysql-버전&quot;&gt;MySQL 버전&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드 Classic환경에서 지원하는 설치형 MySQL 버전은 5.6과 5.7 입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_00.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;네이버 클라우드는 Classic환경에서는 DB 서버 이미지를 제공하지만, VPC 환경에서는 제공하지 않습니다. 
+그러므로 VPC 환경에서 DB서버를 사용하려면 OS에 사용자가 직접 DB를 설치해서 사용하는 방법과 Cloud DB를 사용하는 방법 중에서 선택해야 합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;mysql-56-설정&quot;&gt;MySQL 5.6 설정&lt;/h2&gt;
+&lt;p&gt;우선 mysql 5.6 DB서버를 생성한 후 root 계정의 패스워드 상태를 확인해봅니다. 그 이후에 패스워드를 설정합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#mysql 접속&lt;/span&gt;
+~# mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root
+
+&lt;span class=&quot;c&quot;&gt;#계정 정보 조회&lt;/span&gt;
+mysql&amp;gt; &lt;span class=&quot;k&quot;&gt;select &lt;/span&gt;host, user, password from mysql.user&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#패스워드 설정-변경&lt;/span&gt;
+mysql&amp;gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;password &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; password&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'패스워드'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#변경된 패스워드 조회&lt;/span&gt;
+mysql&amp;gt; &lt;span class=&quot;k&quot;&gt;select &lt;/span&gt;host, user, password from mysql.user&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+초기 패스워드가 설정되어있지 않기 때문에 -p 옵션을 사용하지 않고 바로 접속 해서 user 테이블에 있는 계정 정보를 확인해보면 password 값이 비어 있는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_01.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;패스워드를 설정하고 다시 확인을 해보면 &lt;strong&gt;localhost의 root 계정&lt;/strong&gt;에 패스워드가 설정된 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;MySQL의 계정은 host-user 두개를 합쳐서 키로 사용하게 되어 있습니다. 같은 user라도 접속하는 host 값이 다르면 별도의 계정처럼 인식합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_02.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그런데 위에서 사용한 &lt;strong&gt;set password = password(‘패스워드’)&lt;/strong&gt;는 localhost@root에 대해서만 패스워드를 설정-변경합니다.&lt;br /&gt;
+만약 외부에서 접속하기 위해 특정 IP를 추가했다거나 외부 접속을 모두 허용하기 위해 host에 %값을 설정했을 경우에는 패스워드가 설정-변경되지 않습니다. 
+이때 사용하는 방법은 아래와 같습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; update mysql.user &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;password &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; password&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'패스워드'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; where user &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'root'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+mysql&amp;gt; &lt;span class=&quot;k&quot;&gt;select &lt;/span&gt;host, user, password from mysql.user&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;쿼리를 실행한 후에 조회를 해보면 user값이 root인 모든 계정의 password 값이 동일하게 설정된 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_03.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;mysql-57-설정&quot;&gt;MySQL 5.7 설정&lt;/h2&gt;
+&lt;p&gt;마찬가지로 mysql 5.7 DB서버를 생성한 후 root 계정의 패스워드 상태를 확인해봅니다. 그 이후에 패스워드를 설정합니다.&lt;br /&gt;
+MySQL 5.7은 패스워드 칼럼이 password가 아니고 authentication_string로 변경되었습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#mysql 접속&lt;/span&gt;
+~# mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root
+
+&lt;span class=&quot;c&quot;&gt;#계정 정보 조회&lt;/span&gt;
+mysql&amp;gt; &lt;span class=&quot;k&quot;&gt;select &lt;/span&gt;host, user, authentication_string from mysql.user&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#패스워드 설정-변경&lt;/span&gt;
+mysql&amp;gt; ALTER USER &lt;span class=&quot;s1&quot;&gt;'root'&lt;/span&gt;@&lt;span class=&quot;s1&quot;&gt;'localhost'&lt;/span&gt; IDENTIFIED WITH mysql_native_password BY &lt;span class=&quot;s1&quot;&gt;'패스워드'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#변경된 패스워드 조회&lt;/span&gt;
+mysql&amp;gt; &lt;span class=&quot;k&quot;&gt;select &lt;/span&gt;host, user, authentication_string from mysql.user&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+초기 패스워드가 설정되어있지 않기 때문에 -p 옵션을 사용하지 않고 바로 접속 해서 user 테이블에 있는 계정 정보를 확인해보면 password 값이 비어 있는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_04.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이때 MySQL 5.6 이하 버전처럼 update 명령어로 authentication_string 칼럼 값을 변경하려고 해도 적용되지 않습니다.&lt;br /&gt;
+위에 적은 것처럼 ALTER 명령으로 변경해야 적용되니 주의해야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_05.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;mysql-패스워드-정책&quot;&gt;MySQL 패스워드 정책&lt;/h2&gt;
+&lt;p&gt;MySQL은 아래와 같이 기본 패스워드 정책이 설정되어 있습니다. 그러므로 패스워드 설정 시에는 아래 조건에 맞게 입력하셔야 합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;최소 길이 8자 이상&lt;/li&gt;
+  &lt;li&gt;특수문자 1개 이상&lt;/li&gt;
+  &lt;li&gt;숫자 1개 이상&lt;/li&gt;
+  &lt;li&gt;대소문자 조합 1개 이상&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;MySQL DB에 접속해서 아래와 같이 설정된 정책을 조회할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; SHOW VARIABLES LIKE &lt;span class=&quot;s1&quot;&gt;'validate_password%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_06.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;설치형 MySQL 기본 가이드
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/database-database-1-1&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/database-database-1-1&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;MySQL 패스워드 정책 가이드
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-08-05&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서는 MySQL Password 정책에 따라 처음 MySQL DB를 설치할 때 root의 초기 패스워드가 설정되지 않습니다. 그러므로 보안 침해 방지를 위해 설치 후에 root Password를 설정한 후에 DB를 사용하는 것이 안전합니다. 여기서는 Classic환경에서 MySQL 5.6과 5.7 버전의 root Password를 설정, 변경하는 방법에 대해 정리해보겠습니다.</summary></entry><entry><title type="html">Cloud DB for MySQL 생성후 Public 도메인으로 접속하기</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_cloud_db_for_mysql_public_domain_guide/" rel="alternate" type="text/html" title="Cloud DB for MySQL 생성후 Public 도메인으로 접속하기" /><published>2021-08-03T00:00:00+09:00</published><updated>2021-08-03T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_cloud_db_for_mysql_public_domain_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_cloud_db_for_mysql_public_domain_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드의 Cloud DB for MySQL 서비스는 MySQL 데이터베이스를 쉽고 간편하게 구축하고 관리할 수 있고 자동 Fail-Over, 자동백업, 네이버 서비스에서 검증된 최적화된 설정 등을 제공해주는 
 완전 관리형 클라우드 데이터베이스 서비스입니다.&lt;br /&gt;
 여기서는 VPC환경에서 Cloud DB for MySQL 서비스를 생성하고, Public 도메인으로 접속하는 과정을 정리해보겠습니다.&lt;/p&gt;
@@ -1377,49 +1491,4 @@ Invoke-WebRequest http://init.ncloud.com/vpcporting/real/ncp_vac_chk.exe &lt;spa
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-06-01&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다. 이 사전 작업과 조건을 차례대로 정리해보겠습니다.</summary></entry><entry><title type="html">Global DNS 사용 가이드 - 도메인 추가</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/" rel="alternate" type="text/html" title="Global DNS 사용 가이드 - 도메인 추가" /><published>2021-05-27T00:00:00+09:00</published><updated>2021-05-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_global_dns_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드 Global DNS를 이용하면 도메인 설정 등을 쉽고 편하게 사용할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;도메인-추가&quot;&gt;도메인 추가&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드는 도메인 구매/등록을 지원 하지 않습니다. 그러므로 가비아, 아이네임즈, 닷네임코리아 등 전문 도메인 등록 기관에서 도메인을 구입 하셔야 합니다.&lt;br /&gt;
-새로 구입한 도메인 혹은 기존 도메인을 [네이버 클라우드 콘솔] - [Networking] - [Global DNS] 메뉴에서 [도메인 추가] 버튼을 클릭해 도메인주소를 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_01.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_02.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:496px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음과 같이 생성된 도메인 정보에서 네임서버의 주소를 확인합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_03.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;도메인을 구입한 등록기관 사이트에서 해당 도메인의 네임서버를 위에서 확인한 네이버 클라우드 Global DNS에서 제공하는 네임서버 정보로 등록합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_04.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;레코드-추가&quot;&gt;레코드 추가&lt;/h2&gt;
-&lt;p&gt;레코드를 추가하려면 도메인 정보에서 [레코드 추가]를 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_05-1.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;추가하려고 하는 레코드 즉, 호스트명과 IP 주소를 입력합니다,&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_05.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;추가된 레코드를 도메인 정보에서 아래와 같이 확인한 후, [설정 적용] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_06.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;[배포] 버튼을 클릭해 변경된 정보를 배포-적용합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_07.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;네이버 클라우드 네임서버를 클라이언트의 DNS로 설정하지 않은 경우, 레코드의 추가/변경 내역이 반영되는데 전파시간이 소요될 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_global_dns_guide_08.jpg&quot; alt=&quot;네이버 클라우드 Global DNS 등록 가이드 &quot; style=&quot;width:469px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/networking-networking-12-1&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/networking-networking-12-1&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-05-27&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드 Global DNS를 이용하면 도메인 설정 등을 쉽고 편하게 사용할 수 있습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다. 이 사전 작업과 조건을 차례대로 정리해보겠습니다.</summary></entry></feed>
