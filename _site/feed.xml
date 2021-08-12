@@ -1,4 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-08-06T10:45:08+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">설치형 MySQL DB에서 root Password 설정, 변경하는 방법</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide/" rel="alternate" type="text/html" title="설치형 MySQL DB에서 root Password 설정, 변경하는 방법" /><published>2021-08-05T00:00:00+09:00</published><updated>2021-08-05T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-08-12T16:44:50+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">AWS S3 수명 주기 (LifeCycle) 설정하기</title><link href="https://docs.3rdeyesys.com/91.aws/aws_s3_lifecycle_management/" rel="alternate" type="text/html" title="AWS S3 수명 주기 (LifeCycle) 설정하기" /><published>2021-08-12T00:00:00+09:00</published><updated>2021-08-12T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/91.aws/aws_s3_lifecycle_management</id><content type="html" xml:base="https://docs.3rdeyesys.com/91.aws/aws_s3_lifecycle_management/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;AWS S3에서는 버킷내 특정 디렉토리 하위 파일들에 대해 지정된 날짜가 지난 후 만료(삭제)가 되도록 설정할 수 있습니다. 
+수명 주기 관리(LifeCycle Management)라고 불리는 이 방법은 파일관리 뿐만 아니라 비용절감에도 도움이 됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;수명주기-설정&quot;&gt;수명주기 설정&lt;/h2&gt;
+&lt;p&gt;AWS 콘솔에 접속 후 수명 주기를 적용할 S3 버킷으로 이동해 [관리] 메뉴 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/aws_s3_lifecycle_01.jpg&quot; alt=&quot;AWS S3 수명주기 (LifeCycle) 설정하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[수명 주기 규칙 생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/aws_s3_lifecycle_02.jpg&quot; alt=&quot;AWS S3 수명주기 (LifeCycle) 설정하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;수명 주기 규칙 이름을 입력하고, 규칙 범위는 [하나 이상의 필터를 사용하여 이 규칙의 범위 제한]을 선택합니다.&lt;br /&gt;
+접두사에는 수명 주기를 적용할 디렉토리나 파일 등의 필터를 작성합니다. 예를 들어 images 디렉토리가 포함된 모든 파일에 적용하려면 &lt;strong&gt;images/&lt;/strong&gt; 라고 입력합니다. 이때 버킷명은 제외하고 입력해야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/aws_s3_lifecycle_03.jpg&quot; alt=&quot;AWS S3 수명주기 (LifeCycle) 설정하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;수명 주기 규칙 작업에서 [객체의 이전버전 영구 삭제]를 선택하면, 몇일 후에 삭제할 것인지를 설정할 수 있는 [객체가 이전 버전이 된 후 경과 일수] 항목이 나타납니다. 
+여기에 원하는 날짜를 입력하고, [규칙 생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/aws_s3_lifecycle_04.jpg&quot; alt=&quot;AWS S3 수명주기 (LifeCycle) 설정하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;주의사항&quot;&gt;주의사항&lt;/h2&gt;
+&lt;p&gt;AWS 수명 주기 관련해서 주의해야 할 사항이 몇가지 있습니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;수명-주기-규칙-작동-시점&quot;&gt;수명 주기 규칙 작동 시점&lt;/h4&gt;
+&lt;p&gt;수명 주기 규칙이 생각한 것보다 늦게 작동하는 경우가 있습니다. 이는 &lt;strong&gt;Amazon S3가 객체의 전환 또는 만료(삭제) 날짜를 익일 자정(UTC)부터 계산하기 때문&lt;/strong&gt;입니다.&lt;br /&gt;
+예를 들어 2020년 1월 1일 10:30(UTC)에 객체를 생성하고 3일 후 객체가 만료(삭제)되도록 수명 주기 규칙을 설정할 경우 객체의 만료(삭제) 날짜는 2020년 1월 5일 00:00(UTC)이 됩니다. 
+따라서 수명 주기 규칙이 충족되었는지 확인하기 전에 충분한 시간이 경과했는지 확인해야 합니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;수명-주기-규칙-접두사-필터-설정&quot;&gt;수명 주기 규칙 접두사 필터 설정&lt;/h4&gt;
+&lt;p&gt;수명 주기 규칙에서 접두사 필터에 디렉토리를 지정할 경우 접두사 필터의 끝에 / 문자를 지정해야 합니다. 접두사 필터의 처음에 / 문자가 있으면 수명 주기 규칙이 올바르게 평가되지 않습니다.&lt;br /&gt;
+즉, images 디렉토리가 포함된 모든 파일에 적용하려면 &lt;strong&gt;images/&lt;/strong&gt; 라고 입력해야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/aws_s3_lifecycle_05.jpg&quot; alt=&quot;AWS S3 수명주기 (LifeCycle) 설정하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;AWS S3 수명 주기 관리 가이드
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/userguide/object-lifecycle-mgmt.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/userguide/object-lifecycle-mgmt.html&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;수명 주기 규칙 작동 지연 관련 FAQ
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://aws.amazon.com/ko/premiumsupport/knowledge-center/s3-lifecycle-rule-delay/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://aws.amazon.com/ko/premiumsupport/knowledge-center/s3-lifecycle-rule-delay/&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-08-12&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 AWS S3에서는 버킷내 특정 디렉토리 하위 파일들에 대해 지정된 날짜가 지난 후 만료(삭제)가 되도록 설정할 수 있습니다. 수명 주기 관리(LifeCycle Management)라고 불리는 이 방법은 파일관리 뿐만 아니라 비용절감에도 도움이 됩니다.</summary></entry><entry><title type="html">설치형 MySQL DB에서 root Password 설정, 변경하는 방법</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide/" rel="alternate" type="text/html" title="설치형 MySQL DB에서 root Password 설정, 변경하는 방법" /><published>2021-08-05T00:00:00+09:00</published><updated>2021-08-05T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드에서는 MySQL Password 정책에 따라 처음 MySQL DB를 설치할 때 root의 초기 패스워드가 설정되지 않습니다. 
 그러므로 보안 침해 방지를 위해 설치 후에 root Password를 설정한 후에 DB를 사용하는 것이 안전합니다.&lt;br /&gt;
 여기서는 Classic환경에서 MySQL 5.6과 5.7 버전의 root Password를 설정, 변경하는 방법에 대해 정리해보겠습니다.&lt;/p&gt;
@@ -1375,120 +1428,4 @@ systemctl status httpd
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-06-14&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 비디오 플레이어는 최신의 네이버 미디어 플레이어를 기반으로 개발된 클라우드 전용 상품으로 네이버 동영상 서비스에 적용되어 수 많은 성공사례를 가지고 있는 최신의 네이버 플레이어를 손쉽고 빠르게 고객의 미디어 서비스에 적용할 수 있습니다.</summary></entry><entry><title type="html">Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/" rel="alternate" type="text/html" title="Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법" /><published>2021-05-31T00:00:00+09:00</published><updated>2021-05-31T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_windows_server_image_copy_classic_to_vpc/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다.  이 사전 작업과 조건을 차례대로 정리해보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;os-조건-확인&quot;&gt;OS 조건 확인&lt;/h2&gt;
-&lt;p&gt;Classic 환경의 서버 이미지를 VPC 환경으로 복제하는 것이므로 &lt;strong&gt;VPC에서 지원하는 OS만 복제 가능&lt;/strong&gt;합니다.&lt;br /&gt;
-즉, 현재 네이버 클라우드 VPC 환경에서 지원하는 Windows OS 버전은&lt;br /&gt;
-&lt;strong&gt;Windows Server 2016 (64-bit) English Edition&lt;/strong&gt; 하나이기 때문에 2016 R2 등의 OS를 사용 중이라면 
-VPC에서 지원하지 않아 복제가 불가능하니 VPC에서 지원할 때까지 작업을 보류하셔야 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_14.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;
-&lt;strong&gt;(2021년 6월 1일 현재 VPC 환경에서 지원하는 Windows OS 버전)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;사전-작업-확인&quot;&gt;사전 작업 확인&lt;/h2&gt;
-&lt;p&gt;우선 사전 작업이 어떤 것이 있는지 확인해 보기 위해 Windows 서버 이미지를 하나 만들어서 상단에 있는 [VPC로 복제] 버튼을 클릭해 봅니다.&lt;/p&gt;
-
-&lt;p&gt;안내 팝업에는 다음과 같은 작업이 필요하다고 적혀 있습니다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;백신 솔루션 확인 및 필요시 백신 삭제&lt;/li&gt;
-  &lt;li&gt;백신 상태 확인 스크립트 실행&lt;/li&gt;
-  &lt;li&gt;내 서버 이미지 다시 생성 후 VPC 복제 기능 사용&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_01.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;백신-삭제&quot;&gt;백신 삭제&lt;/h2&gt;
-&lt;p&gt;Windows 서버에 설치된 백신 솔루션을 확인해서, ApexOne 또는 OfficeScan이라면 백신 삭제가 필요하며, 그 외 솔루션은 삭제하지 않아도 됩니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;apexone-삭제방법&quot;&gt;ApexOne 삭제방법&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;제어판 -&amp;gt; 프로그램 추가제거로 이동 후 &lt;strong&gt;‘Trend Micro Apex One Security Agent’&lt;/strong&gt;를 선택하고, 삭제합니다.&lt;/li&gt;
-  &lt;li&gt;C:\Program Files (x86) 경로의 Trend Micro\Security Agent 폴더를 삭제합니다.&lt;br /&gt;
-(삭제되지 않는 파일은 그대로 두셔도 됩니다)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;officescan-삭제방법&quot;&gt;OfficeScan 삭제방법&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;제어판 -&amp;gt; 프로그램 추가제거로 이동 후 &lt;strong&gt;‘Trend Micro officescan Security Agent’&lt;/strong&gt;를 선택하고, 삭제합니다.&lt;/li&gt;
-  &lt;li&gt;C:\Program Files (x86) 경로의 Trend Micro\Security Agent 폴더를 삭제합니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;그-외-솔루션&quot;&gt;그 외 솔루션&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;백신 삭제 불필요&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_02.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_03.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_13.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;백신상태-확인&quot;&gt;백신상태 확인&lt;/h2&gt;
-&lt;p&gt;백신이 모두 정상적으로 제거되었는지 확인하는 툴을 실행합니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;백신상태-확인-tool-다운로드&quot;&gt;백신상태 확인 Tool 다운로드&lt;/h4&gt;
-&lt;p&gt;Windows PowerShell을 열고, 다음의 명령어를 실행하면 바탕화면에 Tool이 다운로드 됩니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;c:&lt;span class=&quot;se&quot;&gt;\u&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\A&lt;/span&gt;dministrator&lt;span class=&quot;se&quot;&gt;\D&lt;/span&gt;esktop 
-Invoke-WebRequest http://init.ncloud.com/vpcporting/real/ncp_vac_chk.exe &lt;span class=&quot;nt&quot;&gt;-outfile&lt;/span&gt; ncp_vac_chk.exe
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_04.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:732px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;백신상태-확인-tool-실행&quot;&gt;백신상태 확인 Tool 실행&lt;/h4&gt;
-&lt;p&gt;바탕화면에 다운로드 된 &lt;strong&gt;ncp_vac_chk.exe&lt;/strong&gt; 파일을 관리자 권한으로 실행합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_05.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;백신상태-확인-체크-결과-확인&quot;&gt;백신상태 확인 체크 결과 확인&lt;/h4&gt;
-&lt;p&gt;백신상태 확인이 정상적으로 수행되면 바탕화면에 notifyFreeAntiVirusRemoved, result 파일 2개가 생성되며, 백신상태 확인이 비정상으로 수행되면 result 파일 1개만 생성이 됩니다.&lt;/p&gt;
-
-&lt;p&gt;notifyFreeAntiVirusRemoved 파일이 생성되지 않거나 해당 파일의 내용이 OK가 아닌 경우 백신상태 확인이 정상적으로 완료되지 못한 경우이므로 백신솔루션에 따라 필요시 백신이 잘 제거되었는지 다시 한번 더 체크 후 해당 Tool을 실행해야 합니다.&lt;/p&gt;
-
-&lt;p&gt;백신상태 확인이 정상적으로 완료되지 않고 문제가 지속되면 result 파일을 첨부하여 네이버 클라우드 고객센터에 문의하셔야 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_06.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;서버-이미지-복제&quot;&gt;서버 이미지 복제&lt;/h2&gt;
-
-&lt;h4 id=&quot;서버-이미지-재-생성&quot;&gt;서버 이미지 재 생성&lt;/h4&gt;
-&lt;p&gt;위에서 백신상태 확인 체크가 정상적으로 완료되었다면, 서버 이미지를 다시 생성합니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;서버-이미지-vpc로-복제&quot;&gt;서버 이미지 VPC로 복제&lt;/h4&gt;
-&lt;p&gt;[콘솔] - [Classic] - [Server] - [Server Image]에서 새로 생성한 이미지를 선택하고 상단의 [VPC 로 복제] 버튼을 클릭합니다.&lt;br /&gt;
-위에서도 설명했듯이 현재는 &lt;strong&gt;Windows Server 2016 (64-bit) English Edition&lt;/strong&gt; 버전만 지원합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_07.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;복제되는 신규 서버 이미지 이름을 입력하고 [생성] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_08.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:740px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;실제 VPC 환경에 복제 진행 중인 이미지가 표시되기까지는 다소 시간이 걸릴 수 있으니 잠시 기다리시면 확인하실 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_09.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:550px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;복제된-서버-이미지-확인&quot;&gt;복제된 서버 이미지 확인&lt;/h4&gt;
-&lt;p&gt;복제가 완료된 서버 이미지의 상세 정보를 살펴보면 &lt;strong&gt;Classic 복제 여부&lt;/strong&gt; 항목이 &lt;strong&gt;Y&lt;/strong&gt;로 표시되는 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_10.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;서버-생성&quot;&gt;서버 생성&lt;/h2&gt;
-&lt;p&gt;Classic 환경에서 VPC 환경으로 복제된 서버 이미지로 새로운 서버가 생성되는지 확인해보겠습니다.&lt;br /&gt;
-이미지를 선택하고 [서버 생성] 버튼을 클릭해서 서버 생성화면에서 정보를 입력하고 서버를 생성합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_11.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;정상적으로 생성된 서버를 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_windows_server_image_copy_classic_to_vpc_12.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/compute-compute-5-1-v2&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/compute-compute-5-1-v2&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-06-01&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경의 Windows 서버 이미지를 VPC 환경으로 복제하려면 몇가지 사전 작업과 조건이 있습니다. 이 사전 작업과 조건을 차례대로 정리해보겠습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 비디오 플레이어는 최신의 네이버 미디어 플레이어를 기반으로 개발된 클라우드 전용 상품으로 네이버 동영상 서비스에 적용되어 수 많은 성공사례를 가지고 있는 최신의 네이버 플레이어를 손쉽고 빠르게 고객의 미디어 서비스에 적용할 수 있습니다.</summary></entry></feed>

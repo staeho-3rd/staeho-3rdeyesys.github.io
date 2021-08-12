@@ -1,5 +1,6 @@
 ---
 date: 2021-04-13
+update: 2021-04-13
 title: MYSQL(MARIADB) replication 생성하기
 categories:
   - 5.database
@@ -7,6 +8,7 @@ description: 네이버 클라우드 MYSQL(MARIADB) replication 생성하기
 type: Document
 set: database
 order_number: 10
+creator: elcidme
 ---
 
 ## 선행조건
