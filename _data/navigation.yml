@@ -13,7 +13,7 @@
 - name: NEWS
   link: /news/
   target: _self
-  new: n
+  new: y
 - name: Company
   link: https://3rdeyesys.com
   target: _blank
