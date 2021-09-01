@@ -178,6 +178,8 @@
 	<span class="nv">$space</span> <span class="o">=</span> <span class="s2">" "</span><span class="p">;</span>
 	<span class="nv">$new_line</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 
+	<span class="nv">$is_post</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
 	<span class="c1">// hmac으로 암호화할 문자열 설정</span>
 	<span class="nv">$message</span> <span class="o">=</span> 
 		<span class="nv">$apicall_method</span>
@@ -189,7 +191,7 @@
 		<span class="mf">.</span><span class="nv">$ncp_accesskey</span><span class="p">;</span>	
 	
 	<span class="c1">// hmac_sha256 암호화</span>
-	<span class="nv">$msg_signature</span> <span class="o">=</span> <span class="nb">hash_hmac</span><span class="p">(</span><span class="s2">"sha256"</span><span class="p">,</span> <span class="nv">$message</span><span class="p">,</span> <span class="nv">$ncp_secretkey</span><span class="p">,</span> <span class="kc">true</span><span class="p">));</span>
+	<span class="nv">$msg_signature</span> <span class="o">=</span> <span class="nb">hash_hmac</span><span class="p">(</span><span class="s2">"sha256"</span><span class="p">,</span> <span class="nv">$message</span><span class="p">,</span> <span class="nv">$ncp_secretkey</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 	<span class="nv">$msg_signature</span> <span class="o">=</span> <span class="nb">base64_encode</span><span class="p">(</span><span class="nv">$msg_signature</span><span class="p">);</span>
 
 	<span class="c1">// http 호출 헤더값 설정</span>
@@ -203,6 +205,7 @@
 	<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$api_server</span><span class="mf">.</span><span class="nv">$api_url</span><span class="p">);</span>
 	<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">);</span>
 	<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span>	
+	<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="nv">$is_post</span><span class="p">);</span>
 	<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$http_header</span><span class="p">);</span>
 
 	<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
@@ -288,6 +291,7 @@ $val3 : 1617699570115
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$api_server</span><span class="mf">.</span><span class="nv">$api_url</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span>	
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="nv">$is_post</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$http_header</span><span class="p">);</span>
 
 <span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
@@ -627,8 +631,6 @@ $val3 : 1617699570115
 					<div>
 						<h3>VPC환경에서 Cloud DB for MySQL 생성하기 
 							
-								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
-							
 						</h3>
 						<p class="description">네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드입니다</p>
 					</div>
@@ -654,8 +656,6 @@ $val3 : 1617699570115
 				<article>
 					<div>
 						<h3>NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드 
-							
-								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
 							
 						</h3>
 						<p class="description">네이버 클라우드 NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드입니다</p>

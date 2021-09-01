@@ -36,6 +36,8 @@ order_number: 1
 	$space = " ";
 	$new_line = "\n";
 
+	$is_post = false;
+
 	// hmac으로 암호화할 문자열 설정
 	$message = 
 		$apicall_method
@@ -47,7 +49,7 @@ order_number: 1
 		.$ncp_accesskey;	
 	
 	// hmac_sha256 암호화
-	$msg_signature = hash_hmac("sha256", $message, $ncp_secretkey, true));
+	$msg_signature = hash_hmac("sha256", $message, $ncp_secretkey, true);
 	$msg_signature = base64_encode($msg_signature);
 
 	// http 호출 헤더값 설정
@@ -61,6 +63,7 @@ order_number: 1
 	curl_setopt($ch, CURLOPT_URL, $api_server.$api_url);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);	
+	curl_setopt($ch, CURLOPT_POST, $is_post);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, $http_header);
 
 	$response = curl_exec($ch);
@@ -153,6 +156,7 @@ $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $api_server.$api_url);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);	
+curl_setopt($ch, CURLOPT_POST, $is_post);
 curl_setopt($ch, CURLOPT_HTTPHEADER, $http_header);
 
 $response = curl_exec($ch);

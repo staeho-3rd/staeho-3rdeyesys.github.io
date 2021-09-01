@@ -40,13 +40,17 @@ ACG(Access Control Group)는 서버 간 네트워크 접근 제어 및 관리를
 #### VPC 화면
 
 ##### Inbound
-<img src="../../images/ncp_server_acg_vpc_inbound.png" alt="VPC Default ACG Inbound " style="width:600px;align:center">
+<img src="../../images/ncp_server_acg_vpc_inbound.png" alt="VPC Default ACG Inbound " style="width:770px;align:center">
+
+> 기본으로 생성된 ACG에는 위처럼 22, 3389 포트에 대해 0.0.0.0/0 전체 IP에 대해 허용되어 있는데 보안을 위해 이 항목을 삭제하고 지정된 IP에서만 접속하도록 수정하는 것이 좋습니다.
 
 ##### Outbound
-<img src="../../images/ncp_server_acg_vpc_outbound.png" alt="VPC Default ACG Outbound " style="width:600px;align:center">
+<img src="../../images/ncp_server_acg_vpc_outbound.png" alt="VPC Default ACG Outbound " style="width:770px;align:center">
 
 #### Classic 화면
-<img src="../../images/ncp_server_acg_classic.png" alt="Classic Default ACG " style="width:600px;align:center">
+<img src="../../images/ncp_server_acg_classic.png" alt="Classic Default ACG " style="width:770px;align:center">
+
+> 기본으로 생성된 ACG에는 위처럼 22, 3389 포트에 대해 0.0.0.0/0 전체 IP에 대해 허용되어 있는데 보안을 위해 이 항목을 삭제하고 지정된 IP에서만 접속하도록 수정하는 것이 좋습니다.
 
 ### Custom ACG
 Default ACG 이외에 사용자가 추가하는 ACG
@@ -59,4 +63,4 @@ Default ACG 이외에 사용자가 추가하는 ACG
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-2-3" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-2-3.html</a>
 
 
-> 문서 최종 수정일 : 2020-11-26
+> 문서 최종 수정일 : 2021-09-01
