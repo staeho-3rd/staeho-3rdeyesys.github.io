@@ -1,5 +1,6 @@
 ---
 date: 2020-11-26
+update: 2021-09-01
 title: ACG(Access Control Group) 가이드
 categories:
   - 3.security
