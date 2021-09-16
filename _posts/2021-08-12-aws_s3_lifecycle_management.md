@@ -1,6 +1,6 @@
 ---
 date: 2021-08-12
-update: 2021-08-12
+update: 2021-09-16
 title: AWS S3 수명 주기 (LifeCycle) 설정하기
 categories:
   - 91.AWS
@@ -29,10 +29,10 @@ AWS 콘솔에 접속 후 수명 주기를 적용할 S3 버킷으로 이동해 [�
 
 <img src="../../images/aws_s3_lifecycle_03.jpg" alt="AWS S3 수명주기 (LifeCycle) 설정하기 가이드" style="width:770px;align:center">
 
-수명 주기 규칙 작업에서 [객체의 이전버전 영구 삭제]를 선택하면, 몇일 후에 삭제할 것인지를 설정할 수 있는 [객체가 이전 버전이 된 후 경과 일수] 항목이 나타납니다. 
-여기에 원하는 날짜를 입력하고, [규칙 생성] 버튼을 클릭합니다.
+수명 주기 규칙 작업에서 [객체의 현재버전 만료],  [객체의 이전버전 영구 삭제] 두가지 항목을 선택하면, 몇일 후에 삭제할 것인지를 설정할 수 있는 [객체 생성 후 경과 일수], [객체가 이전 버전이 된 후 경과 일수] 항목이 나타납니다. 
+여기에 원하는 날짜를 각각 입력하고, [규칙 생성] 버튼을 클릭합니다.
 
-<img src="../../images/aws_s3_lifecycle_04.jpg" alt="AWS S3 수명주기 (LifeCycle) 설정하기 가이드" style="width:770px;align:center">
+<img src="../../images/aws_s3_lifecycle_06.jpg" alt="AWS S3 수명주기 (LifeCycle) 설정하기 가이드" style="width:770px;align:center">
 
 ## 주의사항
 AWS 수명 주기 관련해서 주의해야 할 사항이 몇가지 있습니다.
@@ -56,4 +56,4 @@ AWS 수명 주기 관련해서 주의해야 할 사항이 몇가지 있습니다
 1.  수명 주기 규칙 작동 지연 관련 FAQ
 	- <a href="https://aws.amazon.com/ko/premiumsupport/knowledge-center/s3-lifecycle-rule-delay/" target="_blank" style="word-break:break-all;">https://aws.amazon.com/ko/premiumsupport/knowledge-center/s3-lifecycle-rule-delay/</a>
 
-> 문서 최종 수정일 : 2021-08-12
+> 문서 최종 수정일 : 2021-09-16

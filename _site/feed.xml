@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-09-10T15:20:49+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">SSL인증서 DCV (Domain Control Validation) 인증 방법과 유의사항 정리</title><link href="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_dcv_method/" rel="alternate" type="text/html" title="SSL인증서 DCV (Domain Control Validation) 인증 방법과 유의사항 정리" /><published>2021-09-09T00:00:00+09:00</published><updated>2021-09-09T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/3.security/ncp_security_ssl_dcv_method</id><content type="html" xml:base="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_dcv_method/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-09-16T17:02:51+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">SSL인증서 DCV (Domain Control Validation) 인증 방법과 유의사항 정리</title><link href="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_dcv_method/" rel="alternate" type="text/html" title="SSL인증서 DCV (Domain Control Validation) 인증 방법과 유의사항 정리" /><published>2021-09-09T00:00:00+09:00</published><updated>2021-09-09T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/3.security/ncp_security_ssl_dcv_method</id><content type="html" xml:base="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_dcv_method/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;HTTPS 접속을 위한 SSL 인증서를 발급 받기 위해서는 DCV (Domain Control Validation)를 인증받아야 하는데, 이때 필요한 인증방법과 유의 사항을 정리해보겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;dcv-인증-방법&quot;&gt;DCV 인증 방법&lt;/h2&gt;
@@ -18,7 +18,7 @@
 Email 인증을 하기 전에 블라인드 서비스를 해제하고 인증을 요청하셔야 합니다.&lt;/p&gt;
 
 &lt;h4 id=&quot;추가-5개의-임의로-지정된-이메일&quot;&gt;추가 5개의 임의로 지정된 이메일&lt;/h4&gt;
-&lt;p&gt;임의로 지정된 이메일 주소는 admin, administrator, hostmaster, postmaster, webmaster 등 5가지이며 추가-수정이 불가능합니다.&lt;/p&gt;
+&lt;p&gt;임의로 지정된 이메일 주소는 admin, administrator, hostmaster, postmaster, webmaster 등 5가지이며 추가/수정이 불가능합니다.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;위의 총 6개 메일 주소 중에서 적어 1개는 유효한 메일주소여야 이메일 인증을 문제없이 완료할 수 있습니다.&lt;/p&gt;
@@ -263,10 +263,10 @@ https://www.ncloud.com/nsa/ 까지는 공통이고, 그 다음 페이지 주소�
 
 &lt;p&gt;&lt;img src=&quot;../../images/aws_s3_lifecycle_03.jpg&quot; alt=&quot;AWS S3 수명주기 (LifeCycle) 설정하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;수명 주기 규칙 작업에서 [객체의 이전버전 영구 삭제]를 선택하면, 몇일 후에 삭제할 것인지를 설정할 수 있는 [객체가 이전 버전이 된 후 경과 일수] 항목이 나타납니다. 
-여기에 원하는 날짜를 입력하고, [규칙 생성] 버튼을 클릭합니다.&lt;/p&gt;
+&lt;p&gt;수명 주기 규칙 작업에서 [객체의 현재버전 만료],  [객체의 이전버전 영구 삭제] 두가지 항목을 선택하면, 몇일 후에 삭제할 것인지를 설정할 수 있는 [객체 생성 후 경과 일수], [객체가 이전 버전이 된 후 경과 일수] 항목이 나타납니다. 
+여기에 원하는 날짜를 각각 입력하고, [규칙 생성] 버튼을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/aws_s3_lifecycle_04.jpg&quot; alt=&quot;AWS S3 수명주기 (LifeCycle) 설정하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/aws_s3_lifecycle_06.jpg&quot; alt=&quot;AWS S3 수명주기 (LifeCycle) 설정하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;주의사항&quot;&gt;주의사항&lt;/h2&gt;
 &lt;p&gt;AWS 수명 주기 관련해서 주의해야 할 사항이 몇가지 있습니다.&lt;/p&gt;
@@ -297,7 +297,7 @@ https://www.ncloud.com/nsa/ 까지는 공통이고, 그 다음 페이지 주소�
 &lt;/ol&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-08-12&lt;/p&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-09-16&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 AWS S3에서는 버킷내 특정 디렉토리 하위 파일들에 대해 지정된 날짜가 지난 후 만료(삭제)가 되도록 설정할 수 있습니다. 수명 주기 관리(LifeCycle Management)라고 불리는 이 방법은 파일관리 뿐만 아니라 비용절감에도 도움이 됩니다.</summary></entry><entry><title type="html">설치형 MySQL DB에서 root Password 설정, 변경하는 방법</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide/" rel="alternate" type="text/html" title="설치형 MySQL DB에서 root Password 설정, 변경하는 방법" /><published>2021-08-05T00:00:00+09:00</published><updated>2021-08-05T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드에서는 MySQL Password 정책에 따라 처음 MySQL DB를 설치할 때 root의 초기 패스워드가 설정되지 않습니다. 
 그러므로 보안 침해 방지를 위해 설치 후에 root Password를 설정한 후에 DB를 사용하는 것이 안전합니다.&lt;br /&gt;

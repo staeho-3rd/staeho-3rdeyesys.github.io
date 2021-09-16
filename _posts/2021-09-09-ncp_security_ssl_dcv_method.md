@@ -29,7 +29,7 @@ Email 인증은 도메인 등록정보에서 확인되는 이메일과 추가로
 Email 인증을 하기 전에 블라인드 서비스를 해제하고 인증을 요청하셔야 합니다.
 
 #### 추가 5개의 임의로 지정된 이메일
-임의로 지정된 이메일 주소는 admin, administrator, hostmaster, postmaster, webmaster 등 5가지이며 추가-수정이 불가능합니다.
+임의로 지정된 이메일 주소는 admin, administrator, hostmaster, postmaster, webmaster 등 5가지이며 추가/수정이 불가능합니다.
 
 > 위의 총 6개 메일 주소 중에서 적어 1개는 유효한 메일주소여야 이메일 인증을 문제없이 완료할 수 있습니다.
 
