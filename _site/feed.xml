@@ -1,4 +1,265 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-09-16T17:02:51+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">SSL인증서 DCV (Domain Control Validation) 인증 방법과 유의사항 정리</title><link href="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_dcv_method/" rel="alternate" type="text/html" title="SSL인증서 DCV (Domain Control Validation) 인증 방법과 유의사항 정리" /><published>2021-09-09T00:00:00+09:00</published><updated>2021-09-09T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/3.security/ncp_security_ssl_dcv_method</id><content type="html" xml:base="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_dcv_method/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-09-17T12:59:37+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Classic 환경에서 AutoScaling 설정하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_classic_guide/" rel="alternate" type="text/html" title="Classic 환경에서 AutoScaling 설정하는 방법" /><published>2021-09-16T00:00:00+09:00</published><updated>2021-09-16T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_classic_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_classic_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;AutoScaling 서비스는 미리 등록한 설정에 따라 서버 수를 자동으로 증가 또는 감소시켜 안정적인 서비스를 유지하면서 비용을 절감할 수 있도록 해주는 서비스입니다.&lt;br /&gt;
+여기서는 네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법을 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;기본-설정&quot;&gt;기본 설정&lt;/h2&gt;
+&lt;p&gt;Auto Scaling 설정은 우선 [Auto Scaling] - [Launch Configuration]에서&lt;br /&gt;
+[Launch Configuration 생성] 버튼을 클릭하는 것으로 시작합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_01.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;서버-이미지-선택&quot;&gt;서버 이미지 선택&lt;/h4&gt;
+&lt;p&gt;서버 이미지는 네이버 클라우드에서 제공하는 기본 이미지를 선택할 수도 있고, 기존 서버로 만들어 둔 [내 서버 이미지]를 사용할 수도 있습니다. 여기서는 기본 이미지를 사용하는 것으로 하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_02.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;서버-설정&quot;&gt;서버 설정&lt;/h4&gt;
+&lt;p&gt;스토리지 종류와 서버 타입 등을 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_03.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;이름-설정&quot;&gt;이름 설정&lt;/h4&gt;
+&lt;p&gt;Launch Configuration의 이름을 입력합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_04.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;인증키-설정&quot;&gt;인증키 설정&lt;/h4&gt;
+&lt;p&gt;인증키는 기존에 보유하고 있던 인증키를 이용해도 되고, 새로운 인증키를 설정해도 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_05.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;네트워크-접근-설정-acg&quot;&gt;네트워크 접근 설정 (ACG)&lt;/h4&gt;
+&lt;p&gt;ACG 설정도 기존에 보유하고 있던 ACG 중에서 선택해도 되고, 새로운 ACG를 생성해도 됩니다. 여기서는 새로운 ACG를 생성하는 방법으로 진행하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_06.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ACG 이름을 입력하고, [myIp]를 클릭, 허용할 포트를 입력한 후 [추가] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_07.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;최종-확인&quot;&gt;최종 확인&lt;/h4&gt;
+&lt;p&gt;지금까지 설정한 정보를 마지막으로 확인 한 후에 이상이 없으면 [Launch Configuration 생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_08.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;group-생성&quot;&gt;Group 생성&lt;/h2&gt;
+&lt;p&gt;다음으로 Auto Scaling Group을 생성합니다. [Auto Scaling] - [Auto Scaling Group]에서 [Auto Scaling Group 생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_09.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;launch-configuration-선택&quot;&gt;Launch Configuration 선택&lt;/h4&gt;
+&lt;p&gt;위에서 생성했던 Launch Configuration을 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_10.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;그룹-설정&quot;&gt;그룹 설정&lt;/h4&gt;
+&lt;p&gt;여기서는 생성될 서버들의 이름과 최소, 최대 개수 등을 설정합니다.&lt;br /&gt;
+Auto Scaling Group당 최대 30대의 서버를 생성할 수 있고, Zone, NAT Gateway 설정은 생성 후 변경할 수 없으며, 변경이 필요하면 새로 생성하여 사용해야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_11.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;서버이름 Prefix&lt;/strong&gt; : 최대7자까지 지정할 수 있고, 나머지 이름의 뒷부분은 영문,숫자의 조합으로 무작위로 자동 생성됩니다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;서버 용량&lt;/strong&gt; : 최소, 최대, 기대 용량은 서버 대수를 의미하며 각각 &lt;strong&gt;0~30까지 입력 가능&lt;/strong&gt;합니다.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;쿨다운 기본값&lt;/strong&gt; : 새로운 서버가 생성되었다고 해도, init script 실행이나 업데이트 설치 등의 이유로 실제 서비스를 수행할 수 있을 정도로 준비되기까지는 시간이 소요될 수 있습니다. 
+즉, 쿨다운(Cooldown) 시간이란 실제 Scaling이 수행 중이거나 수행 완료된 이후에 모니터링 이벤트 알람이 발생하더라도 반응하지 않고 무시하도록 설정한 기간입니다.&lt;br /&gt;
+&lt;strong&gt;값을 입력하지 않으면 기본값인 300초가 적용됩니다&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;헬스체크 보류기간&lt;/strong&gt; : 서버 인스턴스가 생성되어 상태가 ‘운영 중’으로 바뀌었더라도, 서버의 업데이트 설치 등 작업에 의해서 헬스 체크에 정상 응답하지 못하는 경우가 생길 수 있습니다. 
+이런 경우 헬스 체크 보류 기간을 지정하면 해당 기간 동안에는 헬스 체크에 실패하더라도 서버에 이상이 있다고 판단하지 않습니다.&lt;br /&gt;
+&lt;strong&gt;값을 입력하지 않으면 기본값인 300초가 적용됩니다&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;정책일정-설정&quot;&gt;정책/일정 설정&lt;/h4&gt;
+&lt;p&gt;정책과 일정을 여기서 바로 설정할 수도 있고 나중에 설정할 수도 있습니다. 여기서는 [나중에 설정]으로 선택하고 아래쪽에서 다시 살펴보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_12.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;통보-설정&quot;&gt;통보 설정&lt;/h4&gt;
+&lt;p&gt;통보 설정을 여기서 바로 설정할 수도 있고 나중에 설정할 수도 있습니다. 여기서는 [나중에 설정]으로 선택하고 아래쪽에서 다시 살펴보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_13.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;최종확인&quot;&gt;최종확인&lt;/h4&gt;
+&lt;p&gt;생성된 Group 설정값들을 마지막으로 확인하고 [Auto Scaling Group 생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_14.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;서버-생성-확인&quot;&gt;서버 생성 확인&lt;/h2&gt;
+&lt;p&gt;위에서 Auto Scaling Group을 생성하면 아래와 같이 즉시 서버가 생성되는 것을 확인할 수 있습니다. 처음에는 [기대용량]에 입력한 개수만큼 서버가 생성됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_15.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;설정-관리---정책&quot;&gt;설정 관리 - 정책&lt;/h2&gt;
+&lt;p&gt;위에서 나중에 설정하기로 하고 넘어갔던 Auto Scaling Group의 정책, 일정, 이력, 통보 설정 등을 확인해보겠습니다.&lt;br /&gt;
+[Auto Scaling Group]에서 해당 그룹을 선택하고, [설정 및 관리] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_16.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;정책-설정&quot;&gt;정책 설정&lt;/h4&gt;
+&lt;p&gt;먼저 [정책] 탭을 선택하고, [생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_17.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;우선 서버를 증가시킬 정책으로 increase라는 이름을 입력하고, 증가시킬 서버 개수를 입력 후 [추가] 옵션을 선택하고 [생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_18.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음으로 서버를 감소시킬 정책으로 decrease라는 이름을 입력하고, 감소시킬 서버 개수를 입력 후 [반납] 옵션을 선택하고 [생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_19.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;서버 증가, 감소를 위한 정책 2가지가 생성된 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_20.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;그룹-이벤트-설정&quot;&gt;그룹 이벤트 설정&lt;/h2&gt;
+&lt;p&gt;위에서 설정한 정책이 언제 실행되게할 것인가 즉, 서버에 어떤 이벤트가 발생했을 때 정책을 실행할 것인가를 결정하는 그룹 이벤트를 설정합니다.&lt;br /&gt;
+그룹 이벤트 설정은 [Classic] - [Monitoring] - [Group Event Setting]에서 할 수 있으며, 위에서 만든 Auto Scaling 그룹을 선택하고 [그룹 이벤트 설정] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_21.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그룹 이벤트 설정 화면에 들어가면 위에서 만든 increase, decrease 2가지 정책이 리스트에 나타나는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_22.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;정책이 발동되게 하는 이벤트는 여러가지가 있는데, 가장 많이 선택하는 것이 CPU 사용률입니다.&lt;br /&gt;
+여기서는 &lt;strong&gt;CPU 사용률(used)이 60% 이상일 때 increase 정책&lt;/strong&gt;, &lt;strong&gt;CPU 사용률(used)이 30% 이하일 때 decrease 정책&lt;/strong&gt;이 실행되도록 이벤트를 추가했습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_23.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;설정-관리---일정&quot;&gt;설정 관리 - 일정&lt;/h2&gt;
+&lt;p&gt;위에서는 서버에 설정한 이벤트가 발생했을 때 정책이 발동되도록 했지만, 그 외에도 특정한 시간대에 사용자가 몰리는 피크 타임이 일정하다면 해당 시간 전후로 서버를 늘리거나 감소시키는 방법도 가능합니다.&lt;br /&gt;
+여기 [일정] 탭에서 해당 내용을 설정해두면 피크 타임에 미리 서버를 증가시켜서 좀 더 안정적인 서비스가 가능하게 설정할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_24.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;설정-관리---이력&quot;&gt;설정 관리 - 이력&lt;/h2&gt;
+&lt;p&gt;[이력] 탭에서는 서버가 생성되고 반납된 기록을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_25.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;설정-관리---통보&quot;&gt;설정 관리 - 통보&lt;/h2&gt;
+&lt;p&gt;[통보] 탭에서는 서버가 생성되거나 반납될 때 지정한 담당자에게 SMS나 Email로 통보하도록 설정할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_26.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;설정-관리---서버&quot;&gt;설정 관리 - 서버&lt;/h2&gt;
+&lt;p&gt;[서버] 탭은 현재 작동중인 서버 리스트를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_27.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;중지---서버삭제&quot;&gt;중지 - 서버삭제&lt;/h2&gt;
+&lt;p&gt;마지막으로, Auto Scaling을 중지하고, 작동중인 서버를 한번에 모두 삭제하는 방법을 확인해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;[Auto Scaling] - [Auto Scaling Group]에서 해당 그룹을 선택하고 상단에 있는 [수정] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_28.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 &lt;strong&gt;[최소 용량], [최대 용량], [기대 용량] 항목의 값을 모두 0으로 설정&lt;/strong&gt;하면, 현재 작동중인 서버가 모두 반납되고, 더 이상 서버가 추가로 생성되지 않아서 Auto Scaling이 중지되게 됩니다.&lt;br /&gt;
+사실 [최소 용량], [기대 용량] 2가지 항목만 0으로 설정해도 되지만, 혹시나 모르는 상황을 위해서 깔끔하게 3가지 항목 모두 0으로 설정합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_autoscaling_guide_classic_29.jpg&quot; alt=&quot;네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;서비스-제한사항&quot;&gt;서비스 제한사항&lt;/h2&gt;
+&lt;p&gt;Auto Scaling 설정과 서버 스펙 등에 대한 제한 사항을 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;스펙-및-서비스-환경-제한-사항&quot;&gt;스펙 및 서비스 환경 제한 사항&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;총 디스크 사이즈 150GB 이하 서버만 가능&lt;/li&gt;
+  &lt;li&gt;Windows OS는 Windows 2012. 2016만 지원&lt;/li&gt;
+  &lt;li&gt;내 서버 이미지의 경우, 원본 서버의 부팅 디스크 크기가 50GB인 경우만 지원(100GB 디스크에 대해서는 추후 지원 예정)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;설정-제한-사항&quot;&gt;설정 제한 사항&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;고객별 생성 가능한 Auto Scaling Group 최대 수: 10&lt;/li&gt;
+  &lt;li&gt;고객별 생성 가능한 Launch Configuration 최대 수: 100&lt;/li&gt;
+  &lt;li&gt;Auto Scaling Group당 생성 가능한 스케줄(Scheduled Action) 최대 수: 100&lt;/li&gt;
+  &lt;li&gt;Auto Scaling Group당 생성 가능한 Scaling Policy 최대 수: 10&lt;/li&gt;
+  &lt;li&gt;Auto Scaling Group당 생성 가능한 최대 서버 수: 30대&lt;/li&gt;
+  &lt;li&gt;Auto Scaling Group당 연결 가능한 Load Balancer 최대 수 : 10&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;용어-정리&quot;&gt;용어 정리&lt;/h2&gt;
+&lt;p&gt;Auto Scaling에서 사용되는 주요 용어들을 정리해보겠습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;용어&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Scale-in / Scale-out&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Auto Scaling Group을 생성하여 고객이 설정한 Policy에 따라 사용하고 있는 가상 서버의 자동 확장(Scale-out) 및 자동 축소(Scale-in)하도록 제공합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Auto Scaling Group&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;여러 개의 서버 인스턴스들을 Auto Scaling Group 이라는 하나의 그룹으로 묶어 놓게 됩니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Launch Configuration&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Auto Scaling Group에서 가상 서버를 시작 구성하는 데 사용하는 템플릿입니다. Auto Scaling Group을 생성할 때는 Launch Configuration을 지정해야 합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Auto Scaling Group의 최소 용량/최대 용량&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Auto Scaling Group의 최소/최대 서버 수를 말합니다. 최소 서버 수의 경우, 항상 이 값과 같거나 이 값보다 더 큰 서버 수가 유지됩니다. 서버를 한 대도 보유하지 않을 수 있게 하려면 0으로 설정합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;기대 용량 (Desired Capacity)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;서버의 수는 기대 용량값에 따라서 조정됩니다. 이 값은 최소 용량 이상, 최대 용량 이하여야 합니다. 이 값이 지정되어 있지 않으면 초기에 최소 용량만큼 서버를 생성합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;쿨다운 기본값(초) (Default Cooldown)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Default Cooldown(초) 새로운 서버가 생성되었다고 해도, Init-Script 실행이나 업데이트 설치 등의 이유로 실제 서비스를 수행할 수 있을 정도로 준비되기까지는 시간이 소요될 수 있습니다. 쿨다운(Cooldown) 시간이란 실제 Scaling이 수행 중이거나 수행 완료된 이후에 모니터링 이벤트 알람이 발생하더라도 무시하도록 설정한 기간입니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;헬스체크&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Auto Scaling Group의 가상 서버에 주기적인 상태 확인을 수행하여 상태가 비정상인 가상 서버를 식별하도록 Health Check를 합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;헬스체크 보류 기간&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;서버가 생성되어 ‘운영중’으로 변경되었더라도 서버의 업데이트 설치 등 작업에 의해서 헬스 체크에 정상 응답하지 못하는 경우가 생길 수 있습니다. 이런 경우 헬스 체크 보류기간을 지정하면 해당 기간 동안에는 헬스 체크에 실패하더라도 서버 헬스에 이상이 있다고 판단하지 않습니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;헬스체크 유형&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;서버와 Load Balancer 둘 중에 선택할 수 있습니다. Auto Scaling Group 설정에서 Load Balancer 이름을 지정한 경우에는 헬스 체크 유형 역시 Load Balancer로 설정합니다. 이런 경우 Auto Scaling은 Load Balancer 헬스 체크 방식과 기준에 따라 서버의 상태를 판단합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;반납 정책&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Auto Scaling 과정에서 추가된 서버에 대한 Scale-in 작업에 대해, 고객이 API 질의 형식으로먼저 반납할 서버를 지정할 수 있습니다. 기본 설정은 먼저 생성된 서버부터 반납합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Policy&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Auto Scaling이 일어나는 방식을 정의하고 있는데, 이를 ‘Policy’로 정의하고 있습니다. Auto Scale-out 이 발생할 때, 몇 대의 가상 서버를 늘릴 것인지, 반대로 Scale-in이 발생할 때 몇 대의 가상서버를 줄일 것인지를 정의합니다. 대수로 정의할 수 도 있고, %로 정의할 수도 있습니다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/compute-autoscaling-autoscalingoverview&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/compute-autoscaling-autoscalingoverview&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-09-17&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 AutoScaling 서비스는 미리 등록한 설정에 따라 서버 수를 자동으로 증가 또는 감소시켜 안정적인 서비스를 유지하면서 비용을 절감할 수 있도록 해주는 서비스입니다. 여기서는 네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법을 정리해보겠습니다.</summary></entry><entry><title type="html">SSL인증서 DCV (Domain Control Validation) 인증 방법과 유의사항 정리</title><link href="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_dcv_method/" rel="alternate" type="text/html" title="SSL인증서 DCV (Domain Control Validation) 인증 방법과 유의사항 정리" /><published>2021-09-09T00:00:00+09:00</published><updated>2021-09-09T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/3.security/ncp_security_ssl_dcv_method</id><content type="html" xml:base="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_dcv_method/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;HTTPS 접속을 위한 SSL 인증서를 발급 받기 위해서는 DCV (Domain Control Validation)를 인증받아야 하는데, 이때 필요한 인증방법과 유의 사항을 정리해보겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;dcv-인증-방법&quot;&gt;DCV 인증 방법&lt;/h2&gt;
@@ -1112,201 +1373,4 @@ nks-pool-1865-w2zz   Ready    node    4d5h   v1.16.6
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-07-09&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 NAT Gateway는 비공인 IP를 가진 다수의 서버들이 대표 공인 IP를 이용해 외부와 통신을 할 수 있도록 도와주는 네트워킹 서비스입니다. 그리고, 일반적으로 서버에 직접 공인 IP를 부여하는 것과 달리 외부에서 서버로의 직접 접근은 허용하지 않기 때문에 높은 수준의 보안을 유지할 수 있는 것이 특징입니다. 여기서는 VPC 환경에서 NAT Gateway를 어떻게 구성하고, NAT Gateway를 적용하기 전과 후의 외부와 통신 상태에 대해 확인해보도록 하겠습니다.</summary></entry><entry><title type="html">리눅스서버 스토리지(디스크) LVM 구성하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_storage_lvm_create/" rel="alternate" type="text/html" title="리눅스서버 스토리지(디스크) LVM 구성하기" /><published>2021-07-06T00:00:00+09:00</published><updated>2021-07-06T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_storage_lvm_create</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_storage_lvm_create/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 서버는 하나의 서버당 로컬 디스크 즉, 블록 스토리지(Block Storage)를 OS가 설치되는 기본 스토리지 1개 이외에 15개를 추가할 수 있으며, 각 스토리지 용량은 10GB ~2,000GB 까지 가능합니다.&lt;br /&gt;
-그리고, 2,000GB 이상을 사용해야 할 경우는 NAS 장비를 사용하거나 Object Storage를 활용하는 경우가 많지만, 상황에 따라서는 2,000GB를 초과하는 용량의 블록 스토리지를 사용해야 하는 경우도 있습니다.&lt;br /&gt;
-이럴때 사용하는 방법이 LVM (Logical Volume Manager)를 사용하여 여러 개의 스토리지를 합쳐서 대용량으로 사용하거나 합쳐진 대용량을 다시 필요한 용량으로 나누어서 사용하는 방법입니다.&lt;br /&gt;
-그래서 이번에는 리눅스 환경에서 LVM으로 대용량 스토리지를 생성하는 방법을 정리해보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;스토리지-생성&quot;&gt;스토리지 생성&lt;/h2&gt;
-&lt;p&gt;2000GB 이상의 용량을 필요로 할 때에 대한 내용이지만, 테스트를 위해 10GB 스토리지 2개를 생성하겠습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_01.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;lvm-test-1, lvm-test-2 이름으로 생성된 스토리지 2개를 Ubuntu OS가 설치된 lvm-test-svr 서버에 연결했습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_02.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;파티션-설정&quot;&gt;파티션 설정&lt;/h2&gt;
-&lt;p&gt;생성된 스토리지 2개에 각각 파티션을 설정합니다.&lt;br /&gt;
-파티션 설정에는 parted 명령어를 사용합니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# parted /dev/xvdb
-
-&lt;span class=&quot;c&quot;&gt;# (parted)&lt;/span&gt;
-mklabel gpt
-mkpart primary 0 100%
-i
-&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;1 lvm on   &lt;span class=&quot;c&quot;&gt;# 1번 파티션에 lvm 사용 가능하게 설정&lt;/span&gt;
-p
-quit
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_03.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# parted /dev/xvdc
-
-&lt;span class=&quot;c&quot;&gt;# (parted)&lt;/span&gt;
-mklabel gpt
-mkpart primary 0 100%
-i
-&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;1 lvm on   &lt;span class=&quot;c&quot;&gt;# 1번 파티션에 lvm 사용 가능하게 설정&lt;/span&gt;
-p
-quit
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_04.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;설정된 파티션들을 확인합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# fdisk &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_05.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;physical-volume-생성&quot;&gt;Physical Volume 생성&lt;/h2&gt;
-&lt;p&gt;각 스토리지 장치에 Physical Volume을 생성합니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# pvcreate /dev/xvdb1
-
-~# pvcreate /dev/xvdc1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_06.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Physical Volume이 제대로 생성되었는지 확인합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# pvdisplay
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_07.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;volume-group-생성&quot;&gt;Volume Group 생성&lt;/h2&gt;
-&lt;p&gt;준비된 두개의 Volume으로 하나의 Volume Group을 생성합니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vgcreate VG01 /dev/xvdb1 /dev/xvdc1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_08.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;생성된 Volume Group을 확인합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vgdisplay
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_09.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:550px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;logical-volume-생성&quot;&gt;Logical Volume 생성&lt;/h2&gt;
-&lt;p&gt;생성된 Volume Group 전체 크기를 사용하는 Logical Volume을 생성합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# lvcreate &lt;span class=&quot;nt&quot;&gt;--extents&lt;/span&gt; 100%FREE &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; LV01 VG01
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_10.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:550px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;생성된 Logical Volume을 확인합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# lvdisplay
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_11.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:550px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;포맷&quot;&gt;포맷&lt;/h2&gt;
-&lt;p&gt;다음으로 포맷을 해야하는데, OS별로 명령어가 다르므로 확인 후에 실행해야 합니다.&lt;br /&gt;
-여기서는 Ubuntu 기준으로 mkfs.ext4 명령어를 사용했습니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-~# mkfs.ext4 /dev/VG01/LV01
-
-- CentOS 5.x: mkfs.ext3 /dev/VG01/LV01
-- CentOS 6.x: mkfs.ext4 /dev/VG01/LV01
-- CentOS 7.x: mkfs.xfs /dev/VG01/LV01
-- Ubuntu : mkfs.ext4 /dev/VG01/LV01
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_12.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;마운트&quot;&gt;마운트&lt;/h2&gt;
-&lt;p&gt;마운트를 하기 위해 우선 생성된 디스크 장치명을 확인합니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# fdisk &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_13.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음으로 디스크를 마운트할 포인트 즉, 디렉토리를 원하는 이름으로 생성하고 마운트를 합니다.&lt;br /&gt;
-아래에 있는 마운트 경로 (/mnt/data)는 예시입니다. 원하는 경로를 직접 설정하시면 됩니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /mnt/data
-~# mount /dev/mapper/VG01-LV01 /mnt/data
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_14.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;fstab-설정&quot;&gt;fstab 설정&lt;/h2&gt;
-&lt;p&gt;새로 생성된 디스크를 부팅 후에도 인식할 수 있게 blkid 명령으로 UUID를 확인하고 fstab에 등록합니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# blkid |grep /dev/mapper/VG01-LV01
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_15.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:650px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /etc/fstab
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_storage_lvm_create_16.jpg&quot; alt=&quot;리눅스서버 스토리지(디스크) LVM 구성하기&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;fstab-설정-상세정보&quot;&gt;fstab 설정 상세정보&lt;/h2&gt;
-
-&lt;p&gt;/etc/fstab은 부팅 단계에서 마운트되어야 할 볼륨 정보들이 저장되는 곳입니다.&lt;br /&gt;
-(OS 이미지에 따라 파일 시스템이 다르기 때문에 주의해야 합니다.)&lt;/p&gt;
-
-&lt;p&gt;파일의 각 항목이 의미하는 바는 아래와 같으며 각 항목은 Tab 또는 Space Bar로 구분합니다.&lt;/p&gt;
-
-&lt;p&gt;(장치명) (마운트 포인트) (파일시스템 종류) (옵션) (dump 설정) (fsck 설정)&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;장치명: 장치명은 장치의 UUID를 사용하거나 /dev/xvdb1와 같은 장치이름을 사용합니다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;마운트 포인트: 볼륨을 마운트하고자 하는 위치입니다. 예시에서는 /mnt/data 디렉토리에 마운트했습니다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;파일시스템 종류: OS별로 기본 파일시스템이 다르므로 알맞게 입력합니다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;CentOS 5.x : ext3&lt;/li&gt;
-      &lt;li&gt;CentOS 6.x : ext4&lt;/li&gt;
-      &lt;li&gt;CentOS 7.x : xfs&lt;/li&gt;
-      &lt;li&gt;Ubuntu Server / Desktop : ext4&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;옵션: 예시에서는 default 옵션을 사용하였으며, 해당 옵션에는 rw, nouser, auto, exec, suid 속성이 포함됩니다.&lt;br /&gt;
-각 속성의 내용은 다음과 같습니다. (필요한 옵션만 사용할 시, 각 옵션을 쉼표(,)로 구분하여 작성해주시면 됩니다.)&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;auto : 부팅 시 자동 마운트&lt;/li&gt;
-      &lt;li&gt;rw : 읽기, 쓰기 모두 가능하도록 마운트&lt;/li&gt;
-      &lt;li&gt;nouser : root 계정만 마운트 가능&lt;/li&gt;
-      &lt;li&gt;exec : 파일 실행을 허용&lt;/li&gt;
-      &lt;li&gt;suid : SetUID와 SetGID를 허용&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;dump 설정: dump 명령으로 백업을 할 것인지에 대한 설정&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;0: dump되지 않는 파일 시스템&lt;/li&gt;
-      &lt;li&gt;1: dump 가능한 파일 시스템&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;fsck 설정: 부팅시에 fsck 명령으로 파일시스템에 대한 무결성 검사를 할 것인지에 대한 설정&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;0 : 부팅 시 fsck 실행하지 않음&lt;/li&gt;
-      &lt;li&gt;1 : 부팅 시 root 파일 시스템을 우선 체크&lt;/li&gt;
-      &lt;li&gt;2 : 부팅 시 root 이외의 파일 시스템을 우선 체크&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-07-06&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 서버는 하나의 서버당 로컬 디스크 즉, 블록 스토리지(Block Storage)를 OS가 설치되는 기본 스토리지 1개 이외에 15개를 추가할 수 있으며, 각 스토리지 용량은 10GB ~2,000GB 까지 가능합니다. 그리고, 2,000GB 이상을 사용해야 할 경우는 NAS 장비를 사용하거나 Object Storage를 활용하는 경우가 많지만, 상황에 따라서는 2,000GB를 초과하는 용량의 블록 스토리지를 사용해야 하는 경우도 있습니다. 이럴때 사용하는 방법이 LVM (Logical Volume Manager)를 사용하여 여러 개의 스토리지를 합쳐서 대용량으로 사용하거나 합쳐진 대용량을 다시 필요한 용량으로 나누어서 사용하는 방법입니다. 그래서 이번에는 리눅스 환경에서 LVM으로 대용량 스토리지를 생성하는 방법을 정리해보겠습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 NAT Gateway는 비공인 IP를 가진 다수의 서버들이 대표 공인 IP를 이용해 외부와 통신을 할 수 있도록 도와주는 네트워킹 서비스입니다. 그리고, 일반적으로 서버에 직접 공인 IP를 부여하는 것과 달리 외부에서 서버로의 직접 접근은 허용하지 않기 때문에 높은 수준의 보안을 유지할 수 있는 것이 특징입니다. 여기서는 VPC 환경에서 NAT Gateway를 어떻게 구성하고, NAT Gateway를 적용하기 전과 후의 외부와 통신 상태에 대해 확인해보도록 하겠습니다.</summary></entry></feed>

@@ -26,19 +26,19 @@
 		
 
 		<!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 | 3rdeyesys</title>
+<title>Classic 환경에서 AutoScaling 설정하는 방법 | 3rdeyesys</title>
 <meta name="generator" content="Jekyll v3.7.2" />
-<meta property="og:title" content="Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법" />
+<meta property="og:title" content="Classic 환경에서 AutoScaling 설정하는 방법" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법" />
-<meta property="og:description" content="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법" />
-<link rel="canonical" href="https://docs.3rdeyesys.com/1.compute/ncp_server_cloud_functions_dotnet_csharp_vs/" />
-<meta property="og:url" content="https://docs.3rdeyesys.com/1.compute/ncp_server_cloud_functions_dotnet_csharp_vs/" />
+<meta name="description" content="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법입니다." />
+<meta property="og:description" content="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법입니다." />
+<link rel="canonical" href="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_classic_guide/" />
+<meta property="og:url" content="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_classic_guide/" />
 <meta property="og:site_name" content="3rdeyesys" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-03-12T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-09-16T00:00:00+09:00" />
 <script type="application/ld+json">
-{"url":"https://docs.3rdeyesys.com/1.compute/ncp_server_cloud_functions_dotnet_csharp_vs/","headline":"Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법","dateModified":"2021-03-12T00:00:00+09:00","datePublished":"2021-03-12T00:00:00+09:00","description":"네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/1.compute/ncp_server_cloud_functions_dotnet_csharp_vs/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_classic_guide/","headline":"Classic 환경에서 AutoScaling 설정하는 방법","dateModified":"2021-09-16T00:00:00+09:00","datePublished":"2021-09-16T00:00:00+09:00","description":"네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법입니다.","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_classic_guide/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 		<link type="application/atom+xml" rel="alternate" href="https://docs.3rdeyesys.com/feed.xml" title="3rdeyesys" />
@@ -128,23 +128,29 @@
 			
 				<li><a href="#개요">개요</a></li>
 			
-				<li><a href="#net-설치">.Net 설치</a></li>
+				<li><a href="#기본-설정">기본 설정</a></li>
 			
-				<li><a href="#프로젝트-생성">프로젝트 생성</a></li>
+				<li><a href="#group-생성">Group 생성</a></li>
 			
-				<li><a href="#json-패키지-설치">json 패키지 설치</a></li>
+				<li><a href="#서버-생성-확인">서버 생성 확인</a></li>
 			
-				<li><a href="#hellocs-작성">Hello.cs 작성</a></li>
+				<li><a href="#설정-관리---정책">설정 관리 - 정책</a></li>
 			
-				<li><a href="#프로젝트-게시">프로젝트 게시</a></li>
+				<li><a href="#그룹-이벤트-설정">그룹 이벤트 설정</a></li>
 			
-				<li><a href="#cf-이용신청">CF 이용신청</a></li>
+				<li><a href="#설정-관리---일정">설정 관리 - 일정</a></li>
 			
-				<li><a href="#cf-action-생성">CF Action 생성</a></li>
+				<li><a href="#설정-관리---이력">설정 관리 - 이력</a></li>
 			
-				<li><a href="#cf-action-실행">CF Action 실행</a></li>
+				<li><a href="#설정-관리---통보">설정 관리 - 통보</a></li>
 			
-				<li><a href="#오류-메시지">오류 메시지</a></li>
+				<li><a href="#설정-관리---서버">설정 관리 - 서버</a></li>
+			
+				<li><a href="#중지---서버삭제">중지 - 서버삭제</a></li>
+			
+				<li><a href="#서비스-제한사항">서비스 제한사항</a></li>
+			
+				<li><a href="#용어-정리">용어 정리</a></li>
 			
 				<li><a href="#참고-url">참고 URL</a></li>
 			
@@ -158,7 +164,9 @@
 	
 	
 	<section class="tutorial-content">
-		<h1>Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법
+		<h1>Classic 환경에서 AutoScaling 설정하는 방법
+		
+			<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
 		
 		</h1>
 
@@ -166,236 +174,266 @@
 		
 		<div class="tutorial-main">
 			<h2 id="개요">개요</h2>
-<p>네이버 클라우드 Cloud Functions에서 Action을 만들 수 있는 언어로는 Node.js, Python, Java, Swift, PHP, .Net, Go Language 등이 있는데<br />
-다른 언어들은 네이버 클라우드 콘솔에서 직접 코드를 입력하면 되지만, Java는 로컬에서 작업 후 jar 파일로 .Net은 zip 파일로 압축해서 따로 등록해야 합니다.<br />
-여기서는 Visual Studio에서 .Net 그 중에서도 C#으로 Action을 만들고 zip 파일로 압축 후에 콘솔에 등록하고 테스트 하는 과정까지 정리해보겠습니다.</p>
+<p>AutoScaling 서비스는 미리 등록한 설정에 따라 서버 수를 자동으로 증가 또는 감소시켜 안정적인 서비스를 유지하면서 비용을 절감할 수 있도록 해주는 서비스입니다.<br />
+여기서는 네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법을 정리해보겠습니다.</p>
 
-<h2 id="net-설치">.Net 설치</h2>
-<p>네이버 클라우드 Cloud Functions는 .Net Standard 2.0 규격을 요구하는데, 이 규격을 지원하는 버전을 설치하려면 .Net 5.0 또는 .Net Core 2.1 이상을 설치하면 됩니다.<br />
-가장 간단한 방법은 Visual Studio를 설치하는 방법이고 그 외에는 .Net 또는 .Net Core SDK만 별도로 설치하는 방법이 있습니다.<br />
-여기서는 Visual Studio를 이용할 것이기 때문에 Visual Studio를 설치하면 됩니다.</p>
+<h2 id="기본-설정">기본 설정</h2>
+<p>Auto Scaling 설정은 우선 [Auto Scaling] - [Launch Configuration]에서<br />
+[Launch Configuration 생성] 버튼을 클릭하는 것으로 시작합니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_01.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:700px;align:center" /></p>
+
+<h4 id="서버-이미지-선택">서버 이미지 선택</h4>
+<p>서버 이미지는 네이버 클라우드에서 제공하는 기본 이미지를 선택할 수도 있고, 기존 서버로 만들어 둔 [내 서버 이미지]를 사용할 수도 있습니다. 여기서는 기본 이미지를 사용하는 것으로 하겠습니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_02.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h4 id="서버-설정">서버 설정</h4>
+<p>스토리지 종류와 서버 타입 등을 선택합니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_03.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h4 id="이름-설정">이름 설정</h4>
+<p>Launch Configuration의 이름을 입력합니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_04.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h4 id="인증키-설정">인증키 설정</h4>
+<p>인증키는 기존에 보유하고 있던 인증키를 이용해도 되고, 새로운 인증키를 설정해도 됩니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_05.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h4 id="네트워크-접근-설정-acg">네트워크 접근 설정 (ACG)</h4>
+<p>ACG 설정도 기존에 보유하고 있던 ACG 중에서 선택해도 되고, 새로운 ACG를 생성해도 됩니다. 여기서는 새로운 ACG를 생성하는 방법으로 진행하겠습니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_06.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>ACG 이름을 입력하고, [myIp]를 클릭, 허용할 포트를 입력한 후 [추가] 버튼을 클릭합니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_07.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h4 id="최종-확인">최종 확인</h4>
+<p>지금까지 설정한 정보를 마지막으로 확인 한 후에 이상이 없으면 [Launch Configuration 생성] 버튼을 클릭합니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_08.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h2 id="group-생성">Group 생성</h2>
+<p>다음으로 Auto Scaling Group을 생성합니다. [Auto Scaling] - [Auto Scaling Group]에서 [Auto Scaling Group 생성] 버튼을 클릭합니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_09.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h4 id="launch-configuration-선택">Launch Configuration 선택</h4>
+<p>위에서 생성했던 Launch Configuration을 선택합니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_10.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h4 id="그룹-설정">그룹 설정</h4>
+<p>여기서는 생성될 서버들의 이름과 최소, 최대 개수 등을 설정합니다.<br />
+Auto Scaling Group당 최대 30대의 서버를 생성할 수 있고, Zone, NAT Gateway 설정은 생성 후 변경할 수 없으며, 변경이 필요하면 새로 생성하여 사용해야 합니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_11.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
 <ul>
-  <li>Visual Studio 무료버전 : <a href="https://visualstudio.microsoft.com/ko/free-developer-offers/" target="_blank" style="word-break:break-all;">https://visualstudio.microsoft.com/ko/free-developer-offers/</a></li>
-  <li>.Net, .Net Core SDK : <a href="https://dotnet.microsoft.com/download" target="_blank" style="word-break:break-all;">https://dotnet.microsoft.com/download</a></li>
+  <li><strong>서버이름 Prefix</strong> : 최대7자까지 지정할 수 있고, 나머지 이름의 뒷부분은 영문,숫자의 조합으로 무작위로 자동 생성됩니다.</li>
+  <li><strong>서버 용량</strong> : 최소, 최대, 기대 용량은 서버 대수를 의미하며 각각 <strong>0~30까지 입력 가능</strong>합니다.</li>
+  <li>
+    <p><strong>쿨다운 기본값</strong> : 새로운 서버가 생성되었다고 해도, init script 실행이나 업데이트 설치 등의 이유로 실제 서비스를 수행할 수 있을 정도로 준비되기까지는 시간이 소요될 수 있습니다. 
+즉, 쿨다운(Cooldown) 시간이란 실제 Scaling이 수행 중이거나 수행 완료된 이후에 모니터링 이벤트 알람이 발생하더라도 반응하지 않고 무시하도록 설정한 기간입니다.<br />
+<strong>값을 입력하지 않으면 기본값인 300초가 적용됩니다</strong>.</p>
+  </li>
+  <li><strong>헬스체크 보류기간</strong> : 서버 인스턴스가 생성되어 상태가 ‘운영 중’으로 바뀌었더라도, 서버의 업데이트 설치 등 작업에 의해서 헬스 체크에 정상 응답하지 못하는 경우가 생길 수 있습니다. 
+이런 경우 헬스 체크 보류 기간을 지정하면 해당 기간 동안에는 헬스 체크에 실패하더라도 서버에 이상이 있다고 판단하지 않습니다.<br />
+<strong>값을 입력하지 않으면 기본값인 300초가 적용됩니다</strong>.</li>
 </ul>
 
-<h2 id="프로젝트-생성">프로젝트 생성</h2>
+<p><br /></p>
 
-<h4 id="프로젝트-템플릿-선택">프로젝트 템플릿 선택</h4>
-<p>Visual Studio에서 제공하는 템플릿 중에서 C# Class library를 선택하니다.</p>
+<h4 id="정책일정-설정">정책/일정 설정</h4>
+<p>정책과 일정을 여기서 바로 설정할 수도 있고 나중에 설정할 수도 있습니다. 여기서는 [나중에 설정]으로 선택하고 아래쪽에서 다시 살펴보겠습니다.</p>
 
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_01.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_12.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
-<h4 id="프로젝트-구성">프로젝트 구성</h4>
-<p>프로젝트 이름과 저장 위치 등을 입력합니다. 
-여기서는 CloudFunctionsTestVisualStudio 라는 이름으로 시작합니다.</p>
+<h4 id="통보-설정">통보 설정</h4>
+<p>통보 설정을 여기서 바로 설정할 수도 있고 나중에 설정할 수도 있습니다. 여기서는 [나중에 설정]으로 선택하고 아래쪽에서 다시 살펴보겠습니다.</p>
 
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_02.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_13.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
-<h4 id="대상-프레임워크-지정">대상 프레임워크 지정</h4>
-<p>대상 프레임워크는 .NET Standard 2.0으로 지정합니다.</p>
+<h4 id="최종확인">최종확인</h4>
+<p>생성된 Group 설정값들을 마지막으로 확인하고 [Auto Scaling Group 생성] 버튼을 클릭합니다.</p>
 
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_03.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_14.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
-<p>프로젝트 생성 후에 CloudFunctionsTestVisualStudio.csproj 파일을 열어보면 TargetFramework 값이 netstandard2.0으로 되어 있는 것을 확인할 수 있습니다.</p>
+<h2 id="서버-생성-확인">서버 생성 확인</h2>
+<p>위에서 Auto Scaling Group을 생성하면 아래와 같이 즉시 서버가 생성되는 것을 확인할 수 있습니다. 처음에는 [기대용량]에 입력한 개수만큼 서버가 생성됩니다.</p>
 
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_04.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_15.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
-<h2 id="json-패키지-설치">json 패키지 설치</h2>
-<p>네이버 클라우드 Cloud Functions은 json 형식으로 파라미터를 입력받고 결과를 출력하기 때문에 NuGet 패키지 관리자를 이용해서 json 패키지를 설치합니다.</p>
+<h2 id="설정-관리---정책">설정 관리 - 정책</h2>
+<p>위에서 나중에 설정하기로 하고 넘어갔던 Auto Scaling Group의 정책, 일정, 이력, 통보 설정 등을 확인해보겠습니다.<br />
+[Auto Scaling Group]에서 해당 그룹을 선택하고, [설정 및 관리] 버튼을 클릭합니다.</p>
 
-<p>프로젝트 선택하고 마우스 오른쪽 버튼을 클릭해서 NuGet 패키지 관리 메뉴를 선택합니다.</p>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_16.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_05.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<h4 id="정책-설정">정책 설정</h4>
+<p>먼저 [정책] 탭을 선택하고, [생성] 버튼을 클릭합니다.</p>
 
-<p>NuGet 패키지 관리자 화면에서 json을 검색하고 Newtonsoft.Json 패키지를 선택, 설치를 합니다.</p>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_17.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_06.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<p>우선 서버를 증가시킬 정책으로 increase라는 이름을 입력하고, 증가시킬 서버 개수를 입력 후 [추가] 옵션을 선택하고 [생성] 버튼을 클릭합니다.</p>
 
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_09.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_18.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
-<p>패키지 설치가 완료된 상태입니다.</p>
+<p>다음으로 서버를 감소시킬 정책으로 decrease라는 이름을 입력하고, 감소시킬 서버 개수를 입력 후 [반납] 옵션을 선택하고 [생성] 버튼을 클릭합니다.</p>
 
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_10.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_19.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
-<h2 id="hellocs-작성">Hello.cs 작성</h2>
-<p>이제 name이라는 파라미터를 json 형태로 받아서 출력해주는 Hello.cs 스크립트를 작성합니다.</p>
+<p>서버 증가, 감소를 위한 정책 2가지가 생성된 것을 확인할 수 있습니다.</p>
 
-<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Newtonsoft.Json.Linq</span><span class="p">;</span>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_20.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
-<span class="k">namespace</span> <span class="nn">CloudFunctionsTestConsole</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">Hello</span>
-    <span class="p">{</span>
-        <span class="k">public</span> <span class="n">JObject</span> <span class="nf">Main</span><span class="p">(</span><span class="n">JObject</span> <span class="n">args</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">string</span> <span class="n">name</span> <span class="p">=</span> <span class="s">"no name"</span><span class="p">;</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="nf">ContainsKey</span><span class="p">(</span><span class="s">"name"</span><span class="p">))</span> <span class="p">{</span>
-                <span class="n">name</span> <span class="p">=</span> <span class="n">args</span><span class="p">[</span><span class="s">"name"</span><span class="p">].</span><span class="nf">ToString</span><span class="p">();</span>
-            <span class="p">}</span>
-            <span class="n">JObject</span> <span class="n">message</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">JObject</span><span class="p">();</span>
-            <span class="n">message</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"greeting"</span><span class="p">,</span> <span class="k">new</span> <span class="nf">JValue</span><span class="p">(</span><span class="s">$"Hello, </span><span class="p">{</span><span class="n">name</span><span class="p">}</span><span class="s">!"</span><span class="p">));</span>
-            <span class="k">return</span> <span class="p">(</span><span class="n">message</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<h2 id="그룹-이벤트-설정">그룹 이벤트 설정</h2>
+<p>위에서 설정한 정책이 언제 실행되게할 것인가 즉, 서버에 어떤 이벤트가 발생했을 때 정책을 실행할 것인가를 결정하는 그룹 이벤트를 설정합니다.<br />
+그룹 이벤트 설정은 [Classic] - [Monitoring] - [Group Event Setting]에서 할 수 있으며, 위에서 만든 Auto Scaling 그룹을 선택하고 [그룹 이벤트 설정] 버튼을 클릭합니다.</p>
 
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_11.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_21.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
-<h2 id="프로젝트-게시">프로젝트 게시</h2>
-<p>이제 위에서 작성한 스크립트를 게시하고, zip 파일로 압축합니다.<br />
-여기서 만든 zip 파일을 네이버 클라우드 콘솔에서 등록하게 됩니다.</p>
+<p>그룹 이벤트 설정 화면에 들어가면 위에서 만든 increase, decrease 2가지 정책이 리스트에 나타나는 것을 확인할 수 있습니다.</p>
 
-<p>[빌드]-[게시] 메뉴를 선택합니다.
-<img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_12.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_22.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
-<p>게시 대상은 폴더를 선택합니다.
-<img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_13.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<p>정책이 발동되게 하는 이벤트는 여러가지가 있는데, 가장 많이 선택하는 것이 CPU 사용률입니다.<br />
+여기서는 <strong>CPU 사용률(used)이 60% 이상일 때 increase 정책</strong>, <strong>CPU 사용률(used)이 30% 이하일 때 decrease 정책</strong>이 실행되도록 이벤트를 추가했습니다.</p>
 
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_14.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_23.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
-<p>게시할 준비가 되었고 게시를 시작합니다.
-<img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_15.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<h2 id="설정-관리---일정">설정 관리 - 일정</h2>
+<p>위에서는 서버에 설정한 이벤트가 발생했을 때 정책이 발동되도록 했지만, 그 외에도 특정한 시간대에 사용자가 몰리는 피크 타임이 일정하다면 해당 시간 전후로 서버를 늘리거나 감소시키는 방법도 가능합니다.<br />
+여기 [일정] 탭에서 해당 내용을 설정해두면 피크 타임에 미리 서버를 증가시켜서 좀 더 안정적인 서비스가 가능하게 설정할 수 있습니다.</p>
 
-<p>게시가 완료되었습니다.
-<img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_16.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_24.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
 
-<p>게시된 폴더에 가보면 .nupkg 파일이 생성되는데 저희는 이것을 이용하지 않고 상위 폴더에 있는 dll 파일을 사용합니다.</p>
+<h2 id="설정-관리---이력">설정 관리 - 이력</h2>
+<p>[이력] 탭에서는 서버가 생성되고 반납된 기록을 확인할 수 있습니다.</p>
 
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_18.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<p>publish 상위 폴더에 가면 .deps.json, .dll, .pdb 이렇게 3개 파일이 생성되어 있는 것을 확인할 수 있는데 Cloud Functions에서는 이 파일을 사용합니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_17.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<h4 id="파일-압축">파일 압축</h4>
-<p>탐색기에서 3개의 파일을 선택하고 압축합니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_19.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_20.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<h2 id="cf-이용신청">CF 이용신청</h2>
-<p>네이버 클라우드 콘솔에서 Cloud Functions에 들어가 이용신청을 합니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_01.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 만드는 방법 " style="width:800px;align:center" /></p>
-
-<h2 id="cf-action-생성">CF Action 생성</h2>
-
-<h4 id="액션-생성">액션 생성</h4>
-<p>버튼을 선택해 액션을 생성합니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_02.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 만드는 방법 " style="width:800px;align:center" /></p>
-
-<h4 id="트리거-선택">트리거 선택</h4>
-<p>액션을 생성하기 전에 트리거 조건을 설정해야 하는데, 여기서는 트리거 설정 없이 액션 만들기를 선택하겠습니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_03.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 만드는 방법 " style="width:800px;align:center" /></p>
-
-<h4 id="이름-입력">이름 입력</h4>
-<p>액션의 이름은 특별한 규칙이 없으니 알아보기 쉬운 것으로 입력하면 됩니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_21.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<h4 id="소스코드-언어-선택">소스코드 언어 선택</h4>
-<p>소스코드 언어 중에서 저희는 dotnet:2.2를 선택합니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_05.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 만드는 방법 " style="width:800px;align:center" /></p>
-
-<h4 id="소스코드-업로드">소스코드 업로드</h4>
-<p>소스코드 타입은 코드와 파일이 있지만, java와 .Net은 파일 업로드만 가능합니다.
-앞에서 만든 소스코드를 선택하고 업로드 합니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_22.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<p><br />
-소스코드가업로드 되었습니다. 등록된 소스코드는 나중에 다운로드 할 수도 있고 다른 파일을 재업로드 할 수도 있습니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_23.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<h4 id="vpc-연결-정보-선택">VPC 연결 정보 선택</h4>
-<p>VPC 환경에서는 연결할 VPC와 Subnet을 선택해야 합니다. Classic 환경에서는 다음 단계로 바로 이동하시면 됩니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_09.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 만드는 방법 " style="width:800px;align:center" /></p>
-
-<h4 id="옵션-설정">옵션 설정</h4>
-<p>실행할 Main 함수의 이름을 {Assembly}::{Class Full Name}::{Method} 형태의 풀네임으로 입력합니다. 
-위에서 만든 Hello.cs에서는 <strong>CloudFunctionsTestVisualStudio::CloudFunctionsTestVisualStudio.Hello::Main</strong> 으로 입력합니다.</p>
-
-<p>액션 메모리와 Timeout은 기본으로 두셔도 되고 익숙해진 이후에 상황에 맞게 조정하시면 됩니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_24.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<p><br />
-입력할 Main 함수 이름을 어떻게 적으면 되는지 한번 더 살펴보겠습니다.<br />
-아래 소스코드 화면에서 보시면 namespace, class, Main 이렇게 이름이 적혀 있는 곳에서<br />
-{ 1 }::{ 1 }.{ 2 }::{ 3 } 이렇게 연결해서 적으면 CloudFunctionsTestVisualStudio::CloudFunctionsTestVisualStudio.Hello::Main 이렇게 완성이 되고<br />
-이 이름을 Main 함수 이름 칸에 입력하시면 됩니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_25.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<h4 id="생성-완료">생성 완료</h4>
-<p>디폴트 파라미터의 경우 필요하실 경우 설정하시면 됩니다.<br />
-모든 준비가 끝났으면 생성 버튼을 클릭하여 액션을 생성합니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_11.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 만드는 방법 " style="width:800px;align:center" /></p>
-
-<h2 id="cf-action-실행">CF Action 실행</h2>
-<p>이제 생성된 액션을 실행해보겠습니다.
-액션의 기본정보 화면에서는 액션 실행과 수정, 삭제를 할 수 있고, 모니터링 화면에서는 액션이 실행된 통계 정보를 확인할 수 있습니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_26.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<p><br />
-액션 실행화면 왼쪽에는 파라미터를 입력할 수 있고,
-오른쪽에는 결과가 나오는데 전체 결과 메시지를 확인하거나 결과만 보기 옵션으로 최종 성공 실패에 대한 결과 메시지만 볼 수도 있습니다.<br />
-우선은 파라미터 없이 실행해 보았고, 무사히 성공한 결과가 나왔습니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_27.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<p><br />
-이번에는 파라미터를 입력하고 액션을 실행해보았습니다.  파라미터는 json 형태로 입력하면 됩니다.
-왼쪽 창에서 입력한 파라미터가 결과에 잘 반영되어 나왔습니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_28.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<p><br />
-결과만 보기 옵션을 끄고 실행하면 이렇게 스크롤 해야만 전체를 확인할 수 있을 정도로 긴 결과 메시지가 나타납니다.</p>
-
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_29.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<h2 id="오류-메시지">오류 메시지</h2>
-<p>위의 순서대로 진행을 하면 문제 없이 사용 가능한데, 이미 다른 방법으로 진행해보면서 오류 메시지를 경험하는 경우도 있을 듯하여 가장 많이 겪게 되는 오류 상황 2가지를 정리해보겠습니다.</p>
-
-<h4 id="main-함수-이름-입력-오류">Main 함수 이름 입력 오류</h4>
-<p>위에서 설명한 액션 Main 함수 이름을 올바르게 입력하지 않으면 다음과 같은 오류 메시지가 나타납니다.</p>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"main required format is </span><span class="se">\"</span><span class="s2">Assembly::Type::Function</span><span class="se">\"</span><span class="s2">."</span><span class="w">
-</span></code></pre></div></div>
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_30.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<p><br />
-상단에 설명한 [CF Action 생성] - [옵션 설정]에서 Main 함수 입력하는 부분을 참고하셔서 정확하게 입력하시면 문제가 해결됩니다.</p>
-
-<h4 id="net-대상-프레임워크-오류">.Net 대상 프레임워크 오류</h4>
-<p>네이버 클라우드 Cloud Functions은 .Net Standard 2.0 규약을 지원하고 있습니다.<br />
-그런데 이 대상 프레임워크가 맞지 않으면 다음과 같은 오류 메시지가 나타납니다.</p>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to locate requested type (</span><span class="se">\"</span><span class="s2">CloudFunctionsTestVisualStudio.Hello</span><span class="se">\"</span><span class="s2">)."</span><span class="w">
-</span></code></pre></div></div>
-<p><img src="../../images/ncp_server_cloud_functions_dotnet_csharp_vs_31.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 " style="width:800px;align:center" /></p>
-
-<p><br />
-위 [프로젝트 생성]에서 설명한 것처럼 프로젝트 생성할 때 대상 프레임워크를 <strong>.NET Standard 2.0</strong>으로 지정해야 합니다.</p>
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_25.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h2 id="설정-관리---통보">설정 관리 - 통보</h2>
+<p>[통보] 탭에서는 서버가 생성되거나 반납될 때 지정한 담당자에게 SMS나 Email로 통보하도록 설정할 수 있습니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_26.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h2 id="설정-관리---서버">설정 관리 - 서버</h2>
+<p>[서버] 탭은 현재 작동중인 서버 리스트를 확인할 수 있습니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_27.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h2 id="중지---서버삭제">중지 - 서버삭제</h2>
+<p>마지막으로, Auto Scaling을 중지하고, 작동중인 서버를 한번에 모두 삭제하는 방법을 확인해보겠습니다.</p>
+
+<p>[Auto Scaling] - [Auto Scaling Group]에서 해당 그룹을 선택하고 상단에 있는 [수정] 버튼을 클릭합니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_28.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>여기서 <strong>[최소 용량], [최대 용량], [기대 용량] 항목의 값을 모두 0으로 설정</strong>하면, 현재 작동중인 서버가 모두 반납되고, 더 이상 서버가 추가로 생성되지 않아서 Auto Scaling이 중지되게 됩니다.<br />
+사실 [최소 용량], [기대 용량] 2가지 항목만 0으로 설정해도 되지만, 혹시나 모르는 상황을 위해서 깔끔하게 3가지 항목 모두 0으로 설정합니다.</p>
+
+<p><img src="../../images/ncp_server_autoscaling_guide_classic_29.jpg" alt="네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h2 id="서비스-제한사항">서비스 제한사항</h2>
+<p>Auto Scaling 설정과 서버 스펙 등에 대한 제한 사항을 정리해보겠습니다.</p>
+
+<h4 id="스펙-및-서비스-환경-제한-사항">스펙 및 서비스 환경 제한 사항</h4>
+<ul>
+  <li>총 디스크 사이즈 150GB 이하 서버만 가능</li>
+  <li>Windows OS는 Windows 2012. 2016만 지원</li>
+  <li>내 서버 이미지의 경우, 원본 서버의 부팅 디스크 크기가 50GB인 경우만 지원(100GB 디스크에 대해서는 추후 지원 예정)</li>
+</ul>
+
+<h4 id="설정-제한-사항">설정 제한 사항</h4>
+<ul>
+  <li>고객별 생성 가능한 Auto Scaling Group 최대 수: 10</li>
+  <li>고객별 생성 가능한 Launch Configuration 최대 수: 100</li>
+  <li>Auto Scaling Group당 생성 가능한 스케줄(Scheduled Action) 최대 수: 100</li>
+  <li>Auto Scaling Group당 생성 가능한 Scaling Policy 최대 수: 10</li>
+  <li>Auto Scaling Group당 생성 가능한 최대 서버 수: 30대</li>
+  <li>Auto Scaling Group당 연결 가능한 Load Balancer 최대 수 : 10</li>
+</ul>
+
+<h2 id="용어-정리">용어 정리</h2>
+<p>Auto Scaling에서 사용되는 주요 용어들을 정리해보겠습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">용어</th>
+      <th style="text-align: center"> </th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Scale-in / Scale-out</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">Auto Scaling Group을 생성하여 고객이 설정한 Policy에 따라 사용하고 있는 가상 서버의 자동 확장(Scale-out) 및 자동 축소(Scale-in)하도록 제공합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Auto Scaling Group</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">여러 개의 서버 인스턴스들을 Auto Scaling Group 이라는 하나의 그룹으로 묶어 놓게 됩니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Launch Configuration</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">Auto Scaling Group에서 가상 서버를 시작 구성하는 데 사용하는 템플릿입니다. Auto Scaling Group을 생성할 때는 Launch Configuration을 지정해야 합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Auto Scaling Group의 최소 용량/최대 용량</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">Auto Scaling Group의 최소/최대 서버 수를 말합니다. 최소 서버 수의 경우, 항상 이 값과 같거나 이 값보다 더 큰 서버 수가 유지됩니다. 서버를 한 대도 보유하지 않을 수 있게 하려면 0으로 설정합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">기대 용량 (Desired Capacity)</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">서버의 수는 기대 용량값에 따라서 조정됩니다. 이 값은 최소 용량 이상, 최대 용량 이하여야 합니다. 이 값이 지정되어 있지 않으면 초기에 최소 용량만큼 서버를 생성합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">쿨다운 기본값(초) (Default Cooldown)</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">Default Cooldown(초) 새로운 서버가 생성되었다고 해도, Init-Script 실행이나 업데이트 설치 등의 이유로 실제 서비스를 수행할 수 있을 정도로 준비되기까지는 시간이 소요될 수 있습니다. 쿨다운(Cooldown) 시간이란 실제 Scaling이 수행 중이거나 수행 완료된 이후에 모니터링 이벤트 알람이 발생하더라도 무시하도록 설정한 기간입니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">헬스체크</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">Auto Scaling Group의 가상 서버에 주기적인 상태 확인을 수행하여 상태가 비정상인 가상 서버를 식별하도록 Health Check를 합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">헬스체크 보류 기간</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">서버가 생성되어 ‘운영중’으로 변경되었더라도 서버의 업데이트 설치 등 작업에 의해서 헬스 체크에 정상 응답하지 못하는 경우가 생길 수 있습니다. 이런 경우 헬스 체크 보류기간을 지정하면 해당 기간 동안에는 헬스 체크에 실패하더라도 서버 헬스에 이상이 있다고 판단하지 않습니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">헬스체크 유형</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">서버와 Load Balancer 둘 중에 선택할 수 있습니다. Auto Scaling Group 설정에서 Load Balancer 이름을 지정한 경우에는 헬스 체크 유형 역시 Load Balancer로 설정합니다. 이런 경우 Auto Scaling은 Load Balancer 헬스 체크 방식과 기준에 따라 서버의 상태를 판단합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">반납 정책</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">Auto Scaling 과정에서 추가된 서버에 대한 Scale-in 작업에 대해, 고객이 API 질의 형식으로먼저 반납할 서버를 지정할 수 있습니다. 기본 설정은 먼저 생성된 서버부터 반납합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Policy</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">Auto Scaling이 일어나는 방식을 정의하고 있는데, 이를 ‘Policy’로 정의하고 있습니다. Auto Scale-out 이 발생할 때, 몇 대의 가상 서버를 늘릴 것인지, 반대로 Scale-in이 발생할 때 몇 대의 가상서버를 줄일 것인지를 정의합니다. 대수로 정의할 수 도 있고, %로 정의할 수도 있습니다.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2 id="참고-url">참고 URL</h2>
-<p><a href="https://guide.ncloud-docs.com/docs/compute-compute-15-2-6" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-15-2-6.html</a></p>
+<p><a href="https://guide.ncloud-docs.com/docs/compute-autoscaling-autoscalingoverview" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-autoscaling-autoscalingoverview</a></p>
 
 <blockquote>
-  <p>문서 최종 수정일 : 2021-03-12</p>
+  <p>문서 최종 수정일 : 2021-09-17</p>
 </blockquote>
 
 		</div>
@@ -765,7 +803,7 @@
 			</a>
 		</li>
 	
-		<li class="active">
+		<li >
 		
 		
 		
@@ -947,7 +985,7 @@
 			</a>
 		</li>
 	
-		<li >
+		<li class="active">
 		
 		
 		
@@ -985,34 +1023,6 @@
 		<h3>Related docs</h3>
 
 		<ul class="listing">
-	
-		<li >
-		
-		
-		
-		
-		
-		
-		
-			<a href="/1.compute/ncp_server_autoscaling_classic_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>Classic 환경에서 AutoScaling 설정하는 방법 
-							
-								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
-							
-						</h3>
-						<p class="description">네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법입니다.</p>
-					</div>
-				</article>
-			</a>
-		</li>
 	
 		<li >
 		
@@ -1254,6 +1264,32 @@
 			</a>
 		</li>
 	
+		<li >
+		
+		
+		
+		
+		
+		
+		
+			<a href="/1.compute/ncp_server_storage_lvm_create/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>리눅스서버 스토리지(디스크) LVM 구성하기 
+							
+						</h3>
+						<p class="description">네이버 클라우드 리눅스 서버의 Block Storage를 LVM으로 구성하는 방법입니다</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
 </ul>
 	</div>
 
@@ -1278,17 +1314,17 @@
 		<h2>Share</h2>
 		<p>Share this tutorial with your community.</p>
 		<ul>
-			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_cloud_functions_dotnet_csharp_vs%2F">
+			<li><a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_classic_guide%2F">
 		<svg class="twitter" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg>
 	
  Twitter</a></li>
-			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_cloud_functions_dotnet_csharp_vs%2F">
+			<li><a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_classic_guide%2F">
 		<svg class="facebook" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="15.8 15.8 25 25"><path d="M32.8 24.7h-3.2v-2.1c0-0.8 0.5-1 0.9-1s2.3 0 2.3 0v-3.5l-3.1 0c-3.5 0-4.3 2.6-4.3 4.3v2.3h-2v3.6h2c0 4.6 0 10.2 0 10.2h4.2c0 0 0-5.6 0-10.2h2.8L32.8 24.7z"/></svg>
 	
  Facebook</a></li>
-			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_cloud_functions_dotnet_csharp_vs%2F">
+			<li><a class="google-plus" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_classic_guide%2F">
  Google+</a></li>
-			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_cloud_functions_dotnet_csharp_vs%2F&t=Cloud%20Functions%20Action%EC%9D%84%20.Net%20%28C%23%29%EC%9D%84%20%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC%20Visual%20Studio%EC%97%90%EC%84%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B0%A9%EB%B2%95">
+			<li><a class="hacker-news" target="_blank" href="http://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdocs.3rdeyesys.com%2F1.compute%2Fncp_server_autoscaling_classic_guide%2F&t=Classic%20%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%20AutoScaling%20%EC%84%A4%EC%A0%95%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95">
 		<svg class="hacker-news" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.8 3.3c-0.4 0.8-5.6 11.1-5.6 11.2 0 2 0 6.2 0 6.2 -0.1 0-2.2 0-2.3 0 0 0 0-5.9 0-6.2 0 0-5.5-10.9-5.6-11.1C5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3 5.3 3.3c0 0 0 0 0.1 0 0.9 0 1.7 0 2.6 0 0 0 0 0 0 0.1 0.1 0.1 4 8.3 4.1 8.3 0 0 4.2-8.3 4.3-8.4 0.8 0 1.6 0 2.4 0 0 0 0 0 0 0C18.8 3.3 18.8 3.3 18.8 3.3z"/></svg>
 	
  Hacker News</a></li>
