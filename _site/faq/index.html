@@ -68,7 +68,7 @@
 	
 
 		
-		<a href="/faq/" class=" active" target="_self">FAQ</a>
+		<a href="/faq/" class=" active" target="_self">FAQ<img src="/images/new_dot_10x10.png" style="width:8px;margin-left:3px;vertical-align:top;"></a>
 
 	
 	
@@ -126,6 +126,8 @@
 		
 		
 		
+			<li><a href="#aws-s3-데이터를-네이버-클라우드-object-storage로-이전할-수-있는-방법은-없나요">AWS S3 데이터를 네이버 클라우드 Object Storage로 이전할 수 있는 방법은 없나요?</a></li>
+		
 			<li><a href="#네이버-클라우드-vpc환경에서-application-load-balancer를-만들었는데-왜-접속이-되지-않는가요">네이버 클라우드 VPC환경에서 Application Load Balancer를 만들었는데 왜 접속이 되지 않는가요?</a></li>
 		
 			<li><a href="#네이버-클라우드-archive-storage-이용해지는-어떻게-하나요">네이버 클라우드 Archive Storage 이용해지는 어떻게 하나요?</a></li>
@@ -164,6 +166,9 @@
 		
 	</ul>	
 
+	
+		<h2 id="aws-s3-데이터를-네이버-클라우드-object-storage로-이전할-수-있는-방법은-없나요">AWS S3 데이터를 네이버 클라우드 Object Storage로 이전할 수 있는 방법은 없나요?<a class="header-link" href="#aws-s3-데이터를-네이버-클라우드-object-storage로-이전할-수-있는-방법은-없나요">#</a></h2>
+		<p>이전 가능하니다. 네이버 클라우드에 있는 Object Migration 서비스를 이용하면 AWS S3에 있는 데이터를 그대로 이전할 수 있습니다. 현재는 AWS S3만 지원하지만, 향후에는 Microsoft Azure, Google Cloud Platform 등 다양한 클라우드를 지원할 예정입니다. <br /><span style="font-size:15px">- 참고문서: <a href="https://www.ncloud.com/product/migration/objectMigration" style="text-decoration:none" target="_self">https://www.ncloud.com/product/migration/objectMigration</a></span></p>
 	
 		<h2 id="네이버-클라우드-vpc환경에서-application-load-balancer를-만들었는데-왜-접속이-되지-않는가요">네이버 클라우드 VPC환경에서 Application Load Balancer를 만들었는데 왜 접속이 되지 않는가요?<a class="header-link" href="#네이버-클라우드-vpc환경에서-application-load-balancer를-만들었는데-왜-접속이-되지-않는가요">#</a></h2>
 		<p>네이버 클라우드 VPC 환경에서 Load Balancer가 정상 작동하기 위해서는 Network ACL과 Server ACG 설정에서 Load Balancer가 속한 Subnet 대역과 접속포트를 허용해 주어야 합니다. 자세한 내용은 아래 링크 문서를 참고하시기 바랍니다. <br /><span style="font-size:15px">- 참고문서: <a href="/2.networking/ncp_networking_load_balancer_application_lb/" style="text-decoration:none" target="_self">/2.networking/ncp_networking_load_balancer_application_lb/</a></span></p>
