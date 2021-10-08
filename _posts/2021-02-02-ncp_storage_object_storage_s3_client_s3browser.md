@@ -1,5 +1,6 @@
 ---
 date: 2021-02-02
+update: 2021-10-08
 title: Object Storage 접속용 Windows Client Tool - S3 Browser
 image: ../../images/ncp_storage_object_storage_s3_client_s3browser_01.jpg
 categories:
@@ -36,7 +37,7 @@ S3 Browser는 Amazon S3 and Amazon CloudFront를 위한 클라이언트입니다
 
 Account Type은  **S3 Compatible Storage**를 선택하면 됩니다.  
 - Account name: 여기는 알아보기 쉬운 이름을 적으면 됩니다. 예를 들어 Naver Cloud
-- REST Endpoint: 여기는 네이버 클라우드의 endpoint-url을 적습니다. **http://kr.objectstorage.ncloud.com**
+- REST Endpoint: 여기는 네이버 클라우드의 endpoint-url을 적습니다. **https://kr.object.ncloudstorage.com**
 - Access Key ID: 여기는 Access Key ID
 - Secret Access Key: 여기는 Secret Key
 

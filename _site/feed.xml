@@ -1,4 +1,119 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-09-30T14:43:35+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Classic 환경에서 AutoScaling 설정하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_classic_guide/" rel="alternate" type="text/html" title="Classic 환경에서 AutoScaling 설정하는 방법" /><published>2021-09-16T00:00:00+09:00</published><updated>2021-09-16T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_classic_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_classic_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-10-08T15:51:48+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">서버 모니터링 서비스 Monitoring 설정 가이드</title><link href="https://docs.3rdeyesys.com/81.manage/ncp_manage_monitoring_guide/" rel="alternate" type="text/html" title="서버 모니터링 서비스 Monitoring 설정 가이드" /><published>2021-10-07T00:00:00+09:00</published><updated>2021-10-07T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/81.manage/ncp_manage_monitoring_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/81.manage/ncp_manage_monitoring_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드 Classic 환경에서 서버 모니터링을 설정하는 가이드입니다.&lt;br /&gt;
+Classic에서는 Monitoring 서비스와 Cloud Insite(Monitoring) 서비스 이렇게 2가지 서비스가 있는데 여기서는 Monitoring 서비스를 설정하는 방법에 대해 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;기본-모니터링-vs-상세-모니터링&quot;&gt;기본 모니터링 vs 상세 모니터링&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;기본 모니터링 : 네이버 클라우드에서 서버를 생성하면 별다른 설정을 하지 않아도 CPU, Memory 사용 등의 기본적인 항목들의 데이터를 확인할 수 있는데 이를 기본 모니터링이라고 하며 5분 단위의 데이터를 확인할 수 있습니다.
+확인 가능한 데이터는 [CPU Used], [Memory Used (except cache/buffer)], [Disk Used], [Swap Used], [Network In (bps)], [Network Out (bps)], [Disk Read (bytes)], [Disk Write (bytes)] 입니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;상세 모니터링 : 기본 모니터링보다 훨씬 많고 상세한 데이터를 확인하고, 상태 감시와 통보 알람 설정을 통해 지정한 수치 이상의 상태가 되면 문자나 메일로 통보 받을 수 있는 모니터링 서비스이며, 1분 단위의 데이터를 확인할 수 있습니다. 
+네이버 클라우드 [Console] - [Monitoring] 서비스가 바로 [상세 모니터링]입니다. 또한 [Monitoring] 서비스에서는 Auto Scaling 그룹에 대한 이벤트 설정도 할 수 있습니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;기본-모니터링&quot;&gt;기본 모니터링&lt;/h2&gt;
+&lt;p&gt;아래와 같이 서버 리스트에서 모니터링할 서버를 선택하고 위에 있는 [모니터링] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_01.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기본 모니터링에서는 5분 주기의 데이터를 확인할 수 있고, 날짜와 기간을 선택해서 데이터를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_02.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;상세-모니터링&quot;&gt;상세 모니터링&lt;/h2&gt;
+&lt;p&gt;[Monitoring] 서비스 즉, 상세 모니터링 서비스는 별도로 설정이 필요한데 설정하는 방법은 아래와 같이 기본 모니터링 화면에서 [상세 모니터링 설정] 링크를 클릭하거나, 
+서버 리스트에서 [서버 관리 및 설정 변경] 메뉴 - [상세 모니터링 설정 변경] 메뉴를 클릭하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_03.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_04.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[상세 모니터링] 신청화면입니다. 특별한 설정이 필요한 것은 아니므로 신청 화면에서 [예] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_05.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[상세 모니터링] 신청이 끝나면 바로 [Monitoring] - [Notification Recipient] 즉, 이벤트 통보 대상자 화면으로 넘어갑니다.  여기서는 모니터링 대상인 서버에서 이벤트가 발생했을 때 연락이 가도록 대상자를 등록하게 됩니다.&lt;br /&gt;
+기본으로 계정 사용자 정보가 등록되어 있는데, 혹시 등록되지 않았을 경우에는 [대상자 추가] 버튼을 클릭해서 통보 대상자를 등록합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_06.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;대시보드&quot;&gt;대시보드&lt;/h2&gt;
+
+&lt;h4 id=&quot;통합-대시보드&quot;&gt;통합 대시보드&lt;/h4&gt;
+&lt;p&gt;[Monitoring] - [Integrated Dashboard] 즉, 통합 대시보드 메뉴로 이동합니다.&lt;br /&gt;
+여기서는 일별 이벤트 발생 횟수와 히스토리, 그리고, 각 모니터링 항목별로 상위 5개의 서버 정보를 통합해서 표시합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_07.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;서버-대시보드&quot;&gt;서버 대시보드&lt;/h4&gt;
+&lt;p&gt;[Monitoring] - [Dashboard] - [Server Dashboard]에서는 전체 서버들의 상세한 모니터링 데이터를 리스트로 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_08.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;좀 더 자세한 정보를 확인하고 싶으면 서버 리스트에서 원하는 서버를 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_09.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;서버를 선택하면 아래와 같이 모니터링 데이터를 차트로 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_10.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그리고 서버 Process와 File System 사용 정보도 상세하게 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_11.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;감시-통보-설정&quot;&gt;감시-통보 설정&lt;/h2&gt;
+&lt;p&gt;Monitoring 시스템에서 수집하는 성능 Item 중 사용자가 지정한 Item이 임계치 값을 벗어난 경우에 Event가 발생합니다. 
+Event를 발생 하게 하는 조건을 감시설정이라 하며 해당 Event를 Mail or SMS로 수신 받는 설정을 통보설정이라고 합니다.&lt;/p&gt;
+
+&lt;p&gt;[Monitoring] - [Configuration] - [New Observation] 메뉴에서 우선 감시설정에 등록하고자 하는 서버를 먼저 선택하고 하단의 감시설정 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_12.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음으로 감시할 항목을 설정합니다. CPU, Memory 등 원하는 분류와 항목을 선택하고 임계치 등의 수치를 입력 후 추가 버튼을 클릭합니다.&lt;br /&gt;
+또한, 미리 Template을 등록해 두면 이후에 여러 서버들에 설정을 쉽게 적용할 수 있습니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;분류-항목별-주의-사항&quot;&gt;분류 항목별 주의 사항&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;프로세스: 상세 입력칸에 프로세스명을 입력할 때는 정규 표현식으로 입력해야 합니다.&lt;/li&gt;
+  &lt;li&gt;파일 시스템:  상세 입력칸에 경로 입력 시 Linux의 경우 ‘/’ 경로로 입력하고, Windows의 경우 ‘C:, D:’ 등의 경로로 반드시 대문자로 입력합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_13.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그 다음은 통보 받을 대상자와 통보 방법을 선택하고 [추가] 버튼을 클릭합니다. 통보 대상자가 리스트에 없을 경우 위쪽에 있는 [통보대상관리] 버튼을 클릭해서 대상자를 등록한 후에 다시 추가합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_14.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;마지막으로 지금까지 설정한 내용들을 다시 한번 확인 한 후에 [최종 확인] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_15.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;통보-알람-중지&quot;&gt;통보 알람 중지&lt;/h2&gt;
+&lt;p&gt;서버 점검 등을 진행할 때는 통보 알람 기능을 중지 시켜두면 불필요한 알람을 받을 필요가 없어서 편리합니다.
+[Monitoring] - [Configuration] - [Notification Stop] 메뉴에서 서버를 선택하고 [알람중지] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_16.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;알람 중지 팝업 화면에서 목적과 기간 등을 선택해서 적용합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_monitoring_guide_17.jpg&quot; alt=&quot;네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Sub Account 사용 가이드
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/management-management-1-1&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/management-management-1-1&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-10-08&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 Classic 환경에서 서버 모니터링을 설정하는 가이드입니다. Classic에서는 Monitoring 서비스와 Cloud Insite(Monitoring) 서비스 이렇게 2가지 서비스가 있는데 여기서는 Monitoring 서비스를 설정하는 방법에 대해 정리해보겠습니다.</summary></entry><entry><title type="html">Classic 환경에서 AutoScaling 설정하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_classic_guide/" rel="alternate" type="text/html" title="Classic 환경에서 AutoScaling 설정하는 방법" /><published>2021-09-16T00:00:00+09:00</published><updated>2021-09-16T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_classic_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_autoscaling_classic_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;AutoScaling 서비스는 미리 등록한 설정에 따라 서버 수를 자동으로 증가 또는 감소시켜 안정적인 서비스를 유지하면서 비용을 절감할 수 있도록 해주는 서비스입니다.&lt;br /&gt;
 여기서는 네이버 클라우드 Classic 환경에서 AutoScaling 설정하는 방법을 정리해보겠습니다.&lt;/p&gt;
 
@@ -1253,124 +1368,4 @@ nks-pool-1865-w2zz   Ready    node    4d5h   v1.16.6
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-07-13&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 VPC 환경에서 Kubernetes(쿠버네티스) 서비스를 생성하고 제어하는 방법에 대해 소개합니다.</summary></entry><entry><title type="html">VPC 환경에서 NAT Gateway 설정하기</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_natgw_routetb/" rel="alternate" type="text/html" title="VPC 환경에서 NAT Gateway 설정하기" /><published>2021-07-09T00:00:00+09:00</published><updated>2021-07-09T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_natgw_routetb</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_natgw_routetb/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;NAT Gateway는 비공인 IP를 가진 다수의 서버들이 대표 공인 IP를 이용해 외부와 통신을 할 수 있도록 도와주는 네트워킹 서비스입니다.&lt;br /&gt;
-그리고, 일반적으로 서버에 직접 공인 IP를 부여하는 것과 달리 외부에서 서버로의 직접 접근은 허용하지 않기 때문에 높은 수준의 보안을 유지할 수 있는 것이 특징입니다.&lt;br /&gt;
-여기서는 VPC 환경에서 NAT Gateway를 어떻게 구성하고, NAT Gateway를 적용하기 전과 후의 외부와 통신 상태에 대해 확인해보도록 하겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;생성개수-제한&quot;&gt;생성개수 제한&lt;/h2&gt;
-&lt;p&gt;우선 VPC는 리전별로 계정당 3개씩 생성 가능하고, &lt;strong&gt;NAT Gateway는 각 VPC별로 Zone당 1개씩 생성 가능&lt;/strong&gt;합니다.&lt;br /&gt;
-현재 한국 리전에는 KR-1, KR-2 이렇게 2개의 Zone이 있으므로 한국 리전 기준으로 VPC당 최대 2개, &lt;strong&gt;계정당 최대 6개의 NAT Gateway를 생성&lt;/strong&gt;할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;vpc-생성&quot;&gt;VPC 생성&lt;/h2&gt;
-&lt;p&gt;먼저 VPC를 생성합니다. IP주소 범위는 10.0.0.0/16으로 정하겠습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_01.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;subnet-생성&quot;&gt;Subnet 생성&lt;/h2&gt;
-&lt;p&gt;NAT Gateway 동작 테스트를 위해 Public, Private 이렇게 2가지 Subnet을 생성하겠습니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;public-subnet-생성&quot;&gt;Public Subnet 생성&lt;/h4&gt;
-&lt;p&gt;Public Subnet의 IP 범위는 &lt;strong&gt;10.0.0.0/24&lt;/strong&gt;로 설정하겠습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_02.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;private-subnet-생성&quot;&gt;Private Subnet 생성&lt;/h4&gt;
-&lt;p&gt;Private Subnet의 IP 범위는 &lt;strong&gt;10.0.0.1/24&lt;/strong&gt;로 설정하겠습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_03.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;acg-설정&quot;&gt;ACG 설정&lt;/h2&gt;
-&lt;p&gt;테스트를 위한 ACG (Access Control Group)를 생성하고 설정합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_04.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;inbound-설정&quot;&gt;Inbound 설정&lt;/h4&gt;
-&lt;p&gt;Inbound 규칙에는 Public, Private Subnet과 SSH 접속을 위한 로컬PC IP를 허용하고, Ping 테스트를 위한 ICMP도 허용합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_05.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;outbound-설정&quot;&gt;Outbound 설정&lt;/h4&gt;
-&lt;p&gt;Outbound 규칙은 TCP, UDP, ICMP 모두 전체 허용으로 추가합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_06.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;서버-생성&quot;&gt;서버 생성&lt;/h2&gt;
-&lt;p&gt;테스트를 위해 Public, Private 각각의 Subnet에 1대씩 서버를 설정하고 Public 서버에는 공인 IP도 할당합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_07.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;public---private-서버-접속-확인&quot;&gt;Public -&amp;gt; Private 서버 접속 확인&lt;/h4&gt;
-&lt;p&gt;Public Subnet에 있는 서버에서 Private Subnet에 있는 서버로 통신이 가능한 것을 확인할 수 있습니다.&lt;br /&gt;
-다음 단계에서 Private 서버로 SSH로 접속하기 위한 사전 확인 단계입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_08.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:670px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;private-서버-외부-접속-여부-확인&quot;&gt;Private 서버 외부 접속 여부 확인&lt;/h4&gt;
-&lt;p&gt;Public 서버에서 Private 서버로 SSH로 접속한 후에 Private 서버에서 외부로 통신이 되는 것을 확인해보면 불가능한 것을 확인할 수 있습니다.&lt;br /&gt;
-이후 단계에서 NAT Gateway를 설정하고 Private 서버에서 외부와 통신이 가능한지 확인해보겠습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_09.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:670px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;route-table-설정-확인&quot;&gt;Route Table 설정 확인&lt;/h2&gt;
-&lt;p&gt;NAT Gateway를 위한 Route Table 설정을 추가하기 전에 현재 상태의 Route Table 설정을 확인해보겠습니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;public-subnet의-route-table-설정-확인&quot;&gt;Public Subnet의 Route Table 설정 확인&lt;/h4&gt;
-&lt;p&gt;위에서 Public Subnet의 서버와 Private Subnet의 서버가 통신이 가능했던 것은 VPC와 Subnet이 생성될때 Route Table이 생성되면서 VPC 내부 통신을 위한 규칙 (10.0.0.0/16 LOCAL)이 기본으로 설정되기 때문입니다.&lt;br /&gt;
-그리고 Public의 경우 외부 통신을 위한 INTERNET GATEWAY가 추가되어 있는 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_10.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;private-subnet의-route-table-설정-확인&quot;&gt;Private Subnet의 Route Table 설정 확인&lt;/h4&gt;
-&lt;p&gt;반면에 Private의 경우는 VPC 내부 통신을 위한 LOCAL만 설정된 것을 확인 할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_11.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Route Table 설정 화면에 들어가도 Target Type에 LOCAL만 선택할 수 있는 것을 확인할 수 있습니다.
-&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_14.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;nat-gateway-생성&quot;&gt;NAT Gateway 생성&lt;/h2&gt;
-&lt;p&gt;NAT Gateway 생성 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_15.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이름을 입력하고 VPC와 Zone을 선택하고 NAT Gateway를 생성합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_16.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;route-table-설정&quot;&gt;Route Table 설정&lt;/h4&gt;
-&lt;p&gt;앞에서 LOCAL 항목만 존재했던 Private Subnet의 Route Table 설정 화면에 가보면 Target Type에 NATGW가 추가된 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_18.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;목적지(Destination)에 0.0.0.0/0을 입력하고, Target Type을 NATGW를 선택하고 생성 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_19.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;외부-접속-테스트&quot;&gt;외부 접속 테스트&lt;/h2&gt;
-&lt;p&gt;마지막으로 다시 한번 Private 서버에서 외부 통신이 가능한지 ping 테스트를 해보면, 아래 화면과 같이 정상적으로 통신이 되는 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_networking_natgw_routetb_20.jpg&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드 &quot; style=&quot;width:670px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;고려사항&quot;&gt;고려사항&lt;/h2&gt;
-&lt;p&gt;NAT Gateway는 사용하지 않고 생성만 해두어도 요금이 부과됩니다. (데이터 처리요금 별도)&lt;br /&gt;
-생성 후 보유 시간에 따라 요금이 부과되는데 1개당 56원/시간 입니다. 그러므로 1달간 보유하고만 있다고 가정할 때 비용을 계산해보면&lt;br /&gt;
-&lt;strong&gt;24시간 * 30일 * 56원 = 40,320원&lt;/strong&gt; 그러므로 사용하지 않는 NAT Gatway는 반드시 삭제하기를 추천드립니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;NAT Gateway 가이드
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/networking-vpc-vpcdetailenatgw&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/networking-vpc-vpcdetailenatgw&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;NAT Gateway 특징과 비교
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://m.blog.naver.com/n_cloudplatform/221173116642&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://m.blog.naver.com/n_cloudplatform/221173116642&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-07-09&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 NAT Gateway는 비공인 IP를 가진 다수의 서버들이 대표 공인 IP를 이용해 외부와 통신을 할 수 있도록 도와주는 네트워킹 서비스입니다. 그리고, 일반적으로 서버에 직접 공인 IP를 부여하는 것과 달리 외부에서 서버로의 직접 접근은 허용하지 않기 때문에 높은 수준의 보안을 유지할 수 있는 것이 특징입니다. 여기서는 VPC 환경에서 NAT Gateway를 어떻게 구성하고, NAT Gateway를 적용하기 전과 후의 외부와 통신 상태에 대해 확인해보도록 하겠습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 VPC 환경에서 Kubernetes(쿠버네티스) 서비스를 생성하고 제어하는 방법에 대해 소개합니다.</summary></entry></feed>

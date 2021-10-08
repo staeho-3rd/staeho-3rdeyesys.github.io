@@ -1,5 +1,6 @@
 ---
 date: 2021-03-10
+update: 2021-10-08
 title: Object Storage 접속용 Windows, MacOS Client Tool - Cyberduck
 categories:
   - 4.storage
@@ -45,7 +46,7 @@ API 인증키는 네이버 클라우드 포탈 -> 마이페이지 -> 계정관�
 Object Storage에 접속하기 위해 위에서 확인한 API 인증키를 이용하여 다음의 정보를 입력해야 합니다.
 
 ``` bash
-# 서버: kr.objectstorage.ncloud.com
+# 서버: kr.object.ncloudstorage.com
 # 접근 키 ID: 네이버 클라우드 Access Key ID
 # Secret Access Key: 네이버 클라우드 Secret Key
 ```
