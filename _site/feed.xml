@@ -1,4 +1,186 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-10-08T15:51:48+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">서버 모니터링 서비스 Monitoring 설정 가이드</title><link href="https://docs.3rdeyesys.com/81.manage/ncp_manage_monitoring_guide/" rel="alternate" type="text/html" title="서버 모니터링 서비스 Monitoring 설정 가이드" /><published>2021-10-07T00:00:00+09:00</published><updated>2021-10-07T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/81.manage/ncp_manage_monitoring_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/81.manage/ncp_manage_monitoring_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-10-18T17:55:46+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">모니터링 서비스 Cloud Insight 설정 가이드</title><link href="https://docs.3rdeyesys.com/81.manage/ncp_manage_cloud_insight_guide/" rel="alternate" type="text/html" title="모니터링 서비스 Cloud Insight 설정 가이드" /><published>2021-10-15T00:00:00+09:00</published><updated>2021-10-15T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/81.manage/ncp_manage_cloud_insight_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/81.manage/ncp_manage_cloud_insight_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드와 사용자 애플리케이션의 성능/운영 지표를 통합 관리하고, 장애나 이벤트가 발생했을 때 SMS 및 Email로 알람 통보를 해주는 서비스인 Cloud Insight 서비스를 설정하는 방법에 대해 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;monitoring-서비스-vs-cloud-insight-서비스&quot;&gt;Monitoring 서비스 vs Cloud Insight 서비스&lt;/h4&gt;
+&lt;p&gt;Classic 환경에 있는 Monitoring 서비스와 Cloud Insight 서비스의 차이점을 정리하면 다음과 같습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Monitoring 서비스는 Classic 환경에서만 사용할 수 있다.&lt;/li&gt;
+  &lt;li&gt;Cloud Insight 서비스는 Classic, VPC 양쪽에서 모두 사용할 수 있고, 두가지 환경을 통합해서 보여준다.&lt;/li&gt;
+  &lt;li&gt;Monitoring 서비스는 Server 제품 (AutoScaling 포함)만 모니터링 한다.&lt;/li&gt;
+  &lt;li&gt;Cloud Insight 서비스는 Server 뿐만 아니라 Object Storage, Load Balancer 등 10여개의 서비스를 모니터링 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;적용-서비스-리스트&quot;&gt;적용 서비스 리스트&lt;/h2&gt;
+&lt;p&gt;위 비교에서도 설명했듯이 Cloud Insight는 Server 뿐만 아니라 네이버 클라우드의 다양한 서비스의 모니터링 정보를 확인할 수 있는데 해당 리스트는 다음과 같습니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;classic&quot;&gt;Classic&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Server&lt;/li&gt;
+  &lt;li&gt;Load Balancer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;vpc&quot;&gt;VPC&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Server(VPC)&lt;/li&gt;
+  &lt;li&gt;Load Balancer(VPC)&lt;/li&gt;
+  &lt;li&gt;Cloud DB for MySQL(VPC)&lt;/li&gt;
+  &lt;li&gt;Cloud DB for MSSQL(VPC)&lt;/li&gt;
+  &lt;li&gt;Cloud DB for Redis(VPC)&lt;/li&gt;
+  &lt;li&gt;Cloud DB for MongoDB(VPC)&lt;/li&gt;
+  &lt;li&gt;Cloud Hadoop(VPC)&lt;/li&gt;
+  &lt;li&gt;Auto Scaling Group(VPC)&lt;/li&gt;
+  &lt;li&gt;Kubernetes Service(VPC)&lt;/li&gt;
+  &lt;li&gt;Search Engine Service(VPC)&lt;/li&gt;
+  &lt;li&gt;Cloud Data Streaming Service(VPC)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;통합&quot;&gt;통합&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Cloud Search&lt;/li&gt;
+  &lt;li&gt;Object Storage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;이용-신청&quot;&gt;이용 신청&lt;/h2&gt;
+&lt;p&gt;Cloud Insight 서비스는 이용 신청을 해야 사용할 수 있습니다. Classic, VPC 어떤 환경에서든 [Cloud Insight(Monitoring)] - [Subscription]에서 [상품 이용 신청] 버튼을 클릭해서 이용 신청을 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_01.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;대시보드&quot;&gt;대시보드&lt;/h2&gt;
+&lt;p&gt;이용 신청을 한 후에 [Dashboard] 메뉴에 가면 아래와 같이 현재 사용 중인 서비스 중에서 모니터링 가능한 서비스 리스트를 확인할 수 있습니다.&lt;br /&gt;
+또한 기본으로 제공되는 대시보드에서 확인할 수 있는 모니터링 항목을 각 서비스별로 고정되어 있습니다. 
+추가적인 항목을 확인하려면 별도로 대시보드를 생성해야 하는데 이에 대해서는 아래쪽에서 확인해보겠습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;일부 서비스의 경우 리스트에 나타날 때까지 시간이 걸릴 수도 있습니다. 여유있게 1시간 정도 후에 확인해보시면 됩니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_02.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;load-balancer-모니터링&quot;&gt;Load Balancer 모니터링&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_08.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;object-storage-모니터링&quot;&gt;Object Storage 모니터링&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_09.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;server-모니터링&quot;&gt;Server 모니터링&lt;/h4&gt;
+&lt;p&gt;위에서 설명했듯이 Server 제품도 GPU 관련 항목을 제외하면 5가지 정도의 기본 모니터링 항목을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_03.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;커스텀-대시보드&quot;&gt;커스텀 대시보드&lt;/h2&gt;
+&lt;p&gt;좀 더 상세한 모니터링 데이터를 확인하려면 커스텀 대시보드가 필요하고 그전에 [상세 모니터링]을 설정해야 합니다. 서버 설정에서 [상세 모니터링 설정 변경] 메뉴를 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_04.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[상세 모니터링 신청] 팝업에서 [예] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_05.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;대시보드-생성&quot;&gt;대시보드 생성&lt;/h4&gt;
+&lt;p&gt;[Dashboard] 화면에서 [대시보드 생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_06.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;생성 팝업에서 대시보드 이름과 설명을 입력합니다.
+&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_07.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;생성된 대시보드에서 [위젯 추가] 버튼을 클릭해서 위젯을 추가합니다.
+&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_10.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위젯 이름을 입력하고, 종류는 [Time Series], [Pie Chart], [Table], [Index], [Markdown] 중에서 하나를 선택합니다.  여기서는 [CPU Usage]와 [Time Series]를 선택했습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_11.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음으로 데이터 설정에서 CPU 사용율에 해당하는 CPU/used_rto 등 필요한 항목을 선택하고 [선택 항목 추가] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_12.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;항목을 추가하면 아래쪽 화면에 다음과 같이 리스트를 확인할 수 있습니다. 설정이 완료되었으면 [다음] 버튼을 클릭해 마지막 확인을 하고 생성을 완료합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_13.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위에서 추가한 [CPU Usage] 위젯과 함께 추가로 [Server - Load Average], [File System], [Memory Usage], [Net Work (Max In/Out bps)] 데이터를 확인할 수 있는 위젯을 추가하면 다음과 같은 대시보드를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_14.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;통보-대상자-등록&quot;&gt;통보 대상자 등록&lt;/h2&gt;
+&lt;p&gt;이제 이벤트를 등록하고 알람을 통보 받을 대상자를 등록해보겠습니다.&lt;br /&gt;
+먼저 통보 대상자 그룹을 생성합니다.  [Cloud Insight(Monitoring)] - [Notification Recipient] 메뉴에서 [전체 대상자] 옆에 있는 [ + ] 버튼을 클릭하고 아래 입력칸에 그룹명을 입력합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_15.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;네이버 클라우드 계정 생성을 할 때 기본으로 1명의 대상자가 등록됩니다. 해당 대상자를 위에서 생성한 그룹에 할당하기 위해 선택하고 [할당] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_20.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그룹 할당 팝업에서 [할당] 버튼을 클릭합니다.
+&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_21.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;대상자 리스트에서 해당 대상자에 그룹이 할당된 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_22.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;이벤트-규칙-등록&quot;&gt;이벤트 규칙 등록&lt;/h2&gt;
+&lt;p&gt;이제 이벤트를 등록해보겠습니다. [Cloud Insight(Monitoring)] - [Configuration] - [Event Rue]에서 [Event Rule 생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_16.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이벤트 규칙을 생성해서 감시가 필요한 상품을 선택합니다. 여기서는 [Sever(VPC)]를 선택하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_17.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[감시 대상 설정]에서 [전체 보기]를 선택하고, 감시 대상에 체크한 후 [다음] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_18.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;감시 항목 및 조건 설정에서 [전체 보기]를 선택하고, CPU, Memory 등의 항목 중에서 원하는 항목을 선택합니다.&lt;br /&gt;
+여기서는 [CPU]에서 CPU 사용율에 해당하는 [CPU/used_rto]를 선택하고, 90% 이상인 상태가 5분 이상 지속되면 경고 알림을 보내도록 설정했습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_19.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음으로 감시 대상에서 설정한 이벤트가 발생했을 때 어떤 액션을 취할 것인가를 설정해보겠습니다.&lt;br /&gt;
+설정 가능한 액션은 [알림 메시지 발송], [Integration], [Cloud Functions], [Auto Scaling 정책] 중에서 선택할 수 있는데, 여기서는 [알림 메시지 발송]을 선택하겠습니다.&lt;br /&gt;
+통보 대상자 그룹을 선택하고, [Email]과 [SMS]중에서 원하는 것을 선택하고, [다음] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_23.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;마지막으로 이벤트 규칙 이름을 입력하고, 앞에서 설정한 내용들을 확인한 후에 [생성] 버튼을 클릭합니다.
+&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_24.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;유지보수-계획-설정&quot;&gt;유지보수 계획 설정&lt;/h2&gt;
+&lt;p&gt;앞에서 설정한 이벤트 규칙이 업데이트나 점검 등의 유지보수가 진행되는 동안에도 작동되면 유지보수 시간 동안 쉼없이 통보 알람이 울리게 됩니다.&lt;br /&gt;
+이런 불편함이 없도록 Cloud Insight에서는 유지보수 계획 일정을 등록해두면 등록된 기간 동안에는 이벤트 규칙에 따른 통보알람이 울리지 않습니다.&lt;/p&gt;
+
+&lt;p&gt;유지보수 일정은 아래와 같이 달력 행태나 리스트 형태로 확인 가능하며 [유지보수 계획 설정하기] 버튼으로 일정을 등록할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_25.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;제목을 입력하고, 작업 기간, 작업 대상, 디멘션을 선택하면 아래와 같이 선택한 대상과 디멘션이 리스트로 나타납니다.  보통 위에서 설정했던 이벤트 규칙에 해당하는 항목들을 선택하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_26.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;유지보수 계획을 설정하면 아래와 같이 일정에서 확인할 수 있으며 해당 기간 동안에는 이벤트 통보가 진행되지 않습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_management_cloud_insight_guide_27.jpg&quot; alt=&quot;네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Cloud Insight 소개
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightoverview&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightoverview&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Cloud Insight 사용 가이드
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightconsole&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightconsole&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-10-18&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드와 사용자 애플리케이션의 성능/운영 지표를 통합 관리하고, 장애나 이벤트가 발생했을 때 SMS 및 Email로 알람 통보를 해주는 서비스인 Cloud Insight 서비스를 설정하는 방법에 대해 정리해보겠습니다.</summary></entry><entry><title type="html">서버 모니터링 서비스 Monitoring 설정 가이드</title><link href="https://docs.3rdeyesys.com/81.manage/ncp_manage_monitoring_guide/" rel="alternate" type="text/html" title="서버 모니터링 서비스 Monitoring 설정 가이드" /><published>2021-10-07T00:00:00+09:00</published><updated>2021-10-07T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/81.manage/ncp_manage_monitoring_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/81.manage/ncp_manage_monitoring_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 Classic 환경에서 서버 모니터링을 설정하는 가이드입니다.&lt;br /&gt;
 Classic에서는 Monitoring 서비스와 Cloud Insite(Monitoring) 서비스 이렇게 2가지 서비스가 있는데 여기서는 Monitoring 서비스를 설정하는 방법에 대해 정리해보겠습니다.&lt;/p&gt;
 
@@ -1234,138 +1416,4 @@ DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이�
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-07-27&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 NAS (Network Attached Storage)는 다수의 서버, 사용자가 함께 사용하는 네트워크 저장공간으로, 서버 간 데이터 공유, 대용량 스토리지, 유연한 용량 확대/축소, 스냅샷 백업 등이 필요한 경우에 주로 사용하며, 네이버 클라우드 NAS 서비스의 주요 기능을 활용해 안전하고 편리하게 데이터를 관리할 수 있습니다. 이번 가이드에서는 NAS 볼륨을 생성하고, Linux 즉, CentOS와 Ubuntu 서버에 마운트하는 방법을 정리해보겠습니다.</summary></entry><entry><title type="html">Kubernetes Service 클러스터 생성 및 제어 가이드</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_kubernetes_service_start_guide/" rel="alternate" type="text/html" title="Kubernetes Service 클러스터 생성 및 제어 가이드" /><published>2021-07-12T00:00:00+09:00</published><updated>2021-07-12T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_kubernetes_service_start_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_kubernetes_service_start_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 VPC 환경에서 Kubernetes(쿠버네티스) 서비스를 생성하고 제어하는 방법에 대해 소개합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;쿠버네티스란&quot;&gt;쿠버네티스란?&lt;/h2&gt;
-&lt;p&gt;쿠버네티스(Kubernetes)는 배포, 스케일링, 그리고 컨테이너화된 애플리케이션의 관리를 자동화 해주는 오픈 소스 컨테이너 오케스트레이션 엔진으로 
-구글에서 처음 개발하기 시작했으나 현재는 구글이 오픈소스 프로젝트로 공개한 상태입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;특징&quot;&gt;특징&lt;/h2&gt;
-&lt;p&gt;쿠버네티스는 다음과 같은 특징이 있으며, 자세한 내용은 쿠버네티스 공식 페이지를 참고하시기 바랍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://kubernetes.io/ko/docs/home/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://kubernetes.io/ko/docs/home/&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;서비스 디스커버리와 로드 밸런싱&lt;/li&gt;
-  &lt;li&gt;스토리지 오케스트레이션&lt;/li&gt;
-  &lt;li&gt;자동화된 롤아웃과 롤백&lt;/li&gt;
-  &lt;li&gt;자동화된 빈 패킹(bin packing)&lt;/li&gt;
-  &lt;li&gt;자동화된 복구(self-healing)&lt;/li&gt;
-  &lt;li&gt;시크릿과 구성 관리&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;사전-준비&quot;&gt;사전 준비&lt;/h2&gt;
-&lt;p&gt;먼저 쿠버네티스 클러스터에 사용할 &lt;strong&gt;전용 VPC와 Private Subnet, Load Balancer용 Subnet&lt;/strong&gt;이 필요합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_kebernetes_start_guide_07.jpg&quot; alt=&quot;네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;Private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /17~/26 범위의 Private Subnet, 로드밸런서 전용 Subnet이 필요합니다.&lt;br /&gt;&lt;/li&gt;
-    &lt;li&gt;Docker Bridge 대역의 충돌을 방지하기 위해 172.17.0.0/16 범위 내의 Private Subnet, 로드밸런서 전용Subnet은 선택할 수 없습니다.&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;클러스터-생성&quot;&gt;클러스터 생성&lt;/h2&gt;
-
-&lt;p&gt;VPC와 Subnet이 준비되었다면, 다음으로 [Kubernetes Sevice] - [Cluster]에서 생성하기를 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_kebernetes_start_guide_09.jpg&quot; alt=&quot;네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 &quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;생성하실 클러스터의 정보를 설정해줍니다.&lt;br /&gt;
-(ACG는 자동으로 생성 됩니다.)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_kebernetes_start_guide_01.jpg&quot; alt=&quot;네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;현재 지원되고 있는 Kubenetes 버전은 [1.17.16], [1.18.17] 입니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;클러스터에 생성되는 노드풀과 서버의 스펙 및 수를 지정해줍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_kebernetes_start_guide_02.jpg&quot; alt=&quot;네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;현재 지원되고 있는 OS는 [ubuntu16.04], [ubuntu18.04] 입니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;워커노드의 로그인키를 설정 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_kebernetes_start_guide_03.jpg&quot; alt=&quot;네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;설정 정보를 최종적으로 확인한 후 생성버튼을 클릭하여 클러스터를 생성합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_kebernetes_start_guide_04.jpg&quot; alt=&quot;네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;kubectl-설치&quot;&gt;kubectl 설치&lt;/h2&gt;
-
-&lt;p&gt;사용자 로컬PC에서 클러스터를 제어하기 위해 kubectl을 설치합니다.&lt;br /&gt;
-kubctl의 최신 릴리즈 버전은 아래  링크에서 다운받을 수 있습니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;kubctl v1.21.0 :  &lt;a href=&quot;https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe&quot; target=&quot;_self&quot; style=&quot;word-break:break-all;&quot;&gt;https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;또는 windows에서 cmd 창에서 curl 을 이용하해 다운로드 받을 수도 있습니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-kubectl의 버전 확인이 필요한 경우 다음 명령어를 사용하시면 됩니다.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; kubectl version &lt;span class=&quot;nt&quot;&gt;--client&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;
-다른 OS 환경에서 설치하는 방법은 아래 링크에서 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Linux kubectl 설치 : &lt;a href=&quot;https://kubernetes.io/ko/docs/tasks/tools/install-kubectl-linux/&quot; target=&quot;_self&quot; style=&quot;word-break:break-all;&quot;&gt;https://kubernetes.io/ko/docs/tasks/tools/install-kubectl-linux/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;macOS kubectl 설치 : &lt;a href=&quot;https://kubernetes.io/ko/docs/tasks/tools/install-kubectl-macos/&quot; target=&quot;_self&quot; style=&quot;word-break:break-all;&quot;&gt;https://kubernetes.io/ko/docs/tasks/tools/install-kubectl-macos/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;접속-제어&quot;&gt;접속-제어&lt;/h2&gt;
-
-&lt;p&gt;클러스터를 제어하기 위해서는 네이버 클라우드 쿠버네티스 서비스에서 제공해주는 접속을 위한 인증정보가 있는 설정파일이 필요합니다. &lt;br /&gt;
-[설정파일] - [다운로드] 또는 [가이드 보기] - [설정파일 다운로드] 버튼을 클릭해 설정 파일을 다운로드 받습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_kebernetes_start_guide_05.jpg&quot; alt=&quot;네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;kubectl을 실행해 Kubernetes에 접속하고 제어하는 방법은 [가이드 보기] 버튼 클릭하면 아래와 같이 자세히 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_server_kebernetes_start_guide_06.jpg&quot; alt=&quot;네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다운로드한 설정 파일경로를 %KUBE_CONFIG% 환경변수에 지정합니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; SET &lt;span class=&quot;nv&quot;&gt;KUBE_CONFIG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;%USERPROFILE%&lt;span class=&quot;se&quot;&gt;\D&lt;/span&gt;ownloads&lt;span class=&quot;se&quot;&gt;\k&lt;/span&gt;ubeconfig-7349&lt;span class=&quot;k&quot;&gt;***&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-8&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;***&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-4&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;***&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;***&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-99e&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;***&lt;/span&gt;.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-이제 –kubeconfig 옵션을 사용하여 쿠버네티스의 클러스터를 제어할수 있습니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; kubectl &lt;span class=&quot;nt&quot;&gt;--kubeconfig&lt;/span&gt; %KUBE_CONFIG% get nodes
-NAME                 STATUS   ROLES   AGE    VERSION
-nks-pool-1865-w2zy   Ready    node    4d5h   v1.16.6
-nks-pool-1865-w2zz   Ready    node    4d5h   v1.16.6
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;쿠버네티스 사용 가이드
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/vnks-nks-1-1&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/vnks-nks-1-1&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;클러스터 이용 가이드
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/vnks-nks-1-2&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/vnks-nks-1-2&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;kubectl 설치 가이드
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://kubernetes.io/ko/docs/tasks/tools/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://kubernetes.io/ko/docs/tasks/tools/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-07-13&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 VPC 환경에서 Kubernetes(쿠버네티스) 서비스를 생성하고 제어하는 방법에 대해 소개합니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 NAS (Network Attached Storage)는 다수의 서버, 사용자가 함께 사용하는 네트워크 저장공간으로, 서버 간 데이터 공유, 대용량 스토리지, 유연한 용량 확대/축소, 스냅샷 백업 등이 필요한 경우에 주로 사용하며, 네이버 클라우드 NAS 서비스의 주요 기능을 활용해 안전하고 편리하게 데이터를 관리할 수 있습니다. 이번 가이드에서는 NAS 볼륨을 생성하고, Linux 즉, CentOS와 Ubuntu 서버에 마운트하는 방법을 정리해보겠습니다.</summary></entry></feed>
