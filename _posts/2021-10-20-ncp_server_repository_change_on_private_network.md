@@ -7,12 +7,12 @@ categories:
 description: 네이버 클라우드 Secure Zone이나 Private Network 환경에서 Repository를 변경해 리눅스 패키지 설치하는 방법입니다.
 type: Document
 set: server
-order_number: 22
+order_number: 24
 creator: franky
 ---
 
 ## 개요
-네이버 클라우드 Secure Zone이나 VPC 환경의 Private Network처럼 외부와 통신이 단절된 환경에서 
+Ncloud(네이버 클라우드) Secure Zone이나 VPC 환경의 Private Network처럼 외부와 통신이 단절된 환경에서 
 리눅스 패키지를 설치해야 할 때 repository 경로를 네이버 클라우드 내부 repository로 바꾸면 문제없이 패키지 설치를 할 수 있습니다. 
 여기서는 OS별로, Classic/VPC 환경별로 변경하는 방법을 정리해보겠습니다.
 
@@ -105,11 +105,11 @@ archive.ubuntu.conm --> mirror.ncloud.com (변경)
 <img src="../../images/ncp_server_repository_change_on_private_network_12.png" alt="네이버 클라우드 Secure Zone이나 Private Network 환경에서 Repository를 변경해 리눅스 패키지 설치하는 방법" style="width:770px;align:center">
 
 
-/etc/apt/sources.list 에서 위와 같이 변경-저장한 후에 apt update 를 해주면 변경해준 NCP 내부 repository에서 패키지 리스트를 가져와 설치를 합니다.
+/etc/apt/sources.list 에서 위와 같이 변경-저장한 후에 apt update 를 해주면 변경해준 Ncloud 내부 repository에서 패키지 리스트를 가져와 설치를 합니다.
 
 <img src="../../images/ncp_server_repository_change_on_private_network_08.png" alt="네이버 클라우드 Secure Zone이나 Private Network 환경에서 Repository를 변경해 리눅스 패키지 설치하는 방법" style="width:770px;align:center">
 
-설치 된 repository를 테스트 하기 위해 apt install 을 사용하여 패키지 다운로드를 해보면 NCP 내부 repository에서 패키지 설치가 진행되는 것을 확인 할 수 있습니다.
+설치 된 repository를 테스트 하기 위해 apt install 을 사용하여 패키지 다운로드를 해보면 Ncloud 내부 repository에서 패키지 설치가 진행되는 것을 확인 할 수 있습니다.
 
 ```bash
 ~# apt -y install apache2

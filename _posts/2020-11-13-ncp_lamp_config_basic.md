@@ -11,7 +11,7 @@ order_number: 1
 
 ## LAMP 기본설정
 
-NCP(네이버 클라우드 플랫폼, 이하 네이버 클라우드)에서 제공하는 Application중에서 가장 대표적인 LAMP(Linux + Apache, Mysql, PHP)의 기본설정입니다.
+Ncloud(네이버 클라우드 플랫폼, 이하 네이버 클라우드)에서 제공하는 Application중에서 가장 대표적인 LAMP(Linux + Apache, Mysql, PHP)의 기본설정입니다.
 
 > "2020-12-03 현재 LAMP를 포함한 Application 이미지들은 Classic 환경에서만 이용 가능합니다.  VPC 환경에서는 아직 지원하지 않고 향후 업데이트 예정입니다"
 

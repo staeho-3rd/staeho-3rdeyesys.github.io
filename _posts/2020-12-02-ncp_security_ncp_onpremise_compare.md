@@ -1,9 +1,9 @@
 ---
 date: 2020-12-02
-title: (Security) NCP vs On-Premise 비교
+title: (Security) Ncloud vs On-Premise 비교
 categories:
   - 3.security
-description: 네이버 클라우드 (Security) NCP vs On-Premise 비교
+description: 네이버 클라우드 (Security) Ncloud vs On-Premise 비교
 type: Document
 set: security
 order_number: 2
@@ -33,7 +33,7 @@ IDC에 있는 서버들을 네이버 클라우드로 마이그레이션 할 때 
 | Key Management | - | → | Key Management Service | Key에 대한 접근 제어 기능을 이용하여 데이터 암호화 키를 안전하게 보호하고 관리 |
 
 
-<img src="../../images/ncp_security_ncp_onpremise_compare.png" alt="Security 서비스 NCP : On-Premise 비교" style="width:800px;align:center">
+<img src="../../images/ncp_security_ncp_onpremise_compare.png" alt="Security 서비스 Ncloud : On-Premise 비교" style="width:800px;align:center">
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/security-security-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/security-security-1-1.html</a>
