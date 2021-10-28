@@ -1,4 +1,150 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-10-27T18:45:02+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">외부 네트워크에 연결할 수 없는 환경에서 Repository를 변경해 리눅스 패키지 설치하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_repository_change_on_private_network/" rel="alternate" type="text/html" title="외부 네트워크에 연결할 수 없는 환경에서 Repository를 변경해 리눅스 패키지 설치하기" /><published>2021-10-20T00:00:00+09:00</published><updated>2021-10-20T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_repository_change_on_private_network</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_repository_change_on_private_network/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-10-28T17:05:31+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Classic 환경에서 SSL VPN 설정하고 접속하는 방법</title><link href="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_classic_guide/" rel="alternate" type="text/html" title="Classic 환경에서 SSL VPN 설정하고 접속하는 방법" /><published>2021-10-27T00:00:00+09:00</published><updated>2021-10-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_classic_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_classic_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;Ncloud(네이버 클라우드) 외부에서 내부에 구성된 네트워크로 암호화된 보안 접속 통신을 제공하는 서비스인 SSL VPN을 Classic 환경에서 설정하고, 서버에 접속하는 방법에 대해 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;ssl-vpn이란&quot;&gt;SSL VPN이란?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;VPN은 가상 사설망(Virtual Private Network)의 약자로, 외부에서 접근할 수 없는 사설망에 내 PC나 네트워크를 연결시키는 방법을 말합니다.&lt;/li&gt;
+  &lt;li&gt;사설망과의 연결은 가상 터널을 통해 이루어지며, 이 가상 터널을 SSL 암호화로 보호하는 것이 SSL VPN입니다.&lt;/li&gt;
+  &lt;li&gt;가상 터널을 통해 사설망과 연결된 사용자 PC는 사설망의 라우팅 및 ACL 정책에 따라 내부 서버에 접근할 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ssl-vpn-생성&quot;&gt;SSL VPN 생성&lt;/h2&gt;
+&lt;p&gt;[SSL VPN 생성] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_01.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;우선 등록 가능한 접속 ID 개수에 따른 상품을 선택합니다. Classic 환경에서는 3개, 5개, 10개 상품만 선택 가능합니다. 
+다음으로 인증 방식은 ID/PW 만으로 접속하는 일차인증과 OTP까지 사용하는 이차 인증 중에서 원하는 방식을 선택합니다. 
+그리고 이차인증을 선택했을 경우에는 SMS와 Email 어떤 것을 이용할 것인지도 선택하게 됩니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;인증방식과 OTP 전송 방식은 SSL VPN 생성 시에 한번 선택하면 변경할 수 없으니 주의해야 합니다. 만약 변경을 하고 싶을 경우에는 SSL VPN을 새로 생성해야 합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_02.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음으로 개인정보 수집 및 이용에 동의해야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_03.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;SSL VPN이 생성되면 다음과 같이 리스트에 서 확인 가능하며 여기서 [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;]은 뒤쪽에서 네트워크 접근 제한을 설정할 때 필요한 중요한 정보입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_04.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;사용자-설정&quot;&gt;사용자 설정&lt;/h2&gt;
+&lt;p&gt;SSL VPN에 접속할 사용자 정보를 설정합니다.  리스트에서 SSL VPN을 선택하고 [사용자 설정] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_05.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;사용자 정보는 ID, Passowrd, Email, SMS 등을 입력하고 [추가] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_06.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;사용자가 추가되면 SSL VPN 정보에 사용자 계정 수(등록된 ID 수)에 숫자가 표시되는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_07.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;acg-설정&quot;&gt;ACG 설정&lt;/h2&gt;
+&lt;p&gt;SSL VPN을 사용하려면 서버에 적용된 ACG에 [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;]을 등록해야 합니다.&lt;br /&gt;
+우선 SSL VPN을 통해서 접속할 서버를 선택하고 적용된 ACG를 확인합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_08.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[Server] - [ACG]에서 위에서 확인한 ACG를 선택하고 [ACG 설정]을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_09.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ACG 규칙 설정 화면에서 위에서 확인했던 [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;]을 접근 소스에 입력하고, 필요한 포트들을 등록합니다. 
+기본이 되는 프로토콜과 포트는 리눅스 서버 접속용 TCP 22, 윈도우 서버 접속용 TCP 3389, Ping 확인용 ICMP 등입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_10.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;agent-다운로드&quot;&gt;Agent 다운로드&lt;/h2&gt;
+&lt;p&gt;SSL VPN 접속을 위한 Agent를 다운로드 합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ncloud.com/main/loginForm?returnUrl=/support/downloadAttachedFile?bbsFileNo=1029&amp;amp;articleNo=62&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;윈도우 용 다운로드&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ncloud.com/main/loginForm?returnUrl=/support/downloadAttachedFile?bbsFileNo=1029&amp;amp;articleNo=63&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;맥 용 다운로드&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_11.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;agent-접속&quot;&gt;Agent 접속&lt;/h2&gt;
+&lt;p&gt;Agent 프로그램, BIG-IP Edge Client를 설치하고 실행하면 다음과 같은 화면을 볼 수 있습니다.&lt;br /&gt;
+Agent에는 Classic 환경 SSL VPN 서버(Ncloud-kr-01)가 기본으로 설정되어 있는데, 혹시 빠져 있다면 [서버 변경] 버튼을 클릭해서 &lt;strong&gt;sslvpn-kr-01.ncloud.com&lt;/strong&gt;을 입력하고 연결 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_12.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:557px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위에서 설정했던 VPN 접속용 아이디와 Password를 입력합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_13.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:650px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;OTP 접속도 설정했다면 도착한 인증 번호를 입력합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_14.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:650px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;SSL VPN에 제대로 연결이 되었는지 확인하기 위해서 cmd 창을 띄워서 ipconfig 명령어를 입력하면 아래 화면처럼 SSL VPN 주소로 설정된 어탭터에  [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;]에 해당하는 IP가 할당된 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_15.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;서버-접속&quot;&gt;서버 접속&lt;/h2&gt;
+&lt;p&gt;이제 SSL VPN이 연결된 상태에서 서버에 접속해보겠습니다.&lt;br /&gt;
+PuTTY 를 실행하고 접속할 서버의 IP를 입력합니다.&lt;br /&gt;
+이때 서버 IP는 콘솔에 있는 서버 정보에서 &lt;strong&gt;비공인 IP&lt;/strong&gt;에 표시되는 IP를 입력하면 됩니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이때 혹시나 포트 포워딩이나 공인 IP를 설정하고 그 IP를 입력하는 일이 없도록 주의해야 합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_16.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;주의사항&quot;&gt;주의사항&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;SSL VPN이 연결된 상태에서 새로운 서버를 생성하면 아래와 같은 오류 메시지가 뜨면서 서버 접속이 되지 않습니다.  이때는 SSL VPN의 연결을 끊고 다시 연결해야 새로 생성한 서버에 접속할 수 있습니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_23.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;agent-기타-설정&quot;&gt;Agent 기타 설정&lt;/h2&gt;
+&lt;p&gt;SSL VPN Agent에는 몇가지 추가 기능이 있는데 아래에서 확인해보겠습니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;트래픽-그래프&quot;&gt;트래픽 그래프&lt;/h4&gt;
+&lt;p&gt;Agent 창에서 [그래프 보기] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_17.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:557px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서는 SSL VPN이 연결된 상태의 트래픽을 그래프로 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_18.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:560px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음으로 [상세 보기] 버튼을 클릭하면 접속 세부 정보, 로그, 통계, 알림, 라우팅 테이블, IP설정 등의 정보를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_19.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;스펙-변경&quot;&gt;스펙 변경&lt;/h2&gt;
+&lt;p&gt;처음에 설정한 접속 가능 ID 개수를 변경하고 싶을 경우 SSL VPN을 선택하고 [스펙 변경] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_20.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3개, 5개, 10개 상품 중에서 원하는 개수로 변경할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_21.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;삭제&quot;&gt;삭제&lt;/h2&gt;
+&lt;p&gt;삭제를 위할 경우 SSL VPN을 선택하고 상단의 [삭제] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_22.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;SSL VPN 사용 가이드(Classic)
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/security-security-5-1&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/security-security-5-1&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-10-28&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Ncloud(네이버 클라우드) 외부에서 내부에 구성된 네트워크로 암호화된 보안 접속 통신을 제공하는 서비스인 SSL VPN을 Classic 환경에서 설정하고, 서버에 접속하는 방법에 대해 정리해보겠습니다.</summary></entry><entry><title type="html">외부 네트워크에 연결할 수 없는 환경에서 Repository를 변경해 리눅스 패키지 설치하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncp_server_repository_change_on_private_network/" rel="alternate" type="text/html" title="외부 네트워크에 연결할 수 없는 환경에서 Repository를 변경해 리눅스 패키지 설치하기" /><published>2021-10-20T00:00:00+09:00</published><updated>2021-10-20T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncp_server_repository_change_on_private_network</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncp_server_repository_change_on_private_network/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;Ncloud(네이버 클라우드) Secure Zone이나 VPC 환경의 Private Network처럼 외부와 통신이 단절된 환경에서 
 리눅스 패키지를 설치해야 할 때 repository 경로를 네이버 클라우드 내부 repository로 바꾸면 문제없이 패키지 설치를 할 수 있습니다. 
 여기서는 OS별로, Classic/VPC 환경별로 변경하는 방법을 정리해보겠습니다.&lt;/p&gt;
@@ -1253,159 +1399,4 @@ MySQL Workbench는 아래 경로에서 다운 받을 수 있습니다.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-08-03&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드의 Cloud DB for MySQL 서비스는 MySQL 데이터베이스를 쉽고 간편하게 구축하고 관리할 수 있고 자동 Fail-Over, 자동백업, 네이버 서비스에서 검증된 최적화된 설정 등을 제공해주는 완전 관리형 클라우드 데이터베이스 서비스입니다. 여기서는 VPC환경에서 Cloud DB for MySQL 서비스를 생성하고, Public 도메인으로 접속하는 과정을 정리해보겠습니다.</summary></entry><entry><title type="html">VPC환경에서 Cloud DB for MySQL 생성하기</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_cloud_db_for_mysql_guide/" rel="alternate" type="text/html" title="VPC환경에서 Cloud DB for MySQL 생성하기" /><published>2021-07-30T00:00:00+09:00</published><updated>2021-07-30T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_cloud_db_for_mysql_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_cloud_db_for_mysql_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드의 Cloud DB for MySQL 서비스는 MySQL 데이터베이스를 쉽고 간편하게 구축하고 관리할 수 있고 자동 Fail-Over, 자동백업, 네이버 서비스에서 검증된 최적화된 설정 등을 제공해주는 
-완전 관리형 클라우드 데이터베이스 서비스입니다.&lt;br /&gt;
-여기서는 VPC환경에서 Cloud DB for MySQL 서비스를 생성하는 과정을 정리해보겠습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;네이버 클라우드는 Classic환경에서는 DB 서버 이미지를 제공하지만, VPC 환경에서는 제공하지 않습니다. 
-그러므로 VPC 환경에서 DB서버를 사용하려면 OS에 사용자가 직접 DB를 설치해서 사용하는 방법과 Cloud DB를 사용하는 방법 중에서 선택해야 합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;특징&quot;&gt;특징&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;기본 10GB 데이터 스토리지를 제공하며, 10GB 단위로 6,000GB까지 자동으로 용량이 증가합니다.&lt;/li&gt;
-  &lt;li&gt;하나의 마스터 DB마다 최대 10대의 슬레이브 DB를 생성할 수 있습니다.&lt;/li&gt;
-  &lt;li&gt;Load Balancer 상품을 통해 슬레이브 DB 서버들을 읽기 전용 복제본으로 사용함으로써 데이터베이스의 읽기 부하를 분산 시킬 수 있습니다.&lt;/li&gt;
-  &lt;li&gt;매일 1회 고객이 원하는 시간에 DB를 자동으로 백업하며, 백업한 데이터를 최대 30일까지 보관할 수 있습니다.&lt;/li&gt;
-  &lt;li&gt;VPC 환경에서는 멀티 존으로 구성해 높은 안정성을 보장받을 수 있습니다.&lt;/li&gt;
-  &lt;li&gt;Cloud DB for MySQL 서비스는 완전 관리형 상품으로 사용자는 DB서버의 운영체제에 접근할 수 없습니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;db-접속-방법-3가지&quot;&gt;DB 접속 방법 3가지&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;Private 도메인을 이용해 접속하는 방법&lt;/li&gt;
-  &lt;li&gt;SSL VPN을 이용해 접속하는 방법&lt;/li&gt;
-  &lt;li&gt;Public 도메인을 이용해 접속하는 방법&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;아래에서는 VPC환경에서 Private 도메인을 이용해 접속하는 방법을 설명하도록 하겠습니다.&lt;br /&gt;
-만약 네이버 클라우드 외부 환경에서  Cloud DB for MySQL로 접속하려면 Public 도메인을 사용해야 합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;vpc-subnet--생성&quot;&gt;VPC-Subnet  생성&lt;/h2&gt;
-
-&lt;h4 id=&quot;vpc-생성&quot;&gt;VPC 생성&lt;/h4&gt;
-&lt;p&gt;VPC환경에서 작업할 것이므로 우선 VPC를 생성합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_01.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_02.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:680px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;subnet-생성&quot;&gt;Subnet 생성&lt;/h4&gt;
-&lt;p&gt;Subnet은 Cloud DB for MySQL을 위한 Private Subnet과 DB 접속 테스트를 위한 Server용 Public Subnet을 각각 생성합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_03.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;cloud-db-for-mysql을-위한-private-subnet&quot;&gt;Cloud DB for MySQL을 위한 Private Subnet&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_05.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:680px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;테스트용-server를-위한-public-subnet&quot;&gt;테스트용 Server를 위한 Public Subnet&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_04.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:680px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;테스트-server-생성&quot;&gt;테스트 Server 생성&lt;/h2&gt;
-&lt;p&gt;DB 서버 접속을 테스트 하기 위한 Server를 생성합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_06.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;db-서버-생성&quot;&gt;DB 서버 생성&lt;/h2&gt;
-&lt;p&gt;[Database] - [Cloud DB for MySQL]에서 [DB Server 생성] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_11.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:670px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;db-서버-엔진-버전&quot;&gt;DB 서버 엔진 버전&lt;/h4&gt;
-&lt;p&gt;DB 엔진 버전은 MySQL 최신 버전 중 네이버에서 안정성이 검증된 버전인 5.7버전과 8.0버전을 제공합니다. (기본값 5.7.32)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_12-1.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;db-서버-이름과-db-서비스-이름&quot;&gt;DB 서버 이름과 DB 서비스 이름&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;DB Server 이름은 고객이 DB 서버를 구분하기 위한 명칭으로, 사용자가 입력한 이름 뒤에 001, 002와 같이 숫자를 붙여 서버를 구분하게 됩니다.&lt;/li&gt;
-  &lt;li&gt;예를 들어 DB 서버 이름을 mydb라고 입력하면 생성되는 DB 서버 이름은 mydb-001, mydb-002와 같습니다.&lt;/li&gt;
-  &lt;li&gt;DB 서비스 이름은 역할별 DB 서버를 구분하기 위한 이름입니다.&lt;/li&gt;
-  &lt;li&gt;일반적으로 하나의 액티브 마스터 DB, 스탠바이 마스터 DB, 다수의 슬레이브 DB로 구성되는 DB 서버군을 말하며, 동일한 데이터를 갖고 있는 DB 서버들을 하나의 DB 서비스라 말합니다.&lt;/li&gt;
-  &lt;li&gt;예를 들어 “쇼핑 메인 DB”, “게임 유저 DB”와 같은 식으로 DB 서비스의 역할을 구분하기 위해 사용합니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_12-2.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Cloud DB를 위한 ACG는 자동 생성됩니다(예: cloud-mysql-*)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;db-서버-설정&quot;&gt;DB 서버 설정&lt;/h4&gt;
-&lt;p&gt;DB 이름과 계정. 비번, 접속 포트 등을 설정합니다.&lt;br /&gt;
-HOST(IP) 설정에는 DB에 접근을 허용할 IP대역을 입력합니다. 여기서는 테스트용 서버의 Subnet 대역을 모두 허용하기 위해 [192.168.2.%]를 입력합니다.&lt;br /&gt;
-만약 특정 서버 1대만 허용하려고 할 경우에는 앞에서 생성한 테스트 서버 IP처럼 [192.168.2.6]을 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_12-3.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;acg-설정&quot;&gt;ACG 설정&lt;/h2&gt;
-&lt;p&gt;Cloud DB for MySQL을 생성할 때 자동 생성된 ACG [cloud-mysql-*]을 선택하고 ACG 설정을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_14.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Inbound 설정에 테스트용 Server의 Subnet 대역인 192.168.2.0/24를 접근소스에 입력합니다.&lt;br /&gt;
-또는 특정 서버 1대만 허용하려고 할 경우에는 앞에서 생성한 테스트 서버 IP처럼 [192.168.2.6]을 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_15.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;mysql-client-설치&quot;&gt;MySQL Client 설치&lt;/h2&gt;
-&lt;p&gt;DB 접속 테스트를 위해 생성한 서버에서 MySQL Client를 설치합니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# yum &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; mysql mysql-server
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_19.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;db-서버-접속&quot;&gt;DB 서버 접속&lt;/h2&gt;
-&lt;p&gt;Cloud DB for MySQL에 접속하기 위한 주소인 [Private 도메인]을 확인 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_13.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;테스트용 Server에서 Cloud DB for MySQL로 접속하는 방법은 다음과 같습니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# mysql &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Private 도메인명] &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;user_id] &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이터베이스 [test]를 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_18.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:650px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;db-서버-상세보기&quot;&gt;DB 서버 상세보기&lt;/h2&gt;
-&lt;p&gt;DB 서버 상세보기 메뉴에서는 [Process list], [Variables], [Status], [Database 관리], [DB Config 관리], [DB User 관리], [Backup 설정 관리], [DB Server Logs] 등을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_16.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_17.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;db-user-관리&quot;&gt;DB User 관리&lt;/h4&gt;
-&lt;p&gt;DB 서버를 이용하다보면 여러 계정이 필요하게 됩니다. 이때 계정을 추가하기 위해 [DB 서버 상세보기] - [DB User 관리] 메뉴를 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;USER_ID, HOST, DB 권한, 암호를 입력하고 DB User 추가 버튼을 클릭합니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;사용자가 변경한 DB 계정은 DB 서비스 전체에 적용됩니다.&lt;/li&gt;
-  &lt;li&gt;USER_ID + HOST(IP) 단위로 계정 추가 및 권한 관리를 합니다.&lt;/li&gt;
-  &lt;li&gt;DB 권한에서 DDL 권한은 CRUD 권한을 포함합니다.&lt;/li&gt;
-  &lt;li&gt;최대 1,000개까지 계정을 추가 및 조회 할 수 있습니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_cloud_db_for_mysql_20.jpg&quot; alt=&quot;네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;Cloud DB for MySQL 기본 가이드
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/database-database-5-6&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/database-database-5-6&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Cloud DB 서버 외부 접근 가이드
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/database-database-5-10&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/database-database-5-10&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-08-02&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드의 Cloud DB for MySQL 서비스는 MySQL 데이터베이스를 쉽고 간편하게 구축하고 관리할 수 있고 자동 Fail-Over, 자동백업, 네이버 서비스에서 검증된 최적화된 설정 등을 제공해주는 완전 관리형 클라우드 데이터베이스 서비스입니다. 여기서는 VPC환경에서 Cloud DB for MySQL 서비스를 생성하는 과정을 정리해보겠습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드의 Cloud DB for MySQL 서비스는 MySQL 데이터베이스를 쉽고 간편하게 구축하고 관리할 수 있고 자동 Fail-Over, 자동백업, 네이버 서비스에서 검증된 최적화된 설정 등을 제공해주는 완전 관리형 클라우드 데이터베이스 서비스입니다. 여기서는 VPC환경에서 Cloud DB for MySQL 서비스를 생성하고, Public 도메인으로 접속하는 과정을 정리해보겠습니다.</summary></entry></feed>
