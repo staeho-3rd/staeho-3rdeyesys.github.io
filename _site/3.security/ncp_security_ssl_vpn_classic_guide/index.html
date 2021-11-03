@@ -142,11 +142,11 @@
 			
 				<li><a href="#서버-접속">서버 접속</a></li>
 			
-				<li><a href="#주의사항">주의사항</a></li>
-			
 				<li><a href="#agent-기타-설정">Agent 기타 설정</a></li>
 			
 				<li><a href="#스펙-변경">스펙 변경</a></li>
+			
+				<li><a href="#주의사항">주의사항</a></li>
 			
 				<li><a href="#삭제">삭제</a></li>
 			
@@ -191,7 +191,8 @@
 그리고 이차인증을 선택했을 경우에는 SMS와 Email 어떤 것을 이용할 것인지도 선택하게 됩니다.</p>
 
 <blockquote>
-  <p>인증방식과 OTP 전송 방식은 SSL VPN 생성 시에 한번 선택하면 변경할 수 없으니 주의해야 합니다. 만약 변경을 하고 싶을 경우에는 SSL VPN을 새로 생성해야 합니다.</p>
+  <p>인증방식과 OTP 전송 방식은 SSL VPN 생성 시에 한번 선택하면 변경할 수 없으니 주의해야 합니다. 만약 변경을 하고 싶을 경우에는 SSL VPN을 새로 생성해야 합니다.
+Classic 환경에서는 이차인증을 선택하면 별도의 이용요금이 부과됩니다.</p>
 </blockquote>
 
 <p><img src="../../images/ncp_security_ssl_vpn_classic_guide_02.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:770px;align:center" /></p>
@@ -236,19 +237,19 @@
 <p>SSL VPN 접속을 위한 Agent를 다운로드 합니다.</p>
 
 <ul>
-  <li><a href="https://www.ncloud.com/main/loginForm?returnUrl=/support/downloadAttachedFile?bbsFileNo=1029&amp;articleNo=62" target="_blank" style="word-break:break-all;">윈도우 용 다운로드</a></li>
-  <li><a href="https://www.ncloud.com/main/loginForm?returnUrl=/support/downloadAttachedFile?bbsFileNo=1029&amp;articleNo=63" target="_blank" style="word-break:break-all;">맥 용 다운로드</a></li>
+  <li><a href="https://guide.ncloud-docs.com/docs/security-5-1-windowsdownload" target="_blank" style="word-break:break-all;">윈도우 용 다운로드</a></li>
+  <li><a href="https://guide.ncloud-docs.com/docs/security-5-1-macdownload" target="_blank" style="word-break:break-all;">맥 용 다운로드</a></li>
 </ul>
 
 <p><img src="../../images/ncp_security_ssl_vpn_classic_guide_11.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:770px;align:center" /></p>
 
 <h2 id="agent-접속">Agent 접속</h2>
 <p>Agent 프로그램, BIG-IP Edge Client를 설치하고 실행하면 다음과 같은 화면을 볼 수 있습니다.<br />
-Agent에는 Classic 환경 SSL VPN 서버(Ncloud-kr-01)가 기본으로 설정되어 있는데, 혹시 빠져 있다면 [서버 변경] 버튼을 클릭해서 <strong>sslvpn-kr-01.ncloud.com</strong>을 입력하고 연결 버튼을 클릭합니다.</p>
+Agent에는 Classic 환경 SSL VPN 서버(Ncloud-kr-01)가 기본으로 설정되어 있는데, 혹시 빠져 있다면 [서버 변경] 버튼을 클릭해서 <strong>https://sslvpn-kr-01.ncloud.com</strong>을 입력하고 연결 버튼을 클릭합니다.</p>
 
 <p><img src="../../images/ncp_security_ssl_vpn_classic_guide_12.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:557px;align:center" /></p>
 
-<p>위에서 설정했던 VPN 접속용 아이디와 Password를 입력합니다.</p>
+<p>위에서 설정했던 VPN 접속용 아이디와 Password를 입력하고 [로그온] 버튼을 클릭합니다.</p>
 
 <p><img src="../../images/ncp_security_ssl_vpn_classic_guide_13.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:650px;align:center" /></p>
 
@@ -270,11 +271,6 @@ PuTTY 를 실행하고 접속할 서버의 IP를 입력합니다.<br />
 </blockquote>
 
 <p><img src="../../images/ncp_security_ssl_vpn_classic_guide_16.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:770px;align:center" /></p>
-
-<h2 id="주의사항">주의사항</h2>
-<p><strong>SSL VPN이 연결된 상태에서 새로운 서버를 생성하면 아래와 같은 오류 메시지가 뜨면서 서버 접속이 되지 않습니다.  이때는 SSL VPN의 연결을 끊고 다시 연결해야 새로 생성한 서버에 접속할 수 있습니다.</strong></p>
-
-<p><img src="../../images/ncp_security_ssl_vpn_classic_guide_23.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:700px;align:center" /></p>
 
 <h2 id="agent-기타-설정">Agent 기타 설정</h2>
 <p>SSL VPN Agent에는 몇가지 추가 기능이 있는데 아래에서 확인해보겠습니다.</p>
@@ -301,8 +297,13 @@ PuTTY 를 실행하고 접속할 서버의 IP를 입력합니다.<br />
 
 <p><img src="../../images/ncp_security_ssl_vpn_classic_guide_21.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:770px;align:center" /></p>
 
+<h2 id="주의사항">주의사항</h2>
+<p><strong>SSL VPN이 연결된 상태에서 새로운 서버를 생성하고 접속을 시도하면 아래와 같은 오류 메시지가 뜨면서 서버 접속이 되지 않습니다.  이때는 SSL VPN의 연결을 끊었다가 다시 연결해야 새로 생성한 서버에 접속할 수 있습니다.</strong></p>
+
+<p><img src="../../images/ncp_security_ssl_vpn_classic_guide_23.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:700px;align:center" /></p>
+
 <h2 id="삭제">삭제</h2>
-<p>삭제를 위할 경우 SSL VPN을 선택하고 상단의 [삭제] 버튼을 클릭합니다.</p>
+<p>삭제를 원할 경우 SSL VPN을 선택하고 상단의 [삭제] 버튼을 클릭합니다.</p>
 
 <p><img src="../../images/ncp_security_ssl_vpn_classic_guide_22.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:770px;align:center" /></p>
 
@@ -311,6 +312,11 @@ PuTTY 를 실행하고 접속할 서버의 IP를 입력합니다.<br />
   <li>SSL VPN 사용 가이드(Classic)
     <ul>
       <li><a href="https://guide.ncloud-docs.com/docs/security-security-5-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/security-security-5-1</a></li>
+    </ul>
+  </li>
+  <li>SSL VPN 요금
+    <ul>
+      <li><a href="https://www.ncloud.com/product/security/sslVpn" target="_blank" style="word-break:break-all;">https://www.ncloud.com/product/security/sslVpn</a></li>
     </ul>
   </li>
 </ol>
@@ -452,6 +458,34 @@ PuTTY 를 실행하고 접속할 서버의 IP를 입력합니다.<br />
 			</a>
 		</li>
 	
+		<li >
+		
+		
+		
+		
+		
+		
+		
+			<a href="/3.security/ncp_security_ssl_vpn_vpc_guide/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>5. VPC 환경에서 SSL VPN 설정하고 접속하는 방법 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법입니다.</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
 </ul>
 	</div>
 
@@ -462,6 +496,34 @@ PuTTY 를 실행하고 접속할 서버의 IP를 입력합니다.<br />
 		<h3>Related docs</h3>
 
 		<ul class="listing">
+	
+		<li >
+		
+		
+		
+		
+		
+		
+		
+			<a href="/3.security/ncp_security_ssl_vpn_vpc_guide/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>VPC 환경에서 SSL VPN 설정하고 접속하는 방법 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법입니다.</p>
+					</div>
+				</article>
+			</a>
+		</li>
 	
 		<li >
 		
@@ -698,32 +760,6 @@ PuTTY 를 실행하고 접속할 서버의 IP를 입력합니다.<br />
 							
 						</h3>
 						<p class="description">네이버 클라우드 Cloud DB for MySQL 생성하고 Public 도메인으로 접속하기 가이드입니다</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-		
-		
-		
-			<a href="/5.database/ncp_database_cloud_db_for_mysql_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>VPC환경에서 Cloud DB for MySQL 생성하기 
-							
-						</h3>
-						<p class="description">네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드입니다</p>
 					</div>
 				</article>
 			</a>

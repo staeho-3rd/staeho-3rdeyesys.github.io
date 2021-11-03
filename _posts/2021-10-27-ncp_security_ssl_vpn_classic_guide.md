@@ -1,5 +1,6 @@
 ---
 date: 2021-10-27
+update: 2021-10-27
 title: Classic 환경에서 SSL VPN 설정하고 접속하는 방법
 categories:
   - 3.security
@@ -29,6 +30,7 @@ Ncloud(네이버 클라우드) 외부에서 내부에 구성된 네트워크로 
 그리고 이차인증을 선택했을 경우에는 SMS와 Email 어떤 것을 이용할 것인지도 선택하게 됩니다.
 
 > 인증방식과 OTP 전송 방식은 SSL VPN 생성 시에 한번 선택하면 변경할 수 없으니 주의해야 합니다. 만약 변경을 하고 싶을 경우에는 SSL VPN을 새로 생성해야 합니다.
+> Classic 환경에서는 이차인증을 선택하면 별도의 이용요금이 부과됩니다.
 
 <img src="../../images/ncp_security_ssl_vpn_classic_guide_02.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:770px;align:center">
 
@@ -69,21 +71,22 @@ ACG 규칙 설정 화면에서 위에서 확인했던 [**SSL VPN IP POOL**]을 �
 
 <img src="../../images/ncp_security_ssl_vpn_classic_guide_10.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:770px;align:center">
 
+
 ## Agent 다운로드
 SSL VPN 접속을 위한 Agent를 다운로드 합니다.  
 
-- <a href="https://www.ncloud.com/main/loginForm?returnUrl=/support/downloadAttachedFile?bbsFileNo=1029&articleNo=62" target="_blank" style="word-break:break-all;">윈도우 용 다운로드</a>
-- <a href="https://www.ncloud.com/main/loginForm?returnUrl=/support/downloadAttachedFile?bbsFileNo=1029&articleNo=63" target="_blank" style="word-break:break-all;">맥 용 다운로드</a>
+- <a href="https://guide.ncloud-docs.com/docs/security-5-1-windowsdownload" target="_blank" style="word-break:break-all;">윈도우 용 다운로드</a>
+- <a href="https://guide.ncloud-docs.com/docs/security-5-1-macdownload" target="_blank" style="word-break:break-all;">맥 용 다운로드</a>
 
 <img src="../../images/ncp_security_ssl_vpn_classic_guide_11.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:770px;align:center">
 
 ## Agent 접속
 Agent 프로그램, BIG-IP Edge Client를 설치하고 실행하면 다음과 같은 화면을 볼 수 있습니다.  
-Agent에는 Classic 환경 SSL VPN 서버(Ncloud-kr-01)가 기본으로 설정되어 있는데, 혹시 빠져 있다면 [서버 변경] 버튼을 클릭해서 **sslvpn-kr-01.ncloud.com**을 입력하고 연결 버튼을 클릭합니다.
+Agent에는 Classic 환경 SSL VPN 서버(Ncloud-kr-01)가 기본으로 설정되어 있는데, 혹시 빠져 있다면 [서버 변경] 버튼을 클릭해서 **https://sslvpn-kr-01.ncloud.com**을 입력하고 연결 버튼을 클릭합니다.
 
 <img src="../../images/ncp_security_ssl_vpn_classic_guide_12.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:557px;align:center">
 
-위에서 설정했던 VPN 접속용 아이디와 Password를 입력합니다. 
+위에서 설정했던 VPN 접속용 아이디와 Password를 입력하고 [로그온] 버튼을 클릭합니다. 
 
 <img src="../../images/ncp_security_ssl_vpn_classic_guide_13.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:650px;align:center">
 
@@ -95,6 +98,7 @@ SSL VPN에 제대로 연결이 되었는지 확인하기 위해서 cmd 창을 �
 
 <img src="../../images/ncp_security_ssl_vpn_classic_guide_15.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:770px;align:center">
 
+
 ## 서버 접속
 이제 SSL VPN이 연결된 상태에서 서버에 접속해보겠습니다.  
 PuTTY 를 실행하고 접속할 서버의 IP를 입력합니다.  
@@ -104,10 +108,6 @@ PuTTY 를 실행하고 접속할 서버의 IP를 입력합니다.
 
 <img src="../../images/ncp_security_ssl_vpn_classic_guide_16.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:770px;align:center">
 
-## 주의사항
-**SSL VPN이 연결된 상태에서 새로운 서버를 생성하면 아래와 같은 오류 메시지가 뜨면서 서버 접속이 되지 않습니다.  이때는 SSL VPN의 연결을 끊고 다시 연결해야 새로 생성한 서버에 접속할 수 있습니다.**
-
-<img src="../../images/ncp_security_ssl_vpn_classic_guide_23.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:700px;align:center">
 
 ## Agent 기타 설정
 SSL VPN Agent에는 몇가지 추가 기능이 있는데 아래에서 확인해보겠습니다.
@@ -125,6 +125,7 @@ Agent 창에서 [그래프 보기] 버튼을 클릭합니다.
 
 <img src="../../images/ncp_security_ssl_vpn_classic_guide_19.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:770px;align:center">
 
+
 ## 스펙 변경
 처음에 설정한 접속 가능 ID 개수를 변경하고 싶을 경우 SSL VPN을 선택하고 [스펙 변경] 버튼을 클릭합니다. 
 
@@ -134,8 +135,15 @@ Agent 창에서 [그래프 보기] 버튼을 클릭합니다.
 
 <img src="../../images/ncp_security_ssl_vpn_classic_guide_21.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:770px;align:center">
 
+
+## 주의사항
+**SSL VPN이 연결된 상태에서 새로운 서버를 생성하고 접속을 시도하면 아래와 같은 오류 메시지가 뜨면서 서버 접속이 되지 않습니다.  이때는 SSL VPN의 연결을 끊었다가 다시 연결해야 새로 생성한 서버에 접속할 수 있습니다.**
+
+<img src="../../images/ncp_security_ssl_vpn_classic_guide_23.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:700px;align:center">
+
+
 ## 삭제
-삭제를 위할 경우 SSL VPN을 선택하고 상단의 [삭제] 버튼을 클릭합니다. 
+삭제를 원할 경우 SSL VPN을 선택하고 상단의 [삭제] 버튼을 클릭합니다. 
 
 <img src="../../images/ncp_security_ssl_vpn_classic_guide_22.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:770px;align:center">
 
@@ -143,5 +151,7 @@ Agent 창에서 [그래프 보기] 버튼을 클릭합니다.
 1.  SSL VPN 사용 가이드(Classic)
 	- <a href="https://guide.ncloud-docs.com/docs/security-security-5-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/security-security-5-1</a>
 
+2. SSL VPN 요금
+	- <a href="https://www.ncloud.com/product/security/sslVpn" target="_blank" style="word-break:break-all;">https://www.ncloud.com/product/security/sslVpn</a>
 
 > 문서 최종 수정일 : 2021-10-28
