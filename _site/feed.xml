@@ -1,4 +1,176 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-11-03T10:34:05+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">VPC 환경에서 SSL VPN 설정하고 접속하는 방법</title><link href="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_vpc_guide/" rel="alternate" type="text/html" title="VPC 환경에서 SSL VPN 설정하고 접속하는 방법" /><published>2021-11-02T00:00:00+09:00</published><updated>2021-11-02T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_vpc_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_vpc_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-11-10T16:10:07+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">PHP로 텔레그램 비공개 채널에 메시지 전송하기</title><link href="https://docs.3rdeyesys.com/99.etc/ncp_etc_php_to_telegram_message_send/" rel="alternate" type="text/html" title="PHP로 텔레그램 비공개 채널에 메시지 전송하기" /><published>2021-11-10T00:00:00+09:00</published><updated>2021-11-10T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/99.etc/ncp_etc_php_to_telegram_message_send</id><content type="html" xml:base="https://docs.3rdeyesys.com/99.etc/ncp_etc_php_to_telegram_message_send/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;업무를 진행하다보면 서버나 서비스에 장애가 발생했을 때 즉시 알림을 받거나 서버 상태 모니터링이나 매출 등의 서비스 이용 지표 등을 매일 자동으로 통보 받는 경우가 있습니다. 
+예전에는 이메일이나 SMS 메시지로 받는 경우가 대부분이었는데, 요즘은 관련된 사람들이 함께 들어와 있는 메신저 채팅방으로 알림을 동시에 받는 경우도 많아지고 있습니다.&lt;br /&gt;
+그럴 때 사용하는 방법 중에서 여기서는 텔레그램(Telegram)의 대화방인 비공개 채널에 메시지를 전송하는 것을 PHP로 구현해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;구현-순서&quot;&gt;구현 순서&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;텔레그램 채팅 봇을 생성&lt;/li&gt;
+  &lt;li&gt;텔레그램 채널을 비공개로 생성&lt;/li&gt;
+  &lt;li&gt;비공개 채널에 위에서 생성한 채팅 봇을 관리자로 등록&lt;/li&gt;
+  &lt;li&gt;PHP로 채팅 봇을 이용해 비공개 채널에 메시지를 전송&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;채팅-봇-생성&quot;&gt;채팅 봇 생성&lt;/h2&gt;
+&lt;p&gt;텔레그램(Telegram) 메신저에서 채팅 봇을 생성하고 관리해주는 봇인 [&lt;strong&gt;BotFather&lt;/strong&gt;]를 검색합니다. 
+여러 개의 봇들이 나타나는데 그 중에서 인증 마크가 붙어 있는 텔레그램 공식 봇을 선하고 채팅 방에  들어갑니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_01.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[BotFather] 채팅 봇 방에 들어가면 채팅 봇에 대한 설명과 봇 API 매뉴얼 링크를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_02.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:642px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이제 채팅 봇 생성을 위해 &lt;strong&gt;/start&lt;/strong&gt; 명령을 입력하면 아래와 같이 채팅 봇 생성, 관리에 대한 명령어들을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_03.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:637px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음으로 새로운 채팅 봇을 생성하는 명령어인 &lt;strong&gt;/newbot&lt;/strong&gt;을 입력하면, 채팅 봇 이름과 채팅 봇 유저명을 입력하라는 안내가 나옵니다. 
+차례대로 입력하면 되는데, 여기서 입력하는 이름을 텔레그램 내에서 고유한 값이므로 간단한 이름을 입력하면 중복된 이름이라 생성이 되지 않으니 자신만의 고유한 이름을 입력합니다.&lt;/p&gt;
+
+&lt;p&gt;그리고 두번째로 입력하는 &lt;strong&gt;채팅 봇 유저명(username for your bot)은 반드시 마지막이 bot&lt;/strong&gt;로 끝나야 합니다. 
+두가지 모두 입력하고 나면 아래쪽에 채팅 봇과 연동하기 위한 API Token을 확인할 수 있는데, 이 Token을 PHP에서 사용하게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_04.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:637px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;채팅 봇이 생성되었는지 텔레그램에서 검색해보면 아래와 같이 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_05.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;채널-생성&quot;&gt;채널 생성&lt;/h2&gt;
+&lt;p&gt;채널을 생성하기 위해 텔레그램 왼쪽 메뉴를 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_06.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;메뉴 화면에서 [채널 만들기]를 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_07.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;원하는 채널명을 입력하고, 만들기를 클릭하면, 공개-비공개를 선택할 수 있는데 여기서는 [비공개 채널]을 선택하고 저장합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_08.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;저장하고 나면 다음으로 [참가자 추가] 화면이 나타나는데 위에서 생성했던 채팅 봇 이름을 입력해서 확인하고, 선택 후에 [추가] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_10.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그러면 아래와 같이 [봇은 관리자로서만 추가될 수 있습니다]라는 메시지가 나타납니다. 바로 [관리자로 세우기] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_12.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;관리자의 권한은 여러가지가 있는데 원하는 권한을 부여하고 [저장] 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_13.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;채팅-방-id-확인&quot;&gt;채팅 방 ID 확인&lt;/h2&gt;
+&lt;p&gt;메시지를 전송하기 위해서는 현재 생성된 비공개 채널의 chat_id를 확인해야 합니다.&lt;br /&gt;
+우선, 채널에서 아무 메시지나 입력합니다. (&lt;strong&gt;꼭 하셔야 합니다&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_14.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음으로 웹브라우저에서 다음 주소를 입력합니다.  주소에는 위에서 확인했던 API Token이 들어갑니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://api.telegram.org/bot[API Token]/getUpdates
+
+# 예시
+https://api.telegram.org/bot123456789:JFDS89FMJK8932-MKJE8FNBH3289I/getUpdates
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+입력하면 나타나면 결과에서 “chat” : {“id” : -12586498, ….} 와 같은 형식의 &lt;strong&gt;id&lt;/strong&gt; 값을 복사합니다. 이 값이 바로 비공개 채널의 chat_id 입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_15.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;메시지-전송-코드-작성&quot;&gt;메시지 전송 코드 작성&lt;/h2&gt;
+&lt;p&gt;마지막으로 메시지를 전송하는 PHP 코드를 작성해보겠습니다.&lt;br /&gt;
+위에서 구했던 [API Token], [chat_id]를 아래 코드에 입력하고 실행하면 됩니다.&lt;/p&gt;
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;php_to_telegram_msg_send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$api_token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;API Token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$chat_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;채팅방 ID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$api_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://api.telegram.org/bot&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$api_token&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/sendMessage&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nv&quot;&gt;$post_vars&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;chat_id=&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$chat_id&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;amp;text=&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;urlencode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$content_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Content-Type: application/x-www-form-urlencoded&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;curl_init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$api_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_HEADER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_RETURNTRANSFER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_SSL_VERIFYPEER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_POST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_TIMEOUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_HTTPHEADER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$content_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_POSTFIELDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$post_vars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;nv&quot;&gt;$return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;curl_exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;curl_close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;		
+  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;메시지 테스트&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;nv&quot;&gt;$output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;php_to_telegram_msg_send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;	
+&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+위 코드를 실행하면 아래와 같이 비공개 채널에 메시지가 도착한 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_16.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;메시지-스타일-적용&quot;&gt;메시지 스타일 적용&lt;/h2&gt;
+&lt;p&gt;텔레그램 채팅 봇 API는 메시지에 bold, underline 등의 몇가지 html 스타일을 지원합니다.&lt;br /&gt;
+html 스타일을 적용하기 위해서는 전송 파라미터에 &lt;strong&gt;parse_mode=html&lt;/strong&gt;을 추가해야 합니다.&lt;br /&gt;
+그러면 위 전송 코드 중에서 변경해야 하는 코드만 정리해보겠습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+  &lt;span class=&quot;cm&quot;&gt;/* 전송 파라미터에 parse_mode=html을 추가합니다. */&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$post_vars&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;chat_id=&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$chat_id&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;amp;text=&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;urlencode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;amp;parse_mode=html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;		
+
+  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;b&amp;gt;bold&amp;lt;/b&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;i&amp;gt;italic&amp;lt;/i&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;code&amp;gt;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;now_date = date('Y-m-d');&amp;lt;/code&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;s&amp;gt;strike&amp;lt;/s&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;u&amp;gt;underline&amp;lt;/u&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;pre language='php'&amp;gt;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;now_date = date('Y-m-d');&amp;lt;/pre&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;email@test.com&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;pre&amp;gt;email@test.com&amp;lt;/pre&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+위 코드처럼 스타일을 적용하고 실행하면 아래와 같이 표시됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_17.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;텔레그램 채팅 봇 안내
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://core.telegram.org/bots/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://core.telegram.org/bots/&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;텔레그램 채팅 봇 API 가이드
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://core.telegram.org/bots/api/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://core.telegram.org/bots/api/&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;텔레그램 채팅 봇 API 메시지 스타일 가이드
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://core.telegram.org/api/entities/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://core.telegram.org/api/entities/&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-11-10&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 업무를 진행하다보면 서버나 서비스에 장애가 발생했을 때 즉시 알림을 받거나 서버 상태 모니터링이나 매출 등의 서비스 이용 지표 등을 매일 자동으로 통보 받는 경우가 있습니다. 예전에는 이메일이나 SMS 메시지로 받는 경우가 대부분이었는데, 요즘은 관련된 사람들이 함께 들어와 있는 메신저 채팅방으로 알림을 동시에 받는 경우도 많아지고 있습니다. 그럴 때 사용하는 방법 중에서 여기서는 텔레그램(Telegram)의 대화방인 비공개 채널에 메시지를 전송하는 것을 PHP로 구현해보겠습니다.</summary></entry><entry><title type="html">VPC 환경에서 SSL VPN 설정하고 접속하는 방법</title><link href="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_vpc_guide/" rel="alternate" type="text/html" title="VPC 환경에서 SSL VPN 설정하고 접속하는 방법" /><published>2021-11-02T00:00:00+09:00</published><updated>2021-11-02T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_vpc_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_vpc_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;Ncloud(네이버 클라우드) 외부에서 내부에 구성된 네트워크로 암호화된 보안 접속 통신을 제공하는 서비스인 SSL VPN을 VPC 환경에서 설정하고, 서버에 접속하는 방법에 대해 정리해보겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;ssl-vpn이란&quot;&gt;SSL VPN이란?&lt;/h2&gt;
@@ -1322,118 +1494,4 @@ https://www.ncloud.com/nsa/ 까지는 공통이고, 그 다음 페이지 주소�
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-09-16&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 AWS S3에서는 버킷내 특정 디렉토리 하위 파일들에 대해 지정된 날짜가 지난 후 만료(삭제)가 되도록 설정할 수 있습니다. 수명 주기 관리(LifeCycle Management)라고 불리는 이 방법은 파일관리 뿐만 아니라 비용절감에도 도움이 됩니다.</summary></entry><entry><title type="html">설치형 MySQL DB에서 root Password 설정, 변경하는 방법</title><link href="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide/" rel="alternate" type="text/html" title="설치형 MySQL DB에서 root Password 설정, 변경하는 방법" /><published>2021-08-05T00:00:00+09:00</published><updated>2021-08-05T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncp_database_mysql_root_password_set_update_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드에서는 MySQL Password 정책에 따라 처음 MySQL DB를 설치할 때 root의 초기 패스워드가 설정되지 않습니다. 
-그러므로 보안 침해 방지를 위해 설치 후에 root Password를 설정한 후에 DB를 사용하는 것이 안전합니다.&lt;br /&gt;
-여기서는 Classic환경에서 MySQL 5.6과 5.7 버전의 root Password를 설정, 변경하는 방법에 대해 정리해보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;mysql-버전&quot;&gt;MySQL 버전&lt;/h2&gt;
-&lt;p&gt;네이버 클라우드 Classic환경에서 지원하는 설치형 MySQL 버전은 5.6과 5.7 입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_00.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;네이버 클라우드는 Classic환경에서는 DB 서버 이미지를 제공하지만, VPC 환경에서는 제공하지 않습니다. 
-그러므로 VPC 환경에서 DB서버를 사용하려면 OS에 사용자가 직접 DB를 설치해서 사용하는 방법과 Cloud DB를 사용하는 방법 중에서 선택해야 합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;mysql-56-설정&quot;&gt;MySQL 5.6 설정&lt;/h2&gt;
-&lt;p&gt;우선 mysql 5.6 DB서버를 생성한 후 root 계정의 패스워드 상태를 확인해봅니다. 그 이후에 패스워드를 설정합니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#mysql 접속&lt;/span&gt;
-~# mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root
-
-&lt;span class=&quot;c&quot;&gt;#계정 정보 조회&lt;/span&gt;
-mysql&amp;gt; &lt;span class=&quot;k&quot;&gt;select &lt;/span&gt;host, user, password from mysql.user&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;#패스워드 설정-변경&lt;/span&gt;
-mysql&amp;gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;password &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; password&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'패스워드'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;#변경된 패스워드 조회&lt;/span&gt;
-mysql&amp;gt; &lt;span class=&quot;k&quot;&gt;select &lt;/span&gt;host, user, password from mysql.user&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-초기 패스워드가 설정되어있지 않기 때문에 -p 옵션을 사용하지 않고 바로 접속 해서 user 테이블에 있는 계정 정보를 확인해보면 password 값이 비어 있는 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_01.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;패스워드를 설정하고 다시 확인을 해보면 &lt;strong&gt;localhost의 root 계정&lt;/strong&gt;에 패스워드가 설정된 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;MySQL의 계정은 host-user 두개를 합쳐서 키로 사용하게 되어 있습니다. 같은 user라도 접속하는 host 값이 다르면 별도의 계정처럼 인식합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_02.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그런데 위에서 사용한 &lt;strong&gt;set password = password(‘패스워드’)&lt;/strong&gt;는 localhost@root에 대해서만 패스워드를 설정-변경합니다.&lt;br /&gt;
-만약 외부에서 접속하기 위해 특정 IP를 추가했다거나 외부 접속을 모두 허용하기 위해 host에 %값을 설정했을 경우에는 패스워드가 설정-변경되지 않습니다. 
-이때 사용하는 방법은 아래와 같습니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; update mysql.user &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;password &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; password&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'패스워드'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; where user &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'root'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-mysql&amp;gt; &lt;span class=&quot;k&quot;&gt;select &lt;/span&gt;host, user, password from mysql.user&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;쿼리를 실행한 후에 조회를 해보면 user값이 root인 모든 계정의 password 값이 동일하게 설정된 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_03.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;mysql-57-설정&quot;&gt;MySQL 5.7 설정&lt;/h2&gt;
-&lt;p&gt;마찬가지로 mysql 5.7 DB서버를 생성한 후 root 계정의 패스워드 상태를 확인해봅니다. 그 이후에 패스워드를 설정합니다.&lt;br /&gt;
-MySQL 5.7은 패스워드 칼럼이 password가 아니고 authentication_string로 변경되었습니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#mysql 접속&lt;/span&gt;
-~# mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root
-
-&lt;span class=&quot;c&quot;&gt;#계정 정보 조회&lt;/span&gt;
-mysql&amp;gt; &lt;span class=&quot;k&quot;&gt;select &lt;/span&gt;host, user, authentication_string from mysql.user&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;#패스워드 설정-변경&lt;/span&gt;
-mysql&amp;gt; ALTER USER &lt;span class=&quot;s1&quot;&gt;'root'&lt;/span&gt;@&lt;span class=&quot;s1&quot;&gt;'localhost'&lt;/span&gt; IDENTIFIED WITH mysql_native_password BY &lt;span class=&quot;s1&quot;&gt;'패스워드'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;#변경된 패스워드 조회&lt;/span&gt;
-mysql&amp;gt; &lt;span class=&quot;k&quot;&gt;select &lt;/span&gt;host, user, authentication_string from mysql.user&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-초기 패스워드가 설정되어있지 않기 때문에 -p 옵션을 사용하지 않고 바로 접속 해서 user 테이블에 있는 계정 정보를 확인해보면 password 값이 비어 있는 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_04.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이때 MySQL 5.6 이하 버전처럼 update 명령어로 authentication_string 칼럼 값을 변경하려고 해도 적용되지 않습니다.&lt;br /&gt;
-위에 적은 것처럼 ALTER 명령으로 변경해야 적용되니 주의해야 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_05.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;mysql-패스워드-정책&quot;&gt;MySQL 패스워드 정책&lt;/h2&gt;
-&lt;p&gt;MySQL은 아래와 같이 기본 패스워드 정책이 설정되어 있습니다. 그러므로 패스워드 설정 시에는 아래 조건에 맞게 입력하셔야 합니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;최소 길이 8자 이상&lt;/li&gt;
-  &lt;li&gt;특수문자 1개 이상&lt;/li&gt;
-  &lt;li&gt;숫자 1개 이상&lt;/li&gt;
-  &lt;li&gt;대소문자 조합 1개 이상&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;MySQL DB에 접속해서 아래와 같이 설정된 정책을 조회할 수 있습니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; SHOW VARIABLES LIKE &lt;span class=&quot;s1&quot;&gt;'validate_password%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_database_mysql_root_password_update_06.jpg&quot; alt=&quot;네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;설치형 MySQL 기본 가이드
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/database-database-1-1&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/database-database-1-1&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;MySQL 패스워드 정책 가이드
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-08-05&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드에서는 MySQL Password 정책에 따라 처음 MySQL DB를 설치할 때 root의 초기 패스워드가 설정되지 않습니다. 그러므로 보안 침해 방지를 위해 설치 후에 root Password를 설정한 후에 DB를 사용하는 것이 안전합니다. 여기서는 Classic환경에서 MySQL 5.6과 5.7 버전의 root Password를 설정, 변경하는 방법에 대해 정리해보겠습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 AWS S3에서는 버킷내 특정 디렉토리 하위 파일들에 대해 지정된 날짜가 지난 후 만료(삭제)가 되도록 설정할 수 있습니다. 수명 주기 관리(LifeCycle Management)라고 불리는 이 방법은 파일관리 뿐만 아니라 비용절감에도 도움이 됩니다.</summary></entry></feed>
