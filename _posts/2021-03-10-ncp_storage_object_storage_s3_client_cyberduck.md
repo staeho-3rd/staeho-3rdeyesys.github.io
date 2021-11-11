@@ -40,7 +40,7 @@ API 인증키는 네이버 클라우드 포탈 -> 마이페이지 -> 계정관�
 
 <a href="https://www.ncloud.com/mypage/manage/authkey" target="_blank" style="word-break:break-all;">https://www.ncloud.com/mypage/manage/authkey</a>
 
-<img src="../../images/ncp_storage_object_storage_api_key_01.jpg" alt="AWS CLI를 이용한 Object Storage 접속 방법" style="width:800px;align:center">
+<img src="../../images/ncloud_api_auth_key_create.png" alt="AWS CLI를 이용한 Object Storage 접속 방법" style="width:770px;align:center">
 
 ## 스토리지 접속
 Object Storage에 접속하기 위해 위에서 확인한 API 인증키를 이용하여 다음의 정보를 입력해야 합니다.

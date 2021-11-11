@@ -1,4 +1,250 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-11-10T16:10:07+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">PHP로 텔레그램 비공개 채널에 메시지 전송하기</title><link href="https://docs.3rdeyesys.com/99.etc/ncp_etc_php_to_telegram_message_send/" rel="alternate" type="text/html" title="PHP로 텔레그램 비공개 채널에 메시지 전송하기" /><published>2021-11-10T00:00:00+09:00</published><updated>2021-11-10T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/99.etc/ncp_etc_php_to_telegram_message_send</id><content type="html" xml:base="https://docs.3rdeyesys.com/99.etc/ncp_etc_php_to_telegram_message_send/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-11-11T18:34:42+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">PHP로 Archive Storage API 인증 토큰 생성하는 방법</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_archive_storage_api_access_token_create/" rel="alternate" type="text/html" title="PHP로 Archive Storage API 인증 토큰 생성하는 방법" /><published>2021-11-11T00:00:00+09:00</published><updated>2021-11-11T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_archive_storage_api_access_token_create</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_archive_storage_api_access_token_create/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드(Ncloud) Archive Storage API를 이용하려고 할 때 먼저 인증 토큰을 생성하고 생성된 토큰을 이용해서 API로 Archive Storage에 접근해야 합니다. 
+여기서는 PHP로 API 인증 토큰을 생성하는 방법에 대해 우선 전체 소스코드를 살펴보고 다음으로 주요 코드를 상세하게 살펴보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;api-정보&quot;&gt;API 정보&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;OpenStack Swift API : 2.15.1 (Pike)&lt;/li&gt;
+  &lt;li&gt;OpenStack Keystone V3 API : v3.8&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;인증-토큰-생성-코드&quot;&gt;인증 토큰 생성 코드&lt;/h2&gt;
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// 전송해야 할 설정값&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$ncloud_accesskey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;네이버 클라우드 AccessKey&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$ncloud_secretkey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;네이버 클라우드 SecretKey&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$ncloud_domain_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Archive Storage 도메인 ID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$ncloud_project_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Archive Storage 프로젝트 ID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;nv&quot;&gt;$api_server&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://kr.archive.ncloudstorage.com:5000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$api_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/v3/auth/tokens&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;		 
+
+  &lt;span class=&quot;c1&quot;&gt;// http 호출 헤더값 설정&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$http_header&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$http_header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Content-Type: application/json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// 전송할 값들을 배열 형태로 저장한다&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$postvars&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  	&lt;span class=&quot;s2&quot;&gt;&quot;auth&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  		&lt;span class=&quot;s2&quot;&gt;&quot;identity&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  			&lt;span class=&quot;s2&quot;&gt;&quot;methods&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  				&lt;span class=&quot;s2&quot;&gt;&quot;password&quot;&lt;/span&gt;
+  			&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  			&lt;span class=&quot;s2&quot;&gt;&quot;password&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  				&lt;span class=&quot;s2&quot;&gt;&quot;user&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  					&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ncloud_accesskey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  					&lt;span class=&quot;s2&quot;&gt;&quot;password&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ncloud_secretkey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  					&lt;span class=&quot;s2&quot;&gt;&quot;domain&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  						&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ncloud_domain_id&lt;/span&gt;
+  					&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  				&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  			&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  		&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  		&lt;span class=&quot;s2&quot;&gt;&quot;scope&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  			&lt;span class=&quot;s2&quot;&gt;&quot;project&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  				&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ncloud_project_id&lt;/span&gt;
+  			&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  		&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  	&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// 배열 형태로 저장한 값들을 json 형태로 변환해서 전송&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$json_portvars&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;json_encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$postvars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;nv&quot;&gt;$is_post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// api 호출&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;curl_init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$api_server&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$api_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_SSL_VERIFYPEER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_RETURNTRANSFER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;	
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_POST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$is_post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_HTTPHEADER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$http_header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_HEADER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//request에 header 값도 수신&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;CURLOPT_POSTFIELDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$json_portvars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;nv&quot;&gt;$response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;curl_exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;nb&quot;&gt;curl_close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  	&lt;span class=&quot;c1&quot;&gt;// X-Subject-Token 토큰 값은 request body가 아닌 header로 전달되므로&lt;/span&gt;
+  	&lt;span class=&quot;c1&quot;&gt;// header를 분리해서 배열에 저장한다 &lt;/span&gt;
+  	&lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  	&lt;span class=&quot;nv&quot;&gt;$header_text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;strpos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+  	&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;explode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$header_text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+  	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  		   &lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http_code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  		&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+  		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  		   &lt;span class=&quot;k&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;explode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  		   &lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	
+	&lt;span class=&quot;c1&quot;&gt;// 인증 토큰 확인&lt;/span&gt;
+  	&lt;span class=&quot;nv&quot;&gt;$x_auth_token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;X-Subject-Token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; 
+  	&lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$x_auth_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  	&lt;span class=&quot;c1&quot;&gt;//var_dump($headers);&lt;/span&gt;
+  	&lt;span class=&quot;c1&quot;&gt;//echo(&quot;&amp;lt;hr&amp;gt;&quot;);&lt;/span&gt;
+  	&lt;span class=&quot;c1&quot;&gt;//var_dump($response);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; 
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  	&lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Curl error: &quot;&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;curl_error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;코드-상세-설명&quot;&gt;코드 상세 설명&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;네이버-클라우드-인증키&quot;&gt;네이버 클라우드 인증키&lt;/h4&gt;
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nv&quot;&gt;$ncloud_accesskey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;네이버 클라우드 AccessKey&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$ncloud_secretkey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;네이버 클라우드 SecretKey&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;네이버 클라우드 인증키는 [네이버 클라우드 포탈] -&amp;gt; [마이페이지] -&amp;gt; [계정관리] -&amp;gt; [인증키 관리] - [API 인증키 관리] 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_api_auth_key_create.png&quot; alt=&quot;네이버 클라우드 API 인증키 생성하기&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;archive-storage-api-이용-정보&quot;&gt;Archive Storage API 이용 정보&lt;/h4&gt;
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nv&quot;&gt;$ncloud_domain_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Archive Storage 도메인 ID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$ncloud_project_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Archive Storage 프로젝트 ID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Archive Storage API 이용을 위한 Domain ID와 Project ID는 [네이버 클라우드 포탈] - [Archive Storage]에서 [API 이용 정보 확인] 버튼을 클릭하면 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_api_access_token_create_01.png&quot; alt=&quot;네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[API 이용 정보 확인] 창에서 Domain ID와 Project ID를 확인하고, PHP 소스코드에 입력합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_api_access_token_create_02.png&quot; alt=&quot;네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;api-서버와-url-설정&quot;&gt;API 서버와 URL 설정&lt;/h4&gt;
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nv&quot;&gt;$api_server&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://kr.archive.ncloudstorage.com:5000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$api_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/v3/auth/tokens&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Archive Storage API 서버와 토큰 생성을 위한 URL 정보는 위와 같습니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;http-호출-header-값-설정&quot;&gt;HTTP 호출 header 값 설정&lt;/h4&gt;
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nv&quot;&gt;$http_header&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$http_header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Content-Type: application/json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;HTTP header에는 json 형태로 호출한다는 것을 설정합니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;전송할-값-설정&quot;&gt;전송할 값 설정&lt;/h4&gt;
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c1&quot;&gt;// 전송할 값들을 배열 형태로 저장&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$postvars&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  	&lt;span class=&quot;s2&quot;&gt;&quot;auth&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  		&lt;span class=&quot;s2&quot;&gt;&quot;identity&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  			&lt;span class=&quot;s2&quot;&gt;&quot;methods&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  				&lt;span class=&quot;s2&quot;&gt;&quot;password&quot;&lt;/span&gt;
+  			&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  			&lt;span class=&quot;s2&quot;&gt;&quot;password&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  				&lt;span class=&quot;s2&quot;&gt;&quot;user&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  					&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ncloud_accesskey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  					&lt;span class=&quot;s2&quot;&gt;&quot;password&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ncloud_secretkey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  					&lt;span class=&quot;s2&quot;&gt;&quot;domain&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  						&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ncloud_domain_id&lt;/span&gt;
+  					&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  				&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  			&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  		&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  		&lt;span class=&quot;s2&quot;&gt;&quot;scope&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  			&lt;span class=&quot;s2&quot;&gt;&quot;project&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  				&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ncloud_project_id&lt;/span&gt;
+  			&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  		&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  	&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// 배열 형태로 저장한 값들을 json 형태로 변환해서 전송&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$json_portvars&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;json_encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$postvars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;네이버 클라우드 AccessKey, SecretKey, Archive Storage 도메인 ID, 프로젝트 ID를 전송하기 위해 지정된 형태의 배열로 저장한 후에 json 형태로 변환합니다. 
+물론 처음부터 json 형태로 저장해도 됩니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;api-호출&quot;&gt;API 호출&lt;/h4&gt;
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;curl_init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$api_server&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$api_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_SSL_VERIFYPEER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_RETURNTRANSFER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;	
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_POST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$is_post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_HTTPHEADER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$http_header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_HEADER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//request에 header 값도 수신&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;CURLOPT_POSTFIELDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$json_portvars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;nv&quot;&gt;$response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;curl_exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;curl_close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;이제 위에서 준비한 값들을 사용해서 API를 호출합니다.&lt;br /&gt;
+curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Request에 body 뿐만 아니라 header 값도 수신하기 위해 설정합니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;api-인증-토큰-분리&quot;&gt;API 인증 토큰 분리&lt;/h4&gt;
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  	&lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  	&lt;span class=&quot;nv&quot;&gt;$header_text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;strpos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+  	&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;explode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$header_text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+  	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  		   &lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http_code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  		&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+  		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  		   &lt;span class=&quot;k&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;explode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  		   &lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	
+	&lt;span class=&quot;c1&quot;&gt;// 인증 토큰 확인&lt;/span&gt;
+  	&lt;span class=&quot;nv&quot;&gt;$x_auth_token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;X-Subject-Token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; 
+  	&lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$x_auth_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  	&lt;span class=&quot;c1&quot;&gt;//var_dump($headers);&lt;/span&gt;
+  	&lt;span class=&quot;c1&quot;&gt;//echo(&quot;&amp;lt;hr&amp;gt;&quot;);&lt;/span&gt;
+  	&lt;span class=&quot;c1&quot;&gt;//var_dump($response);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;API 인증 토큰값은 X-Subject-Token이라는 이름으로 request body가 아닌 header로 전달되므로 header를 분리해서 배열에 저장합니다.
+실제 전송되는 header 값은 아래와 같은 형태입니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;HTTP/1.1 201 Created 
+Date: Thu, 11 Nov 2021 07:59:32 GMT 
+Server: Apache/2.4.6 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;CentOS&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; OpenSSL/1.0.2k-fips mod_wsgi/3.4 Python/2.7.5 
+X-Subject-Token: gAAAAABhjM1lbeTW3Vq......중간 생략 ......txWYsWGrC1siPt8CE0rs_KgNMTQ 
+Vary: X-Auth-Token 
+x-openstack-request-id: req-1ce......중간 생략 ......a85eb5b 
+Content-Length: 1762 
+Content-Type: application/json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;인증-토큰-유효-시간&quot;&gt;인증 토큰 유효 시간&lt;/h2&gt;
+&lt;p&gt;API 인증 토큰의 유효 시간은 24시간이고 삭제 요청을 호출하면 삭제할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Archive Storage API 가이드
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://api.ncloud-docs.com/docs/common-archivestorageapi-archivestorageapi&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://api.ncloud-docs.com/docs/common-archivestorageapi-archivestorageapi&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;OpenStack Keystone V3 API 가이드
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://docs.openstack.org/api-ref/identity/v3/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.openstack.org/api-ref/identity/v3/&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-11-11&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드(Ncloud) Archive Storage API를 이용하려고 할 때 먼저 인증 토큰을 생성하고 생성된 토큰을 이용해서 API로 Archive Storage에 접근해야 합니다. 여기서는 PHP로 API 인증 토큰을 생성하는 방법에 대해 우선 전체 소스코드를 살펴보고 다음으로 주요 코드를 상세하게 살펴보겠습니다.</summary></entry><entry><title type="html">PHP로 텔레그램 비공개 채널에 메시지 전송하기</title><link href="https://docs.3rdeyesys.com/99.etc/ncp_etc_php_to_telegram_message_send/" rel="alternate" type="text/html" title="PHP로 텔레그램 비공개 채널에 메시지 전송하기" /><published>2021-11-10T00:00:00+09:00</published><updated>2021-11-10T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/99.etc/ncp_etc_php_to_telegram_message_send</id><content type="html" xml:base="https://docs.3rdeyesys.com/99.etc/ncp_etc_php_to_telegram_message_send/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;업무를 진행하다보면 서버나 서비스에 장애가 발생했을 때 즉시 알림을 받거나 서버 상태 모니터링이나 매출 등의 서비스 이용 지표 등을 매일 자동으로 통보 받는 경우가 있습니다. 
 예전에는 이메일이나 SMS 메시지로 받는 경우가 대부분이었는데, 요즘은 관련된 사람들이 함께 들어와 있는 메신저 채팅방으로 알림을 동시에 받는 경우도 많아지고 있습니다.&lt;br /&gt;
 그럴 때 사용하는 방법 중에서 여기서는 텔레그램(Telegram)의 대화방인 비공개 채널에 메시지를 전송하는 것을 PHP로 구현해보겠습니다.&lt;/p&gt;
@@ -1441,57 +1687,4 @@ https://www.ncloud.com/nsa/ 까지는 공통이고, 그 다음 페이지 주소�
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-08-20&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Sub Account(서브 계정)는 네이버 클라우드의 서비스 자원을 여러 사용자가 동시에 이용, 관리해야 할 때 필요한 만큼만 권한을 부여해서 사용할 수 있게 해주는 서비스입니다. Sub Account를 사용하면 사내 담당부서나 담당자별로 지정된 자원에만 접근하도록 하거나, 협력사에게 일부 접근권한을 부여해야 할 때 효과적입니다.</summary></entry><entry><title type="html">AWS S3 수명 주기 (LifeCycle) 설정하기</title><link href="https://docs.3rdeyesys.com/91.aws/aws_s3_lifecycle_management/" rel="alternate" type="text/html" title="AWS S3 수명 주기 (LifeCycle) 설정하기" /><published>2021-08-12T00:00:00+09:00</published><updated>2021-08-12T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/91.aws/aws_s3_lifecycle_management</id><content type="html" xml:base="https://docs.3rdeyesys.com/91.aws/aws_s3_lifecycle_management/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;AWS S3에서는 버킷내 특정 디렉토리 하위 파일들에 대해 지정된 날짜가 지난 후 만료(삭제)가 되도록 설정할 수 있습니다. 
-수명 주기 관리(LifeCycle Management)라고 불리는 이 방법은 파일관리 뿐만 아니라 비용절감에도 도움이 됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;수명주기-설정&quot;&gt;수명주기 설정&lt;/h2&gt;
-&lt;p&gt;AWS 콘솔에 접속 후 수명 주기를 적용할 S3 버킷으로 이동해 [관리] 메뉴 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/aws_s3_lifecycle_01.jpg&quot; alt=&quot;AWS S3 수명주기 (LifeCycle) 설정하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;[수명 주기 규칙 생성] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/aws_s3_lifecycle_02.jpg&quot; alt=&quot;AWS S3 수명주기 (LifeCycle) 설정하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;수명 주기 규칙 이름을 입력하고, 규칙 범위는 [하나 이상의 필터를 사용하여 이 규칙의 범위 제한]을 선택합니다.&lt;br /&gt;
-접두사에는 수명 주기를 적용할 디렉토리나 파일 등의 필터를 작성합니다. 예를 들어 images 디렉토리가 포함된 모든 파일에 적용하려면 &lt;strong&gt;images/&lt;/strong&gt; 라고 입력합니다. 이때 버킷명은 제외하고 입력해야 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/aws_s3_lifecycle_03.jpg&quot; alt=&quot;AWS S3 수명주기 (LifeCycle) 설정하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;수명 주기 규칙 작업에서 [객체의 현재버전 만료],  [객체의 이전버전 영구 삭제] 두가지 항목을 선택하면, 몇일 후에 삭제할 것인지를 설정할 수 있는 [객체 생성 후 경과 일수], [객체가 이전 버전이 된 후 경과 일수] 항목이 나타납니다. 
-여기에 원하는 날짜를 각각 입력하고, [규칙 생성] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/aws_s3_lifecycle_06.jpg&quot; alt=&quot;AWS S3 수명주기 (LifeCycle) 설정하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;주의사항&quot;&gt;주의사항&lt;/h2&gt;
-&lt;p&gt;AWS 수명 주기 관련해서 주의해야 할 사항이 몇가지 있습니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;수명-주기-규칙-작동-시점&quot;&gt;수명 주기 규칙 작동 시점&lt;/h4&gt;
-&lt;p&gt;수명 주기 규칙이 생각한 것보다 늦게 작동하는 경우가 있습니다. 이는 &lt;strong&gt;Amazon S3가 객체의 전환 또는 만료(삭제) 날짜를 익일 자정(UTC)부터 계산하기 때문&lt;/strong&gt;입니다.&lt;br /&gt;
-예를 들어 2020년 1월 1일 10:30(UTC)에 객체를 생성하고 3일 후 객체가 만료(삭제)되도록 수명 주기 규칙을 설정할 경우 객체의 만료(삭제) 날짜는 2020년 1월 5일 00:00(UTC)이 됩니다. 
-따라서 수명 주기 규칙이 충족되었는지 확인하기 전에 충분한 시간이 경과했는지 확인해야 합니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;수명-주기-규칙-접두사-필터-설정&quot;&gt;수명 주기 규칙 접두사 필터 설정&lt;/h4&gt;
-&lt;p&gt;수명 주기 규칙에서 접두사 필터에 디렉토리를 지정할 경우 접두사 필터의 끝에 / 문자를 지정해야 합니다. 접두사 필터의 처음에 / 문자가 있으면 수명 주기 규칙이 올바르게 평가되지 않습니다.&lt;br /&gt;
-즉, images 디렉토리가 포함된 모든 파일에 적용하려면 &lt;strong&gt;images/&lt;/strong&gt; 라고 입력해야 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/aws_s3_lifecycle_05.jpg&quot; alt=&quot;AWS S3 수명주기 (LifeCycle) 설정하기 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;AWS S3 수명 주기 관리 가이드
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/userguide/object-lifecycle-mgmt.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/userguide/object-lifecycle-mgmt.html&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;수명 주기 규칙 작동 지연 관련 FAQ
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://aws.amazon.com/ko/premiumsupport/knowledge-center/s3-lifecycle-rule-delay/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://aws.amazon.com/ko/premiumsupport/knowledge-center/s3-lifecycle-rule-delay/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-09-16&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 AWS S3에서는 버킷내 특정 디렉토리 하위 파일들에 대해 지정된 날짜가 지난 후 만료(삭제)가 되도록 설정할 수 있습니다. 수명 주기 관리(LifeCycle Management)라고 불리는 이 방법은 파일관리 뿐만 아니라 비용절감에도 도움이 됩니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Sub Account(서브 계정)는 네이버 클라우드의 서비스 자원을 여러 사용자가 동시에 이용, 관리해야 할 때 필요한 만큼만 권한을 부여해서 사용할 수 있게 해주는 서비스입니다. Sub Account를 사용하면 사내 담당부서나 담당자별로 지정된 자원에만 접근하도록 하거나, 협력사에게 일부 접근권한을 부여해야 할 때 효과적입니다.</summary></entry></feed>

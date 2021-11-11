@@ -62,7 +62,7 @@ aws cli를 설치하려면 pip가 먼저 설치되어 있어야 합니다.
 ## API 인증키 생성
 네이버 클라우드 포탈 -> 마이페이지 -> 계정관리 -> 인증키 관리 - API 인증키 관리 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.
 
-<img src="../../images/ncp_storage_object_storage_api_key_01.jpg" alt="AWS CLI를 이용한 Object Storage 접속 방법" style="width:800px;align:center">
+<img src="../../images/ncloud_api_auth_key_create.png" alt="AWS CLI를 이용한 Object Storage 접속 방법" style="width:770px;align:center">
 
 ## AWS CLI 환경 설정
 이제 AWS CLI로 접속하기 위해 환경설정을 해야 합니다.  
