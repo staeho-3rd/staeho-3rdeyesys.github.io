@@ -63,16 +63,14 @@ order_number: 11
   // 배열 형태로 저장한 값들을 json 형태로 변환해서 전송
   $json_portvars = json_encode($postvars);
 
-  $is_post = true;
-
   // api 호출
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $api_server.$api_url);
   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);	
-  curl_setopt($ch, CURLOPT_POST, $is_post);
+  curl_setopt($ch, CURLOPT_POST, TRUE); //POST 방식으로 호출
   curl_setopt($ch, CURLOPT_HTTPHEADER, $http_header);
-  curl_setopt($ch, CURLOPT_HEADER, TRUE); //request에 header 값도 수신
+  curl_setopt($ch, CURLOPT_HEADER, TRUE); //response에 header 값도 수신
   curl_setopt($ch,CURLOPT_POSTFIELDS, $json_portvars);
 
   $response = curl_exec($ch);
@@ -191,16 +189,16 @@ HTTP header에는 json 형태로 호출한다는 것을 설정합니다.
   curl_setopt($ch, CURLOPT_URL, $api_server.$api_url);
   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);	
-  curl_setopt($ch, CURLOPT_POST, $is_post);
+  curl_setopt($ch, CURLOPT_POST, TRUE); //POST 방식으로 호출
   curl_setopt($ch, CURLOPT_HTTPHEADER, $http_header);
-  curl_setopt($ch, CURLOPT_HEADER, TRUE); //request에 header 값도 수신
+  curl_setopt($ch, CURLOPT_HEADER, TRUE); //response에 header 값도 수신
   curl_setopt($ch,CURLOPT_POSTFIELDS, $json_portvars);
 
   $response = curl_exec($ch);
   curl_close($ch);
 ```
 이제 위에서 준비한 값들을 사용해서 API를 호출합니다.  
-curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Request에 body 뿐만 아니라 header 값도 수신하기 위해 설정합니다.
+curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 header 값도 수신하기 위해 설정합니다.
 
 #### API 인증 토큰 분리
 ``` php
@@ -248,10 +246,10 @@ Content-Type: application/json
 API 인증 토큰의 유효 시간은 24시간이고 삭제 요청을 호출하면 삭제할 수 있습니다.
 
 ## 참고 URL
-1.  Archive Storage API 가이드
+1.  Archive Storage API 기본 가이드
 	- <a href="https://api.ncloud-docs.com/docs/common-archivestorageapi-archivestorageapi" target="_blank" style="word-break:break-all;">https://api.ncloud-docs.com/docs/common-archivestorageapi-archivestorageapi</a>
 
-1.  OpenStack Keystone V3 API 가이드
+2.  OpenStack Keystone V3 API 가이드
 	- <a href="https://docs.openstack.org/api-ref/identity/v3/" target="_blank" style="word-break:break-all;">https://docs.openstack.org/api-ref/identity/v3/</a>
 
 > 문서 최종 수정일 : 2021-11-11

@@ -8,6 +8,7 @@ description: 네이버 클라우드 서버 모니터링 서비스 Monitoring 설
 type: Document
 set: server
 order_number: 22
+creator: ljh0519
 ---
 
 ## 개요

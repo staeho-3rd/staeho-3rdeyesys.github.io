@@ -211,16 +211,14 @@
   <span class="c1">// 배열 형태로 저장한 값들을 json 형태로 변환해서 전송</span>
   <span class="nv">$json_portvars</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$postvars</span><span class="p">);</span>
 
-  <span class="nv">$is_post</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-
   <span class="c1">// api 호출</span>
   <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$api_server</span><span class="mf">.</span><span class="nv">$api_url</span><span class="p">);</span>
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">);</span>
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span>	
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="nv">$is_post</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span> <span class="c1">//POST 방식으로 호출</span>
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$http_header</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span> <span class="c1">//request에 header 값도 수신</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span> <span class="c1">//response에 header 값도 수신</span>
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span><span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$json_portvars</span><span class="p">);</span>
 
   <span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
@@ -333,16 +331,16 @@
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$api_server</span><span class="mf">.</span><span class="nv">$api_url</span><span class="p">);</span>
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">);</span>
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span>	
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="nv">$is_post</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span> <span class="c1">//POST 방식으로 호출</span>
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$http_header</span><span class="p">);</span>
-  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span> <span class="c1">//request에 header 값도 수신</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span> <span class="c1">//response에 header 값도 수신</span>
   <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span><span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$json_portvars</span><span class="p">);</span>
 
   <span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
   <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
 </code></pre></div></div>
 <p>이제 위에서 준비한 값들을 사용해서 API를 호출합니다.<br />
-curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Request에 body 뿐만 아니라 header 값도 수신하기 위해 설정합니다.</p>
+curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 header 값도 수신하기 위해 설정합니다.</p>
 
 <h4 id="api-인증-토큰-분리">API 인증 토큰 분리</h4>
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="p">)</span>
@@ -389,7 +387,7 @@ Content-Type: application/json
 
 <h2 id="참고-url">참고 URL</h2>
 <ol>
-  <li>Archive Storage API 가이드
+  <li>Archive Storage API 기본 가이드
     <ul>
       <li><a href="https://api.ncloud-docs.com/docs/common-archivestorageapi-archivestorageapi" target="_blank" style="word-break:break-all;">https://api.ncloud-docs.com/docs/common-archivestorageapi-archivestorageapi</a></li>
     </ul>
@@ -720,6 +718,34 @@ Content-Type: application/json
 			</a>
 		</li>
 	
+		<li >
+		
+		
+		
+		
+		
+		
+		
+			<a href="/4.storage/ncp_storage_archive_storage_api_get_container_by_php/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>12. PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">네이버 클라우드에서 PHP로 Archive Storage API 호출해서 컨테이너(버킷) 오브젝트 목록 조회하는 방법입니다</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
 </ul>
 	</div>
 
@@ -730,6 +756,34 @@ Content-Type: application/json
 		<h3>Related docs</h3>
 
 		<ul class="listing">
+	
+		<li >
+		
+		
+		
+		
+		
+		
+		
+			<a href="/4.storage/ncp_storage_archive_storage_api_get_container_by_php/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">네이버 클라우드에서 PHP로 Archive Storage API 호출해서 컨테이너(버킷) 오브젝트 목록 조회하는 방법입니다</p>
+					</div>
+				</article>
+			</a>
+		</li>
 	
 		<li >
 		
@@ -862,7 +916,7 @@ Content-Type: application/json
 					<div>
 						<h3>모니터링 서비스 Cloud Insight 설정 가이드 
 							
-								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+								<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
 							
 						</h3>
 						<p class="description">네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드입니다</p>
@@ -970,32 +1024,6 @@ Content-Type: application/json
 							
 						</h3>
 						<p class="description">네이버 클라우드Sub Account 생성 가이드입니다</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-		
-		
-		
-			<a href="/91.aws/aws_s3_lifecycle_management/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>AWS S3 수명 주기 (LifeCycle) 설정하기 
-							
-						</h3>
-						<p class="description">AWS S3 수명 주기 (LifeCycle) 설정하기 가이드입니다</p>
 					</div>
 				</article>
 			</a>
