@@ -433,6 +433,10 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 
 <p><img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_03.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center" /></p>
 
+<blockquote>
+  <p>컨테이너(버킷)에 10,000개 이상의 오브젝트가 저장되어 있을 경우에는 아래쪽에서 소개하는 방법처럼 폴더별로 오브젝트 목록을 따로 조회하시면 됩니다.</p>
+</blockquote>
+
 <h2 id="오브젝트-검색">오브젝트 검색</h2>
 <p>위에서는 컨테이너(버킷)에 저장된 모든 오브젝트들을 조회하는 기능을 확인해보았습니다.<br />
 다음으로는 특정 이름으로 시작되는 오브젝트나 특정 폴더에 있는 오브젝트만 조회하는 방법에 대해 위에서 확인한 PHP 예제 소스코드에서 변경이 필요한 부분만 확인해보겠습니다.</p>
@@ -659,7 +663,7 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 		
 		
 		
-			<a href="/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/">
+			<a href="/4.storage/ncp_storage_object_storage_s3_client_s3browser/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -668,10 +672,10 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 </div>
 				<article>
 					<div>
-						<h3>5. Object Storage 접속용 Windows Client Tool - CloudBerry Explorer 
+						<h3>5. Object Storage 접속용 Windows Client Tool - S3 Browser 
 							
 						</h3>
-						<p class="description">네이버 클라우드Object Storage 접속용 Windows Client Tool - CloudBerry Explorer</p>
+						<p class="description">네이버 클라우드 Object Storage 접속용 Windows Client Tool - S3 Browser</p>
 					</div>
 				</article>
 			</a>
@@ -685,7 +689,7 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 		
 		
 		
-			<a href="/4.storage/ncp_storage_object_storage_s3_client_s3browser/">
+			<a href="/4.storage/ncp_storage_object_storage_s3_client_cloudberry_explorer/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
@@ -694,10 +698,10 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 </div>
 				<article>
 					<div>
-						<h3>6. Object Storage 접속용 Windows Client Tool - S3 Browser 
+						<h3>6. Object Storage 접속용 Windows Client Tool - CloudBerry Explorer 
 							
 						</h3>
-						<p class="description">네이버 클라우드 Object Storage 접속용 Windows Client Tool - S3 Browser</p>
+						<p class="description">네이버 클라우드Object Storage 접속용 Windows Client Tool - CloudBerry Explorer</p>
 					</div>
 				</article>
 			</a>
@@ -863,6 +867,34 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 			</a>
 		</li>
 	
+		<li >
+		
+		
+		
+		
+		
+		
+		
+			<a href="/4.storage/ncp_storage_archive_storage_cli_windows_guide/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>13. Archive Storage CLI 사용 가이드 - Windows 환경 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드입니다.</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
 </ul>
 	</div>
 
@@ -873,6 +905,34 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 		<h3>Related docs</h3>
 
 		<ul class="listing">
+	
+		<li >
+		
+		
+		
+		
+		
+		
+		
+			<a href="/4.storage/ncp_storage_archive_storage_cli_windows_guide/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>Archive Storage CLI 사용 가이드 - Windows 환경 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드입니다.</p>
+					</div>
+				</article>
+			</a>
+		</li>
 	
 		<li >
 		
@@ -1033,8 +1093,6 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 					<div>
 						<h3>모니터링 서비스 Cloud Insight 설정 가이드 
 							
-								<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
-							
 						</h3>
 						<p class="description">네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드입니다</p>
 					</div>
@@ -1115,32 +1173,6 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 							
 						</h3>
 						<p class="description">네이버 클라우드 SSL인증서 DCV (Domain Control Validation) 인증 방법과 유의사항 정리</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-		
-		
-		
-			<a href="/81.manage/ncp_manage_sub_account_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>Sub Account 생성 가이드 
-							
-						</h3>
-						<p class="description">네이버 클라우드Sub Account 생성 가이드입니다</p>
 					</div>
 				</article>
 			</a>

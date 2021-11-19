@@ -102,7 +102,7 @@ mkdocs build
 
 <img src="../../images/python_install_01.png" alt="python 설치 화면" style="width:770px;align:center">
 <img src="../../images/python_install_02.png" alt="python 설치 화면" style="width:660px;align:center">
-<img src="../../images/python_install_03.png" alt="python 설치 화면" style="width:600px;align:center">
+<img src="../../images/python_install_03.png" alt="python 설치 화면" style="width:660px;align:center">
 <img src="../../images/mkdocs_install_01.png" alt="mkdocs 설치 화면" style="width:770px;align:center">
 <img src="../../images/mkdocs_install_02.png" alt="mkdocs 설치 화면" style="width:770px;align:center">
 <img src="../../images/mkdocs_install_03.png" alt="mkdocs 설치 화면" style="width:770px;align:center">
