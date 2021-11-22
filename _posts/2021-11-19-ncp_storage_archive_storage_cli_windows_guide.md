@@ -74,7 +74,8 @@ error: Microsoft Visual C++ 14.0 is required. Get it with "Microsoft Visual C++ 
 fatal error C1083: 포함 파일을 열 수 없습니다. 'basetsd.h' : No such file or directory
 error: command 'C:\\Program Files (x86)\\Microsoft Visual Studio\\....... .....\\cl.exe' failed with exit code 2
 ```
-<br />
+<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_21.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+
 #### 방법 1 : Build Tools 직접 설치
 첫번째 방법은 Build Tools를 따로 설치하는 방법입니다. 
 아래 링크에서 [Microsoft Build Tools 2015 업데이트3]를 다운로드 받아서 설치하시면 되는데, [Visual Studio]가 설치되어 있는 경우에는 설치가 실패하기도 합니다.  
