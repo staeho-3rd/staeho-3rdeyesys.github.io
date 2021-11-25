@@ -15,6 +15,15 @@
 		<!--link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400italic,400,300italic,300,700,700italic|Open+Sans:400italic,600italic,700italic,700,600,400|Inconsolata:400,700"-->
 
 		
+			<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q6RVEFJ3S"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'G-4Q6RVEFJ3S');
+			</script>
+		
 
 		<!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>VPC Peering 생성 가이드 | 3rdeyesys</title>
@@ -134,6 +143,8 @@
 				<li><a href="#접속-테스트">접속 테스트</a></li>
 			
 				<li><a href="#다른-계정-vpc-연결">다른 계정 VPC 연결</a></li>
+			
+				<li><a href="#제한사항">제한사항</a></li>
 			
 				<li><a href="#참고-url">참고 URL</a></li>
 			
@@ -300,6 +311,14 @@
 역방향은 위의 설정과 반대로 진행하면 되고, 그 이후에는 내 계정에서 설정했던 것과 마찬가지로 설정하시면 완료됩니다.</p>
 
 <p><img src="../../images/ncloud_networking_vpc_peering_guide_27.png" alt="네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 " style="width:500px;align:center" /></p>
+
+<h2 id="제한사항">제한사항</h2>
+<ul>
+  <li>VPC Peering은 연결하려는 VPC들의 IP주소 대역이 달라야 합니다. 일치되거나 중첩되는 대역이 있으면 설정되지 않습니다.</li>
+  <li>VPC Peering은 단방향입니다. TCP등 양방향 통신을 해야 하는 경우에는 요청 / 수락 VPC를 맞바꾸어 역방향 Peering도 추가 생성해야 합니다.</li>
+  <li>VPC Peering은 전이적 연결 관계를 지원하지 않습니다. 즉, Peering된 VPC를 통하여 다른 VPC 혹은 외부로 통신하는 것은 불가능 합니다.</li>
+  <li>VPC Peering은 동일한 리전 내 VPC 끼리만 연결할 수 있습니다.</li>
+</ul>
 
 <h2 id="참고-url">참고 URL</h2>
 <ol>

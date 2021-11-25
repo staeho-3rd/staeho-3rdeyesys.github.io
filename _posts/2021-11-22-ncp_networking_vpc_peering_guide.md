@@ -148,6 +148,11 @@ VPC Peering 생성 화면에서 [다른 계정]을 선택하면 아래와 같이
 
 <img src="../../images/ncloud_networking_vpc_peering_guide_27.png" alt="네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 " style="width:500px;align:center">
 
+## 제한사항
+- VPC Peering은 연결하려는 VPC들의 IP주소 대역이 달라야 합니다. 일치되거나 중첩되는 대역이 있으면 설정되지 않습니다.
+- VPC Peering은 단방향입니다. TCP등 양방향 통신을 해야 하는 경우에는 요청 / 수락 VPC를 맞바꾸어 역방향 Peering도 추가 생성해야 합니다.
+- VPC Peering은 전이적 연결 관계를 지원하지 않습니다. 즉, Peering된 VPC를 통하여 다른 VPC 혹은 외부로 통신하는 것은 불가능 합니다.
+- VPC Peering은 동일한 리전 내 VPC 끼리만 연결할 수 있습니다.
 
 ## 참고 URL
 1. VPC Peering 가이드
