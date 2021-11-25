@@ -58,6 +58,7 @@ VPC(virtural Private Cloud)는 퍼블릭클라우드상에서 제공되는 사�
 
 <img src="../../images/ncloud_networking_vpc_peering_guide_04.png" alt="네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 " style="width:770px;align:center">
 
+#### 역방향 설정 추가
 그런데 VPC peering은 단방향 통신이기에 TCP, ICMP 등의 양방향 통신을 하는 프로토콜을 이용하려면 역방향 즉, [test2-vpc] -> [test-vpc]로 설정된 VPC Peering도 추가해야 합니다.
 
 - ① 이름을 적고
