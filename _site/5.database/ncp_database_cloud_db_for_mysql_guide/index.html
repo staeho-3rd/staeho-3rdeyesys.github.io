@@ -265,8 +265,19 @@ HOST(IP) 설정에는 DB에 접근을 허용할 IP대역을 입력합니다. 여
 <h2 id="mysql-client-설치">MySQL Client 설치</h2>
 <p>DB 접속 테스트를 위해 생성한 서버에서 MySQL Client를 설치합니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# yum <span class="nb">install</span> <span class="nt">-y</span> mysql mysql-server
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mariadb</span>
+~# yum <span class="nb">install</span> <span class="nt">-y</span> mysql mysql-server
+
+<span class="c"># mysql 5.7</span>
+~# yum <span class="nb">install</span> <span class="nt">-y</span> https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+~# yum <span class="nb">install</span> <span class="nt">-y</span> <span class="nt">--disablerepo</span><span class="o">=</span><span class="s2">"mysql80-community"</span> <span class="nt">--enablerepo</span><span class="o">=</span><span class="s2">"mysql57-community"</span> mysql-community-server
+~# mysqld <span class="nt">--initialize-insecure</span> <span class="nt">--user</span><span class="o">=</span>mysql
+~# systemctl start mysqld
 </code></pre></div></div>
+
+<blockquote>
+  <p>CentOS 7부터는 yum으로 설치하는 MySQL의 기본 데이터베이스가 MariaDB로 변경되었습니다</p>
+</blockquote>
 
 <p><img src="../../images/ncp_database_cloud_db_for_mysql_19.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center" /></p>
 
@@ -687,6 +698,34 @@ DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이�
 			</a>
 		</li>
 	
+		<li >
+		
+		
+		
+		
+		
+		
+		
+			<a href="/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>14. MySQL 복구 시 ERROR 1227 (42000) 문제 원인과 해결방법 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법입니다.</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
 </ul>
 	</div>
 
@@ -697,6 +736,62 @@ DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이�
 		<h3>Related docs</h3>
 
 		<ul class="listing">
+	
+		<li >
+		
+		
+		
+		
+		
+		
+		
+			<a href="/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>MySQL 복구 시 ERROR 1227 (42000) 문제 원인과 해결방법 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법입니다.</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+		
+		
+		
+			<a href="/81.manage/ncp_manage_classic_vs_vpc_guide/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>네이버 클라우드 Classic 환경 vs VPC 환경 비교 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">네이버 클라우드 Classic 환경 vs VPC 환경 비교 가이드입니다</p>
+					</div>
+				</article>
+			</a>
+		</li>
 	
 		<li >
 		
@@ -885,8 +980,6 @@ DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이�
 					<div>
 						<h3>Classic 환경에서 SSL VPN 설정하고 접속하는 방법 
 							
-								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
-							
 						</h3>
 						<p class="description">Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법입니다.</p>
 					</div>
@@ -915,58 +1008,6 @@ DB에 접속해보면 처음 Cloud DB for MySQL 생성할 때 입력한 테이�
 							
 						</h3>
 						<p class="description">네이버 클라우드 Secure Zone이나 Private Network 환경에서 Repository를 변경해 리눅스 패키지 설치하는 방법입니다.</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-		
-		
-		
-			<a href="/81.manage/ncp_manage_cloud_insight_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>모니터링 서비스 Cloud Insight 설정 가이드 
-							
-						</h3>
-						<p class="description">네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드입니다</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-		
-		
-		
-			<a href="/81.manage/ncp_manage_monitoring_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>서버 모니터링 서비스 Monitoring 설정 가이드 
-							
-						</h3>
-						<p class="description">네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드입니다</p>
 					</div>
 				</article>
 			</a>

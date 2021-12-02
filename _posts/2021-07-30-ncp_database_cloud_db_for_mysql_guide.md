@@ -105,8 +105,17 @@ Inbound 설정에 테스트용 Server의 Subnet 대역인 192.168.2.0/24를 접�
 DB 접속 테스트를 위해 생성한 서버에서 MySQL Client를 설치합니다.
 
 ``` bash
+# mariadb
 ~# yum install -y mysql mysql-server
+
+# mysql 5.7
+~# yum install -y https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+~# yum install -y --disablerepo="mysql80-community" --enablerepo="mysql57-community" mysql-community-server
+~# mysqld --initialize-insecure --user=mysql
+~# systemctl start mysqld
 ```
+
+>CentOS 7부터는 yum으로 설치하는 MySQL의 기본 데이터베이스가 MariaDB로 변경되었습니다
 
 <img src="../../images/ncp_database_cloud_db_for_mysql_19.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
 
