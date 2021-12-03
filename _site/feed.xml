@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-12-02T17:46:23+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">MySQL 복구 시 ERROR 1227 (42000) 문제 원인과 해결방법</title><link href="https://docs.3rdeyesys.com/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting/" rel="alternate" type="text/html" title="MySQL 복구 시 ERROR 1227 (42000) 문제 원인과 해결방법" /><published>2021-12-02T00:00:00+09:00</published><updated>2021-12-02T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-12-03T18:44:03+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">MySQL 복구 시 ERROR 1227 (42000) 문제 원인과 해결방법</title><link href="https://docs.3rdeyesys.com/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting/" rel="alternate" type="text/html" title="MySQL 복구 시 ERROR 1227 (42000) 문제 원인과 해결방법" /><published>2021-12-02T00:00:00+09:00</published><updated>2021-12-02T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드(Ncloud) Cloud DB for MySQL을 사용하면서 백업 데이터를 복구 하려고 할 때 ERROR 1227 (42000) 오류가 발생하는 경우가 있습니다. 
 오류 메시지로만 보면 계정 권한에 문제가 있는 것처럼 보이는데 정확하게 문제 원인이 무엇인지, 그리고 해결방법은 어떤 것이 있는지 정리해보겠습니다.&lt;/p&gt;
 
@@ -16,7 +16,7 @@
 
 &lt;h2 id=&quot;gtid-란&quot;&gt;GTID 란?&lt;/h2&gt;
 &lt;p&gt;GTID는 Global Transaction Identifier의 약자로 MySQL 복제에서 서버의 각 트랜잭션을 구분하는 고유한 식별자입니다. 
-GTID는 모든 트랜잭션과 1:1 관계이며, GITD를 활용하면 복제본으로 장애 조치, 계층적 복제, 특정 시점으로 백업 복구하는 등의 작업을 더 쉽게 구현할 수 있으며, 오류 발생 빈도도 줄일 수 있습니다.&lt;/p&gt;
+GTID는 모든 트랜잭션과 1:1 관계이며, GTID를 활용하면 복제본으로 장애 조치, 계층적 복제, 특정 시점으로 백업 복구하는 등의 작업을 더 쉽게 구현할 수 있으며, 오류 발생 빈도도 줄일 수 있습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;오류-상황-재현&quot;&gt;오류 상황 재현&lt;/h2&gt;
 &lt;p&gt;아래와 같이 서버에서 mysqldump 명령으로 Cloud DB for MySQL DB를 백업 받는 상황을 가정해보겠습니다. 여기서는 [&lt;strong&gt;–set-gtid-purged=OFF&lt;/strong&gt;] 옵션을 사용하지 않았습니다.&lt;br /&gt;
@@ -131,6 +131,15 @@ SET @@GLOBAL.GTID_PURGED&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span c
   &lt;li&gt;다양한 설치형 서버 이미지 이용 가능&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&quot;vpc-환경-장점-요약&quot;&gt;VPC 환경 장점 요약&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;논리적으로 분리된 Network&lt;/li&gt;
+  &lt;li&gt;사용자가 직접 Network 설계 가능&lt;/li&gt;
+  &lt;li&gt;기존 고객의 데이터센터 네트워크와 유사하게 구현 가능&lt;/li&gt;
+  &lt;li&gt;좀 더 상세하고, 높은 수준의 보안 설정 가능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;classic-환경-장점-상세&quot;&gt;Classic 환경 장점 상세&lt;/h2&gt;
 &lt;p&gt;위에서 요약한 장점들을 좀 더 상세하게 살펴보겠습니다.&lt;/p&gt;
 
@@ -147,14 +156,6 @@ SET @@GLOBAL.GTID_PURGED&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span c
 &lt;ul&gt;
   &lt;li&gt;Jenkins, Tensorflow, RabbitMQ, Pinpoint, LAMP, WordPress, Magento, Drupal, Joomla!, Shadowsocks, LEMP, Hugo, Gitlab CE, Node.js, Superset, Tomcat, JEUS, WebtoB, Gradle&lt;/li&gt;
   &lt;li&gt;MySQL, MSSQL, Cubrid, PostgreSQL, MariaDB, Redis, Tibero&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;vpc-환경-장점-요약&quot;&gt;VPC 환경 장점 요약&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;논리적으로 분리된 Network&lt;/li&gt;
-  &lt;li&gt;사용자가 직접 Network 설계 가능&lt;/li&gt;
-  &lt;li&gt;기존 고객의 데이터센터 네트워크와 유사하게 구현 가능&lt;/li&gt;
-  &lt;li&gt;좀 더 상세하고, 높은 수준의 보안 설정 가능&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;vpc-환경-장점-상세&quot;&gt;VPC 환경 장점 상세&lt;/h2&gt;
@@ -225,20 +226,20 @@ VPC를 2개 생성해서 각각 다른 사설 IP 대역을 할당해서 구성 �
 
 &lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
 &lt;ol&gt;
-  &lt;li&gt;Cloud Insight 소개
+  &lt;li&gt;VPC 제품 설명
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightoverview&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightoverview&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.ncloud.com/product/networking/vpc&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://www.ncloud.com/product/networking/vpc&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;Cloud Insight 사용 가이드
+  &lt;li&gt;VPC 사용 가이드
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightconsole&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightconsole&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/ko/networking-vpc-vpcoverview&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/ko/networking-vpc-vpcoverview&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-10-18&lt;/p&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-12-03&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 (nCloud)에는 Classic과 VPC 이렇게 2가지의 환경이 있습니다. 각각의 특징을 장점을 중심으로 비교해보도록 하겠습니다.</summary></entry><entry><title type="html">VPC Peering 생성 가이드</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_peering_guide/" rel="alternate" type="text/html" title="VPC Peering 생성 가이드" /><published>2021-11-22T00:00:00+09:00</published><updated>2021-11-22T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_peering_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_peering_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;VPC(virtural Private Cloud)는 퍼블릭클라우드상에서 제공되는 사설 가상 네트워크 입니다. 계정당 3개의 VPC를 만들수 있으며 다른 VPC 네트워크와 논리적으로 분리되어 있어 독립적인 네트워크 환경을 구현할 수 있습니다.&lt;br /&gt;
 그런데, 간혹 VPC 환경에서 분리되어 있는 VPC간의 통신이 필요할때가 있는데 이때 사용할 수 있는 서비스가 [&lt;strong&gt;VPC Peering&lt;/strong&gt;] 입니다. VPC Peering은 공인 아이피를 거치지 않고 Ncloud 내부 네트워크를 이용하여 VPN없이 VPC간 통신을 할수 있게 해주는 서비스 입니다.&lt;/p&gt;

@@ -19,6 +19,14 @@ order_number: 24
 - 리전간 서버들의 사설 통신 가능 (한국, 미국, 싱가포르, 홍콩, 일본, 독일)
 - 다양한 설치형 서버 이미지 이용 가능
 
+
+## VPC 환경 장점 요약
+- 논리적으로 분리된 Network
+- 사용자가 직접 Network 설계 가능
+- 기존 고객의 데이터센터 네트워크와 유사하게 구현 가능
+- 좀 더 상세하고, 높은 수준의 보안 설정 가능
+
+<br />
 ## Classic 환경 장점 상세
 위에서 요약한 장점들을 좀 더 상세하게 살펴보겠습니다.
 
@@ -34,13 +42,6 @@ Classic 환경에서는 LAMP, Wordpress 등 사용자들이 편하게 각 종 �
 
 - Jenkins, Tensorflow, RabbitMQ, Pinpoint, LAMP, WordPress, Magento, Drupal, Joomla!, Shadowsocks, LEMP, Hugo, Gitlab CE, Node.js, Superset, Tomcat, JEUS, WebtoB, Gradle
 - MySQL, MSSQL, Cubrid, PostgreSQL, MariaDB, Redis, Tibero
-
-
-## VPC 환경 장점 요약
-- 논리적으로 분리된 Network
-- 사용자가 직접 Network 설계 가능
-- 기존 고객의 데이터센터 네트워크와 유사하게 구현 가능
-- 좀 더 상세하고, 높은 수준의 보안 설정 가능
 
 
 ## VPC 환경 장점 상세
@@ -94,10 +95,10 @@ Classic 환경에서는 LAMP, Wordpress 등 사용자들이 편하게 각 종 �
 
 
 ## 참고 URL
-1.  Cloud Insight 소개
-	- <a href="https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightoverview" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightoverview</a>
+1.  VPC 제품 설명
+	- <a href="https://www.ncloud.com/product/networking/vpc" target="_blank" style="word-break:break-all;">https://www.ncloud.com/product/networking/vpc</a>
 
-2.  Cloud Insight 사용 가이드
-	- <a href="https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightconsole" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightconsole</a>
+2.  VPC 사용 가이드
+	- <a href="https://guide.ncloud-docs.com/docs/ko/networking-vpc-vpcoverview" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/ko/networking-vpc-vpcoverview</a>
 
-> 문서 최종 수정일 : 2021-10-18
+> 문서 최종 수정일 : 2021-12-03

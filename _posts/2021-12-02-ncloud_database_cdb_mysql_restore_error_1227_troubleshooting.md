@@ -29,7 +29,7 @@ ERROR 1227 (42000) at line 77: Access denied; you need (at least one of) the SUP
 
 ## GTID 란?
 GTID는 Global Transaction Identifier의 약자로 MySQL 복제에서 서버의 각 트랜잭션을 구분하는 고유한 식별자입니다. 
-GTID는 모든 트랜잭션과 1:1 관계이며, GITD를 활용하면 복제본으로 장애 조치, 계층적 복제, 특정 시점으로 백업 복구하는 등의 작업을 더 쉽게 구현할 수 있으며, 오류 발생 빈도도 줄일 수 있습니다.
+GTID는 모든 트랜잭션과 1:1 관계이며, GTID를 활용하면 복제본으로 장애 조치, 계층적 복제, 특정 시점으로 백업 복구하는 등의 작업을 더 쉽게 구현할 수 있으며, 오류 발생 빈도도 줄일 수 있습니다.
 
 ## 오류 상황 재현
 아래와 같이 서버에서 mysqldump 명령으로 Cloud DB for MySQL DB를 백업 받는 상황을 가정해보겠습니다. 여기서는 [**--set-gtid-purged=OFF**] 옵션을 사용하지 않았습니다.  
