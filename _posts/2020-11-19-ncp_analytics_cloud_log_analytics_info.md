@@ -1,5 +1,6 @@
 ---
 date: 2020-11-19
+update: 2021-12-07
 title: Cloud Log Analytics에서 수집하는 로그 유형
 categories:
   - 7.analytics
@@ -22,8 +23,13 @@ Cloud Log Analytics에서 수집하는 각 종 서비스의 로그 템플릿 종
 - Windows 서버의 각종 text 형식의 로그
 - Cloud DB for MySQL 로그
 - Cloud DB for MSSQL 로그
+- Cloud DB for MongoDB 로그
+- Application Server Launcher 로그
+- Application Load Balancer 로그
+- Search Engine Service 로그
+- Cloud Data Streaming Service 로그
 - Bare Metal Server 로그
-- 그외 템플릿으로 제공되지 않는 로그도 Custom Log 기능으로 직접 대상 로그를 지정해서 수집할 수 있습니다.
+- 그외 템플릿으로 제공되지 않는 로그도 Custom Log 기능으로 직접 대상 로그를 지정해서 수집할 수 있습니다
 
 
 ## 로그 보관 기간
@@ -34,4 +40,4 @@ Cloud Log Analytics에서 수집하는 각 종 서비스의 로그 템플릿 종
 <a href="https://guide.ncloud-docs.com/docs/cla-cla-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/cla-cla-1-1.html</a>
 
 
-!!! info "문서 최종 수정일 : 2020-11-19" 
+> info "문서 최종 수정일 : 2021-12-07" 
