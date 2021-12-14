@@ -1,6 +1,6 @@
 ---
 date: 2021-07-30
-update: 2021-07-30
+update: 2021-12-13
 title: VPC환경에서 Cloud DB for MySQL 생성하기
 categories:
   - 5.database
@@ -86,6 +86,8 @@ DB 이름과 계정. 비번, 접속 포트 등을 설정합니다.
 HOST(IP) 설정에는 DB에 접근을 허용할 IP대역을 입력합니다. 여기서는 테스트용 서버의 Subnet 대역을 모두 허용하기 위해 [192.168.2.%]를 입력합니다.  
 만약 특정 서버 1대만 허용하려고 할 경우에는 앞에서 생성한 테스트 서버 IP처럼 [192.168.2.6]을 입력합니다.
 
+>DB 접속포트는 한번 설정하면 이후에 변경할 수 없으니 신중하게 설정하셔야 합니다.
+
 <img src="../../images/ncp_database_cloud_db_for_mysql_12-3.jpg" alt="네이버 클라우드 VPC환경에서 Cloud DB for MySQL 생성하기 가이드" style="width:770px;align:center">
 
 
@@ -163,4 +165,4 @@ USER_ID, HOST, DB 권한, 암호를 입력하고 DB User 추가 버튼을 클릭
 	- <a href="https://guide.ncloud-docs.com/docs/database-database-5-10" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/database-database-5-10</a>
 
 
-> 문서 최종 수정일 : 2021-08-02
+> 문서 최종 수정일 : 2021-12-13

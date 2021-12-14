@@ -1,6 +1,6 @@
 ---
 date: 2021-08-03
-update: 2021-08-03
+update: 2021-12-13
 title: Cloud DB for MySQL 생성후 Public 도메인으로 접속하기
 categories:
   - 5.database
@@ -76,6 +76,8 @@ DB 엔진 버전은 MySQL 최신 버전 중 네이버에서 안정성이 검증�
 DB 이름과 계정. 비번, 접속 포트 등을 설정합니다.  
 HOST(IP) 설정에는 DB에 접근을 허용할 IP대역을 입력합니다. 여기서는 Public 도메인을 이용하게 되므로 우선 모든 대역을 허용하기 위해 [%]를 입력합니다.  
 대신 접속 IP 제한의 경우 ACG에서 설정하게 됩니다.
+
+>DB 접속포트는 한번 설정하면 이후에 변경할 수 없으니 신중하게 설정하셔야 합니다.
 
 <img src="../../images/ncp_database_cloud_db_for_mysql_public_domain_01-3.jpg" alt="네이버 클라우드 Cloud DB for MySQL 생성하고 Public 도메인으로 접속하기 가이드" style="width:770px;align:center">
 
@@ -157,4 +159,4 @@ DB 서버 상세보기 메뉴에서는 [Process list], [Variables], [Status], [D
 	- <a href="https://guide.ncloud-docs.com/docs/database-database-5-10" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/database-database-5-10</a>
 
 
-> 문서 최종 수정일 : 2021-08-03
+> 문서 최종 수정일 : 2021-12-13
