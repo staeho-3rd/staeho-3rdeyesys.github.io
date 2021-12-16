@@ -101,7 +101,11 @@ Log 수집 설정을 마치면 [로그 수집 Agent] 설치 안내가 나옵니�
 서버에서 [Windows PowerShell]을 열고, 아래 명령어를 실행합니다. 마찬가지로 마지막에는 설치 서버에 해당하는 **설치키**가 포함되어 있습니다.
 
 ``` bash
+# VPC 환경
 Invoke-Expression $((New-Object System.Net.WebClient).DownloadString("http://cm.vcla.ncloud.com/setUpwinClaVPC/{설치키(Install Key)}"))
+
+# Classic 환경
+Invoke-Expression $((New-Object System.Net.WebClient).DownloadString("http://cm.cla.ncloud.com/setUpwinClaVPC/{설치키(Install Key)}"))
 ```
 <img src="../../images/ncloud_analytics_cloud_log_analytics_guide_13.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center">
 
@@ -125,13 +129,25 @@ Agent 설치 후 [Dashboard]를 확인해보면 로그가 수집되고 있을 �
 <img src="../../images/ncloud_analytics_cloud_log_analytics_guide_09.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center">
 
 ## 로그 백업
-Cloud Log Analytics는 수집된 로그를 Object Storage로 내보내기해서 백업할 수 있는 기능을 지원합니다. [Export Log] 메뉴에서 [자동 내보내기 설정]을 클릭합니다.
+Cloud Log Analytics는 수집된 로그를 Object Storage로 내보내기하거나 Excel 파일로 다운로드 해서 백업할 수 있는 기능을 지원합니다.
+
+#### 수동 백업
+[Search] 메뉴에 [Object Storage로 내보내기]와 [X 다운로드] 버튼이 있습니다.
+
+<img src="../../images/ncloud_analytics_cloud_log_analytics_guide_24.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center">
+
+[Object Storage로 내보내기] 버튼을 클릭하면 내보내기 할 버킷을 선택할 수 있습니다.
+
+<img src="../../images/ncloud_analytics_cloud_log_analytics_guide_25.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:600px;align:center">
+
+#### 자동 백업
+[Export Log] 메뉴에서 [자동 내보내기 설정]을 클릭합니다.
 
 <img src="../../images/ncloud_analytics_cloud_log_analytics_guide_16.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center">
 
 설정 화면에서 내보내기를 할 Object Storage의 버킷을 선택합니다. 혹시 버킷이 생성되지 않았다면 Object Storage로 가서 먼저 버킷을 생성하고 와야 합니다.
 
-<img src="../../images/ncloud_analytics_cloud_log_analytics_guide_17.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:700px;align:center">
+<img src="../../images/ncloud_analytics_cloud_log_analytics_guide_17.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:600px;align:center">
 
 내보내기는 하루에 한번 진행되므로 설정 후 다음 날 Object Storage에서 아래와 같이 파일이 저장되어 있는 것을 확인할 수 있습니다.
 
@@ -170,7 +186,11 @@ Agent 삭제 명령어를 실행하면 아래와 같이 **Success Remove Agent**
 로그 수집 해제를 위한 가이드에서 로그 수집 Agent 삭제 명령어를 복사합니다.
 
 ``` bash
+# VPC 환경
 Invoke-Expression $((New-Object System.Net.WebClient).DownloadString("http://cm.vcla.ncloud.com/removewinCla"))
+
+# Classic 환경
+Invoke-Expression $((New-Object System.Net.WebClient).DownloadString("http://cm.cla.ncloud.com/removewinCla"))
 ```
 <img src="../../images/ncloud_analytics_cloud_log_analytics_guide_18.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center">
 
@@ -182,6 +202,11 @@ Agent 삭제 명령어를 실행하면 아래와 같이 **Remove Agent** 메시�
 #### Windows 서버 Agent 삭제 오류 상황
 Windows 서버에서 Agent 삭제를 시도할 때 아래와 같이 오류 메시지가 발생하는 경우가 있습니다.  
 이때는 당황하지 마시고, Agent 삭제 명령어를 다시 한번 실행하면 됩니다.
+
+오류의 원인 : 로그 수집 설정에서 EventLog만 선택했을 경우 발생합니다.  
+로그 수집 Agent는 윈도 이벤트 로그 수집을 위한 winlogbeat와 그 외 로그를 수집하기 위한 filebeat 두가지가 설치되는데, EventLog만 수집하도록 설정할 경우 filebeat는 실행되지 않습니다. 
+그 상태에서 Agent를 삭제하려고 하면 실행중이 아닌 filebeat를 실행 중지 시키려고 시도하게 되고, 결국 오류가 발생합니다.  
+그러므로 심각한 오류는 아니고 만약을 위해 Agent 삭제 명령어를 한번 더 실행시키는 것으로 문제는 해결됩니다.
 
 ``` bash
 Stop-Service : Cannot find any service with service name 'filebeat'.

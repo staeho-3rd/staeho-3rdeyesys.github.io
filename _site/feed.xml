@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-12-14T18:01:11+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Cloud Log Analytics 설정 가이드</title><link href="https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide/" rel="alternate" type="text/html" title="Cloud Log Analytics 설정 가이드" /><published>2021-12-10T00:00:00+09:00</published><updated>2021-12-10T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-12-16T11:37:57+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Cloud Log Analytics 설정 가이드</title><link href="https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide/" rel="alternate" type="text/html" title="Cloud Log Analytics 설정 가이드" /><published>2021-12-10T00:00:00+09:00</published><updated>2021-12-10T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;Cloud Log Analytics는 Ncloud(네이버 클라우드)가 제공하는 여러 서비스에서 발생하는 다양한 로그들을 한 곳에 모아 저장하고 손쉽게 분석할 수 있는 서비스로, 
 검색 기능을 이용해 여러 종류의 로그를 한 곳에서 한번에 조회하고 분석할 수 있어 효과적인 로그 관리가 가능합니다.&lt;/p&gt;
 
@@ -92,7 +92,11 @@ Cloud Log Analytics는 Classic, VPC 환경 공통 서비스이므로 어느쪽 �
 &lt;p&gt;설정을 마치면 Agent 설치 가이드를 확인할 수 있습니다.&lt;br /&gt;
 서버에서 [Windows PowerShell]을 열고, 아래 명령어를 실행합니다. 마찬가지로 마지막에는 설치 서버에 해당하는 &lt;strong&gt;설치키&lt;/strong&gt;가 포함되어 있습니다.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Invoke-Expression &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;New-Object System.Net.WebClient&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.DownloadString&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://cm.vcla.ncloud.com/setUpwinClaVPC/{설치키(Install Key)}&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# VPC 환경&lt;/span&gt;
+Invoke-Expression &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;New-Object System.Net.WebClient&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.DownloadString&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://cm.vcla.ncloud.com/setUpwinClaVPC/{설치키(Install Key)}&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Classic 환경&lt;/span&gt;
+Invoke-Expression &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;New-Object System.Net.WebClient&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.DownloadString&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://cm.cla.ncloud.com/setUpwinClaVPC/{설치키(Install Key)}&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_13.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
@@ -116,13 +120,25 @@ Windows Server 2019는 아래와 같이 선택을 해도 [수집 설정] 버튼�
 &lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_09.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;로그-백업&quot;&gt;로그 백업&lt;/h2&gt;
-&lt;p&gt;Cloud Log Analytics는 수집된 로그를 Object Storage로 내보내기해서 백업할 수 있는 기능을 지원합니다. [Export Log] 메뉴에서 [자동 내보내기 설정]을 클릭합니다.&lt;/p&gt;
+&lt;p&gt;Cloud Log Analytics는 수집된 로그를 Object Storage로 내보내기하거나 Excel 파일로 다운로드 해서 백업할 수 있는 기능을 지원합니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;수동-백업&quot;&gt;수동 백업&lt;/h4&gt;
+&lt;p&gt;[Search] 메뉴에 [Object Storage로 내보내기]와 [X 다운로드] 버튼이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_24.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[Object Storage로 내보내기] 버튼을 클릭하면 내보내기 할 버킷을 선택할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_25.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;자동-백업&quot;&gt;자동 백업&lt;/h4&gt;
+&lt;p&gt;[Export Log] 메뉴에서 [자동 내보내기 설정]을 클릭합니다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_16.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;설정 화면에서 내보내기를 할 Object Storage의 버킷을 선택합니다. 혹시 버킷이 생성되지 않았다면 Object Storage로 가서 먼저 버킷을 생성하고 와야 합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_17.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_17.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;내보내기는 하루에 한번 진행되므로 설정 후 다음 날 Object Storage에서 아래와 같이 파일이 저장되어 있는 것을 확인할 수 있습니다.&lt;/p&gt;
 
@@ -157,7 +173,11 @@ Windows Server 2019는 아래와 같이 선택을 해도 [수집 설정] 버튼�
 
 &lt;p&gt;로그 수집 해제를 위한 가이드에서 로그 수집 Agent 삭제 명령어를 복사합니다.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Invoke-Expression &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;New-Object System.Net.WebClient&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.DownloadString&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://cm.vcla.ncloud.com/removewinCla&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# VPC 환경&lt;/span&gt;
+Invoke-Expression &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;New-Object System.Net.WebClient&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.DownloadString&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://cm.vcla.ncloud.com/removewinCla&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Classic 환경&lt;/span&gt;
+Invoke-Expression &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;New-Object System.Net.WebClient&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.DownloadString&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://cm.cla.ncloud.com/removewinCla&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_18.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
@@ -168,6 +188,11 @@ Windows Server 2019는 아래와 같이 선택을 해도 [수집 설정] 버튼�
 &lt;h4 id=&quot;windows-서버-agent-삭제-오류-상황&quot;&gt;Windows 서버 Agent 삭제 오류 상황&lt;/h4&gt;
 &lt;p&gt;Windows 서버에서 Agent 삭제를 시도할 때 아래와 같이 오류 메시지가 발생하는 경우가 있습니다.&lt;br /&gt;
 이때는 당황하지 마시고, Agent 삭제 명령어를 다시 한번 실행하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;오류의 원인 : 로그 수집 설정에서 EventLog만 선택했을 경우 발생합니다.&lt;br /&gt;
+로그 수집 Agent는 윈도 이벤트 로그 수집을 위한 winlogbeat와 그 외 로그를 수집하기 위한 filebeat 두가지가 설치되는데, EventLog만 수집하도록 설정할 경우 filebeat는 실행되지 않습니다. 
+그 상태에서 Agent를 삭제하려고 하면 실행중이 아닌 filebeat를 실행 중지 시키려고 시도하게 되고, 결국 오류가 발생합니다.&lt;br /&gt;
+그러므로 심각한 오류는 아니고 만약을 위해 Agent 삭제 명령어를 한번 더 실행시키는 것으로 문제는 해결됩니다.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Stop-Service : Cannot find any service with service name &lt;span class=&quot;s1&quot;&gt;'filebeat'&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;

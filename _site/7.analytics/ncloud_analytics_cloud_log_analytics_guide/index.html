@@ -261,7 +261,11 @@ Cloud Log Analytics는 Classic, VPC 환경 공통 서비스이므로 어느쪽 �
 <p>설정을 마치면 Agent 설치 가이드를 확인할 수 있습니다.<br />
 서버에서 [Windows PowerShell]을 열고, 아래 명령어를 실행합니다. 마찬가지로 마지막에는 설치 서버에 해당하는 <strong>설치키</strong>가 포함되어 있습니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Invoke-Expression <span class="k">$((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s2">"http://cm.vcla.ncloud.com/setUpwinClaVPC/{설치키(Install Key)}"</span><span class="k">))</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># VPC 환경</span>
+Invoke-Expression <span class="k">$((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s2">"http://cm.vcla.ncloud.com/setUpwinClaVPC/{설치키(Install Key)}"</span><span class="k">))</span>
+
+<span class="c"># Classic 환경</span>
+Invoke-Expression <span class="k">$((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s2">"http://cm.cla.ncloud.com/setUpwinClaVPC/{설치키(Install Key)}"</span><span class="k">))</span>
 </code></pre></div></div>
 <p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_13.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
 
@@ -285,13 +289,25 @@ Windows Server 2019는 아래와 같이 선택을 해도 [수집 설정] 버튼�
 <p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_09.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
 
 <h2 id="로그-백업">로그 백업</h2>
-<p>Cloud Log Analytics는 수집된 로그를 Object Storage로 내보내기해서 백업할 수 있는 기능을 지원합니다. [Export Log] 메뉴에서 [자동 내보내기 설정]을 클릭합니다.</p>
+<p>Cloud Log Analytics는 수집된 로그를 Object Storage로 내보내기하거나 Excel 파일로 다운로드 해서 백업할 수 있는 기능을 지원합니다.</p>
+
+<h4 id="수동-백업">수동 백업</h4>
+<p>[Search] 메뉴에 [Object Storage로 내보내기]와 [X 다운로드] 버튼이 있습니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_24.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>[Object Storage로 내보내기] 버튼을 클릭하면 내보내기 할 버킷을 선택할 수 있습니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_25.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:600px;align:center" /></p>
+
+<h4 id="자동-백업">자동 백업</h4>
+<p>[Export Log] 메뉴에서 [자동 내보내기 설정]을 클릭합니다.</p>
 
 <p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_16.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
 
 <p>설정 화면에서 내보내기를 할 Object Storage의 버킷을 선택합니다. 혹시 버킷이 생성되지 않았다면 Object Storage로 가서 먼저 버킷을 생성하고 와야 합니다.</p>
 
-<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_17.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:700px;align:center" /></p>
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_17.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:600px;align:center" /></p>
 
 <p>내보내기는 하루에 한번 진행되므로 설정 후 다음 날 Object Storage에서 아래와 같이 파일이 저장되어 있는 것을 확인할 수 있습니다.</p>
 
@@ -326,7 +342,11 @@ Windows Server 2019는 아래와 같이 선택을 해도 [수집 설정] 버튼�
 
 <p>로그 수집 해제를 위한 가이드에서 로그 수집 Agent 삭제 명령어를 복사합니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Invoke-Expression <span class="k">$((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s2">"http://cm.vcla.ncloud.com/removewinCla"</span><span class="k">))</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># VPC 환경</span>
+Invoke-Expression <span class="k">$((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s2">"http://cm.vcla.ncloud.com/removewinCla"</span><span class="k">))</span>
+
+<span class="c"># Classic 환경</span>
+Invoke-Expression <span class="k">$((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s2">"http://cm.cla.ncloud.com/removewinCla"</span><span class="k">))</span>
 </code></pre></div></div>
 <p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_18.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
 
@@ -337,6 +357,11 @@ Windows Server 2019는 아래와 같이 선택을 해도 [수집 설정] 버튼�
 <h4 id="windows-서버-agent-삭제-오류-상황">Windows 서버 Agent 삭제 오류 상황</h4>
 <p>Windows 서버에서 Agent 삭제를 시도할 때 아래와 같이 오류 메시지가 발생하는 경우가 있습니다.<br />
 이때는 당황하지 마시고, Agent 삭제 명령어를 다시 한번 실행하면 됩니다.</p>
+
+<p>오류의 원인 : 로그 수집 설정에서 EventLog만 선택했을 경우 발생합니다.<br />
+로그 수집 Agent는 윈도 이벤트 로그 수집을 위한 winlogbeat와 그 외 로그를 수집하기 위한 filebeat 두가지가 설치되는데, EventLog만 수집하도록 설정할 경우 filebeat는 실행되지 않습니다. 
+그 상태에서 Agent를 삭제하려고 하면 실행중이 아닌 filebeat를 실행 중지 시키려고 시도하게 되고, 결국 오류가 발생합니다.<br />
+그러므로 심각한 오류는 아니고 만약을 위해 Agent 삭제 명령어를 한번 더 실행시키는 것으로 문제는 해결됩니다.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Stop-Service : Cannot find any service with service name <span class="s1">'filebeat'</span><span class="nb">.</span>
 </code></pre></div></div>
