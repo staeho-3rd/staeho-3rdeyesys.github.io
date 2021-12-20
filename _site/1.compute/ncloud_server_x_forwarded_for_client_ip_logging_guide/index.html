@@ -162,7 +162,7 @@
 			<h2 id="개요">개요</h2>
 <p>X-Forwarded-For (XFF) 는 HTTP Header 중 하나로 Load Balancer(로드밸런서)나 Proxy Server를 통해 웹서버에 접속하는 Client의 IP 주소를 식별하는 표준 헤더입니다.<br />
 웹서버나 WAS 앞쪽에 Load Balancer 혹은 Proxy Server 등이 위치하게 된다면 서버 접근 로그에는 Client IP가 아닌 Load Balancer 혹은 Proxy Server의 IP 주소가 기록됩니다. 
-이때 웹 어플리케이션에서 X-Forwarde-For 헤더를 이용하면 Client IP를 서버 접근 로그에 남길 수 있습니다.</p>
+이때 웹 어플리케이션에서 X-Forwarded-For 헤더를 이용하면 Client IP를 서버 접근 로그에 남길 수 있습니다.</p>
 
 <p>여기서는 Load Balancer와 연동된 CentOS 와 Ubuntu의 Apache 웹서버 환경에서 X-Forwarded-For 를 이용하여 Apache access_log에 Clinet의 IP를 저장하는 과정을 살펴보겠습니다.</p>
 
