@@ -33,8 +33,8 @@
 					<li>
 					<a href="{{ site.baseurl }}{{ tutorial.url }}">{% include document-icon.html icon=tutorial.type %}
 					{% assign tsize = tutorial.title | size %}
-					{% if tsize > 21 %}
-					{{ tutorial.title | truncate: 21 }}
+					{% if tsize > 26 %}
+					{{ tutorial.title | truncate: 26 }}
 					{% else %}
 					{{ tutorial.title }}
 					{% endif %}

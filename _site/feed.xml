@@ -1,4 +1,162 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-12-16T11:37:57+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Cloud Log Analytics 설정 가이드</title><link href="https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide/" rel="alternate" type="text/html" title="Cloud Log Analytics 설정 가이드" /><published>2021-12-10T00:00:00+09:00</published><updated>2021-12-10T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-12-20T12:02:11+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP 기록하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide/" rel="alternate" type="text/html" title="X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP 기록하기" /><published>2021-12-17T00:00:00+09:00</published><updated>2021-12-17T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;X-Forwarded-For (XFF) 는 HTTP Header 중 하나로 Load Balancer(로드밸런서)나 Proxy Server를 통해 웹서버에 접속하는 Client의 IP 주소를 식별하는 표준 헤더입니다.&lt;br /&gt;
+웹서버나 WAS 앞쪽에 Load Balancer 혹은 Proxy Server 등이 위치하게 된다면 서버 접근 로그에는 Client IP가 아닌 Load Balancer 혹은 Proxy Server의 IP 주소가 기록됩니다. 
+이때 웹 어플리케이션에서 X-Forwarde-For 헤더를 이용하면 Client IP를 서버 접근 로그에 남길 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;여기서는 Load Balancer와 연동된 CentOS 와 Ubuntu의 Apache 웹서버 환경에서 X-Forwarded-For 를 이용하여 Apache access_log에 Clinet의 IP를 저장하는 과정을 살펴보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;테스트-환경&quot;&gt;테스트 환경&lt;/h2&gt;
+&lt;p&gt;테스트는 CentOS, Ubuntu OS가 각각 설치된 2대의 서버를 Load Balancer와 연동한 후 Cloud Log Analytics에서 Apache access_log를  수집해 IP 주소를 확인하는 방식으로 진행하겠습니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;network-환경&quot;&gt;Network 환경&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;VPC 대역 : 172.16.0.0/16&lt;/li&gt;
+  &lt;li&gt;Subnet 대역 (Server) : 172.16.&lt;strong&gt;10&lt;/strong&gt;.0/24&lt;/li&gt;
+  &lt;li&gt;Sbunet 대역 (Load Balancer) : 172.16.&lt;strong&gt;20&lt;/strong&gt;.0/24&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;server-환경&quot;&gt;Server 환경&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;xxf-test-1 : CentOS 7.8&lt;/li&gt;
+  &lt;li&gt;xxf-test-2 : Ubuntu 18.04&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;테스트-서버&quot;&gt;테스트 서버&lt;/h4&gt;
+&lt;p&gt;위 서버 환경에서 정리한 대로 CentOS, Ubuntu 2대의 서버를 준비했습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VPC 환경에서 서버 생성하는 방법 : &lt;a href=&quot;/1.compute/ncp_server_vpc_create/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.3rdeyesys.com/1.compute/ncp_server_vpc_create/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_01.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;로드밸런서도 마찬가지로 준비하고, 서버와 연동까지 완료했습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VPC 환경에서 Application Load Balancer 생성하는 방법 : &lt;a href=&quot;/2.networking/ncp_networking_load_balancer_application_lb/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.3rdeyesys.com/2.networking/ncp_networking_load_balancer_application_lb/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_02.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;설정-전-테스트&quot;&gt;설정 전 테스트&lt;/h2&gt;
+&lt;p&gt;우선, &lt;strong&gt;X-Forwarded-For (XFF)&lt;/strong&gt; 설정을 하기 전에 어떻게 기록이 남는지 확인해보겠습니다.&lt;br /&gt;
+아래와 같이 Load Balancer 주소로 접속해서 2대의 서버에 각각 접근하도록 합니다.&lt;br /&gt;
+위에서 소개한 Application Load Balancer 생성하는 방법을 그대로 따라하면 아래와 같은 메시지를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_11-1.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:560px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_11-2.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:560px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;apache-접속-로그-확인&quot;&gt;Apache 접속 로그 확인&lt;/h4&gt;
+&lt;p&gt;Apache 접속 로그 파일은 아래의 위치에 존재하지만, 저희는 네이버 클라우드 (Ncloud)의 상품 중 하나인 &lt;strong&gt;Cloud Log Analytics&lt;/strong&gt;에서 로그를 수집해서 확인해보겠습니다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;CentOS : /var/log/httpd/access_log&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Ubuntu : /var/log/apache2/access.log&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Cloud Log Analytics 설정 가이드 : &lt;a href=&quot;/7.analytics/ncloud_analytics_cloud_log_analytics_guide/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cloud Log Analytics에서 수집한 로그를 확인해보면 위에서 설정했던 &lt;strong&gt;Load Balancer의 IP 대역 (172.16.20.xx)&lt;/strong&gt;이 기록된 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_03.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;centos-설정&quot;&gt;CentOS 설정&lt;/h2&gt;
+&lt;p&gt;이제 실제 Client IP가 기록 되도록 설정을 변경해보겠습니다.&lt;br /&gt;
+우선 CentOS에서는 &lt;strong&gt;httpd.conf&lt;/strong&gt; 파일만 수정하면 됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /etc/httpd/conf/httpd.conf
+
+&lt;span class=&quot;c&quot;&gt;# vi Line Number 표시하기&lt;/span&gt;
+:set number
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;httpd.conf 파일 196번째 라인의 LogFormat 항목에서 &lt;strong&gt;%h&lt;/strong&gt; 를 &lt;strong&gt;%{X-Forwarded-For}i&lt;/strong&gt; 로 수정합니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;httpdconf-수정-전&quot;&gt;httpd.conf 수정 전&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;196   LogFormat &lt;span class=&quot;s2&quot;&gt;&quot;%h %l %u %t &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%r&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; %&amp;gt;s %b &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{Referer}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{User-Agent}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; combined
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_04.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;httpdconf-수정-후&quot;&gt;httpd.conf 수정 후&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;196   LogFormat &lt;span class=&quot;s2&quot;&gt;&quot;%{X-Forwarded-For}i %l %u %t &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%r&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; %&amp;gt;s %b &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{Referer}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{User-Agent}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; combined
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_05.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;apache-재시작&quot;&gt;Apache 재시작&lt;/h4&gt;
+&lt;p&gt;httpd.conf 파일 수정 후에 Apache를 재시작합니다. 로그 테스트는 Ubuntu까지 설정을 마친 후에 진행하겠습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# systemctl restart httpd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;ubuntu-설정&quot;&gt;Ubuntu 설정&lt;/h2&gt;
+&lt;p&gt;Ubuntu에서는 apache2.conf 파일을 수정하기 전에 &lt;strong&gt;remoteip 모듈&lt;/strong&gt;을 사용하도록 설정해줘야 합니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;remoteip-설정&quot;&gt;remoteip 설정&lt;/h4&gt;
+&lt;p&gt;아래 명령어를 실행하면 remoteip 모듈이 활성화 됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# a2enmod remoteip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_06.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;remoteipload-수정&quot;&gt;remoteip.load 수정&lt;/h4&gt;
+&lt;p&gt;다음으로 remoteip.load 파일을 수정해서 아래쪽에 [&lt;strong&gt;RemoteIPHeader X-FORWARDED-FOR&lt;/strong&gt;]을 추가 합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /etc/apache2/mods-enabled/remoteip.load
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;remoteipload-수정-전&quot;&gt;remoteip.load 수정 전&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LoadModule remoteip_module /usr/lib/apache2/modules/mod_remoteip.so
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;remoteipload-수정-후&quot;&gt;remoteip.load 수정 후&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LoadModule remoteip_module /usr/lib/apache2/modules/mod_remoteip.so
+RemoteIPHeader X-FORWARDED-FOR
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_07.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;apache2conf-수정&quot;&gt;apache2.conf 수정&lt;/h4&gt;
+&lt;p&gt;다음으로 &lt;strong&gt;apache2.conf&lt;/strong&gt; 파일을 수정합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /etc/apache2/apache2.conf
+
+&lt;span class=&quot;c&quot;&gt;# vi Line Number 표시하기&lt;/span&gt;
+:set number
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;apache2.conf 213번째 라인의 LogFormat 부분에서 &lt;strong&gt;%h&lt;/strong&gt; 를 &lt;strong&gt;%a&lt;/strong&gt; 로 변경합니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;apache2conf-수정-전&quot;&gt;apache2.conf 수정 전&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;213 LogFormat &lt;span class=&quot;s2&quot;&gt;&quot;%h %l %u %t &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%r&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; %&amp;gt;s %O &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{Referer}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{User-Agent}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; combined  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_08.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;apache2conf-수정-후&quot;&gt;apache2.conf 수정 후&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;213 LogFormat &lt;span class=&quot;s2&quot;&gt;&quot;%a %l %u %t &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%r&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; %&amp;gt;s %O &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{Referer}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{User-Agent}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; combined  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_09.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;apache-재시작-1&quot;&gt;Apache 재시작&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# systemctl restart apache2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;설정-후-테스트&quot;&gt;설정 후 테스트&lt;/h2&gt;
+&lt;p&gt;위와 같이  CentOS, Ubuntu 2대 서버에서 설정을 모두 마친 후에 로드 밸런서 URL로 접속합니다.&lt;br /&gt;
+이후에 Cloud Log Analytics에서 로그를 확인해보면 아래와 같이 로드밸런서 IP가 아닌 실제 접속한 Client의 IP가 기록된 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_10.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;X-Forwarded-For 안내
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-Forwarded-For&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-Forwarded-For&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-12-17&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 X-Forwarded-For (XFF) 는 HTTP Header 중 하나로 Load Balancer(로드밸런서)나 Proxy Server를 통해 웹서버에 접속하는 Client의 IP 주소를 식별하는 표준 헤더입니다. 웹서버나 WAS 앞쪽에 Load Balancer 혹은 Proxy Server 등이 위치하게 된다면 서버 접근 로그에는 Client IP가 아닌 Load Balancer 혹은 Proxy Server의 IP 주소가 기록됩니다. 이때 웹 어플리케이션에서 X-Forwarde-For 헤더를 이용하면 Client IP를 서버 접근 로그에 남길 수 있습니다.</summary></entry><entry><title type="html">Cloud Log Analytics 설정 가이드</title><link href="https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide/" rel="alternate" type="text/html" title="Cloud Log Analytics 설정 가이드" /><published>2021-12-10T00:00:00+09:00</published><updated>2021-12-10T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;Cloud Log Analytics는 Ncloud(네이버 클라우드)가 제공하는 여러 서비스에서 발생하는 다양한 로그들을 한 곳에 모아 저장하고 손쉽게 분석할 수 있는 서비스로, 
 검색 기능을 이용해 여러 종류의 로그를 한 곳에서 한번에 조회하고 분석할 수 있어 효과적인 로그 관리가 가능합니다.&lt;/p&gt;
 
@@ -1818,156 +1976,4 @@ Route Table 정보를 삭제한 후에 SSL VPN을 삭제하시면 됩니다.&lt;
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-11-02&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Ncloud(네이버 클라우드) 외부에서 내부에 구성된 네트워크로 암호화된 보안 접속 통신을 제공하는 서비스인 SSL VPN을 VPC 환경에서 설정하고, 서버에 접속하는 방법에 대해 정리해보겠습니다.</summary></entry><entry><title type="html">Classic 환경에서 SSL VPN 설정하고 접속하는 방법</title><link href="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_classic_guide/" rel="alternate" type="text/html" title="Classic 환경에서 SSL VPN 설정하고 접속하는 방법" /><published>2021-10-27T00:00:00+09:00</published><updated>2021-10-27T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_classic_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_classic_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;Ncloud(네이버 클라우드) 외부에서 내부에 구성된 네트워크로 암호화된 보안 접속 통신을 제공하는 서비스인 SSL VPN을 Classic 환경에서 설정하고, 서버에 접속하는 방법에 대해 정리해보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;ssl-vpn이란&quot;&gt;SSL VPN이란?&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;VPN은 가상 사설망(Virtual Private Network)의 약자로, 외부에서 접근할 수 없는 사설망에 내 PC나 네트워크를 연결시키는 방법을 말합니다.&lt;/li&gt;
-  &lt;li&gt;사설망과의 연결은 가상 터널을 통해 이루어지며, 이 가상 터널을 SSL 암호화로 보호하는 것이 SSL VPN입니다.&lt;/li&gt;
-  &lt;li&gt;가상 터널을 통해 사설망과 연결된 사용자 PC는 사설망의 라우팅 및 ACL 정책에 따라 내부 서버에 접근할 수 있습니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;ssl-vpn-생성&quot;&gt;SSL VPN 생성&lt;/h2&gt;
-&lt;p&gt;[SSL VPN 생성] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_01.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;우선 등록 가능한 접속 ID 개수에 따른 상품을 선택합니다. Classic 환경에서는 3개, 5개, 10개 상품만 선택 가능합니다. 
-다음으로 인증 방식은 ID/PW 만으로 접속하는 일차인증과 OTP까지 사용하는 이차 인증 중에서 원하는 방식을 선택합니다. 
-그리고 이차인증을 선택했을 경우에는 SMS와 Email 어떤 것을 이용할 것인지도 선택하게 됩니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;인증방식과 OTP 전송 방식은 SSL VPN 생성 시에 한번 선택하면 변경할 수 없으니 주의해야 합니다. 만약 변경을 하고 싶을 경우에는 SSL VPN을 새로 생성해야 합니다.
-Classic 환경에서는 이차인증을 선택하면 별도의 이용요금이 부과됩니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_02.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음으로 개인정보 수집 및 이용에 동의해야 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_03.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;SSL VPN이 생성되면 다음과 같이 리스트에 서 확인 가능하며 여기서 [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;]은 뒤쪽에서 네트워크 접근 제한을 설정할 때 필요한 중요한 정보입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_04.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;사용자-설정&quot;&gt;사용자 설정&lt;/h2&gt;
-&lt;p&gt;SSL VPN에 접속할 사용자 정보를 설정합니다.  리스트에서 SSL VPN을 선택하고 [사용자 설정] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_05.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;사용자 정보는 ID, Passowrd, Email, SMS 등을 입력하고 [추가] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_06.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;사용자가 추가되면 SSL VPN 정보에 사용자 계정 수(등록된 ID 수)에 숫자가 표시되는 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_07.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;acg-설정&quot;&gt;ACG 설정&lt;/h2&gt;
-&lt;p&gt;SSL VPN을 사용하려면 서버에 적용된 ACG에 [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;]을 등록해야 합니다.&lt;br /&gt;
-우선 SSL VPN을 통해서 접속할 서버를 선택하고 적용된 ACG를 확인합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_08.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;[Server] - [ACG]에서 위에서 확인한 ACG를 선택하고 [ACG 설정]을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_09.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ACG 규칙 설정 화면에서 위에서 확인했던 [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;]을 접근 소스에 입력하고, 필요한 포트들을 등록합니다. 
-기본이 되는 프로토콜과 포트는 리눅스 서버 접속용 TCP 22, 윈도우 서버 접속용 TCP 3389, Ping 확인용 ICMP 등입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_10.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;agent-다운로드&quot;&gt;Agent 다운로드&lt;/h2&gt;
-&lt;p&gt;SSL VPN 접속을 위한 Agent를 다운로드 합니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/security-5-1-windowsdownload&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;윈도우 용 다운로드&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/security-5-1-macdownload&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;맥 용 다운로드&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_11.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;agent-접속&quot;&gt;Agent 접속&lt;/h2&gt;
-&lt;p&gt;Agent 프로그램, BIG-IP Edge Client를 설치하고 실행하면 다음과 같은 화면을 볼 수 있습니다.&lt;br /&gt;
-Agent에는 Classic 환경 SSL VPN 서버(Ncloud-kr-01)가 기본으로 설정되어 있는데, 혹시 빠져 있다면 [서버 변경] 버튼을 클릭해서 &lt;strong&gt;https://sslvpn-kr-01.ncloud.com&lt;/strong&gt;을 입력하고 연결 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_12.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:557px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위에서 설정했던 VPN 접속용 아이디와 Password를 입력하고 [로그온] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_13.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:650px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;OTP 접속도 설정했다면 도착한 인증 번호를 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_14.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:650px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;SSL VPN에 제대로 연결이 되었는지 확인하기 위해서 cmd 창을 띄워서 ipconfig 명령어를 입력하면 아래 화면처럼 SSL VPN 주소로 설정된 어탭터에  [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;]에 해당하는 IP가 할당된 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_15.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;서버-접속&quot;&gt;서버 접속&lt;/h2&gt;
-&lt;p&gt;이제 SSL VPN이 연결된 상태에서 서버에 접속해보겠습니다.&lt;br /&gt;
-PuTTY 를 실행하고 접속할 서버의 IP를 입력합니다.&lt;br /&gt;
-이때 서버 IP는 콘솔에 있는 서버 정보에서 &lt;strong&gt;비공인 IP&lt;/strong&gt;에 표시되는 IP를 입력하면 됩니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;이때 혹시나 포트 포워딩이나 공인 IP를 설정하고 그 IP를 입력하는 일이 없도록 주의해야 합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_16.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;agent-기타-설정&quot;&gt;Agent 기타 설정&lt;/h2&gt;
-&lt;p&gt;SSL VPN Agent에는 몇가지 추가 기능이 있는데 아래에서 확인해보겠습니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;트래픽-그래프&quot;&gt;트래픽 그래프&lt;/h4&gt;
-&lt;p&gt;Agent 창에서 [그래프 보기] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_17.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:557px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;여기서는 SSL VPN이 연결된 상태의 트래픽을 그래프로 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_18.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:560px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음으로 [상세 보기] 버튼을 클릭하면 접속 세부 정보, 로그, 통계, 알림, 라우팅 테이블, IP설정 등의 정보를 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_19.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;스펙-변경&quot;&gt;스펙 변경&lt;/h2&gt;
-&lt;p&gt;처음에 설정한 접속 가능 ID 개수를 변경하고 싶을 경우 SSL VPN을 선택하고 [스펙 변경] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_20.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;3개, 5개, 10개 상품 중에서 원하는 개수로 변경할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_21.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;주의사항&quot;&gt;주의사항&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;SSL VPN이 연결된 상태에서 새로운 서버를 생성하고 접속을 시도하면 아래와 같은 오류 메시지가 뜨면서 서버 접속이 되지 않습니다.  이때는 SSL VPN의 연결을 끊었다가 다시 연결해야 새로 생성한 서버에 접속할 수 있습니다.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_23.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;삭제&quot;&gt;삭제&lt;/h2&gt;
-&lt;p&gt;삭제를 원할 경우 SSL VPN을 선택하고 상단의 [삭제] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_22.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;SSL VPN 사용 가이드(Classic)
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/security-security-5-1&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/security-security-5-1&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;SSL VPN 요금
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.ncloud.com/product/security/sslVpn&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://www.ncloud.com/product/security/sslVpn&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-10-28&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Ncloud(네이버 클라우드) 외부에서 내부에 구성된 네트워크로 암호화된 보안 접속 통신을 제공하는 서비스인 SSL VPN을 Classic 환경에서 설정하고, 서버에 접속하는 방법에 대해 정리해보겠습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Ncloud(네이버 클라우드) 외부에서 내부에 구성된 네트워크로 암호화된 보안 접속 통신을 제공하는 서비스인 SSL VPN을 VPC 환경에서 설정하고, 서버에 접속하는 방법에 대해 정리해보겠습니다.</summary></entry></feed>

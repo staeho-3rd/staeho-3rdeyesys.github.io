@@ -1,6 +1,6 @@
 ---
 date: 2021-06-30
-update: 2021-06-30
+update: 2021-12-17
 title: VPC 환경에서 Application Load Balancer 생성하기
 categories:
   - 2.networking
@@ -107,7 +107,7 @@ Apache와 PHP를 설치하고 기본문서 index.html에 서버의 호스트명�
 apt-get update
 apt-get install apache2 
 apt-get install php
-apt-get install libapache2-mod-php7.0
+apt-get install libapache2-mod-php
 
 systemctl start apache2
 
@@ -168,4 +168,4 @@ systemctl status httpd
 	- <a href="https://guide.ncloud-docs.com/docs/networking-loadbalancer-targetgroupconsole" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-loadbalancer-targetgroupconsole</a>
 
 
-> 문서 최종 수정일 : 2021-06-30
+> 문서 최종 수정일 : 2021-12-17
