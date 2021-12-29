@@ -1,4 +1,98 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-12-20T12:24:16+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP 기록하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide/" rel="alternate" type="text/html" title="X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP 기록하기" /><published>2021-12-17T00:00:00+09:00</published><updated>2021-12-17T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2021-12-29T14:51:42+09:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Windows 서버 모니터링 성능 정보 수집 오류 해결 방법</title><link href="https://docs.3rdeyesys.com/81.manage/ncloud_management_monitoring_win_perf_data_error_troubleshoot/" rel="alternate" type="text/html" title="Windows 서버 모니터링 성능 정보 수집 오류 해결 방법" /><published>2021-12-28T00:00:00+09:00</published><updated>2021-12-28T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/81.manage/ncloud_management_monitoring_win_perf_data_error_troubleshoot</id><content type="html" xml:base="https://docs.3rdeyesys.com/81.manage/ncloud_management_monitoring_win_perf_data_error_troubleshoot/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;Ncloud(네이버 클라우드) Monitoring 서비스를 이용해 서버 시스템 자원들(CPU, Memory 등)의 성능 정보를 수집, 모니터링할 때 간혹 성능 정보가 수집되지 않는 경우가 발생하기도 합니다. 
+특히 Windows 서버의 경우 Windows 자체 성능 테이블을 참조하여 데이터를 수집하기 때문에 Windows 자체 성능 테이블에 문제가 발생할 경우 성능 정보를 수집하지 못하게 됩니다.&lt;br /&gt;
+여기서는 Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보가 수집되지 않을 때 해결 방법을 정리해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;서버-환경&quot;&gt;서버 환경&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Classic 환경&lt;/li&gt;
+  &lt;li&gt;Windows Server 2016 64bit R2 en&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;오류-상황&quot;&gt;오류 상황&lt;/h2&gt;
+&lt;p&gt;성능 정보가 수집되지 않을 경우 아래와 같이 Monitoring 정보에서 그래프가 특정 시점 이후로 끊겨서 표시되게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_01.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;서버-상태-확인&quot;&gt;서버 상태 확인&lt;/h2&gt;
+
+&lt;h4 id=&quot;서버-성능-정보-상태-확인&quot;&gt;서버 성능 정보 상태 확인&lt;/h4&gt;
+&lt;p&gt;우선 서버에 접속해서 서버의 작업 관리자 (Task Manager)를 실행, 성능(Performance)탭을 열고 CPU, Memory, Disk, Ethernet 등의 성능 정보가 제대로 표시되는지 확인합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_04.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;모니터링-agent-상태-확인&quot;&gt;모니터링 Agent 상태 확인&lt;/h4&gt;
+&lt;p&gt;Ncloud(네이버 클라우드) 서버들에는 모니터링 정보를 수집하기 위한 Agent가 설치되는데 이 모니터링 Agent가 작동하고 있는지 확인합니다.&lt;/p&gt;
+
+&lt;p&gt;아래와 같이 Windows PowerShell에서 서비스를 검색합니다. 
+Agent가 표시되는지 Status가 Running 상태인지 확인합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Get-Service &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;nsight&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_03.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;문제-해결&quot;&gt;문제 해결&lt;/h2&gt;
+
+&lt;h4 id=&quot;서버-성능-정보에-문제가-있는-경우&quot;&gt;서버 성능 정보에 문제가 있는 경우&lt;/h4&gt;
+&lt;p&gt;혹시 서버 성능 정보가 제대로 표시 되지 않을 경우에는 cmd 창에서 아래 명령어로 성능 정보 테이블을 복구합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; lodctr /R
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_05.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;서버-성능-정보가-정상인-경우&quot;&gt;서버 성능 정보가 정상인 경우&lt;/h4&gt;
+&lt;p&gt;서버의 성능 정보가 제대로 표시되는데도 Monitoring 데이터가 제대로 수집되지 않는다면 cmd 창에서 모니터링 Agent를 다시 실행합니다.&lt;/p&gt;
+
+&lt;p&gt;우선 Agent를 중지 시킵니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; sc stop noms_nsight
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_07.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그리고 Agent를 다시 실행 시킵니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; sc start noms_nsight
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_06.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;monitoring-정보-수집-복구&quot;&gt;Monitoring 정보 수집 복구&lt;/h4&gt;
+&lt;p&gt;문제가 해결되었다면 아래와 같이 Monitoring 정보가 제대로 수집되면서 그래프가 나타나기 시작합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_02.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;복구-불가-상황&quot;&gt;복구 불가 상황&lt;/h2&gt;
+&lt;p&gt;위 방법대로 했는데에도 복구가 되지 않을 경우에는 다음 2가지 데이터를 모아서 Ncloud(네이버 클라우드) 고객센터로 문의하셔야 합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;모니터링 Agent 상태 정보&lt;/li&gt;
+  &lt;li&gt;모니터링 Agent 로그&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;모니터링-agent-상태-정보-확인&quot;&gt;모니터링 Agent 상태 정보 확인&lt;/h4&gt;
+&lt;p&gt;모니터링 Agent가 설치된 경로에서 아래의 상태 정보 확인 명령어를 실행합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:&lt;span class=&quot;se&quot;&gt;\P&lt;/span&gt;rogram Files &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;x86&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\N&lt;/span&gt;BP&lt;span class=&quot;se&quot;&gt;\N&lt;/span&gt;Sight&amp;gt;noms_nsight.exe &lt;span class=&quot;nt&quot;&gt;-status&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_08.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;모니터링-agent-로그&quot;&gt;모니터링 Agent 로그&lt;/h4&gt;
+&lt;p&gt;모니터링 Agent가 설치된 경로에 있는 파일과 폴더를 모두 압축합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:&lt;span class=&quot;se&quot;&gt;\P&lt;/span&gt;rogram Files &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;x86&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\N&lt;/span&gt;BP&lt;span class=&quot;se&quot;&gt;\N&lt;/span&gt;Sight&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;성능 수집 오류 해결 FAQ
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.ncloud.com/support/faq/all/1292&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://www.ncloud.com/support/faq/all/1292&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서 최종 수정일 : 2021-12-28&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Ncloud(네이버 클라우드) Monitoring 서비스를 이용해 서버 시스템 자원들(CPU, Memory 등)의 성능 정보를 수집, 모니터링할 때 간혹 성능 정보가 수집되지 않는 경우가 발생하기도 합니다. 특히 Windows 서버의 경우 Windows 자체 성능 테이블을 참조하여 데이터를 수집하기 때문에 Windows 자체 성능 테이블에 문제가 발생할 경우 성능 정보를 수집하지 못하게 됩니다. 여기서는 Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보가 수집되지 않을 때 해결 방법을 정리해보겠습니다.</summary></entry><entry><title type="html">X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP 기록하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide/" rel="alternate" type="text/html" title="X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP 기록하기" /><published>2021-12-17T00:00:00+09:00</published><updated>2021-12-17T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;X-Forwarded-For (XFF) 는 HTTP Header 중 하나로 Load Balancer(로드밸런서)나 Proxy Server를 통해 웹서버에 접속하는 Client의 IP 주소를 식별하는 표준 헤더입니다.&lt;br /&gt;
 웹서버나 WAS 앞쪽에 Load Balancer 혹은 Proxy Server 등이 위치하게 된다면 서버 접근 로그에는 Client IP가 아닌 Load Balancer 혹은 Proxy Server의 IP 주소가 기록됩니다. 
 이때 웹 어플리케이션에서 X-Forwarded-For 헤더를 이용하면 Client IP를 서버 접근 로그에 남길 수 있습니다.&lt;/p&gt;
@@ -1786,194 +1880,4 @@ html 스타일을 적용하기 위해서는 전송 파라미터에 &lt;strong&gt
 
 &lt;blockquote&gt;
   &lt;p&gt;문서 최종 수정일 : 2021-11-10&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 업무를 진행하다보면 서버나 서비스에 장애가 발생했을 때 즉시 알림을 받거나 서버 상태 모니터링이나 매출 등의 서비스 이용 지표 등을 매일 자동으로 통보 받는 경우가 있습니다. 예전에는 이메일이나 SMS 메시지로 받는 경우가 대부분이었는데, 요즘은 관련된 사람들이 함께 들어와 있는 메신저 채팅방으로 알림을 동시에 받는 경우도 많아지고 있습니다. 그럴 때 사용하는 방법 중에서 여기서는 텔레그램(Telegram)의 대화방인 비공개 채널에 메시지를 전송하는 것을 PHP로 구현해보겠습니다.</summary></entry><entry><title type="html">VPC 환경에서 SSL VPN 설정하고 접속하는 방법</title><link href="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_vpc_guide/" rel="alternate" type="text/html" title="VPC 환경에서 SSL VPN 설정하고 접속하는 방법" /><published>2021-11-02T00:00:00+09:00</published><updated>2021-11-02T00:00:00+09:00</updated><id>https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_vpc_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/3.security/ncp_security_ssl_vpn_vpc_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;Ncloud(네이버 클라우드) 외부에서 내부에 구성된 네트워크로 암호화된 보안 접속 통신을 제공하는 서비스인 SSL VPN을 VPC 환경에서 설정하고, 서버에 접속하는 방법에 대해 정리해보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;ssl-vpn이란&quot;&gt;SSL VPN이란?&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;VPN은 가상 사설망(Virtual Private Network)의 약자로, 외부에서 접근할 수 없는 사설망에 내 PC나 네트워크를 연결시키는 방법을 말합니다.&lt;/li&gt;
-  &lt;li&gt;사설망과의 연결은 가상 터널을 통해 이루어지며, 이 가상 터널을 SSL 암호화로 보호하는 것이 SSL VPN입니다.&lt;/li&gt;
-  &lt;li&gt;가상 터널을 통해 사설망과 연결된 사용자 PC는 사설망의 라우팅 및 ACL 정책에 따라 내부 서버에 접근할 수 있습니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;ssl-vpn-생성-요청&quot;&gt;SSL VPN 생성 요청&lt;/h2&gt;
-&lt;p&gt;[SSL VPN 생성] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_01.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;우선 접근할 서버가 속해 있는 VPC를 선택하고, 등록 가능한 접속 ID 개수에 따른 상품을 선택합니다.&lt;br /&gt;
-VPC 환경에서는 3, 5, 10, 20, 30, 50, 100, 200, 300, 400, 500개 상품 중에서 선택 가능합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_07.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;VPC 환경의 SSL VPN은 콘솔에서 자동으로 생성하는 것이 아니라 &lt;strong&gt;생성 요청을 하면 Ncloud 담당자가 직접 생성하고 결과를 안내 받는 구조&lt;/strong&gt;로 되어 있습니다. 
-생성 완료까지 걸리는 기간은 &lt;strong&gt;업무일 기준 2~3일&lt;/strong&gt; 정도이며, 생성이 완료되면 SSL VPN 상태가 [운영중]으로 변경되고, 안내 메일이 도착합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_03.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;아래와 같이 생성 요청을 하고 나면 상태가 [생성중] 상태로 표시 됩니다. 2~3일 후 생성 완료 안내 메일이 도착할때까지 기다리시면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_04.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;ssl-vpn-생성-완료&quot;&gt;SSL VPN 생성 완료&lt;/h2&gt;
-&lt;p&gt;SSL VPN 생성이 완료되면 아래와 같은 메일을 받을 수 있습니다. &lt;br /&gt;
-메일 내용에는 [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;] 정보와 접속 경로 정보가 포함되어 있으니 잘 확인해야 합니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;특히 [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;] 정보는 Ncloud 콘솔에서 확인할 수 없고, 오로지 생성 완료 메일에서만 확인 가능하니 잘 보관해야 합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_05.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;생성 완료 메일 확인 후에 콘솔에 접속하면 아래와 같이 [운영중] 으로 상태 메시지가 바뀐 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_06.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;사용자-설정&quot;&gt;사용자 설정&lt;/h2&gt;
-&lt;p&gt;SSL VPN에 접속할 사용자 정보를 설정합니다.  리스트에서 SSL VPN을 선택하고 [사용자 설정] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_08.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;사용자 정보는 ID, Passowrd, Email, SMS 등을 입력하고 [추가] 버튼을 클릭합니다.&lt;br /&gt;
-VPC 환경은 Classic 환경과 달리 이차인증이 필수이므로  SMS와 Email 정보를 함께 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_09.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;사용자가 추가되면 SSL VPN 정보에 사용자 계정 수(등록된 ID 수)에 숫자가 표시되는 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_10.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;route-table-설정&quot;&gt;Route Table 설정&lt;/h2&gt;
-&lt;p&gt;네트워크 설정에서는 우선 접속할 서버가 속해 있는 VPC Subnet의 Route Table에 SSL VPN으로 접근할 수 있게 [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;]을 등록해야 합니다.&lt;br /&gt;
-아래와 같이 접속할 서버의 상세정보에서 VPC와 Subnet을 확인합니다. 여기서는 Private Subnet에 생성한 서버에 접속할 예정입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_11.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;[VPC] - [Route Table]에서 해당 VPC의 Private Subnet을 선택하고 [Routes 설정] 버튼을 클릭합니다.&lt;br /&gt;
-Public Subnet에 생성한 서버에 접근해야 할 경우에는 public-table을 선택하고 설정하시면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_12.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;[Destination]에 SSL VPN 생성 완료 메일에서 확인한 [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;] 정보를 등록하고, [Target Type]은 SSLVPN을 선택, [Target Name]은 위에서 생성한 SSL VPN 이름을 선택하고 [생성] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_13.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;acg-설정&quot;&gt;ACG 설정&lt;/h2&gt;
-&lt;p&gt;다음으로 서버에 적용된 ACG에 [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;]을 등록해야 합니다.&lt;br /&gt;
-우선 SSL VPN을 통해서 접속할 서버를 선택하고 [ACG 수정] 버튼을 클릭해서 적용된 ACG를 확인합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_14.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ACG 수정 화면에서 현재 적용된 ACG 이름을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_15.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;[Server] - [ACG]에서 위에서 확인한 ACG를 선택하고 [ACG 설정]을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_16.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ACG 규칙 설정 화면에서 위에서 확인했던 [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;]을 접근 소스에 입력하고, 필요한 포트들을 등록합니다. 
-기본이 되는 프로토콜과 포트는 리눅스 서버 접속용 TCP 22, 윈도우 서버 접속용 TCP 3389, Ping 확인용 ICMP 등입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_17.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;agent-다운로드&quot;&gt;Agent 다운로드&lt;/h2&gt;
-&lt;p&gt;SSL VPN 접속을 위한 Agent를 다운로드 합니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/security-5-1-windowsdownload&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;윈도우 용 다운로드&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/security-5-1-macdownload&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;맥 용 다운로드&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_11.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;agent-접속&quot;&gt;Agent 접속&lt;/h2&gt;
-&lt;p&gt;Agent 프로그램, BIG-IP Edge Client를 설치하고 실행하면 다음과 같은 화면을 볼 수 있습니다.&lt;br /&gt;
-Agent에는 Classic 환경 SSL VPN 서버(Ncloud-kr-01)가 기본으로 설정되어 있는데, VPC 환경 SSL VPN 서버 주소로 바꾸기 위해 [연결끊기] 클릭해서 연결을 끊고, [서버 변경] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_18.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:557px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;서버 선택 창에 &lt;strong&gt;https://sslvpn-kr-vpc-01.ncloud.com&lt;/strong&gt; 주소를 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_19.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:557px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;주소 변경 후에 [연결] 버튼을 클릭하면 로그인 화면이 나타나는데 위에서 설정했던 VPN 접속용 아이디와 Password를 입력하고 [로그온] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_20.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:650px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그리고 도착한 OTP 인증 번호를 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_21.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:650px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;SSL VPN에 제대로 연결이 되었는지 확인하기 위해서 cmd 창을 띄워서 ipconfig 명령어를 입력하면 아래 화면처럼 SSL VPN 주소로 설정된 어탭터에  [&lt;strong&gt;SSL VPN IP POOL&lt;/strong&gt;]에 해당하는 IP가 할당된 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_22.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;서버-접속&quot;&gt;서버 접속&lt;/h2&gt;
-&lt;p&gt;이제 SSL VPN이 연결된 상태에서 서버에 접속해보겠습니다.&lt;br /&gt;
-PuTTY 를 실행하고 접속할 서버의 IP를 입력합니다.&lt;br /&gt;
-이때 서버 IP는 콘솔에 있는 서버 정보에서 &lt;strong&gt;비공인 IP&lt;/strong&gt;에 표시되는 IP를 입력하면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_23.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;agent-기타-설정&quot;&gt;Agent 기타 설정&lt;/h2&gt;
-&lt;p&gt;SSL VPN Agent에는 몇가지 추가 기능이 있는데 아래에서 확인해보겠습니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;트래픽-그래프&quot;&gt;트래픽 그래프&lt;/h4&gt;
-&lt;p&gt;Agent 창에서 [그래프 보기] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_24.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:557px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;여기서는 SSL VPN이 연결된 상태의 트래픽을 그래프로 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_25.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:557px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음으로 [상세 보기] 버튼을 클릭하면 접속 세부 정보, 로그, 통계, 알림, 라우팅 테이블, IP설정 등의 정보를 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_26.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;스펙-변경&quot;&gt;스펙 변경&lt;/h2&gt;
-&lt;p&gt;처음에 설정한 접속 가능 ID 개수를 변경하고 싶을 경우 SSL VPN을 선택하고 [스펙 변경] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_27.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;3, 5, 10, 20, 30, 50, 100, 200, 300, 400, 500개 상품 중에서 원하는 개수로 변경할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_28.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;주의사항&quot;&gt;주의사항&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;SSL VPN이 연결된 상태에서 새로운 서버를 생성하고 접속을 시도하면 아래와 같은 오류 메시지가 뜨면서 서버 접속이 되지 않습니다.  이때는 SSL VPN의 연결을 끊었다가 다시 연결해야 새로 생성한 서버에 접속할 수 있습니다.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_classic_guide_23.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;삭제&quot;&gt;삭제&lt;/h2&gt;
-&lt;p&gt;삭제를 원할 경우 SSL VPN을 선택하고 상단의 [삭제] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_29.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;하지만, 바로 삭제가 되지 않고 다음과 같이 “Route Table에서 Target으로 지정된 Route 정보를 모두 삭제해야 삭제가 가능합니다”라는 메시지가 뜹니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_30.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;[VPC] - [Route Table]에서 해당 VPC의 Private Subnet을 선택하고 [Routes 설정] 버튼을 클릭해서 등록된 설정을 확인하고 [X] 버튼을 클릭해서 설정을 삭제합니다. 
-Route Table 정보를 삭제한 후에 SSL VPN을 삭제하시면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/ncp_security_ssl_vpn_vpc_guide_31.png&quot; alt=&quot;Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;SSL VPN 사용 가이드(VPC)
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/security-security-5-2&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/security-security-5-2&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;SSL VPN 요금
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.ncloud.com/product/security/sslVpn&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://www.ncloud.com/product/security/sslVpn&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;문서 최종 수정일 : 2021-11-02&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Ncloud(네이버 클라우드) 외부에서 내부에 구성된 네트워크로 암호화된 보안 접속 통신을 제공하는 서비스인 SSL VPN을 VPC 환경에서 설정하고, 서버에 접속하는 방법에 대해 정리해보겠습니다.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 업무를 진행하다보면 서버나 서비스에 장애가 발생했을 때 즉시 알림을 받거나 서버 상태 모니터링이나 매출 등의 서비스 이용 지표 등을 매일 자동으로 통보 받는 경우가 있습니다. 예전에는 이메일이나 SMS 메시지로 받는 경우가 대부분이었는데, 요즘은 관련된 사람들이 함께 들어와 있는 메신저 채팅방으로 알림을 동시에 받는 경우도 많아지고 있습니다. 그럴 때 사용하는 방법 중에서 여기서는 텔레그램(Telegram)의 대화방인 비공개 채널에 메시지를 전송하는 것을 PHP로 구현해보겠습니다.</summary></entry></feed>

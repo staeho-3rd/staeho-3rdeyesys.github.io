@@ -56,16 +56,16 @@ The server response was: 5.7.0 Authentication Required.
 
 로그인을 하고 나면 관련 메시지가 앞 단계에서 선택한 장치에 도착합니다. 저는 휴대폰을 선택했기에 Gmail 앱을 확인해보겠습니다.
 
-<img src="../../images/etc_smtp_auth_to_google_gmail_account_04.jpg" alt="Gmail을 이용하여 smtp 메일 발송할 때 인증오류 해결 방법" style="width:800px;align:center">
+<img src="../../images/etc_smtp_auth_to_google_gmail_account_04.jpg" alt="Gmail을 이용하여 smtp 메일 발송할 때 인증오류 해결 방법" style="width:600px;align:center">
 
 이렇게 휴대폰의 Gmail 앱을 열면 안내 메시지가 도착해있고, [예] 버튼을 선택하면 됩니다.
 
-<img src="../../images/etc_smtp_auth_to_google_gmail_account_05.jpg" alt="Gmail을 이용하여 smtp 메일 발송할 때 인증오류 해결 방법" style="width:720px;align:center">
+<img src="../../images/etc_smtp_auth_to_google_gmail_account_05.jpg" alt="Gmail을 이용하여 smtp 메일 발송할 때 인증오류 해결 방법" style="width:460px;align:center">
 
 휴대폰에서 [예]를 선택하면 설정화면이 자동으로 다음으로 넘어와 있습니다.  
 여기서는 백업 옵션에 대한 방법을 선택합니다. 저는 문자 메시지를 선택했습니다.
 
-<img src="../../images/etc_smtp_auth_to_google_gmail_account_06.jpg" alt="Gmail을 이용하여 smtp 메일 발송할 때 인증오류 해결 방법" style="width:800px;align:center">
+<img src="../../images/etc_smtp_auth_to_google_gmail_account_06.jpg" alt="Gmail을 이용하여 smtp 메일 발송할 때 인증오류 해결 방법" style="width:770px;align:center">
 
 잠시 후에 휴대폰 문자메시지로 [국외발신] G-254796(이)가 Google 인증코드입니다. 라는 메시지가 도착합니다.  
 이 중에서 뒤에 있는 6자리 숫자 코드를 입력하면 됩니다.

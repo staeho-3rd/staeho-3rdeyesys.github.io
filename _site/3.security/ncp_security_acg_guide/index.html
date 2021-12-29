@@ -132,6 +132,8 @@
 			
 				<li><a href="#기본-규칙">기본 규칙</a></li>
 			
+				<li><a href="#접근소스-설정">접근소스 설정</a></li>
+			
 				<li><a href="#참고-url">참고 URL</a></li>
 			
 		</ul>
@@ -145,6 +147,8 @@
 	
 	<section class="tutorial-content">
 		<h1>ACG(Access Control Group) 가이드
+		
+			<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
 		
 		</h1>
 
@@ -220,11 +224,35 @@
   <li>모든 outbound traffic을 허용함(규칙으로 명시되어 있지 않음)</li>
 </ul>
 
+<h2 id="접근소스-설정">접근소스 설정</h2>
+<p>ACG를 설정할 때 접근 소스 항목은 보통 IP주소를 입력하게 됩니다. 
+하지만 특수한 경우로 Load Balancer를 지정하거나 ACG 이름을 지정하는 경우도 있습니다. 
+이 중에서 다른 ACG를 접근 소스 항목으로 지정하는 경우는 해당 ACG가 적용된 서버들이 접근할 수 있도록 규칙을 설정하는 것인데, 아래 예시를 이용해 정리해보겠습니다.</p>
+
+<h4 id="acg-1">ACG-1</h4>
+<ul>
+  <li>적용서버 : SVR-1, SVR2</li>
+</ul>
+
+<h4 id="acg-2">ACG-2</h4>
+<ul>
+  <li>적용서버 : SVR-3</li>
+</ul>
+
+<h4 id="acg-2-적용-규칙">ACG-2 적용 규칙</h4>
+<ul>
+  <li>프로토콜 :  TCP</li>
+  <li>접근소스 :  ACG-1</li>
+  <li>허용포트 : 80</li>
+</ul>
+
+<p>위와 같은 경우 ACG-1이 적용된 SVR-1, SVR-2 서버에서 ACG-2가 적용된 SVR-3 서버로 80포트를 이용한 접근을 허용한다는 의미입니다.</p>
+
 <h2 id="참고-url">참고 URL</h2>
 <p><a href="https://guide.ncloud-docs.com/docs/compute-compute-2-3" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-2-3.html</a></p>
 
 <blockquote>
-  <p>문서 최종 수정일 : 2021-09-30</p>
+  <p>문서 최종 수정일 : 2021-12-29</p>
 </blockquote>
 
 		</div>
@@ -402,6 +430,8 @@
 				<article>
 					<div>
 						<h3>6. ACG(Access Control Group) 가이드 
+							
+								<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
 							
 						</h3>
 						<p class="description">네이버 클라우드 ACG(Access Control Group) 가이드</p>
@@ -819,6 +849,8 @@
 					<div>
 						<h3>22. 서버 모니터링 서비스 Monitoring 설정 가이드 
 							
+								<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
+							
 						</h3>
 						<p class="description">네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드입니다</p>
 					</div>
@@ -953,6 +985,34 @@
 		
 		
 		
+			<a href="/81.manage/ncloud_management_monitoring_win_perf_data_error_troubleshoot/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>Windows 서버 모니터링 성능 정보 수집 오류 해결 방법 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다.</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+		
+		
+		
 			<a href="/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -1076,8 +1136,6 @@
 					<div>
 						<h3>VPC Peering 생성 가이드 
 							
-								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
-							
 						</h3>
 						<p class="description">네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드입니다.</p>
 					</div>
@@ -1184,32 +1242,6 @@
 							
 						</h3>
 						<p class="description">PHP로 텔레그램 비공개 채널에 메시지 전송하는 방법입니다</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-		
-		
-		
-			<a href="/3.security/ncp_security_ssl_vpn_vpc_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>VPC 환경에서 SSL VPN 설정하고 접속하는 방법 
-							
-						</h3>
-						<p class="description">Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법입니다.</p>
 					</div>
 				</article>
 			</a>

@@ -1,6 +1,6 @@
 ---
 date: 2020-11-26
-update: 2021-09-30
+update: 2021-12-29
 title: ACG(Access Control Group) 가이드
 categories:
   - 3.security
@@ -66,8 +66,27 @@ Default ACG 이외에 사용자가 추가하는 ACG
 - 모든 outbound traffic을 허용함(규칙으로 명시되어 있지 않음)
 
 
+## 접근소스 설정
+ACG를 설정할 때 접근 소스 항목은 보통 IP주소를 입력하게 됩니다. 
+하지만 특수한 경우로 Load Balancer를 지정하거나 ACG 이름을 지정하는 경우도 있습니다. 
+이 중에서 다른 ACG를 접근 소스 항목으로 지정하는 경우는 해당 ACG가 적용된 서버들이 접근할 수 있도록 규칙을 설정하는 것인데, 아래 예시를 이용해 정리해보겠습니다.
+
+#### ACG-1
+- 적용서버 : SVR-1, SVR2
+
+#### ACG-2
+- 적용서버 : SVR-3
+
+#### ACG-2 적용 규칙
+- 프로토콜 :  TCP
+- 접근소스 :  ACG-1
+- 허용포트 : 80
+
+위와 같은 경우 ACG-1이 적용된 SVR-1, SVR-2 서버에서 ACG-2가 적용된 SVR-3 서버로 80포트를 이용한 접근을 허용한다는 의미입니다.
+
+
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-2-3" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-2-3.html</a>
 
 
-> 문서 최종 수정일 : 2021-09-30
+> 문서 최종 수정일 : 2021-12-29

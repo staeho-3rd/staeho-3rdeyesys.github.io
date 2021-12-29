@@ -152,6 +152,8 @@
 	<section class="tutorial-content">
 		<h1>서버 모니터링 서비스 Monitoring 설정 가이드
 		
+			<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
+		
 		</h1>
 
 		
@@ -243,6 +245,12 @@ Event를 발생 하게 하는 조건을 감시설정이라 하며 해당 Event�
 
 <p><img src="../../images/ncp_management_monitoring_guide_13.jpg" alt="네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드" style="width:770px;align:center" /></p>
 
+<blockquote>
+  <p>감시 통보설정에서 중요한 것은 지속시간입니다. 위 설정화면을 예로 설명하자면 CPU 사용율이 90% 이상인 상태가 5분 이상 지속되면 통보되도록 설정된 상태입니다. 
+즉, 중간에 한번이라도 90% 미만으로 내려가면, 예를 들어 4분 50초 동안 90% 이상을 유지하다 85%로 내려간 경우라면 통보가 되지 않습니다. 
+혹시 통보 알람을 테스트 하고 싶을 경우에는 지정한 상태가 5분 이상 지속되는 상황을 연출해서 테스트 해보셔야 합니다.</p>
+</blockquote>
+
 <p>그 다음은 통보 받을 대상자와 통보 방법을 선택하고 [추가] 버튼을 클릭합니다. 통보 대상자가 리스트에 없을 경우 위쪽에 있는 [통보대상관리] 버튼을 클릭해서 대상자를 등록한 후에 다시 추가합니다.</p>
 
 <p><img src="../../images/ncp_management_monitoring_guide_14.jpg" alt="네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드" style="width:770px;align:center" /></p>
@@ -271,7 +279,7 @@ Event를 발생 하게 하는 조건을 감시설정이라 하며 해당 Event�
 </ol>
 
 <blockquote>
-  <p>문서 최종 수정일 : 2021-10-08</p>
+  <p>문서 최종 수정일 : 2021-12-29</p>
 </blockquote>
 
 		</div>
@@ -449,6 +457,8 @@ Event를 발생 하게 하는 조건을 감시설정이라 하며 해당 Event�
 				<article>
 					<div>
 						<h3>6. ACG(Access Control Group) 가이드 
+							
+								<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
 							
 						</h3>
 						<p class="description">네이버 클라우드 ACG(Access Control Group) 가이드</p>
@@ -866,6 +876,8 @@ Event를 발생 하게 하는 조건을 감시설정이라 하며 해당 Event�
 					<div>
 						<h3>22. 서버 모니터링 서비스 Monitoring 설정 가이드 
 							
+								<span class="badge badge-pill badge-success" style="font-size:50%">update</span>
+							
 						</h3>
 						<p class="description">네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드입니다</p>
 					</div>
@@ -1000,6 +1012,34 @@ Event를 발생 하게 하는 조건을 감시설정이라 하며 해당 Event�
 		
 		
 		
+			<a href="/81.manage/ncloud_management_monitoring_win_perf_data_error_troubleshoot/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>Windows 서버 모니터링 성능 정보 수집 오류 해결 방법 
+							
+								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
+							
+						</h3>
+						<p class="description">Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다.</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+		
+		
+		
+		
+		
+		
+		
 			<a href="/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -1123,8 +1163,6 @@ Event를 발생 하게 하는 조건을 감시설정이라 하며 해당 Event�
 					<div>
 						<h3>VPC Peering 생성 가이드 
 							
-								<span class="badge badge-pill badge-danger" style="font-size:50%">new</span>
-							
 						</h3>
 						<p class="description">네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드입니다.</p>
 					</div>
@@ -1231,32 +1269,6 @@ Event를 발생 하게 하는 조건을 감시설정이라 하며 해당 Event�
 							
 						</h3>
 						<p class="description">PHP로 텔레그램 비공개 채널에 메시지 전송하는 방법입니다</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-		
-		
-		
-		
-		
-		
-		
-			<a href="/3.security/ncp_security_ssl_vpn_vpc_guide/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>VPC 환경에서 SSL VPN 설정하고 접속하는 방법 
-							
-						</h3>
-						<p class="description">Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법입니다.</p>
 					</div>
 				</article>
 			</a>

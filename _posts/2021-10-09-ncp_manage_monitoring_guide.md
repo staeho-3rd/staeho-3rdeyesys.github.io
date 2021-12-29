@@ -1,6 +1,6 @@
 ---
 date: 2021-10-07
-update: 2021-10-08
+update: 2021-12-29
 title: 서버 모니터링 서비스 Monitoring 설정 가이드
 categories:
   - 81.manage
@@ -96,6 +96,9 @@ Event를 발생 하게 하는 조건을 감시설정이라 하며 해당 Event�
 
 <img src="../../images/ncp_management_monitoring_guide_13.jpg" alt="네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드" style="width:770px;align:center">
 
+>감시 통보설정에서 중요한 것은 지속시간입니다. 위 설정화면을 예로 설명하자면 CPU 사용율이 90% 이상인 상태가 5분 이상 지속되면 통보되도록 설정된 상태입니다. 
+즉, 중간에 한번이라도 90% 미만으로 내려가면, 예를 들어 4분 50초 동안 90% 이상을 유지하다 85%로 내려간 경우라면 통보가 되지 않습니다. 
+혹시 통보 알람을 테스트 하고 싶을 경우에는 지정한 상태가 5분 이상 지속되는 상황을 연출해서 테스트 해보셔야 합니다.
 
 그 다음은 통보 받을 대상자와 통보 방법을 선택하고 [추가] 버튼을 클릭합니다. 통보 대상자가 리스트에 없을 경우 위쪽에 있는 [통보대상관리] 버튼을 클릭해서 대상자를 등록한 후에 다시 추가합니다.
 
@@ -122,4 +125,4 @@ Event를 발생 하게 하는 조건을 감시설정이라 하며 해당 Event�
 1.  Sub Account 사용 가이드
 	- <a href="https://guide.ncloud-docs.com/docs/management-management-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/management-management-1-1</a>
 
-> 문서 최종 수정일 : 2021-10-08
+> 문서 최종 수정일 : 2021-12-29
