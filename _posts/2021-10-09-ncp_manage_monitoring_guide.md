@@ -121,8 +121,15 @@ Event를 발생 하게 하는 조건을 감시설정이라 하며 해당 Event�
 <img src="../../images/ncp_management_monitoring_guide_17.jpg" alt="네이버 클라우드 서버 모니터링 서비스 Monitoring 설정 가이드" style="width:700px;align:center">
 
 
+## 정보 수집 오류
+간혹 서버 모니터링 성능 정보 수집에 오류가 발생하는 경우가 있습니다.  
+그 중에서 Classic 환경의 Windows 서버에서 오류가 발생했을 때의 해결 방법을 아래 문서에 따로 정리해두었습니다.
+
+- <a href="/81.manage/ncloud_management_monitoring_win_perf_data_error_troubleshoot/" target="_blank" style="word-break:break-all;">Windows 서버 모니터링 성능 정보 수집 오류 해결 방법</a>
+
+
 ## 참고 URL
-1.  Sub Account 사용 가이드
-	- <a href="https://guide.ncloud-docs.com/docs/management-management-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/management-management-1-1</a>
+1.  상세 모니터링 사용 가이드
+	- <a href="https://guide.ncloud-docs.com/docs/ko/management-management-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/ko/management-management-1-1</a>
 
 > 문서 최종 수정일 : 2021-12-29
