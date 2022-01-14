@@ -1,5 +1,6 @@
 ---
 date: 2021-01-21
+last_modified_at: 2021-06-02
 title: Object Storage Lifecycle Management 관리대상 설정 방법
 categories:
   - 4.storage
@@ -127,6 +128,3 @@ Lifecycle Management(수명주기) 정책 실행시간은 아래와 같습니다
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/storage-storage-6-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/storage-storage-6-1.html</a>
-
-
-> 문서 최종 수정일 : 2021-06-02

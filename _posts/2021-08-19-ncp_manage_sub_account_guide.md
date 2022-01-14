@@ -1,6 +1,6 @@
 ---
 date: 2021-08-19
-update: 2021-08-19
+last_modified_at: 2021-08-19
 title: Sub Account 생성 가이드
 categories:
   - 81.manage
@@ -139,5 +139,3 @@ Classic 환경에서는 리소스별 상세 권한은 설정할 수 없고, View
 ## 참고 URL
 1.  Sub Account 사용 가이드
 	- <a href="https://guide.ncloud-docs.com/docs/management-management-4-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/management-management-4-1</a>
-
-> 문서 최종 수정일 : 2021-08-20

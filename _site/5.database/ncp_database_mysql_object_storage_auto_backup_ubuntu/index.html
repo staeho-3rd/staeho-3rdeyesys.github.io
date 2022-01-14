@@ -25,7 +25,6 @@
 
   gtag('config', 'G-4Q6RVEFJ3S');
 </script>
-
 			
 			
 			
@@ -59,7 +58,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Ubuntu에서 mysql DB를 Object Storage로 자동 백업하기" />
 <script type="application/ld+json">
-{"url":"https://docs.3rdeyesys.com/5.database/ncp_database_mysql_object_storage_auto_backup_ubuntu/","headline":"Ubuntu에서 mysql DB를 Object Storage로 자동 백업하기","dateModified":"2021-01-22T00:00:00+09:00","datePublished":"2021-01-22T00:00:00+09:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/5.database/ncp_database_mysql_object_storage_auto_backup_ubuntu/"},"description":"네이버 클라우드 mysql DB를 Object Storage로 자동 백업하기 - Ubuntu버전입니다","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"url":"https://docs.3rdeyesys.com/5.database/ncp_database_mysql_object_storage_auto_backup_ubuntu/","headline":"Ubuntu에서 mysql DB를 Object Storage로 자동 백업하기","dateModified":"2021-10-08T00:00:00+09:00","datePublished":"2021-01-22T00:00:00+09:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://docs.3rdeyesys.com/siteicon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.3rdeyesys.com/5.database/ncp_database_mysql_object_storage_auto_backup_ubuntu/"},"description":"네이버 클라우드 mysql DB를 Object Storage로 자동 백업하기 - Ubuntu버전입니다","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 		<link type="application/atom+xml" rel="alternate" href="https://docs.3rdeyesys.com/feed.xml" title="3rdeyesys" />
@@ -263,7 +262,7 @@ Default output format <span class="o">[</span>None]: <span class="o">[</span>Ent
 
 <h2 id="mysql-db-백업-스크립트-수정">mysql DB 백업 스크립트 수정</h2>
 <p>이제 위 단계에서 만들었던 DB 로컬 백업 스크립트에 DB백업 파일을 Object Storage로 백업-동기화 하는 명령을 추가하겠습니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# vi /bin/db_backup.sh
+<div class="language-bash info highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# vi /bin/db_backup.sh
 
 <span class="c">#!/bin/bash</span>
 <span class="nv">DATE</span><span class="o">=</span><span class="si">$(</span><span class="nb">date</span> +%Y%m%d%H%M%S<span class="si">)</span>
@@ -281,21 +280,17 @@ find <span class="nv">$BACKUP_DIR</span> <span class="nt">-ctime</span> +7 <span
 <span class="c"># aws 명령어를 crontab에서 실행하기 위해 aws 파일의 전체 경로를 적어줍니다</span>
 /usr/local/bin/aws <span class="nt">--endpoint-url</span><span class="o">=</span>https://kr.object.ncloudstorage.com s3 <span class="nb">sync</span> /data_backup/ s3://data-back-up/
 </code></pre></div></div>
-<blockquote>
-  <p>여기서 db 폴더만 백업-동기화를 하는 것이 아닌 상위 폴더인 /data_backup/ 폴더부터 백업-동기화를 한 이유는 이후에 db 말고도 개발소스 파일 등도 압축해서 백업하기 위해서입니다.</p>
-</blockquote>
+<p>여기서 db 폴더만 백업-동기화를 하는 것이 아닌 상위 폴더인 /data_backup/ 폴더부터 백업-동기화를 한 이유는 이후에 db 말고도 개발소스 파일 등도 압축해서 백업하기 위해서입니다.</p>
 
 <h2 id="스케쥴링을-위한-crontab-설정">스케쥴링을 위한 crontab 설정</h2>
 <p>이제 마지막으로 완성된 스크립트를 일정한 시간, 여기서는 매일 새벽 6시에 실행되도록 설정합니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# crontab <span class="nt">-e</span>
+<div class="language-bash warning highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# crontab <span class="nt">-e</span>
 
 <span class="c"># 매일 새벽 6시에 백업이 진행되는 코드입니다.</span>
 00 06 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> /bin/db_backup.sh <span class="o">&gt;</span> /dev/null 2&gt;&amp;1
 </code></pre></div></div>
-<blockquote>
-  <p>crontab에 &gt; /dev/null 2&gt;&amp;1를 추가하지 않으면 /var/log/syslog 파일에 (CRON) info (No MTA installed, discarding output) 라는 오류 메시지가 계속 쌓입니다. <br />
+<p>crontab에 &gt; /dev/null 2&gt;&amp;1를 추가하지 않으면 /var/log/syslog 파일에 (CRON) info (No MTA installed, discarding output) 라는 오류 메시지가 계속 쌓입니다. <br />
 postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하지 않은 것을 설치하기 보다는 필요하지 않은 오류 메시지는 없애는 것이 나을 듯합니다.</p>
-</blockquote>
 
 <h2 id="백업-결과-확인">백업 결과 확인</h2>
 <p>백업이 진행되고 나면 아래와 같이 db 백업 파일이 Object Storage에 저장된 것을 확인할 수 있습니다.<br />
@@ -316,10 +311,7 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
   </li>
 </ol>
 
-<blockquote>
-  <p>문서 최종 수정일 : 문서 최종 수정일 : 2021-06-11</p>
-</blockquote>
-
+			<p class="info last-modified-at">문서 최종 수정일 : 2021-10-08</p>
 		</div>
 		<div class="tutorial-share">
 			<a class="modalOpen no-smooth" href="#subscribe">

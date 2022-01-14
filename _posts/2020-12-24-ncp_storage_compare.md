@@ -1,6 +1,6 @@
 ---
 date: 2020-12-24
-update: 2020-12-24
+last_modified_at: 2020-12-28
 title: 스토리지 비교
 categories:
   - 4.storage
@@ -68,6 +68,3 @@ Object Storage를 사용하시면 됩니다.
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/storage-storage-5-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/storage-storage-5-1.html</a>
-
-
-> 문서 최종 수정일 : 2020-12-28

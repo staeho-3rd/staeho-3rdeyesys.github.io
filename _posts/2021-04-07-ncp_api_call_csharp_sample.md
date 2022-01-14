@@ -1,5 +1,6 @@
 ---
 date: 2021-04-07
+last_modified_at: 2021-04-07
 title: C#으로 네이버 클라우드 API를 호출하는 샘플 예제
 categories:
   - 8.API
@@ -85,7 +86,8 @@ unixTimeStamp = Math.Round(totalMilliSeconds).ToString();
 - API Gateway 타임스탬프 : UTC 현재시간 - 1970년 1월 1일 00시
 - 로컬PC 타임스탬프 : UTC+9 현재시간 - 1970년 1월 1일 09시
 
-즉, **로컬PC 등은 API Gateway보다 9시간 빠르기 때문에 동일한 타임스탬프 값을 얻으려면 1970년 1월 1일 09시 기준으로 계산해야 한다**는 것입니다.  
+{: .error }
+즉, **로컬PC 등은 API Gateway보다 9시간 빠르기 때문에 동일한 타임스탬프 값을 얻으려면 1970년 1월 1일 09시 기준으로 계산해야 한다**는 것입니다. 
 그래서 위의 코드에서 DateTime unixOriginalTime = new DateTime(1970, 1, 1, 9, 0, 0); 이렇게 적용했습니다.
 
 #### hmac으로 암호화할 문자열 설정
@@ -182,7 +184,3 @@ hmac sha256 방식으로 네이버 클라우드 API SecretKey를 이용하여 me
 
 ## 참고 URL
 <a href="https://api.ncloud-docs.com/docs/ko/home/" target="_blank" style="word-break:break-all;">https://api.ncloud-docs.com/docs/ko/home/</a>
-
-
-> "문서 최종 수정일 : 2021-04-07"
-

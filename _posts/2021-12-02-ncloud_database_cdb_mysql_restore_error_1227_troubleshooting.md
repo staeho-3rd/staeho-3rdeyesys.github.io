@@ -1,6 +1,6 @@
 ---
 date: 2021-12-02
-update: 2021-12-02
+last_modified_at: 2021-12-02
 title: MySQL 복구 시 ERROR 1227 (42000) 문제 원인과 해결방법
 categories:
   - 5.database
@@ -127,6 +127,3 @@ DB에서 VIEW를 사용했다면 아래와 같이 VIEW 생성 코드에 [**/*!50
 
 4. MySQL Stored Object Access Control : DEFINER 안내
 	- <a href="https://dev.mysql.com/doc/refman/5.7/en/stored-objects-security.html" target="_blank" style="word-break:break-all;">https://dev.mysql.com/doc/refman/5.7/en/stored-objects-security.html</a>
-
-
-> 문서 최종 수정일 : 2021-12-02

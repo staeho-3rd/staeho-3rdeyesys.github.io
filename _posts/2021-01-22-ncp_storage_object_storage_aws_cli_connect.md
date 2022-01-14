@@ -1,6 +1,6 @@
 ---
 date: 2021-01-22
-update: 2021-10-08
+last_modified_at: 2021-10-08
 title: AWS CLI를 이용한 Object Storage 접속 방법
 categories:
   - 4.storage
@@ -25,7 +25,8 @@ aws cli를 설치하려면 pip가 먼저 설치되어 있어야 합니다.
 # Ubuntu
 ~# apt-get install python-pip
 ```
-> **CentOS 6.x** 버전은 기술지원 종료로 인해 위 방법대로 설치가 되지 않습니다. 다음 경로에 나온 방법대로 설치하면 됩니다.
+{: .error }
+**CentOS 6.x** 버전은 기술지원 종료로 인해 위 방법대로 설치가 되지 않습니다. 다음 경로에 나온 방법대로 설치하면 됩니다.
 <a href="/1.compute/ncp_server_pip_python_install_centos6/" target="_blank" style="word-break:break-all;">CentOS6에서 pip - Python 설치하기</a>
 
 
@@ -64,6 +65,3 @@ Default output format [None]: [Enter]
 
 ## 참고 URL
 <a href="https://cli.ncloud-docs.com/docs/guide-objectstorage" target="_blank" style="word-break:break-all;">https://cli.ncloud-docs.com/docs/guide-objectstorage</a>
-
-
-> 문서 최종 수정일 : 2021-01-22

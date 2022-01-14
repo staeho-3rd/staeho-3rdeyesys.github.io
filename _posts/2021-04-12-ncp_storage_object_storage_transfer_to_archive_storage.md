@@ -1,5 +1,6 @@
 ---
 date: 2021-04-12
+last_modified_at: 2021-04-12
 title: Object Storage 데이터를 Archive Storage로 자동으로 이동시키는 방법
 categories:
   - 4.storage
@@ -86,6 +87,3 @@ Lifecycle Management의 수명주기 정책 실행시간은 아래와 같습니�
 	- <a href="https://guide.ncloud-docs.com/docs/storage-storage-6-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/storage-storage-6-1</a>
 2.  CentOS에서 mysql DB를 Object Storage로 자동 백업하기
 	- <a href="/5.database/ncp_database_mysql_object_storage_auto_backup_centos/" target="_blank" style="word-break:break-all;">/5.database/ncp_database_mysql_object_storage_auto_backup_centos/</a>
-
-
-> 문서 최종 수정일 : 2021-04-12

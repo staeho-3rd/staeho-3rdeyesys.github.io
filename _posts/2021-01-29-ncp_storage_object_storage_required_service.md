@@ -1,5 +1,6 @@
 ---
 date: 2021-01-29
+last_modified_at: 2021-02-16
 title: Object Storage와 연동이 필수인 서비스
 categories:
   - 4.storage
@@ -36,5 +37,3 @@ Object Storage와 반드시 연동해야 하는 것은 아니지만, Object Stor
 
 - CDN+
 - Global CDN
-
-> 문서 최종 수정일 : 2021-02-16

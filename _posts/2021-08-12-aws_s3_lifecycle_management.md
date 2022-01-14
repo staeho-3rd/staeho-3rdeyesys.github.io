@@ -1,6 +1,6 @@
 ---
 date: 2021-08-12
-update: 2021-09-16
+last_modified_at: 2021-09-16
 title: AWS S3 수명 주기 (LifeCycle) 설정하기
 categories:
   - 91.AWS
@@ -55,5 +55,3 @@ AWS 수명 주기 관련해서 주의해야 할 사항이 몇가지 있습니다
 
 1.  수명 주기 규칙 작동 지연 관련 FAQ
 	- <a href="https://aws.amazon.com/ko/premiumsupport/knowledge-center/s3-lifecycle-rule-delay/" target="_blank" style="word-break:break-all;">https://aws.amazon.com/ko/premiumsupport/knowledge-center/s3-lifecycle-rule-delay/</a>
-
-> 문서 최종 수정일 : 2021-09-16

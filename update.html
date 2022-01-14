@@ -10,7 +10,7 @@ update:
 		{% for item in update_posts limit: 10 %}
 			<li {% if item.url == page.url %}class="active"{% endif %}>
 			{% assign dateCreated = item.date | date: '%s' %}
-			{% assign dateUpdated = item.update | date: '%s' %}
+			{% assign dateUpdated = item.last_modified_at | date: '%s' %}
 			{% assign nowTimestamp = 'now' | date: '%s' %}
 			{% assign createdDiffSeconds = nowTimestamp | minus: dateCreated %}
 			{% assign createdDiffDays = createdDiffSeconds | divided_by: 3600 | divided_by: 24 %}

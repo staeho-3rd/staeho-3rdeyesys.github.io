@@ -1,5 +1,6 @@
 ---
 date: 2020-11-19
+last_modified_at: 2020-11-19
 title: 스토리지 추가 생성 기본 가이드
 categories:
   - 1.compute
@@ -34,6 +35,3 @@ order_number: 5
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2.html</a>
-
-
-> 문서 최종 수정일 : 2020-11-19

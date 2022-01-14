@@ -25,7 +25,6 @@
 
   gtag('config', 'G-4Q6RVEFJ3S');
 </script>
-
 			
 			
 			
@@ -206,12 +205,10 @@
 
 <p><img src="../../images/ncp_server_kebernetes_start_guide_07.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center" /></p>
 
-<blockquote>
-  <ul>
-    <li>Private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /17~/26 범위의 Private Subnet, 로드밸런서 전용 Subnet이 필요합니다.<br /></li>
-    <li>Docker Bridge 대역의 충돌을 방지하기 위해 172.17.0.0/16 범위 내의 Private Subnet, 로드밸런서 전용Subnet은 선택할 수 없습니다.</li>
-  </ul>
-</blockquote>
+<ul class="success">
+  <li>Private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /17~/26 범위의 Private Subnet, 로드밸런서 전용 Subnet이 필요합니다.<br /></li>
+  <li>Docker Bridge 대역의 충돌을 방지하기 위해 172.17.0.0/16 범위 내의 Private Subnet, 로드밸런서 전용Subnet은 선택할 수 없습니다.</li>
+</ul>
 
 <h2 id="클러스터-생성">클러스터 생성</h2>
 
@@ -224,17 +221,13 @@
 
 <p><img src="../../images/ncp_server_kebernetes_start_guide_01.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center" /></p>
 
-<blockquote>
-  <p>현재 지원되고 있는 Kubenetes 버전은 [1.17.16], [1.18.17] 입니다.</p>
-</blockquote>
+<p class="success">현재 지원되고 있는 Kubenetes 버전은 [1.17.16], [1.18.17] 입니다.</p>
 
 <p>클러스터에 생성되는 노드풀과 서버의 스펙 및 수를 지정해줍니다.</p>
 
 <p><img src="../../images/ncp_server_kebernetes_start_guide_02.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center" /></p>
 
-<blockquote>
-  <p>현재 지원되고 있는 OS는 [ubuntu16.04], [ubuntu18.04] 입니다.</p>
-</blockquote>
+<p class="success">현재 지원되고 있는 OS는 [ubuntu16.04], [ubuntu18.04] 입니다.</p>
 
 <p>워커노드의 로그인키를 설정 합니다.</p>
 
@@ -312,10 +305,7 @@ nks-pool-1865-w2zz   Ready    node    4d5h   v1.16.6
   </li>
 </ol>
 
-<blockquote>
-  <p>문서 최종 수정일 : 2021-07-13</p>
-</blockquote>
-
+			<p class="info last-modified-at">문서 최종 수정일 : 2021-07-12</p>
 		</div>
 		<div class="tutorial-share">
 			<a class="modalOpen no-smooth" href="#subscribe">

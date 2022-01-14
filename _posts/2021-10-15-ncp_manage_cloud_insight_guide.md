@@ -1,6 +1,6 @@
 ---
 date: 2021-10-15
-update: 2021-10-18
+last_modified_at: 2021-10-18
 title: 모니터링 서비스 Cloud Insight 설정 가이드
 categories:
   - 81.manage
@@ -57,7 +57,8 @@ Cloud Insight 서비스는 이용 신청을 해야 사용할 수 있습니다. C
 또한 기본으로 제공되는 대시보드에서 확인할 수 있는 모니터링 항목을 각 서비스별로 고정되어 있습니다. 
 추가적인 항목을 확인하려면 별도로 대시보드를 생성해야 하는데 이에 대해서는 아래쪽에서 확인해보겠습니다.
 
->일부 서비스의 경우 리스트에 나타날 때까지 시간이 걸릴 수도 있습니다. 여유있게 1시간 정도 후에 확인해보시면 됩니다.
+{: .success }
+일부 서비스의 경우 리스트에 나타날 때까지 시간이 걸릴 수도 있습니다. 여유있게 1시간 정도 후에 확인해보시면 됩니다.
 
 <img src="../../images/ncp_management_cloud_insight_guide_02.jpg" alt="네이버 클라우드 모니터링 서비스 Cloud Insight 설정 가이드" style="width:770px;align:center">
 
@@ -176,5 +177,3 @@ Cloud Insight 서비스는 이용 신청을 해야 사용할 수 있습니다. C
 
 2.  Cloud Insight 사용 가이드
 	- <a href="https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightconsole" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/cloudinsight-cloudinsightconsole</a>
-
-> 문서 최종 수정일 : 2021-10-18

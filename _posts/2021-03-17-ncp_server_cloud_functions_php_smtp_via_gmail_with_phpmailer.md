@@ -1,5 +1,6 @@
 ---
 date: 2021-03-17
+last_modified_at: 2021-03-17
 title: Cloud Functions에서 PHPMailer를 사용하여 gmail을 통해 SMTP로 메일 발송하는 방법
 categories:
   - 1.compute
@@ -103,7 +104,8 @@ PHPMailer에서 제공하는 샘플코드를 참고해서 꼭 필요한 코드�
 ?>
 ```
 
-> 보안 이슈 : 위 소스코드에서 알아보기 쉽게 password 라는 변수명을 사용하기는 했지만, 
+{: .error.box }
+보안 이슈 : 위 소스코드에서 알아보기 쉽게 password 라는 변수명을 사용하기는 했지만, 
 여러 상황에서 해킹 관련 이슈(예: grep 명령어를 사용해 password 정보가 포함된 파일 검색)가 발생할 수 있으니 실제 서비스에서는 password 라는 단어 대신에 다른 단어를 사용하기를 추천 드립니다. 
 $gmail_app_password 뿐만 아니라 $mail->Password 가 포함된 PHPMailer.php 소스도 함께 수정하시면 더욱 안전할 수 있습니다.
 
@@ -316,5 +318,3 @@ The server response was: 5.7.0 Authentication Required.
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-15-2-6" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-15-2-6.html</a>
-
-> 문서 최종 수정일 : 2021-03-22

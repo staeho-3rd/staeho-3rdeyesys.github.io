@@ -1,5 +1,6 @@
 ---
 date: 2020-11-13
+last_modified_at: 2020-11-13
 title: LAMP(Ubuntu) 기본 명령어와 환경 설정 파일 위치
 categories:
   - 1.compute
@@ -61,5 +62,3 @@ my.cnf : /etc/mysql/my.cnf -> /etc/alternatives/my.cnf
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/lamp-lamp-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/lamp-lamp-1-1.html</a>
-
-> 문서 최종 수정일 : 2020-11-13

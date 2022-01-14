@@ -1,5 +1,6 @@
 ---
 date: 2021-05-26
+last_modified_at: 2021-05-31
 title: Classic 환경에서 서버 이미지를 다른 계정에 공유하는 방법
 categories:
   - 1.compute
@@ -70,5 +71,3 @@ Linux와 Windows OS별 차이는 없으며, 일단은 서버 이미지가 생성
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-5-1-v2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-5-1-v2</a>
-
-> 문서 최종 수정일 : 2021-05-31

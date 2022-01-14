@@ -1,5 +1,6 @@
 ---
 date: 2021-04-13
+last_modified_at: 2021-04-13
 title: PhpSpreadsheet 설정 샘플 코드
 categories:
   - 99.ETC
@@ -236,6 +237,3 @@ PhpSpreadsheet를 사용해서 pdf 파일을 저장하려면 Mpdf 를 추가로 
 	- <a href="https://phpspreadsheet.readthedocs.io/" target="_blank" style="word-break:break-all;">https://phpspreadsheet.readthedocs.io/</a>
 2.  PhpSpreadsheet GitHub Source and Download
 	- <a href="https://github.com/PHPOffice/PhpSpreadsheet" target="_blank" style="word-break:break-all;">https://github.com/PHPOffice/PhpSpreadsheet</a>
-
-
-> 문서 최종 수정일 : 2021-04-14

@@ -1,6 +1,6 @@
 ---
 date: 2020-11-19
-update: 2021-12-07
+last_modified_at: 2021-12-07
 title: Cloud Log Analytics에서 수집하는 로그 유형
 categories:
   - 7.analytics
@@ -38,6 +38,3 @@ Cloud Log Analytics에서 수집하는 각 종 서비스의 로그 템플릿 종
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/cla-cla-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/cla-cla-1-1.html</a>
-
-
-> info "문서 최종 수정일 : 2021-12-07" 

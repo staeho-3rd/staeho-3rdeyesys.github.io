@@ -1,5 +1,6 @@
 ---
 date: 2020-12-01
+last_modified_at: 2020-12-01
 title: Subnet 과 NAT GW
 categories:
   - 2.networking
@@ -28,6 +29,3 @@ order_number: 3
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/networking-networking-10-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-networking-10-1.html</a>
-
-
-> 문서 최종 수정일 : 2020-12-01

@@ -1,6 +1,6 @@
 ---
 date: 2021-11-02
-update: 2021-11-02
+last_modified_at: 2021-11-02
 title: VPC 환경에서 SSL VPN 설정하고 접속하는 방법
 categories:
   - 3.security
@@ -43,7 +43,8 @@ VPC 환경의 SSL VPN은 콘솔에서 자동으로 생성하는 것이 아니라
 SSL VPN 생성이 완료되면 아래와 같은 메일을 받을 수 있습니다.   
 메일 내용에는 [**SSL VPN IP POOL**] 정보와 접속 경로 정보가 포함되어 있으니 잘 확인해야 합니다.
 
-> 특히 [**SSL VPN IP POOL**] 정보는 Ncloud 콘솔에서 확인할 수 없고, 오로지 생성 완료 메일에서만 확인 가능하니 잘 보관해야 합니다.
+{: .error.box }
+특히 [**SSL VPN IP POOL**] 정보는 Ncloud 콘솔에서 확인할 수 없고, 오로지 생성 완료 메일에서만 확인 가능하니 잘 보관해야 합니다.
 
 <img src="../../images/ncp_security_ssl_vpn_vpc_guide_05.png" alt="Ncloud(네이버 클라우드) VPC 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:700px;align:center">
 
@@ -168,6 +169,7 @@ Agent 창에서 [그래프 보기] 버튼을 클릭합니다.
 
 
 ## 주의사항
+{: .error.box }
 **SSL VPN이 연결된 상태에서 새로운 서버를 생성하고 접속을 시도하면 아래와 같은 오류 메시지가 뜨면서 서버 접속이 되지 않습니다.  이때는 SSL VPN의 연결을 끊었다가 다시 연결해야 새로 생성한 서버에 접속할 수 있습니다.**
 
 <img src="../../images/ncp_security_ssl_vpn_classic_guide_23.png" alt="Ncloud(네이버 클라우드) Classic 환경에서 SSL VPN 설정하고 접속하는 방법" style="width:700px;align:center">
@@ -193,6 +195,3 @@ Route Table 정보를 삭제한 후에 SSL VPN을 삭제하시면 됩니다.
 
 2. SSL VPN 요금
 	- <a href="https://www.ncloud.com/product/security/sslVpn" target="_blank" style="word-break:break-all;">https://www.ncloud.com/product/security/sslVpn</a>
-
-
-> 문서 최종 수정일 : 2021-11-02

@@ -1,5 +1,6 @@
 ---
 date: 2020-11-13
+last_modified_at: 2020-12-03
 title: 네이버 클라우드 LAMP 기본 환경 설정 정보
 categories:
   - 1.compute
@@ -13,7 +14,8 @@ order_number: 1
 
 Ncloud(네이버 클라우드 플랫폼, 이하 네이버 클라우드)에서 제공하는 Application중에서 가장 대표적인 LAMP(Linux + Apache, Mysql, PHP)의 기본설정입니다.
 
-> "2020-12-03 현재 LAMP를 포함한 Application 이미지들은 Classic 환경에서만 이용 가능합니다.  VPC 환경에서는 아직 지원하지 않고 향후 업데이트 예정입니다"
+{: .success }
+2022-01-14 현재 LAMP를 포함한 Application 이미지들은 Classic 환경에서만 이용 가능합니다.  VPC 환경에서는 아직 지원하지 않고 향후 업데이트 예정입니다
 
 ### LAMP 홈디렉토리
 네이버 클라우드에서 Linux 서버를 세팅하게 되면 기본적으로 root 계정으로 접속이 됩니다.
@@ -54,5 +56,3 @@ LAMP 설치 상태와 정보 확인 명령 : /root/lamp/lamp_info.sh
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/lamp-lamp-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docslamp-lamp-1-1.html</a>
-
-> 문서 최종 수정일 : 2020-12-03

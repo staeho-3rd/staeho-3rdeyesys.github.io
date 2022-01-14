@@ -1,6 +1,6 @@
 ---
 date: 2021-01-22
-update: 2021-06-11
+last_modified_at: 2021-06-11
 title: mysql DB 자동백업 방법
 categories:
   - 5.database
@@ -80,6 +80,3 @@ find $BACKUP_DIR -ctime +7 -exec rm -f {} \;
 
 ## 참고 URL
 <a href="https://www.ncloud.com/product/database" target="_blank" style="word-break:break-all;">https://www.ncloud.com/product/database</a>
-
-
-> 문서 최종 수정일 : 2021-06-11

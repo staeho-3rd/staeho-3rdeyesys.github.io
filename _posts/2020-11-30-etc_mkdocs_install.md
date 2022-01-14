@@ -1,5 +1,6 @@
 ---
 date: 2020-11-30
+last_modified_at: 2020-11-30
 title: mkdocs  설치 (윈도 10)
 categories:
   - 99.ETC
@@ -115,7 +116,3 @@ mkdocs build
 <img src="../../images/mkdocs_install_10.png" alt="mkdocs 설치 화면" style="width:770px;align:center">
 <img src="../../images/mkdocs_install_11.png" alt="mkdocs 설치 화면" style="width:600px;align:center">
 <img src="../../images/mkdocs_install_12.png" alt="mkdocs 설치 화면" style="width:770px;align:center">
-
-
-> "문서 최종 수정일 : 2020-11-30"
-

@@ -1,5 +1,6 @@
 ---
 date: 2021-09-16
+last_modified_at: 2021-09-16
 title: Classic 환경에서 AutoScaling 설정하는 방법
 categories:
   - 1.compute
@@ -215,6 +216,3 @@ Auto Scaling에서 사용되는 주요 용어들을 정리해보겠습니다.
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-autoscaling-autoscalingoverview" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-autoscaling-autoscalingoverview</a>
-
-
-> 문서 최종 수정일 : 2021-09-17

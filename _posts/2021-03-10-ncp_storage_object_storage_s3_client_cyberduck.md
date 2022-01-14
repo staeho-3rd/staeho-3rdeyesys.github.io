@@ -1,6 +1,6 @@
 ---
 date: 2021-03-10
-update: 2021-10-08
+last_modified_at: 2021-10-08
 title: Object Storage 접속용 Windows, MacOS Client Tool - Cyberduck
 categories:
   - 4.storage
@@ -184,6 +184,3 @@ Cyberduck의 환경설정에서 중요한 것들을 살펴 보겠습니다.
 - 인터페이스가 탐색기 형식이 아니라서 업로드, 다운로드할 때 불편하다.
 - 제공되는 접속용 프로필이 다양하지 않아서 서버 정보를 일일이 입력해야 한다.
 - 스토리지 <--> 스토리지 방식의 파일 전송을 지원하지 않는다.
-
-
-> 문서 최종 수정일 : 2021-03-11

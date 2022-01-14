@@ -1,5 +1,6 @@
 ---
 date: 2021-04-06
+last_modified_at: 2021-04-06
 title: PHP로 네이버 클라우드 API를 호출하는 샘플 예제
 categories:
   - 8.API
@@ -219,7 +220,3 @@ $response = curl_exec($ch);
 
 ## 참고 URL
 <a href="https://api.ncloud-docs.com/docs/ko/home/" target="_blank" style="word-break:break-all;">https://api.ncloud-docs.com/docs/ko/home/</a>
-
-
-> "문서 최종 수정일 : 2021-04-07"
-

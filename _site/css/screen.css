@@ -389,7 +389,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   border-color: #F20;
   background-color: #FFE7EC; }
 
-.info.update {
+.info.last-modified-at {
   border-color: #56ADEC;
   font-style: italic; }
 

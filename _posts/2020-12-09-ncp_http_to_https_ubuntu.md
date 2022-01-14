@@ -1,5 +1,6 @@
 ---
 date: 2020-12-09
+last_modified_at: 2020-12-09
 title: http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/Ubuntu
 categories:
   - 1.compute
@@ -96,6 +97,3 @@ root@test-lamp:~# systemctl restart apache2
 ```
 
 이제 http로 접속하셔서 https로 전환되는지 확인해보시기 바랍니다.
-
-
-> 문서 최종 수정일 : 2020-12-07

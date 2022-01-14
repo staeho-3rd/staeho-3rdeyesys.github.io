@@ -1,6 +1,6 @@
 ---
 date: 2021-12-17
-update: 2021-12-17
+last_modified_at: 2021-12-17
 title: X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP 기록하기
 categories:
   - 1.compute
@@ -165,6 +165,3 @@ apache2.conf 213번째 라인의 LogFormat 부분에서 **%h** 를 **%a** 로 �
 ## 참고 URL
 1.  X-Forwarded-For 안내
 	- <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-Forwarded-For" target="_blank" style="word-break:break-all;">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-Forwarded-For</a>
-
-
-> 문서 최종 수정일 : 2021-12-17

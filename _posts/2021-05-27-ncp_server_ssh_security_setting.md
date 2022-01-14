@@ -1,6 +1,6 @@
 ---
 date: 2021-05-27
-update: 2021-05-27
+last_modified_at: 2021-05-27
 title: 리눅스서버 SSH 접속 보안 설정하기
 categories:
   - 1.compute
@@ -33,7 +33,8 @@ root 계정에 대한 보안 설정은 **/etc/ssh/sshd_config** 파일에 있습
 로그인 차단은 위 설정에서 PermitRootLogin 항목을 바꾸시면 됩니다.  
 CentOS는 주석처리 되어 있으므로 주석을 해제하고 설정을 변경하시면 되고, Ubuntu는 주석이 해제된 상태이므로 설정값만 변경하시면 됩니다.
 
-> root 로그인을 차단하기 전에 다른 관리자 계정을 생성한 후에 차단 설정을 적용해야 합니다.
+{: .error.box }
+root 로그인을 차단하기 전에 다른 관리자 계정을 생성한 후에 차단 설정을 적용해야 합니다.
 
 ``` bash
 # 기존 - CentOS
@@ -102,6 +103,3 @@ SSH로 접속을 하면 성공, 실패에 대한 로그가 모두 남게 되는�
 
 2. 네이버 클라우드 플랫폼을 활용한 보안 강화
 	- <a href="https://m.blog.naver.com/n_cloudplatform/221117956958" target="_blank" style="word-break:break-all;">https://m.blog.naver.com/n_cloudplatform/221117956958</a>
-
-
-> 문서 최종 수정일 : 2021-05-28

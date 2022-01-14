@@ -1,5 +1,6 @@
 ---
 date: 2021-03-12
+last_modified_at: 2021-03-12
 title: Cloud Functions Action을 .Net (C#)을 사용하여 Visual Studio에서 만드는 방법 
 categories:
   - 1.compute
@@ -243,5 +244,3 @@ VPC 환경에서는 연결할 VPC와 Subnet을 선택해야 합니다. Classic �
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-15-2-6" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-15-2-6.html</a>
-
-> 문서 최종 수정일 : 2021-03-12

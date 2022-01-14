@@ -1,5 +1,6 @@
 ---
 date: 2021-01-26
+last_modified_at: 2021-01-26
 title: CentOS6에서 pip - Python 설치하기
 categories:
   - 1.compute
@@ -93,5 +94,3 @@ pip를 설치할 때 Python 버전이 일치하지 않는 등의 이유로 발�
 ~# curl -O https://bootstrap.pypa.io/2.7/get-pip.py
 ~# curl -O https://bootstrap.pypa.io/3.5/get-pip.py
 ```
-
-> 문서 최종 수정일 : 2021-01-27

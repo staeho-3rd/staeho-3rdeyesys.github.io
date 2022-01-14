@@ -1,6 +1,6 @@
 ---
 date: 2020-11-26
-update: 2021-12-29
+last_modified_at: 2021-12-29
 title: ACG(Access Control Group) 가이드
 categories:
   - 3.security
@@ -90,17 +90,3 @@ ACG를 설정할 때 접근 소스 항목은 보통 IP주소를 입력하게 됩
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-2-3" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-2-3.html</a>
-
-
-문서 최종 수정일 : 2021-12-29
-{: .info title="aaaa"}
-
-{: .warning }
-문서 최종 수정일 : 2021-12-29
-
-{: .error }
-> A paragraph
->
-> Another paragraph
->
-> The last paragraph

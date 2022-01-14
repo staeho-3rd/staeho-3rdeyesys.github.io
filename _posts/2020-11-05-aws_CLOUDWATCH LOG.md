@@ -1,5 +1,6 @@
 ---
 date: 2020-11-05
+last_modified_at: 2022-01-02
 title: AWS CLOUDWATCH LOG 수집 매뉴얼
 categories:
   - 91.AWS

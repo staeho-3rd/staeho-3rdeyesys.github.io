@@ -1,6 +1,6 @@
 ---
 date: 2021-12-10
-update: 2021-12-10
+last_modified_at: 2021-12-14
 title: Cloud Log Analytics 설정 가이드
 categories:
   - 7.analytics
@@ -217,5 +217,3 @@ Stop-Service : Cannot find any service with service name 'filebeat'.
 ## 참고 URL
 1.  Cloud Log Analytics 사용 가이드
 	- <a href="https://guide.ncloud-docs.com/docs/cla-cla-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/cla-cla-1-1</a>
-
-> 문서 최종 수정일 : 2021-12-14

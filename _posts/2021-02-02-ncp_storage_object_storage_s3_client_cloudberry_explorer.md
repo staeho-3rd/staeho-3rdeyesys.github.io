@@ -1,6 +1,6 @@
 ---
 date: 2021-02-02
-update: 2021-10-08
+last_modified_at: 2021-10-08
 title: Object Storage 접속용 Windows Client Tool - CloudBerry Explorer
 categories:
   - 4.storage
@@ -43,7 +43,8 @@ CloudBerry Explorer의 정식 명칭은 CloudBerry Explorer Freeware for Amazon 
 
 <img src="../../images/ncp_storage_object_storage_s3_client_cloudberry_explorer_02.jpg" alt="Object Storage 접속용 Windows Client Tool - CloudBerry Explorer" style="width:800px;align:center">
 
-> 네이버 클라우드 포탈 -> 마이페이지 -> 계정관리 -> 인증키 관리 - API 인증키 관리 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.
+{: .success }
+네이버 클라우드 포탈 -> 마이페이지 -> 계정관리 -> 인증키 관리 - API 인증키 관리 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.
 
 
 계정 정보를 입력하고 접속을 하면 왼쪽에 로컬PC 폴더가, 오른쪽에 버킷 리스트가 나타나고 원하는 버킷을 선택해서 들어가면 다음처럼 파일들을 확인할 수 있습니다.
@@ -112,6 +113,3 @@ Object Storage에 있는 파일을 로컬PC로 가져오려면 원하는 파일�
 또 다른 클라이언트인 S3 Browser입니다. 자세한  내용은 아래 링크에서 확인 가능합니다.
 
 <a href="/4.storage/ncp_storage_object_storage_s3_client_s3browser/" target="_blank" style="word-break:break-all;">Object Storage 접속용 Windows Client Tool - S3 Browser</a>
-
-
-> 문서 최종 수정일 : 2021-02-02

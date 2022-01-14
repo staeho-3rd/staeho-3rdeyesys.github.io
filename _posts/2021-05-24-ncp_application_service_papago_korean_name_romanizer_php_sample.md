@@ -1,5 +1,6 @@
 ---
 date: 2021-05-24
+last_modified_at: 2021-05-24
 title: PHP로 Papago Korean Name Romanizer 서비스 이용하기 샘플 예제
 categories:
   - 9.application service
@@ -147,7 +148,3 @@ Papago Korean Name Romanizer 서비스는 과도한 사용을 방지하기 위�
 
 ## 참고 URL
 <a href="https://api.ncloud-docs.com/docs/ai-naver-papagokoreannameromanizer" target="_blank" style="word-break:break-all;">https://api.ncloud-docs.com/docs/ai-naver-papagokoreannameromanizer</a>
-
-
-> "문서 최종 수정일 : 2021-05-24"
-

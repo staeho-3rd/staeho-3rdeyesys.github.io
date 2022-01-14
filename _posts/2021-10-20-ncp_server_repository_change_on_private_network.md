@@ -1,6 +1,6 @@
 ---
 date: 2021-10-20
-update: 2021-10-20
+last_modified_at: 2021-10-25
 title: 외부 네트워크에 연결할 수 없는 환경에서 Repository를 변경해 리눅스 패키지 설치하기
 categories:
   - 1.compute
@@ -136,8 +136,3 @@ sed -i 's/archive.ubuntu.com/mirror.ncloud.com/g' /etc/apt/sources.list
 
 2.  Ubuntu mirror 사이트 안내
 	- <a href="https://launchpad.net/ubuntu/+archivemirrors" target="_blank" style="word-break:break-all;">https://launchpad.net/ubuntu/+archivemirrors</a>
-
-
-
-
-> 문서 최종 수정일 : 2021-10-25

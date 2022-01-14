@@ -25,7 +25,6 @@
 
   gtag('config', 'G-4Q6RVEFJ3S');
 </script>
-
 			
 			
 			
@@ -248,7 +247,7 @@
   <li>로컬PC 타임스탬프 : UTC+9 현재시간 - 1970년 1월 1일 09시</li>
 </ul>
 
-<p>즉, <strong>로컬PC 등은 API Gateway보다 9시간 빠르기 때문에 동일한 타임스탬프 값을 얻으려면 1970년 1월 1일 09시 기준으로 계산해야 한다</strong>는 것입니다.<br />
+<p class="error">즉, <strong>로컬PC 등은 API Gateway보다 9시간 빠르기 때문에 동일한 타임스탬프 값을 얻으려면 1970년 1월 1일 09시 기준으로 계산해야 한다</strong>는 것입니다. 
 그래서 위의 코드에서 DateTime unixOriginalTime = new DateTime(1970, 1, 1, 9, 0, 0); 이렇게 적용했습니다.</p>
 
 <h4 id="hmac으로-암호화할-문자열-설정">hmac으로 암호화할 문자열 설정</h4>
@@ -339,11 +338,7 @@
 <h2 id="참고-url">참고 URL</h2>
 <p><a href="https://api.ncloud-docs.com/docs/ko/home/" target="_blank" style="word-break:break-all;">https://api.ncloud-docs.com/docs/ko/home/</a></p>
 
-<blockquote>
-  <p>“문서 최종 수정일 : 2021-04-07”</p>
-</blockquote>
-
-
+			<p class="info last-modified-at">문서 최종 수정일 : 2021-04-07</p>
 		</div>
 		<div class="tutorial-share">
 			<a class="modalOpen no-smooth" href="#subscribe">

@@ -1,5 +1,6 @@
 ---
 date: 2020-11-30
+last_modified_at: 2020-11-30
 title: VPC 구성요소
 categories:
   - 2.networking
@@ -54,6 +55,3 @@ VPC Peering은 단방향 통신을 제공하기 때문에 양방향 통신을 �
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/networking-vpc-vpcoverview" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-vpc-vpcoverview.html</a>
-
-
-> 문서 최종 수정일 : 2020-11-30

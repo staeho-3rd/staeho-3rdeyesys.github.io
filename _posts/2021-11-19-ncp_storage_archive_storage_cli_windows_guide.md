@@ -1,6 +1,6 @@
 ---
 date: 2021-11-19
-update: 2021-11-19
+last_modified_at: 2021-11-19
 title: Archive Storage CLI 사용 가이드 - Windows 환경
 categories:
   - 4.storage
@@ -242,6 +242,7 @@ swift download {컨테이너(버킷) 이름} --output-dir {저장할 로컬PC �
 네이버 클라우드(Ncloud) Archive Storage는 Object Storage의 데이터를 장기 백업하기 위한 용도 등으로 주로 사용되다 보니 Object Storage와 비슷한 시스템이라고 오해하는 경우가 많습니다. 
 하지만, Object Storage가 AWS S3와 호환되는 시스템 구조로 되어 있는 것에 반해, Archive Storage는 OpenStack 기반의 시스템 구조로 되어 있어 전혀 다르다고 보시면 됩니다.  
 
+{: error.box }
 그러다 보니, Object Storage를 관리하는데 자주 사용되는 AWS S3용 Client Tool (ex, CloudBerry Explorer, S3 Browser) 등을 Archive Storage를 관리할 때도 사용하는 경우가 있는데, 가급적 사용하지 않는 것이 좋습니다. 
 왜냐하면 **AWS S3용 Client Tool로 Archive Storage에서 업로드, 다운로드, 삭제, 이름변경 등의 작업을 진행하면 해당 파일에 문제가 생기거나 때로는 컨테이너(버킷) 데이터 전체에 문제가 생길 수도 있기 때문**입니다.  
 
@@ -254,5 +255,3 @@ swift download {컨테이너(버킷) 이름} --output-dir {저장할 로컬PC �
 
 2.  OpenStack CLI 가이드
 	- <a href="https://docs.openstack.org/ocata/cli-reference/swift.html" target="_blank" style="word-break:break-all;">https://docs.openstack.org/ocata/cli-reference/swift.html</a>
-
-> 문서 최종 수정일 : 2021-11-19

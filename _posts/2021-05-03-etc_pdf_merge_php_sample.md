@@ -1,5 +1,6 @@
 ---
-date: 2021-04-13
+date: 2021-05-03
+last_modified_at: 2021-05-03
 title: Pdf 문서 합치기 PHP로 구현하는 방법
 categories:
   - 99.ETC
@@ -300,6 +301,3 @@ PDFMerger.php 파일에서 파일 합치기 함수 merge를 찾습니다.
 ## 참고 URL
 1.  PDF Merge GitHub Source and Download
 	- <a href="https://github.com/jurosh/php-pdf-merge" target="_blank" style="word-break:break-all;">https://github.com/jurosh/php-pdf-merge</a>
-
-
-> 문서 최종 수정일 : 2021-05-03

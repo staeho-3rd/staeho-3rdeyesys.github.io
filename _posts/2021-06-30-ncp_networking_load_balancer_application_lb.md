@@ -1,6 +1,6 @@
 ---
 date: 2021-06-30
-update: 2021-12-17
+last_modified_at: 2021-12-17
 title: VPC 환경에서 Application Load Balancer 생성하기
 categories:
   - 2.networking
@@ -166,6 +166,3 @@ systemctl status httpd
 
 2. Target Group 가이드
 	- <a href="https://guide.ncloud-docs.com/docs/networking-loadbalancer-targetgroupconsole" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-loadbalancer-targetgroupconsole</a>
-
-
-> 문서 최종 수정일 : 2021-12-17

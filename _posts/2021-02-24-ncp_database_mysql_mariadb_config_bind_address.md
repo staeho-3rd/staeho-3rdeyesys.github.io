@@ -1,5 +1,6 @@
 ---
 date: 2021-02-24
+last_modified_at: 2021-02-24
 title: mysql, mariadb 외부접속을 위한 환경설정 bind-address 위치
 categories:
   - 5.database
@@ -45,5 +46,3 @@ mariaDB의 경우 외부 접속을 차단하지는 않지만, bind-address 항�
 ## 참고 URL
 - <a href="/5.database/ncp_database_mariadb_access_from_remote_ubuntu/" target="_blank" style="word-break:break-all;">Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</a>
 - <a href="/5.database/ncp_database_mariadb_access_from_remote_centos/" target="_blank" style="word-break:break-all;">CentOS에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL</a>
-
-> 문서 최종 수정일 : 2021-02-24

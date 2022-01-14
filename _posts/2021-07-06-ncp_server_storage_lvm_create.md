@@ -1,6 +1,6 @@
 ---
 date: 2021-07-06
-update: 2021-07-06
+last_modified_at: 2021-07-06
 title: 리눅스서버 스토리지(디스크) LVM 구성하기
 categories:
   - 1.compute
@@ -204,6 +204,3 @@ Physical Volume이 제대로 생성되었는지 확인합니다.
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2.html</a>
-
-
-> 문서 최종 수정일 : 2021-07-06

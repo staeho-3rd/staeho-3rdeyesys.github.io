@@ -1,6 +1,6 @@
 ---
 date: 2021-01-13
-update: 2021-06-04
+last_modified_at: 2021-06-04
 title: Linux 스토리지(디스크) 추가 상세 가이드
 categories:
   - 1.compute
@@ -220,6 +220,3 @@ UUID=29f58417-*** 중략 ***38d0f /mnt/data xfs defaults 1 2
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-4-1-v2.html</a>
-
-
-> 문서 최종 수정일 : 2021-06-04

@@ -1,6 +1,6 @@
 ---
 date: 2021-01-22
-update: 2021-10-08
+last_modified_at: 2021-10-08
 title: CentOS에서 mysql DB를 Object Storage로 자동 백업하기
 categories:
   - 5.database
@@ -49,7 +49,8 @@ aws cli를 설치하려면 pip가 먼저 설치되어 있어야 합니다.
 ``` bash
 ~# yum -y install python-pip
 ```
-> **CentOS 6.x** 버전은 기술지원 종료로 인해 위 방법대로 설치가 되지 않습니다. 다음 경로에 나온 방법대로 설치하면 됩니다.
+{: .error }
+**CentOS 6.x** 버전은 기술지원 종료로 인해 위 방법대로 설치가 되지 않습니다. 다음 경로에 나온 방법대로 설치하면 됩니다.
 <a href="/1.compute/ncp_server_pip_python_install_centos6/" target="_blank" style="word-break:break-all;">CentOS6에서 pip - Python 설치하기</a>
 
 
@@ -109,7 +110,8 @@ find $BACKUP_DIR -ctime +7 -exec rm -f {} \;
 # 로컬에 백업된 데이터를 Object Storage에 백업-동기화하는 명령어입니다.
 aws --endpoint-url=https://kr.object.ncloudstorage.com s3 sync /data_backup/ s3://data-back-up/
 ```
-> 여기서 db 폴더만 백업-동기화를 하는 것이 아닌 상위 폴더인 /data_backup/ 폴더부터 백업-동기화를 한 이유는 이후에 db 말고도 개발소스 파일 등도 압축해서 백업하기 위해서입니다.
+{: .info }
+여기서 db 폴더만 백업-동기화를 하는 것이 아닌 상위 폴더인 /data_backup/ 폴더부터 백업-동기화를 한 이유는 이후에 db 말고도 개발소스 파일 등도 압축해서 백업하기 위해서입니다.
 
 ## 스케쥴링을 위한 crontab 설정
 이제 마지막으로 완성된 스크립트를 일정한 시간, 여기서는 매일 새벽 6시에 실행되도록 설정합니다.
@@ -131,6 +133,3 @@ aws --endpoint-url=https://kr.object.ncloudstorage.com s3 sync /data_backup/ s3:
 
 2. AWS CLI를 이용한 Object Storage 접속 방법
 	- <a href="/4.storage/ncp_storage_object_storage_aws_cli_connect/" target="_blank" style="word-break:break-all;">/4.storage/ncp_storage_object_storage_aws_cli_connect/</a>
-
-
-> 문서 최종 수정일 : 문서 최종 수정일 : 2021-06-11

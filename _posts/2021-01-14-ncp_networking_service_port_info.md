@@ -1,5 +1,6 @@
 ---
 date: 2021-01-14
+last_modified_at: 2021-01-14
 title: 주요 서비스 포트(Port) 정보
 categories:
   - 2.networking
@@ -38,6 +39,3 @@ order_number: 6
 - 18889 : TensorBoard
 - 27017 : MongoDB
 - 50070 : HDFS NameNode
-
-
-> 문서 최종 수정일 : 2021-01-14

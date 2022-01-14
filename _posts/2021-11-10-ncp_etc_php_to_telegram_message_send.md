@@ -1,6 +1,6 @@
 ---
 date: 2021-11-10
-update: 2021-11-10
+last_modified_at: 2021-11-10
 title: PHP로 텔레그램 비공개 채널에 메시지 전송하기
 categories:
   - 99.ETC
@@ -172,5 +172,3 @@ html 스타일을 적용하기 위해서는 전송 파라미터에 **parse_mode=
 
 3.  텔레그램 채팅 봇 API 메시지 스타일 가이드
 	- <a href="https://core.telegram.org/api/entities/" target="_blank" style="word-break:break-all;">https://core.telegram.org/api/entities/</a>
-
-> 문서 최종 수정일 : 2021-11-10

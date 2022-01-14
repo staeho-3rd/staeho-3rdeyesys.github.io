@@ -1,5 +1,6 @@
 ---
 date: 2021-01-14
+last_modified_at: 2021-01-14
 title: Classic Load Balancer 운영을 위한 ACG 설정 방법
 categories:
   - 2.networking
@@ -42,5 +43,3 @@ ACG에 접근권한을 설정하고 나서 잠시 기다리면 Load Balancer가 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/networking-loadbalancer-classiclbconsole" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-loadbalancer-classiclbconsole.html</a>
 
-
-> 문서 최종 수정일 : 2021-01-14

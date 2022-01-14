@@ -1,6 +1,6 @@
 ---
 date: 2021-05-31
-update: 2021-05-31
+last_modified_at: 2021-05-31
 title: Classic 환경 Windows 서버 이미지를 VPC 환경으로 복제하는 방법
 categories:
   - 1.compute
@@ -120,5 +120,3 @@ Classic 환경에서 VPC 환경으로 복제된 서버 이미지로 새로운 �
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-5-1-v2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-5-1-v2</a>
-
-> 문서 최종 수정일 : 2021-06-01

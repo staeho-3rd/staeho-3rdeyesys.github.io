@@ -1,5 +1,6 @@
 ---
 date: 2021-01-04
+last_modified_at: 2021-02-23
 title: jekyll base-theme 커스터마이징
 categories:
   - 99.ETC
@@ -183,6 +184,3 @@ code, pre, tt {
 	display:inline-block;
 }
 ```
-
-> "문서 최종 수정일 : 2021-02-23"
-

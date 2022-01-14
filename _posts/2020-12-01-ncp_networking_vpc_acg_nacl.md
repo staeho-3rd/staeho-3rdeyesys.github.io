@@ -1,5 +1,6 @@
 ---
 date: 2020-12-01
+last_modified_at: 2020-12-01
 title: ACG와 NACL 비교
 categories:
   - 2.networking
@@ -30,5 +31,3 @@ order_number: 2
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/networking-vpc-vpcdetailedsubnet" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-vpc-vpcdetailedsubnet.html</a>
 
-
-> 문서 최종 수정일 : 2020-12-01

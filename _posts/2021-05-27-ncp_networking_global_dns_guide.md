@@ -1,6 +1,6 @@
 ---
 date: 2021-05-27
-update: 2021-05-27
+last_modified_at: 2021-05-27
 title: Global DNS 사용 가이드 - 도메인 추가
 categories:
   - 2.networking
@@ -58,6 +58,3 @@ DNS 서버는 개인이 직접 운영하기 어려운데, 네이버 클라우드
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/networking-networking-12-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-networking-12-1</a>
-
-
-> 문서 최종 수정일 : 2021-05-27

@@ -1,6 +1,6 @@
 ---
 date: 2021-06-15
-update: 2021-06-15
+last_modified_at: 2021-06-15
 title: Video Player 구현하기 샘플 예제
 categories:
   - 6.media
@@ -148,6 +148,3 @@ var player = new ncplayer('divVideoPlayer', {
 
 2. Video Player Demo 가이드
 	- <a href="https://guide.ncloud-docs.com/docs/videoplayer-videoplayerdemo" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/videoplayer-videoplayerdemo</a>
-
-
-> 문서 최종 수정일 : 2021-06-14

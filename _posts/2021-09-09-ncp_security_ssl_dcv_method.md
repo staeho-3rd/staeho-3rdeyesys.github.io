@@ -1,5 +1,6 @@
 ---
 date: 2021-09-09
+last_modified_at: 2021-09-09
 title: SSL인증서 DCV (Domain Control Validation) 인증 방법과 유의사항 정리
 categories:
   - 3.security
@@ -31,7 +32,8 @@ Email 인증을 하기 전에 블라인드 서비스를 해제하고 인증을 �
 #### 추가 5개의 임의로 지정된 이메일
 임의로 지정된 이메일 주소는 admin, administrator, hostmaster, postmaster, webmaster 등 5가지이며 추가/수정이 불가능합니다.
 
-> 위의 총 6개 메일 주소 중에서 적어 1개는 유효한 메일주소여야 이메일 인증을 문제없이 완료할 수 있습니다.
+{: .error }
+위의 총 6개 메일 주소 중에서 적어 1개는 유효한 메일주소여야 이메일 인증을 문제없이 완료할 수 있습니다.
 
 
 #### 이메일 인증 유의사항
@@ -104,6 +106,3 @@ www.test.co.kr  CNAME  slb-****.ncloudslb.com
 
 2. DCV 인증 절차 안내
 	- <a href="https://www.sslcert.co.kr/products/domain-control-validation" target="_blank" style="word-break:break-all;">https://www.sslcert.co.kr/products/domain-control-validation</a>
-
-
-> 문서 최종 수정일 : 2021-09-10

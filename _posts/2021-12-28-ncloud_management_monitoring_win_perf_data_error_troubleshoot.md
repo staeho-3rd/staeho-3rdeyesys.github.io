@@ -1,6 +1,6 @@
 ---
 date: 2021-12-28
-update: 2021-12-28
+last_modified_at: 2021-12-28
 title: Windows 서버 모니터링 성능 정보 수집 오류 해결 방법
 categories:
   - 81.manage
@@ -98,5 +98,3 @@ C:\Program Files (x86)\NBP\NSight\
 ## 참고 URL
 1.  성능 수집 오류 해결 FAQ
 	- <a href="https://www.ncloud.com/support/faq/all/1292" target="_blank" style="word-break:break-all;">https://www.ncloud.com/support/faq/all/1292</a>
-
-> 문서 최종 수정일 : 2021-12-28

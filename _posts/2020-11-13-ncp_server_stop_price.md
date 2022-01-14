@@ -1,5 +1,6 @@
 ---
 date: 2020-11-13
+last_modified_at: 2020-11-13
 title: 서버 정지 시 요금할인
 categories:
   - 1.compute
@@ -36,6 +37,3 @@ order_number: 3
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-1-1-v2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-1-1-v2.html</a>
-
-
-> 문서 최종 수정일 : 2020-11-13

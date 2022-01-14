@@ -1,6 +1,6 @@
 ---
 date: 2021-08-03
-update: 2021-12-13
+last_modified_at: 2021-12-13
 title: Cloud DB for MySQL 생성후 Public 도메인으로 접속하기
 categories:
   - 5.database
@@ -16,8 +16,9 @@ creator: ljh0519
 완전 관리형 클라우드 데이터베이스 서비스입니다.  
 여기서는 VPC환경에서 Cloud DB for MySQL 서비스를 생성하고, Public 도메인으로 접속하는 과정을 정리해보겠습니다.
 
->네이버 클라우드는 Classic환경에서는 DB 서버 이미지를 제공하지만, VPC 환경에서는 제공하지 않습니다. 
->그러므로 VPC 환경에서 DB서버를 사용하려면 OS에 사용자가 직접 DB를 설치해서 사용하는 방법과 Cloud DB를 사용하는 방법 중에서 선택해야 합니다.
+{: .warning }
+네이버 클라우드는 Classic환경에서는 DB 서버 이미지를 제공하지만, VPC 환경에서는 제공하지 않습니다. 
+그러므로 VPC 환경에서 DB서버를 사용하려면 OS에 사용자가 직접 DB를 설치해서 사용하는 방법과 Cloud DB를 사용하는 방법 중에서 선택해야 합니다.
 
 ## 특징
 - 기본 10GB 데이터 스토리지를 제공하며, 10GB 단위로 6,000GB까지 자동으로 용량이 증가합니다. 
@@ -70,6 +71,7 @@ DB 엔진 버전은 MySQL 최신 버전 중 네이버에서 안정성이 검증�
 
 <img src="../../images/ncp_database_cloud_db_for_mysql_12-2.jpg" alt="네이버 클라우드 Cloud DB for MySQL 생성하고 Public 도메인으로 접속하기 가이드" style="width:770px;align:center">
 
+{: .success }
 >Cloud DB를 위한 ACG는 자동 생성됩니다(예: cloud-mysql-*)
 
 #### DB 서버 설정
@@ -77,7 +79,8 @@ DB 이름과 계정. 비번, 접속 포트 등을 설정합니다.
 HOST(IP) 설정에는 DB에 접근을 허용할 IP대역을 입력합니다. 여기서는 Public 도메인을 이용하게 되므로 우선 모든 대역을 허용하기 위해 [%]를 입력합니다.  
 대신 접속 IP 제한의 경우 ACG에서 설정하게 됩니다.
 
->DB 접속포트는 한번 설정하면 이후에 변경할 수 없으니 신중하게 설정하셔야 합니다.
+{: .error.box }
+DB 접속포트는 한번 설정하면 이후에 변경할 수 없으니 신중하게 설정하셔야 합니다.
 
 <img src="../../images/ncp_database_cloud_db_for_mysql_public_domain_01-3.jpg" alt="네이버 클라우드 Cloud DB for MySQL 생성하고 Public 도메인으로 접속하기 가이드" style="width:770px;align:center">
 
@@ -157,6 +160,3 @@ DB 서버 상세보기 메뉴에서는 [Process list], [Variables], [Status], [D
 
 2. Cloud DB 서버 외부 접근 가이드
 	- <a href="https://guide.ncloud-docs.com/docs/database-database-5-10" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/database-database-5-10</a>
-
-
-> 문서 최종 수정일 : 2021-12-13

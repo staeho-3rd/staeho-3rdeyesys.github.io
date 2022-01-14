@@ -1,6 +1,6 @@
 ---
 date: 2021-07-27
-update: 2021-07-27
+last_modified_at: 2021-07-27
 title: NAS 볼륨을 생성하고 Linux 서버에 마운트하기 가이드
 categories:
   - 4.storage
@@ -139,5 +139,3 @@ NAS 볼륨을 마운트할 디렉토리를 생성하고 {NAS 볼륨 마운트 �
 ## 참고 URL
 1.  NAS 사용 가이드
 	- <a href="https://guide.ncloud-docs.com/docs/ko/storage-storage-4-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/ko/storage-storage-4-1</a>
-
-> 문서 최종 수정일 : 2021-07-27

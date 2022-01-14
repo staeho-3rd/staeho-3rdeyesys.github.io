@@ -1,6 +1,6 @@
 ---
 date: 2021-11-16
-update: 2021-11-17
+last_modified_at: 2021-11-17
 title: PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회
 categories:
   - 4.storage
@@ -289,7 +289,8 @@ Archive Storage API를 이용해서 가져올 수 있는 오브젝트 목록의 
 
 <img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_03.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center">
 
-> 컨테이너(버킷)에 10,000개 이상의 오브젝트가 저장되어 있을 경우에는 아래쪽에서 소개하는 방법처럼 폴더별로 오브젝트 목록을 따로 조회하시면 됩니다.
+{: .success }
+컨테이너(버킷)에 10,000개 이상의 오브젝트가 저장되어 있을 경우에는 아래쪽에서 소개하는 방법처럼 폴더별로 오브젝트 목록을 따로 조회하시면 됩니다.
 
 ## 오브젝트 검색
 위에서는 컨테이너(버킷)에 저장된 모든 오브젝트들을 조회하는 기능을 확인해보았습니다.  
@@ -362,5 +363,3 @@ Archive Storage API에서 지원하는 기능은 컨테이너(버킷)의 오브�
 
 3.  OpenStack Keystone V3 API 가이드
 	- <a href="https://docs.openstack.org/api-ref/identity/v3/" target="_blank" style="word-break:break-all;">https://docs.openstack.org/api-ref/identity/v3/</a>
-
-> 문서 최종 수정일 : 2021-11-17

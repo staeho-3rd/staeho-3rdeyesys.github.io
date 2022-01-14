@@ -1,6 +1,6 @@
 ---
 date: 2021-11-22
-update: 2021-11-25
+last_modified_at: 2021-11-25
 title: VPC Peering 생성 가이드
 categories:
   - 2.networking
@@ -46,7 +46,8 @@ VPC(virtural Private Cloud)는 퍼블릭클라우드상에서 제공되는 사�
 
 설정이 끝났으면 생성버튼을 클릭합니다.
 
->다른 계정의 VPC와 연결하는 경우는 아래쪽에서 살펴보겠습니다.
+{: .success }
+다른 계정의 VPC와 연결하는 경우는 아래쪽에서 살펴보겠습니다.
 
 <img src="../../images/ncloud_networking_vpc_peering_guide_03.png" alt="네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 " style="width:700px;align:center">
 
@@ -160,6 +161,3 @@ VPC Peering 생성 화면에서 [다른 계정]을 선택하면 아래와 같이
 
 2. VPC Peering 설정 시나리오
 	- <a href="https://guide.ncloud-docs.com/docs/networking-vpc-vpcuserscenario4" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-vpc-vpcuserscenario4</a>
-
-
-> 문서 최종 수정일 : 2021-11-25

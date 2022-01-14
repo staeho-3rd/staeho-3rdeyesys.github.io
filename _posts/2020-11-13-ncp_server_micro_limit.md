@@ -1,5 +1,6 @@
 ---
 date: 2020-11-13
+last_modified_at: 2021-01-09
 title: Micro 타입 서버에서 사용할 수 없는 서비스
 categories:
   - 1.compute
@@ -31,7 +32,8 @@ LAMP (Linux + Apache, Mysql, PHP)의 경우 Micro 타입의 서버에 설치를 
 
 Application Server Launcher에서는 원하는 소프트웨어의 이미지를 선택하기만 하면 쉽게 Micro 타입의 서버를 세팅하고 이용할 수 있습니다.
 
-> 다만, Application Server Launcher에서 생성한 서버도 Micro 타입의 서버이기 때문에 계정당 1개만 제공되는 Micro 타입 서버 기준에 따라 Micro 타입의 서버는 더 이상 추가할 수 없습니다.
+{: .success }
+다만, Application Server Launcher에서 생성한 서버도 Micro 타입의 서버이기 때문에 계정당 1개만 제공되는 Micro 타입 서버 기준에 따라 Micro 타입의 서버는 더 이상 추가할 수 없습니다.
 
 
 Application Server Launcher에서 OS버전(CentOS, Ubuntu)별로 제공되는 애플리케이션은 다음과 같습니다.
@@ -51,6 +53,3 @@ Private Subnet을 구성해서 서버환경을 만들려고 해도 Micro 서버 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-1-1-v2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-1-1-v2.html</a>
 <a href="https://guide.ncloud-docs.com/docs/asl-asl_console" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/asl-asl_console.html</a>
-
-
-> 문서 최종 수정일 : 2021-01-19

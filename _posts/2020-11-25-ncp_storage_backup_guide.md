@@ -1,5 +1,6 @@
 ---
 date: 2020-11-25
+last_modified_at: 2020-11-25
 title: 백업 서비스 가이드와 신청 절차
 categories:
   - 4.storage
@@ -39,7 +40,8 @@ order_number: 7
 - mysql 1일 1회 전체 백업
 - mysql 1주 1회 전체 백업
 
-> 증분 백업(변경된 데이터만 백업)의 경우 DBMS는 정합성을 보장하나 파일에 대해서는 정합성을 보장하지 않음
+{: .warning }
+증분 백업(변경된 데이터만 백업)의 경우 DBMS는 정합성을 보장하나 파일에 대해서는 정합성을 보장하지 않음
 
 ## 백업 신청 절차
 1. 네이버 클라우드 플랫폼 포털(https://www.ncloud.com)에 접속하여 로그인
@@ -58,7 +60,8 @@ order_number: 7
 3. NCP_Backup_Install.bat을 실행하면 자동으로 설치 및 구성이 진행되며 설치 완료
 4. 이후 백업 Agent 관련 파일들은 자동으로 삭제됨
 
-> 백업 Agent설치 후 파일이 자동 삭제되기에 반드시 설치위치는 C:\Temp에서 수행을 권고
+{: .warning }
+백업 Agent설치 후 파일이 자동 삭제되기에 반드시 설치위치는 C:\Temp에서 수행을 권고
 
 
 ### Linux
@@ -68,7 +71,8 @@ order_number: 7
 4. NCP_Backup_Install.sh 파일을 실행하면 자동으로 백업 Agent 설치 및 구성이 완료
 5. 이후 관련 파일은 자동으로 삭제됨
 
-> 백업 Agent설치 후 파일이 자동 삭제되기에 반드시 설치위치는/tmp에서 수행을 권고
+{: .warning }
+백업 Agent설치 후 파일이 자동 삭제되기에 반드시 설치위치는/tmp에서 수행을 권고
 
 
 ## 백업 Agent 정보
@@ -90,6 +94,3 @@ order_number: 7
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/storage-storage-5-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/storage-storage-5-1.html</a>
-
-
-> 문서 최종 수정일 : 2020-11-25

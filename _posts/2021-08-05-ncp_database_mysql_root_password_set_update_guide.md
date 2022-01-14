@@ -1,6 +1,6 @@
 ---
 date: 2021-08-05
-update: 2021-08-05
+last_modified_at: 2021-08-05
 title: 설치형 MySQL DB에서 root Password 설정, 변경하는 방법
 categories:
   - 5.database
@@ -118,7 +118,3 @@ mysql> SHOW VARIABLES LIKE 'validate_password%';
 
 1. MySQL 패스워드 정책 가이드
 	- <a href="https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html" target="_blank" style="word-break:break-all;">https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html</a>
-
-
-{: .info.update }
-문서 최종 수정일 : 2021-08-05

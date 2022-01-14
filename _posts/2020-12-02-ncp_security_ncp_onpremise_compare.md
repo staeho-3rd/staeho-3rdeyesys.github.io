@@ -1,5 +1,6 @@
 ---
 date: 2020-12-02
+last_modified_at: 2020-12-02
 title: (Security) Ncloud vs On-Premise 비교
 categories:
   - 3.security
@@ -37,6 +38,3 @@ IDC에 있는 서버들을 네이버 클라우드로 마이그레이션 할 때 
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/security-security-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/security-security-1-1.html</a>
-
-
-> info "문서 최종 수정일 : 2020-12-02"

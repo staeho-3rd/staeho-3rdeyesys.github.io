@@ -1,6 +1,6 @@
 ---
 date: 2021-11-11
-update: 2021-11-11
+last_modified_at: 2021-11-11
 title: PHP로 Archive Storage API 인증 토큰 생성하는 방법
 categories:
   - 4.storage
@@ -251,5 +251,3 @@ API 인증 토큰의 유효 시간은 24시간이고 삭제 요청을 호출하�
 
 2.  OpenStack Keystone V3 API 가이드
 	- <a href="https://docs.openstack.org/api-ref/identity/v3/" target="_blank" style="word-break:break-all;">https://docs.openstack.org/api-ref/identity/v3/</a>
-
-> 문서 최종 수정일 : 2021-11-11

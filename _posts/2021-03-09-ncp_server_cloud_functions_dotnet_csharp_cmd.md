@@ -1,5 +1,6 @@
 ---
 date: 2021-03-09
+last_modified_at: 2021-03-09
 title: Cloud Functions Action을 .Net (C#)을 사용하여 윈도우 명령프롬프트(cmd)에서 만드는 방법 
 categories:
   - 1.compute
@@ -86,7 +87,8 @@ D:\CloudFunctionsTestConsole\publish>zip -r -0 CloudFunctionsTestConsole.zip *
 
 <img src="../../images/ncp_server_cloud_functions_dotnet_csharp_cmd_02.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 윈도우 명령프롬프트(cmd)에서 만드는 방법 " style="width:800px;align:center">
 
-> zip 명령이 실행되지 않을 경우 아래와 같이 윈도우 탐색기에서 직접 압축해도 됩니다.
+{: .warning }
+zip 명령이 실행되지 않을 경우 아래와 같이 윈도우 탐색기에서 직접 압축해도 됩니다.
 
 <img src="../../images/ncp_server_cloud_functions_dotnet_csharp_cmd_05.jpg" alt="네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사용하여 윈도우 명령프롬프트(cmd)에서 만드는 방법 " style="width:800px;align:center">
 
@@ -220,5 +222,3 @@ D:\>dotnet new classlib -n CloudFunctionsTestConsole -lang "C#" -f netstandard2.
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-15-2-6" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-15-2-6.html</a>
-
-> 문서 최종 수정일 : 2021-03-09

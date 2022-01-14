@@ -1,6 +1,6 @@
 ---
 date: 2021-01-22
-update: 2021-10-08
+last_modified_at: 2021-10-08
 title: Ubuntu에서 mysql DB를 Object Storage로 자동 백업하기
 categories:
   - 5.database
@@ -109,7 +109,8 @@ find $BACKUP_DIR -ctime +7 -exec rm -f {} \;
 # aws 명령어를 crontab에서 실행하기 위해 aws 파일의 전체 경로를 적어줍니다
 /usr/local/bin/aws --endpoint-url=https://kr.object.ncloudstorage.com s3 sync /data_backup/ s3://data-back-up/
 ```
-> 여기서 db 폴더만 백업-동기화를 하는 것이 아닌 상위 폴더인 /data_backup/ 폴더부터 백업-동기화를 한 이유는 이후에 db 말고도 개발소스 파일 등도 압축해서 백업하기 위해서입니다.
+{: .info }
+여기서 db 폴더만 백업-동기화를 하는 것이 아닌 상위 폴더인 /data_backup/ 폴더부터 백업-동기화를 한 이유는 이후에 db 말고도 개발소스 파일 등도 압축해서 백업하기 위해서입니다.
 
 ## 스케쥴링을 위한 crontab 설정
 이제 마지막으로 완성된 스크립트를 일정한 시간, 여기서는 매일 새벽 6시에 실행되도록 설정합니다.
@@ -119,7 +120,8 @@ find $BACKUP_DIR -ctime +7 -exec rm -f {} \;
 # 매일 새벽 6시에 백업이 진행되는 코드입니다.
 00 06 * * * /bin/db_backup.sh > /dev/null 2>&1
 ```
-> crontab에 > /dev/null 2>&1를 추가하지 않으면 /var/log/syslog 파일에 (CRON) info (No MTA installed, discarding output) 라는 오류 메시지가 계속 쌓입니다.   
+{: .warning }
+crontab에 > /dev/null 2>&1를 추가하지 않으면 /var/log/syslog 파일에 (CRON) info (No MTA installed, discarding output) 라는 오류 메시지가 계속 쌓입니다.   
 postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하지 않은 것을 설치하기 보다는 필요하지 않은 오류 메시지는 없애는 것이 나을 듯합니다.
 
 ## 백업 결과 확인
@@ -133,6 +135,3 @@ postfix를 설치하면 해결된다는 이야기도 있는데 굳이 필요하�
 
 2. AWS CLI를 이용한 Object Storage 접속 방법
 	- <a href="/4.storage/ncp_storage_object_storage_aws_cli_connect/" target="_blank" style="word-break:break-all;">/4.storage/ncp_storage_object_storage_aws_cli_connect/</a>
-
-
-> 문서 최종 수정일 : 문서 최종 수정일 : 2021-06-11

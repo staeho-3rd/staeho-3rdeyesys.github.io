@@ -1,6 +1,6 @@
 ---
 date: 2021-07-09
-update: 2021-07-09
+last_modified_at: 2021-07-09
 title: VPC 환경에서 NAT Gateway 설정하기
 categories:
   - 2.networking
@@ -124,6 +124,3 @@ NAT Gateway는 사용하지 않고 생성만 해두어도 요금이 부과됩니
 
 2. NAT Gateway 특징과 비교
 	- <a href="https://m.blog.naver.com/n_cloudplatform/221173116642" target="_blank" style="word-break:break-all;">https://m.blog.naver.com/n_cloudplatform/221173116642</a>
-
-
-> 문서 최종 수정일 : 2021-07-09

@@ -1,5 +1,6 @@
 ---
 date: 2021-01-06
+last_modified_at: 2021-01-12
 title: VPC 환경에서 서버 생성
 categories:
   - 1.compute
@@ -21,7 +22,8 @@ VPC는 고객의 계정마다 **최대 3개**를 생성할 수 있으며, 각 VP
 - VPC 이름 입력
 - IP 주소 범위 입력
 
-> VPC의 IP 주소 범위는, private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /16~/28 범위
+{: .success }
+VPC의 IP 주소 범위는, private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /16~/28 범위
 
 <img src="../../images/ncp_server_vpc_create_02.jpg" alt="VPC 환경에서 서버 생성" style="width:600px;align:center">
 
@@ -59,6 +61,3 @@ VPC는 고객의 계정마다 **최대 3개**를 생성할 수 있으며, 각 VP
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-1-1-v2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-1-1-v2.html</a>
-
-
-> 문서 최종 수정일 : 2021-01-12

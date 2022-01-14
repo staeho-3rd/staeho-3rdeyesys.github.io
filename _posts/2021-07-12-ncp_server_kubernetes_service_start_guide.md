@@ -1,6 +1,6 @@
 ---
 date: 2021-07-12
-update: 2021-07-12
+last_modified_at: 2021-07-12
 title: Kubernetes Service 클러스터 생성 및 제어 가이드
 categories:
   - 1.compute
@@ -38,7 +38,8 @@ creator: franky
 
 <img src="../../images/ncp_server_kebernetes_start_guide_07.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
 
->- Private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /17~/26 범위의 Private Subnet, 로드밸런서 전용 Subnet이 필요합니다.<br/>
+{: .success }
+- Private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /17~/26 범위의 Private Subnet, 로드밸런서 전용 Subnet이 필요합니다.<br/>
 - Docker Bridge 대역의 충돌을 방지하기 위해 172.17.0.0/16 범위 내의 Private Subnet, 로드밸런서 전용Subnet은 선택할 수 없습니다.
 
 ## 클러스터 생성 
@@ -52,14 +53,15 @@ VPC와 Subnet이 준비되었다면, 다음으로 [Kubernetes Sevice] - [Cluster
 
 <img src="../../images/ncp_server_kebernetes_start_guide_01.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
 
->현재 지원되고 있는 Kubenetes 버전은 [1.17.16], [1.18.17] 입니다.
+{: .success }
+현재 지원되고 있는 Kubenetes 버전은 [1.17.16], [1.18.17] 입니다.
 
 클러스터에 생성되는 노드풀과 서버의 스펙 및 수를 지정해줍니다.
 
 <img src="../../images/ncp_server_kebernetes_start_guide_02.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
 
-
->현재 지원되고 있는 OS는 [ubuntu16.04], [ubuntu18.04] 입니다.
+{: .success }
+현재 지원되고 있는 OS는 [ubuntu16.04], [ubuntu18.04] 입니다.
 
 워커노드의 로그인키를 설정 합니다.
 
@@ -129,5 +131,3 @@ nks-pool-1865-w2zz   Ready    node    4d5h   v1.16.6
 	- <a href="https://guide.ncloud-docs.com/docs/vnks-nks-1-2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/vnks-nks-1-2</a>
 3. kubectl 설치 가이드
 	- <a href="https://kubernetes.io/ko/docs/tasks/tools/" target="_blank" style="word-break:break-all;">https://kubernetes.io/ko/docs/tasks/tools/</a>
-
-> 문서 최종 수정일 : 2021-07-13

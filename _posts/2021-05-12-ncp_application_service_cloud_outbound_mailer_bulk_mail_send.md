@@ -1,5 +1,6 @@
 ---
 date: 2021-05-12
+last_modified_at: 2021-05-12
 title: Cloud Outbound Mailer로 대량 메일 발송하는 방법
 categories:
   - 9.application service
@@ -64,8 +65,9 @@ Cloud Outbound Mailer에서 제공하는 대량메일 발송용 입력양식을 
 내용은 직접 입력해도 되고 별도로 제작된 html 파일을 이용할 수도 있는데 Cloud Outbound Mailer에서는 html 파일 업로드는 지원하지 않습니다.  
 그러므로 html 소스를 직접 복사해서 화면에 입력해야 합니다.  다음과 같은 샘플용 html을 준비해서 <body>와 </body>태그 사이에 있는 내용을 복사해서 에디터의 html모드에 붙여넣습니다.  
 
->스타일은 css 파일이나 style태그를 사용하지 말고 가급적 태그 안에 inline으로 적용하는 것이 좋습니다.
->메일 서비스 별로 head 태그만 없애는 곳도 있고, style태그를 모두 없애거나, body태그 안쪽의 내용만 남기고 모두 없애는 곳도 있기 때문에 inline 형식으로 적용하는 것이 가장 안전합니다.
+{: .info }
+스타일은 css 파일이나 style태그를 사용하지 말고 가급적 태그 안에 inline으로 적용하는 것이 좋습니다. 
+메일 서비스 별로 head 태그만 없애는 곳도 있고, style태그를 모두 없애거나, body태그 안쪽의 내용만 남기고 모두 없애는 곳도 있기 때문에 inline 형식으로 적용하는 것이 가장 안전합니다.
 
 <img src="../../images/cloud_outbound_mailer_bulk_mail_06.jpg" alt="Cloud Outbound Mailer로 대량 메일 발송하는 방법" style="width:800px;align:center">
 
@@ -125,7 +127,3 @@ Cloud Outbound Mailer에서 제공하는 대량메일 발송용 입력양식을 
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/email-email-1-2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/email-email-1-2</a>
-
-
-> "문서 최종 수정일 : 2021-05-13"
-

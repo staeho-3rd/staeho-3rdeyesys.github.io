@@ -1,5 +1,6 @@
 ---
 date: 2021-01-04
+last_modified_at: 2021-01-04
 title: jekyll 설치(윈도 10) with base-theme
 categories:
   - 99.ETC
@@ -92,6 +93,3 @@ jekyll new PATH
 기본 블로그를 만들고 접속하면 다음과 같은 화면이 나타납니다.
 
 <img src="../../images/jekyll_install_default_blog.jpg" alt="jekyll 기본 블로그" style="width:600px;align:center">
-
-> "문서 최종 수정일 : 2021-01-05"
-

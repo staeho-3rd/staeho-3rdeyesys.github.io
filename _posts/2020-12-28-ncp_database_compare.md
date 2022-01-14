@@ -1,5 +1,6 @@
 ---
 date: 2020-12-28
+last_modified_at: 2021-01-26
 title: 설치형 DB서버와 관리형 Cloud DB 비교
 categories:
   - 5.database
@@ -55,7 +56,8 @@ order_number: 1
 ### 관리형 Cloud
 - 614,880원/월 : 854원 (시간당) * 24시간(1일) * 30일(한달)
 
-> 관리형 Cloud for MSSQL에서 HA (Principal-Mirror 구성) 구성을 할 경우, DBMS 라이선스 요금은 마스터/슬레이브 서버에만 적용됩니다.
+{: .warning }
+관리형 Cloud for MSSQL에서 HA (Principal-Mirror 구성) 구성을 할 경우, DBMS 라이선스 요금은 마스터/슬레이브 서버에만 적용됩니다.
 
 
 ## 설치형 DB서버를 사용하면 좋은 경우
@@ -78,6 +80,3 @@ order_number: 1
 
 ## 참고 URL
 <a href="https://www.ncloud.com/product/database" target="_blank" style="word-break:break-all;">https://www.ncloud.com/product/database</a>
-
-
-> 문서 최종 수정일 : 2021-01-26

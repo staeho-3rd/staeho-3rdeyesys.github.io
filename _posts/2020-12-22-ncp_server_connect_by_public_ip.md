@@ -1,5 +1,6 @@
 ---
 date: 2020-12-22
+last_modified_at: 2020-12-22
 title: 서버 접속 가이드(Linux) - 공인IP 있을 때
 categories:
   - 1.compute
@@ -84,6 +85,3 @@ Putty를 실행해서 공인IP를 입력합니다.
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/compute-compute-3-1-v2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/compute-compute-3-1-v2.html</a>
-
-
-> 문서 최종 수정일 : 2020-12-22

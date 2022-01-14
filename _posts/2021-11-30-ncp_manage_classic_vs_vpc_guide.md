@@ -1,6 +1,6 @@
 ---
 date: 2021-11-30
-update: 2021-11-30
+last_modified_at: 2021-12-03
 title: 네이버 클라우드 Classic 환경 vs VPC 환경 비교
 categories:
   - 81.manage
@@ -100,5 +100,3 @@ Classic 환경에서는 LAMP, Wordpress 등 사용자들이 편하게 각 종 �
 
 2.  VPC 사용 가이드
 	- <a href="https://guide.ncloud-docs.com/docs/ko/networking-vpc-vpcoverview" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/ko/networking-vpc-vpcoverview</a>
-
-> 문서 최종 수정일 : 2021-12-03

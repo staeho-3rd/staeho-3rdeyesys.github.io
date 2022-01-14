@@ -1,5 +1,6 @@
 ---
 date: 2020-12-01
+last_modified_at: 2020-12-01
 title: Load Balancer 상품군의 변화
 categories:
   - 2.networking
@@ -24,8 +25,8 @@ DSR(Direct Server Return) 구조의 고성능, 대규모 네트워크 연결에 
 3. Network Proxy Load Balancer  
 TCP 세련 유지에 최적화 되어 있으며, Network Load Balancer와 다르게 DSR를 지원하지 않으며, Load Balander가 세션을 관리.
 
-> KR존/서브넷 별 LB 생성지역 지정 가능
-	VPC 환경에서는 **내가 원하는 KR존의 특정 서브넷에 LB생성 가능, KR-1/2 존에 각각 생성하여 고가용성을 확보** 할 수 있다.
+{: .success }
+KR존/서브넷 별 LB 생성지역 지정 가능 : VPC 환경에서는 **내가 원하는 KR존의 특정 서브넷에 LB생성 가능, KR-1/2 존에 각각 생성하여 고가용성을 확보** 할 수 있다.
 
 ## LB 선택 기준 및 기능 비교
 
@@ -48,6 +49,3 @@ TCP 세련 유지에 최적화 되어 있으며, Network Load Balancer와 다르
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/networking-loadbalancer-loadbalanceroverview" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-loadbalancer-loadbalanceroverview.html</a>
-
-
-> 문서 최종 수정일 : 2020-12-01

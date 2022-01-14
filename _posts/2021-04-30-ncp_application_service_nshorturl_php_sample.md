@@ -1,5 +1,6 @@
 ---
 date: 2021-04-30
+last_modified_at: 2021-04-30
 title: PHP로 nShortURL 서비스 이용하기 샘플 예제
 categories:
   - 9.application service
@@ -141,7 +142,3 @@ nShortURL 서비스는 과도한 사용을 방지하기 위해 일별 25,000회,
 
 ## 참고 URL
 <a href="https://api.ncloud-docs.com/docs/ai-naver-nshorturl" target="_blank" style="word-break:break-all;">https://api.ncloud-docs.com/docs/ai-naver-nshorturl</a>
-
-
-> "문서 최종 수정일 : 2021-04-30"
-
