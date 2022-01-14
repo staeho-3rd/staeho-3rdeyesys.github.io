@@ -20,8 +20,9 @@ order_number: 13
 
 <img src="../../images/ncp_database_mysql_root_password_update_00.jpg" alt="네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법" style="width:770px;align:center">
 
->네이버 클라우드는 Classic환경에서는 DB 서버 이미지를 제공하지만, VPC 환경에서는 제공하지 않습니다. 
->그러므로 VPC 환경에서 DB서버를 사용하려면 OS에 사용자가 직접 DB를 설치해서 사용하는 방법과 Cloud DB를 사용하는 방법 중에서 선택해야 합니다.
+{: .success }
+네이버 클라우드는 Classic환경에서는 DB 서버 이미지를 제공하지만, VPC 환경에서는 제공하지 않습니다. 
+그러므로 VPC 환경에서 DB서버를 사용하려면 OS에 사용자가 직접 DB를 설치해서 사용하는 방법과 Cloud DB를 사용하는 방법 중에서 선택해야 합니다.
 
 
 ## MySQL 5.6 설정
@@ -47,7 +48,8 @@ mysql> select host, user, password from mysql.user;
 
 패스워드를 설정하고 다시 확인을 해보면 **localhost의 root 계정**에 패스워드가 설정된 것을 확인할 수 있습니다.
 
->MySQL의 계정은 host-user 두개를 합쳐서 키로 사용하게 되어 있습니다. 같은 user라도 접속하는 host 값이 다르면 별도의 계정처럼 인식합니다.
+{: .error }
+MySQL의 계정은 host-user 두개를 합쳐서 키로 사용하게 되어 있습니다. 같은 user라도 접속하는 host 값이 다르면 별도의 계정처럼 인식합니다.
 
 <img src="../../images/ncp_database_mysql_root_password_update_02.jpg" alt="네이버 클라우드 설치형 MySQL DB에서 root 패스워드 설정, 변경하는 방법" style="width:770px;align:center">
 
@@ -118,4 +120,5 @@ mysql> SHOW VARIABLES LIKE 'validate_password%';
 	- <a href="https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html" target="_blank" style="word-break:break-all;">https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html</a>
 
 
-> 문서 최종 수정일 : 2021-08-05
+{: .info }
+문서 최종 수정일 : 2021-08-05

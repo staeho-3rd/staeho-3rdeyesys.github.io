@@ -1,5 +1,5 @@
 current directory: D:/Work/staeho.3rdeyesys.github.io/vendor/bundle/ruby/2.5.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
-C:/Ruby25-x64/bin/ruby.exe -r ./siteconf20220110-21608-1haanv9.rb extconf.rb
+C:/Ruby25-x64/bin/ruby.exe -r ./siteconf20220114-20948-16soj07.rb extconf.rb
 creating Makefile
 
 current directory: D:/Work/staeho.3rdeyesys.github.io/vendor/bundle/ruby/2.5.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
@@ -14,4 +14,4 @@ linking shared-object ruby_http_parser.so
 
 current directory: D:/Work/staeho.3rdeyesys.github.io/vendor/bundle/ruby/2.5.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 ruby_http_parser.so ./.gem.20220110-21608-9mopbo
+/usr/bin/install -c -m 0755 ruby_http_parser.so ./.gem.20220114-20948-13wxaaq

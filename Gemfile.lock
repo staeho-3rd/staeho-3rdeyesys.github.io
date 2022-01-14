@@ -79,9 +79,9 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  jekyll (= 3.9.1)
-  jekyll-archives (= 2.1.1)
-  jekyll-extract-element (= 0.0.7)
+  jekyll (~> 3.9.1)
+  jekyll-archives (~> 2.1.1)
+  jekyll-extract-element (~> 0.0.7)
   jekyll-feed (~> 0.13.0)
   jekyll-seo-tag (~> 2.7.0)
   jekyll-sitemap (~> 1.4.0)
