@@ -11,18 +11,21 @@ type: Document
 
 ### IAM 계정생성 및 권한 부여
 
-cloudwatch log수집을 위해서는 서버 작업과 별도로 IAM 계정생성과 권한할당 작업을 선 진행하여야하며 작업이 완료된 후 계정의 액세스키, 비밀키를 발급 받는다.
+cloudwatch log수집을 위해서는 서버 작업과 별도로 IAM 계정생성과 권한할당 작업을 선 진행하여야하며 작업이 완료된 후 계정의 액세스키[^1], 비밀키를 발급 받는다.
 
  1. 계정생성
+
    계정생성- 계정이름 입력- 액서스 유형 Programmatic access 선택
+
    
  2. 권한설정
  
    기존 정책 직접 연결 선택 - CloudWatchAgentServerPolicy정책 추가
+
+
  3. 키확인
  
    액세스 키 확인 및 비밀키 확인
-
 
 
 ## 서버 작업
@@ -131,3 +134,7 @@ cloudwatch log수집을 위해서는 서버 작업과 별도로 IAM 계정생성
 <a href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/AgentReference.html" target="_blank" style="word-break:break-all;">https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/AgentReference.html</a>  
 <a href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html" target="_blank" style="word-break:break-all;">https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html</a>  
 <a href="https://stackoverflow.com/questions/40604940/cloudwatch-logs-acting-weird" target="_blank" style="word-break:break-all;" style="word-break:break-all;">https://stackoverflow.com/questions/40604940/cloudwatch-logs-acting-weird</a>
+
+
+
+[^1]: And here is the definition.
