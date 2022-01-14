@@ -5,6 +5,7 @@ title: 3rdeyesys
 url: "https://docs.3rdeyesys.com"
 baseurl:
 google_analytics_key: G-4Q6RVEFJ3S
+ncloud_real_user_analytics_key: e4c80491-1665-457b-9cec-550a5f554dde
 disqus_shortname:
 newsletter_action:
 #environment : production

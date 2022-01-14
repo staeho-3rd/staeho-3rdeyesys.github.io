@@ -34,7 +34,7 @@ table
 	width: 100%;	
 	padding:0; 
 	border-spacing:0px; 
-	border:0; 
+	border : 1px solid $light-grey;
 	border-collapse:collapse;
 }
 th 
@@ -45,6 +45,7 @@ th
       background-color:$medium-grey;
       color: #fff;
       text-align: right;
+      border: 1px solid $medium-grey;
 }
 td
 {
@@ -52,6 +53,7 @@ td
 	font-size: 13px;
 	font-weight: none;
 	font-family: 'Nanum Gothic', sans-serif;
+	border-bottom : 1px solid $lighter-grey;
 }
 
 .categories a {
@@ -448,7 +450,19 @@ a.badge-dark:focus, a.badge-dark.focus {
   border-color: #56ADEC; }
 
 .error {
-  border-color: #F20; }
+  border-color: #F20;
+  }
 
 .success {
   border-color: #6c0; }
+
+.error.box {
+  border-color: #F20;
+  background-color:  #FFE7EC;  
+  }
+
+.info.update {
+  border-color: #56ADEC; 
+  font-style: italic;
+  }
+  

@@ -1,0 +1,11 @@
+<!-- NCloud Real User Analytics -->
+<script>
+  (function() {
+    var s = document.getElementsByTagName('script')[0]
+      , p = document.createElement('script');
+    p.async = 'async';
+    p.src = 'https://rua-api.ncloud.com/api/v1/beacon/boomerang/collect/'+
+      '{{ site.ncloud_real_user_analytics_key }}';
+    s.parentNode.insertBefore(p, s);
+  })();
+</script>

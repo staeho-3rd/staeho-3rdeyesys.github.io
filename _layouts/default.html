@@ -14,15 +14,13 @@
 		
 		<!--link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400italic,400,300italic,300,700,700italic|Open+Sans:400italic,600italic,700italic,700,600,400|Inconsolata:400,700"-->
 
-		{% if site.environment == 'production' and site.google_analytics_key != '' %}
-			<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_key }}"></script>
-			<script>
-			  window.dataLayer = window.dataLayer || [];
-			  function gtag(){dataLayer.push(arguments);}
-			  gtag('js', new Date());
-
-			  gtag('config', '{{ site.google_analytics_key }}');
-			</script>
+		{% if site.environment == 'production' %}
+			{% if site.google_analytics_key != '' %}
+				{% include google-analytics.html %}			
+			{% endif %}
+			{% if site.ncloud_real_user_analytics_key != '' %}
+				{% include ncloud-real-user-analytics.html %}
+			{% endif %}
 		{% endif %}
 
 		{% seo %}
