@@ -1,6 +1,6 @@
 ---
 date: 2021-12-17
-last_modified_at: 2021-12-17
+last_modified_at: 2021-12-29
 title: X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP 기록하기
 categories:
   - 1.compute
