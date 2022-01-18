@@ -1,0 +1,210 @@
+I"A<h2 id="개요">개요</h2>
+<p>Cloud Log Analytics는 Ncloud(네이버 클라우드)가 제공하는 여러 서비스에서 발생하는 다양한 로그들을 한 곳에 모아 저장하고 손쉽게 분석할 수 있는 서비스로, 
+검색 기능을 이용해 여러 종류의 로그를 한 곳에서 한번에 조회하고 분석할 수 있어 효과적인 로그 관리가 가능합니다.</p>
+
+<h2 id="로그-템플릿-종류">로그 템플릿 종류</h2>
+<p>Cloud Log Analytics는 텍스트 형식으로 생성되는 모든 종류의 로그 데이터 파일을 수집할 수 있는데, 사전에 제공되는 로그 템플릿 종류는 다음과 같습니다.</p>
+
+<ul>
+  <li>Server syslog</li>
+  <li>Apache 로그(Access log, Apache Error Log)</li>
+  <li>MySQL 설치형 상품의 로그(Error Log, Slow Log)</li>
+  <li>Microsoft SQL Server 설치형 상품의 Error Log</li>
+  <li>Tomcat 로그(Catalina Log)</li>
+  <li>Windows 서버의 Event Log</li>
+  <li>Windows 서버의 각종 text 형식의 로그</li>
+  <li>Cloud DB for MySQL 로그</li>
+  <li>Cloud DB for MSSQL 로그</li>
+  <li>Cloud DB for MongoDB 로그</li>
+  <li>Application Server Launcher 로그</li>
+  <li>Application Load Balancer 로그</li>
+  <li>Search Engine Service 로그</li>
+  <li>Cloud Data Streaming Service 로그</li>
+  <li>Bare Metal Server 로그</li>
+  <li>그외 템플릿으로 제공되지 않는 로그도 Custom Log 기능으로 직접 대상 로그를 지정해서 수집할 수 있습니다</li>
+</ul>
+
+<h2 id="저장-용량">저장 용량</h2>
+<ul>
+  <li><strong>최대 100GB</strong>까지 저장할 수 있습니다.</li>
+  <li>100GB 용량을 초과했을 경우 추가 저장 용량 확보를 위해 과거부터 전날까지의 데이터가 삭제될 수 있습니다.</li>
+  <li>CLA로 수집되는 로그량이 하루 10GB 이상을 넘거나 천만 건 이상일 경우 저장된 로그 검색시 성능에 제한이 발생할 수 있습니다.</li>
+  <li>저장 용량과 저장 기간을 더 늘리길 원할 경우 고객지원으로 문의해야 합니다.</li>
+  <li>과거 데이터를 보관하려면 [자동 보내기] 기능을 이용하여 과거 데이터를 Object Storage로 백업할 수 있습니다.</li>
+</ul>
+
+<h2 id="로그-보관-기간">로그 보관 기간</h2>
+<ul>
+  <li>Cloud Log Analytics 서비스는 <strong>최대 30일</strong> 동안 데이터가 보관되며, 검색 및 대시보드에서 확인할 수 있습니다.</li>
+  <li>30일이 지난 데이터는 과거 데이터부터 순차적으로 삭제됩니다.</li>
+  <li>30일이 지나지 않았더라도 저장된 데이터가 100GB를 초과하면 과거부터 전날까지의 데이터가 매일 삭제될 수 있습니다.</li>
+</ul>
+
+<h2 id="이용신청">이용신청</h2>
+<p>Ncloud(네이버 클라우드) 콘솔 [Cloud Log Analytics] - [Subscription]에서 [이용 신청] 버튼을 클릭합니다. 
+Cloud Log Analytics는 Classic, VPC 환경 공통 서비스이므로 어느쪽 환경에서 이용신청을 해도 상관없습니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_01.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h2 id="설정---linux">설정 - Linux</h2>
+<p>먼저 Linux 서버에서 설정하는 방법을 알아보겠습니다.<br />
+[Cloud Log Analytics] - [Management]에서 로그를 수집할 서버를 선택하고, [수집 설정] 버튼을 클릭합니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_02.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>Log 수집 설정 화면에서 수집할 로그 템플릿을 선택하거나, 직접 [Custom Log]를 선택해서 로그 형태를 설정한 후에 [적용] 버튼을 클릭합니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_03.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h4 id="로그-수집-agent-설치">로그 수집 Agent 설치</h4>
+<p>Log 수집 설정을 마치면 [로그 수집 Agent] 설치 안내가 나옵니다.<br />
+로그 수집 Agent 설치 명령어에는 URL 뒤쪽에 설치 하려는 서버에 해당하는 <strong>설치키(Install Key)</strong>가 포함되어 있습니다. 그러므로 URL을 수정해서도 안되고 다른 서버에 사용할 수도 없습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># VPC 환경</span>
+~# curl <span class="nt">-s</span> http://cm.vcla.ncloud.com/setUpClaVPC/<span class="o">{</span>설치키<span class="o">(</span>Install Key<span class="o">)}</span> | <span class="nb">sudo </span>sh
+
+<span class="c"># Classic 환경</span>
+~# curl <span class="nt">-s</span> http://cm.cla.ncloud.com/setUpCla/<span class="o">{</span>설치키<span class="o">(</span>Install Key<span class="o">)}</span> | <span class="nb">sudo </span>sh
+</code></pre></div></div>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_04.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>서버에 실제로 설치해보면 아래와 같이 설치 과정이 진행되고,<br />
+설치가 완료되면 마지막에 <strong>Finish Installation</strong>이라는 메시지가 출력됩니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_06.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>설치된 Agent가 제대로 작동하고 있는지 확인해보면 아래와 같이 active (running) 상태인 것을 확인할 수 있습니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# systemctl status filebeat
+</code></pre></div></div>
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_07.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h2 id="설정---windows">설정 - Windows</h2>
+<p>다음으로 Windows 서버에서 설정하는 방법을 살펴보겠습니다.<br />
+마찬가지로 서버를 선택하고 [수집 설정] 버튼을 클릭합니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_11.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>로그 수집 설정에서 Log Template은 [EventLog]를 선택합니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_12.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>설정을 마치면 Agent 설치 가이드를 확인할 수 있습니다.<br />
+서버에서 [Windows PowerShell]을 열고, 아래 명령어를 실행합니다. 마찬가지로 마지막에는 설치 서버에 해당하는 <strong>설치키</strong>가 포함되어 있습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># VPC 환경</span>
+Invoke-Expression <span class="k">$((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s2">"http://cm.vcla.ncloud.com/setUpwinClaVPC/{설치키(Install Key)}"</span><span class="k">))</span>
+
+<span class="c"># Classic 환경</span>
+Invoke-Expression <span class="k">$((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s2">"http://cm.cla.ncloud.com/setUpwinClaVPC/{설치키(Install Key)}"</span><span class="k">))</span>
+</code></pre></div></div>
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_13.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>설치가 완료되면 마지막에 <strong>Finish Installation</strong>이라는 메시지가 출력됩니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_14.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h4 id="windows-server-2019-지원-여부">Windows Server 2019 지원 여부</h4>
+<p>현재 Windows Server 2019는 지원하지 않고, 2022년 상반기 지원 예정입니다.<br />
+Windows Server 2019는 아래와 같이 선택을 해도 [수집 설정] 버튼을 활성화되지 않습니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_15.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h2 id="로그-확인">로그 확인</h2>
+<p>Agent 설치 후 [Dashboard]를 확인해보면 로그가 수집되고 있을 것을 알 수 있습니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_08.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>[Search] 메뉴에서는 로그 내용을 자세히 검색, 확인할 수 있고, 굳이 서버에 접속하지 않더라도 필요한 로그를 콘솔 화면에서 직접 확인할 수 있습니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_09.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h2 id="로그-백업">로그 백업</h2>
+<p>Cloud Log Analytics는 수집된 로그를 Object Storage로 내보내기하거나 Excel 파일로 다운로드 해서 백업할 수 있는 기능을 지원합니다.</p>
+
+<h4 id="수동-백업">수동 백업</h4>
+<p>[Search] 메뉴에 [Object Storage로 내보내기]와 [X 다운로드] 버튼이 있습니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_24.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>[Object Storage로 내보내기] 버튼을 클릭하면 내보내기 할 버킷을 선택할 수 있습니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_25.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:600px;align:center" /></p>
+
+<h4 id="자동-백업">자동 백업</h4>
+<p>[Export Log] 메뉴에서 [자동 내보내기 설정]을 클릭합니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_16.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>설정 화면에서 내보내기를 할 Object Storage의 버킷을 선택합니다. 혹시 버킷이 생성되지 않았다면 Object Storage로 가서 먼저 버킷을 생성하고 와야 합니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_17.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:600px;align:center" /></p>
+
+<p>내보내기는 하루에 한번 진행되므로 설정 후 다음 날 Object Storage에서 아래와 같이 파일이 저장되어 있는 것을 확인할 수 있습니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_20.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h2 id="로그-수집-해제">로그 수집 해제</h2>
+<p>더 이상 로그를 수집할 필요가 없어지면, 로그 수집 설정을 해제하면 됩니다.</p>
+
+<h4 id="linux-서버-로그-수집-해제">Linux 서버 로그 수집 해제</h4>
+<p>서버를 선택하고 [수집 해제] 버튼을 클릭합니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_22.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>로그 수집 해제를 위한 가이드에서 로그 수집 Agent 삭제 명령어를 복사합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># VPC 환경</span>
+~# curl <span class="nt">-s</span> http://cm.vcla.ncloud.com/removeCla | <span class="nb">sudo </span>sh
+
+<span class="c"># Classic 환경</span>
+~# curl <span class="nt">-s</span> http://cm.cla.ncloud.com/removeCla | <span class="nb">sudo </span>sh
+</code></pre></div></div>
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_05.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>Agent 삭제 명령어를 실행하면 아래와 같이 <strong>Success Remove Agent</strong> 메시지가 출력됩니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_10.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h4 id="windows-서버-로그-수집-해제">Windows 서버 로그 수집 해제</h4>
+<p>마찬가지로 서버를 선택하고 [수집 해제] 버튼을 클릭합니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_22.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>로그 수집 해제를 위한 가이드에서 로그 수집 Agent 삭제 명령어를 복사합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># VPC 환경</span>
+Invoke-Expression <span class="k">$((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s2">"http://cm.vcla.ncloud.com/removewinCla"</span><span class="k">))</span>
+
+<span class="c"># Classic 환경</span>
+Invoke-Expression <span class="k">$((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s2">"http://cm.cla.ncloud.com/removewinCla"</span><span class="k">))</span>
+</code></pre></div></div>
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_18.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<p>Agent 삭제 명령어를 실행하면 아래와 같이 <strong>Remove Agent</strong> 메시지가 출력됩니다.</p>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_19.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h4 id="windows-서버-agent-삭제-오류-상황">Windows 서버 Agent 삭제 오류 상황</h4>
+<p>Windows 서버에서 Agent 삭제를 시도할 때 아래와 같이 오류 메시지가 발생하는 경우가 있습니다.<br />
+이때는 당황하지 마시고, Agent 삭제 명령어를 다시 한번 실행하면 됩니다.</p>
+
+<p>오류의 원인 : 로그 수집 설정에서 EventLog만 선택했을 경우 발생합니다.<br />
+로그 수집 Agent는 윈도 이벤트 로그 수집을 위한 winlogbeat와 그 외 로그를 수집하기 위한 filebeat 두가지가 설치되는데, EventLog만 수집하도록 설정할 경우 filebeat는 실행되지 않습니다. 
+그 상태에서 Agent를 삭제하려고 하면 실행중이 아닌 filebeat를 실행 중지 시키려고 시도하게 되고, 결국 오류가 발생합니다.<br />
+그러므로 심각한 오류는 아니고 만약을 위해 Agent 삭제 명령어를 한번 더 실행시키는 것으로 문제는 해결됩니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Stop-Service : Cannot find any service with service name <span class="s1">'filebeat'</span><span class="nb">.</span>
+</code></pre></div></div>
+
+<p><img src="../../images/ncloud_analytics_cloud_log_analytics_guide_21.png" alt="Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법" style="width:770px;align:center" /></p>
+
+<h2 id="참고-url">참고 URL</h2>
+<ol>
+  <li>Cloud Log Analytics 사용 가이드
+    <ul>
+      <li><a href="https://guide.ncloud-docs.com/docs/cla-cla-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/cla-cla-1-1</a></li>
+    </ul>
+  </li>
+</ol>
+:ET

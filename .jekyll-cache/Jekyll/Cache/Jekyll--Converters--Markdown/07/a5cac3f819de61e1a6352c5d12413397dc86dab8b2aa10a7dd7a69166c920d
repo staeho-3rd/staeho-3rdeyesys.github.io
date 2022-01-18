@@ -1,0 +1,32 @@
+I"R<h2 id="포트port-정보">포트(Port) 정보</h2>
+<p>네이버 클라우드 주요 서비스들에서 사용하는 포트(Port) 정보를 정리해보았습니다.<br />
+네이버 클라우드에서 사용하는 포트이므로 일부 서비스의 경우 일반적으로 사용되는 포트와 조금 다른 경우도 있을 수 있습니다.</p>
+
+<ul>
+  <li>22 : SSH</li>
+  <li>80 : http</li>
+  <li>443 : https</li>
+  <li>1433 : mssql</li>
+  <li>3000 : Node.js Express</li>
+  <li>3306 : mysql</li>
+  <li>3389 : 윈도 원격데스크톱</li>
+  <li>5432 : PostgreSQL</li>
+  <li>5672 : RabbitMQ</li>
+  <li>5985 : Packer</li>
+  <li>6379 : Redis</li>
+  <li>8001 : CUBRID</li>
+  <li>8080 : Ambari</li>
+  <li>8081 : Hue</li>
+  <li>8388 : Shadowsocks 서버</li>
+  <li>9736 : Jeus WebAdmin</li>
+  <li>10090 : Pinpoint 서버</li>
+  <li>11313 : Hugo 서버</li>
+  <li>15672 : RabbitMQ Management UI</li>
+  <li>18080 : Tomcat, Jenkins</li>
+  <li>18088 : Superset</li>
+  <li>18888 : TensorFlow Jupyter Notebook</li>
+  <li>18889 : TensorBoard</li>
+  <li>27017 : MongoDB</li>
+  <li>50070 : HDFS NameNode</li>
+</ul>
+:ET

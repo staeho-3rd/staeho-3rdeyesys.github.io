@@ -9,15 +9,15 @@
 - name: FAQ
   link: /faq/
   target: _self
-  new: y
+  new: n
 - name: NEWS
   link: /news/
   target: _self
-  new: y
+  new: n
 - name: Company
   link: https://3rdeyesys.com
   target: _blank
-  new: n
+  new: y
 - name: 1:1 문의하기
   link:  https://www.3rdeyesys.com/question/
   target: _blank

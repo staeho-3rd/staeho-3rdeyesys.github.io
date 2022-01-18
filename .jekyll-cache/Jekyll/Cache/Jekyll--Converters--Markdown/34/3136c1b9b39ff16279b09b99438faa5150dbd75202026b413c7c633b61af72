@@ -1,0 +1,88 @@
+I"�<h2 id="선행조건">선행조건</h2>
+
+<ul>
+  <li>master, slave 장비의 mysql설치가 사전에 완료된 조건</li>
+  <li>mysql 버전 5.7이상 조건에서 작성됨</li>
+  <li>mysql 리플리케이션작업을 진행시 masterdb의 데이터베이스는 쓰기작업이 없는 서비스 미진행 상태이어야함.</li>
+</ul>
+
+<h2 id="master-장비-구성">MASTER 장비 구성</h2>
+
+<p>my.cnf파일 내용 추가</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>mysqld]
+log-bin<span class="o">=</span>mysql-bin
+binlog_format <span class="o">=</span> mixed
+
+<span class="c"># 해당 ID값은 마스터장비만 1을 설정할수있음</span>
+server-id <span class="o">=</span> 1 
+
+<span class="c"># 마스터 장비의 bin로그 특정일자(예시는10일) 이후 삭제</span>
+<span class="c"># (해당 내역이없을 경우 지속적으로 기록되어 디스크 사용)</span>
+expire_logs_days <span class="o">=</span> 10 
+</code></pre></div></div>
+
+<p>mysql접속 후 리플리케이션을 진행할 계정 생성</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GRANT REPLICATION SLAVE ON <span class="k">*</span>.<span class="k">*</span> TO <span class="s1">'리플리케이션계정명'</span>@<span class="s1">'%'</span> IDENTIFIED BY <span class="s1">'패스워드'</span><span class="p">;</span>
+FLUSH PRIVILEGES<span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="slave-장비-구성">SLAVE 장비 구성</h2>
+
+<p>my.cnf파일 내용 추가</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>mysqld]
+server-id<span class="o">=</span>2 <span class="c">#해당ID값은 1을 제외한 숫자지정</span>
+slave-skip-errors <span class="o">=</span> all  
+</code></pre></div></div>
+<p><br /></p>
+<h2 id="데이터베이스-사전-동기화작업">데이터베이스 사전 동기화작업</h2>
+
+<ol>
+  <li>
+    <p>master장비의 데이터베이스가 생성되어 있고 데이터가 있을 경우</p>
+
+    <p>A. master장비 데이터베이스 백업 진행</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 데이터베이스가 추가로 있다면 남은 데이터베이스도 백업</span>
+mysqldump <span class="nt">-u</span> root <span class="nt">-p</span> <span class="nt">--databases</span> 데이터베이스명 <span class="o">&gt;</span> 백업파일.sql 
+</code></pre></div>    </div>
+    <p><br />
+ B. slave장비 데이터베이스 복구 진행</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>create database 데이터베이스명<span class="p">;</span> <span class="c">#mysql 접속 후 생성</span>
+mysql <span class="nt">-u</span> root <span class="nt">-p</span> 데이터베이스명 &lt; 백업파일.sql  
+</code></pre></div>    </div>
+    <p><br /></p>
+  </li>
+  <li>
+    <p>master 장비의 데이터베이스가 없을 경우</p>
+
+    <p>A. 별도 작업 없으며, 데이터베이스만 생성되어 데이터가 없을경우도 slave장비에 동일한 데이터베이스 생성으로 마무리</p>
+  </li>
+</ol>
+
+<h2 id="리플리케이션-작업">리플리케이션 작업</h2>
+
+<ol>
+  <li>
+    <p>master 장비 mysql 접속 후 현재 로그파일번호와 포지션 넘버 확인</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show master status<span class="p">;</span>
+file| Position <span class="c">#내역을 확인 후 별도 기입.</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>slave 장비 mysql 접속 후 아래 명령어 실행 하여 리플리케이션 master정보 기입</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHANGE MASTER TO <span class="nv">MASTER_HOST</span><span class="o">=</span><span class="s1">'마스터IP'</span>,MASTER_USER<span class="o">=</span><span class="s1">'생성한리플리케이션계정명'</span>,MASTER_PASSWORD<span class="o">=</span><span class="s1">'패스워드'</span>,MASTER_LOG_FILE<span class="o">=</span><span class="s1">'위에서확인된 file이름'</span>,MASTER_LOG_POS<span class="o">=</span>위에서 확인된 포지션번호<span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>slave 리플리케이션 시작및 확인</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>start slave<span class="p">;</span>
+show slave status<span class="se">\G</span><span class="p">;</span> <span class="c">#실행 후 에러가 없다면 정상.</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+:ET

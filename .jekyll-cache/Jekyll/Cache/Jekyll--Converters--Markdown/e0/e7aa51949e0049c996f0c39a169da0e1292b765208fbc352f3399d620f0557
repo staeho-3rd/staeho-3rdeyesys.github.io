@@ -1,0 +1,165 @@
+I"QH<h2 id="개요">개요</h2>
+<p>네이버 클라우드 인프라와 상품 및 솔루션 등의 활용을 도와주는 API를 C#으로 호출하는 샘플 예제중에서 핵심인 인증을 위한 암호화 문자열 생성 코드를 정리해보겠습니다.</p>
+
+<h2 id="암호화-샘플-코드">암호화 샘플 코드</h2>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="kt">string</span> <span class="n">unixTimeStamp</span><span class="p">;</span>
+<span class="k">public</span> <span class="kt">string</span> <span class="n">ncpAccessKey</span> <span class="p">=</span> <span class="s">"네이버 클라우드 AccessKey"</span><span class="p">;</span>
+<span class="k">public</span> <span class="kt">string</span> <span class="n">ncpSecretKey</span> <span class="p">=</span> <span class="s">"네이버 클라우드 SecretKey"</span><span class="p">;</span>	
+<span class="k">public</span> <span class="kt">string</span> <span class="n">apiCallMethod</span> <span class="p">=</span> <span class="s">"GET"</span><span class="p">;</span>
+<span class="k">public</span> <span class="kt">string</span> <span class="n">apiServer</span> <span class="p">=</span> <span class="s">"https://billingapi.apigw.ntruss.com"</span><span class="p">;</span>
+<span class="k">public</span> <span class="kt">string</span> <span class="n">apiUrl</span> <span class="p">=</span> <span class="s">"네이버 클라우드 API URL"</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="kt">string</span> <span class="nf">MakeSignature</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">string</span> <span class="n">msgSignature</span><span class="p">;</span>
+	<span class="kt">string</span> <span class="n">space</span> <span class="p">=</span> <span class="s">" "</span><span class="p">;</span>
+	<span class="kt">string</span> <span class="n">newLine</span> <span class="p">=</span> <span class="s">"\n"</span><span class="p">;</span>
+	
+	<span class="c1">// 13자리 유닉스 타임스탬프 설정</span>
+	<span class="n">DateTime</span> <span class="n">now</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+	<span class="n">DateTime</span> <span class="n">unixOriginalTime</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DateTime</span><span class="p">(</span><span class="m">1970</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+	<span class="kt">double</span> <span class="n">totalMilliSeconds</span> <span class="p">=</span> <span class="n">now</span><span class="p">.</span><span class="nf">Subtract</span><span class="p">(</span><span class="n">unixOriginalTime</span><span class="p">).</span><span class="n">TotalMilliseconds</span><span class="p">;</span>
+	<span class="n">unixTimeStamp</span> <span class="p">=</span> <span class="n">Math</span><span class="p">.</span><span class="nf">Round</span><span class="p">(</span><span class="n">totalMilliSeconds</span><span class="p">).</span><span class="nf">ToString</span><span class="p">();</span>
+
+	<span class="c1">// hmac으로 암호화할 문자열 설정</span>
+	<span class="kt">string</span> <span class="n">message</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringBuilder</span><span class="p">()</span>
+		<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">apiCallMethod</span><span class="p">)</span>
+		<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">space</span><span class="p">)</span>
+		<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">apiUrl</span><span class="p">)</span>
+		<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">newLine</span><span class="p">)</span>
+		<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">unixTimeStamp</span><span class="p">)</span>
+		<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">newLine</span><span class="p">)</span>
+		<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">ncpAccessKey</span><span class="p">)</span>
+		<span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
+
+	<span class="c1">// hmac_sha256 암호화</span>
+	<span class="kt">byte</span><span class="p">[]</span> <span class="n">hmac_key</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="nf">GetBytes</span><span class="p">(</span><span class="n">ncpSecretKey</span><span class="p">);</span>
+	<span class="kt">byte</span><span class="p">[]</span> <span class="n">bytes</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="nf">GetBytes</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+	<span class="k">using</span> <span class="p">(</span><span class="n">HMACSHA256</span> <span class="n">sha256</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HMACSHA256</span><span class="p">(</span><span class="n">hmac_key</span><span class="p">))</span>
+	<span class="p">{</span>
+		<span class="kt">byte</span><span class="p">[]</span> <span class="n">hash</span> <span class="p">=</span> <span class="n">sha256</span><span class="p">.</span><span class="nf">ComputeHash</span><span class="p">(</span><span class="n">bytes</span><span class="p">);</span>
+		<span class="n">msgSignature</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="nf">ToBase64String</span><span class="p">(</span><span class="n">hash</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">msgSignature</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="코드-상세-설명">코드 상세 설명</h2>
+<p><br /></p>
+<h4 id="네이버-클라우드-인증키">네이버 클라우드 인증키</h4>
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="kt">string</span> <span class="n">ncpAccessKey</span> <span class="p">=</span> <span class="s">"네이버 클라우드 AccessKey"</span><span class="p">;</span>
+<span class="k">public</span> <span class="kt">string</span> <span class="n">ncpSecretKey</span> <span class="p">=</span> <span class="s">"네이버 클라우드 SecretKey"</span><span class="p">;</span>	
+</code></pre></div></div>
+
+<p>네이버 클라우드 인증키는 네이버 클라우드 포탈 -&gt; 마이페이지 -&gt; 계정관리 -&gt; 인증키 관리 - API 인증키 관리 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.</p>
+
+<p><img src="../../images/ncloud_api_auth_key_create.png" alt="AWS CLI를 이용한 Object Storage 접속 방법" style="width:770px;align:center" /></p>
+
+<p><br /></p>
+<h4 id="유닉스-타임스탬프">유닉스 타임스탬프</h4>
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">DateTime</span> <span class="n">now</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+<span class="n">DateTime</span> <span class="n">unixOriginalTime</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DateTime</span><span class="p">(</span><span class="m">1970</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+<span class="kt">double</span> <span class="n">totalMilliSeconds</span> <span class="p">=</span> <span class="n">now</span><span class="p">.</span><span class="nf">Subtract</span><span class="p">(</span><span class="n">unixOriginalTime</span><span class="p">).</span><span class="n">TotalMilliseconds</span><span class="p">;</span>
+<span class="n">unixTimeStamp</span> <span class="p">=</span> <span class="n">Math</span><span class="p">.</span><span class="nf">Round</span><span class="p">(</span><span class="n">totalMilliSeconds</span><span class="p">).</span><span class="nf">ToString</span><span class="p">();</span>
+</code></pre></div></div>
+<p>네이버 클라우드 API를 호출할 때는 13자리 형식의 유닉스 타임 스탬프가 필요하므로 TotalMilliseconds 값을 가져와서 소수점 아래는 반올림해서 정수값만 취합니다.<br />
+여기서 전달하는 타임스탬프값이 네이버 클라우드 API Gateway의 시간과 5분 이상 차이가 나면 인증 실패가 됩니다.<br />
+그런데 API Gateway는 UTC 기준으로 설정되어 있기 때문에 C#으로 만든 애플리케이션을 로컬PC등의 UTC+9 시간으로 설정된 곳에서 1970년 1월 1일 00시 기준으로 계산하면 9시간의 시간차가 발생해 인증이 실패하게 됩니다.<br />
+정리하면 다음과 같습니다.</p>
+<ul>
+  <li>API Gateway 타임스탬프 : UTC 현재시간 - 1970년 1월 1일 00시</li>
+  <li>로컬PC 타임스탬프 : UTC+9 현재시간 - 1970년 1월 1일 09시</li>
+</ul>
+
+<p class="error">즉, <strong>로컬PC 등은 API Gateway보다 9시간 빠르기 때문에 동일한 타임스탬프 값을 얻으려면 1970년 1월 1일 09시 기준으로 계산해야 한다</strong>는 것입니다. 
+그래서 위의 코드에서 DateTime unixOriginalTime = new DateTime(1970, 1, 1, 9, 0, 0); 이렇게 적용했습니다.</p>
+
+<h4 id="hmac으로-암호화할-문자열-설정">hmac으로 암호화할 문자열 설정</h4>
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="kt">string</span> <span class="n">apiCallMethod</span> <span class="p">=</span> <span class="s">"GET"</span><span class="p">;</span>
+
+<span class="kt">string</span> <span class="n">space</span> <span class="p">=</span> <span class="s">" "</span><span class="p">;</span>
+<span class="kt">string</span> <span class="n">newLine</span> <span class="p">=</span> <span class="s">"\n"</span><span class="p">;</span>
+</code></pre></div></div>
+<p>암호화할 문자열을 설정하는데 필요한 값을 사전에 정의합니다.</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">string</span> <span class="n">message</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringBuilder</span><span class="p">()</span>
+	<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">apiCallMethod</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">space</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">apiUrl</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">newLine</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">unixTimeStamp</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">newLine</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">ncpAccessKey</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
+</code></pre></div></div>
+<p>네이버 클라우드 API에서는 호출 방식(GET, POST)과 도메인을 제외한 API URL, 유닉스 타임스탬프, API ACCESSKEY를 공백과 개행문자 \n을 이용해서 하나의 문자열로 설정합니다.</p>
+
+<p>API URL은 용도별로 각기 다른데, 네이버 클라우드 API 가이드 사이트에서 확인할 수 있습니다.<br />
+<a href="https://api.ncloud-docs.com/docs/ko/home/" target="_blank" style="word-break:break-all;">https://api.ncloud-docs.com/docs/ko/home/</a></p>
+
+<h4 id="hmac_sha256-방식으로-암호화">hmac_sha256 방식으로 암호화</h4>
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">byte</span><span class="p">[]</span> <span class="n">hmac_key</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="nf">GetBytes</span><span class="p">(</span><span class="n">ncpSecretKey</span><span class="p">);</span>
+<span class="kt">byte</span><span class="p">[]</span> <span class="n">bytes</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="nf">GetBytes</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="k">using</span> <span class="p">(</span><span class="n">HMACSHA256</span> <span class="n">sha256</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HMACSHA256</span><span class="p">(</span><span class="n">hmac_key</span><span class="p">))</span>
+<span class="p">{</span>
+	<span class="kt">byte</span><span class="p">[]</span> <span class="n">hash</span> <span class="p">=</span> <span class="n">sha256</span><span class="p">.</span><span class="nf">ComputeHash</span><span class="p">(</span><span class="n">bytes</span><span class="p">);</span>
+	<span class="n">msgSignature</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="nf">ToBase64String</span><span class="p">(</span><span class="n">hash</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>hmac sha256 방식으로 네이버 클라우드 API SecretKey를 이용하여 message 문자열을 암호화 즉, 해시값을 만들고, 다시 base64로 인코딩합니다.</p>
+
+<h2 id="응답-예시">응답 예시</h2>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;getProductPriceListResponse&gt;</span>
+  <span class="nt">&lt;requestId&gt;</span>9a6b9f7c-f688-4cec-841f-634d355cef1e<span class="nt">&lt;/requestId&gt;</span>
+  <span class="nt">&lt;returnCode&gt;</span>0<span class="nt">&lt;/returnCode&gt;</span>
+  <span class="nt">&lt;returnMessage&gt;</span>success<span class="nt">&lt;/returnMessage&gt;</span>
+  <span class="nt">&lt;totalRows&gt;</span>2<span class="nt">&lt;/totalRows&gt;</span>
+  <span class="nt">&lt;productPriceList&gt;</span>
+    <span class="nt">&lt;productPrice&gt;</span>
+      <span class="nt">&lt;productItemKind&gt;</span>
+        <span class="nt">&lt;code&gt;</span>VSVR<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;codeName&gt;</span>Server (VPC)<span class="nt">&lt;/codeName&gt;</span>
+      <span class="nt">&lt;/productItemKind&gt;</span>
+      <span class="nt">&lt;productItemKindDetail&gt;</span>
+        <span class="nt">&lt;code&gt;</span>BM<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;codeName&gt;</span>BareMetal<span class="nt">&lt;/codeName&gt;</span>
+      <span class="nt">&lt;/productItemKindDetail&gt;</span>
+     ''' 중략 '''
+      <span class="nt">&lt;softwareType/&gt;</span>
+      <span class="nt">&lt;productType&gt;</span>
+        <span class="nt">&lt;code&gt;</span>BM<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;codeName&gt;</span>BareMetal<span class="nt">&lt;/codeName&gt;</span>
+      <span class="nt">&lt;/productType&gt;</span>
+      <span class="nt">&lt;productType&gt;</span>
+        <span class="nt">&lt;code&gt;</span>BM<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;codeName&gt;</span>BareMetal<span class="nt">&lt;/codeName&gt;</span>
+      <span class="nt">&lt;/productType&gt;</span>
+      <span class="nt">&lt;productTypeDetail/&gt;</span>
+      <span class="nt">&lt;gpuCount&gt;</span>0<span class="nt">&lt;/gpuCount&gt;</span>
+      <span class="nt">&lt;cpuCount&gt;</span>24<span class="nt">&lt;/cpuCount&gt;</span>
+      <span class="nt">&lt;memorySize&gt;</span>137438953472<span class="nt">&lt;/memorySize&gt;</span>
+      <span class="nt">&lt;baseBlockStorageSize&gt;</span>4123168604160<span class="nt">&lt;/baseBlockStorageSize&gt;</span>
+      <span class="nt">&lt;dbKind/&gt;</span>
+      <span class="nt">&lt;osInfomation/&gt;</span>
+      <span class="nt">&lt;platformType/&gt;</span>
+      <span class="nt">&lt;osType/&gt;</span>
+      <span class="nt">&lt;platformCategoryCode/&gt;</span>
+      <span class="nt">&lt;diskType&gt;</span>
+        <span class="nt">&lt;code&gt;</span>LOCAL<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;codeName&gt;</span>Local storage<span class="nt">&lt;/codeName&gt;</span>
+      <span class="nt">&lt;/diskType&gt;</span>
+      <span class="nt">&lt;diskDetailType&gt;</span>
+        <span class="nt">&lt;code&gt;</span>SSD<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;codeName&gt;</span>SSD<span class="nt">&lt;/codeName&gt;</span>
+      <span class="nt">&lt;/diskDetailType&gt;</span>
+      <span class="nt">&lt;generationCode&gt;</span>G1<span class="nt">&lt;/generationCode&gt;</span>     
+    ''' 중략 '''
+  <span class="nt">&lt;/productPriceList&gt;</span>
+<span class="nt">&lt;/getProductPriceListResponse&gt;</span>
+</code></pre></div></div>
+
+<h2 id="참고-url">참고 URL</h2>
+<p><a href="https://api.ncloud-docs.com/docs/ko/home/" target="_blank" style="word-break:break-all;">https://api.ncloud-docs.com/docs/ko/home/</a></p>
+:ET

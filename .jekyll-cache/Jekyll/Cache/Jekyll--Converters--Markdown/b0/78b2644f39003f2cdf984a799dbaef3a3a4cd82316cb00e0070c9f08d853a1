@@ -1,0 +1,98 @@
+I"T<h2 id="개요">개요</h2>
+<p>Load Balancer는 수신 트래픽을 다수의 서버로 분산시키는 서비스로서, 수신 트래픽을 등록된 멤버 서버로 분산시켜 가용성을 높이고 시스템 가동률을 조절하는 역할을 수행합니다.<br />
+VPC 플랫폼에서는 Network Load Balancer / Application Load Balancer / Network Proxy Load Balancer 가 제공되어 서비스에 적합한 로드밸런서를 선택할 수 있습니다.</p>
+
+<h2 id="종류">종류</h2>
+
+<ol>
+  <li>
+    <p>Application Load Balancer<br />
+HTTP 및 HTTPS 트래픽을 사용하는 웹 애플리케이션을 위한 유연한 기능을 제공</p>
+  </li>
+  <li>
+    <p>Network Load Balancer<br />
+DSR(Direct Server Return) 구조의 고성능, 대규모 네트워크 연결에 적합한 로드밸런서로 <strong>고정 IP</strong>를 제공</p>
+  </li>
+  <li>
+    <p>Network Proxy Load Balancer<br />
+TCP 세련 유지에 최적화 되어 있으며, Network Load Balancer와 다르게 DSR를 지원하지 않으며, Load Balander가 세션을 관리.</p>
+  </li>
+</ol>
+
+<p class="success">KR존/서브넷 별 LB 생성지역 지정 가능 : VPC 환경에서는 <strong>내가 원하는 KR존의 특정 서브넷에 LB생성 가능, KR-1/2 존에 각각 생성하여 고가용성을 확보</strong> 할 수 있다.</p>
+
+<h2 id="lb-선택-기준-및-기능-비교">LB 선택 기준 및 기능 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">기능</th>
+      <th style="text-align: center">Network LB</th>
+      <th style="text-align: center">Network Proxy LB</th>
+      <th style="text-align: center">Application</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">프로토콜</td>
+      <td style="text-align: center">TCP</td>
+      <td style="text-align: center">TCP, TLS</td>
+      <td style="text-align: center">HTTP/HTTPS</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">상태확인</td>
+      <td style="text-align: center">O</td>
+      <td style="text-align: center">O</td>
+      <td style="text-align: center">O</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">로깅</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">O</td>
+      <td style="text-align: center">O</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">DSR</td>
+      <td style="text-align: center">O</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">동일 인스턴스의<br />여러 포트로<br />로드밸런싱</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">O</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">HTTP 2.0</td>
+      <td style="text-align: center">N/A</td>
+      <td style="text-align: center">N/A</td>
+      <td style="text-align: center">O</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">경로기반 라우팅</td>
+      <td style="text-align: center">N/A</td>
+      <td style="text-align: center">N/A</td>
+      <td style="text-align: center">O (출시 예정)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">SSL Offload</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">O</td>
+      <td style="text-align: center">O</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">고정 세션</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">O</td>
+      <td style="text-align: center">O</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="../../images/ncp_vpc_load_balancer_01.png" alt="Load Balancer 상품군의 변화" style="width:800px;align:center" />
+<img src="../../images/ncp_vpc_load_balancer_02.png" alt="Load Balancer 상품군의 변화" style="width:800px;align:center" /></p>
+
+<h2 id="참고-url">참고 URL</h2>
+<p><a href="https://guide.ncloud-docs.com/docs/networking-loadbalancer-loadbalanceroverview" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-loadbalancer-loadbalanceroverview.html</a></p>
+:ET

@@ -1,0 +1,42 @@
+I"	<h2 id="개요">개요</h2>
+<p>네이버 클라우드에서는 VPC의 보안을 강화하기 위해 두 가지 서브넷을 제공하고 있습니다.</p>
+
+<ol>
+  <li>Public Subnet : 인터넷과 자유로운 통신이 필요할 때 사용할 수 있는 서브넷으로 Interget GW를 통해 외부와 통신</li>
+  <li>Private Subnet : 보안상 외부에서 서버에 접근하는 것을 막아야 할 때 사용할 수 있는 서브넷으로 NAT GW를 통해 외부와 통신</li>
+</ol>
+
+<h2 id="public-vs-private-subnet">Public vs Private Subnet</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">구분</th>
+      <th style="text-align: center">Public Subnet</th>
+      <th style="text-align: center">Private Subnet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">용도</td>
+      <td style="text-align: center">인터넷 연결이 필요할 때</td>
+      <td style="text-align: center">외부 접속을 최소화 해야 할 때</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">지원 리소스</td>
+      <td style="text-align: center">서버</td>
+      <td style="text-align: center">서버, 로드밸런서</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">인터넷 연결 시<br />필요한 리소스</td>
+      <td style="text-align: center">Internet Gateway (Default)</td>
+      <td style="text-align: center">NAT Gateway</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="../../images/ncp_vpc_subnet_natgw.png" alt="VPC Subnet 과 NAT GW" style="width:800px;align:center" /></p>
+
+<h2 id="참고-url">참고 URL</h2>
+<p><a href="https://guide.ncloud-docs.com/docs/networking-networking-10-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-networking-10-1.html</a></p>
+:ET

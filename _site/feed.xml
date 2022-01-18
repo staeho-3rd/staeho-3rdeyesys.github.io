@@ -1,4 +1,167 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-17T10:08:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Windows 서버 모니터링 성능 정보 수집 오류 해결 방법</title><link href="http://localhost:4000/81.manage/ncloud_management_monitoring_win_perf_data_error_troubleshoot/" rel="alternate" type="text/html" title="Windows 서버 모니터링 성능 정보 수집 오류 해결 방법" /><published>2021-12-28T00:00:00+09:00</published><updated>2021-12-28T00:00:00+09:00</updated><id>http://localhost:4000/81.manage/ncloud_management_monitoring_win_perf_data_error_troubleshoot</id><content type="html" xml:base="http://localhost:4000/81.manage/ncloud_management_monitoring_win_perf_data_error_troubleshoot/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" /><updated>2022-01-18T08:25:43+00:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템 기술문서</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">CentOS에서 NginX 설치, 설정하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncloud_server_nginx_install_setting_centos_guide/" rel="alternate" type="text/html" title="CentOS에서 NginX 설치, 설정하는 방법" /><published>2022-01-18T00:00:00+00:00</published><updated>2022-01-18T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncloud_server_nginx_install_setting_centos_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncloud_server_nginx_install_setting_centos_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;네이버 클라우드 CentOS 서버에 NginX를 Package로 설치하고 기본 설정을 하는 방법에 대한 내용을 정리해보겠습니다.&lt;br /&gt;
+사용한 서버는 CentOS 7.8 입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;yum-유틸리티-설치&quot;&gt;yum 유틸리티 설치&lt;/h2&gt;
+&lt;p&gt;yum으로 NginX를 설치하기 전에 yum-utils를 먼저 설치합니다. 이미 설치 되어 있을 경우에는 아래와 같이 설치되어 있다는 메시지가 출력됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# yum &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;yum-utils
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_01.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;repository-설정&quot;&gt;Repository 설정&lt;/h2&gt;
+&lt;p&gt;NginX package를 다운 받아 설치하기 위해서는 Repository를 설정해야 합니다. 
+Repository 디렉토리에 nginx.repo 파일을 만들고 아래와 같은 내용을 입력합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /etc/yum.repos.d/nginx.repo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;nginx-stable]
+&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nginx stable repo
+&lt;span class=&quot;nv&quot;&gt;baseurl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;http://nginx.org/packages/centos/&lt;span class=&quot;nv&quot;&gt;$releasever&lt;/span&gt;/&lt;span class=&quot;nv&quot;&gt;$basearch&lt;/span&gt;/
+&lt;span class=&quot;nv&quot;&gt;gpgcheck&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;span class=&quot;nv&quot;&gt;enabled&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;span class=&quot;nv&quot;&gt;gpgkey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://nginx.org/keys/nginx_signing.key
+&lt;span class=&quot;nv&quot;&gt;module_hotfixes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;nginx-mainline]
+&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nginx mainline repo
+&lt;span class=&quot;nv&quot;&gt;baseurl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;http://nginx.org/packages/mainline/centos/&lt;span class=&quot;nv&quot;&gt;$releasever&lt;/span&gt;/&lt;span class=&quot;nv&quot;&gt;$basearch&lt;/span&gt;/
+&lt;span class=&quot;nv&quot;&gt;gpgcheck&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;span class=&quot;nv&quot;&gt;enabled&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
+&lt;span class=&quot;nv&quot;&gt;gpgkey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://nginx.org/keys/nginx_signing.key
+&lt;span class=&quot;nv&quot;&gt;module_hotfixes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;info&quot;&gt;NginX는 stable, mainline 두가지 버전이 있습니다. NginX의 공식 설명에 따르면 버그 수정이나 보안 패치 등은 항상 mainline 버전에 먼저 적용되기 때문에 mainline을 사용하는 것을 추천한다고 합니다. 
+stable 버전을 사용하는 주된 경우는 third-party 모듈을 사용하고 있어서 신규 버전에서 호환성 문제가 발생할 가능성이 걱정될 때라고 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_02.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;버전-선택&quot;&gt;버전 선택&lt;/h2&gt;
+&lt;p&gt;stable, mainline 두가지 버전 중에서 기본은 stable 버전입니다.&lt;br /&gt;
+stable 버전을 설치할 경우에는 다음 명령어는 건너띄어도 되고, mainline 버전을 설치하기 위해서는 아래 명령어로 설정을 변경해주어야 합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# yum-config-manager &lt;span class=&quot;nt&quot;&gt;--enable&lt;/span&gt; nginx-mainline
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_03.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;nginx-설치&quot;&gt;NginX 설치&lt;/h2&gt;
+&lt;p&gt;설정을 마쳤으면 yum으로 NginX를 설치합니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# yum &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_04.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;디렉토리-설정&quot;&gt;디렉토리 설정&lt;/h2&gt;
+&lt;p&gt;다음으로 홈으로 사용할 디렉토리를 생성하고, 해당 디렉토리의 소유권을 설정하겠습니다.&lt;br /&gt;
+그리고, NginX가 정상 작동하는지 확인해보기 위해 설치시에 포함된 index.html을 홈 디렉토리로 복사합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /ncp/data/www
+~# &lt;span class=&quot;nb&quot;&gt;chown&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-R&lt;/span&gt; nginx:nginx /ncp/data/www
+~# &lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; /usr/share/nginx/html/index.html /ncp/data/www/index.html
+~# &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-al&lt;/span&gt; /ncp/data/www
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_05.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;환경-설정&quot;&gt;환경 설정&lt;/h2&gt;
+&lt;p&gt;주로 변경할 환경 설정 파일은 /etc/nginx/conf.d/default.conf 입니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# vi /etc/nginx/conf.d/default.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;port와-server-name-설정&quot;&gt;Port와 Server Name 설정&lt;/h4&gt;
+&lt;p&gt;80이 아닌 다른 Port를 사용할 경우나 도메인을 설정하게 될 경우 2, 3 라인에 있는 아래 항목들을 수정하면 됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;server_name  localhost&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+server_name  127.0.0.1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_06.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;홈-디렉토리-기본-문서-설정&quot;&gt;홈 디렉토리, 기본 문서 설정&lt;/h4&gt;
+&lt;p&gt;앞에서 만들었던 홈 디렉토리 경로를 설정하고 기본 문서를 지정하는 곳입니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 변경 전&lt;/span&gt;
+    location / &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        root   /usr/share/nginx/html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        index  index.html index.htm&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 변경 후&lt;/span&gt;
+    root   /ncp/data/www&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    index  index.html index.htm&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    location / &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        try_files &lt;span class=&quot;nv&quot;&gt;$uri&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$uri&lt;/span&gt;/ &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 404&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_07.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_08.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;error-페이지-설정&quot;&gt;error 페이지 설정&lt;/h4&gt;
+&lt;p&gt;404, 500 등의 error 페이지를 설정할 경우 아래 내용들을 수정하면 됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 변경 전&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#error_page  404              /404.html;&lt;/span&gt;
+
+    location &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /50x.html &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        root   /usr/share/nginx/html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 변경 후&lt;/span&gt;
+    error_page  404              /404.html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    location &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /50x.html &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        root   /ncp/data/www&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_09.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_10.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;htaccess-파일-접근-금지-설정&quot;&gt;.htaccess 파일 접근 금지 설정&lt;/h4&gt;
+&lt;p&gt;.htaccess 파일에 대한 접근 금지를 설정할 경우 아래 내용을 주석 해제하면 됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 변경 전&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#location ~ /\.ht {&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#    deny  all;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 변경 후&lt;/span&gt;
+    location ~ /&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;ht &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        deny  all&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_11.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_12.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;nginx-실행&quot;&gt;NginX 실행&lt;/h2&gt;
+&lt;p&gt;설정을 모두 마쳤으면 NginX를 시작하고 상태를 확인합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# systemctl start nginx
+~# systemctl status nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_13.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;사이트-접속&quot;&gt;사이트 접속&lt;/h4&gt;
+&lt;p&gt;NginX가 정상 작동하면 아래와 같이 서버 접속 화면을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_14.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;NginX Linux packages 설치 가이드
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://nginx.org/en/linux_packages.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;http://nginx.org/en/linux_packages.html&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 CentOS 서버에 NginX를 Package로 설치하고 기본 설정을 하는 방법에 대한 내용을 정리해보겠습니다. 사용한 서버는 CentOS 7.8 입니다.</summary></entry><entry><title type="html">Windows 서버 모니터링 성능 정보 수집 오류 해결 방법</title><link href="https://docs.3rdeyesys.com/81.manage/ncloud_management_monitoring_win_perf_data_error_troubleshoot/" rel="alternate" type="text/html" title="Windows 서버 모니터링 성능 정보 수집 오류 해결 방법" /><published>2021-12-28T00:00:00+00:00</published><updated>2021-12-28T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/81.manage/ncloud_management_monitoring_win_perf_data_error_troubleshoot</id><content type="html" xml:base="https://docs.3rdeyesys.com/81.manage/ncloud_management_monitoring_win_perf_data_error_troubleshoot/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;Ncloud(네이버 클라우드) Monitoring 서비스를 이용해 서버 시스템 자원들(CPU, Memory 등)의 성능 정보를 수집, 모니터링할 때 간혹 성능 정보가 수집되지 않는 경우가 발생하기도 합니다. 
 특히 Windows 서버의 경우 Windows 자체 성능 테이블을 참조하여 데이터를 수집하기 때문에 Windows 자체 성능 테이블에 문제가 발생할 경우 성능 정보를 수집하지 못하게 됩니다.&lt;br /&gt;
 여기서는 Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보가 수집되지 않을 때 해결 방법을 정리해보겠습니다.&lt;/p&gt;
@@ -88,7 +251,7 @@ Agent가 표시되는지 Status가 Running 상태인지 확인합니다.&lt;/p&g
       &lt;li&gt;&lt;a href=&quot;https://www.ncloud.com/support/faq/all/1292&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://www.ncloud.com/support/faq/all/1292&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Ncloud(네이버 클라우드) Monitoring 서비스를 이용해 서버 시스템 자원들(CPU, Memory 등)의 성능 정보를 수집, 모니터링할 때 간혹 성능 정보가 수집되지 않는 경우가 발생하기도 합니다. 특히 Windows 서버의 경우 Windows 자체 성능 테이블을 참조하여 데이터를 수집하기 때문에 Windows 자체 성능 테이블에 문제가 발생할 경우 성능 정보를 수집하지 못하게 됩니다. 여기서는 Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보가 수집되지 않을 때 해결 방법을 정리해보겠습니다.</summary></entry><entry><title type="html">X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP 기록하기</title><link href="http://localhost:4000/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide/" rel="alternate" type="text/html" title="X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP 기록하기" /><published>2021-12-17T00:00:00+09:00</published><updated>2021-12-29T00:00:00+09:00</updated><id>http://localhost:4000/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide</id><content type="html" xml:base="http://localhost:4000/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Ncloud(네이버 클라우드) Monitoring 서비스를 이용해 서버 시스템 자원들(CPU, Memory 등)의 성능 정보를 수집, 모니터링할 때 간혹 성능 정보가 수집되지 않는 경우가 발생하기도 합니다. 특히 Windows 서버의 경우 Windows 자체 성능 테이블을 참조하여 데이터를 수집하기 때문에 Windows 자체 성능 테이블에 문제가 발생할 경우 성능 정보를 수집하지 못하게 됩니다. 여기서는 Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보가 수집되지 않을 때 해결 방법을 정리해보겠습니다.</summary></entry><entry><title type="html">X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP 기록하기</title><link href="https://docs.3rdeyesys.com/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide/" rel="alternate" type="text/html" title="X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP 기록하기" /><published>2021-12-17T00:00:00+00:00</published><updated>2021-12-29T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncloud_server_x_forwarded_for_client_ip_logging_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;X-Forwarded-For (XFF) 는 HTTP Header 중 하나로 Load Balancer(로드밸런서)나 Proxy Server를 통해 웹서버에 접속하는 Client의 IP 주소를 식별하는 표준 헤더입니다.&lt;br /&gt;
 웹서버나 WAS 앞쪽에 Load Balancer 혹은 Proxy Server 등이 위치하게 된다면 서버 접근 로그에는 Client IP가 아닌 Load Balancer 혹은 Proxy Server의 IP 주소가 기록됩니다. 
 이때 웹 어플리케이션에서 X-Forwarded-For 헤더를 이용하면 Client IP를 서버 접근 로그에 남길 수 있습니다.&lt;/p&gt;
@@ -242,7 +405,7 @@ RemoteIPHeader X-FORWARDED-FOR
       &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-Forwarded-For&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-Forwarded-For&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 X-Forwarded-For (XFF) 는 HTTP Header 중 하나로 Load Balancer(로드밸런서)나 Proxy Server를 통해 웹서버에 접속하는 Client의 IP 주소를 식별하는 표준 헤더입니다. 웹서버나 WAS 앞쪽에 Load Balancer 혹은 Proxy Server 등이 위치하게 된다면 서버 접근 로그에는 Client IP가 아닌 Load Balancer 혹은 Proxy Server의 IP 주소가 기록됩니다. 이때 웹 어플리케이션에서 X-Forwarded-For 헤더를 이용하면 Client IP를 서버 접근 로그에 남길 수 있습니다.</summary></entry><entry><title type="html">Cloud Log Analytics 설정 가이드</title><link href="http://localhost:4000/7.analytics/ncloud_analytics_cloud_log_analytics_guide/" rel="alternate" type="text/html" title="Cloud Log Analytics 설정 가이드" /><published>2021-12-10T00:00:00+09:00</published><updated>2021-12-14T00:00:00+09:00</updated><id>http://localhost:4000/7.analytics/ncloud_analytics_cloud_log_analytics_guide</id><content type="html" xml:base="http://localhost:4000/7.analytics/ncloud_analytics_cloud_log_analytics_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 X-Forwarded-For (XFF) 는 HTTP Header 중 하나로 Load Balancer(로드밸런서)나 Proxy Server를 통해 웹서버에 접속하는 Client의 IP 주소를 식별하는 표준 헤더입니다. 웹서버나 WAS 앞쪽에 Load Balancer 혹은 Proxy Server 등이 위치하게 된다면 서버 접근 로그에는 Client IP가 아닌 Load Balancer 혹은 Proxy Server의 IP 주소가 기록됩니다. 이때 웹 어플리케이션에서 X-Forwarded-For 헤더를 이용하면 Client IP를 서버 접근 로그에 남길 수 있습니다.</summary></entry><entry><title type="html">Cloud Log Analytics 설정 가이드</title><link href="https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide/" rel="alternate" type="text/html" title="Cloud Log Analytics 설정 가이드" /><published>2021-12-10T00:00:00+00:00</published><updated>2021-12-14T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/7.analytics/ncloud_analytics_cloud_log_analytics_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;Cloud Log Analytics는 Ncloud(네이버 클라우드)가 제공하는 여러 서비스에서 발생하는 다양한 로그들을 한 곳에 모아 저장하고 손쉽게 분석할 수 있는 서비스로, 
 검색 기능을 이용해 여러 종류의 로그를 한 곳에서 한번에 조회하고 분석할 수 있어 효과적인 로그 관리가 가능합니다.&lt;/p&gt;
 
@@ -438,7 +601,7 @@ Invoke-Expression &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;New-Object Sys
 그 상태에서 Agent를 삭제하려고 하면 실행중이 아닌 filebeat를 실행 중지 시키려고 시도하게 되고, 결국 오류가 발생합니다.&lt;br /&gt;
 그러므로 심각한 오류는 아니고 만약을 위해 Agent 삭제 명령어를 한번 더 실행시키는 것으로 문제는 해결됩니다.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Stop-Service : Cannot find any service with service name &lt;span class=&quot;s1&quot;&gt;'filebeat'&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Stop-Service : Cannot find any service with service name &lt;span class=&quot;s1&quot;&gt;&apos;filebeat&apos;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_21.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
@@ -450,7 +613,7 @@ Invoke-Expression &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;New-Object Sys
       &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/cla-cla-1-1&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/cla-cla-1-1&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Cloud Log Analytics는 Ncloud(네이버 클라우드)가 제공하는 여러 서비스에서 발생하는 다양한 로그들을 한 곳에 모아 저장하고 손쉽게 분석할 수 있는 서비스로, 검색 기능을 이용해 여러 종류의 로그를 한 곳에서 한번에 조회하고 분석할 수 있어 효과적인 로그 관리가 가능합니다.</summary></entry><entry><title type="html">MySQL 복구 시 ERROR 1227 (42000) 문제 원인과 해결방법</title><link href="http://localhost:4000/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting/" rel="alternate" type="text/html" title="MySQL 복구 시 ERROR 1227 (42000) 문제 원인과 해결방법" /><published>2021-12-02T00:00:00+09:00</published><updated>2021-12-02T00:00:00+09:00</updated><id>http://localhost:4000/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting</id><content type="html" xml:base="http://localhost:4000/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 Cloud Log Analytics는 Ncloud(네이버 클라우드)가 제공하는 여러 서비스에서 발생하는 다양한 로그들을 한 곳에 모아 저장하고 손쉽게 분석할 수 있는 서비스로, 검색 기능을 이용해 여러 종류의 로그를 한 곳에서 한번에 조회하고 분석할 수 있어 효과적인 로그 관리가 가능합니다.</summary></entry><entry><title type="html">MySQL 복구 시 ERROR 1227 (42000) 문제 원인과 해결방법</title><link href="https://docs.3rdeyesys.com/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting/" rel="alternate" type="text/html" title="MySQL 복구 시 ERROR 1227 (42000) 문제 원인과 해결방법" /><published>2021-12-02T00:00:00+00:00</published><updated>2021-12-02T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting</id><content type="html" xml:base="https://docs.3rdeyesys.com/5.database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드(Ncloud) Cloud DB for MySQL을 사용하면서 백업 데이터를 복구 하려고 할 때 ERROR 1227 (42000) 오류가 발생하는 경우가 있습니다. 
 오류 메시지로만 보면 계정 권한에 문제가 있는 것처럼 보이는데 정확하게 문제 원인이 무엇인지, 그리고 해결방법은 어떤 것이 있는지 정리해보겠습니다.&lt;/p&gt;
 
@@ -508,8 +671,8 @@ SET @MYSQLDUMP_TEMP_LOG_BIN &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; @@SES
 SET @@SESSION.SQL_LOG_BIN&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# 백업 파일 하단에 위치&lt;/span&gt;
-SET @@GLOBAL.GTID_PURGED&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'207****-4***-7**-9*****c:1-12,
-2****-4**-9**-b**-d*****:1-19'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+SET @@GLOBAL.GTID_PURGED&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;207****-4***-7**-9*****c:1-12,
+2****-4**-9**-b**-d*****:1-19&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;원인-2&quot;&gt;원인 2&lt;/h2&gt;
@@ -568,7 +731,7 @@ SET @@GLOBAL.GTID_PURGED&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span c
       &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/stored-objects-security.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://dev.mysql.com/doc/refman/5.7/en/stored-objects-security.html&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드(Ncloud) Cloud DB for MySQL을 사용하면서 백업 데이터를 복구 하려고 할 때 ERROR 1227 (42000) 오류가 발생하는 경우가 있습니다. 오류 메시지로만 보면 계정 권한에 문제가 있는 것처럼 보이는데 정확하게 문제 원인이 무엇인지, 그리고 해결방법은 어떤 것이 있는지 정리해보겠습니다.</summary></entry><entry><title type="html">네이버 클라우드 Classic 환경 vs VPC 환경 비교</title><link href="http://localhost:4000/81.manage/ncp_manage_classic_vs_vpc_guide/" rel="alternate" type="text/html" title="네이버 클라우드 Classic 환경 vs VPC 환경 비교" /><published>2021-11-30T00:00:00+09:00</published><updated>2021-12-03T00:00:00+09:00</updated><id>http://localhost:4000/81.manage/ncp_manage_classic_vs_vpc_guide</id><content type="html" xml:base="http://localhost:4000/81.manage/ncp_manage_classic_vs_vpc_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드(Ncloud) Cloud DB for MySQL을 사용하면서 백업 데이터를 복구 하려고 할 때 ERROR 1227 (42000) 오류가 발생하는 경우가 있습니다. 오류 메시지로만 보면 계정 권한에 문제가 있는 것처럼 보이는데 정확하게 문제 원인이 무엇인지, 그리고 해결방법은 어떤 것이 있는지 정리해보겠습니다.</summary></entry><entry><title type="html">네이버 클라우드 Classic 환경 vs VPC 환경 비교</title><link href="https://docs.3rdeyesys.com/81.manage/ncp_manage_classic_vs_vpc_guide/" rel="alternate" type="text/html" title="네이버 클라우드 Classic 환경 vs VPC 환경 비교" /><published>2021-11-30T00:00:00+00:00</published><updated>2021-12-03T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/81.manage/ncp_manage_classic_vs_vpc_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/81.manage/ncp_manage_classic_vs_vpc_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 (nCloud)에는 Classic과 VPC 이렇게 2가지의 환경이 있습니다.
 각각의 특징을 장점을 중심으로 비교해보도록 하겠습니다.&lt;/p&gt;
 
@@ -684,7 +847,7 @@ VPC를 2개 생성해서 각각 다른 사설 IP 대역을 할당해서 구성 �
       &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/ko/networking-vpc-vpcoverview&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/ko/networking-vpc-vpcoverview&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 (nCloud)에는 Classic과 VPC 이렇게 2가지의 환경이 있습니다. 각각의 특징을 장점을 중심으로 비교해보도록 하겠습니다.</summary></entry><entry><title type="html">VPC Peering 생성 가이드</title><link href="http://localhost:4000/2.networking/ncp_networking_vpc_peering_guide/" rel="alternate" type="text/html" title="VPC Peering 생성 가이드" /><published>2021-11-22T00:00:00+09:00</published><updated>2021-11-25T00:00:00+09:00</updated><id>http://localhost:4000/2.networking/ncp_networking_vpc_peering_guide</id><content type="html" xml:base="http://localhost:4000/2.networking/ncp_networking_vpc_peering_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드 (nCloud)에는 Classic과 VPC 이렇게 2가지의 환경이 있습니다. 각각의 특징을 장점을 중심으로 비교해보도록 하겠습니다.</summary></entry><entry><title type="html">VPC Peering 생성 가이드</title><link href="https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_peering_guide/" rel="alternate" type="text/html" title="VPC Peering 생성 가이드" /><published>2021-11-22T00:00:00+00:00</published><updated>2021-11-25T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_peering_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/2.networking/ncp_networking_vpc_peering_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;VPC(virtural Private Cloud)는 퍼블릭클라우드상에서 제공되는 사설 가상 네트워크 입니다. 계정당 3개의 VPC를 만들수 있으며 다른 VPC 네트워크와 논리적으로 분리되어 있어 독립적인 네트워크 환경을 구현할 수 있습니다.&lt;br /&gt;
 그런데, 간혹 VPC 환경에서 분리되어 있는 VPC간의 통신이 필요할때가 있는데 이때 사용할 수 있는 서비스가 [&lt;strong&gt;VPC Peering&lt;/strong&gt;] 입니다. VPC Peering은 공인 아이피를 거치지 않고 Ncloud 내부 네트워크를 이용하여 VPN없이 VPC간 통신을 할수 있게 해주는 서비스 입니다.&lt;/p&gt;
 
@@ -847,7 +1010,7 @@ VPC를 2개 생성해서 각각 다른 사설 IP 대역을 할당해서 구성 �
       &lt;li&gt;&lt;a href=&quot;https://guide.ncloud-docs.com/docs/networking-vpc-vpcuserscenario4&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://guide.ncloud-docs.com/docs/networking-vpc-vpcuserscenario4&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 VPC(virtural Private Cloud)는 퍼블릭클라우드상에서 제공되는 사설 가상 네트워크 입니다. 계정당 3개의 VPC를 만들수 있으며 다른 VPC 네트워크와 논리적으로 분리되어 있어 독립적인 네트워크 환경을 구현할 수 있습니다. 그런데, 간혹 VPC 환경에서 분리되어 있는 VPC간의 통신이 필요할때가 있는데 이때 사용할 수 있는 서비스가 [VPC Peering] 입니다. VPC Peering은 공인 아이피를 거치지 않고 Ncloud 내부 네트워크를 이용하여 VPN없이 VPC간 통신을 할수 있게 해주는 서비스 입니다.</summary></entry><entry><title type="html">Archive Storage CLI 사용 가이드 - Windows 환경</title><link href="http://localhost:4000/4.storage/ncp_storage_archive_storage_cli_windows_guide/" rel="alternate" type="text/html" title="Archive Storage CLI 사용 가이드 - Windows 환경" /><published>2021-11-19T00:00:00+09:00</published><updated>2021-11-19T00:00:00+09:00</updated><id>http://localhost:4000/4.storage/ncp_storage_archive_storage_cli_windows_guide</id><content type="html" xml:base="http://localhost:4000/4.storage/ncp_storage_archive_storage_cli_windows_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 VPC(virtural Private Cloud)는 퍼블릭클라우드상에서 제공되는 사설 가상 네트워크 입니다. 계정당 3개의 VPC를 만들수 있으며 다른 VPC 네트워크와 논리적으로 분리되어 있어 독립적인 네트워크 환경을 구현할 수 있습니다. 그런데, 간혹 VPC 환경에서 분리되어 있는 VPC간의 통신이 필요할때가 있는데 이때 사용할 수 있는 서비스가 [VPC Peering] 입니다. VPC Peering은 공인 아이피를 거치지 않고 Ncloud 내부 네트워크를 이용하여 VPN없이 VPC간 통신을 할수 있게 해주는 서비스 입니다.</summary></entry><entry><title type="html">Archive Storage CLI 사용 가이드 - Windows 환경</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_archive_storage_cli_windows_guide/" rel="alternate" type="text/html" title="Archive Storage CLI 사용 가이드 - Windows 환경" /><published>2021-11-19T00:00:00+00:00</published><updated>2021-11-19T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_archive_storage_cli_windows_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_archive_storage_cli_windows_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드(Ncloud) Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대해 정리해보겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;cli-정보&quot;&gt;CLI 정보&lt;/h2&gt;
@@ -903,8 +1066,8 @@ Microsoft Visual C++ Build Tools 등이 설치되어 있지 않아서 인데 설
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;error: Microsoft Visual C++ 14.0 is required. Get it with &lt;span class=&quot;s2&quot;&gt;&quot;Microsoft Visual C++ Build Tools&quot;&lt;/span&gt; : https://visualstudio.microsoft.com/downloads/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fatal error C1083: 포함 파일을 열 수 없습니다. &lt;span class=&quot;s1&quot;&gt;'basetsd.h'&lt;/span&gt; : No such file or directory
-error: &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'C:\\Program Files (x86)\\Microsoft Visual Studio\\....... .....\\cl.exe'&lt;/span&gt; failed with &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;code 2
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fatal error C1083: 포함 파일을 열 수 없습니다. &lt;span class=&quot;s1&quot;&gt;&apos;basetsd.h&apos;&lt;/span&gt; : No such file or directory
+error: &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;C:\\Program Files (x86)\\Microsoft Visual Studio\\....... .....\\cl.exe&apos;&lt;/span&gt; failed with &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;code 2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_21.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
@@ -1077,7 +1240,7 @@ error: &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quo
       &lt;li&gt;&lt;a href=&quot;https://docs.openstack.org/ocata/cli-reference/swift.html&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.openstack.org/ocata/cli-reference/swift.html&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드(Ncloud) Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대해 정리해보겠습니다.</summary></entry><entry><title type="html">PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회</title><link href="http://localhost:4000/4.storage/ncp_storage_archive_storage_api_get_container_by_php/" rel="alternate" type="text/html" title="PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회" /><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-17T00:00:00+09:00</updated><id>http://localhost:4000/4.storage/ncp_storage_archive_storage_api_get_container_by_php</id><content type="html" xml:base="http://localhost:4000/4.storage/ncp_storage_archive_storage_api_get_container_by_php/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드(Ncloud) Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대해 정리해보겠습니다.</summary></entry><entry><title type="html">PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_archive_storage_api_get_container_by_php/" rel="alternate" type="text/html" title="PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회" /><published>2021-11-16T00:00:00+00:00</published><updated>2021-11-17T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_archive_storage_api_get_container_by_php</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_archive_storage_api_get_container_by_php/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드(Ncloud) Archive Storage API를 이용해서 컨테이너(버킷)에 있는 오브젝트 전체 목록을 PHP로 조회하는 방법에 대해 정리해보겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;api-정보&quot;&gt;API 정보&lt;/h2&gt;
@@ -1428,7 +1591,7 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
       &lt;li&gt;&lt;a href=&quot;https://docs.openstack.org/api-ref/identity/v3/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.openstack.org/api-ref/identity/v3/&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드(Ncloud) Archive Storage API를 이용해서 컨테이너(버킷)에 있는 오브젝트 전체 목록을 PHP로 조회하는 방법에 대해 정리해보겠습니다.</summary></entry><entry><title type="html">PHP로 Archive Storage API 인증 토큰 생성하는 방법</title><link href="http://localhost:4000/4.storage/ncp_storage_archive_storage_api_access_token_create/" rel="alternate" type="text/html" title="PHP로 Archive Storage API 인증 토큰 생성하는 방법" /><published>2021-11-11T00:00:00+09:00</published><updated>2021-11-11T00:00:00+09:00</updated><id>http://localhost:4000/4.storage/ncp_storage_archive_storage_api_access_token_create</id><content type="html" xml:base="http://localhost:4000/4.storage/ncp_storage_archive_storage_api_access_token_create/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드(Ncloud) Archive Storage API를 이용해서 컨테이너(버킷)에 있는 오브젝트 전체 목록을 PHP로 조회하는 방법에 대해 정리해보겠습니다.</summary></entry><entry><title type="html">PHP로 Archive Storage API 인증 토큰 생성하는 방법</title><link href="https://docs.3rdeyesys.com/4.storage/ncp_storage_archive_storage_api_access_token_create/" rel="alternate" type="text/html" title="PHP로 Archive Storage API 인증 토큰 생성하는 방법" /><published>2021-11-11T00:00:00+00:00</published><updated>2021-11-11T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/4.storage/ncp_storage_archive_storage_api_access_token_create</id><content type="html" xml:base="https://docs.3rdeyesys.com/4.storage/ncp_storage_archive_storage_api_access_token_create/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드(Ncloud) Archive Storage API를 이용하려고 할 때 먼저 인증 토큰을 생성하고 생성된 토큰을 이용해서 API로 Archive Storage에 접근해야 합니다. 
 여기서는 PHP로 API 인증 토큰을 생성하는 방법에 대해 우선 전체 소스코드를 살펴보고 다음으로 주요 코드를 상세하게 살펴보겠습니다.&lt;/p&gt;
 
@@ -1668,172 +1831,4 @@ Content-Type: application/json
       &lt;li&gt;&lt;a href=&quot;https://docs.openstack.org/api-ref/identity/v3/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.openstack.org/api-ref/identity/v3/&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드(Ncloud) Archive Storage API를 이용하려고 할 때 먼저 인증 토큰을 생성하고 생성된 토큰을 이용해서 API로 Archive Storage에 접근해야 합니다. 여기서는 PHP로 API 인증 토큰을 생성하는 방법에 대해 우선 전체 소스코드를 살펴보고 다음으로 주요 코드를 상세하게 살펴보겠습니다.</summary></entry><entry><title type="html">PHP로 텔레그램 비공개 채널에 메시지 전송하기</title><link href="http://localhost:4000/99.etc/ncp_etc_php_to_telegram_message_send/" rel="alternate" type="text/html" title="PHP로 텔레그램 비공개 채널에 메시지 전송하기" /><published>2021-11-10T00:00:00+09:00</published><updated>2021-11-10T00:00:00+09:00</updated><id>http://localhost:4000/99.etc/ncp_etc_php_to_telegram_message_send</id><content type="html" xml:base="http://localhost:4000/99.etc/ncp_etc_php_to_telegram_message_send/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
-&lt;p&gt;업무를 진행하다보면 서버나 서비스에 장애가 발생했을 때 즉시 알림을 받거나 서버 상태 모니터링이나 매출 등의 서비스 이용 지표 등을 매일 자동으로 통보 받는 경우가 있습니다. 
-예전에는 이메일이나 SMS 메시지로 받는 경우가 대부분이었는데, 요즘은 관련된 사람들이 함께 들어와 있는 메신저 채팅방으로 알림을 동시에 받는 경우도 많아지고 있습니다.&lt;br /&gt;
-그럴 때 사용하는 방법 중에서 여기서는 텔레그램(Telegram)의 대화방인 비공개 채널에 메시지를 전송하는 것을 PHP로 구현해보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;구현-순서&quot;&gt;구현 순서&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;텔레그램 채팅 봇을 생성&lt;/li&gt;
-  &lt;li&gt;텔레그램 채널을 비공개로 생성&lt;/li&gt;
-  &lt;li&gt;비공개 채널에 위에서 생성한 채팅 봇을 관리자로 등록&lt;/li&gt;
-  &lt;li&gt;PHP로 채팅 봇을 이용해 비공개 채널에 메시지를 전송&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;채팅-봇-생성&quot;&gt;채팅 봇 생성&lt;/h2&gt;
-&lt;p&gt;텔레그램(Telegram) 메신저에서 채팅 봇을 생성하고 관리해주는 봇인 [&lt;strong&gt;BotFather&lt;/strong&gt;]를 검색합니다. 
-여러 개의 봇들이 나타나는데 그 중에서 인증 마크가 붙어 있는 텔레그램 공식 봇을 선하고 채팅 방에  들어갑니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_01.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;[BotFather] 채팅 봇 방에 들어가면 채팅 봇에 대한 설명과 봇 API 매뉴얼 링크를 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_02.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:642px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이제 채팅 봇 생성을 위해 &lt;strong&gt;/start&lt;/strong&gt; 명령을 입력하면 아래와 같이 채팅 봇 생성, 관리에 대한 명령어들을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_03.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:637px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음으로 새로운 채팅 봇을 생성하는 명령어인 &lt;strong&gt;/newbot&lt;/strong&gt;을 입력하면, 채팅 봇 이름과 채팅 봇 유저명을 입력하라는 안내가 나옵니다. 
-차례대로 입력하면 되는데, 여기서 입력하는 이름을 텔레그램 내에서 고유한 값이므로 간단한 이름을 입력하면 중복된 이름이라 생성이 되지 않으니 자신만의 고유한 이름을 입력합니다.&lt;/p&gt;
-
-&lt;p&gt;그리고 두번째로 입력하는 &lt;strong&gt;채팅 봇 유저명(username for your bot)은 반드시 마지막이 bot&lt;/strong&gt;로 끝나야 합니다. 
-두가지 모두 입력하고 나면 아래쪽에 채팅 봇과 연동하기 위한 API Token을 확인할 수 있는데, 이 Token을 PHP에서 사용하게 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_04.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:637px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;채팅 봇이 생성되었는지 텔레그램에서 검색해보면 아래와 같이 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_05.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;채널-생성&quot;&gt;채널 생성&lt;/h2&gt;
-&lt;p&gt;채널을 생성하기 위해 텔레그램 왼쪽 메뉴를 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_06.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;메뉴 화면에서 [채널 만들기]를 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_07.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;원하는 채널명을 입력하고, 만들기를 클릭하면, 공개-비공개를 선택할 수 있는데 여기서는 [비공개 채널]을 선택하고 저장합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_08.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;저장하고 나면 다음으로 [참가자 추가] 화면이 나타나는데 위에서 생성했던 채팅 봇 이름을 입력해서 확인하고, 선택 후에 [추가] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_10.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그러면 아래와 같이 [봇은 관리자로서만 추가될 수 있습니다]라는 메시지가 나타납니다. 바로 [관리자로 세우기] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_12.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;관리자의 권한은 여러가지가 있는데 원하는 권한을 부여하고 [저장] 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_13.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;채팅-방-id-확인&quot;&gt;채팅 방 ID 확인&lt;/h2&gt;
-&lt;p&gt;메시지를 전송하기 위해서는 현재 생성된 비공개 채널의 chat_id를 확인해야 합니다.&lt;br /&gt;
-우선, 채널에서 아무 메시지나 입력합니다. (&lt;strong&gt;꼭 하셔야 합니다&lt;/strong&gt;)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_14.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음으로 웹브라우저에서 다음 주소를 입력합니다.  주소에는 위에서 확인했던 API Token이 들어갑니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://api.telegram.org/bot[API Token]/getUpdates
-
-# 예시
-https://api.telegram.org/bot123456789:JFDS89FMJK8932-MKJE8FNBH3289I/getUpdates
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-입력하면 나타나면 결과에서 “chat” : {“id” : -12586498, ….} 와 같은 형식의 &lt;strong&gt;id&lt;/strong&gt; 값을 복사합니다. 이 값이 바로 비공개 채널의 chat_id 입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_15.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;메시지-전송-코드-작성&quot;&gt;메시지 전송 코드 작성&lt;/h2&gt;
-&lt;p&gt;마지막으로 메시지를 전송하는 PHP 코드를 작성해보겠습니다.&lt;br /&gt;
-위에서 구했던 [API Token], [chat_id]를 아래 코드에 입력하고 실행하면 됩니다.&lt;/p&gt;
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;php_to_telegram_msg_send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;$api_token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;API Token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;$chat_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;채팅방 ID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;$api_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://api.telegram.org/bot&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$api_token&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/sendMessage&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;nv&quot;&gt;$post_vars&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;chat_id=&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$chat_id&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;amp;text=&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;urlencode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;$content_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Content-Type: application/x-www-form-urlencoded&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;curl_init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$api_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_HEADER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_RETURNTRANSFER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_SSL_VERIFYPEER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_POST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_TIMEOUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_HTTPHEADER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$content_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;curl_setopt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CURLOPT_POSTFIELDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$post_vars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;nv&quot;&gt;$return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;curl_exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;nb&quot;&gt;curl_close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-
-  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;		
-  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;메시지 테스트&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;nv&quot;&gt;$output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;php_to_telegram_msg_send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;	
-&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-위 코드를 실행하면 아래와 같이 비공개 채널에 메시지가 도착한 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_16.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;메시지-스타일-적용&quot;&gt;메시지 스타일 적용&lt;/h2&gt;
-&lt;p&gt;텔레그램 채팅 봇 API는 메시지에 bold, underline 등의 몇가지 html 스타일을 지원합니다.&lt;br /&gt;
-html 스타일을 적용하기 위해서는 전송 파라미터에 &lt;strong&gt;parse_mode=html&lt;/strong&gt;을 추가해야 합니다.&lt;br /&gt;
-그러면 위 전송 코드 중에서 변경해야 하는 코드만 정리해보겠습니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
-
-  &lt;span class=&quot;cm&quot;&gt;/* 전송 파라미터에 parse_mode=html을 추가합니다. */&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;$post_vars&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;chat_id=&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$chat_id&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;amp;text=&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;urlencode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;amp;parse_mode=html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;		
-
-  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;b&amp;gt;bold&amp;lt;/b&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;i&amp;gt;italic&amp;lt;/i&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;code&amp;gt;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;now_date = date('Y-m-d');&amp;lt;/code&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;s&amp;gt;strike&amp;lt;/s&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;u&amp;gt;underline&amp;lt;/u&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;pre language='php'&amp;gt;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;now_date = date('Y-m-d');&amp;lt;/pre&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;email@test.com&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tgm_msg&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;pre&amp;gt;email@test.com&amp;lt;/pre&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-위 코드처럼 스타일을 적용하고 실행하면 아래와 같이 표시됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../images/etc_php_to_telegram_msg_send_17.png&quot; alt=&quot;PHP로 텔레그램(Telegram) 비공개 채널에 메시지 전송하는 방법&quot; style=&quot;width:632px;align:center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;텔레그램 채팅 봇 안내
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://core.telegram.org/bots/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://core.telegram.org/bots/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;텔레그램 채팅 봇 API 가이드
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://core.telegram.org/bots/api/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://core.telegram.org/bots/api/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;텔레그램 채팅 봇 API 메시지 스타일 가이드
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://core.telegram.org/api/entities/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://core.telegram.org/api/entities/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 업무를 진행하다보면 서버나 서비스에 장애가 발생했을 때 즉시 알림을 받거나 서버 상태 모니터링이나 매출 등의 서비스 이용 지표 등을 매일 자동으로 통보 받는 경우가 있습니다. 예전에는 이메일이나 SMS 메시지로 받는 경우가 대부분이었는데, 요즘은 관련된 사람들이 함께 들어와 있는 메신저 채팅방으로 알림을 동시에 받는 경우도 많아지고 있습니다. 그럴 때 사용하는 방법 중에서 여기서는 텔레그램(Telegram)의 대화방인 비공개 채널에 메시지를 전송하는 것을 PHP로 구현해보겠습니다.</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">개요 네이버 클라우드(Ncloud) Archive Storage API를 이용하려고 할 때 먼저 인증 토큰을 생성하고 생성된 토큰을 이용해서 API로 Archive Storage에 접근해야 합니다. 여기서는 PHP로 API 인증 토큰을 생성하는 방법에 대해 우선 전체 소스코드를 살펴보고 다음으로 주요 코드를 상세하게 살펴보겠습니다.</summary></entry></feed>

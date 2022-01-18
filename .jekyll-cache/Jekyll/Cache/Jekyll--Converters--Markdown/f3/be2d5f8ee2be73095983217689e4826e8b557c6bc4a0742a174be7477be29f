@@ -1,0 +1,225 @@
+I"�Y<h2 id="개요">개요</h2>
+<p>PHP에서 Excel 문서를 읽거나 Excel 형태로 문서를 저장해야 할 때 주로 PhpSpreadsheet를 사용하게 됩니다. 
+이전에는 PHPExcel이라는 이름이었으나 현재는 해당 버전의 개발-유지보수가 중단되고 새로운 프로젝트로 PhpSpreasheet라는 이름으로 업그레이드 되었습니다.<br />
+또한 PhpSpreadsheet는 Excel 뿐만 아니라 PDF 형식으로도 파일을 저장할 수 있어서 많이 사용되고 있습니다. <br />
+이번에는 이 PhpSpreadsheet로 문서를 저장할 때 사용하는 주요 소스 코드의 샘플을 정리해보겠습니다.</p>
+
+<h2 id="클래스-로드">클래스 로드</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?php</span>
+
+	<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+	<span class="kn">use</span> <span class="nc">PhpOffice\PhpSpreadsheet\IOFactory</span><span class="p">;</span>
+	<span class="kn">use</span> <span class="nc">PhpOffice\PhpSpreadsheet\Spreadsheet</span><span class="p">;</span>
+
+	<span class="nv">$spreadsheet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Spreadsheet</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="기본-설정">기본 설정</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?</span> <span class="n">php</span>
+
+ <span class="c1">// 문서 가로,세로 방향 설정	</span>
+ <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getPageSetup</span><span class="p">()</span>
+ <span class="o">-&gt;</span><span class="nf">setOrientation</span><span class="p">(</span><span class="err">\</span><span class="nc">PhpOffice\PhpSpreadsheet\Worksheet\PageSetup</span><span class="o">::</span><span class="no">ORIENTATION_PORTRAIT</span><span class="p">);</span>
+
+ <span class="c1">// 문서 사이즈 설정</span>
+ <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getPageSetup</span><span class="p">()</span>
+ <span class="o">-&gt;</span><span class="nf">setPaperSize</span><span class="p">(</span><span class="err">\</span><span class="nc">PhpOffice\PhpSpreadsheet\Worksheet\PageSetup</span><span class="o">::</span><span class="no">PAPERSIZE_A4</span><span class="p">);</span>
+
+ <span class="c1">// 문서 정보 설정</span>
+ <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getProperties</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">setCreator</span><span class="p">(</span><span class="s2">"써드아이시스템"</span><span class="p">)</span>
+ <span class="o">-&gt;</span><span class="nf">setLastModifiedBy</span><span class="p">(</span><span class="s2">"써드아이시스템"</span><span class="p">)</span>
+ <span class="o">-&gt;</span><span class="nf">setTitle</span><span class="p">(</span><span class="s2">"문서 타이틀"</span><span class="p">)</span>
+ <span class="o">-&gt;</span><span class="nf">setSubject</span><span class="p">(</span><span class="s2">"문서 제목"</span><span class="p">)</span>
+ <span class="o">-&gt;</span><span class="nf">setDescription</span><span class="p">(</span><span class="s2">"문서 설명"</span><span class="p">)</span>
+ <span class="o">-&gt;</span><span class="nf">setKeywords</span><span class="p">(</span><span class="s2">"키워드"</span><span class="p">)</span>
+ <span class="o">-&gt;</span><span class="nf">setCategory</span><span class="p">(</span><span class="s2">"카테고리"</span><span class="p">);</span>
+
+
+ <span class="c1">// 문서 좌우 여백 설정</span>
+ <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getPageMargins</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">setTop</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>	
+ <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getPageMargins</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">setBottom</span><span class="p">(</span><span class="mf">0.25</span><span class="p">);</span>
+ <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getPageMargins</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">setRight</span><span class="p">(</span><span class="mf">0.75</span><span class="p">);</span>
+ <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getPageMargins</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">setLeft</span><span class="p">(</span><span class="mf">0.75</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="셀-값-설정">셀 값 설정</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?</span> <span class="n">php</span>	
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">setActiveSheetIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">setCellValue</span><span class="p">(</span><span class="s2">"C11"</span><span class="p">,</span> <span class="nv">$value</span><span class="p">);</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">setActiveSheetIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">setCellValue</span><span class="p">(</span><span class="s2">"B25"</span><span class="p">,</span> <span class="s2">"셀 값 설정</span><span class="se">\r\n</span><span class="s2">다음 줄"</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="셀에-이미지-설정">셀에 이미지 설정</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?</span> <span class="n">php</span>
+  <span class="nv">$drawing_logo</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">PhpOffice\PhpSpreadsheet\Worksheet\Drawing</span><span class="p">();</span>	
+  <span class="nv">$drawing_logo</span><span class="o">-&gt;</span><span class="nf">setName</span><span class="p">(</span><span class="s1">'Logo'</span><span class="p">);</span>
+  <span class="nv">$drawing_logo</span><span class="o">-&gt;</span><span class="nf">setDescription</span><span class="p">(</span><span class="s1">'3rdEYESYS Logo'</span><span class="p">);</span>
+  <span class="nv">$drawing_logo</span><span class="o">-&gt;</span><span class="nf">setPath</span><span class="p">(</span><span class="s1">'/ncp/data/www/img/3rdeyesys_logo.png'</span><span class="p">);</span>
+  <span class="nv">$drawing_logo</span><span class="o">-&gt;</span><span class="nf">setCoordinates</span><span class="p">(</span><span class="s1">'A1'</span><span class="p">);</span>
+  <span class="nv">$drawing_logo</span><span class="o">-&gt;</span><span class="nf">setWidth</span><span class="p">(</span><span class="mi">230</span><span class="p">);</span>
+  <span class="nv">$drawing_logo</span><span class="o">-&gt;</span><span class="nf">getShadow</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">setVisible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="nv">$drawing_logo</span><span class="o">-&gt;</span><span class="nf">setWorksheet</span><span class="p">(</span><span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">());</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="셀-병합">셀 병합</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?</span> <span class="n">php</span>	
+  <span class="c1">// 동일한 행에서 병합</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">mergeCells</span><span class="p">(</span><span class="s2">"A1:D1"</span><span class="p">);</span>
+
+  <span class="c1">// 여러 행에서 병합</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">mergeCells</span><span class="p">(</span><span class="s2">"G5:I7"</span><span class="p">);</span>
+
+  <span class="c1">// 변수 사용</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nv">$j</span> <span class="o">=</span> <span class="mi">52</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">&lt;=</span> <span class="mi">57</span><span class="p">;</span> <span class="nv">$j</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">mergeCells</span><span class="p">(</span><span class="s2">"B"</span><span class="mf">.</span><span class="nv">$j</span><span class="mf">.</span><span class="s2">":C"</span><span class="mf">.</span><span class="nv">$j</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="행-높이-설정">행 높이 설정</h2>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?php</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="nv">$j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nv">$j</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getRowDimension</span><span class="p">(</span><span class="nv">$j</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">setRowHeight</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getRowDimension</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">setRowHeight</span><span class="p">(</span><span class="mi">35</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="열-너비-설정">열 너비 설정</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?php</span>
+
+  <span class="c1">// 특정 열 너비 설정</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getColumnDimension</span><span class="p">(</span><span class="s2">"A"</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">setWidth</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+  <span class="c1">// 범위 내 여러 열 너비 설정</span>
+  <span class="k">foreach</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="s2">"B"</span><span class="p">,</span><span class="s2">"J"</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$columnID</span><span class="p">)</span> 
+  <span class="p">{</span>
+    <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getColumnDimension</span><span class="p">(</span><span class="nv">$columnID</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">setWidth</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="셀-스타일-지정">셀 스타일 지정</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?php</span>
+
+  <span class="c1">// 셀 스타일을 배열 형식으로 저장</span>
+  <span class="c1">// 순서대로 border, font, 배경색 지정하는 스타일</span>
+  <span class="nv">$styleArray_Cell</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'borders'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">'allBorders'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'borderStyle'</span> <span class="o">=&gt;</span> <span class="err">\</span><span class="nc">PhpOffice\PhpSpreadsheet\Style\Border</span><span class="o">::</span><span class="no">BORDER_THIN</span><span class="p">,</span>
+        <span class="s1">'color'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'argb'</span> <span class="o">=&gt;</span> <span class="s1">'FF20AFA5'</span><span class="p">]</span>
+      <span class="p">]</span>
+    <span class="p">],</span>
+    <span class="s1">'font'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">'bold'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s1">'size'</span> <span class="o">=&gt;</span> <span class="mi">9</span><span class="p">,</span>
+      <span class="s1">'color'</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'argb'</span> <span class="o">=&gt;</span> <span class="s1">'FFFFFFFF'</span><span class="p">],</span>
+    <span class="p">],</span>
+    <span class="s1">'fill'</span> <span class="o">=&gt;</span><span class="p">[</span>
+      <span class="s1">'fillType'</span> <span class="o">=&gt;</span> <span class="err">\</span><span class="nc">PhpOffice\PhpSpreadsheet\Style\Fill</span><span class="o">::</span><span class="no">FILL_SOLID</span><span class="p">,</span>
+      <span class="s1">'color'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'argb'</span> <span class="o">=&gt;</span> <span class="s1">'FF20AFA5'</span><span class="p">]</span>
+    <span class="p">]</span>
+  <span class="p">];</span>
+
+  <span class="c1">// 특정 셀에 스타일 적용</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span>
+  <span class="o">-&gt;</span><span class="nf">getStyle</span><span class="p">(</span><span class="s2">"B40"</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">applyFromArray</span><span class="p">(</span><span class="nv">$styleArray_Cell</span><span class="p">);</span>
+  
+  <span class="c1">// 특정 범위의 여러 셀에 스타일 동시 적용</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span>
+  <span class="o">-&gt;</span><span class="nf">getStyle</span><span class="p">(</span><span class="s2">"G45:G46"</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">applyFromArray</span><span class="p">(</span><span class="nv">$styleArray_Cell</span><span class="p">);</span>
+
+  <span class="c1">// 특정 셀에 폰트 스타일 직접 적용</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">getActiveSheet</span><span class="p">()</span>
+  <span class="o">-&gt;</span><span class="nf">getStyle</span><span class="p">(</span><span class="s2">"B80"</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">getFont</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">setSize</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">setBold</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+	
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="pdf-로-저장">PDF 로 저장</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?php</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">setActiveSheetIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="c1">// Mpdf 클래스 별로 설치해야 함</span>
+  <span class="nc">IOFactory</span><span class="o">::</span><span class="nf">registerWriter</span><span class="p">(</span><span class="s1">'Pdf'</span><span class="p">,</span> <span class="err">\</span><span class="nc">PhpOffice\PhpSpreadsheet\Writer\Pdf\Mpdf</span><span class="o">::</span><span class="n">class</span><span class="p">);</span>
+
+  <span class="nv">$out_put_file_full_name</span> <span class="o">=</span> <span class="s2">"sample.pdf"</span><span class="p">;</span>
+
+  <span class="c1">// Redirect output to a client’s web browser (PDF)</span>
+  <span class="nb">header</span><span class="p">(</span><span class="s1">'Content-Type: application/pdf; charset=utf-8'</span> <span class="p">);</span>
+  <span class="nb">header</span><span class="p">(</span><span class="s1">'Content-Disposition: attachment;filename="'</span><span class="mf">.</span><span class="nv">$out_put_file_full_name</span><span class="mf">.</span><span class="s1">'"'</span><span class="p">);</span>
+  <span class="nb">header</span><span class="p">(</span><span class="s1">'Cache-Control: max-age=0'</span><span class="p">);</span>
+
+  <span class="nv">$writer</span> <span class="o">=</span> <span class="nc">IOFactory</span><span class="o">::</span><span class="nf">createWriter</span><span class="p">(</span><span class="nv">$spreadsheet</span><span class="p">,</span> <span class="s1">'Pdf'</span><span class="p">);</span>
+  <span class="nv">$writer</span><span class="o">-&gt;</span><span class="nf">save</span><span class="p">(</span><span class="s1">'php://output'</span><span class="p">);</span>
+  <span class="k">exit</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+<p>PhpSpreadsheet를 사용해서 pdf 파일을 저장하려면 Mpdf 를 추가로 설치해야 합니다. <br />
+이와 관련된 내용은 다음 문서에서 다시 정리하겠습니다.</p>
+
+<h2 id="excel로-저장">Excel로 저장</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?php</span>
+  <span class="nv">$spreadsheet</span><span class="o">-&gt;</span><span class="nf">setActiveSheetIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="c1">// Redirect output to a client’s web browser (Excel2007)</span>
+  <span class="nv">$out_put_file_full_name</span> <span class="o">=</span> <span class="s2">"sample.xlsx"</span><span class="p">;</span>
+
+  <span class="nb">header</span><span class="p">(</span><span class="s1">'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'</span><span class="p">);</span>
+  <span class="nb">header</span><span class="p">(</span><span class="s1">'Content-Disposition: attachment;filename="'</span><span class="mf">.</span><span class="nv">$out_put_file_full_name</span><span class="mf">.</span><span class="s1">'"'</span><span class="p">);</span>
+  <span class="nb">header</span><span class="p">(</span><span class="s1">'Cache-Control: max-age=0'</span><span class="p">);</span>
+
+  <span class="c1">// If you're serving to IE over SSL, then the following may be needed</span>
+  <span class="nb">header</span> <span class="p">(</span><span class="s1">'Expires: Mon, 26 Jul 2022 05:00:00 GMT'</span><span class="p">);</span> <span class="c1">// Date in the past</span>
+  <span class="nb">header</span> <span class="p">(</span><span class="s1">'Last-Modified: '</span><span class="mf">.</span><span class="nb">gmdate</span><span class="p">(</span><span class="s1">'D, d M Y H:i:s'</span><span class="p">)</span><span class="mf">.</span><span class="s1">' GMT'</span><span class="p">);</span> <span class="c1">// always modified</span>
+  <span class="nb">header</span> <span class="p">(</span><span class="s1">'Cache-Control: cache, must-revalidate'</span><span class="p">);</span> <span class="c1">// HTTP/1.1</span>
+  <span class="nb">header</span> <span class="p">(</span><span class="s1">'Pragma: public'</span><span class="p">);</span> <span class="c1">// HTTP/1.0</span>
+
+  <span class="nv">$writer</span> <span class="o">=</span> <span class="nc">IOFactory</span><span class="o">::</span><span class="nf">createWriter</span><span class="p">(</span><span class="nv">$spreadsheet</span><span class="p">,</span> <span class="s1">'Xlsx'</span><span class="p">);</span>	
+  <span class="nv">$writer</span><span class="o">-&gt;</span><span class="nf">save</span><span class="p">(</span><span class="s1">'php://output'</span><span class="p">);</span>
+  <span class="k">exit</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="참고-url">참고 URL</h2>
+<ol>
+  <li>PhpSpreadsheet Documentation
+    <ul>
+      <li><a href="https://phpspreadsheet.readthedocs.io/" target="_blank" style="word-break:break-all;">https://phpspreadsheet.readthedocs.io/</a></li>
+    </ul>
+  </li>
+  <li>PhpSpreadsheet GitHub Source and Download
+    <ul>
+      <li><a href="https://github.com/PHPOffice/PhpSpreadsheet" target="_blank" style="word-break:break-all;">https://github.com/PHPOffice/PhpSpreadsheet</a></li>
+    </ul>
+  </li>
+</ol>
+:ET

@@ -1,0 +1,65 @@
+I"�<h2 id="개요">개요</h2>
+<p>매일 일정한 시간에 mysql DB를 자동으로 백업 받는 방법에 대해 정리해보았습니다.</p>
+
+<h2 id="백업-폴더-생성">백업 폴더 생성</h2>
+<p>루트에 /data_backup 폴더를 만들고 그 아래에 db 폴더를 생성합니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# <span class="nb">mkdir</span> /data_backup
+~# <span class="nb">mkdir</span> /data_backup/db
+</code></pre></div></div>
+
+<h2 id="mysql-db-백업-스크립트-작성">mysql DB 백업 스크립트 작성</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# vi /bin/db_backup.sh
+
+<span class="c">#!/bin/bash</span>
+<span class="nv">DATE</span><span class="o">=</span><span class="si">$(</span><span class="nb">date</span> +%Y%m%d%H%M%S<span class="si">)</span>
+<span class="nv">BACKUP_DIR</span><span class="o">=</span>/data_backup/db/
+
+<span class="c"># 전체 DB를 백업할 경우</span>
+mysqldump <span class="nt">-u</span> root <span class="nt">-p</span>디비패스워드 <span class="nt">--all-databases</span> <span class="o">&gt;</span> <span class="nv">$BACKUP_DIR</span><span class="s2">"backup_"</span><span class="nv">$DATE</span>.sql
+
+<span class="c"># 특정 DB를 백업할 경우</span>
+<span class="c"># mysqldump -u root -p디비패스워드 --databases DB명  &gt; $BACKUP_DIR"backup_"$DATE.sql</span>
+
+
+
+find <span class="nv">$BACKUP_DIR</span> <span class="nt">-ctime</span> +7 <span class="nt">-exec</span> <span class="nb">rm</span> <span class="nt">-f</span> <span class="o">{}</span> <span class="se">\;</span>
+
+<span class="c"># DATE=$(date +%Y%m%d%H%M%S)는 백업할 파일명을 </span>
+<span class="c"># 202001224505 와 같은 형식으로 저장할 수 있게 날짜를 변수로 담습니다.  </span>
+<span class="c"># find $BACKUP_DIR -ctime +7 -exec rm -f {} \;  </span>
+<span class="c"># 여기서 -ctime +7은 7일이 지난 백업 파일을 찾아서 삭제하기 위한 코드입니다.  </span>
+
+<span class="c"># 추가로 분 단위로 설정하려고 할 때는 아래와 같이 </span>
+<span class="c"># -cmin +10 처럼 작성하면 10분이 지난 파일을 찾아서 삭제하게 됩니다.</span>
+<span class="c"># find $BACKUP_DIR -cmin +10 -exec rm -f {} \;</span>
+</code></pre></div></div>
+
+<p><br /></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 백업 스크립트에 실행 권한을 부여합니다.</span>
+~# <span class="nb">chmod </span>755 /bin/db_backup.sh
+</code></pre></div></div>
+
+<h2 id="스케쥴링을-위한-crontab-설정">스케쥴링을 위한 crontab 설정</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~# crontab <span class="nt">-e</span>
+
+<span class="c"># 매일 새벽 6시에 백업이 진행됩니다.</span>
+00 06 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> /bin/db_backup.sh
+</code></pre></div></div>
+<p><br /></p>
+<h4 id="그-외-시간-설정-방법">그 외 시간 설정 방법</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 30분 마다 실행</span>
+<span class="k">*</span>/30 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> /bin/db_backup.sh
+
+<span class="c"># 매주 일요일 새벽 6시에 실행</span>
+0 06 <span class="k">*</span> <span class="k">*</span> 0 /bin/db_backup.sh
+
+<span class="c"># 매월 1일 새벽 6시에 실행</span>
+0 06 1 <span class="k">*</span> <span class="k">*</span> /bin/db_backup.sh
+
+<span class="c"># 매년 12월 31일 새벽 6시에 실행</span>
+0 06 31 12 <span class="k">*</span> /bin/db_backup.sh
+</code></pre></div></div>
+
+<h2 id="참고-url">참고 URL</h2>
+<p><a href="https://www.ncloud.com/product/database" target="_blank" style="word-break:break-all;">https://www.ncloud.com/product/database</a></p>
+:ET

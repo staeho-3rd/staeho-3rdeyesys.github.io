@@ -1,0 +1,200 @@
+I"�J<h2 id="개요">개요</h2>
+<p>네이버 클라우드 인프라와 상품 및 솔루션 등의 활용을 도와주는 API를 PHP로 호출하는 샘플 예제를 정리해봅니다.<br />
+네이버 클라우드 API는 RESTful API 방식으로 제공되며, XML와 JSON 형식으로 응답합니다
+우선 전체 소스코드를 살펴보고 다음으로 주요 코드를 상세하게 살펴보겠습니다.</p>
+
+<h2 id="api-호출-샘플-코드">API 호출 샘플 코드</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+	
+	<span class="c1">// 기본 데이터 설정</span>
+	<span class="nv">$unixtimestamp</span> <span class="o">=</span>  <span class="nb">round</span><span class="p">(</span><span class="nb">microtime</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+
+	<span class="nv">$ncp_accesskey</span> <span class="o">=</span> <span class="s2">"네이버 클라우드 AccessKey"</span><span class="p">;</span>
+	<span class="nv">$ncp_secretkey</span> <span class="o">=</span> <span class="s2">"네이버 클라우드 SecretKey"</span><span class="p">;</span>	
+
+	<span class="nv">$api_server</span> <span class="o">=</span> <span class="s2">"https://billingapi.apigw.ntruss.com"</span><span class="p">;</span>
+
+	<span class="c1">// API URL 예시 : 상품별 가격 리스트 호출 api</span>
+	<span class="nv">$api_url</span> <span class="o">=</span> <span class="s2">"/billing/v1/product/getProductPriceList"</span><span class="p">;</span>
+	<span class="nv">$api_url</span> <span class="o">=</span> <span class="nv">$api_url</span><span class="mf">.</span><span class="s2">"?regionCode=KR&amp;productItemKindCode=VSVR"</span><span class="p">;</span>
+
+	<span class="nv">$apicall_method</span> <span class="o">=</span> <span class="s2">"GET"</span><span class="p">;</span>
+	<span class="nv">$space</span> <span class="o">=</span> <span class="s2">" "</span><span class="p">;</span>
+	<span class="nv">$new_line</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+
+	<span class="nv">$is_post</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+	<span class="c1">// hmac으로 암호화할 문자열 설정</span>
+	<span class="nv">$message</span> <span class="o">=</span> 
+		<span class="nv">$apicall_method</span>
+		<span class="mf">.</span><span class="nv">$space</span>
+		<span class="mf">.</span><span class="nv">$api_url</span>
+		<span class="mf">.</span><span class="nv">$new_line</span>
+		<span class="mf">.</span><span class="nv">$unixtimestamp</span>
+		<span class="mf">.</span><span class="nv">$new_line</span>
+		<span class="mf">.</span><span class="nv">$ncp_accesskey</span><span class="p">;</span>	
+	
+	<span class="c1">// hmac_sha256 암호화</span>
+	<span class="nv">$msg_signature</span> <span class="o">=</span> <span class="nb">hash_hmac</span><span class="p">(</span><span class="s2">"sha256"</span><span class="p">,</span> <span class="nv">$message</span><span class="p">,</span> <span class="nv">$ncp_secretkey</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+	<span class="nv">$msg_signature</span> <span class="o">=</span> <span class="nb">base64_encode</span><span class="p">(</span><span class="nv">$msg_signature</span><span class="p">);</span>
+
+	<span class="c1">// http 호출 헤더값 설정</span>
+	<span class="nv">$http_header</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+	<span class="nv">$http_header</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"x-ncp-apigw-timestamp:"</span><span class="mf">.</span><span class="nv">$unixtimestamp</span><span class="mf">.</span><span class="s2">""</span><span class="p">;</span>
+	<span class="nv">$http_header</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"x-ncp-iam-access-key:"</span><span class="mf">.</span><span class="nv">$ncp_accesskey</span><span class="mf">.</span><span class="s2">""</span><span class="p">;</span>
+	<span class="nv">$http_header</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"x-ncp-apigw-signature-v2:"</span><span class="mf">.</span><span class="nv">$msg_signature</span><span class="mf">.</span><span class="s2">""</span><span class="p">;</span>
+
+	<span class="c1">// api 호출</span>
+	<span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+	<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$api_server</span><span class="mf">.</span><span class="nv">$api_url</span><span class="p">);</span>
+	<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">);</span>
+	<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span>	
+	<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="nv">$is_post</span><span class="p">);</span>
+	<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$http_header</span><span class="p">);</span>
+
+	<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+	<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="코드-상세-설명">코드 상세 설명</h2>
+<p><br /></p>
+<h4 id="유닉스-타임-스탬프">유닉스 타임 스탬프</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$unixtimestamp</span> <span class="o">=</span>  <span class="nb">round</span><span class="p">(</span><span class="nb">microtime</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+</code></pre></div></div>
+<p>네이버 클라우드 API를 호출할 때는 13자리 형식의 유닉스 타임 스탬프가 필요합니다.<br />
+PHP에서 일반적으로 사용하는 time()함수는 10자리 형식이기 때문에 여기서는 microtime()을 사용합니다.<br />
+microtime(true)은 float 형식의 값을 리턴하므로 1000을 곱하고 정수로 반올림합니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$val1</span> <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
+<span class="nv">$val2</span> <span class="o">=</span> <span class="nb">microtime</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="nv">$val3</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">microtime</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+
+<span class="cm">/*
+$val1 : 1617699570
+$val2 : 1617699570.1146
+$val3 : 1617699570115
+*/</span>
+</code></pre></div></div>
+<p><br /></p>
+<h4 id="네이버-클라우드-인증키">네이버 클라우드 인증키</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ncp_accesskey</span> <span class="o">=</span> <span class="s2">"네이버 클라우드 AccessKey"</span><span class="p">;</span>
+<span class="nv">$ncp_secretkey</span> <span class="o">=</span> <span class="s2">"네이버 클라우드 SecretKey"</span><span class="p">;</span>	
+</code></pre></div></div>
+
+<p>네이버 클라우드 인증키는 네이버 클라우드 포탈 -&gt; 마이페이지 -&gt; 계정관리 -&gt; 인증키 관리 - API 인증키 관리 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.</p>
+
+<p><img src="../../images/ncloud_api_auth_key_create.png" alt="AWS CLI를 이용한 Object Storage 접속 방법" style="width:770px;align:center" /></p>
+
+<h4 id="hmac으로-암호화할-문자열-설정">hmac으로 암호화할 문자열 설정</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$apicall_method</span> <span class="o">=</span> <span class="s2">"GET"</span><span class="p">;</span>
+<span class="nv">$space</span> <span class="o">=</span> <span class="s2">" "</span><span class="p">;</span>
+<span class="nv">$new_line</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+</code></pre></div></div>
+<p>암호화할 문자열을 설정하는데 필요한 값을 사전에 정의합니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$message</span> <span class="o">=</span> 
+	<span class="nv">$apicall_method</span>
+	<span class="mf">.</span><span class="nv">$space</span>
+	<span class="mf">.</span><span class="nv">$api_url</span>
+	<span class="mf">.</span><span class="nv">$new_line</span>
+	<span class="mf">.</span><span class="nv">$unixtimestamp</span>
+	<span class="mf">.</span><span class="nv">$new_line</span>
+	<span class="mf">.</span><span class="nv">$ncp_accesskey</span><span class="p">;</span>	
+</code></pre></div></div>
+<p>네이버 클라우드 API에서는 호출 방식(GET, POST)과 도메인을 제외한 API URL, 유닉스 타임스탬프, API ACCESSKEY를 공백과 개행문자 \n을 이용해서 하나의 문자열로 설정합니다.</p>
+
+<p>API URL은 용도별로 각기 다른데, 네이버 클라우드 API 가이드 사이트에서 확인할 수 있습니다.<br />
+<a href="https://api.ncloud-docs.com/docs/ko/home/" target="_blank" style="word-break:break-all;">https://api.ncloud-docs.com/docs/ko/home/</a></p>
+
+<h4 id="hmac_sha256-방식으로-암호화">hmac_sha256 방식으로 암호화</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$msg_signature</span> <span class="o">=</span> <span class="nb">hash_hmac</span><span class="p">(</span><span class="s2">"sha256"</span><span class="p">,</span> <span class="nv">$message</span><span class="p">,</span> <span class="nv">$ncp_secretkey</span><span class="p">,</span> <span class="kc">true</span><span class="p">));</span>
+<span class="nv">$msg_signature</span> <span class="o">=</span> <span class="nb">base64_encode</span><span class="p">(</span><span class="nv">$msg_signature</span><span class="p">);</span>
+</code></pre></div></div>
+<p>hmac sha256 방식으로 네이버 클라우드 API SecretKey를 이용하여 $message 문자열을 암호화 즉, 해시값을 만들고, 다시 base64로 인코딩합니다.</p>
+
+<h4 id="http-호출-헤더값-설정">http 호출 헤더값 설정</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$http_header</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="nv">$http_header</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"x-ncp-apigw-timestamp:"</span><span class="mf">.</span><span class="nv">$unixtimestamp</span><span class="mf">.</span><span class="s2">""</span><span class="p">;</span>
+<span class="nv">$http_header</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"x-ncp-iam-access-key:"</span><span class="mf">.</span><span class="nv">$ncp_accesskey</span><span class="mf">.</span><span class="s2">""</span><span class="p">;</span>
+<span class="nv">$http_header</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"x-ncp-apigw-signature-v2:"</span><span class="mf">.</span><span class="nv">$msg_signature</span><span class="mf">.</span><span class="s2">""</span><span class="p">;</span>
+</code></pre></div></div>
+<p>API를 호출할 때는 http 헤더값에 다음 3가지를 추가해서 호출합니다.</p>
+<ul>
+  <li>유닉스 타임스탬프</li>
+  <li>네이버 클라우드 API AccessKey</li>
+  <li>hmac_256 으로 암호화한 문자열</li>
+</ul>
+
+<p>여기서 전송하는 타임스탬프는 위에서 $message를 암호화할 때 사용한 타임스탬프와 동일한 값이어야 합니다.</p>
+
+<h4 id="api-호출">api 호출</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$api_server</span><span class="mf">.</span><span class="nv">$api_url</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span>	
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="nv">$is_post</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$http_header</span><span class="p">);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+</code></pre></div></div>
+<p>이제 위에서 준비한 값들을 사용해서 API를 호출합니다.<br />
+리턴값은 호출하는 용도별로 json 또는 xml 형태로 반환됩니다.</p>
+
+<h2 id="응답-예시">응답 예시</h2>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;getProductPriceListResponse&gt;</span>
+  <span class="nt">&lt;requestId&gt;</span>9a6b9f7c-f688-4cec-841f-634d355cef1e<span class="nt">&lt;/requestId&gt;</span>
+  <span class="nt">&lt;returnCode&gt;</span>0<span class="nt">&lt;/returnCode&gt;</span>
+  <span class="nt">&lt;returnMessage&gt;</span>success<span class="nt">&lt;/returnMessage&gt;</span>
+  <span class="nt">&lt;totalRows&gt;</span>2<span class="nt">&lt;/totalRows&gt;</span>
+  <span class="nt">&lt;productPriceList&gt;</span>
+    <span class="nt">&lt;productPrice&gt;</span>
+      <span class="nt">&lt;productItemKind&gt;</span>
+        <span class="nt">&lt;code&gt;</span>VSVR<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;codeName&gt;</span>Server (VPC)<span class="nt">&lt;/codeName&gt;</span>
+      <span class="nt">&lt;/productItemKind&gt;</span>
+      <span class="nt">&lt;productItemKindDetail&gt;</span>
+        <span class="nt">&lt;code&gt;</span>BM<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;codeName&gt;</span>BareMetal<span class="nt">&lt;/codeName&gt;</span>
+      <span class="nt">&lt;/productItemKindDetail&gt;</span>
+     ''' 중략 '''
+      <span class="nt">&lt;softwareType/&gt;</span>
+      <span class="nt">&lt;productType&gt;</span>
+        <span class="nt">&lt;code&gt;</span>BM<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;codeName&gt;</span>BareMetal<span class="nt">&lt;/codeName&gt;</span>
+      <span class="nt">&lt;/productType&gt;</span>
+      <span class="nt">&lt;productType&gt;</span>
+        <span class="nt">&lt;code&gt;</span>BM<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;codeName&gt;</span>BareMetal<span class="nt">&lt;/codeName&gt;</span>
+      <span class="nt">&lt;/productType&gt;</span>
+      <span class="nt">&lt;productTypeDetail/&gt;</span>
+      <span class="nt">&lt;gpuCount&gt;</span>0<span class="nt">&lt;/gpuCount&gt;</span>
+      <span class="nt">&lt;cpuCount&gt;</span>24<span class="nt">&lt;/cpuCount&gt;</span>
+      <span class="nt">&lt;memorySize&gt;</span>137438953472<span class="nt">&lt;/memorySize&gt;</span>
+      <span class="nt">&lt;baseBlockStorageSize&gt;</span>4123168604160<span class="nt">&lt;/baseBlockStorageSize&gt;</span>
+      <span class="nt">&lt;dbKind/&gt;</span>
+      <span class="nt">&lt;osInfomation/&gt;</span>
+      <span class="nt">&lt;platformType/&gt;</span>
+      <span class="nt">&lt;osType/&gt;</span>
+      <span class="nt">&lt;platformCategoryCode/&gt;</span>
+      <span class="nt">&lt;diskType&gt;</span>
+        <span class="nt">&lt;code&gt;</span>LOCAL<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;codeName&gt;</span>Local storage<span class="nt">&lt;/codeName&gt;</span>
+      <span class="nt">&lt;/diskType&gt;</span>
+      <span class="nt">&lt;diskDetailType&gt;</span>
+        <span class="nt">&lt;code&gt;</span>SSD<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;codeName&gt;</span>SSD<span class="nt">&lt;/codeName&gt;</span>
+      <span class="nt">&lt;/diskDetailType&gt;</span>
+      <span class="nt">&lt;generationCode&gt;</span>G1<span class="nt">&lt;/generationCode&gt;</span>     
+    ''' 중략 '''
+  <span class="nt">&lt;/productPriceList&gt;</span>
+<span class="nt">&lt;/getProductPriceListResponse&gt;</span>
+</code></pre></div></div>
+
+<h2 id="참고-url">참고 URL</h2>
+<p><a href="https://api.ncloud-docs.com/docs/ko/home/" target="_blank" style="word-break:break-all;">https://api.ncloud-docs.com/docs/ko/home/</a></p>
+:ET

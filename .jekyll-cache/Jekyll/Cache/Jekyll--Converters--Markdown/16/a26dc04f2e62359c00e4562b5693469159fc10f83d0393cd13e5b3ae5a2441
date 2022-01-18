@@ -1,0 +1,45 @@
+I"�<h2 id="apache-시작-중지-재시작">Apache 시작, 중지, 재시작</h2>
+<p>Apache 시작, 중지, 재시작 명령어는 OS별로 조금씩 다른데 Ubuntu의 경우에는 systemctl [stop|start|restart] {서비스명} 의 순서로 되어 있습니다.</p>
+
+<h3 id="ubuntu">Ubuntu</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 중지 : systemctl stop apache2
+- 시작 : systemctl start apache2
+- 재시작 : systemctl restart apache2
+</code></pre></div></div>
+
+<h2 id="mysql-시작-중지-재시작">mysql 시작, 중지, 재시작</h2>
+<p>mysql 시작, 중지, 재시작 명령어도 Apache와 마찬가지로 systemctl [stop|start|restart] {서비스명} 의 순서로 되어 있습니다.</p>
+
+<h2 id="ubuntu-1">Ubuntu</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 중지 : systemctl stop mysql
+- 시작 : systemctl start mysql
+- 재시작 : systemctl restart mysql
+</code></pre></div></div>
+
+<h2 id="apache-환경-설정-파일">Apache 환경 설정 파일</h2>
+<p>Apache의 기본 환경설정 파일은 CentOS의 경우 httpd.conf라는 파일로 간단하게 구성되어 있는데 Ubuntu의 경우에는 포트, 가상호스트, 로그 등 각각의 항목별로 파일이 나뉘어져 있습니다.</p>
+
+<h3 id="ubuntu-2">Ubuntu</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 기본 설정 : /etc/apache2/apache2.conf
+- 포트 설정 : /etc/apache2/ports.conf
+- 가상호스트 설정: /etc/apache2/sites-enabled/000-default.conf -&gt; /etc/apache2/sites-available/000-default.conf
+- 로그 : /var/log/apache2
+- 기타 옵션 설정 :
+  /etc/apache2/mods-enabled/<span class="k">*</span>.load -&gt; /etc/apache2/mods-available/<span class="k">*</span>.load
+  /etc/apache2/mods-enabled/<span class="k">*</span>.conf -&gt; /etc/apache2/mods-available/<span class="k">*</span>.conf
+</code></pre></div></div>
+
+<h2 id="php-환경-설정-파일">PHP 환경 설정 파일</h2>
+<p>PHP의 환경 설정파일인 php.ini는  PHP버전에 해당 하는 디렉토리에 위치하고 있습니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php.ini : /etc/php/7.2/apache2/php.ini
+</code></pre></div></div>
+
+<h2 id="mysql-환경-설정-파일">mysql 환경 설정 파일</h2>
+
+<p>mysql 환경  설정파일인 my.cnf는 OS버전과 관계없이 /etc/mysql/my.cnf 에 위치하고 있으며, 실제로는 /etc/alternatives/my.cnf로 링크되어 있습니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my.cnf : /etc/mysql/my.cnf -&gt; /etc/alternatives/my.cnf
+</code></pre></div></div>
+
+<h2 id="참고-url">참고 URL</h2>
+<p><a href="https://guide.ncloud-docs.com/docs/lamp-lamp-1-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/lamp-lamp-1-1.html</a></p>
+:ET

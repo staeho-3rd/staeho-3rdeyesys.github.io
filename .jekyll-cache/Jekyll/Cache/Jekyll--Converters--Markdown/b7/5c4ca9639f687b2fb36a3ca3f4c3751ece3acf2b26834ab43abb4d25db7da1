@@ -1,0 +1,105 @@
+I"�<h2 id="설치-전체과정-요약">설치 전체과정 요약</h2>
+
+<ol>
+  <li>
+    <p>Python 다운로드</p>
+  </li>
+  <li>
+    <p>Python 설치</p>
+
+    <p>2-1. Add Python 3.9 to PATH 옵션 선택</p>
+
+    <p>2-2. Disable path length limit 선택</p>
+  </li>
+  <li>
+    <p>mkdocs 설치</p>
+
+    <p>3-1. pip install mkdocs-material</p>
+
+    <p>3-2. python.exe -m pip install –upgrade pip</p>
+
+    <p>3-3. pip install mkdocs-awesome-pages-plugin</p>
+
+    <p>3-4. mkdocs new {폴더명}</p>
+
+    <p>3-5. cd blog-mkdocs 이동 후 mkdocs serve</p>
+  </li>
+</ol>
+
+<h2 id="python-다운로드">Python 다운로드</h2>
+<p>mkdocs를 사용하려면 먼저 Python을 설치해야 합니다.</p>
+
+<p><a href="https://www.python.org/downloads/" target="_blank" style="word-break:break-all;">https://www.python.org/downloads/</a></p>
+
+<p>2020-11-27일 현재 최신버전은 3.9.0입니다.</p>
+
+<h2 id="python-설치하기">Python 설치하기</h2>
+
+<h3 id="path-추가">PATH 추가</h3>
+<p>Python 설치 시작화면에 PATH에 python을 추가하는 옵션이 있습니다. <br />
+“<strong>Add Python 3.9 to PATH</strong>” 옵션을 선택하고 설치를 시작하면 됩니다.</p>
+
+<h3 id="path-문자-길이-제한-해제">PATH 문자 길이 제한 해제</h3>
+<p>윈도에는 기본설정에 파일경로가 최대 260자로 제한되어 있는데, 이 제한을 풀것인지 확인하는 과정입니다.<br />
+“<strong>Disable path length limit</strong>” 옵션이 나오는데, 특별한 문제가 없다면 해제하고 가면 됩니다.</p>
+
+<h2 id="mkdocs-설치">mkdocs 설치</h2>
+<p>mkdocs 설치하는 방법이 여러가지 있지만 가장 많이 사용되는 테마인 material 테마를 적용한 상태로 설치합니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>mkdocs-material
+</code></pre></div></div>
+
+<h3 id="pip-업그레이드">pip 업그레이드</h3>
+<p>mkdocs를 설치하고 나면 pip 업그레이드에 대한 안내가 나옵니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WARNING: You are using pip version 20.2.3; however, version 20.2.4 is available.
+You should consider upgrading via the 'c:\users\{***}\appdata\local\programs\python\python39\python.exe -m pip install --upgrade pip' command.
+</code></pre></div></div>
+<p>안내에 나온대로 pip를 업그레이드 해줍니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python.exe <span class="nt">-m</span> pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip
+</code></pre></div></div>
+
+<h3 id="awesome-pages-plugin-설치">awesome-pages-plugin 설치</h3>
+<p>문서 구조나 네비게이션을 좀 더 쉽게 표현하고 구성하게 해주는 플러그인입니다.
+기본적으로 설치해두는 것이 여러모로 편리합니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>mkdocs-awesome-pages-plugin
+</code></pre></div></div>
+
+<h2 id="블로그-문서-생성">블로그 문서 생성</h2>
+<p>이제 기본으로 필요한 것들은 다 설치했으니 블로그를 만들어봅시다.
+mkdocs new {폴더명}</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdocs new blog-mkdocs
+</code></pre></div></div>
+
+<h2 id="블로그-실행">블로그 실행</h2>
+<p>이제 웹브라우져에서 블로그를 확인해봅시다.
+위에서 만들어진 폴더로 이동합니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>blog-mkdocs
+mkdocs serve
+</code></pre></div></div>
+
+<p>그러면 http://127.0.0.1:8000 주소로 접속하면 기본 블로그를 확인해볼 수 있고 
+mkdocs serve 명령으로 문서 변경을 실시간으로 감지해서 문서를 수정하면 브라우져에 바로바로 반영됩니다.</p>
+
+<h2 id="블로그-배포문서-생성">블로그 배포문서 생성</h2>
+<p>이제 만들어진 블로그 문서를 github 등이나 기타 서버로 배포하려면 다음과 같은 명령어를 입력하면 됩니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdocs build
+</code></pre></div></div>
+<p>그러면 아까 만들어진 blog-mkdocs 폴더 밑에 site 라는 폴더가 생성되고 그곳에 필요한 html 문서들이 만들어집니다.</p>
+
+<h2 id="설치과정-스크린샷-모음">설치과정 스크린샷 모음</h2>
+
+<p><img src="../../images/python_install_01.png" alt="python 설치 화면" style="width:770px;align:center" />
+<img src="../../images/python_install_02.png" alt="python 설치 화면" style="width:660px;align:center" />
+<img src="../../images/python_install_03.png" alt="python 설치 화면" style="width:660px;align:center" />
+<img src="../../images/mkdocs_install_01.png" alt="mkdocs 설치 화면" style="width:770px;align:center" />
+<img src="../../images/mkdocs_install_02.png" alt="mkdocs 설치 화면" style="width:770px;align:center" />
+<img src="../../images/mkdocs_install_03.png" alt="mkdocs 설치 화면" style="width:770px;align:center" />
+<img src="../../images/mkdocs_install_04.png" alt="mkdocs 설치 화면" style="width:770px;align:center" />
+<img src="../../images/mkdocs_install_05.png" alt="mkdocs 설치 화면" style="width:770px;align:center" />
+<img src="../../images/mkdocs_install_06.png" alt="mkdocs 설치 화면" style="width:770px;align:center" />
+<img src="../../images/mkdocs_install_07.png" alt="mkdocs 설치 화면" style="width:770px;align:center" />
+<img src="../../images/mkdocs_install_08.png" alt="mkdocs 설치 화면" style="width:770px;align:center" />
+<img src="../../images/mkdocs_install_09.png" alt="mkdocs 설치 화면" style="width:770px;align:center" />
+<img src="../../images/mkdocs_install_10.png" alt="mkdocs 설치 화면" style="width:770px;align:center" />
+<img src="../../images/mkdocs_install_11.png" alt="mkdocs 설치 화면" style="width:600px;align:center" />
+<img src="../../images/mkdocs_install_12.png" alt="mkdocs 설치 화면" style="width:770px;align:center" /></p>
+:ET

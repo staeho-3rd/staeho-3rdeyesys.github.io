@@ -1,0 +1,353 @@
+I"2�<h2 id="개요">개요</h2>
+<p>네이버 클라우드(Ncloud) Archive Storage API를 이용해서 컨테이너(버킷)에 있는 오브젝트 전체 목록을 PHP로 조회하는 방법에 대해 정리해보겠습니다.</p>
+
+<h2 id="api-정보">API 정보</h2>
+<ul>
+  <li>OpenStack Swift API : 2.15.1 (Pike)</li>
+  <li>OpenStack Keystone V3 API : v3.8</li>
+</ul>
+
+<h2 id="인증-토큰-생성">인증 토큰 생성</h2>
+<p>Archive Storage API를 호출할 때는 먼저 인증 토큰을 생성해야 하는데, 생성 방법은 내용이 다소 긴 관계로 다른 문서에서 자세히 설명해두었습니다. 
+아래 문서를 참고 하시기 바랍니다.</p>
+
+<p><a href="/4.storage/ncp_storage_archive_storage_api_access_token_create/" target="_blank" style="word-break:break-all;">PHP로 Archive Storage API 인증 토큰 생성하는 방법 (docs.3rdeyesys.com)</a></p>
+
+<h2 id="오브젝트-목록-조회-코드">오브젝트 목록 조회 코드</h2>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+  <span class="nv">$x_auth_token</span> <span class="o">=</span> <span class="s2">"Archive Storage API 인증 토큰"</span><span class="p">;</span>
+
+  <span class="nv">$ncloud_project_id</span> <span class="o">=</span> <span class="s2">"Archive Storage 프로젝트 ID"</span><span class="p">;</span>
+  <span class="nv">$ncloud_container</span> <span class="o">=</span> <span class="s2">"Archive Storage 컨테이너(버킷) 이름"</span><span class="p">;</span>
+  
+  <span class="nv">$api_server</span> <span class="o">=</span> <span class="s2">"https://kr.archive.ncloudstorage.com"</span><span class="p">;</span>
+  <span class="nv">$api_url</span> <span class="o">=</span> <span class="s2">"/v1/AUTH_"</span><span class="mf">.</span><span class="nv">$ncloud_project_id</span><span class="mf">.</span><span class="s2">"/"</span><span class="mf">.</span><span class="nv">$ncloud_container</span><span class="mf">.</span><span class="s2">"?format=json"</span><span class="p">;</span>		
+
+  <span class="c1">// http 호출 헤더값 설정</span>
+  <span class="nv">$http_header</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+  <span class="nv">$http_header</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"X-Auth-Token: "</span><span class="mf">.</span><span class="nv">$x_auth_token</span><span class="p">;</span>
+  <span class="nv">$http_header</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"charset=UTF-8"</span><span class="p">;</span>
+
+  <span class="c1">// api 호출</span>
+  <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$api_server</span><span class="mf">.</span><span class="nv">$api_url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span>	
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$http_header</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span> <span class="c1">//request에 header 값도 수신</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">);</span> <span class="c1">//GET 방식으로 호출</span>
+
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+  <span class="nv">$http_code</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+  		
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="p">)</span>
+  <span class="p">{</span>
+  	<span class="k">if</span> <span class="p">(</span><span class="nv">$http_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="c1">// response에서 header 값 분리</span>
+		<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+		<span class="nv">$header_text</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$response</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">strpos</span><span class="p">(</span><span class="nv">$response</span><span class="p">,</span> <span class="s2">"</span><span class="se">\r\n\r\n</span><span class="s2">"</span><span class="p">));</span>
+
+		<span class="k">foreach</span> <span class="p">(</span><span class="nb">explode</span><span class="p">(</span><span class="s2">"</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">,</span> <span class="nv">$header_text</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$i</span> <span class="o">=&gt;</span> <span class="nv">$line</span><span class="p">)</span> 
+		<span class="p">{</span>
+			<span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span>
+			<span class="p">{</span>
+			   <span class="nv">$headers</span><span class="p">[</span><span class="s2">"http_code"</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$line</span><span class="p">;</span>
+			<span class="p">}</span>
+			<span class="k">else</span>
+			<span class="p">{</span>
+			   <span class="k">list</span> <span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">": "</span><span class="p">,</span> <span class="nv">$line</span><span class="p">);</span>
+			   <span class="nv">$headers</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+
+		<span class="c1">// response에서 json형태의 body 값 분리</span>
+		<span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$response</span><span class="p">,</span> <span class="nb">strpos</span><span class="p">(</span><span class="nv">$response</span><span class="p">,</span> <span class="s2">"</span><span class="se">\r\n\r\n</span><span class="s2">"</span><span class="p">));</span>
+		<span class="nv">$rows_response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="no">JSON_OBJECT_AS_ARRAY</span><span class="p">);</span>
+
+		<span class="nv">$object_count</span> <span class="o">=</span> <span class="nv">$headers</span><span class="p">[</span><span class="s2">"X-Container-Object-Count"</span><span class="p">];</span>
+		<span class="nv">$used_bytes</span> <span class="o">=</span> <span class="nv">$headers</span><span class="p">[</span><span class="s2">"X-Container-Bytes-Used"</span><span class="p">];</span>
+		<span class="nv">$used_k_bytes</span> <span class="o">=</span> <span class="nv">$used_bytes</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">;</span>
+		<span class="nv">$used_m_bytes</span> <span class="o">=</span> <span class="nv">$used_k_bytes</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">;</span>
+		<span class="nv">$used_g_bytes</span> <span class="o">=</span> <span class="nv">$used_m_bytes</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$http_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">echo</span><span class="p">(</span><span class="s2">"존재하지 않는 컨테이너(버킷)입니다"</span><span class="p">);</span>
+
+		<span class="nv">$rows_response</span> <span class="o">=</span> <span class="p">[];</span>	
+
+		<span class="nv">$object_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="nv">$used_bytes</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="nv">$used_k_bytes</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="nv">$used_m_bytes</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="nv">$used_g_bytes</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">else</span>
+	<span class="p">{</span>
+		<span class="k">echo</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+	<span class="p">}</span>
+
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+  	<span class="k">echo</span><span class="p">(</span><span class="s2">"Error"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+
+
+<span class="cp">&lt;?php</span>
+  <span class="c1">// 오브젝트 목록 출력</span>
+  <span class="nv">$cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">foreach</span> <span class="p">(</span><span class="nv">$rows_response</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span>
+  <span class="p">{</span>				
+  	<span class="nv">$archive_object_name</span> <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"name"</span><span class="p">];</span>
+  	<span class="nv">$archive_object_hash</span> <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"hash"</span><span class="p">];</span>
+  	<span class="nv">$archive_object_content_type</span> <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"content_type"</span><span class="p">];</span>
+  	<span class="nv">$archive_object_last_modified</span> <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"last_modified"</span><span class="p">];</span>
+  	<span class="nv">$archive_object_bytes</span> <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"bytes"</span><span class="p">];</span>
+
+  	<span class="nv">$cnt</span><span class="o">++</span><span class="p">;</span>
+  <span class="cp">?&gt;</span>
+	<span class="nt">&lt;tr&gt;</span> 	  						
+	  <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span><span class="p">(</span><span class="nv">$cnt</span><span class="p">);</span><span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+	  <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span><span class="p">(</span><span class="nv">$archive_object_name</span><span class="p">);</span><span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+	  <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span><span class="p">(</span><span class="nv">$archive_object_content_type</span><span class="p">);</span><span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+	  <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span><span class="p">(</span><span class="nv">$archive_object_hash</span><span class="p">);</span><span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>					  
+	  <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span><span class="p">(</span><span class="nv">$archive_object_last_modified</span><span class="p">);</span><span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+	  <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span><span class="p">(</span><span class="nb">number_format</span><span class="p">(</span><span class="nv">$archive_object_bytes</span><span class="p">));</span><span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+	<span class="nt">&lt;/tr&gt;</span>
+
+<span class="cp">&lt;?php</span>	
+  <span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="코드-상세-설명">코드 상세 설명</h2>
+<p><br /></p>
+
+<h4 id="archive-storage-api-이용-정보">Archive Storage API 이용 정보</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ncloud_project_id</span> <span class="o">=</span> <span class="s2">"Archive Storage 프로젝트 ID"</span><span class="p">;</span>
+  <span class="nv">$ncloud_container</span> <span class="o">=</span> <span class="s2">"Archive Storage 컨테이너(버킷) 이름"</span><span class="p">;</span>
+</code></pre></div></div>
+<p>Archive Storage API 이용을 위한 Project ID는 [네이버 클라우드 포탈] - [Archive Storage]에서 [API 이용 정보 확인] 버튼을 클릭하면 확인할 수 있습니다.<br />
+테스트에 사용할 컨테이너(버킷)은 [test]로 설정해두었습니다.</p>
+
+<p><img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_04.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center" /></p>
+
+<p>[API 이용 정보 확인] 창에서 Project ID를 확인하고, PHP 소스코드에 입력합니다.</p>
+
+<p><img src="../../images/ncloud_storage_archive_storage_api_access_token_create_02.png" alt="네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법" style="width:500px;align:center" /></p>
+
+<h4 id="api-서버와-url-설정">API 서버와 URL 설정</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$api_server</span> <span class="o">=</span> <span class="s2">"https://kr.archive.ncloudstorage.com"</span><span class="p">;</span>
+  <span class="nv">$api_url</span> <span class="o">=</span> <span class="s2">"/v1/AUTH_"</span><span class="mf">.</span><span class="nv">$ncloud_project_id</span><span class="mf">.</span><span class="s2">"/"</span><span class="mf">.</span><span class="nv">$ncloud_container</span><span class="mf">.</span><span class="s2">"?format=json"</span><span class="p">;</span>
+</code></pre></div></div>
+<p>Archive Storage API 서버와 컨테이너(버킷)에 있는 오브젝트 목록을 조회하기 위한 URL 정보는 위와 같습니다. 
+[프로젝트 ID]와 [컨테이너(버킷) 이름]을 URL에 포함시키고, 파라미터로는 전달받을 목록의 형태를 설정하게 되는데, 여기서는 json형태로 받겠습니다.</p>
+
+<h4 id="header-값-설정">Header 값 설정</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// http 호출 헤더값 설정</span>
+  <span class="nv">$http_header</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+  <span class="nv">$http_header</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"X-Auth-Token: "</span><span class="mf">.</span><span class="nv">$x_auth_token</span><span class="p">;</span>
+  <span class="nv">$http_header</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"charset=UTF-8"</span><span class="p">;</span>
+</code></pre></div></div>
+<p>Archive Storage API 인증 토큰은 [X-Auth-Token] 라는 이름으로 header에 담아서 전송합니다.</p>
+
+<h4 id="api-호출">API 호출</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// api 호출</span>
+  <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$api_server</span><span class="mf">.</span><span class="nv">$api_url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span>	
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$http_header</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HEADER</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">);</span> <span class="c1">//response에 header 값도 수신</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">);</span> <span class="c1">//GET 방식으로 호출</span>
+</code></pre></div></div>
+<p>이제 위에서 준비한 값들을 사용해서 API를 호출합니다.<br />
+curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 header 값도 수신하기 위해 설정합니다.</p>
+
+<h4 id="api-호출-응답-수신">API 호출 응답 수신</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+  <span class="nv">$http_code</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+</code></pre></div></div>
+<p>API를 호출하고 응답을 수신합니다. 성공, 실패 등에 대한 HTTP 상태코드도 확인합니다.</p>
+
+<h4 id="header-body-값-분리">Header, Body 값 분리</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// response에서 header 값 분리</span>
+  <span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+  <span class="nv">$header_text</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$response</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">strpos</span><span class="p">(</span><span class="nv">$response</span><span class="p">,</span> <span class="s2">"</span><span class="se">\r\n\r\n</span><span class="s2">"</span><span class="p">));</span>
+
+  <span class="k">foreach</span> <span class="p">(</span><span class="nb">explode</span><span class="p">(</span><span class="s2">"</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">,</span> <span class="nv">$header_text</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$i</span> <span class="o">=&gt;</span> <span class="nv">$line</span><span class="p">)</span> 
+  <span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="p">{</span>
+	   <span class="nv">$headers</span><span class="p">[</span><span class="s2">"http_code"</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$line</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">else</span>
+	<span class="p">{</span>
+	   <span class="k">list</span> <span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">": "</span><span class="p">,</span> <span class="nv">$line</span><span class="p">);</span>
+	   <span class="nv">$headers</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+	<span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// response에서 json형태의 body 값 분리</span>
+  <span class="nv">$json_response</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$response</span><span class="p">,</span> <span class="nb">strpos</span><span class="p">(</span><span class="nv">$response</span><span class="p">,</span> <span class="s2">"</span><span class="se">\r\n\r\n</span><span class="s2">"</span><span class="p">));</span>
+  <span class="nv">$rows_response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json_response</span><span class="p">,</span> <span class="no">JSON_OBJECT_AS_ARRAY</span><span class="p">);</span>
+</code></pre></div></div>
+<p>Resoponse에서 Header, Body 값을 따로 분리해서 배열에 저장합니다.</p>
+
+<h4 id="컨테이너버킷-기본-정보-확인">컨테이너(버킷) 기본 정보 확인</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$object_count</span> <span class="o">=</span> <span class="nv">$headers</span><span class="p">[</span><span class="s2">"X-Container-Object-Count"</span><span class="p">];</span>
+  <span class="nv">$used_bytes</span> <span class="o">=</span> <span class="nv">$headers</span><span class="p">[</span><span class="s2">"X-Container-Bytes-Used"</span><span class="p">];</span>
+  <span class="nv">$used_k_bytes</span> <span class="o">=</span> <span class="nv">$used_bytes</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">;</span>
+  <span class="nv">$used_m_bytes</span> <span class="o">=</span> <span class="nv">$used_k_bytes</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">;</span>
+  <span class="nv">$used_g_bytes</span> <span class="o">=</span> <span class="nv">$used_m_bytes</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">;</span>
+</code></pre></div></div>
+<p>분리한 Header 값에서 컨테이너(버킷)의 기본 정보를 확인합니다.<br />
+[전체 오브젝트 개수], [사용 중인 용량]을 확인하고 용량은 Bytes 단위이기에 KB, MB, GB 단위로도 변환합니다.</p>
+
+<h4 id="http-상태코드">HTTP 상태코드</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="nv">$http_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">){</span>
+    <span class="c1">//성공</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$http_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">){</span>
+    <span class="k">echo</span><span class="p">(</span><span class="s2">"존재하지 않는 컨테이너(버킷)입니다"</span><span class="p">);</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+<p>요청이 성공하게 되면 OK (200), 컨테이너(버킷)이 존재하지 않는 경우는 Not Found (404) 상태 코드를 응답합니다.</p>
+
+<h4 id="오브젝트-목록-html-출력">오브젝트 목록 html 출력</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+  <span class="c1">// 오브젝트 목록 출력</span>
+  <span class="nv">$cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">foreach</span> <span class="p">(</span><span class="nv">$rows_response</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span>
+  <span class="p">{</span>				
+  	<span class="nv">$archive_object_name</span> <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"name"</span><span class="p">];</span>
+  	<span class="nv">$archive_object_hash</span> <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"hash"</span><span class="p">];</span>
+  	<span class="nv">$archive_object_content_type</span> <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"content_type"</span><span class="p">];</span>
+  	<span class="nv">$archive_object_last_modified</span> <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"last_modified"</span><span class="p">];</span>
+  	<span class="nv">$archive_object_bytes</span> <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">"bytes"</span><span class="p">];</span>
+
+  	<span class="nv">$cnt</span><span class="o">++</span><span class="p">;</span>
+  <span class="cp">?&gt;</span>
+	<span class="nt">&lt;tr&gt;</span> 	  						
+	  <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span><span class="p">(</span><span class="nv">$cnt</span><span class="p">);</span><span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+	  <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span><span class="p">(</span><span class="nv">$archive_object_name</span><span class="p">);</span><span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+	  <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span><span class="p">(</span><span class="nv">$archive_object_content_type</span><span class="p">);</span><span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+	  <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span><span class="p">(</span><span class="nv">$archive_object_hash</span><span class="p">);</span><span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>					  
+	  <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span><span class="p">(</span><span class="nv">$archive_object_last_modified</span><span class="p">);</span><span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+	  <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span><span class="p">(</span><span class="nb">number_format</span><span class="p">(</span><span class="nv">$archive_object_bytes</span><span class="p">));</span><span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+	<span class="nt">&lt;/tr&gt;</span>
+
+<span class="cp">&lt;?php</span>	
+  <span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+<p>오브젝트 목록을 html로 출력합니다.<br />
+출력하는 정보는 [이름], [해시값], [Content Type], [최종 수정일], [용량(Bytes)] 입니다.</p>
+
+<h2 id="목록-출력-예시">목록 출력 예시</h2>
+<p>위의 코드를 실행하면 다음과 같이 오브젝트 목록이 출력됩니다.</p>
+
+<p><img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_02.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center" /></p>
+
+<p>출력된 오브젝트 정보가 올바른지 확인하기 위해 네이버 클라우드(Ncloud) 콘솔에서 해당 컨테이너(버킷)의 정보를 확인하면 다음과 같이 일치하는 것을 알 수 있습니다.</p>
+
+<p><img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_01.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center" /></p>
+
+<h2 id="제한-사항">제한 사항</h2>
+<p>Archive Storage API를 이용해서 가져올 수 있는 오브젝트 목록의 최대 개수는 10,000개입니다. 
+1만개 이상이 등록된 컨테이너(버킷)에서 오브젝트 목록을 요청해도 아래와 같이 최대 10,000개 까지만 가져올 수 있습니다.</p>
+
+<p><img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_03.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center" /></p>
+
+<p class="success">컨테이너(버킷)에 10,000개 이상의 오브젝트가 저장되어 있을 경우에는 아래쪽에서 소개하는 방법처럼 폴더별로 오브젝트 목록을 따로 조회하시면 됩니다.</p>
+
+<h2 id="오브젝트-검색">오브젝트 검색</h2>
+<p>위에서는 컨테이너(버킷)에 저장된 모든 오브젝트들을 조회하는 기능을 확인해보았습니다.<br />
+다음으로는 특정 이름으로 시작되는 오브젝트나 특정 폴더에 있는 오브젝트만 조회하는 방법에 대해 위에서 확인한 PHP 예제 소스코드에서 변경이 필요한 부분만 확인해보겠습니다.</p>
+
+<p>테스트에 사용된 오브젝트와 폴더 구조는 다음과 같습니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span> <span class="n">Test_Folder_0001</span><span class="mf">.</span><span class="n">png</span>
+<span class="o">-</span> <span class="n">Test_Folder</span>
+    <span class="nc">L</span> <span class="n">Sub_Folder</span>
+        <span class="nc">L</span> <span class="n">Sub_Sub_Folder</span>
+</code></pre></div></div>
+
+<p><br /></p>
+<h4 id="특정-이름으로-시작하는-오브젝트-목록">특정 이름으로 시작하는 오브젝트 목록</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ncloud_object_prefix</span> <span class="o">=</span> <span class="s2">"Test_Folder"</span><span class="p">;</span>
+
+  <span class="nv">$api_url</span> <span class="o">=</span> <span class="s2">"/v1/AUTH_"</span><span class="mf">.</span><span class="nv">$ncloud_project_id</span><span class="mf">.</span><span class="s2">"/"</span><span class="mf">.</span><span class="nv">$ncloud_container</span><span class="mf">.</span><span class="s2">"?format=json&amp;prefix="</span><span class="mf">.</span><span class="nv">$ncloud_object_prefix</span><span class="p">;</span>		
+</code></pre></div></div>
+<p>API URL을 호출할 때 파라미터로 prefix를 전송하면 prefix 값에 해당하는 특정 문자열로 시작하는 오브젝트 목록을 모두 가져 옵니다.<br />
+예를 들어 prefix 값을 [Test_Folder]로 설정하면, 아래와 같이 [Test_Folder]라는 이름으로 시작되는 모든 오브젝트 목록을 가져오게 됩니다.</p>
+
+<p><img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_05.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center" /></p>
+
+<h4 id="특정-폴더-아래에-있는-오브젝트-목록">특정 폴더 아래에 있는 오브젝트 목록</h4>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ncloud_object_prefix</span> <span class="o">=</span> <span class="s2">"Test_Folder/"</span><span class="p">;</span>
+
+  <span class="nv">$api_url</span> <span class="o">=</span> <span class="s2">"/v1/AUTH_"</span><span class="mf">.</span><span class="nv">$ncloud_project_id</span><span class="mf">.</span><span class="s2">"/"</span><span class="mf">.</span><span class="nv">$ncloud_container</span><span class="mf">.</span><span class="s2">"?format=json&amp;prefix="</span><span class="mf">.</span><span class="nv">$ncloud_object_prefix</span><span class="p">;</span>		
+</code></pre></div></div>
+<p>특정 폴더 아래에 있는 오브젝트 목록을 가져 올 때는 prefix 값 마지막에 슬래시 [ / ]를 추가하면 됩니다.
+예를 들어 prefix 값을 [Test_Folder/]로 설정하면, 아래와 같이 [Test_Folder]라는 이름의 폴더 아래에 있는 모든 오브젝트 목록을 가져오게 됩니다.</p>
+
+<p>위쪽에서 확인한 [특정 이름으로 시작하는 오브젝트 목록]의 결과 예시와는 다르게 폴더 자체인 [Test_Folder] 그리고 [Test_Folder_0001.png]는 포함되어 있지 않습니다.</p>
+
+<p><img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_06.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center" /></p>
+
+<h2 id="api-기타-기능">API 기타 기능</h2>
+<p>Archive Storage API에서 지원하는 기능은 컨테이너(버킷)의 오브젝트 목록 외에도 아래와 같이 여러가지가 있습니다. 
+위에서 사용한 것은 컨테이너(버킷) 오퍼레이션의 GET 기능입니다.</p>
+
+<h4 id="어카운트-오퍼레이션">어카운트 오퍼레이션</h4>
+<ul>
+  <li>GET : 어카운트에 속한 컨테이너(버킷) 목록을 조회합니다.</li>
+  <li>HEAD : 어카운트의 메타데이터를 조회합니다.</li>
+  <li>POST : 어카운트에 메타데이터를 설정 및 변경합니다.</li>
+</ul>
+
+<h4 id="컨테이너버킷-오퍼레이션">컨테이너(버킷) 오퍼레이션</h4>
+<ul>
+  <li>PUT : 컨테이너(버킷)을 생성합니다.</li>
+  <li>GET : 컨테이너(버킷)에 속한 오브젝트 목록을 조회합니다.</li>
+  <li>HEAD : 컨테이너(버킷)의 메타데이터를 조회합니다.</li>
+  <li>POST : 컨테이너(버킷)에 메타데이터를 설정 및 변경합니다.
+ DELETE : 빈 컨테이너(버킷)을 삭제합니다.</li>
+</ul>
+
+<h4 id="오브젝트-오퍼레이션">오브젝트 오퍼레이션</h4>
+<ul>
+  <li>PUT : 오브젝트를 업로드합니다. 동일한 이름의 오브젝트가 있을 경우 덮어쓰기를 합니다.</li>
+  <li>COPY : 다른 위치에 있는 오브젝트를 복제합니다.</li>
+  <li>GET : 오브젝트를 다운로드합니다.</li>
+  <li>HEAD : 오브젝트의 메타데이터를 조회합니다.</li>
+  <li>POST : 오브젝트에 메타데이터를 설정 및 변경합니다.</li>
+  <li>DELETE : 오브젝트를 삭제합니다.</li>
+</ul>
+
+<h2 id="참고-url">참고 URL</h2>
+<ol>
+  <li>Archive Storage API 기본 가이드
+    <ul>
+      <li><a href="https://api.ncloud-docs.com/docs/common-archivestorageapi-archivestorageapi" target="_blank" style="word-break:break-all;">https://api.ncloud-docs.com/docs/common-archivestorageapi-archivestorageapi</a></li>
+    </ul>
+  </li>
+  <li>Archive Storage API 상세 가이드
+    <ul>
+      <li><a href="https://api.ncloud-docs.com/docs/storage-archivestorage" target="_blank" style="word-break:break-all;">https://api.ncloud-docs.com/docs/storage-archivestorage</a></li>
+    </ul>
+  </li>
+  <li>OpenStack Keystone V3 API 가이드
+    <ul>
+      <li><a href="https://docs.openstack.org/api-ref/identity/v3/" target="_blank" style="word-break:break-all;">https://docs.openstack.org/api-ref/identity/v3/</a></li>
+    </ul>
+  </li>
+</ol>
+:ET

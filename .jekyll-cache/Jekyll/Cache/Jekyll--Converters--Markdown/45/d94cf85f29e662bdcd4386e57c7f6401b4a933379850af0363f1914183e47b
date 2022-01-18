@@ -1,0 +1,96 @@
+I"A<h2 id="개요">개요</h2>
+<p>백업 솔루션을 사용해 서버의 데이터 즉, 소스 등의 파일과 데이터베이스 데이터를 정기적으로 백업하고 보관하는 서비스입니다.</p>
+
+<h2 id="이용-방법">이용 방법</h2>
+<p>네이버 클라우드의 백업 서비스는 이용자가 직접 모든 과정을 마칠 수 없고, 고객센터에 백업신청서를 제출해야 백업이 진행됩니다.</p>
+
+<h2 id="지원-os와-db">지원 OS와 DB</h2>
+<ul>
+  <li>Centos : 6.3, 6.6, 7.2, 7.3</li>
+  <li>ubuntu : 16.04, 18.04</li>
+  <li>Windows : 2012 R2, 2016</li>
+  <li>mssql : 2008std, 2012std, 2014std, 2016std, 2016exp</li>
+  <li>mysql : 5.7.17, 5.6.34</li>
+  <li>모두 64bit만 지원</li>
+</ul>
+
+<h2 id="백업-방식">백업 방식</h2>
+
+<h3 id="파일백업">파일백업</h3>
+<ul>
+  <li>일회성</li>
+  <li>1일 1회 전체 백업</li>
+  <li>1주 ~ 4주에 1회 전체 백업</li>
+  <li>1주 1회 전체 백업 및 1일 1회 증분 백업</li>
+</ul>
+
+<h3 id="db-백업">DB 백업</h3>
+<ul>
+  <li>mssql 1일 1회 전체 백업</li>
+  <li>mssql 1주 1회 전체 백업</li>
+  <li>mssql 1주 1회 전체 백업 및 1일 1회 증분 백업</li>
+  <li>mysql 1일 1회 전체 백업</li>
+  <li>mysql 1주 1회 전체 백업</li>
+</ul>
+
+<p class="warning">증분 백업(변경된 데이터만 백업)의 경우 DBMS는 정합성을 보장하나 파일에 대해서는 정합성을 보장하지 않음</p>
+
+<h2 id="백업-신청-절차">백업 신청 절차</h2>
+<ol>
+  <li>네이버 클라우드 플랫폼 포털(https://www.ncloud.com)에 접속하여 로그인</li>
+  <li>고객지원 &gt; 자료를 클릭하여 <strong>네이버 클라우드 플랫폼 백업 서비스 신청서</strong>와 <strong>백업 Agent</strong>를 다운로드</li>
+  <li>다운로드한 신청서 양식의 내용에 예를 참고하여 알맞게 기입.</li>
+  <li>다운로드한 백업 Agent는 OS에 맞는 버전을 VM에 복사하여 설치</li>
+  <li>백업 Agent가 설치 완료되었다면 네이버 클라우드 플랫폼 포털 내 백업 상품 소개 페이지의 “이용 문의하기”를 클릭</li>
+  <li>문의하기 페이지에서 제목을 “<strong>백업서비스 신청</strong>“으로 기입하고 작성한 백업 서비스 신청서를 첨부하면 백업 신청이 완료</li>
+</ol>
+
+<h2 id="백업-agent-설치-방법">백업 Agent 설치 방법</h2>
+
+<h3 id="windows">Windows</h3>
+<ol>
+  <li>원격 데스크톱을 이용하여 VM 서버에 원격 접속</li>
+  <li>다운로드한 백업 Agent 설치 파일(NCP_Backup_Windows.zip)을 VM 내 {==C:\Temp==} 하위에 복사하여 압축을 풀면 NCP 이름으로 총 5개의 파일이 생성</li>
+  <li>NCP_Backup_Install.bat을 실행하면 자동으로 설치 및 구성이 진행되며 설치 완료</li>
+  <li>이후 백업 Agent 관련 파일들은 자동으로 삭제됨</li>
+</ol>
+
+<p class="warning">백업 Agent설치 후 파일이 자동 삭제되기에 반드시 설치위치는 C:\Temp에서 수행을 권고</p>
+
+<h3 id="linux">Linux</h3>
+<ol>
+  <li>Winscp 등을 이용하여 VM 서버의 {==/tmp==} 하위로 백업 Agent 프로그램(NCP_Backup_Linux.tar.gz)을 복사</li>
+  <li>원격 접속 프로그램(ex.putty)을 이용하여 VM 서버에 원격 접속</li>
+  <li>백업 Agent 프로그램을 저장한 /tmp 폴더로 이동 후 <strong>tar xvfz NCP_Backup_Linux.tar.gz</strong>을 실행하여 압축 해제</li>
+  <li>NCP_Backup_Install.sh 파일을 실행하면 자동으로 백업 Agent 설치 및 구성이 완료</li>
+  <li>이후 관련 파일은 자동으로 삭제됨</li>
+</ol>
+
+<p class="warning">백업 Agent설치 후 파일이 자동 삭제되기에 반드시 설치위치는/tmp에서 수행을 권고</p>
+
+<h2 id="백업-agent-정보">백업 Agent 정보</h2>
+
+<h3 id="백업-sw">백업 S/W</h3>
+<ul>
+  <li>Quest Netvault(구 Dell Netvault)</li>
+</ul>
+
+<h3 id="백업-sw-통신-정보">백업 S/W 통신 정보</h3>
+<ul>
+  <li>TCP/UDP 20031~21631</li>
+</ul>
+
+<h3 id="백업-프로그램-설치-위치">백업 프로그램 설치 위치</h3>
+<ul>
+  <li>Linux: /usr/Netvault</li>
+  <li>Windows: C:\Program Files (x86)\Quest Software\NetVault Backup</li>
+</ul>
+
+<h2 id="secure-zone에서-백업하기">Secure Zone에서 백업하기</h2>
+<ul>
+  <li>Secure Zone에서 사용 가능한 Agent가 별도로 존재하지 않기 때문에, 프록시 구성을 하던가 해서 Agent를 설치, 실행해야 함.</li>
+</ul>
+
+<h2 id="참고-url">참고 URL</h2>
+<p><a href="https://guide.ncloud-docs.com/docs/storage-storage-5-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/storage-storage-5-1.html</a></p>
+:ET
