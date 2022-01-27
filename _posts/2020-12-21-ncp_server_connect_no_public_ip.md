@@ -14,7 +14,10 @@ order_number: 9
 ## 개요
 네이버 클라우드에서 리눅스 서버에 접속하는 방법 중에서 공인아이피가 없을 때 접속하는 방법에 대한 내용을 정리하였습니다.
 여기서는 서버에 접속하는 방법을 정리하기 때문에 이미 서버는 생성되어 있다는 전제하게 정리하게 됩니다.  
-또한, Classic 과 VPC 환경 중에서 VPC는 포트 포워딩이 없고 공인 IP로만 접속하기 때문에 아래에서 설명하는 내용은 Classic 환경 기준입니다.
+또한, Classic 과 VPC 환경 중에서 VPC는 포트 포워딩이 없고 공인 IP로만 접속하기 때문에 아래에서 설명하는 내용은 Classic 환경 기준입니다.  
+
+{: .info }
+추가로 SSL VPN으로 접속할 경우는 Classic, VPC 모두 사설 IP로 접속하게 되는데 이 내용은 아래 쪽에 별도로 정리한 문서 링크를 참고하시면 됩니다.
 
 ## 요약
 우선은 전체 과정을 텍스트로 간단하게 요약해서 살펴보고 스크린샷을 포함한 상세 과정은 아래쪽에서 살펴보겠습니다.
@@ -24,6 +27,7 @@ order_number: 9
 3. 터미널 프로그램(Putty) 실행
 4. 위 1번 포트 포워딩에서 설정한 포트와 IP로 접속
 5. 위 2번 관리자 비밀번호 확인에서 기록한 비번 입력
+6. 추가사항: SSL VPN으로 접속하는 방법
 
 
 
@@ -70,18 +74,18 @@ order_number: 9
 인증키가 일치하면 아래와 같이 root 계정에 해당하는 비밀번호가 나타납니다.
 이 비밀번호를 복사하여 저장해둡니다.
 혹시 복사-저장하는 것을 잊으셨어도 언제든지 관리자 비밀번호 확인 메뉴에 들어가서 인증키를 인증하면 다시 확인할 수 있으니 걱정하지 않으셔도 됩니다.
-<img src="../../images/ncp_server_connect_09.jpg" alt="관리자 비밀번호 확인" style="width:500px;align:center">
+<br /><img src="../../images/ncp_server_connect_09.jpg" alt="관리자 비밀번호 확인" style="width:500px;align:center">
 
 
 ## 터미널 프로그램(Putty) 실행
 
-Putty를 실행해서 포트 포워딩에서 설정한 포트와 서버 접속용 공인IP를 입력합니다
-<img src="../../images/ncp_server_connect_10.jpg" alt="터미널 프로그램(Putty) 실행" style="width:450px;align:center">
+Putty를 실행해서 포트 포워딩에서 설정한 포트와 서버 접속용 공인IP를 입력합니다.
+<br /><img src="../../images/ncp_server_connect_10.jpg" alt="터미널 프로그램(Putty) 실행" style="width:450px;align:center">
 
 
 접속을 하면 rsa2 key fingerprint 를 Putty 캐시에 저장할 것인지 묻는 화면이 나타납니다. 
 보통 예(Y)를 선택하면 됩니다.
-<img src="../../images/ncp_server_connect_11.jpg" alt="터미널 프로그램(Putty) 실행" style="width:600px;align:center">
+<br /><img src="../../images/ncp_server_connect_11.jpg" alt="터미널 프로그램(Putty) 실행" style="width:600px;align:center">
 
 
 ## root 계정과 관리자 비밀번호 입력
@@ -92,6 +96,16 @@ Putty를 실행해서 포트 포워딩에서 설정한 포트와 서버 접속�
 
 접속이 완료되면 이렇게 화면이 나타납니다.
 <img src="../../images/ncp_server_connect_13.jpg" alt="터미널 프로그램(Putty) 실행" style="width:600px;align:center">
+
+
+## SSL VPN으로 접속하기
+SSL VPN은 Ncloud(네이버 클라우드) 외부에서 내부에 구성된 네트워크로 암호화된 보안 접속 통신을 제공하는 서비스입니다. 
+즉, 외부에서 접근할 수 없는 사설망에 내 PC나 네트워크를 연결시키는 방법이므로 Classic, VPC 환경 모두 공인 IP가 아닌 사설 IP로 연결하게 됩니다. 
+자세한 SSL VPN 생성 방법과 서버 접속 방법은 아래 링크된 문서를 참고 하시기 바랍니다.
+
+{: .success }
+1.<a href="/3.security/ncp_security_ssl_vpn_classic_guide/" target="_blank" style="word-break:break-all;"> Classic 환경에서 SSL VPN 설정하고 접속하는 방법</a>
+<br />2.<a href="/3.security/ncp_security_ssl_vpn_vpc_guide/" target="_blank" style="word-break:break-all;"> VPC 환경에서 SSL VPN 설정하고 접속하는 방법</a>
 
 
 
