@@ -4,7 +4,7 @@ last_modified_at: 2020-12-28
 title: 스토리지 비교
 categories:
   - 4.storage
-description: 네이버 클라우드 스토리지 비교
+description: 네이버 클라우드에서 제공하는 스토리지들의 주요 기능과 용도를 QnA 형식으로 비교 정리했습니다
 type: Document
 set: storage
 order_number: 1

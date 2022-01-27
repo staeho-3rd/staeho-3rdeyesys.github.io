@@ -4,7 +4,7 @@ last_modified_at: 2020-11-13
 title: 서버 정지 시 요금할인
 categories:
   - 1.compute
-description: 네이버 클라우드 서버 정지 시 요금할인
+description: 네이버 클라우드 서버 정지 시 요금할인 횟수와 기한 등을 대한 안내입니다
 type: Document
 set: server
 order_number: 3

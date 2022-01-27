@@ -4,7 +4,7 @@ last_modified_at: 2020-11-30
 title: mkdocs  설치 (윈도 10)
 categories:
   - 99.ETC
-description: mkdocs  설치 (윈도 10)
+description: 윈도10에서 mkdocs를  설치하는 방법에 대한 안내입니다
 type: Document
 ---
 

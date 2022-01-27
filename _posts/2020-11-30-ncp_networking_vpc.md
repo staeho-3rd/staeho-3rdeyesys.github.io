@@ -4,7 +4,7 @@ last_modified_at: 2020-11-30
 title: VPC 구성요소
 categories:
   - 2.networking
-description: 네이버 클라우드 VPC 구성요소
+description: 네이버 클라우드VPC를 구성하는 요소들에 대한 설명으로 네이버 클라우드 파트너 테크데이에서 발표된 내용입니다
 type: Document
 set: networking
 order_number: 1

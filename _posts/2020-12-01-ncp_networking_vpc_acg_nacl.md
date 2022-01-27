@@ -4,7 +4,7 @@ last_modified_at: 2020-12-01
 title: ACG와 NACL 비교
 categories:
   - 2.networking
-description: 네이버 클라우드 ACG와 NACL 비교
+description: 네이버 클라우드에서 VPC의 보안을 강화하기 위해 제공하는 ACG와 NACL 두 가지 보안 정책 비교입니다
 type: Document
 set: networking
 order_number: 2

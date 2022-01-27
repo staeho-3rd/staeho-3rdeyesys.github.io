@@ -338,7 +338,9 @@ header nav a:hover { text-decoration: none; color: #fff; }
 
 .hero_search form svg { fill: #eee; position: absolute; top: 31px; right: 12px; display: inline-block; width: 36px; height: 40px; cursor: pointer; }
 
-.hero_search h1 { color: #fff; }
+.hero_search span { font-size: 3.2em; color: #fff; }
+
+.hero_search h1 { font-size: 3.2em; color: #fff; }
 
 .hero_search input[type=search] { margin: 0; color: #555; padding: 15px; font-size: 1.1em; }
 
@@ -369,7 +371,7 @@ dt:hover a, h2:hover a { opacity: 1; }
 #search-query { font-weight: bold; }
 
 /* Darkly Pygments Theme (c) 2014 Sourcey http://sourcey.com */
-.highlight { white-space: pre; overflow: auto; word-wrap: normal; /* horizontal scrolling */ -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; padding: 7px 20px 7px 10px; background: #404145; color: #C1C2C3; display: inline-block; }
+.highlight { white-space: pre; overflow: auto; word-wrap: normal; /* horizontal scrolling */ -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 7px 20px 7px 10px; border-radius: 3px; background: #404145; color: #C1C2C3; display: inline-block; }
 
 .highlight .hll { background-color: #ffc; }
 

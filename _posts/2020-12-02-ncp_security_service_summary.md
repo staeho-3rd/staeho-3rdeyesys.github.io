@@ -4,7 +4,7 @@ last_modified_at: 2021-04-26
 title: Security 서비스 요약
 categories:
   - 3.security
-description: 네이버 클라우드 Security 서비스 요약
+description: 네이버 클라우드에서 제공하는 Security 서비스 상품들에 대한 설명을 요약 정리했습니다
 type: Document
 set: security
 order_number: 1
