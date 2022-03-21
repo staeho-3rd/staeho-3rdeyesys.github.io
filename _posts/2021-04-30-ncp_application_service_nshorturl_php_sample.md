@@ -8,6 +8,7 @@ description: 네이버 클라우드에서 길고 복잡한 URL을 간단하고 �
 type: Document
 set: api
 order_number: 3
+v2_link: /application-service/ncloud_application_service_nshorturl_php_sample.html
 ---
 
 ## 개요

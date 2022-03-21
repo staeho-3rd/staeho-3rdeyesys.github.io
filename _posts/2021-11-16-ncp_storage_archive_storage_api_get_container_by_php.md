@@ -8,6 +8,7 @@ description: 네이버 클라우드에서 PHP로 Archive Storage API 호출해�
 type: Document
 set: storage
 order_number: 12
+v2_link: /storage/ncloud_storage_archive_storage_api_get_container_by_php.html
 ---
 
 ## 개요

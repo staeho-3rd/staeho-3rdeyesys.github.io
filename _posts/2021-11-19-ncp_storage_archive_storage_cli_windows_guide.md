@@ -8,6 +8,7 @@ description: 네이버 클라우드 Archive Storage CLI를 Windows 환경에서 
 type: Document
 set: storage
 order_number: 13
+v2_link: /storage/ncloud_storage_archive_storage_cli_windows_guide.html
 ---
 
 ## 개요

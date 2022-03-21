@@ -7,6 +7,7 @@ categories:
 description: Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다.
 type: Document
 creator: ljh0519
+v2_link: /management/ncloud_management_monitoring_win_perf_data_error_troubleshoot.html
 ---
 
 ## 개요

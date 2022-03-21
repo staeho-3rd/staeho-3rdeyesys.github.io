@@ -4,11 +4,12 @@ last_modified_at: 2021-07-09
 title: VPC 환경에서 NAT Gateway 설정하기
 categories:
   - 2.networking
-description: 네이버 클라우드 VPC 환경에서 VPC 환경에서 NAT Gateway 설정하기 가이드입니다.
+description: 네이버 클라우드 VPC 환경에서 NAT Gateway 설정하기 가이드입니다.
 type: Document
 set: Load Balancer
 order_number: 9
 creator: ljh0519
+v2_link: /networking/ncloud_networking_natgw_routetb.html
 ---
 
 ## 개요

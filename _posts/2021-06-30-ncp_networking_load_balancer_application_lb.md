@@ -9,6 +9,7 @@ type: Document
 set: Load Balancer
 order_number: 8
 creator: ljh0519
+v2_link: /networking/ncloud_networking_load_balancer_application_lb.html
 ---
 
 ## 개요

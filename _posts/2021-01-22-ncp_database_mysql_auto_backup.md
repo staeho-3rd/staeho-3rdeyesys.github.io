@@ -8,6 +8,7 @@ description: 네이버 클라우드 mysql DB 자동백업 방법
 type: Document
 set: database
 order_number: 2
+v2_link: /database/ncloud_database_mysql_auto_backup.html
 ---
 ## 개요
 매일 일정한 시간에 mysql DB를 자동으로 백업 받는 방법에 대해 정리해보았습니다.

@@ -8,6 +8,7 @@ description: 네이버 클라우드 설치형 DB와 관리형 Cloud for DB 비�
 type: Document
 set: database
 order_number: 1
+v2_link: /database/ncloud_database_compare.html
 ---
 ## 개요
 서버에 DB가 설치된 상태로 제공되는 설치형 DB서버와 Cloud 형태로 제공되는 관리형 DB서버는 어떤 특징과 차이점이 있는지 확인합니다.

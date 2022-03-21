@@ -9,6 +9,7 @@ type: Document
 set: security
 order_number: 5
 creator: ljh0519
+v2_link: /security/ncloud_security_ssl_vpn_vpc_guide.html
 ---
 
 ## 개요

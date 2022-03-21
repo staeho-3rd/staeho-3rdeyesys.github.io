@@ -8,6 +8,7 @@ description: 네이버 클라우드 Classic 환경 Windows 서버 이미지를 V
 type: Document
 set: server
 order_number: 17
+v2_link: /compute/ncloud_compute_server_windows_server_image_copy_classic_to_vpc.html
 ---
 
 ## 개요

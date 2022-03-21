@@ -8,6 +8,7 @@ description: 윈도 10 환경에서 base-theme를 기반으로 jekyll 설치하�
 type: Document
 set: jekyll
 order_number: 1
+v2_link: /etc/etc_jekyll_install.html
 ---
 
 ## 설치 전체과정 요약

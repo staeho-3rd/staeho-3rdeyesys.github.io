@@ -8,6 +8,7 @@ description: 네이버 클라우드에서 VPC의 보안을 강화하기 위해 �
 type: Document
 set: networking
 order_number: 2
+v2_link: /networking/ncloud_networking_vpc_acg_nacl.html
 ---
 
 ## 개요

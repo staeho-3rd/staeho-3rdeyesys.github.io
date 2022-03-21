@@ -8,6 +8,7 @@ description: 네이버 클라우드 Object Storage 접속용 Windows, MacOS Clie
 type: Document
 set: storage
 order_number: 6
+v2_link: /storage/ncloud_storage_object_storage_s3_client_cyberduck.html
 ---
 
 ## 개요

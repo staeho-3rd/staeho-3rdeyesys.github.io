@@ -8,6 +8,7 @@ description: 네이버 클라우드Sub Account 생성 가이드입니다
 type: Document
 set: account
 order_number: 1
+v2_link: /management/ncloud_management_sub_account_guide.html
 ---
 
 ## 개요

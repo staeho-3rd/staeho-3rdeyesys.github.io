@@ -8,6 +8,7 @@ description: 네이버 클라우드 Object Storage 데이터를 Archive Storage�
 type: Document
 set: storage
 order_number: 8
+v2_link: /storage/ncloud_storage_object_storage_transfer_to_archive_storage.html
 ---
 
 ## 개요

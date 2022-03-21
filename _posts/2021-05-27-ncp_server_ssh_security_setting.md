@@ -9,6 +9,7 @@ type: Document
 set: server
 order_number: 16
 creator: ljh0519
+v2_link: /compute/ncloud_compute_server_ssh_security_setting.html
 ---
 
 

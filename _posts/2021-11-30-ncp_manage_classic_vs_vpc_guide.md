@@ -8,6 +8,7 @@ description: 네이버 클라우드 Classic 환경 vs VPC 환경 비교 가이�
 type: Document
 set: server
 order_number: 24
+v2_link: /management/ncloud_management_classic_vs_vpc_guide.html
 ---
 
 ## 개요

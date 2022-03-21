@@ -8,6 +8,7 @@ description: 네이버 클라우드 ACG(Access Control Group) 가이드
 type: Document
 set: server
 order_number: 6
+v2_link: /security/ncloud_security_acg_guide.html
 ---
 
 ## 개요

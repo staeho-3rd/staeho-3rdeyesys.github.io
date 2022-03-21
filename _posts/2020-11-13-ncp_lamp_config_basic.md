@@ -8,6 +8,7 @@ description: 네이버 클라우드 LAMP 기본 환경 설정 정보
 type: Document
 set: lamp
 order_number: 1
+v2_link: /compute/ncloud_compute_lamp_config_basic.html
 ---
 
 ## LAMP 기본설정

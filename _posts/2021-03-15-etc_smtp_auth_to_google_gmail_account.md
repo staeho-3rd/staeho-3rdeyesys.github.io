@@ -8,6 +8,7 @@ description: Gmail을 이용하여 smtp 메일 발송할 때 인증오류 해결
 type: Document
 set: smtp
 order_number: 1
+v2_link: /etc/etc_smtp_auth_to_google_gmail_account.html
 ---
 
 

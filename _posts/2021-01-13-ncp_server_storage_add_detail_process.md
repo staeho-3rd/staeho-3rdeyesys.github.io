@@ -8,6 +8,7 @@ description: 네이버 클라우드 Linux 스토리지(디스크) 추가 상세 
 type: Document
 set: server
 order_number: 6
+v2_link: /compute/ncloud_compute_server_storage_add_detail_process.html
 ---
 
 

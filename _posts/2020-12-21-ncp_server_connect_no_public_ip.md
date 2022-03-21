@@ -8,6 +8,7 @@ description: 네이버 클라우드 서버 접속 가이드 - 공인IP 없을 �
 type: Document
 set: server
 order_number: 9
+v2_link: /compute/ncloud_compute_server_connect_no_public_ip.html
 ---
 
 

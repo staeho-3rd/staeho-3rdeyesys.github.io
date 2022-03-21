@@ -8,6 +8,7 @@ description: 네이버 클라우드 LAMP(CentOS) 기본 명령어와 환경 설�
 type: Document
 set: lamp
 order_number: 2
+v2_link: /compute/ncloud_compute_lamp_config_centos.html
 ---
 
 ## Apache 시작, 중지, 재시작

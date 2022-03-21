@@ -8,6 +8,7 @@ description: 네이버 클라우드에서 한글로 된 이름을 로마자 표�
 type: Document
 set: api
 order_number: 4
+v2_link: /application-service/ncloud_application_service_papago_korean_name_romanizer_php_sample.html
 ---
 
 ## 개요

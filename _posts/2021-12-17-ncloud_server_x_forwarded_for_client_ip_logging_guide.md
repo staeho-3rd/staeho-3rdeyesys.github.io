@@ -9,6 +9,7 @@ type: Document
 set: server
 order_number: 25
 creator: franky
+v2_link: /compute/ncloud_compute_server_x_forwarded_for_client_ip_logging_guide.html
 ---
 
 ## 개요

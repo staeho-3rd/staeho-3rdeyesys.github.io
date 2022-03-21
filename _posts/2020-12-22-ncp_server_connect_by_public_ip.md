@@ -8,6 +8,7 @@ description: 네이버 클라우드 서버 접속 가이드 - 공인IP 있을 �
 type: Document
 set: server
 order_number: 10
+v2_link: /compute/ncloud_compute_server_connect_by_public_ip.html
 ---
 
 

@@ -8,6 +8,7 @@ description: 네이버 클라우드 Classic Load Balancer 운영을 위한 ACG �
 type: Document
 set: Load Balancer
 order_number: 5
+v2_link: /networking/ncloud_networking_load_balancer_acg.html
 ---
 
 ## 개요

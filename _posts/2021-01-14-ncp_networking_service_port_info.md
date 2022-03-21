@@ -8,6 +8,7 @@ description: 네이버 클라우드 주요 서비스 포트(Port) 정보
 type: Document
 set: networking
 order_number: 6
+v2_link: /networking/ncloud_networking_service_port_info.html
 ---
 
 ## 포트(Port) 정보

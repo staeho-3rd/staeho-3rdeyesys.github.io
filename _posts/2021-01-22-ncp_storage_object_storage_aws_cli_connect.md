@@ -8,6 +8,7 @@ description: 네이버 클라우드 Object Storage를 AWS CLI를 이용해서 �
 type: Document
 set: storage
 order_number: 3
+v2_link: /storage/ncloud_storage_object_storage_aws_cli_connect.html
 ---
 
 ## 개요

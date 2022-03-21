@@ -9,6 +9,7 @@ type: Document
 set: server
 order_number: 19
 creator: ljh0519
+v2_link: /compute/ncloud_compute_server_storage_lvm_create.html
 ---
 
 

@@ -8,6 +8,7 @@ description: 네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생
 type: Document
 set: storage
 order_number: 11
+v2_link: /storage/ncloud_storage_archive_storage_api_access_token_create.html
 ---
 
 ## 개요

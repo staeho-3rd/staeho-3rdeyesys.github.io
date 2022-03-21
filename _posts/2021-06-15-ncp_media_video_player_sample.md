@@ -8,6 +8,7 @@ description: 네이버 클라우드 Video Player 구현하기 샘플 예제입�
 type: Document
 set: media
 order_number: 1
+v2_link: /media/ncloud_media_video_player_sample.html
 ---
 
 

@@ -8,6 +8,7 @@ description: 네이버 클라우드 Cloud Functions Action을 .Net (C#)을 사�
 type: Document
 set: server
 order_number: 13
+v2_link: /compute/ncloud_compute_cloud_functions_dotnet_csharp_cmd.html
 ---
 
 ## 개요

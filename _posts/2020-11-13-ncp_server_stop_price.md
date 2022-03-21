@@ -8,6 +8,7 @@ description: 네이버 클라우드 서버 정지 시 요금할인 횟수와 기
 type: Document
 set: server
 order_number: 3
+v2_link: /compute/ncloud_compute_server_stop_price.html
 ---
 
 ## 개요

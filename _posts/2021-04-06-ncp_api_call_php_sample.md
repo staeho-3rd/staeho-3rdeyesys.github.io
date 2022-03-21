@@ -8,6 +8,7 @@ description: PHP로 네이버 클라우드 API를 호출하는 샘플 예제입�
 type: Document
 set: api
 order_number: 1
+v2_link: /api/ncloud_api_call_php_sample.html
 ---
 
 ## 개요

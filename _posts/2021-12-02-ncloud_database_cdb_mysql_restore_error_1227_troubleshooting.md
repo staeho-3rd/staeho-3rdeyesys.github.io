@@ -8,6 +8,7 @@ description: 네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발
 type: Document
 set: database
 order_number: 14
+v2_link: /database/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting.html
 ---
 
 ## 개요

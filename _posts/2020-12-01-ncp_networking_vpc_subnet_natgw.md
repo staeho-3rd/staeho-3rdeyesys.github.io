@@ -8,6 +8,7 @@ description: 네이버 클라우드 Subnet 과 NAT GW
 type: Document
 set: networking
 order_number: 3
+v2_link: /networking/ncloud_networking_vpc_subnet_natgw.html
 ---
 
 ## 개요

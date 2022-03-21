@@ -8,6 +8,7 @@ description: 네이버 클라우드 Classic 환경에서 서버 이미지를 다
 type: Document
 set: server
 order_number: 16
+v2_link: /compute/ncloud_compute_server_image_share_classic.html
 ---
 
 ## 개요

@@ -8,6 +8,7 @@ description: PhpSpreadsheet 설정 샘플 코드를 정리한 문서입니다.
 type: Document
 set: PhpSpreadsheet
 order_number: 1
+v2_link: /etc/etc_phpspreadsheet_sample_code.html
 ---
 
 ## 개요

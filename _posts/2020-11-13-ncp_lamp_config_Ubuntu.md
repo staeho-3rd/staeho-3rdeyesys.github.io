@@ -8,6 +8,7 @@ description: 네이버 클라우드 LAMP(Ubuntu) 기본 명령어와 환경 설�
 type: Document
 set: lamp
 order_number: 3
+v2_link: /compute/ncloud_compute_lamp_config_ubuntu.html
 ---
 
 ## Apache 시작, 중지, 재시작

@@ -8,6 +8,7 @@ description: 네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방�
 type: Document
 set: server
 order_number: 27
+v2_link: /compute/ncloud_compute_lemp_nginx_install_setting_centos_guide.html
 ---
 
 ## 개요

@@ -8,6 +8,7 @@ description: 네이버 클라우드에서 제공하는 Security 서비스 상품
 type: Document
 set: security
 order_number: 1
+v2_link: /security/ncloud_security_service_summary.html
 ---
 
 ## 개요

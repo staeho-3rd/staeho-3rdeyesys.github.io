@@ -1,23 +1,23 @@
-- name: Docs
-  link: /
+- name: Docs_v2
+  link: /security/ncloud_security_acg_guide.html
   target: _self
   new: y
 - name: Update
-  link: /update/
+  link: /update/update.html
   target: _self
-  new: y
+  new: n
 - name: FAQ
-  link: /faq/
+  link: /faq/faq.html
   target: _self
   new: n
 - name: NEWS
-  link: /news/
+  link: /news/news.html
   target: _self
   new: n
 - name: Company
   link: https://3rdeyesys.com
   target: _blank
-  new: y
+  new: n
 - name: 1:1 문의하기
   link:  https://www.3rdeyesys.com/question/
   target: _blank

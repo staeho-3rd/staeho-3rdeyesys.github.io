@@ -6,6 +6,7 @@ categories:
   - 99.ETC
 description: 윈도10에서 mkdocs를  설치하는 방법에 대한 안내입니다
 type: Document
+v2_link: /etc/etc_mkdocs_install.html
 ---
 
 ## 설치 전체과정 요약

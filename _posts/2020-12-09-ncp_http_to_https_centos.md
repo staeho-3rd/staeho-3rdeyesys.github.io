@@ -6,6 +6,7 @@ categories:
   - 1.compute
 description: 네이버 클라우드 http 접속 시에 https로 강제 리다이렉트 시키는 방법 - Apache/CentOS
 type: Document
+v2_link: /compute/ncloud_compute_server_http_to_https_centos.html
 ---
 
 ## 개요

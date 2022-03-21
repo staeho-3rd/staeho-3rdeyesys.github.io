@@ -8,6 +8,7 @@ description: 네이버 클라우드 VPC 환경에서 서버 생성
 type: Document
 set: server
 order_number: 11
+v2_link: /compute/ncloud_compute_server_vpc_create.html
 ---
 
 ## 개요

@@ -9,6 +9,7 @@ type: Document
 set: storage
 order_number: 10
 creator: elcidme
+v2_link: /aws/aws_s3_lifecycle_management.html
 ---
 
 ## 개요

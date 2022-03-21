@@ -8,6 +8,7 @@ description: 네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, �
 type: Document
 set: database
 order_number: 5
+v2_link: /database/ncloud_database_mariadb_access_from_remote_ubuntu.html
 ---
 
 ## 개요

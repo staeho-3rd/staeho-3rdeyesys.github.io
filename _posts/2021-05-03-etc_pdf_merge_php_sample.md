@@ -8,6 +8,7 @@ description: PHP로 Pdf 문서 합치는 기능을 구현하는 방법입니다.
 type: Document
 set: pdf merge
 order_number: 1
+v2_link: /etc/etc_pdf_merge_php_sample.html
 ---
 
 ## 개요

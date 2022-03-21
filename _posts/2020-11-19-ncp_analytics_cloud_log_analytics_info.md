@@ -6,6 +6,7 @@ categories:
   - 7.analytics
 description: 네이버 클라우드 Cloud Log Analytics에서 수집하는 로그 유형
 type: Document
+v2_link: /analytics/ncloud_analytics_cloud_log_analytics_info.html
 ---
 
 ## 개요

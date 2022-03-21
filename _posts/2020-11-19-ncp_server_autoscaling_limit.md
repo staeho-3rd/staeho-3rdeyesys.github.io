@@ -8,6 +8,7 @@ description: 네이버 클라우드 Auto Scaling 서비스 제한사항
 type: Document
 set: server
 order_number: 4
+v2_link: /compute/ncloud_compute_autoscaling_limit.html
 ---
 
 ## 개요

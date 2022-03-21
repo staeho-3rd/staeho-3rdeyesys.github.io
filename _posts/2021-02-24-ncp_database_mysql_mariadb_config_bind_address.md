@@ -8,6 +8,7 @@ description: 네이버 클라우드 mysql, mariadb 외부접속을 위한 환경
 type: Document
 set: database
 order_number: 9
+v2_link: /database/ncloud_database_mysql_mariadb_config_bind_address.html
 ---
 
 ## 개요

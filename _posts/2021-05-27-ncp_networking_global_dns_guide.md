@@ -9,6 +9,7 @@ type: Document
 set: dns
 order_number: 7
 creator: franky
+v2_link: /networking/ncloud_networking_global_dns_guide.html
 ---
 
 ## 개요

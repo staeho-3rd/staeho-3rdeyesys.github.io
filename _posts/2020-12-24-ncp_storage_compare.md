@@ -8,6 +8,7 @@ description: 네이버 클라우드에서 제공하는 스토리지들의 주요
 type: Document
 set: storage
 order_number: 1
+v2_link: /storage/ncloud_storage_compare.html
 ---
 
 ## 개요

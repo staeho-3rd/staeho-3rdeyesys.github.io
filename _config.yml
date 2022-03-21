@@ -8,7 +8,7 @@ google_analytics_key: G-4Q6RVEFJ3S
 ncloud_real_user_analytics_key: e4c80491-1665-457b-9cec-550a5f554dde
 disqus_shortname:
 newsletter_action:
-#environment : production
+environment : production
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
 logo: /siteicon.png
@@ -26,6 +26,8 @@ social:
 # Build
 
 timezone: Asia/Seoul
+
+lang: ko_KR
 
 permalink: /:categories/:title/
 

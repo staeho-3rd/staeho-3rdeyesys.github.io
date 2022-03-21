@@ -8,6 +8,7 @@ description: 네이버 클라우드 (Security) Ncloud vs On-Premise 비교
 type: Document
 set: security
 order_number: 2
+v2_link: /security/ncloud_security_onpremise_compare.html
 ---
 
 ## 개요

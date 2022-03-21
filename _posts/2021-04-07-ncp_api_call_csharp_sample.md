@@ -8,6 +8,7 @@ description: C#으로 네이버 클라우드 API를 호출하는 샘플 예제�
 type: Document
 set: api
 order_number: 2
+v2_link: /api/ncloud_api_call_csharp_sample.html
 ---
 
 ## 개요

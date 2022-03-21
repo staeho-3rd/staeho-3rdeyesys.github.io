@@ -9,6 +9,7 @@ type: Document
 set: server
 order_number: 20
 creator: franky
+v2_link: /compute/ncloud_compute_kubernetes_service_start_guide.html
 ---
 
 ## 개요
@@ -131,3 +132,4 @@ nks-pool-1865-w2zz   Ready    node    4d5h   v1.16.6
 	- <a href="https://guide.ncloud-docs.com/docs/vnks-nks-1-2" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/vnks-nks-1-2</a>
 3. kubectl 설치 가이드
 	- <a href="https://kubernetes.io/ko/docs/tasks/tools/" target="_blank" style="word-break:break-all;">https://kubernetes.io/ko/docs/tasks/tools/</a>
+ 

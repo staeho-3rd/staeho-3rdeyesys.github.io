@@ -8,6 +8,7 @@ description: 네이버 클라우드 모니터링 서비스 Cloud Insight 설정 
 type: Document
 set: server
 order_number: 23
+v2_link: /management/ncloud_management_cloud_insight_guide.html
 ---
 
 ## 개요

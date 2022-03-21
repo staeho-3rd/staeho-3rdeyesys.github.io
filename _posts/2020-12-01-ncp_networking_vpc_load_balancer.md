@@ -8,6 +8,7 @@ description: 네이버 클라우드 Load Balancer 상품군의 변화
 type: Document
 set: Load Balancer
 order_number: 4
+v2_link: /networking/ncloud_networking_vpc_load_balancer.html
 ---
 
 ## 개요

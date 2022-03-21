@@ -7,6 +7,7 @@ categories:
 description: Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법입니다.
 type: Document
 creator: ljh0519
+v2_link: /analytics/ncloud_analytics_cloud_log_analytics_guide.html
 ---
 
 ## 개요

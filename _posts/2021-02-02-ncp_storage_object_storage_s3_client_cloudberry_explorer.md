@@ -8,6 +8,7 @@ description: 네이버 클라우드Object Storage 접속용 Windows Client Tool 
 type: Document
 set: storage
 order_number: 5
+v2_link: /storage/ncloud_storage_object_storage_s3_client_cloudberry_explorer.html
 ---
 
 

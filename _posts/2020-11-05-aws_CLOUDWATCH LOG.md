@@ -6,6 +6,7 @@ categories:
   - 91.AWS
 description: AWS CLOUDWATCH LOG 수집 매뉴얼
 type: Document
+v2_link: /aws/aws_cloud_watch_log.html
 ---
 
 ## 사전 작업

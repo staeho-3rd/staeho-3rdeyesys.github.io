@@ -36,7 +36,7 @@ type: Document
 				{% assign tutorials = posts | sample: 10 %}
 				{% for tutorial in tutorials limit: 4 %}
 					<li>
-					<a href="{{ site.baseurl }}{{ tutorial.url }}">{% include document-icon.html icon=tutorial.type %}
+					<a href="{{ site.baseurl }}{% if tutorial.v2_link %}{{ tutorial.v2_link }}{% else %}{{ tutorial.url }}{% endif %}">{% include document-icon.html icon=tutorial.type %}
 					{% assign tsize = tutorial.title | size %}
 					{% if tsize > 26 %}
 					{{ tutorial.title | truncate: 26 }}

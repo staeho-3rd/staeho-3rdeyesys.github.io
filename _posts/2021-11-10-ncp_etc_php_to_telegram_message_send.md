@@ -8,6 +8,7 @@ description: PHP로 텔레그램 비공개 채널에 메시지 전송하는 방�
 type: Document
 set: PHP
 order_number: 1
+v2_link: /etc/etc_php_to_telegram_message_send.html
 ---
 
 ## 개요

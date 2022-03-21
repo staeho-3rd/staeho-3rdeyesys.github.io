@@ -8,6 +8,7 @@ description: 네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf �
 type: Document
 set: database
 order_number: 8
+v2_link: /database/ncloud_database_mysql_mariadb_config_my_cnf.html
 ---
 
 ## 개요

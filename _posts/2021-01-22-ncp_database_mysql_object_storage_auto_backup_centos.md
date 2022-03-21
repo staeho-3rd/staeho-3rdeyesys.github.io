@@ -8,6 +8,7 @@ description: 네이버 클라우드 mysql DB를 Object Storage로 자동 백업�
 type: Document
 set: database
 order_number: 3
+v2_link: /database/ncloud_database_mysql_object_storage_auto_backup_centos.html
 ---
 ## 개요
 네이버 클라우드 CentOS에서 설치형 mysql  DB를 매일 일정한 시간에 Object Storage로 자동으로 백업 받는 방법에 대해 정리해보았습니다.  

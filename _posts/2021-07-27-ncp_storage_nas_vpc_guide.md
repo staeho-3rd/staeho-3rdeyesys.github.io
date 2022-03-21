@@ -9,6 +9,7 @@ type: Document
 set: storage
 order_number: 9
 creator: ljh0519
+v2_link: /storage/ncloud_storage_nas_vpc_guide.html
 ---
 
 ## 개요

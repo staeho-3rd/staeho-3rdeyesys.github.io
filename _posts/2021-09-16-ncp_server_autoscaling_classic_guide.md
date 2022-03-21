@@ -9,6 +9,7 @@ type: Document
 set: server
 order_number: 21
 creator: ljh0519
+v2_link: /compute/ncloud_compute_autoscaling_classic_guide.html
 ---
 
 ## 개요

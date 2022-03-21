@@ -9,6 +9,7 @@ type: Document
 set: server
 order_number: 22
 creator: ljh0519
+v2_link: /management/ncloud_management_classic_monitoring_guide.html
 ---
 
 ## 개요

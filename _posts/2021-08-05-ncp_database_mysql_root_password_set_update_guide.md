@@ -8,6 +8,7 @@ description: 네이버 클라우드 설치형 MySQL DB에서 root 패스워드 �
 type: Document
 set: database
 order_number: 13
+v2_link: /database/ncloud_database_mysql_root_password_set_update_guide.html
 ---
 
 ## 개요

@@ -8,6 +8,7 @@ description: 네이버 클라우드VPC를 구성하는 요소들에 대한 설�
 type: Document
 set: networking
 order_number: 1
+v2_link: /networking/ncloud_networking_vpc_overview.html
 ---
 
 ## 개요

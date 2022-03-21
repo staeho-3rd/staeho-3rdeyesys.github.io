@@ -8,6 +8,7 @@ description: 네이버 클라우드 mysql DB를 Object Storage로 자동 백업�
 type: Document
 set: database
 order_number: 4
+v2_link: /database/ncloud_database_mysql_object_storage_auto_backup_ubuntu.html
 ---
 
 ## 개요

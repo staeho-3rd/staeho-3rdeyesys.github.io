@@ -8,6 +8,7 @@ description: jekyll base-theme에서 블로그 특성이 맞게 수정하는 방
 type: Document
 set: jekyll
 order_number: 2
+v2_link: /etc/etc_jekyll_base_theme_customizing.html
 ---
 
 ## 폰트 교체

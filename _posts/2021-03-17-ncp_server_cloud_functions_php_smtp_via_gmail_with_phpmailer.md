@@ -8,6 +8,7 @@ description: 네이버 클라우드 Cloud Functions에서 PHPMailer를 사용하
 type: Document
 set: server
 order_number: 15
+v2_link: /compute/ncloud_compute_cloud_functions_php_smtp_via_gmail_with_phpmailer.html
 ---
 
 ## 개요

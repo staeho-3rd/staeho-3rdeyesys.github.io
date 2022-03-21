@@ -9,6 +9,7 @@ type: Document
 set: server
 order_number: 24
 creator: franky
+v2_link: /compute/ncloud_compute_server_repository_change_on_private_network.html
 ---
 
 ## 개요

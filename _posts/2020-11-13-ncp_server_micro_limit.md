@@ -8,6 +8,7 @@ description: 네이버 클라우드 Micro 타입 서버에서 사용할 수 없�
 type: Document
 set: server
 order_number: 1
+v2_link: /compute/ncloud_compute_server_micro_type_limit.html
 ---
 
 ## 개요

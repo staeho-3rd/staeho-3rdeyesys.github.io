@@ -8,6 +8,7 @@ description: 네이버 클라우드 Object Storage와 연동이 필수인 서비
 type: Document
 set: storage
 order_number: 4
+v2_link: /storage/ncloud_storage_object_storage_required_service.html
 ---
 
 ## 개요

@@ -8,6 +8,7 @@ description: 네이버 클라우드 AutoScaling 그룹 이벤트 설정하는 �
 type: Document
 set: server
 order_number: 12
+v2_link: /compute/ncloud_compute_autoscaling_event_setting.html
 ---
 
 ## 개요

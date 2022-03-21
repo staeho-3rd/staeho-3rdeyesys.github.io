@@ -9,6 +9,7 @@ type: Document
 set: VPC
 order_number: 10
 creator: franky
+v2_link: /networking/ncloud_networking_vpc_peering_guide.html
 ---
 
 ## 개요

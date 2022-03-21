@@ -8,6 +8,7 @@ description: 네이버 클라우드 서버 스펙 변경
 type: Document
 set: server
 order_number: 2
+v2_link: /compute/ncloud_compute_server_spec_change.html
 ---
 
 ## 개요

@@ -9,6 +9,7 @@ type: Document
 set: database
 order_number: 12
 creator: ljh0519
+v2_link: /database/ncloud_database_cloud_db_for_mysql_public_domain_guide.html
 ---
 
 ## 개요

@@ -8,7 +8,7 @@
 		{% assign createdDiffDays = createdDiffSeconds | divided_by: 3600 | divided_by: 24 %}
 		{% assign updatedDiffSeconds = nowTimestamp | minus: dateUpdated %}
 		{% assign updatedDiffDays = updatedDiffSeconds | divided_by: 3600 | divided_by: 24 %}
-			<a href="{{ site.baseurl }}{{ item.url }}">
+			<a href="{{ site.baseurl }}{% if item.v2_link %}{{ item.v2_link }}{% else %}{{ item.url }}{% endif %}">
 				<div class="icon">{% include document-icon.html icon=item.type %}</div>
 				<article>
 					<div>

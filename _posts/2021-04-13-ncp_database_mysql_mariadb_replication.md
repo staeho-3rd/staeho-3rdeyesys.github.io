@@ -9,6 +9,7 @@ type: Document
 set: database
 order_number: 10
 creator: elcidme
+v2_link: /database/ncloud_database_mysql_mariadb_replication.html
 ---
 
 ## 선행조건

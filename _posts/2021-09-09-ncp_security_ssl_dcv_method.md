@@ -8,6 +8,7 @@ description: 네이버 클라우드 SSL인증서 DCV (Domain Control Validation)
 type: Document
 set: security
 order_number: 3
+v2_link: /security/ncloud_security_ssl_dcv_method.html
 ---
 
 ## 개요

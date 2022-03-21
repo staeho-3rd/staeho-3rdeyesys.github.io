@@ -8,6 +8,7 @@ description: 네이버 클라우드 스토리지 추가 생성 기본 가이드
 type: Document
 set: server
 order_number: 5
+v2_link: /compute/ncloud_compute_server_storage_add_guide.html
 ---
 
 ## 개요

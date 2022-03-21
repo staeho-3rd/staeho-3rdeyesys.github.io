@@ -8,6 +8,7 @@ description: 네이버 클라우드에서 Cloud Outbound Mailer로 대량 메일
 type: Document
 set: mail
 order_number: 1
+v2_link: /application-service/ncloud_application_service_cloud_outbound_mailer_bulk_mail_send.html
 ---
 
 ## 개요

@@ -8,6 +8,7 @@ description: 네이버 클라우드 CentOS6.x에서 pip - Python 설치하기
 type: Document
 set: database
 order_number: 5
+v2_link: /compute/ncloud_compute_server_pip_python_install_centos6.html
 ---
 
 ## 개요

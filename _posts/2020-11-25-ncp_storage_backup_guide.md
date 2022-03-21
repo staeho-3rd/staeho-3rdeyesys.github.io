@@ -8,6 +8,7 @@ description: 네이버 클라우드 백업 서비스 가이드와 신청 절차
 type: Document
 set: server
 order_number: 7
+v2_link: /storage/ncloud_storage_backup_guide.html
 ---
 
 ## 개요

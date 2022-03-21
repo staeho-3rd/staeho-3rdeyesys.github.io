@@ -8,6 +8,7 @@ description: 네이버 클라우드 Object Storage Lifecycle Management의 관�
 type: Document
 set: storage
 order_number: 2
+v2_link: /storage/ncloud_storage_object_storage_lifecycle_management.html
 ---
 
 ## 개요
