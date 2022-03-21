@@ -25,18 +25,18 @@ nShortURL을 이용하기 위해서는 [네이버 클라우드 콘솔] - [AI·NA
 아래와 같이 NAVER 서비스에서 nShortURL을 선택하고, 이름과 사용할 서비스 환경을 입력하고 등록하면 됩니다.  
 nShortURL은 웹페이지, 모바일앱 어디서든 사용 가능하며 URL이나 앱 패키지이름, Bundle ID 등을 입력하시면 됩니다.
 
-<img src="../../images/ncp_application_service_nshorturl_php_01.jpg" alt="PHP로 nShortURL 서비스 이용하기 샘플 예제" style="width:800px;align:center">
+<img src="/images/ncp_application_service_nshorturl_php_01.jpg" alt="PHP로 nShortURL 서비스 이용하기 샘플 예제" style="width:800px;align:center">
 
 
 Application 등록을 하고 나면 다음과 같은 화면을 볼 수 있는데 여기서 인증 정보를 확인해야 합니다.
 
-<img src="../../images/ncp_application_service_nshorturl_php_02.jpg" alt="PHP로 nShortURL 서비스 이용하기 샘플 예제" style="width:800px;align:center">
+<img src="/images/ncp_application_service_nshorturl_php_02.jpg" alt="PHP로 nShortURL 서비스 이용하기 샘플 예제" style="width:800px;align:center">
 
 
 ## 인증키 확인
 nShortURL API를 호출하려면 Client ID와 Client Secret 로 이루어진 Application Key를 사용해야 하는데 아래와 같이 [인증 정보] 버튼을 클릭하면 확인할 수 있습니다.  
 
-<img src="../../images/ncp_application_service_nshorturl_php_03.jpg" alt="PHP로 nShortURL 서비스 이용하기 샘플 예제" style="width:800px;align:center">
+<img src="/images/ncp_application_service_nshorturl_php_03.jpg" alt="PHP로 nShortURL 서비스 이용하기 샘플 예제" style="width:800px;align:center">
 
 
 ## API 호출 샘플 코드
@@ -138,7 +138,7 @@ nShortURL 서비스는 과도한 사용을 방지하기 위해 일별 25,000회,
 그리고 지정된 한도 내에서 일정한 사용을 초과하면 알람을 받도록 설정할 수 있습니다.  
 아래처럼 Application 등록 화면에서 [한도 및 알람 설정] 버튼을 클릭하면 확인할 수 있습니다.
 
-<img src="../../images/ncp_application_service_nshorturl_php_04.jpg" alt="PHP로 nShortURL 서비스 이용하기 샘플 예제" style="width:800px;align:center">
+<img src="/images/ncp_application_service_nshorturl_php_04.jpg" alt="PHP로 nShortURL 서비스 이용하기 샘플 예제" style="width:800px;align:center">
 
 
 ## 참고 URL

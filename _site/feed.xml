@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko_KR"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" hreflang="ko_KR" /><updated>2022-03-21T04:59:36+00:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템(3rdeyesys) 기술문서 사이트입니다 - Ncloud 프리미엄 파트너</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">CentOS에서 NginX 설치, 설정하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncloud_server_nginx_install_setting_centos_guide/" rel="alternate" type="text/html" title="CentOS에서 NginX 설치, 설정하는 방법" /><published>2022-01-18T00:00:00+00:00</published><updated>2022-01-18T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncloud_server_nginx_install_setting_centos_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncloud_server_nginx_install_setting_centos_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko_KR"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://docs.3rdeyesys.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.3rdeyesys.com/" rel="alternate" type="text/html" hreflang="ko_KR" /><updated>2022-03-21T05:11:05+00:00</updated><id>https://docs.3rdeyesys.com/feed.xml</id><title type="html">3rdeyesys</title><subtitle>써드아이시스템(3rdeyesys) 기술문서 사이트입니다 - Ncloud 프리미엄 파트너</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">CentOS에서 NginX 설치, 설정하는 방법</title><link href="https://docs.3rdeyesys.com/1.compute/ncloud_server_nginx_install_setting_centos_guide/" rel="alternate" type="text/html" title="CentOS에서 NginX 설치, 설정하는 방법" /><published>2022-01-18T00:00:00+00:00</published><updated>2022-01-18T00:00:00+00:00</updated><id>https://docs.3rdeyesys.com/1.compute/ncloud_server_nginx_install_setting_centos_guide</id><content type="html" xml:base="https://docs.3rdeyesys.com/1.compute/ncloud_server_nginx_install_setting_centos_guide/">&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드 CentOS 서버에 NginX를 Package로 설치하고 기본 설정을 하는 방법에 대한 내용을 정리해보겠습니다.&lt;br /&gt;
 사용한 서버는 CentOS 7.8 입니다.&lt;/p&gt;
 
@@ -7,7 +7,7 @@
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# yum &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;yum-utils
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_01.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_01.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;repository-설정&quot;&gt;Repository 설정&lt;/h2&gt;
 &lt;p&gt;NginX package를 다운 받아 설치하기 위해서는 Repository를 설정해야 합니다. 
@@ -36,7 +36,7 @@ Repository 디렉토리에 nginx.repo 파일을 만들고 아래와 같은 내�
 &lt;p class=&quot;info&quot;&gt;NginX는 stable, mainline 두가지 버전이 있습니다. NginX의 공식 설명에 따르면 버그 수정이나 보안 패치 등은 항상 mainline 버전에 먼저 적용되기 때문에 mainline을 사용하는 것을 추천한다고 합니다. 
 stable 버전을 사용하는 주된 경우는 third-party 모듈을 사용하고 있어서 신규 버전에서 호환성 문제가 발생할 가능성이 걱정될 때라고 합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_02.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_02.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;버전-선택&quot;&gt;버전 선택&lt;/h2&gt;
 &lt;p&gt;stable, mainline 두가지 버전 중에서 기본은 stable 버전입니다.&lt;br /&gt;
@@ -45,14 +45,14 @@ stable 버전을 설치할 경우에는 다음 명령어는 건너띄어도 되�
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# yum-config-manager &lt;span class=&quot;nt&quot;&gt;--enable&lt;/span&gt; nginx-mainline
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_03.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_03.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;nginx-설치&quot;&gt;NginX 설치&lt;/h2&gt;
 &lt;p&gt;설정을 마쳤으면 yum으로 NginX를 설치합니다.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# yum &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nginx
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_04.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_04.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;디렉토리-설정&quot;&gt;디렉토리 설정&lt;/h2&gt;
 &lt;p&gt;다음으로 홈으로 사용할 디렉토리를 생성하고, 해당 디렉토리의 소유권을 설정하겠습니다.&lt;br /&gt;
@@ -63,7 +63,7 @@ stable 버전을 설치할 경우에는 다음 명령어는 건너띄어도 되�
 ~# &lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; /usr/share/nginx/html/index.html /ncp/data/www/index.html
 ~# &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-al&lt;/span&gt; /ncp/data/www
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_05.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_05.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;환경-설정&quot;&gt;환경 설정&lt;/h2&gt;
 &lt;p&gt;주로 변경할 환경 설정 파일은 /etc/nginx/conf.d/default.conf 입니다.&lt;/p&gt;
@@ -78,7 +78,7 @@ stable 버전을 설치할 경우에는 다음 명령어는 건너띄어도 되�
 server_name  127.0.0.1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_06.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_06.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;홈-디렉토리-기본-문서-설정&quot;&gt;홈 디렉토리, 기본 문서 설정&lt;/h4&gt;
 &lt;p&gt;앞에서 만들었던 홈 디렉토리 경로를 설정하고 기본 문서를 지정하는 곳입니다.&lt;/p&gt;
@@ -97,9 +97,9 @@ server_name  127.0.0.1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
         try_files &lt;span class=&quot;nv&quot;&gt;$uri&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$uri&lt;/span&gt;/ &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 404&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_07.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_07.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_08.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_08.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;error-페이지-설정&quot;&gt;error 페이지 설정&lt;/h4&gt;
 &lt;p&gt;404, 500 등의 error 페이지를 설정할 경우 아래 내용들을 수정하면 됩니다.&lt;/p&gt;
@@ -119,9 +119,9 @@ server_name  127.0.0.1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_09.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_09.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_10.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_10.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;htaccess-파일-접근-금지-설정&quot;&gt;.htaccess 파일 접근 금지 설정&lt;/h4&gt;
 &lt;p&gt;.htaccess 파일에 대한 접근 금지를 설정할 경우 아래 내용을 주석 해제하면 됩니다.&lt;/p&gt;
@@ -137,9 +137,9 @@ server_name  127.0.0.1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_11.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_11.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_12.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_12.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;nginx-실행&quot;&gt;NginX 실행&lt;/h2&gt;
 &lt;p&gt;설정을 모두 마쳤으면 NginX를 시작하고 상태를 확인합니다.&lt;/p&gt;
@@ -147,12 +147,12 @@ server_name  127.0.0.1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# systemctl start nginx
 ~# systemctl status nginx
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_13.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_13.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;사이트-접속&quot;&gt;사이트 접속&lt;/h4&gt;
 &lt;p&gt;NginX가 정상 작동하면 아래와 같이 서버 접속 화면을 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_nginx_install_setting_guide_centos_14.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_nginx_install_setting_guide_centos_14.png&quot; alt=&quot;네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
 &lt;ol&gt;
@@ -175,14 +175,14 @@ server_name  127.0.0.1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;h2 id=&quot;오류-상황&quot;&gt;오류 상황&lt;/h2&gt;
 &lt;p&gt;성능 정보가 수집되지 않을 경우 아래와 같이 Monitoring 정보에서 그래프가 특정 시점 이후로 끊겨서 표시되게 됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_01.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_01.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;서버-상태-확인&quot;&gt;서버 상태 확인&lt;/h2&gt;
 
 &lt;h4 id=&quot;서버-성능-정보-상태-확인&quot;&gt;서버 성능 정보 상태 확인&lt;/h4&gt;
 &lt;p&gt;우선 서버에 접속해서 서버의 작업 관리자 (Task Manager)를 실행, 성능(Performance)탭을 열고 CPU, Memory, Disk, Ethernet 등의 성능 정보가 제대로 표시되는지 확인합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_04.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_04.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;모니터링-agent-상태-확인&quot;&gt;모니터링 Agent 상태 확인&lt;/h4&gt;
 &lt;p&gt;Ncloud(네이버 클라우드) 서버들에는 모니터링 정보를 수집하기 위한 Agent가 설치되는데 이 모니터링 Agent가 작동하고 있는지 확인합니다.&lt;/p&gt;
@@ -193,7 +193,7 @@ Agent가 표시되는지 Status가 Running 상태인지 확인합니다.&lt;/p&g
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Get-Service &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;nsight&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_03.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_03.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;문제-해결&quot;&gt;문제 해결&lt;/h2&gt;
 
@@ -202,7 +202,7 @@ Agent가 표시되는지 Status가 Running 상태인지 확인합니다.&lt;/p&g
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; lodctr /R
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_05.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_05.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;서버-성능-정보가-정상인-경우&quot;&gt;서버 성능 정보가 정상인 경우&lt;/h4&gt;
 &lt;p&gt;서버의 성능 정보가 제대로 표시되는데도 Monitoring 데이터가 제대로 수집되지 않는다면 cmd 창에서 모니터링 Agent를 다시 실행합니다.&lt;/p&gt;
@@ -210,18 +210,18 @@ Agent가 표시되는지 Status가 Running 상태인지 확인합니다.&lt;/p&g
 &lt;p&gt;우선 Agent를 중지 시킵니다.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; sc stop noms_nsight
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_07.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_07.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;그리고 Agent를 다시 실행 시킵니다.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; sc start noms_nsight
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_06.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_06.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;monitoring-정보-수집-복구&quot;&gt;Monitoring 정보 수집 복구&lt;/h4&gt;
 &lt;p&gt;문제가 해결되었다면 아래와 같이 Monitoring 정보가 제대로 수집되면서 그래프가 나타나기 시작합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_02.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_02.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;복구-불가-상황&quot;&gt;복구 불가 상황&lt;/h2&gt;
 &lt;p&gt;위 방법대로 했는데에도 복구가 되지 않을 경우에는 다음 2가지 데이터를 모아서 Ncloud(네이버 클라우드) 고객센터로 문의하셔야 합니다.&lt;/p&gt;
@@ -236,7 +236,7 @@ Agent가 표시되는지 Status가 Running 상태인지 확인합니다.&lt;/p&g
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:&lt;span class=&quot;se&quot;&gt;\P&lt;/span&gt;rogram Files &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;x86&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\N&lt;/span&gt;BP&lt;span class=&quot;se&quot;&gt;\N&lt;/span&gt;Sight&amp;gt;noms_nsight.exe &lt;span class=&quot;nt&quot;&gt;-status&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_08.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_management_monitoring_win_perf_data_error_troubleshoot_08.png&quot; alt=&quot;Ncloud(네이버 클라우드) Classic 환경에서 Windows 서버의 모니터링 성능 정보를 수집할 때 발생하는 오류를 해결하는 방법입니다&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;모니터링-agent-로그&quot;&gt;모니터링 Agent 로그&lt;/h4&gt;
 &lt;p&gt;모니터링 Agent가 설치된 경로에 있는 파일과 폴더를 모두 압축합니다.&lt;/p&gt;
@@ -281,7 +281,7 @@ Agent가 표시되는지 Status가 Running 상태인지 확인합니다.&lt;/p&g
   &lt;li&gt;VPC 환경에서 서버 생성하는 방법 : &lt;a href=&quot;/1.compute/ncp_server_vpc_create/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.3rdeyesys.com/1.compute/ncp_server_vpc_create/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_01.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_x_forwarded_for_client_ip_logging_guide_01.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;로드밸런서도 마찬가지로 준비하고, 서버와 연동까지 완료했습니다.&lt;/p&gt;
 
@@ -289,16 +289,16 @@ Agent가 표시되는지 Status가 Running 상태인지 확인합니다.&lt;/p&g
   &lt;li&gt;VPC 환경에서 Application Load Balancer 생성하는 방법 : &lt;a href=&quot;/2.networking/ncp_networking_load_balancer_application_lb/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://docs.3rdeyesys.com/2.networking/ncp_networking_load_balancer_application_lb/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_02.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_x_forwarded_for_client_ip_logging_guide_02.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;설정-전-테스트&quot;&gt;설정 전 테스트&lt;/h2&gt;
 &lt;p&gt;우선, &lt;strong&gt;X-Forwarded-For (XFF)&lt;/strong&gt; 설정을 하기 전에 어떻게 기록이 남는지 확인해보겠습니다.&lt;br /&gt;
 아래와 같이 Load Balancer 주소로 접속해서 2대의 서버에 각각 접근하도록 합니다.&lt;br /&gt;
 위에서 소개한 Application Load Balancer 생성하는 방법을 그대로 따라하면 아래와 같은 메시지를 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_11-1.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:560px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_x_forwarded_for_client_ip_logging_guide_11-1.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:560px;align:center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_11-2.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:560px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_x_forwarded_for_client_ip_logging_guide_11-2.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:560px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;apache-접속-로그-확인&quot;&gt;Apache 접속 로그 확인&lt;/h4&gt;
 &lt;p&gt;Apache 접속 로그 파일은 아래의 위치에 존재하지만, 저희는 네이버 클라우드 (Ncloud)의 상품 중 하나인 &lt;strong&gt;Cloud Log Analytics&lt;/strong&gt;에서 로그를 수집해서 확인해보겠습니다.&lt;/p&gt;
@@ -312,7 +312,7 @@ Agent가 표시되는지 Status가 Running 상태인지 확인합니다.&lt;/p&g
 
 &lt;p&gt;Cloud Log Analytics에서 수집한 로그를 확인해보면 위에서 설정했던 &lt;strong&gt;Load Balancer의 IP 대역 (172.16.20.xx)&lt;/strong&gt;이 기록된 것을 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_03.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_x_forwarded_for_client_ip_logging_guide_03.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;centos-설정&quot;&gt;CentOS 설정&lt;/h2&gt;
 &lt;p&gt;이제 실제 Client IP가 기록 되도록 설정을 변경해보겠습니다.&lt;br /&gt;
@@ -329,12 +329,12 @@ Agent가 표시되는지 Status가 Running 상태인지 확인합니다.&lt;/p&g
 &lt;h4 id=&quot;httpdconf-수정-전&quot;&gt;httpd.conf 수정 전&lt;/h4&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;196   LogFormat &lt;span class=&quot;s2&quot;&gt;&quot;%h %l %u %t &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%r&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; %&amp;gt;s %b &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{Referer}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{User-Agent}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; combined
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_04.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_x_forwarded_for_client_ip_logging_guide_04.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;httpdconf-수정-후&quot;&gt;httpd.conf 수정 후&lt;/h4&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;196   LogFormat &lt;span class=&quot;s2&quot;&gt;&quot;%{X-Forwarded-For}i %l %u %t &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%r&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; %&amp;gt;s %b &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{Referer}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{User-Agent}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; combined
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_05.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_x_forwarded_for_client_ip_logging_guide_05.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;apache-재시작&quot;&gt;Apache 재시작&lt;/h4&gt;
 &lt;p&gt;httpd.conf 파일 수정 후에 Apache를 재시작합니다. 로그 테스트는 Ubuntu까지 설정을 마친 후에 진행하겠습니다.&lt;/p&gt;
@@ -350,7 +350,7 @@ Agent가 표시되는지 Status가 Running 상태인지 확인합니다.&lt;/p&g
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# a2enmod remoteip
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_06.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_x_forwarded_for_client_ip_logging_guide_06.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;remoteipload-수정&quot;&gt;remoteip.load 수정&lt;/h4&gt;
 &lt;p&gt;다음으로 remoteip.load 파일을 수정해서 아래쪽에 [&lt;strong&gt;RemoteIPHeader X-FORWARDED-FOR&lt;/strong&gt;]을 추가 합니다.&lt;/p&gt;
@@ -365,7 +365,7 @@ Agent가 표시되는지 Status가 Running 상태인지 확인합니다.&lt;/p&g
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LoadModule remoteip_module /usr/lib/apache2/modules/mod_remoteip.so
 RemoteIPHeader X-FORWARDED-FOR
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_07.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_x_forwarded_for_client_ip_logging_guide_07.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;apache2conf-수정&quot;&gt;apache2.conf 수정&lt;/h4&gt;
 &lt;p&gt;다음으로 &lt;strong&gt;apache2.conf&lt;/strong&gt; 파일을 수정합니다.&lt;/p&gt;
@@ -381,12 +381,12 @@ RemoteIPHeader X-FORWARDED-FOR
 &lt;h4 id=&quot;apache2conf-수정-전&quot;&gt;apache2.conf 수정 전&lt;/h4&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;213 LogFormat &lt;span class=&quot;s2&quot;&gt;&quot;%h %l %u %t &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%r&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; %&amp;gt;s %O &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{Referer}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{User-Agent}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; combined  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_08.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_x_forwarded_for_client_ip_logging_guide_08.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;apache2conf-수정-후&quot;&gt;apache2.conf 수정 후&lt;/h4&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;213 LogFormat &lt;span class=&quot;s2&quot;&gt;&quot;%a %l %u %t &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%r&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; %&amp;gt;s %O &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{Referer}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%{User-Agent}i&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; combined  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_09.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_x_forwarded_for_client_ip_logging_guide_09.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;apache-재시작-1&quot;&gt;Apache 재시작&lt;/h4&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# systemctl restart apache2
@@ -396,7 +396,7 @@ RemoteIPHeader X-FORWARDED-FOR
 &lt;p&gt;위와 같이  CentOS, Ubuntu 2대 서버에서 설정을 모두 마친 후에 로드 밸런서 URL로 접속합니다.&lt;br /&gt;
 이후에 Cloud Log Analytics에서 로그를 확인해보면 아래와 같이 로드밸런서 IP가 아닌 실제 접속한 Client의 IP가 기록된 것을 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_server_x_forwarded_for_client_ip_logging_guide_10.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_server_x_forwarded_for_client_ip_logging_guide_10.png&quot; alt=&quot;네이버 클라우드 서비스에서 X-Forwarded-For를 이용해 Proxy, Load Balancer 환경에서 Client IP를 Apache access_log에 기록하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
 &lt;ol&gt;
@@ -451,17 +451,17 @@ RemoteIPHeader X-FORWARDED-FOR
 &lt;p&gt;Ncloud(네이버 클라우드) 콘솔 [Cloud Log Analytics] - [Subscription]에서 [이용 신청] 버튼을 클릭합니다. 
 Cloud Log Analytics는 Classic, VPC 환경 공통 서비스이므로 어느쪽 환경에서 이용신청을 해도 상관없습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_01.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_01.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;설정---linux&quot;&gt;설정 - Linux&lt;/h2&gt;
 &lt;p&gt;먼저 Linux 서버에서 설정하는 방법을 알아보겠습니다.&lt;br /&gt;
 [Cloud Log Analytics] - [Management]에서 로그를 수집할 서버를 선택하고, [수집 설정] 버튼을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_02.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_02.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Log 수집 설정 화면에서 수집할 로그 템플릿을 선택하거나, 직접 [Custom Log]를 선택해서 로그 형태를 설정한 후에 [적용] 버튼을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_03.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_03.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;로그-수집-agent-설치&quot;&gt;로그 수집 Agent 설치&lt;/h4&gt;
 &lt;p&gt;Log 수집 설정을 마치면 [로그 수집 Agent] 설치 안내가 나옵니다.&lt;br /&gt;
@@ -474,27 +474,27 @@ Cloud Log Analytics는 Classic, VPC 환경 공통 서비스이므로 어느쪽 �
 ~# curl &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; http://cm.cla.ncloud.com/setUpCla/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;설치키&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Install Key&lt;span class=&quot;o&quot;&gt;)}&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_04.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_04.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;서버에 실제로 설치해보면 아래와 같이 설치 과정이 진행되고,&lt;br /&gt;
 설치가 완료되면 마지막에 &lt;strong&gt;Finish Installation&lt;/strong&gt;이라는 메시지가 출력됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_06.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_06.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;설치된 Agent가 제대로 작동하고 있는지 확인해보면 아래와 같이 active (running) 상태인 것을 확인할 수 있습니다.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# systemctl status filebeat
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_07.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_07.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;설정---windows&quot;&gt;설정 - Windows&lt;/h2&gt;
 &lt;p&gt;다음으로 Windows 서버에서 설정하는 방법을 살펴보겠습니다.&lt;br /&gt;
 마찬가지로 서버를 선택하고 [수집 설정] 버튼을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_11.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_11.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;로그 수집 설정에서 Log Template은 [EventLog]를 선택합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_12.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_12.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;설정을 마치면 Agent 설치 가이드를 확인할 수 있습니다.&lt;br /&gt;
 서버에서 [Windows PowerShell]을 열고, 아래 명령어를 실행합니다. 마찬가지로 마지막에는 설치 서버에 해당하는 &lt;strong&gt;설치키&lt;/strong&gt;가 포함되어 있습니다.&lt;/p&gt;
@@ -505,26 +505,26 @@ Invoke-Expression &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;New-Object Sys
 &lt;span class=&quot;c&quot;&gt;# Classic 환경&lt;/span&gt;
 Invoke-Expression &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;New-Object System.Net.WebClient&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.DownloadString&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://cm.cla.ncloud.com/setUpwinClaVPC/{설치키(Install Key)}&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_13.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_13.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;설치가 완료되면 마지막에 &lt;strong&gt;Finish Installation&lt;/strong&gt;이라는 메시지가 출력됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_14.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_14.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;windows-server-2019-지원-여부&quot;&gt;Windows Server 2019 지원 여부&lt;/h4&gt;
 &lt;p&gt;현재 Windows Server 2019는 지원하지 않고, 2022년 상반기 지원 예정입니다.&lt;br /&gt;
 Windows Server 2019는 아래와 같이 선택을 해도 [수집 설정] 버튼을 활성화되지 않습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_15.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_15.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;로그-확인&quot;&gt;로그 확인&lt;/h2&gt;
 &lt;p&gt;Agent 설치 후 [Dashboard]를 확인해보면 로그가 수집되고 있을 것을 알 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_08.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_08.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[Search] 메뉴에서는 로그 내용을 자세히 검색, 확인할 수 있고, 굳이 서버에 접속하지 않더라도 필요한 로그를 콘솔 화면에서 직접 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_09.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_09.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;로그-백업&quot;&gt;로그 백업&lt;/h2&gt;
 &lt;p&gt;Cloud Log Analytics는 수집된 로그를 Object Storage로 내보내기하거나 Excel 파일로 다운로드 해서 백업할 수 있는 기능을 지원합니다.&lt;/p&gt;
@@ -532,24 +532,24 @@ Windows Server 2019는 아래와 같이 선택을 해도 [수집 설정] 버튼�
 &lt;h4 id=&quot;수동-백업&quot;&gt;수동 백업&lt;/h4&gt;
 &lt;p&gt;[Search] 메뉴에 [Object Storage로 내보내기]와 [X 다운로드] 버튼이 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_24.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_24.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[Object Storage로 내보내기] 버튼을 클릭하면 내보내기 할 버킷을 선택할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_25.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_25.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;자동-백업&quot;&gt;자동 백업&lt;/h4&gt;
 &lt;p&gt;[Export Log] 메뉴에서 [자동 내보내기 설정]을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_16.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_16.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;설정 화면에서 내보내기를 할 Object Storage의 버킷을 선택합니다. 혹시 버킷이 생성되지 않았다면 Object Storage로 가서 먼저 버킷을 생성하고 와야 합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_17.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_17.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:600px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;내보내기는 하루에 한번 진행되므로 설정 후 다음 날 Object Storage에서 아래와 같이 파일이 저장되어 있는 것을 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_20.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_20.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;로그-수집-해제&quot;&gt;로그 수집 해제&lt;/h2&gt;
 &lt;p&gt;더 이상 로그를 수집할 필요가 없어지면, 로그 수집 설정을 해제하면 됩니다.&lt;/p&gt;
@@ -557,7 +557,7 @@ Windows Server 2019는 아래와 같이 선택을 해도 [수집 설정] 버튼�
 &lt;h4 id=&quot;linux-서버-로그-수집-해제&quot;&gt;Linux 서버 로그 수집 해제&lt;/h4&gt;
 &lt;p&gt;서버를 선택하고 [수집 해제] 버튼을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_22.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_22.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;로그 수집 해제를 위한 가이드에서 로그 수집 Agent 삭제 명령어를 복사합니다.&lt;/p&gt;
 
@@ -567,16 +567,16 @@ Windows Server 2019는 아래와 같이 선택을 해도 [수집 설정] 버튼�
 &lt;span class=&quot;c&quot;&gt;# Classic 환경&lt;/span&gt;
 ~# curl &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; http://cm.cla.ncloud.com/removeCla | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_05.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_05.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Agent 삭제 명령어를 실행하면 아래와 같이 &lt;strong&gt;Success Remove Agent&lt;/strong&gt; 메시지가 출력됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_10.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_10.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;windows-서버-로그-수집-해제&quot;&gt;Windows 서버 로그 수집 해제&lt;/h4&gt;
 &lt;p&gt;마찬가지로 서버를 선택하고 [수집 해제] 버튼을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_22.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_22.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;로그 수집 해제를 위한 가이드에서 로그 수집 Agent 삭제 명령어를 복사합니다.&lt;/p&gt;
 
@@ -586,11 +586,11 @@ Invoke-Expression &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;New-Object Sys
 &lt;span class=&quot;c&quot;&gt;# Classic 환경&lt;/span&gt;
 Invoke-Expression &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;New-Object System.Net.WebClient&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.DownloadString&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://cm.cla.ncloud.com/removewinCla&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_18.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_18.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Agent 삭제 명령어를 실행하면 아래와 같이 &lt;strong&gt;Remove Agent&lt;/strong&gt; 메시지가 출력됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_19.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_19.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;windows-서버-agent-삭제-오류-상황&quot;&gt;Windows 서버 Agent 삭제 오류 상황&lt;/h4&gt;
 &lt;p&gt;Windows 서버에서 Agent 삭제를 시도할 때 아래와 같이 오류 메시지가 발생하는 경우가 있습니다.&lt;br /&gt;
@@ -604,7 +604,7 @@ Invoke-Expression &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;New-Object Sys
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Stop-Service : Cannot find any service with service name &lt;span class=&quot;s1&quot;&gt;&apos;filebeat&apos;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_analytics_cloud_log_analytics_guide_21.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_analytics_cloud_log_analytics_guide_21.png&quot; alt=&quot;Ncloud(네이버 클라우드) Cloud Log Analytics를 설정하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;참고-url&quot;&gt;참고 URL&lt;/h2&gt;
 &lt;ol&gt;
@@ -640,13 +640,13 @@ GTID는 모든 트랜잭션과 1:1 관계이며, GTID를 활용하면 복제본�
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# mysqldump &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; user &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; db-......vpc-cdb.ntruss.com &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; /var/lib/mysql/mysql.sock &lt;span class=&quot;nt&quot;&gt;--single-transaction&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--routines&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--triggers&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--events&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--databases&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; dumpfile1.sql
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_01.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_01.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위에서 생성한 [&lt;strong&gt;–set-gtid-purged=OFF&lt;/strong&gt;] 옵션을 사용하지 않은 백업 파일(dumpfile1.sql)을 이용해서 복구(Restore)시에 아래와 같이 ERROR 1227 (42000) 오류가 발생하면서 복구가 되지 않습니다.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# mysql &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; db-......vpc-cdb.ntruss.com &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; user &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &amp;lt; ./dumpfile1.sql
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_03.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_03.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;해결-방법-1&quot;&gt;해결 방법 1&lt;/h2&gt;
 &lt;p&gt;이번에는 Warning 메시지에 나온 것처럼 [&lt;strong&gt;–set-gtid-purged=OFF&lt;/strong&gt;] 옵션을 사용해서 백업을 받아 보겠습니다.&lt;/p&gt;
@@ -654,14 +654,14 @@ GTID는 모든 트랜잭션과 1:1 관계이며, GTID를 활용하면 복제본�
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# mysqldump &lt;span class=&quot;nt&quot;&gt;--set-gtid-purged&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;OFF &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; user &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; db-......vpc-cdb.ntruss.com &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; /var/lib/mysql/mysql.sock &lt;span class=&quot;nt&quot;&gt;--single-transaction&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--routines&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--triggers&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--events&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--databases&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; dumpfile2.sql
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_02.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_02.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[&lt;strong&gt;–set-gtid-purged=OFF&lt;/strong&gt;] 옵션을 사용해서 생성한 백업 파일(dumpfile2.sql)을 이용해서 복구를 하면 아래와 같이 문제없이 복구가 잘됩니다.&lt;br /&gt;
 그런데 이렇게 옵션을 적용해도 동일한 오류가 발생하는 경우가 있는데 이에 대해서는 아래쪽 [원인 2]에서 확인해보겠습니다.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~# mysql &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; db-......vpc-cdb.ntruss.com &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; user &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &amp;lt; ./dumpfile2.sql
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_04.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_04.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;해결-방법-2&quot;&gt;해결 방법 2&lt;/h2&gt;
 &lt;p&gt;그런데 서비스를 하다 보면 DB 사이즈가 너무 커서 다시 백업을 진행하기 어렵다던가 하는 경우가 있습니다. 이럴 때는 백업 파일에 있는 GTID 관련 내용을 삭제하고 복구하시면 문제가 해결됩니다.&lt;br /&gt;
@@ -682,12 +682,12 @@ SET @@GLOBAL.GTID_PURGED&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span c
 &lt;p&gt;[원인 1]에서는 복구를 시도할 때 [user] 계정을 사용했었는데 이 [user]계정으로 Trigger, Stored Routines (Procedures and Functions), View, Event 등을 생성한 상황에서 다른 계정 [new_user]를 이용해서 복구를 시도하는 상황을 가정보겠습니다. 
 [new_user] 계정으로 복구를 시도하면 [&lt;strong&gt;–set-gtid-purged=OFF&lt;/strong&gt;]을 적용한 백업 파일(dumpfile2.sql)을 이용했음에도 동일한 ERROR 1227 (42000) 오류가 발생하는 것을 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_05.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_05.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;아래와 같이 MySQL은 보안 강화를 위해 Trigger, Stored Routines (Procedures and Functions), View, Event를 처음 생성한 계정을 [&lt;strong&gt;DEFINER&lt;/strong&gt;]로 명시해 둠으로써 다른 계정으로 접근하지 못하도록 하는 것이 기본 설정이 되어 있습니다.&lt;br /&gt;
 그러므로 DB 복구를 시도할 때는 [&lt;strong&gt;DEFINER&lt;/strong&gt;] 관련 내용을 삭제하거나 동일한 계정 또는 SUPER privilege를 가진 계정으로 복구해야 합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_08.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_08.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;해결-방법-1-1&quot;&gt;해결 방법 1&lt;/h2&gt;
 &lt;p&gt;첫번째 해결 방법은 백업 파일에서 [&lt;strong&gt;DEFINER&lt;/strong&gt;] 관련 내용을 모두 찾아서 삭제하는 방법이 있습니다. 
@@ -696,15 +696,15 @@ SET @@GLOBAL.GTID_PURGED&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span c
 &lt;h4 id=&quot;function&quot;&gt;FUNCTION&lt;/h4&gt;
 &lt;p&gt;DB에서 FUNCTION을 사용했다면 아래와 같이 FUNCTION 생성 코드에 [&lt;strong&gt;CREATE DEFINER=`user`@`%` FUNCTION&lt;/strong&gt;]처럼 계정이 표시되는데, 여기서 [&lt;strong&gt;DEFINER=`user`@`%`&lt;/strong&gt;] 이 부분을 삭제하시면 됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_06.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_06.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;procedure&quot;&gt;PROCEDURE&lt;/h4&gt;
 &lt;p&gt;DB에서 PROCEDURE를 사용했다면 아래와 같이 PROCEDURE 생성 코드에 [&lt;strong&gt;CREATE DEFINER=`user`@`%` PROCEDURE&lt;/strong&gt;]처럼 계정이 표시되는데, 여기서 [&lt;strong&gt;DEFINER=`user`@`%`&lt;/strong&gt;] 이 부분을 삭제하시면 됩니다.
-&lt;img src=&quot;../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_07.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_07.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;view&quot;&gt;VIEW&lt;/h4&gt;
 &lt;p&gt;DB에서 VIEW를 사용했다면 아래와 같이 VIEW 생성 코드에 [&lt;strong&gt;/*!50013 DEFINER=`user`@`%` SQL SECURITY DEFINER */&lt;/strong&gt;]처럼 계정이 표시되는데, 여기서는 이 라인을 모두 삭제하시면 됩니다.
-&lt;img src=&quot;../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_08.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_08.png&quot; alt=&quot;네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;해결-방법-2-1&quot;&gt;해결 방법 2&lt;/h2&gt;
 &lt;p&gt;두번째 해결 방법은 백업 파일 [&lt;strong&gt;DEFINER=&lt;/strong&gt;]에 표시되어 있는 계정과 동일한 계정으로 복구를 진행하면 됩니다.&lt;/p&gt;
@@ -854,26 +854,26 @@ VPC를 2개 생성해서 각각 다른 사설 IP 대역을 할당해서 구성 �
 &lt;h2 id=&quot;vpc-생성&quot;&gt;VPC 생성&lt;/h2&gt;
 &lt;p&gt;우선 테스트에 사용할 VPC로 [test-vpc], [test2-vpc] 이렇게 2개를 준비했습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_01.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_01.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;subnet-생성&quot;&gt;Subnet 생성&lt;/h2&gt;
 
 &lt;p&gt;이제 각 VPC에 서브넷을 생성합니다. [test-vpc]에는 [test-subnet(192.168.10.0/24)]으로 생성합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_07.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_07.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[test2-vpc]에는 [test2-subnet(172.16.10.0/24)]으로 생성합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_08.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_08.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;생성된 Subnet은 다음과 같습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_09.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_09.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;vpc-peering-생성&quot;&gt;VPC Peering 생성&lt;/h2&gt;
 &lt;p&gt;네이버 클라우드(Ncloud) 콘솔에서 [Networking] -&amp;gt; [VPC] -&amp;gt; [VPCPeering] 메뉴로 이동해서 [VPC peerig 생성] 버튼을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_02.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_02.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;① 이름을 적고&lt;/li&gt;
@@ -885,15 +885,15 @@ VPC를 2개 생성해서 각각 다른 사설 IP 대역을 할당해서 구성 �
 
 &lt;p class=&quot;success&quot;&gt;다른 계정의 VPC와 연결하는 경우는 아래쪽에서 살펴보겠습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_03.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_03.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;마지막으로 VPC Peering 요청 내용을 확인하고 [확인] 버튼을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_17.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_17.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[test-vpc] -&amp;gt; [test2-vpc]로 설정된 VPC Peering을 아래와 같이 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_04.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_04.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;역방향-설정-추가&quot;&gt;역방향 설정 추가&lt;/h4&gt;
 &lt;p&gt;그런데 VPC peering은 단방향 통신이기에 TCP, ICMP 등의 양방향 통신을 하는 프로토콜을 이용하려면 역방향 즉, [test2-vpc] -&amp;gt; [test-vpc]로 설정된 VPC Peering도 추가해야 합니다.&lt;/p&gt;
@@ -904,15 +904,15 @@ VPC를 2개 생성해서 각각 다른 사설 IP 대역을 할당해서 구성 �
   &lt;li&gt;③ 수락 VPC에는 testVPC를 선택&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_05.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_05.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;VPC Peering 요청 내용을 확인하고 [확인] 버튼을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_18.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_18.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;아래와 같이 [test-vpc] -&amp;gt; [test2-vpc] , [test2-vpc] -&amp;gt; [test-vpc] 2가지 VPC Peering을 모두 생성했으므로 양방향 통신이 가능하게 되었습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_06.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_06.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;route-table-설정&quot;&gt;Route Table 설정&lt;/h2&gt;
 
@@ -920,7 +920,7 @@ VPC를 2개 생성해서 각각 다른 사설 IP 대역을 할당해서 구성 �
 
 &lt;p&gt;우선 [VPC] - [Route Table]에서, [test-vpc-default-public-table]의 [Routes 설정]을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_11.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_11.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Destination에는 [test2-subnet]의 아이피 대역을 입력 (서버의 아이피로 입력해도 됨)&lt;/li&gt;
@@ -928,11 +928,11 @@ VPC를 2개 생성해서 각각 다른 사설 IP 대역을 할당해서 구성 �
   &lt;li&gt;Target Name은 [test-vpc-peering]을 선택&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_12.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_12.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;다음으로 [test2-vpc-default-public-table]의 [Routes 설정]을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_13.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_13.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Destination에는 [test-subnet]의 아이피 대역을 입력 (서버의 아이피로 입력해도 됨)&lt;/li&gt;
@@ -940,55 +940,55 @@ VPC를 2개 생성해서 각각 다른 사설 IP 대역을 할당해서 구성 �
   &lt;li&gt;Target Name은 [test2-vpc-peering]을 선택&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_14.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_14.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;서버-준비&quot;&gt;서버 준비&lt;/h2&gt;
 &lt;p&gt;아래와 같이 테스트로 사용할 서버 2대를 준비했습니다.&lt;br /&gt;
 테스트는 [test-vpc]에 위치한 [test-vpc-peering-svr]서버 -&amp;gt; [test2-vpc]에 위치한 [test2-vpc-peering-svr]로 접속 시도를 해보겠습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_15.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_15.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;acg-설정&quot;&gt;ACG 설정&lt;/h2&gt;
 &lt;p&gt;ACG를 설정하지 않고 [test-vpc-peering-svr] -&amp;gt; [test2-vpc-peering-svr]로 접속 시도를 하면 접속이 되지 않는 것을 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_19.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_19.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[test2-vpc-peering-svr]로 접속할 것이므로 해당 서버에 설정된 acg인 [test2-vpc-default-acg]를 선택하고 [ACG 설정] 버튼을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_20.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_20.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;접근소스에는 [test-vpc-peering-svr] 서버의 subnet 대역인 [192.168.10.0/24]를 입력하고, 포트는 22번 포트를 입력하고 추가해서 적용합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_21.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_21.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;접속-테스트&quot;&gt;접속 테스트&lt;/h2&gt;
 &lt;p&gt;ACG 설정까지 완료하고 나서 다시 접속 테스트를 해보면 아래와 같이 접속이 잘 되는 것을 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_22.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_22.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;다른-계정-vpc-연결&quot;&gt;다른 계정 VPC 연결&lt;/h2&gt;
 &lt;p&gt;위에서는 동일한 내 계정에 생성된 VPC들 간의 Peering을 살펴보았는데, 아래에서는 다른 계정에 생성된 VPC와 연결할 때의 화면을 살펴보겠습니다.&lt;/p&gt;
 
 &lt;p&gt;VPC Peering 생성 화면에서 [다른 계정]을 선택하면 아래와 같이 [로그인 ID (이메일)], [VPC ID], [VPC 이름]을 입력하게 됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_23.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_23.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:700px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;마찬가지로 VPC Peering 요청 내용을 확인하고 [확인] 버튼을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_24.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_24.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;다음으로 수락을 요청받은 다른 계정의 VPC Peering 화면에 가면 요청 내용을 확인할 수 있고, 요청 응답에서 [수락] 버튼을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_25.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_25.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;한번 더 VPC Peering 연결 요청을 수락할 것인지 확인하는 창이 나타납니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_26.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_26.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;수락하고 나면 역방향의 VPC Peering 연결을 생성해야 한다는 안내와 함께 역방향 VPC Peering 생성 화면이 나타납니다.&lt;br /&gt;
 역방향은 위의 설정과 반대로 진행하면 되고, 그 이후에는 내 계정에서 설정했던 것과 마찬가지로 설정하시면 완료됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_networking_vpc_peering_guide_27.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_networking_vpc_peering_guide_27.png&quot; alt=&quot;네이버 클라우드 VPC 환경에서 VPC Peering 생성 가이드 &quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;제한사항&quot;&gt;제한사항&lt;/h2&gt;
 &lt;ul&gt;
@@ -1026,7 +1026,7 @@ VPC를 2개 생성해서 각각 다른 사설 IP 대역을 할당해서 구성 �
 
 &lt;p&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://www.python.org/downloads/&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/python_install_01.png&quot; alt=&quot;python 설치 화면&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/python_install_01.png&quot; alt=&quot;python 설치 화면&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;python-설치&quot;&gt;Python 설치&lt;/h2&gt;
 
@@ -1034,13 +1034,13 @@ VPC를 2개 생성해서 각각 다른 사설 IP 대역을 할당해서 구성 �
 &lt;p&gt;Python 설치 시작화면에 PATH에 python을 추가하는 옵션이 있습니다.&lt;br /&gt;
 “&lt;strong&gt;Add Python 3.9 to PATH&lt;/strong&gt;” 옵션을 선택하고 설치를 시작하면 됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/python_install_02.png&quot; alt=&quot;python 설치 화면&quot; style=&quot;width:660px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/python_install_02.png&quot; alt=&quot;python 설치 화면&quot; style=&quot;width:660px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;path-문자-길이-제한-해제&quot;&gt;PATH 문자 길이 제한 해제&lt;/h4&gt;
 &lt;p&gt;Windows에는 기본설정에 파일경로가 최대 260자로 제한되어 있는데, 이 제한을 풀것인지 확인하는 과정입니다.&lt;br /&gt;
 “&lt;strong&gt;Disable path length limit&lt;/strong&gt;” 옵션이 나오는데, 특별한 문제가 없다면 해제하고 가면 됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/python_install_03.png&quot; alt=&quot;python 설치 화면&quot; style=&quot;width:660px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/python_install_03.png&quot; alt=&quot;python 설치 화면&quot; style=&quot;width:660px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;cli-client-설치&quot;&gt;CLI Client 설치&lt;/h2&gt;
 
@@ -1049,7 +1049,7 @@ VPC를 2개 생성해서 각각 다른 사설 IP 대역을 할당해서 구성 �
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;python-keystoneclient&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;3.17.0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_01.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_01.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;python-swiftclient--360-설치&quot;&gt;python-swiftclient : 3.6.0 설치&lt;/h4&gt;
 &lt;p&gt;다음으로 실제 명령을 수행하는 Swift Client를 설치합니다.&lt;/p&gt;
@@ -1057,7 +1057,7 @@ VPC를 2개 생성해서 각각 다른 사설 IP 대역을 할당해서 구성 �
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;python-swiftclient&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;3.6.0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_02.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_02.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;client-설치-오류&quot;&gt;Client 설치 오류&lt;/h2&gt;
 &lt;p&gt;Python Clinet를 설치하는 도중에 아래와 같은 메시지가 나타나면서 오류가 발생하는 경우가 있습니다. 
@@ -1069,7 +1069,7 @@ Microsoft Visual C++ Build Tools 등이 설치되어 있지 않아서 인데 설
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fatal error C1083: 포함 파일을 열 수 없습니다. &lt;span class=&quot;s1&quot;&gt;&apos;basetsd.h&apos;&lt;/span&gt; : No such file or directory
 error: &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;C:\\Program Files (x86)\\Microsoft Visual Studio\\....... .....\\cl.exe&apos;&lt;/span&gt; failed with &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;code 2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_21.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_21.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;방법-1--build-tools-직접-설치&quot;&gt;방법 1 : Build Tools 직접 설치&lt;/h4&gt;
 &lt;p&gt;첫번째 방법은 Build Tools를 따로 설치하는 방법입니다. 
@@ -1078,13 +1078,13 @@ error: &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quo
 
 &lt;p&gt;&lt;a href=&quot;https://visualstudio.microsoft.com/ko/vs/older-downloads/&quot; target=&quot;_blank&quot; style=&quot;word-break:break-all;&quot;&gt;https://visualstudio.microsoft.com/ko/vs/older-downloads/&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_03.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_03.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;방법-2--visual-studio-installer-설치&quot;&gt;방법 2 : Visual Studio Installer 설치&lt;/h4&gt;
 &lt;p&gt;Visual Studio가 설치되어 있는 경우에는 위 1번 방법으로 설치가 되지 않는 경우가 있으므로 Visual Studio Installer에서 설치하도록 하겠습니다.&lt;br /&gt;
 [Visual Studio Installer]를 실행하셔서 설치된 Visual Studio 메뉴의 [수정] 버튼을 클릭합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_04.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_04.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;나타난 화면에서 [C++를 사용한 데스크톱 개발]을 선택하시고 오른쪽 [설치 세부정보]에서  다음 2가지를 선택해서 설치하시면 됩니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -1092,7 +1092,7 @@ error: &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quo
   &lt;li&gt;Windows 10 SDK&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_05.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_05.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;인증-토큰-생성&quot;&gt;인증 토큰 생성&lt;/h2&gt;
 &lt;p&gt;CLI Client가 모두 설치되었으면 이제 접속을 위한 인증 토큰을 생성해야 합니다. 
@@ -1104,23 +1104,23 @@ error: &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quo
 &lt;h4 id=&quot;네이버-클라우드-api-인증키--access_key_id-secret_key&quot;&gt;네이버 클라우드 API 인증키 : access_key_id, secret_key&lt;/h4&gt;
 &lt;p&gt;두가지 Key는 네이버 클라우드 API 인증키로 [네이버 클라우드 포탈] -&amp;gt; [마이페이지] -&amp;gt; [계정관리] -&amp;gt; [인증키 관리] - [API 인증키 관리] 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_api_auth_key_create.png&quot; alt=&quot;네이버 클라우드 API 인증키 생성하기&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_api_auth_key_create.png&quot; alt=&quot;네이버 클라우드 API 인증키 생성하기&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;archive-storage-api-정보--domain_id-project_id&quot;&gt;Archive Storage API 정보:  domain_id, project_id&lt;/h4&gt;
 &lt;p&gt;두가지 id 값은 Archive Storage API 이용을 위한 Domain ID와 Project ID로 [네이버 클라우드 포탈] - [Archive Storage]에서 [API 이용 정보 확인] 버튼을 클릭하면 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_api_access_token_create_01.png&quot; alt=&quot;네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_api_access_token_create_01.png&quot; alt=&quot;네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[API 이용 정보 확인] 창에서 Domain ID와 Project ID를 확인하고, 인증토큰 생성 코드에 입력합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_api_access_token_create_02.png&quot; alt=&quot;네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_api_access_token_create_02.png&quot; alt=&quot;네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위에서 확인한 설정 값 4가지를 추가해서 인증토큰 생성 명령을 실행하면 아래와 같이 생성된 인증토큰이 출력됩니다.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OS_STORAGE_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://kr.archive.ncloudstorage.com/v1/AUTH_&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;project_id&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OS_AUTH_TOKEN&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;인증 토큰&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_06.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_06.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;인증-토큰-유효-시간&quot;&gt;인증 토큰 유효 시간&lt;/h2&gt;
 &lt;p&gt;API 인증 토큰의 유효 시간은 24시간이고 삭제 요청을 호출하면 삭제할 수 있습니다.&lt;/p&gt;
@@ -1131,19 +1131,19 @@ error: &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quo
 &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OS_AUTH_TOKEN&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;인증 토큰&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_07.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_07.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;컨테이너버킷-조회&quot;&gt;컨테이너(버킷) 조회&lt;/h2&gt;
 &lt;p&gt;현재 Archive Storage에 생성되어 있는 컨테이너(버킷)을 확인할 수 있는 명령어는 다음과 같습니다.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;swift list
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_08.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_08.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;컨테이너버킷의-모든-오브젝트-조회&quot;&gt;컨테이너(버킷)의 모든 오브젝트 조회&lt;/h4&gt;
 &lt;p&gt;특정 컨테이너(버킷)의 모든 오브젝트 목록을 확인하는 명령어는 마지막에 컨테이너(버킷) 이름을 적어주면 됩니다.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;swift list &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;컨테이너&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;버킷&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 이름&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_09.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_09.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;파일-업로드&quot;&gt;파일 업로드&lt;/h2&gt;
 &lt;p&gt;파일 업로드 명령은 특정 파일을 업로드 하는 명령과 폴더를 통째로 업로드 하는 명령을 각각 확인해보겠습니다.&lt;/p&gt;
@@ -1155,7 +1155,7 @@ error: &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quo
 
 &lt;p&gt;폴더 파일을 업로드 후에 list 명령어로 컨테이너(버킷)의 오브젝트 목록을 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_10.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_10.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;개별-파일-업로드&quot;&gt;개별 파일 업로드&lt;/h4&gt;
 &lt;p&gt;특정 파일을 업로드 하려면 다음처럼 명령을 실행하면 됩니다.&lt;/p&gt;
@@ -1164,7 +1164,7 @@ error: &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quo
 
 &lt;p&gt;마찬가지로 파일을 업로드 후에 list 명령어로 확인해보시면 됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_11.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_11.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;파일-삭제&quot;&gt;파일 삭제&lt;/h2&gt;
 &lt;p&gt;파일 삭제도 개별 파일 삭제와 폴더 삭제 2가지로 나누어서 확인해보겠습니다.&lt;/p&gt;
@@ -1173,13 +1173,13 @@ error: &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quo
 &lt;p&gt;특정 파일을 삭제하는 명령은 다음과 같습니다.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;swift delete &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;컨테이너&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;버킷&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 이름&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;Archive Storage 파일 전체 경로&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_12.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_12.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;폴더-삭제&quot;&gt;폴더 삭제&lt;/h4&gt;
 &lt;p&gt;폴더 전체를 삭제하는 명령은 prefix 옵션이 들어갑니다.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;swift delete &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;컨테이너&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;버킷&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 이름&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--prefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;Archive Storage 폴더 경로&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_13.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_13.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;파일-다운로드&quot;&gt;파일 다운로드&lt;/h2&gt;
 &lt;p&gt;파일 다운로드는 개별 파일 다운로드와 폴더 다운로드 그리고, 컨테이너(버킷) 파일 전체 다운로드를 실행해 보고, 로컬PC에서 다운로드 된 것을 확인해보겠습니다.&lt;/p&gt;
@@ -1188,32 +1188,32 @@ error: &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quo
 &lt;p&gt;개별 파일 다운로드에는 output 옵션이 필요합니다.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;swift download &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;컨테이너&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;버킷&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 이름&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;저장할 로컬PC 파일 전체 경로&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;Archive Storage 파일 전체 경로&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_14.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_14.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;로컬PC에서 확인을 해보면 아래와 같이 다운로드된 파일을 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_15.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_15.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;폴더-다운로드&quot;&gt;폴더 다운로드&lt;/h4&gt;
 &lt;p&gt;폴더 다운로드에는 output-dir 옵션이 필요합니다.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;swift download &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;컨테이너&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;버킷&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 이름&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--output-dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;저장할 로컬PC 폴더 경로&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;Archive Storage 폴더 경로&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_16.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_16.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;로컬PC에서 확인을 해보면 아래와 같이 폴더가 다운로드 된 것을 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_17.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_17.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;컨테이너버킷-전체-다운로드&quot;&gt;컨테이너(버킷) 전체 다운로드&lt;/h4&gt;
 &lt;p&gt;컨테이너(버킷)에 있는 모든 파일을 다운로드 할 때는 아래와 같이 폴더 다운로드 명령에서 마지막에 있는 파일명이나 폴더명 파라미터를 지우시면 됩니다.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;swift download &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;컨테이너&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;버킷&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 이름&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--output-dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;저장할 로컬PC 폴더 경로&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_18.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_18.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;로컬PC에서 확인을 해보면 폴더와 파일이 모두 다운로드 된 것을 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_cli_windows_guide_19.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_cli_windows_guide_19.png&quot; alt=&quot;네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;주의-사항&quot;&gt;주의 사항&lt;/h2&gt;
 
@@ -1378,11 +1378,11 @@ error: &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quo
 &lt;p&gt;Archive Storage API 이용을 위한 Project ID는 [네이버 클라우드 포탈] - [Archive Storage]에서 [API 이용 정보 확인] 버튼을 클릭하면 확인할 수 있습니다.&lt;br /&gt;
 테스트에 사용할 컨테이너(버킷)은 [test]로 설정해두었습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_api_get_container_by_php_04.png&quot; alt=&quot;네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_api_get_container_by_php_04.png&quot; alt=&quot;네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[API 이용 정보 확인] 창에서 Project ID를 확인하고, PHP 소스코드에 입력합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_api_access_token_create_02.png&quot; alt=&quot;네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_api_access_token_create_02.png&quot; alt=&quot;네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;api-서버와-url-설정&quot;&gt;API 서버와 URL 설정&lt;/h4&gt;
 &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nv&quot;&gt;$api_server&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://kr.archive.ncloudstorage.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -1496,17 +1496,17 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 &lt;h2 id=&quot;목록-출력-예시&quot;&gt;목록 출력 예시&lt;/h2&gt;
 &lt;p&gt;위의 코드를 실행하면 다음과 같이 오브젝트 목록이 출력됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_api_get_container_by_php_02.png&quot; alt=&quot;네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_api_get_container_by_php_02.png&quot; alt=&quot;네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;출력된 오브젝트 정보가 올바른지 확인하기 위해 네이버 클라우드(Ncloud) 콘솔에서 해당 컨테이너(버킷)의 정보를 확인하면 다음과 같이 일치하는 것을 알 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_api_get_container_by_php_01.png&quot; alt=&quot;네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_api_get_container_by_php_01.png&quot; alt=&quot;네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;제한-사항&quot;&gt;제한 사항&lt;/h2&gt;
 &lt;p&gt;Archive Storage API를 이용해서 가져올 수 있는 오브젝트 목록의 최대 개수는 10,000개입니다. 
 1만개 이상이 등록된 컨테이너(버킷)에서 오브젝트 목록을 요청해도 아래와 같이 최대 10,000개 까지만 가져올 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_api_get_container_by_php_03.png&quot; alt=&quot;네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_api_get_container_by_php_03.png&quot; alt=&quot;네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p class=&quot;success&quot;&gt;컨테이너(버킷)에 10,000개 이상의 오브젝트가 저장되어 있을 경우에는 아래쪽에서 소개하는 방법처럼 폴더별로 오브젝트 목록을 따로 조회하시면 됩니다.&lt;/p&gt;
 
@@ -1530,7 +1530,7 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 &lt;p&gt;API URL을 호출할 때 파라미터로 prefix를 전송하면 prefix 값에 해당하는 특정 문자열로 시작하는 오브젝트 목록을 모두 가져 옵니다.&lt;br /&gt;
 예를 들어 prefix 값을 [Test_Folder]로 설정하면, 아래와 같이 [Test_Folder]라는 이름으로 시작되는 모든 오브젝트 목록을 가져오게 됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_api_get_container_by_php_05.png&quot; alt=&quot;네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_api_get_container_by_php_05.png&quot; alt=&quot;네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;특정-폴더-아래에-있는-오브젝트-목록&quot;&gt;특정 폴더 아래에 있는 오브젝트 목록&lt;/h4&gt;
 &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nv&quot;&gt;$ncloud_object_prefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Test_Folder/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -1542,7 +1542,7 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 
 &lt;p&gt;위쪽에서 확인한 [특정 이름으로 시작하는 오브젝트 목록]의 결과 예시와는 다르게 폴더 자체인 [Test_Folder] 그리고 [Test_Folder_0001.png]는 포함되어 있지 않습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_api_get_container_by_php_06.png&quot; alt=&quot;네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_api_get_container_by_php_06.png&quot; alt=&quot;네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;api-기타-기능&quot;&gt;API 기타 기능&lt;/h2&gt;
 &lt;p&gt;Archive Storage API에서 지원하는 기능은 컨테이너(버킷)의 오브젝트 목록 외에도 아래와 같이 여러가지가 있습니다. 
@@ -1702,7 +1702,7 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;네이버 클라우드 인증키는 [네이버 클라우드 포탈] -&amp;gt; [마이페이지] -&amp;gt; [계정관리] -&amp;gt; [인증키 관리] - [API 인증키 관리] 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_api_auth_key_create.png&quot; alt=&quot;네이버 클라우드 API 인증키 생성하기&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_api_auth_key_create.png&quot; alt=&quot;네이버 클라우드 API 인증키 생성하기&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;archive-storage-api-이용-정보&quot;&gt;Archive Storage API 이용 정보&lt;/h4&gt;
 &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nv&quot;&gt;$ncloud_domain_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Archive Storage 도메인 ID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -1710,11 +1710,11 @@ curl_setopt($ch, CURLOPT_HEADER, TRUE); 는 Response에 body 뿐만 아니라 he
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Archive Storage API 이용을 위한 Domain ID와 Project ID는 [네이버 클라우드 포탈] - [Archive Storage]에서 [API 이용 정보 확인] 버튼을 클릭하면 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_api_access_token_create_01.png&quot; alt=&quot;네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_api_access_token_create_01.png&quot; alt=&quot;네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법&quot; style=&quot;width:770px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[API 이용 정보 확인] 창에서 Domain ID와 Project ID를 확인하고, PHP 소스코드에 입력합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../images/ncloud_storage_archive_storage_api_access_token_create_02.png&quot; alt=&quot;네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ncloud_storage_archive_storage_api_access_token_create_02.png&quot; alt=&quot;네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법&quot; style=&quot;width:500px;align:center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;api-서버와-url-설정&quot;&gt;API 서버와 URL 설정&lt;/h4&gt;
 &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nv&quot;&gt;$api_server&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://kr.archive.ncloudstorage.com:5000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;

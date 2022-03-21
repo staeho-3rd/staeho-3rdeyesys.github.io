@@ -64,7 +64,7 @@ aws cli를 설치하려면 pip가 먼저 설치되어 있어야 합니다.
 ## API 인증키 생성
 네이버 클라우드 포탈 -> 마이페이지 -> 계정관리 -> 인증키 관리 - API 인증키 관리 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.
 
-<img src="../../images/ncloud_api_auth_key_create.png" alt="AWS CLI를 이용한 Object Storage 접속 방법" style="width:770px;align:center">
+<img src="/images/ncloud_api_auth_key_create.png" alt="AWS CLI를 이용한 Object Storage 접속 방법" style="width:770px;align:center">
 
 ## AWS CLI 환경 설정
 이제 AWS CLI로 접속하기 위해 환경설정을 해야 합니다.  
@@ -81,7 +81,7 @@ Default output format [None]: [Enter]
 ## Object Storage Bucket 생성
 Object Storage에 data-back-up Bucket을 생성하고 그 아래에 db 폴더를 생성합니다.
 
-<img src="../../images/ncp_database_mysql_backup_to_object_storage_01.jpg" alt="AWS CLI를 이용한 Object Storage 접속 방법" style="width:800px;align:center">
+<img src="/images/ncp_database_mysql_backup_to_object_storage_01.jpg" alt="AWS CLI를 이용한 Object Storage 접속 방법" style="width:800px;align:center">
 
 ## Object Storage 접속 테스트
 이제 Object Storage로 접속해보겠습니다. 얼핏 명령어만 보면 AWS에 접속하는 것처럼 보입니다. 그래서 네이버 클라우드로 접속하기 위한 --endpoint-url= 로 시작하는 옵션이 반드시 필요합니다.
@@ -126,7 +126,7 @@ aws --endpoint-url=https://kr.object.ncloudstorage.com s3 sync /data_backup/ s3:
 ## 백업 결과 확인
 백업이 진행되고 나면 아래와 같이 db 백업 파일이 Object Storage에 저장된 것을 확인할 수 있습니다.  
 스샷에서는 빠른 확인을 위해 새벽 6시가 아닌 5분 단위로 백업한 내역입니다.
-<img src="../../images/ncp_database_mysql_backup_to_object_storage_02.jpg" alt="AWS CLI를 이용한 Object Storage 접속 방법" style="width:800px;align:center">
+<img src="/images/ncp_database_mysql_backup_to_object_storage_02.jpg" alt="AWS CLI를 이용한 Object Storage 접속 방법" style="width:800px;align:center">
 
 ## 참고 URL
 1. mysql DB 자동백업 방법

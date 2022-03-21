@@ -25,10 +25,10 @@ root 계정에 대한 보안 설정은 **/etc/ssh/sshd_config** 파일에 있습
 ```
 <br />
 #### CentOS
-<img src="../../images/ncp_server_ssh_security_setting_01.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center">
+<img src="/images/ncp_server_ssh_security_setting_01.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center">
 
 #### Ubuntu
-<img src="../../images/ncp_server_ssh_security_setting_06.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center">
+<img src="/images/ncp_server_ssh_security_setting_06.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center">
 
 ## root 로그인 차단
 로그인 차단은 위 설정에서 PermitRootLogin 항목을 바꾸시면 됩니다.  
@@ -47,7 +47,7 @@ PermitRootLogin yes
 # 변경
 PermitRootLogin no
 ```
-<img src="../../images/ncp_server_ssh_security_setting_02.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center">
+<img src="/images/ncp_server_ssh_security_setting_02.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center">
 
 #### 기타 옵션
 ``` bash
@@ -76,7 +76,7 @@ MaxAuthTries 3
 <br />
 데몬 재시작 후 로그인을 시도해보면 로그인이 실패하는 것을 확인하실 수 있습니다.
 
-<img src="../../images/ncp_server_ssh_security_setting_03.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center">
+<img src="/images/ncp_server_ssh_security_setting_03.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center">
 
 ## SSH 접속 로그 확인
 SSH로 접속을 하면 성공, 실패에 대한 로그가 모두 남게 되는데, 이 로그를 주기적으로 확인하는 것이 좋습니다.
@@ -88,13 +88,13 @@ SSH로 접속을 하면 성공, 실패에 대한 로그가 모두 남게 되는�
 # 또는
 ~# lastb
 ```
-<img src="../../images/ncp_server_ssh_security_setting_04.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center">
+<img src="/images/ncp_server_ssh_security_setting_04.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center">
 
 #### 접속 성공 로그
 ``` bash
 ~# last -f /var/log/wtmp
 ```
-<img src="../../images/ncp_server_ssh_security_setting_05.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center">
+<img src="/images/ncp_server_ssh_security_setting_05.jpg" alt="리눅스서버 SSH 접속 보안 설정하기" style="width:660px;align:center">
 
 
 

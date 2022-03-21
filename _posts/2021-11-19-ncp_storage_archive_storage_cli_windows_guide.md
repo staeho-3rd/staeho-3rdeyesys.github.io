@@ -26,7 +26,7 @@ Archive Storage가 OepnStack으로 구성되어 있고, Client는 Python 기반�
 
 <a href="https://www.python.org/downloads/" target="_blank" style="word-break:break-all;">https://www.python.org/downloads/</a>
 
-<img src="../../images/python_install_01.png" alt="python 설치 화면" style="width:770px;align:center">
+<img src="/images/python_install_01.png" alt="python 설치 화면" style="width:770px;align:center">
 
 ## Python 설치
 
@@ -34,13 +34,13 @@ Archive Storage가 OepnStack으로 구성되어 있고, Client는 Python 기반�
 Python 설치 시작화면에 PATH에 python을 추가하는 옵션이 있습니다.  
 "**Add Python 3.9 to PATH**" 옵션을 선택하고 설치를 시작하면 됩니다.
 
-<img src="../../images/python_install_02.png" alt="python 설치 화면" style="width:660px;align:center">
+<img src="/images/python_install_02.png" alt="python 설치 화면" style="width:660px;align:center">
 
 #### PATH 문자 길이 제한 해제
 Windows에는 기본설정에 파일경로가 최대 260자로 제한되어 있는데, 이 제한을 풀것인지 확인하는 과정입니다.  
 "**Disable path length limit**" 옵션이 나오는데, 특별한 문제가 없다면 해제하고 가면 됩니다.
 
-<img src="../../images/python_install_03.png" alt="python 설치 화면" style="width:660px;align:center">
+<img src="/images/python_install_03.png" alt="python 설치 화면" style="width:660px;align:center">
 
 
 ## CLI Client 설치
@@ -51,7 +51,7 @@ Windows에는 기본설정에 파일경로가 최대 260자로 제한되어 있�
 ``` bash
 pip install python-keystoneclient==3.17.0
 ```
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_01.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_01.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 #### python-swiftclient : 3.6.0 설치
 다음으로 실제 명령을 수행하는 Swift Client를 설치합니다.
@@ -60,7 +60,7 @@ pip install python-keystoneclient==3.17.0
 pip install python-swiftclient==3.6.0
 ```
 
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_02.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_02.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 
 ## Client 설치 오류
@@ -75,7 +75,7 @@ error: Microsoft Visual C++ 14.0 is required. Get it with "Microsoft Visual C++ 
 fatal error C1083: 포함 파일을 열 수 없습니다. 'basetsd.h' : No such file or directory
 error: command 'C:\\Program Files (x86)\\Microsoft Visual Studio\\....... .....\\cl.exe' failed with exit code 2
 ```
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_21.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_21.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 #### 방법 1 : Build Tools 직접 설치
 첫번째 방법은 Build Tools를 따로 설치하는 방법입니다. 
@@ -84,19 +84,19 @@ error: command 'C:\\Program Files (x86)\\Microsoft Visual Studio\\....... .....\
 
 <a href="https://visualstudio.microsoft.com/ko/vs/older-downloads/" target="_blank" style="word-break:break-all;">https://visualstudio.microsoft.com/ko/vs/older-downloads/</a>
 
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_03.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_03.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 #### 방법 2 : Visual Studio Installer 설치
 Visual Studio가 설치되어 있는 경우에는 위 1번 방법으로 설치가 되지 않는 경우가 있으므로 Visual Studio Installer에서 설치하도록 하겠습니다.  
 [Visual Studio Installer]를 실행하셔서 설치된 Visual Studio 메뉴의 [수정] 버튼을 클릭합니다.
 
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_04.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_04.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 나타난 화면에서 [C++를 사용한 데스크톱 개발]을 선택하시고 오른쪽 [설치 세부정보]에서  다음 2가지를 선택해서 설치하시면 됩니다. 
 - MSVC vXXX - VS 20XX C++ x64/x86 빌드 도구
 - Windows 10 SDK
 
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_05.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_05.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 ## 인증 토큰 생성
 CLI Client가 모두 설치되었으면 이제 접속을 위한 인증 토큰을 생성해야 합니다. 
@@ -109,16 +109,16 @@ swift --os-auth-url https://kr.archive.ncloudstorage.com:5000/v3 --auth-version 
 #### 네이버 클라우드 API 인증키 : access_key_id, secret_key
 두가지 Key는 네이버 클라우드 API 인증키로 [네이버 클라우드 포탈] -> [마이페이지] -> [계정관리] -> [인증키 관리] - [API 인증키 관리] 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.
 
-<img src="../../images/ncloud_api_auth_key_create.png" alt="네이버 클라우드 API 인증키 생성하기" style="width:770px;align:center">
+<img src="/images/ncloud_api_auth_key_create.png" alt="네이버 클라우드 API 인증키 생성하기" style="width:770px;align:center">
 
 #### Archive Storage API 정보:  domain_id, project_id
 두가지 id 값은 Archive Storage API 이용을 위한 Domain ID와 Project ID로 [네이버 클라우드 포탈] - [Archive Storage]에서 [API 이용 정보 확인] 버튼을 클릭하면 확인할 수 있습니다.
 
-<img src="../../images/ncloud_storage_archive_storage_api_access_token_create_01.png" alt="네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_api_access_token_create_01.png" alt="네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법" style="width:770px;align:center">
 
 [API 이용 정보 확인] 창에서 Domain ID와 Project ID를 확인하고, 인증토큰 생성 코드에 입력합니다.
 
-<img src="../../images/ncloud_storage_archive_storage_api_access_token_create_02.png" alt="네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법" style="width:500px;align:center">
+<img src="/images/ncloud_storage_archive_storage_api_access_token_create_02.png" alt="네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법" style="width:500px;align:center">
 
 위에서 확인한 설정 값 4가지를 추가해서 인증토큰 생성 명령을 실행하면 아래와 같이 생성된 인증토큰이 출력됩니다.
 ``` bash
@@ -126,7 +126,7 @@ export OS_STORAGE_URL=https://kr.archive.ncloudstorage.com/v1/AUTH_{project_id}
 export OS_AUTH_TOKEN={인증 토큰}
 ```
 
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_06.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_06.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 ## 인증 토큰 유효 시간
 API 인증 토큰의 유효 시간은 24시간이고 삭제 요청을 호출하면 삭제할 수 있습니다.
@@ -138,7 +138,7 @@ set OS_STORAGE_URL=https://kr.archive.ncloudstorage.com/v1/AUTH_{project_id}
 set OS_AUTH_TOKEN={인증 토큰}
 ```
 
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_07.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_07.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 
 ## 컨테이너(버킷) 조회
@@ -146,14 +146,14 @@ set OS_AUTH_TOKEN={인증 토큰}
 ``` bash
 swift list
 ```
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_08.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_08.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 #### 컨테이너(버킷)의 모든 오브젝트 조회
 특정 컨테이너(버킷)의 모든 오브젝트 목록을 확인하는 명령어는 마지막에 컨테이너(버킷) 이름을 적어주면 됩니다.
 ``` bash
 swift list {컨테이너(버킷) 이름}
 ```
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_09.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_09.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 
 ## 파일 업로드
@@ -167,7 +167,7 @@ swift upload {컨테이너(버킷) 이름} --object-name {저장할 Archive Stor
 
 폴더 파일을 업로드 후에 list 명령어로 컨테이너(버킷)의 오브젝트 목록을 확인할 수 있습니다.
 
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_10.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_10.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 #### 개별 파일 업로드 
 특정 파일을 업로드 하려면 다음처럼 명령을 실행하면 됩니다.
@@ -177,7 +177,7 @@ swift upload {컨테이너(버킷) 이름} --object-name {저장할 Archive Stor
 
 마찬가지로 파일을 업로드 후에 list 명령어로 확인해보시면 됩니다.
 
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_11.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_11.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 ## 파일 삭제
 파일 삭제도 개별 파일 삭제와 폴더 삭제 2가지로 나누어서 확인해보겠습니다.
@@ -187,14 +187,14 @@ swift upload {컨테이너(버킷) 이름} --object-name {저장할 Archive Stor
 ``` bash
 swift delete {컨테이너(버킷) 이름} {Archive Storage 파일 전체 경로}
 ```
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_12.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_12.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 #### 폴더 삭제
 폴더 전체를 삭제하는 명령은 prefix 옵션이 들어갑니다.
 ``` bash
 swift delete {컨테이너(버킷) 이름} --prefix {Archive Storage 폴더 경로}
 ```
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_13.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_13.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 
 ## 파일 다운로드
@@ -205,11 +205,11 @@ swift delete {컨테이너(버킷) 이름} --prefix {Archive Storage 폴더 경�
 ``` bash
 swift download {컨테이너(버킷) 이름} --output {저장할 로컬PC 파일 전체 경로} {Archive Storage 파일 전체 경로}
 ```
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_14.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_14.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 로컬PC에서 확인을 해보면 아래와 같이 다운로드된 파일을 확인할 수 있습니다.
 
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_15.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_15.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 #### 폴더 다운로드
 폴더 다운로드에는 output-dir 옵션이 필요합니다.
@@ -217,22 +217,22 @@ swift download {컨테이너(버킷) 이름} --output {저장할 로컬PC 파일
 swift download {컨테이너(버킷) 이름} --output-dir {저장할 로컬PC 폴더 경로} {Archive Storage 폴더 경로}
 ```
 
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_16.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_16.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 로컬PC에서 확인을 해보면 아래와 같이 폴더가 다운로드 된 것을 확인할 수 있습니다.
 
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_17.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_17.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 #### 컨테이너(버킷) 전체 다운로드
 컨테이너(버킷)에 있는 모든 파일을 다운로드 할 때는 아래와 같이 폴더 다운로드 명령에서 마지막에 있는 파일명이나 폴더명 파라미터를 지우시면 됩니다.
 ``` bash
 swift download {컨테이너(버킷) 이름} --output-dir {저장할 로컬PC 폴더 경로}
 ```
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_18.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_18.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 로컬PC에서 확인을 해보면 폴더와 파일이 모두 다운로드 된 것을 확인할 수 있습니다.
 
-<img src="../../images/ncloud_storage_archive_storage_cli_windows_guide_19.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_cli_windows_guide_19.png" alt="네이버 클라우드 Archive Storage CLI를 Windows 환경에서 사용하는 방법에 대한 가이드" style="width:770px;align:center">
 
 
 ## 주의 사항

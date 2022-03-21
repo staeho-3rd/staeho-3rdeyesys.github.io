@@ -25,18 +25,18 @@ v2_link: /storage/ncloud_storage_object_storage_lifecycle_management.html
 
 그리고 이동 시점은 파일이 Object Storage에 저장-생성된 후 경과한 일자를 기준으로 하며 1일 ~ 3,650일 사이의 값을 입력합니다.
 
-<img src="../../images/ncp_storage_object_storage_lifecycle_01.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:650px;align:center">
+<img src="/images/ncp_storage_object_storage_lifecycle_01.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:650px;align:center">
 
 ### 관리대상 (Source)
 관리대상의 버킷(Bucket)을 선택하고 Object 이름의 규칙을 접두어 방식으로 입력합니다.
 
-<img src="../../images/ncp_storage_object_storage_lifecycle_02.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:650px;align:center">
+<img src="/images/ncp_storage_object_storage_lifecycle_02.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:650px;align:center">
 
 ### 이동위치 (Target)
 이동할 위치는 Archive Storage로 고정이며, Archive Storage의 컨테이너(버킷)을 선택하고 세부경로 즉, 폴더를 입력합니다.  
 세부경로에 아무것도 입력하지 않으면 Source 즉, Object Storage의 위치, 폴더 구조 그대로 이동됩니다.
 
-<img src="../../images/ncp_storage_object_storage_lifecycle_03.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:650px;align:center">
+<img src="/images/ncp_storage_object_storage_lifecycle_03.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:650px;align:center">
 
 
 ## 관리대상(Source) Object 이름 규칙
@@ -54,7 +54,7 @@ v2_link: /storage/ncloud_storage_object_storage_lifecycle_management.html
 다른 항목들은 동일하고, 관리대상(Source) Object 이름 규칙에 따라 어떤 결과가 나오지는 확인해보겠습니다.  
 물론 아래의 예시들에서 공통적으로 위에서 지정한 수명주기 날짜에 해당하는 파일들만 이동하게 됩니다.
 
-<img src="../../images/ncp_storage_object_storage_lifecycle_04.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:700px;align:center">
+<img src="/images/ncp_storage_object_storage_lifecycle_04.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:700px;align:center">
 
 ``` bash
 - 3rdeyesys

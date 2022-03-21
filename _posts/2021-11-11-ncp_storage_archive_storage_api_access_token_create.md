@@ -122,7 +122,7 @@ v2_link: /storage/ncloud_storage_archive_storage_api_access_token_create.html
 ```
 네이버 클라우드 인증키는 [네이버 클라우드 포탈] -> [마이페이지] -> [계정관리] -> [인증키 관리] - [API 인증키 관리] 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.
 
-<img src="../../images/ncloud_api_auth_key_create.png" alt="네이버 클라우드 API 인증키 생성하기" style="width:770px;align:center">
+<img src="/images/ncloud_api_auth_key_create.png" alt="네이버 클라우드 API 인증키 생성하기" style="width:770px;align:center">
 
 #### Archive Storage API 이용 정보
 ``` php
@@ -131,11 +131,11 @@ v2_link: /storage/ncloud_storage_archive_storage_api_access_token_create.html
 ```
 Archive Storage API 이용을 위한 Domain ID와 Project ID는 [네이버 클라우드 포탈] - [Archive Storage]에서 [API 이용 정보 확인] 버튼을 클릭하면 확인할 수 있습니다.
 
-<img src="../../images/ncloud_storage_archive_storage_api_access_token_create_01.png" alt="네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_api_access_token_create_01.png" alt="네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법" style="width:770px;align:center">
 
 [API 이용 정보 확인] 창에서 Domain ID와 Project ID를 확인하고, PHP 소스코드에 입력합니다.
 
-<img src="../../images/ncloud_storage_archive_storage_api_access_token_create_02.png" alt="네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법" style="width:500px;align:center">
+<img src="/images/ncloud_storage_archive_storage_api_access_token_create_02.png" alt="네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법" style="width:500px;align:center">
 
 #### API 서버와 URL 설정
 ``` php

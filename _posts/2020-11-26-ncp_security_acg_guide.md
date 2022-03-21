@@ -43,25 +43,25 @@ Classic 환경에서는 서버 자체에 할당되는 개념이었으나 VPC에�
 #### VPC 화면
 
 ##### Inbound (기본 설정)
-<img src="../../images/ncp_server_acg_vpc_inbound.png" alt="VPC Default ACG Inbound " style="width:770px;align:center">
+<img src="/images/ncp_server_acg_vpc_inbound.png" alt="VPC Default ACG Inbound " style="width:770px;align:center">
 
 기본으로 생성된 ACG에는 위처럼 22, 3389 포트에 대해 0.0.0.0/0 즉, 전체 IP에 대해 허용되어 있는데 보안을 위해 이 항목을 삭제하고 아래와 같이 지정된 IP에서만 접속하도록 수정하는 것이 좋습니다.
 {: .warning }
 
 ##### Inbound (권장 설정)
-<img src="../../images/ncp_server_acg_vpc_inbound_02.png" alt="VPC Default ACG Inbound " style="width:770px;align:center">
+<img src="/images/ncp_server_acg_vpc_inbound_02.png" alt="VPC Default ACG Inbound " style="width:770px;align:center">
 
 ##### Outbound
-<img src="../../images/ncp_server_acg_vpc_outbound.png" alt="VPC Default ACG Outbound " style="width:770px;align:center">
+<img src="/images/ncp_server_acg_vpc_outbound.png" alt="VPC Default ACG Outbound " style="width:770px;align:center">
 
 #### Classic 화면 (기본 설정)
-<img src="../../images/ncp_server_acg_classic.png" alt="Classic Default ACG " style="width:770px;align:center">
+<img src="/images/ncp_server_acg_classic.png" alt="Classic Default ACG " style="width:770px;align:center">
 
 기본으로 생성된 ACG에는 위처럼 22, 3389 포트에 대해 0.0.0.0/0 즉, 전체 IP에 대해 허용되어 있는데 보안을 위해 이 항목을 삭제하고 아래와 같이 지정된 IP에서만 접속하도록 수정하는 것이 좋습니다.
 {: .warning }
 
 #### Classic 화면 (권장 설정)
-<img src="../../images/ncp_server_acg_classic_02.png" alt="Classic Default ACG " style="width:770px;align:center">
+<img src="/images/ncp_server_acg_classic_02.png" alt="Classic Default ACG " style="width:770px;align:center">
 
 ### Custom ACG
 Default ACG 이외에 사용자가 추가하는 ACG

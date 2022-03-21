@@ -30,14 +30,14 @@ Ruby Installer 다운로드 경로
 Ruby 설치가 끝나면서 완료화면에 **Run 'ridk install' to setup MSYS2 and development toolchain.** 이라는 옵션이 나타납니다.  
 반드시 선택하고 완료를 하시기 바랍니다.
 
-<img src="../../images/jekyll_install_ruby.jpg" alt="jekyll 설치화면" style="width:600px;align:center">
+<img src="/images/jekyll_install_ruby.jpg" alt="jekyll 설치화면" style="width:600px;align:center">
 
 ### ridk 설치
 앞단계인 Ruby 설치 완료에서 ridk install을 선택했다면 ridk 설치 커맨드 창이 나타납니다.  
 (혹시 선택하지 않았다면 커맨드 창을 열어서 ridk install 을 입력하면 됩니다)  
 이때 설치 옵션을 선택할 수 있는데 1,2,3 을 선택하고 Enter 키를 입력하면 설치가 진행됩니다.
 
-<img src="../../images/jekyll_install_ridk.jpg" alt="jekyll ridk 설치화면" style="width:600px;align:center">
+<img src="/images/jekyll_install_ridk.jpg" alt="jekyll ridk 설치화면" style="width:600px;align:center">
 
 ## gem 업데이트
 
@@ -54,7 +54,7 @@ gem install jekyll bundler
 ## base-theme 설치
 base-theme는 jekyll의 여러 테마 중에서 CloudCannon에서 제작한 테마입니다.
 
-<img src="../../images/jekyll_base_theme.png" alt="jekyll base-theme" style="width:600px;align:center">
+<img src="/images/jekyll_base_theme.png" alt="jekyll base-theme" style="width:600px;align:center">
 
 다운로드 경로
 <a href="https://github.com/CloudCannon/base-jekyll-template" target="_blank" style="word-break:break-all;">https://github.com/CloudCannon/base-jekyll-template</a>
@@ -93,4 +93,4 @@ jekyll new PATH
 ```
 기본 블로그를 만들고 접속하면 다음과 같은 화면이 나타납니다.
 
-<img src="../../images/jekyll_install_default_blog.jpg" alt="jekyll 기본 블로그" style="width:600px;align:center">
+<img src="/images/jekyll_install_default_blog.jpg" alt="jekyll 기본 블로그" style="width:600px;align:center">

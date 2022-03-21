@@ -51,24 +51,24 @@ UUID=1fd5s61f5d-*** 중략 ***-f84ew13 /mnt/data xfs defaults 1 2
 [서버 관리 및 설정 변경] - [스토리지 생성]을 선택하거나  
 [Server] - [Storage]에서 [스토리지 생성]을 클릭합니다.
 
-<img src="../../images/ncp_server_storage_add_detail_process_01.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_01.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
 
-<img src="../../images/ncp_server_storage_add_detail_process_02.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_02.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
 
 다음으로 [스토리지 생성] 화면에서 스토리지 종류, 이름, 적용서버, 크기 (최소 10GB, 최대 2000GB) 등을 선택하고 [추가] 버튼을 클릭합니다.
 
-<img src="../../images/ncp_server_storage_add_detail_process_03.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_03.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
 
 앞에서 설정한 스토리지 정보를 다시 살펴보고 이상이 없으면 [확인] 버튼을 클릭합니다.
 
-<img src="../../images/ncp_server_storage_add_detail_process_04.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_04.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
 
 추가된 스토리지는 [Server] - [Server] 리스트에서 해당 서버를 클릭해 상세정보에서 확인하거나
 [Server] - [Storage] 리스트에서 연결정보까지 포함해서 확인할 수 있습니다.
 
-<img src="../../images/ncp_server_storage_add_detail_process_05.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_05.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
 
-<img src="../../images/ncp_server_storage_add_detail_process_06.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_06.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
 
 ## 스토리지 할당 확인
 네이버 클라우드 콘솔에서 할당한 스토리지를 확인하기 위해 putty를 실행해 서버에 접속합니다.  
@@ -80,7 +80,7 @@ fdisk -l 명령어를 실행해보면 아래 화면처럼 /dev/xvdb 디스크가
 ~# fdisk -l
 ```
 
-<img src="../../images/ncp_server_storage_add_detail_process_07.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_07.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
 
 ## 디스크 파티션
 다음 명령어를 입력해 할당된 디스크에 파티션을 생성합니다.  
@@ -94,25 +94,25 @@ fdisk -l 명령어를 실행해보면 아래 화면처럼 /dev/xvdb 디스크가
 
 - 파티션을 새로 생성하기 위해 ‘n’을 입력
 
-<img src="../../images/ncp_server_storage_add_detail_process_08-01.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_08-01.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
 
 - 생성할 파티션 타입에 따라 primary type이면 ‘p’, extended type이면 ‘e’를 입력.  
   (primary type으로 생성하는 것이 일반적이며, primary 영역의 파티션이 부족할 경우 추가로 extended type으로 생성)
 
-<img src="../../images/ncp_server_storage_add_detail_process_08-02.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_08-02.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
 
 - 생성할 파티션 번호와 cylinder 영역을 입력 (일반적으로 추가할 disk 전체를 mount하게 되고, 이 경우 default값을 그대로 사용하므로 Enter 입력)
 
-<img src="../../images/ncp_server_storage_add_detail_process_08-03.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_08-03.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
 
 - ‘w’를 입력해 해당 구성을 적용. 파티션 생성 완료.
 
-<img src="../../images/ncp_server_storage_add_detail_process_08-04.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_08-04.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
 
 마지막으로 fdisk -l 명령어로 생성된 파티션을 다시 확인합니다.  
 디스크가 /dev/xvdb1 장치로 인식된 것을 확인할 수 있습니다. 
 
-<img src="../../images/ncp_server_storage_add_detail_process_09.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_09.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
 
 ## 디스크 포맷
 다음으로 파티션이 생성된 디스크를 포맷하면 되는데, OS별로 명령어가 다르므로 확인 후에 실행해야 합니다.  
@@ -135,14 +135,14 @@ fdisk -l 명령어를 실행해보면 아래 화면처럼 /dev/xvdb 디스크가
 ~# mkdir /mnt/data
 ~# mount /dev/xvdb1 /mnt/data
 ```
-<img src="../../images/ncp_server_storage_add_detail_process_11-01.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_11-01.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
 
 <br />
 마운트된 내역을 확인합니다.
 ``` bash
 ~# df -k
 ```
-<img src="../../images/ncp_server_storage_add_detail_process_11-02.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_11-02.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
 
 ## 마운트 정보 등록
 마운트 정보는 설정에 저장하지 않으면 서버가 리부팅될 때 사라지기 때문에 fstab에 저장합니다.  
@@ -154,14 +154,14 @@ UUID를 확인하려면 blkid 명령어를 사용합니다.
 ``` bash
 ~# blkid /dev/xvdb1
 ```
-<img src="../../images/ncp_server_storage_add_detail_process_12.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_12.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:660px;align:center">
 
 vi로 /etc/fstab 파일을 열면 다음과 같습니다.  
 서버 생성과 함께 장착된 기본 디스크도 UUID로 입력된 것을 확인할 수 있습니다.
 ``` bash
 ~# vi /etc/fstab
 ```
-<img src="../../images/ncp_server_storage_add_detail_process_13.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_13.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
 
 앞에서 확인하고 복사해둔 추가 디스크의 UUID와 기타 정보를 입력합니다.  
 입력을 완료한 후 fstab 파일을 저장하고 빠져 나옵니다.  
@@ -176,7 +176,7 @@ UUID=29f58417-*** 중략 ***38d0f /mnt/data xfs defaults 1 2
 /dev/xvdb1 /mnt/data ext4 defaults 1 2
 
 ```
-<img src="../../images/ncp_server_storage_add_detail_process_14.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
+<img src="/images/ncp_server_storage_add_detail_process_14.jpg" alt="네이버 클라우드 Linux 스토리지(디스크) 추가 상세 가이드" style="width:770px;align:center">
 
 
 ## fstab 설정 상세정보

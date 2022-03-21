@@ -26,7 +26,7 @@ v2_link: /networking/ncloud_networking_vpc_subnet_natgw.html
 | 인터넷 연결 시<br>필요한 리소스 | Internet Gateway (Default) | NAT Gateway |
 
 
-<img src="../../images/ncp_vpc_subnet_natgw.png" alt="VPC Subnet 과 NAT GW" style="width:800px;align:center">
+<img src="/images/ncp_vpc_subnet_natgw.png" alt="VPC Subnet 과 NAT GW" style="width:800px;align:center">
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/networking-networking-10-1" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-networking-10-1.html</a>

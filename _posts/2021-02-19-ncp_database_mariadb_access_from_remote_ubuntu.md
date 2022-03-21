@@ -81,7 +81,7 @@ bind-address            = 192.168.1.1,10.0.0.1
 ## ACG 포트 추가
 네이버 클라우드 ACG에 mariaDB가 사용하는 포트 3306을 추가해줍니다.
 
-<img src="../../images/ncp_database_mariadb_access_from_remote_ubuntu_04.jpg" alt="네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL" style="width:800px;align:center">
+<img src="/images/ncp_database_mariadb_access_from_remote_ubuntu_04.jpg" alt="네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL" style="width:800px;align:center">
 
 
 ## HeidiSQL 다운로드 
@@ -89,19 +89,19 @@ mariaDB용 클라이언트 중에서 대표적인 HeidiSQL을 사용합니다.
 
 다운로드 경로 : <a href="https://www.heidisql.com/download.php" target="_blank" style="word-break:break-all;">https://www.heidisql.com/download.php</a>
 
-<img src="../../images/ncp_database_mariadb_access_from_remote_ubuntu_01.jpg" alt="네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL" style="width:800px;align:center">
+<img src="/images/ncp_database_mariadb_access_from_remote_ubuntu_01.jpg" alt="네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL" style="width:800px;align:center">
 
 
 ## HeidiSQL 설정
 HeidiSQL를 실행하면 DB접속을 위한 세션관리자가 먼저 나타납니다.  
 왼쪽 하단의 [신규] 버튼을 누르고 서버 IP, 사용자, 암호를 입력하고 열기 버튼을 누르면 DB에 접속할 수 있습니다.
 
-<img src="../../images/ncp_database_mariadb_access_from_remote_ubuntu_02.jpg" alt="네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL" style="width:800px;align:center">
+<img src="/images/ncp_database_mariadb_access_from_remote_ubuntu_02.jpg" alt="네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL" style="width:800px;align:center">
 
 ## DB 접속
 mariaDB 접속에 성공하면 아래와 같은 화면을 볼 수 있습니다.
 
-<img src="../../images/ncp_database_mariadb_access_from_remote_ubuntu_03.jpg" alt="네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL" style="width:800px;align:center">
+<img src="/images/ncp_database_mariadb_access_from_remote_ubuntu_03.jpg" alt="네이버 클라우드 Ubuntu에서 mariaDB 외부접속 허용, 원격접속하기 with HeidiSQL" style="width:800px;align:center">
 
 
 ## 참고 URL

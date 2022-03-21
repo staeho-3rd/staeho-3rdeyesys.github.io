@@ -26,7 +26,7 @@ VPC는 고객의 계정마다 **최대 3개**를 생성할 수 있으며, 각 VP
 {: .success }
 VPC의 IP 주소 범위는, private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /16~/28 범위
 
-<img src="../../images/ncp_server_vpc_create_02.jpg" alt="VPC 환경에서 서버 생성" style="width:600px;align:center">
+<img src="/images/ncp_server_vpc_create_02.jpg" alt="VPC 환경에서 서버 생성" style="width:600px;align:center">
 
 ## Subnet 생성
 - Subnet 이름 입력
@@ -36,7 +36,7 @@ VPC의 IP 주소 범위는, private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/
 - Network ACL 선택
 - Internet Gateway 전용여부 선택 (Public or Private)
 
-<img src="../../images/ncp_server_vpc_create_03.jpg" alt="VPC 환경에서 서버 생성" style="width:600px;align:center">
+<img src="/images/ncp_server_vpc_create_03.jpg" alt="VPC 환경에서 서버 생성" style="width:600px;align:center">
 
 ## 서버 설정
 - VPC 선택
@@ -51,13 +51,13 @@ VPC의 IP 주소 범위는, private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/
 - 물리 배치 그룹 여부 선택
 - 반납 보호 여부 선택
 
-<img src="../../images/ncp_server_vpc_create_01.jpg" alt="VPC 환경에서 서버 생성" style="width:600px;align:center">
+<img src="/images/ncp_server_vpc_create_01.jpg" alt="VPC 환경에서 서버 생성" style="width:600px;align:center">
 
 ## 인증키 설정
-<img src="../../images/ncp_server_vpc_create_04.jpg" alt="VPC 환경에서 서버 생성" style="width:600px;align:center">
+<img src="/images/ncp_server_vpc_create_04.jpg" alt="VPC 환경에서 서버 생성" style="width:600px;align:center">
 
 ## 네트워크 접근 설정 (ACL)
-<img src="../../images/ncp_server_vpc_create_05.jpg" alt="VPC 환경에서 서버 생성" style="width:600px;align:center">
+<img src="/images/ncp_server_vpc_create_05.jpg" alt="VPC 환경에서 서버 생성" style="width:600px;align:center">
 
 
 ## 참고 URL

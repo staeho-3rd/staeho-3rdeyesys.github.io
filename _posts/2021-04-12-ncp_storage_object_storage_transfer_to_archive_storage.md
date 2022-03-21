@@ -41,13 +41,13 @@ Object Storage와 Archive Storage 2가지 스토리지 모두 데이터를 백�
 Object Storage에 있는 데이터를 자동으로 Archive Storage로 이관하는 방법은 수명주기 관리(LifeCycle Mangement)를 이용하면 됩니다.  
 [ **네이버 클라우드 콘솔 - Object Storage - Lifecycle Management - 수명주기 정책 추가** ] 기능을 이용하시면 설정할 수 있습니다.
 
-<img src="../../images/ncp_storage_object_storage_transfer_to_archive_storage_01.jpg" alt="네이버 클라우드 Object Storage 데이터를 Archive Storage로 이동시키는 방법" style="width:738px;align:center">
+<img src="/images/ncp_storage_object_storage_transfer_to_archive_storage_01.jpg" alt="네이버 클라우드 Object Storage 데이터를 Archive Storage로 이동시키는 방법" style="width:738px;align:center">
 
 ### 수명주기 정책 추가
 수명주기 정책 추가 화면에서 정책 유형은 [이관] 또는 [이관 후 삭제], 관리대상은 Object Storage에 있는 대상 버킷, 이동 위치는 Archive Storage에 있는 버킷을 선택하시면 됩니다.  
 이렇게 설정하시면 대상 버킷에 있는 데이터 중에서 이름 규칙에 해당하는 데이터가 Archive Storage로 이동하게 됩니다.
 
-<img src="../../images/ncp_storage_object_storage_transfer_to_archive_storage_02.jpg" alt="네이버 클라우드 Object Storage 데이터를 Archive Storage로 이동시키는 방법" style="width:650px;align:center">
+<img src="/images/ncp_storage_object_storage_transfer_to_archive_storage_02.jpg" alt="네이버 클라우드 Object Storage 데이터를 Archive Storage로 이동시키는 방법" style="width:650px;align:center">
 
 #### 정책
 정책 유형은 다음의 3가지가 있습니다.
@@ -57,18 +57,18 @@ Object Storage에 있는 데이터를 자동으로 Archive Storage로 이관하�
 
 그리고 이동 시점은 파일이 Object Storage에 저장-생성된 후 경과한 일자를 기준으로 하며 1일 ~ 3,650일 사이의 값을 입력합니다.
 
-<img src="../../images/ncp_storage_object_storage_lifecycle_01.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:650px;align:center">
+<img src="/images/ncp_storage_object_storage_lifecycle_01.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:650px;align:center">
 
 #### 관리대상 (Source)
 관리대상의 버킷(Bucket)을 선택하고 Object 이름의 규칙을 접두어 방식으로 입력합니다.
 
-<img src="../../images/ncp_storage_object_storage_lifecycle_02.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:650px;align:center">
+<img src="/images/ncp_storage_object_storage_lifecycle_02.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:650px;align:center">
 
 #### 이동위치 (Target)
 이동할 위치는 Archive Storage로 고정이며, Archive Storage의 컨테이너(버킷)을 선택하고 세부경로 즉, 폴더를 입력합니다.  
 세부경로에 아무것도 입력하지 않으면 Source 즉, Object Storage의 위치, 폴더 구조 그대로 이동됩니다.
 
-<img src="../../images/ncp_storage_object_storage_lifecycle_03.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:650px;align:center">
+<img src="/images/ncp_storage_object_storage_lifecycle_03.jpg" alt="네이버 클라우드 Object Storage Lifecycle Management의 관리대상(Source) Object 접두어 설정 방법" style="width:650px;align:center">
 
 #### 정책 실행 시간
 Lifecycle Management의 수명주기 정책 실행시간은 아래와 같습니다. 

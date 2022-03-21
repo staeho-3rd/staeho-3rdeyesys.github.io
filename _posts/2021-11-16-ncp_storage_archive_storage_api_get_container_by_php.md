@@ -151,11 +151,11 @@ Archive Storage API를 호출할 때는 먼저 인증 토큰을 생성해야 하
 Archive Storage API 이용을 위한 Project ID는 [네이버 클라우드 포탈] - [Archive Storage]에서 [API 이용 정보 확인] 버튼을 클릭하면 확인할 수 있습니다.  
 테스트에 사용할 컨테이너(버킷)은 [test]로 설정해두었습니다.
 
-<img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_04.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_api_get_container_by_php_04.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center">
 
 [API 이용 정보 확인] 창에서 Project ID를 확인하고, PHP 소스코드에 입력합니다.
 
-<img src="../../images/ncloud_storage_archive_storage_api_access_token_create_02.png" alt="네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법" style="width:500px;align:center">
+<img src="/images/ncloud_storage_archive_storage_api_access_token_create_02.png" alt="네이버 클라우드 PHP로 Archive Storage API 인증 토큰 생성하는 방법" style="width:500px;align:center">
 
 #### API 서버와 URL 설정
 ``` php
@@ -278,17 +278,17 @@ Resoponse에서 Header, Body 값을 따로 분리해서 배열에 저장합니�
 ## 목록 출력 예시
 위의 코드를 실행하면 다음과 같이 오브젝트 목록이 출력됩니다.
 
-<img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_02.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_api_get_container_by_php_02.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center">
 
 출력된 오브젝트 정보가 올바른지 확인하기 위해 네이버 클라우드(Ncloud) 콘솔에서 해당 컨테이너(버킷)의 정보를 확인하면 다음과 같이 일치하는 것을 알 수 있습니다.
 
-<img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_01.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_api_get_container_by_php_01.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center">
 
 ## 제한 사항
 Archive Storage API를 이용해서 가져올 수 있는 오브젝트 목록의 최대 개수는 10,000개입니다. 
 1만개 이상이 등록된 컨테이너(버킷)에서 오브젝트 목록을 요청해도 아래와 같이 최대 10,000개 까지만 가져올 수 있습니다.
 
-<img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_03.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_api_get_container_by_php_03.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center">
 
 {: .success }
 컨테이너(버킷)에 10,000개 이상의 오브젝트가 저장되어 있을 경우에는 아래쪽에서 소개하는 방법처럼 폴더별로 오브젝트 목록을 따로 조회하시면 됩니다.
@@ -315,7 +315,7 @@ Archive Storage API를 이용해서 가져올 수 있는 오브젝트 목록의 
 API URL을 호출할 때 파라미터로 prefix를 전송하면 prefix 값에 해당하는 특정 문자열로 시작하는 오브젝트 목록을 모두 가져 옵니다.  
 예를 들어 prefix 값을 [Test_Folder]로 설정하면, 아래와 같이 [Test_Folder]라는 이름으로 시작되는 모든 오브젝트 목록을 가져오게 됩니다.
 
-<img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_05.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_api_get_container_by_php_05.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center">
 
 #### 특정 폴더 아래에 있는 오브젝트 목록
 ``` php
@@ -328,7 +328,7 @@ API URL을 호출할 때 파라미터로 prefix를 전송하면 prefix 값에 �
 
 위쪽에서 확인한 [특정 이름으로 시작하는 오브젝트 목록]의 결과 예시와는 다르게 폴더 자체인 [Test_Folder] 그리고 [Test_Folder_0001.png]는 포함되어 있지 않습니다.
 
-<img src="../../images/ncloud_storage_archive_storage_api_get_container_by_php_06.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_storage_archive_storage_api_get_container_by_php_06.png" alt="네이버 클라우드에서 PHP로 Archive Storage API 호출하기 - 컨테이너(버킷) 오브젝트 목록 조회하는 방법" style="width:770px;align:center">
 
 
 ## API 기타 기능

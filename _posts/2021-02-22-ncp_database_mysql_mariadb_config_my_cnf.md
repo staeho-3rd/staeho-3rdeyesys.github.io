@@ -21,10 +21,10 @@ CentOS에서는 my.cnf 파일이 /etc/ 바로 밑에 위치합니다.
 ```
 <br />
 #### mysql
-<img src="../../images/ncp_database_mysql_mariadb_config_my_cnf_01.jpg" alt="네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치" style="width:500px;align:center">
+<img src="/images/ncp_database_mysql_mariadb_config_my_cnf_01.jpg" alt="네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치" style="width:500px;align:center">
 
 #### mariadb
-<img src="../../images/ncp_database_mysql_mariadb_config_my_cnf_03.jpg" alt="네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치" style="width:500px;align:center">
+<img src="/images/ncp_database_mysql_mariadb_config_my_cnf_03.jpg" alt="네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치" style="width:500px;align:center">
 
 ## Ubuntu 
 Ubuntu에서는 my.cnf 파일이 /etc/mysql 밑에 위치합니다.
@@ -33,10 +33,10 @@ Ubuntu에서는 my.cnf 파일이 /etc/mysql 밑에 위치합니다.
 ```
 <br />
 #### mysql
-<img src="../../images/ncp_database_mysql_mariadb_config_my_cnf_02.jpg" alt="네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치" style="width:500px;align:center">
+<img src="/images/ncp_database_mysql_mariadb_config_my_cnf_02.jpg" alt="네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치" style="width:500px;align:center">
 
 #### mariadb
-<img src="../../images/ncp_database_mysql_mariadb_config_my_cnf_04.jpg" alt="네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치" style="width:500px;align:center">
+<img src="/images/ncp_database_mysql_mariadb_config_my_cnf_04.jpg" alt="네이버 클라우드 mysql, mariadb 환경설정 파일 my.cnf 위치" style="width:500px;align:center">
 
 
 ## 참고 URL

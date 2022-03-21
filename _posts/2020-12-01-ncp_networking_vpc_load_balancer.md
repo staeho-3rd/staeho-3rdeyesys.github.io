@@ -45,8 +45,8 @@ KR존/서브넷 별 LB 생성지역 지정 가능 : VPC 환경에서는 **내가
 
 
 
-<img src="../../images/ncp_vpc_load_balancer_01.png" alt="Load Balancer 상품군의 변화" style="width:800px;align:center">
-<img src="../../images/ncp_vpc_load_balancer_02.png" alt="Load Balancer 상품군의 변화" style="width:800px;align:center">
+<img src="/images/ncp_vpc_load_balancer_01.png" alt="Load Balancer 상품군의 변화" style="width:800px;align:center">
+<img src="/images/ncp_vpc_load_balancer_02.png" alt="Load Balancer 상품군의 변화" style="width:800px;align:center">
 
 ## 참고 URL
 <a href="https://guide.ncloud-docs.com/docs/networking-loadbalancer-loadbalanceroverview" target="_blank" style="word-break:break-all;">https://guide.ncloud-docs.com/docs/networking-loadbalancer-loadbalanceroverview.html</a>

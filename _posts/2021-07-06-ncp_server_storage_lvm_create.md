@@ -22,11 +22,11 @@ v2_link: /compute/ncloud_compute_server_storage_lvm_create.html
 ## 스토리지 생성
 2000GB 이상의 용량을 필요로 할 때에 대한 내용이지만, 테스트를 위해 10GB 스토리지 2개를 생성하겠습니다.  
 
-<img src="../../images/ncp_server_storage_lvm_create_01.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:770px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_01.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:770px;align:center">
 
 lvm-test-1, lvm-test-2 이름으로 생성된 스토리지 2개를 Ubuntu OS가 설치된 lvm-test-svr 서버에 연결했습니다.
 
-<img src="../../images/ncp_server_storage_lvm_create_02.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:770px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_02.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:770px;align:center">
 
 ## 파티션 설정
 생성된 스토리지 2개에 각각 파티션을 설정합니다.  
@@ -44,7 +44,7 @@ p
 quit
 ```
 
-<img src="../../images/ncp_server_storage_lvm_create_03.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:700px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_03.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:700px;align:center">
 
 ``` bash
 ~# parted /dev/xvdc
@@ -58,14 +58,14 @@ p
 quit
 ```
 
-<img src="../../images/ncp_server_storage_lvm_create_04.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:700px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_04.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:700px;align:center">
 
 설정된 파티션들을 확인합니다.
 ``` bash
 ~# fdisk -l
 ```
 
-<img src="../../images/ncp_server_storage_lvm_create_05.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:600px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_05.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:600px;align:center">
 
 ## Physical Volume 생성
 각 스토리지 장치에 Physical Volume을 생성합니다.
@@ -76,14 +76,14 @@ quit
 ~# pvcreate /dev/xvdc1
 ```
 
-<img src="../../images/ncp_server_storage_lvm_create_06.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:500px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_06.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:500px;align:center">
 
 Physical Volume이 제대로 생성되었는지 확인합니다.
 ``` bash
 ~# pvdisplay
 ```
 
-<img src="../../images/ncp_server_storage_lvm_create_07.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:600px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_07.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:600px;align:center">
 
 ## Volume Group 생성
 준비된 두개의 Volume으로 하나의 Volume Group을 생성합니다.
@@ -92,14 +92,14 @@ Physical Volume이 제대로 생성되었는지 확인합니다.
 ~# vgcreate VG01 /dev/xvdb1 /dev/xvdc1
 ```
 
-<img src="../../images/ncp_server_storage_lvm_create_08.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:500px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_08.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:500px;align:center">
 
 생성된 Volume Group을 확인합니다.
 ``` bash
 ~# vgdisplay
 ```
 
-<img src="../../images/ncp_server_storage_lvm_create_09.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:550px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_09.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:550px;align:center">
 
 ## Logical Volume 생성
 생성된 Volume Group 전체 크기를 사용하는 Logical Volume을 생성합니다.
@@ -107,14 +107,14 @@ Physical Volume이 제대로 생성되었는지 확인합니다.
 ~# lvcreate --extents 100%FREE -n LV01 VG01
 ```
 
-<img src="../../images/ncp_server_storage_lvm_create_10.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:550px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_10.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:550px;align:center">
 
 생성된 Logical Volume을 확인합니다.
 ``` bash
 ~# lvdisplay
 ```
 
-<img src="../../images/ncp_server_storage_lvm_create_11.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:550px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_11.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:550px;align:center">
 
 ## 포맷
 다음으로 포맷을 해야하는데, OS별로 명령어가 다르므로 확인 후에 실행해야 합니다.  
@@ -129,7 +129,7 @@ Physical Volume이 제대로 생성되었는지 확인합니다.
 - Ubuntu : mkfs.ext4 /dev/VG01/LV01
 ```
 
-<img src="../../images/ncp_server_storage_lvm_create_12.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:700px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_12.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:700px;align:center">
 
 ## 마운트
 마운트를 하기 위해 우선 생성된 디스크 장치명을 확인합니다.
@@ -137,7 +137,7 @@ Physical Volume이 제대로 생성되었는지 확인합니다.
 ~# fdisk -l
 ```
 
-<img src="../../images/ncp_server_storage_lvm_create_13.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:600px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_13.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:600px;align:center">
 
 다음으로 디스크를 마운트할 포인트 즉, 디렉토리를 원하는 이름으로 생성하고 마운트를 합니다.  
 아래에 있는 마운트 경로 (/mnt/data)는 예시입니다. 원하는 경로를 직접 설정하시면 됩니다.
@@ -147,7 +147,7 @@ Physical Volume이 제대로 생성되었는지 확인합니다.
 ~# mount /dev/mapper/VG01-LV01 /mnt/data
 ```
 
-<img src="../../images/ncp_server_storage_lvm_create_14.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:600px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_14.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:600px;align:center">
 
 ## fstab 설정
 새로 생성된 디스크를 부팅 후에도 인식할 수 있게 blkid 명령으로 UUID를 확인하고 fstab에 등록합니다.
@@ -155,12 +155,12 @@ Physical Volume이 제대로 생성되었는지 확인합니다.
 ``` bash
 ~# blkid |grep /dev/mapper/VG01-LV01
 ```
-<img src="../../images/ncp_server_storage_lvm_create_15.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:650px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_15.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:650px;align:center">
 
 ``` bash
 ~# vi /etc/fstab
 ```
-<img src="../../images/ncp_server_storage_lvm_create_16.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:770px;align:center">
+<img src="/images/ncp_server_storage_lvm_create_16.jpg" alt="리눅스서버 스토리지(디스크) LVM 구성하기" style="width:770px;align:center">
 
 
 ## fstab 설정 상세정보

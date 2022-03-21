@@ -21,7 +21,7 @@ yum으로 NginX를 설치하기 전에 yum-utils를 먼저 설치합니다. 이�
 ``` bash
 ~# yum install yum-utils
 ```
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_01.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_01.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
 
 
 ## Repository 설정
@@ -54,7 +54,7 @@ module_hotfixes=true
 NginX는 stable, mainline 두가지 버전이 있습니다. NginX의 공식 설명에 따르면 버그 수정이나 보안 패치 등은 항상 mainline 버전에 먼저 적용되기 때문에 mainline을 사용하는 것을 추천한다고 합니다. 
 stable 버전을 사용하는 주된 경우는 third-party 모듈을 사용하고 있어서 신규 버전에서 호환성 문제가 발생할 가능성이 걱정될 때라고 합니다.
 
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_02.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_02.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
 
 
 ## 버전 선택
@@ -65,7 +65,7 @@ stable 버전을 설치할 경우에는 다음 명령어는 건너띄어도 되�
 ~# yum-config-manager --enable nginx-mainline
 ```
 
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_03.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_03.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
 
 ## NginX 설치
 설정을 마쳤으면 yum으로 NginX를 설치합니다.
@@ -73,7 +73,7 @@ stable 버전을 설치할 경우에는 다음 명령어는 건너띄어도 되�
 ~# yum -y install nginx
 ```
 
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_04.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_04.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
 
 
 ## 디렉토리 설정
@@ -86,7 +86,7 @@ stable 버전을 설치할 경우에는 다음 명령어는 건너띄어도 되�
 ~# cp /usr/share/nginx/html/index.html /ncp/data/www/index.html
 ~# ls -al /ncp/data/www
 ```
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_05.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_05.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
 
 
 ## 환경 설정
@@ -104,7 +104,7 @@ server_name  localhost;
 server_name  127.0.0.1;
 ```
 
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_06.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_06.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
 
 #### 홈 디렉토리, 기본 문서 설정
 앞에서 만들었던 홈 디렉토리 경로를 설정하고 기본 문서를 지정하는 곳입니다. 
@@ -124,9 +124,9 @@ server_name  127.0.0.1;
         try_files $uri $uri/ = 404;
     }
 ```
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_07.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_07.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
 
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_08.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_08.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
 
 
 #### error 페이지 설정
@@ -148,9 +148,9 @@ server_name  127.0.0.1;
     }
 ```
 
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_09.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_09.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
 
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_10.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_10.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
 
 
 #### .htaccess 파일 접근 금지 설정
@@ -168,9 +168,9 @@ server_name  127.0.0.1;
     }
 ```
 
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_11.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_11.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
 
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_12.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_12.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
 
 
 ## NginX 실행
@@ -180,13 +180,13 @@ server_name  127.0.0.1;
 ~# systemctl start nginx
 ~# systemctl status nginx
 ```
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_13.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_13.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:770px;align:center">
 
 
 #### 사이트 접속
 NginX가 정상 작동하면 아래와 같이 서버 접속 화면을 확인할 수 있습니다.
 
-<img src="../../images/ncloud_server_nginx_install_setting_guide_centos_14.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:600px;align:center">
+<img src="/images/ncloud_server_nginx_install_setting_guide_centos_14.png" alt="네이버 클라우드 CentOS에서 NginX 설치, 설정하는 방법" style="width:600px;align:center">
 
 
 ## 참고 URL

@@ -37,7 +37,7 @@ v2_link: /compute/ncloud_compute_kubernetes_service_start_guide.html
 ## 사전 준비
 먼저 쿠버네티스 클러스터에 사용할 **전용 VPC와 Private Subnet, Load Balancer용 Subnet**이 필요합니다.
 
-<img src="../../images/ncp_server_kebernetes_start_guide_07.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
+<img src="/images/ncp_server_kebernetes_start_guide_07.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
 
 {: .success }
 - Private 대역(10.0.0.0/8,172.16.0.0/12,192.168.0.0/16) 내에서 /17~/26 범위의 Private Subnet, 로드밸런서 전용 Subnet이 필요합니다.<br/>
@@ -47,30 +47,30 @@ v2_link: /compute/ncloud_compute_kubernetes_service_start_guide.html
 
 VPC와 Subnet이 준비되었다면, 다음으로 [Kubernetes Sevice] - [Cluster]에서 생성하기를 클릭합니다.
 
-<img src="../../images/ncp_server_kebernetes_start_guide_09.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:500px;align:center">
+<img src="/images/ncp_server_kebernetes_start_guide_09.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:500px;align:center">
 
 생성하실 클러스터의 정보를 설정해줍니다.<br/>
 (ACG는 자동으로 생성 됩니다.)
 
-<img src="../../images/ncp_server_kebernetes_start_guide_01.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
+<img src="/images/ncp_server_kebernetes_start_guide_01.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
 
 {: .success }
 현재 지원되고 있는 Kubenetes 버전은 [1.17.16], [1.18.17] 입니다.
 
 클러스터에 생성되는 노드풀과 서버의 스펙 및 수를 지정해줍니다.
 
-<img src="../../images/ncp_server_kebernetes_start_guide_02.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
+<img src="/images/ncp_server_kebernetes_start_guide_02.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
 
 {: .success }
 현재 지원되고 있는 OS는 [ubuntu16.04], [ubuntu18.04] 입니다.
 
 워커노드의 로그인키를 설정 합니다.
 
-<img src="../../images/ncp_server_kebernetes_start_guide_03.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
+<img src="/images/ncp_server_kebernetes_start_guide_03.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
 
 설정 정보를 최종적으로 확인한 후 생성버튼을 클릭하여 클러스터를 생성합니다.
 
-<img src="../../images/ncp_server_kebernetes_start_guide_04.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
+<img src="/images/ncp_server_kebernetes_start_guide_04.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
 
 
 ## kubectl 설치
@@ -103,11 +103,11 @@ kubectl의 버전 확인이 필요한 경우 다음 명령어를 사용하시면
 클러스터를 제어하기 위해서는 네이버 클라우드 쿠버네티스 서비스에서 제공해주는 접속을 위한 인증정보가 있는 설정파일이 필요합니다.   
 [설정파일] - [다운로드] 또는 [가이드 보기] - [설정파일 다운로드] 버튼을 클릭해 설정 파일을 다운로드 받습니다.
 
-<img src="../../images/ncp_server_kebernetes_start_guide_05.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
+<img src="/images/ncp_server_kebernetes_start_guide_05.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:770px;align:center">
 
 kubectl을 실행해 Kubernetes에 접속하고 제어하는 방법은 [가이드 보기] 버튼 클릭하면 아래와 같이 자세히 확인할 수 있습니다.
 
-<img src="../../images/ncp_server_kebernetes_start_guide_06.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:700px;align:center">
+<img src="/images/ncp_server_kebernetes_start_guide_06.jpg" alt="네이버 클라우드 Kubernetes Service 클러스터 생성 및 제어 가이드 " style="width:700px;align:center">
 
 
 다운로드한 설정 파일경로를 %KUBE_CONFIG% 환경변수에 지정합니다.

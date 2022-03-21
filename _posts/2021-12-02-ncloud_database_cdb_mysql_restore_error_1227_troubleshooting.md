@@ -40,14 +40,14 @@ GTID는 모든 트랜잭션과 1:1 관계이며, GTID를 활용하면 복제본�
 ~# mysqldump -u user -p -h db-......vpc-cdb.ntruss.com -S /var/lib/mysql/mysql.sock --single-transaction --routines --triggers --events --databases test  > dumpfile1.sql
 ```
 
-<img src="../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_01.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
+<img src="/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_01.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
 
 위에서 생성한 [**--set-gtid-purged=OFF**] 옵션을 사용하지 않은 백업 파일(dumpfile1.sql)을 이용해서 복구(Restore)시에 아래와 같이 ERROR 1227 (42000) 오류가 발생하면서 복구가 되지 않습니다.
 
 ``` bash
 ~# mysql -h db-......vpc-cdb.ntruss.com -u user -p < ./dumpfile1.sql
 ```
-<img src="../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_03.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
+<img src="/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_03.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
 
 ## 해결 방법 1
 이번에는 Warning 메시지에 나온 것처럼 [**--set-gtid-purged=OFF**] 옵션을 사용해서 백업을 받아 보겠습니다.
@@ -56,7 +56,7 @@ GTID는 모든 트랜잭션과 1:1 관계이며, GTID를 활용하면 복제본�
 ~# mysqldump --set-gtid-purged=OFF -u user -p -h db-......vpc-cdb.ntruss.com -S /var/lib/mysql/mysql.sock --single-transaction --routines --triggers --events --databases test  > dumpfile2.sql
 ```
 
-<img src="../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_02.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
+<img src="/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_02.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
 
 [**--set-gtid-purged=OFF**] 옵션을 사용해서 생성한 백업 파일(dumpfile2.sql)을 이용해서 복구를 하면 아래와 같이 문제없이 복구가 잘됩니다.  
 그런데 이렇게 옵션을 적용해도 동일한 오류가 발생하는 경우가 있는데 이에 대해서는 아래쪽 [원인 2]에서 확인해보겠습니다.
@@ -64,7 +64,7 @@ GTID는 모든 트랜잭션과 1:1 관계이며, GTID를 활용하면 복제본�
 ``` bash
 ~# mysql -h db-......vpc-cdb.ntruss.com -u user -p < ./dumpfile2.sql
 ```
-<img src="../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_04.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
+<img src="/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_04.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
 
 
 ## 해결 방법 2
@@ -88,12 +88,12 @@ SET @@GLOBAL.GTID_PURGED='207****-4***-7**-9*****c:1-12,
 [원인 1]에서는 복구를 시도할 때 [user] 계정을 사용했었는데 이 [user]계정으로 Trigger, Stored Routines (Procedures and Functions), View, Event 등을 생성한 상황에서 다른 계정 [new_user]를 이용해서 복구를 시도하는 상황을 가정보겠습니다. 
 [new_user] 계정으로 복구를 시도하면 [**--set-gtid-purged=OFF**]을 적용한 백업 파일(dumpfile2.sql)을 이용했음에도 동일한 ERROR 1227 (42000) 오류가 발생하는 것을 확인할 수 있습니다.
 
-<img src="../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_05.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
+<img src="/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_05.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
 
 아래와 같이 MySQL은 보안 강화를 위해 Trigger, Stored Routines (Procedures and Functions), View, Event를 처음 생성한 계정을 [**DEFINER**]로 명시해 둠으로써 다른 계정으로 접근하지 못하도록 하는 것이 기본 설정이 되어 있습니다.  
 그러므로 DB 복구를 시도할 때는 [**DEFINER**] 관련 내용을 삭제하거나 동일한 계정 또는 SUPER privilege를 가진 계정으로 복구해야 합니다.
 
-<img src="../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_08.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
+<img src="/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_08.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
 
 ## 해결 방법 1
 첫번째 해결 방법은 백업 파일에서 [**DEFINER**] 관련 내용을 모두 찾아서 삭제하는 방법이 있습니다. 
@@ -102,15 +102,15 @@ SET @@GLOBAL.GTID_PURGED='207****-4***-7**-9*****c:1-12,
 #### FUNCTION
 DB에서 FUNCTION을 사용했다면 아래와 같이 FUNCTION 생성 코드에 [**CREATE DEFINER=\`user\`@\`%\` FUNCTION**]처럼 계정이 표시되는데, 여기서 [**DEFINER=\`user\`@\`%\`**] 이 부분을 삭제하시면 됩니다.
 
-<img src="../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_06.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
+<img src="/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_06.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
 
 #### PROCEDURE
 DB에서 PROCEDURE를 사용했다면 아래와 같이 PROCEDURE 생성 코드에 [**CREATE DEFINER=\`user\`@\`%\` PROCEDURE**]처럼 계정이 표시되는데, 여기서 [**DEFINER=\`user\`@\`%\`**] 이 부분을 삭제하시면 됩니다.
-<img src="../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_07.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
+<img src="/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_07.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
 
 #### VIEW
 DB에서 VIEW를 사용했다면 아래와 같이 VIEW 생성 코드에 [**/*!50013 DEFINER=\`user\`@\`%\` SQL SECURITY DEFINER */**]처럼 계정이 표시되는데, 여기서는 이 라인을 모두 삭제하시면 됩니다.
-<img src="../../images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_08.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
+<img src="/images/ncloud_database_cdb_mysql_restore_error_1227_troubleshooting_08.png" alt="네이버 클라우드 Cloud DB for MySQL 복구(Restore)시에 발생하는 오류 ERROR 1227 (42000) 문제 원인과 해결방법" style="width:770px;align:center">
 
 
 ## 해결 방법 2

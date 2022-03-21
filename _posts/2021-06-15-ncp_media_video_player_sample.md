@@ -21,31 +21,31 @@ v2_link: /media/ncloud_media_video_player_sample.html
 
 [네이버 클라우드 콘솔] - [Video Player]에서 [플레이어 생성] 버튼을 클릭합니다.
 
-<img src="../../images/ncp_media_video_player_01.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
+<img src="/images/ncp_media_video_player_01.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
 
 플레이어 이름, 유-무료 상품(현재는 무료만 선택 가능), 플레이어 사이즈, 버전, 플레이어가 저장될 Object Storage 위치 등을 선택합니다.
 
-<img src="../../images/ncp_media_video_player_02.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
+<img src="/images/ncp_media_video_player_02.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
 
 재생 속도 조절 등의 기능을 설정하고, 우클릭 메뉴 바로가기를 추가할 수도 있습니다.
 
-<img src="../../images/ncp_media_video_player_03.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
+<img src="/images/ncp_media_video_player_03.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
 
 자동 재성이나 대역폭 등의 재생 관련 설정을 선택합니다.
 
-<img src="../../images/ncp_media_video_player_04.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
+<img src="/images/ncp_media_video_player_04.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
 
 마지막으로 현재까지 선택한 설정을 확인하고, 플레이어 미리보기를 한 후에 [플레이어 생성] 버튼을 클릭합니다.
 
-<img src="../../images/ncp_media_video_player_05.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
+<img src="/images/ncp_media_video_player_05.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
 
 생성된 플레이어 js 파일의 경로를 확인할 수 있습니다.
 
-<img src="../../images/ncp_media_video_player_06.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
+<img src="/images/ncp_media_video_player_06.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
 
 js 파일이 저장된 Object Storage에서도 확인 가능합니다.
 
-<img src="../../images/ncp_media_video_player_07.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
+<img src="/images/ncp_media_video_player_07.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
 
 
 ## 플레이어 구현하기
@@ -106,7 +106,7 @@ js 파일이 저장된 Object Storage에서도 확인 가능합니다.
 ## 플레이어 구현 예시
 위 html 소스대로 플레이어를 구현해서 웹브라우져에서 확인해보면 다음과 같이 나타납니다.
 
-<img src="../../images/ncp_media_video_player_08.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
+<img src="/images/ncp_media_video_player_08.jpg" alt="Video Player 구현하기 샘플 예제" style="width:770px;align:center">
 
 
 ## 플레이어 상세 옵션

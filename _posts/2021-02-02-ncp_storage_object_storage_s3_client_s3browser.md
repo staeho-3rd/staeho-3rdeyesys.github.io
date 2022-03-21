@@ -33,7 +33,7 @@ S3 Browser는 Amazon S3 and Amazon CloudFront를 위한 클라이언트입니다
 프로그램을 다운 받아서 설치하고, 실행을 하면 여러 종류의 스토리지 중에서 원하는 것을 선택하게 됩니다.  
 이 클라이언트는 AWS S3를 위한 것으로 CloudBerry Explorer와는 다르게 AWS의 다양한 S3 서비스들만 접속이 가능한데, 이용 가능한 스토리지 리스트는 마지막에서 정리해보겠습니다. 
 
-<img src="../../images/ncp_storage_object_storage_s3_client_s3browser_01.jpg" alt="Object Storage 접속용 Windows Client Tool - S3 Browser" style="width:800px;align:center">
+<img src="/images/ncp_storage_object_storage_s3_client_s3browser_01.jpg" alt="Object Storage 접속용 Windows Client Tool - S3 Browser" style="width:800px;align:center">
 
 
 Account Type은  **S3 Compatible Storage**를 선택하면 됩니다.  
@@ -42,7 +42,7 @@ Account Type은  **S3 Compatible Storage**를 선택하면 됩니다.
 - Access Key ID: 여기는 Access Key ID
 - Secret Access Key: 여기는 Secret Key
 
-<img src="../../images/ncp_storage_object_storage_s3_client_s3browser_02.jpg" alt="Object Storage 접속용 Windows Client Tool - S3 Browser" style="width:800px;align:center">
+<img src="/images/ncp_storage_object_storage_s3_client_s3browser_02.jpg" alt="Object Storage 접속용 Windows Client Tool - S3 Browser" style="width:800px;align:center">
 
 {: .success }
 네이버 클라우드 포탈 -> 마이페이지 -> 계정관리 -> 인증키 관리 - API 인증키 관리 메뉴에서 Access Key ID와 Secret Key를 가져오셔야 하며, 아직 만들어진 Key가 없다면 새로 만드셔야 합니다.
@@ -50,19 +50,19 @@ Account Type은  **S3 Compatible Storage**를 선택하면 됩니다.
 
 계정 정보를 입력하고 접속을 하면 버킷 리스트가 나타나고 원하는 버킷을 선택해서 들어가면 다음처럼 파일들을 확인할 수 있습니다.
 
-<img src="../../images/ncp_storage_object_storage_s3_client_s3browser_03.jpg" alt="Object Storage 접속용 Windows Client Tool - S3 Browser" style="width:800px;align:center">
+<img src="/images/ncp_storage_object_storage_s3_client_s3browser_03.jpg" alt="Object Storage 접속용 Windows Client Tool - S3 Browser" style="width:800px;align:center">
 
 
 Object Storage에 있는 파일을 로컬PC로 가져오려면 원하는 파일을 선택하고 마우스 오른쪽 버튼을 눌러서 **Download** 명령을 선택하면 됩니다.
 
-<img src="../../images/ncp_storage_object_storage_s3_client_s3browser_04.jpg" alt="Object Storage 접속용 Windows Client Tool - S3 Browser" style="width:800px;align:center">
+<img src="/images/ncp_storage_object_storage_s3_client_s3browser_04.jpg" alt="Object Storage 접속용 Windows Client Tool - S3 Browser" style="width:800px;align:center">
 
 
 그 외 여러 가지 기능들이 있는데 그리 어려운 기능은 아니므로 직접 사용해보시면 금방 알 수 있습니다.
 
 마지막으로 S3 Browser로 접속 가능한 S3 리스트를 확인해보겠습니다.
 
-<img src="../../images/ncp_storage_object_storage_s3_client_s3browser_05.jpg" alt="Object Storage 접속용 Windows Client Tool - S3 Browser" style="width:800px;align:center">
+<img src="/images/ncp_storage_object_storage_s3_client_s3browser_05.jpg" alt="Object Storage 접속용 Windows Client Tool - S3 Browser" style="width:800px;align:center">
 
 - Amazon S3 Storage
 - S3 Compatible Storage

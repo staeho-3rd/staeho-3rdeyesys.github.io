@@ -29,8 +29,8 @@ v2_link: /compute/ncloud_compute_autoscaling_limit.html
 - Classic : Compact, Standard
 - VPC : High CPU, Standard, High Memory
 
-<img src="../../images/ncp_server_autoscaling_limit_01.jpg" alt="Auto Scaling 서비스 제한사항" style="width:770px;align:center">
-<img src="../../images/ncp_server_autoscaling_limit_02.jpg" alt="Auto Scaling 서비스 제한사항" style="width:770px;align:center">
+<img src="/images/ncp_server_autoscaling_limit_01.jpg" alt="Auto Scaling 서비스 제한사항" style="width:770px;align:center">
+<img src="/images/ncp_server_autoscaling_limit_02.jpg" alt="Auto Scaling 서비스 제한사항" style="width:770px;align:center">
 
 {: .warning }
 현재 [Auto Scaling] - [Launch Configuration] 화면과 가이드에 나오는 [High Memory 타입은 지원되지 않습니다]는 예전 메시지로 조만간 삭제될 예정이라고 합니다.
